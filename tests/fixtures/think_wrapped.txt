@@ -1,0 +1,5 @@
+<think>
+The user wants claims extracted. Page 12 says 142.6 ha.
+</think>
+
+{"claims": [{"id": "c1", "page": 12, "type": "project_area", "quote": "The total mine lease area is 142.6 ha."}]}
