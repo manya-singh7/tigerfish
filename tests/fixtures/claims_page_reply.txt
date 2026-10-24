@@ -1,0 +1,13 @@
+```json
+{"claims": [
+  {"type": "count", "subject": "Campbell Bay National Park fauna", "value": 330, "unit": "species",
+   "quote": "a total of 330 species of fauna are recorded from the Campbell Bay National Park",
+   "context": "notification text"},
+  {"type": "count", "subject": "Campbell Bay National Park mammals", "value": 28, "unit": "species",
+   "quote": "28 mammal species are found in the park",
+   "context": "paraphrased by the model, not on the page"},
+  {"type": "habitat", "subject": "protected area", "value": "Nypa fruticans grows wild", "unit": null,
+   "quote": "Nypa fruticans and Vanilla anadamanica grows wild in the protected area",
+   "context": "unknown type falls back to statement"}
+]}
+```

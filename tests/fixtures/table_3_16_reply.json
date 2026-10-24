@@ -1,0 +1,19 @@
+{
+  "title": "Table 3.16: Mammal diversity recorded at Campbell Bay region of GNI along with their status",
+  "columns": ["Zoological name", "Common name", "Family", "Status IUCN Category", "Status WPA Schedule, 1972"],
+  "rows": [
+    ["Axis axis", "Chital", "Cervinae", "LC", "Sch-III"],
+    ["Cervus unicolor", "Sambar", "Cervidae", "VU", "Sch-II"],
+    ["Crocidura hispida", "Shrew", "Soricidae", "VU", "-"],
+    ["Felis chaus", "Wild cat", "Felidae", "LC", "Sch-II"],
+    ["Funambulus pennantii", "Squirrel", "Sciuridae", "LC", "-"],
+    ["Macaca fascicularis", "Crab eating Macaque", "Cercopithecidae", "VU", "Sch-II"],
+    ["Muntiacus muntjak", "Barking deer", "Cervidae", "LC", "Sch-II"],
+    ["Paguma larvata", "Musk Palm Civet", "Viverridae", "LC", "-"],
+    ["Pteropus giganteus", "Flying Fox", "Pteropodidae", "LC", "-"],
+    ["Rattus rattus", "House rat", "muridae", "LC", "Sch-V"],
+    ["Sus scrofa andamanensis", "Andaman wild pig", "Suidae", "LC", "Sch-II"],
+    ["Taupaia nicobarica nicobarica", "Nicobar tree shrew", "Tupaiidae", "EN", "-"]
+  ],
+  "scientific_name_column": "Zoological name"
+}

@@ -8,8 +8,13 @@
   returns tests/fixtures/claim_extraction.json instead of calling Nebius.
 - Reasoning: thinking is off by default for Lightning (see DEFAULT_THINKING),
   and any <think>...</think> block is always stripped from the returned text.
+- Images: put image_part(path) in a message's content list (Super-VL). The cache
+  key uses the image's sha256, not the base64 text.
+- Cost: session_cost_usd adds up real (uncached) calls; is_cached() tells you
+  in advance whether a call would be free.
 """
 
+import base64
 import hashlib
 import json
 import re
@@ -37,12 +42,19 @@ LIGHTNING = "nvidia/Nemotron-3_5-Lightning"   # fast, cheap claim extraction
 # reasoning_content field, so their content is clean already.
 DEFAULT_THINKING = {LIGHTNING: False}
 
-# USD per 1M tokens as (input, output). Fill in from the Nebius pricing page;
-# models left out are logged with cost_usd = None.
-PRICES = {}
+# USD per 1M tokens as (input, output). Models left out are logged with cost_usd = None.
+# Source: third-party listing of Nebius Token Factory prices (typingmind.com, Aug 2026);
+# check against the Nebius billing page. Super-VL price was not found anywhere: the
+# Ultra price is used as a deliberately high placeholder so cost caps err on the safe side.
+PRICES = {
+    LIGHTNING: (0.06, 0.24),
+    ULTRA: (1.00, 3.00),
+    SUPER_VL: (1.00, 3.00),   # UNVERIFIED placeholder
+}
 
 load_dotenv(ROOT / ".env")
 _client = None
+session_cost_usd = 0.0   # cost of real (uncached) API calls made by this process
 
 
 def client():
@@ -56,10 +68,63 @@ def client():
     return _client
 
 
+def image_part(path):
+    """OpenAI-style image content part with the file inlined as a base64 data URL."""
+    path = Path(path)
+    mime = "image/jpeg" if path.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+    data = base64.b64encode(path.read_bytes()).decode("ascii")
+    return {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{data}"}}
+
+
+def _hash_images(messages):
+    """Copy of messages with each inline image replaced by its sha256 (for cache keys)."""
+    out = []
+    for msg in messages:
+        content = msg.get("content")
+        if isinstance(content, list):
+            content = [
+                {"type": "image_url", "image_sha256": hashlib.sha256(
+                    part["image_url"]["url"].encode("ascii")).hexdigest()}
+                if part.get("type") == "image_url" else part
+                for part in content]
+            msg = {**msg, "content": content}
+        out.append(msg)
+    return out
+
+
 def _cache_key(model, messages, kwargs):
-    payload = json.dumps({"model": model, "messages": messages, "kwargs": kwargs},
+    # Text-only messages hash exactly as before, so existing cache entries stay valid.
+    payload = json.dumps({"model": model, "messages": _hash_images(messages), "kwargs": kwargs},
                          sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _with_thinking(model, thinking, kwargs):
+    """kwargs plus the chat_template_kwargs switch for this model's thinking setting."""
+    if thinking is None:
+        thinking = DEFAULT_THINKING.get(model)
+    if thinking is None:
+        return kwargs
+    extra_body = dict(kwargs.get("extra_body") or {})
+    extra_body["chat_template_kwargs"] = {
+        **extra_body.get("chat_template_kwargs", {}), "enable_thinking": thinking}
+    return {**kwargs, "extra_body": extra_body}
+
+
+def is_cached(model, messages, thinking=None, **kwargs):
+    """True if chat() with these arguments would be answered from the cache (free)."""
+    if is_mock():
+        return True
+    key = _cache_key(model, messages, _with_thinking(model, thinking, kwargs))
+    return (CACHE_DIR / f"{key}.json").exists()
+
+
+def cost_usd(model, prompt_tokens, completion_tokens):
+    """Cost in USD from PRICES, or None if the model has no price."""
+    if model not in PRICES:
+        return None
+    price_in, price_out = PRICES[model]
+    return (prompt_tokens * price_in + completion_tokens * price_out) / 1_000_000
 
 
 def is_mock():
@@ -85,12 +150,12 @@ def _mock_reply(model, mock_key):
 
 
 def _log_usage(model, usage, cached, mock=False):
+    global session_cost_usd
     prompt = usage.get("prompt_tokens", 0) if usage else 0
     completion = usage.get("completion_tokens", 0) if usage else 0
-    cost = None
-    if model in PRICES:
-        price_in, price_out = PRICES[model]
-        cost = (prompt * price_in + completion * price_out) / 1_000_000
+    cost = cost_usd(model, prompt, completion)
+    if cost is not None and not cached and not mock:
+        session_cost_usd += cost
     entry = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": model,
              "mode": "MOCK" if mock else "REAL", "cached": cached,
              "prompt_tokens": prompt, "completion_tokens": completion, "cost_usd": cost}
@@ -127,14 +192,7 @@ def chat(model, messages, mock_key=None, thinking=None, cache=True, **kwargs):
     if is_mock():
         return strip_think(_mock_reply(model, mock_key))
 
-    if thinking is None:
-        thinking = DEFAULT_THINKING.get(model)
-    if thinking is not None:
-        extra_body = dict(kwargs.get("extra_body") or {})
-        extra_body["chat_template_kwargs"] = {
-            **extra_body.get("chat_template_kwargs", {}), "enable_thinking": thinking}
-        kwargs["extra_body"] = extra_body
-
+    kwargs = _with_thinking(model, thinking, kwargs)
     key = _cache_key(model, messages, kwargs)
     path = CACHE_DIR / f"{key}.json"
     if cache and path.exists():
