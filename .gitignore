@@ -1,0 +1,12 @@
+# secrets
+.env
+# API response cache and usage logs
+cache/
+logs/
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+data/eias/*.pdf
