@@ -21,6 +21,17 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] gn-003: confirm p.818 / 851 / 1168 breakdowns really are identical
 - [ ] Add verified_by, verified_on, verification_note to each entry
 
+## Block B (PDF reader + Super-VL)
+- [ ] Super-VL demo: send one needs_vision page PNG (table or map) from cache/pages/ to Super-VL and show the extracted text/table
+
+## Block D (species check, GBIF)
+- [x] Table 3.16 live test (Indira Point REIA mammals, 6.75, 93.83) in tests/test_species_live.py
+- [ ] Check GBIF synonym mappings by hand: Pteropus giganteus -> Pteropus vampyrus looks wrong (Indian flying fox is usually P. medius)
+- [ ] Regional-effort fallback is borderline here: 513 mammal records within 500 km vs threshold 500
+
+## Stretch
+- [ ] ToR vs EIA: check each Terms of Reference condition against what the EIA actually covers
+
 ## Block E (copy-paste check, Tavily)
 - [ ] Use the "Deep Research Agent with Tavily + Token Factory" cookbook (github.com/nebius/token-factory-cookbook) as the reference pattern
 
