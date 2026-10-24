@@ -1,0 +1,78 @@
+{
+  "document": "data/eias/great_nicobar_2021_draft_eia.pdf",
+  "notes": "Hand-verified findings used as an evaluation set. Pages are 1-based physical PDF pages. Quotes are exact substrings of the page text after collapsing whitespace (\" \".join(text.split())). Issues with expected_grade NONE are negative controls and must NOT be flagged.",
+  "issues": [
+    {
+      "id": "gn-001",
+      "type": "contradiction",
+      "summary": "Presence of coral at the port site is stated both ways.",
+      "pages": [392, 978],
+      "quotes": [
+        {"page": 392, "text": "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay."},
+        {"page": 978, "text": "Are any coral reefs in the area? Yes Coral reef exists in the proposed site for Transshipment / Port"}
+      ],
+      "expected_grade": "RED",
+      "acceptable_grades": ["RED", "ORANGE"],
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    },
+    {
+      "id": "gn-002",
+      "type": "mismatch",
+      "summary": "Maximum coral loss (1-2 ha) is smaller than the coral restoration budgeted (4 ha).",
+      "pages": [444, 751],
+      "quotes": [
+        {"page": 444, "text": "However, even if there is any loss of corals during construction, it would not exceed 1-2 ha at the maximum."},
+        {"page": 751, "text": "Approximately 4ha of Coral restoration has been considered."}
+      ],
+      "expected_grade": "ORANGE",
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    },
+    {
+      "id": "gn-003",
+      "type": "recycled_figure",
+      "summary": "The same fauna count (330 species, same breakdown) is given for Campbell Bay NP, Galathea NP and the whole island.",
+      "pages": [818, 851, 1168],
+      "quotes": [
+        {"page": 818, "text": "a total of 330 species of fauna are recorded from the Campbell Bay National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"},
+        {"page": 851, "text": "a total of 330 species of fauna are recorded from the Galathea National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"},
+        {"page": 1168, "text": "A total of 330 species of fauna are recorded from the whole GNI area including 28 species of mammals (including 3 marine mammals), 97 species of birds"}
+      ],
+      "expected_grade": "RED",
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    },
+    {
+      "id": "gn-004",
+      "type": "contradiction",
+      "summary": "Fauna count for the whole island is 330 species in the executive summary but 695 species in the ZSI study summary.",
+      "pages": [1168, 940],
+      "quotes": [
+        {"page": 1168, "text": "A total of 330 species of fauna are recorded from the whole GNI area"},
+        {"page": 940, "text": "A total of 695 species of fauna with the endemism of 158 species, which is equivalent to 22.73% have been reported from Great Nicobar Island."}
+      ],
+      "expected_grade": "RED",
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    },
+    {
+      "id": "gn-neg-001",
+      "type": "negative_control",
+      "summary": "Island area 1045 vs 910 sq km is explained in the text (pre- vs post-2004 tsunami). Must NOT be flagged.",
+      "pages": [234, 1141],
+      "quotes": [
+        {"page": 234, "text": "Before Tusnami the GNI had total area of 1045 sq km which reduced to 910 sqkm after the Tsunami due to the submergence of part of the island."},
+        {"page": 1141, "text": "The GNI, with an area of 910 sq.km (original notified area of 1045 Sq.km.)"}
+      ],
+      "expected_grade": "NONE",
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    }
+  ]
+}

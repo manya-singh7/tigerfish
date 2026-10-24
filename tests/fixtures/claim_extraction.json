@@ -1,0 +1,61 @@
+{
+  "document": "EIA Report: Bhatgaon Limestone Mine (fictional), Satna District, Madhya Pradesh",
+  "claims": [
+    {
+      "id": "c1",
+      "page": 12,
+      "type": "project_area",
+      "quote": "The total mine lease area is 142.6 ha, of which 98.4 ha is forest land.",
+      "value": 142.6,
+      "unit": "ha"
+    },
+    {
+      "id": "c2",
+      "page": 47,
+      "type": "project_area",
+      "quote": "The proposed lease covering an area of 162.6 ha falls in Survey of India toposheet 63D/10.",
+      "value": 162.6,
+      "unit": "ha"
+    },
+    {
+      "id": "c3",
+      "page": 15,
+      "type": "distance_to_feature",
+      "quote": "The nearest water body, Tons River, is located at a distance of 2.8 km (N) from the lease boundary.",
+      "value": 2.8,
+      "unit": "km"
+    },
+    {
+      "id": "c4",
+      "page": 63,
+      "type": "distance_to_feature",
+      "quote": "Tons River flows at about 650 m north of the mine lease.",
+      "value": 0.65,
+      "unit": "km"
+    },
+    {
+      "id": "c5",
+      "page": 21,
+      "type": "production_capacity",
+      "quote": "Production of limestone: 1.2 million TPA (ROM).",
+      "value": 1.2,
+      "unit": "million TPA"
+    },
+    {
+      "id": "c6",
+      "page": 88,
+      "type": "water_requirement",
+      "quote": "Total water requirement for the project is 45 KLD, sourced from groundwater.",
+      "value": 45,
+      "unit": "KLD"
+    },
+    {
+      "id": "c7",
+      "page": 112,
+      "type": "species_recorded",
+      "quote": "Faunal species observed in the core zone include Indian Peafowl (Pavo cristatus) and Nilgiri Tahr (Nilgiritragus hylocrius).",
+      "value": "Nilgiritragus hylocrius",
+      "unit": null
+    }
+  ]
+}

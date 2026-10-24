@@ -1,0 +1,43 @@
+{
+  "findings": [
+    {
+      "id": "f1",
+      "category": "internal_contradiction",
+      "grade": "RED",
+      "title": "Mine lease area stated as two different values",
+      "pages": [12, 47],
+      "quotes": [
+        {"page": 12, "text": "The total mine lease area is 142.6 ha, of which 98.4 ha is forest land."},
+        {"page": 47, "text": "The proposed lease covering an area of 162.6 ha falls in Survey of India toposheet 63D/10."}
+      ],
+      "evidence": "Both statements describe the same mine lease boundary but differ by 20.0 ha. No expansion or phasing is mentioned between pages 12 and 47.",
+      "message": "Inconsistency flagged: the lease area differs between page 12 and page 47. Please verify which value is correct."
+    },
+    {
+      "id": "f2",
+      "category": "internal_contradiction",
+      "grade": "ORANGE",
+      "title": "Distance to Tons River differs",
+      "pages": [15, 63],
+      "quotes": [
+        {"page": 15, "text": "The nearest water body, Tons River, is located at a distance of 2.8 km (N) from the lease boundary."},
+        {"page": 63, "text": "Tons River flows at about 650 m north of the mine lease."}
+      ],
+      "evidence": "Same river, same direction, distances of 2.8 km and 0.65 km. The page 63 figure may be measured from a different reference point, which the report does not state.",
+      "message": "Inconsistency flagged: two different distances to Tons River are given. Please verify the measurement reference."
+    },
+    {
+      "id": "f3",
+      "category": "internal_contradiction",
+      "grade": "GREY",
+      "title": "Water requirement vs production capacity",
+      "pages": [21, 88],
+      "quotes": [
+        {"page": 21, "text": "Production of limestone: 1.2 million TPA (ROM)."},
+        {"page": 88, "text": "Total water requirement for the project is 45 KLD, sourced from groundwater."}
+      ],
+      "evidence": "No breakdown of water use (dust suppression, plantation, domestic) is given, so the figure cannot be checked against production.",
+      "message": "Not enough data to assess."
+    }
+  ]
+}
