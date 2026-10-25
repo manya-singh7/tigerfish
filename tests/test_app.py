@@ -75,3 +75,32 @@ def test_method_tab_shows_evaluation(no_keys):
     text = "\n".join(m.value for m in at.markdown)
     assert "#### Evaluation" in text and "Planted contradictions" in text
     assert "1 USD = 84 INR" in text
+
+
+def test_prerecorded_investigations_replay(no_keys):
+    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    assert not at.exception
+    labels = [e.label for e in at.expander if e.label.startswith("Investigation:")]
+    assert len(labels) == 3                                    # ct-003, ac-01, sp-p954-001
+    html = "\n".join(m.value for m in at.markdown)
+    assert 'class="tf-timeline"' in html and "READ PAGE" in html and "Evidence memo" in html
+    # findings without a recording get an Investigate button, disabled without a key
+    buttons = [b for b in at.button if b.label == "Investigate"]
+    assert buttons and all(b.disabled for b in buttons)
+
+
+def test_saved_investigations_are_neutral_and_verified():
+    from tigerfish import agent, claims
+    from tigerfish.pdf_reader import read_pdf
+    pdf = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
+    pages = {p["page"]: p["text"] for p in read_pdf(pdf, render=False)} if pdf.exists() else {}
+    for p in (ROOT / "results" / "investigations").glob("*.json"):
+        inv = json.loads(p.read_text(encoding="utf-8"))
+        memo = inv["memo"]
+        assert memo["conclusion"] in agent.CONCLUSIONS and inv["totals"]["cost_usd"] <= agent.MAX_COST_USD
+        assert inv["totals"]["steps"] <= agent.MAX_STEPS and inv["totals"]["tavily_credits"] <= agent.MAX_CREDITS
+        text = " ".join(memo["reasons"] + memo["checked"] + [e["note"] for e in memo["evidence"]]).lower()
+        assert not any(w.startswith(b) for w in text.split() for b in BANNED), p.name
+        for e in memo["evidence"]:
+            if e.get("page") and pages:
+                assert claims.quote_on_page(e["quote"], pages[e["page"]]), (p.name, e["quote"][:60])

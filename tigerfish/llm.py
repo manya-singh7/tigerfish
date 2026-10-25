@@ -216,6 +216,37 @@ def chat(model, messages, mock_key=None, thinking=None, cache=True, **kwargs):
     return strip_think(data["choices"][0]["message"]["content"])
 
 
+def chat_message(model, messages, thinking=None, cache=True, **kwargs):
+    """Like chat(), but returns the whole reply for agent loops:
+    {"content", "tool_calls" (list of {id, name, arguments}), "usage", "cost_usd", "cached",
+    "seconds", "finish_reason"}. kwargs may include tools=[...] (OpenAI tool calling).
+    Cached and logged exactly like chat(); cost_usd is 0 for a cache hit."""
+    kwargs = _with_thinking(model, thinking, kwargs)
+    key = _cache_key(model, messages, kwargs)
+    path = CACHE_DIR / f"{key}.json"
+    trace.record("llm", path)
+    cached = cache and path.exists()
+    if cached:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    else:
+        started = time.perf_counter()
+        response = client().chat.completions.create(model=model, messages=messages, **kwargs)
+        data = response.model_dump()
+        data["_latency_s"] = round(time.perf_counter() - started, 3)
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    usage = data.get("usage") or {}
+    _log_usage(model, usage, cached=cached, seconds=None if cached else data["_latency_s"])
+    choice = data["choices"][0]
+    msg = choice["message"]
+    calls = [{"id": c.get("id"), "name": c["function"]["name"], "arguments": c["function"]["arguments"]}
+             for c in (msg.get("tool_calls") or []) if c.get("function")]
+    cost = cost_usd(model, usage.get("prompt_tokens", 0), usage.get("completion_tokens", 0)) or 0.0
+    return {"content": strip_think(msg.get("content") or ""), "tool_calls": calls, "usage": usage,
+            "cost_usd": 0.0 if cached else cost, "cached": cached,
+            "seconds": data.get("_latency_s"), "finish_reason": choice.get("finish_reason")}
+
+
 def list_models():
     """Return the ids of all models available to this API key (not cached)."""
     if is_mock():

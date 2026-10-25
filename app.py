@@ -61,7 +61,7 @@ with findings_tab:
     elif not shown:
         st.info("No findings match these filters.")
     for f in shown:
-        cards.finding_card(report["id"], f)
+        cards.finding_card(report["id"], f, report.get("title", ""))
 
     # ---------- letter from confirmed findings ----------
     st.write("")

@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-from tigerfish.ui import data
+from tigerfish.ui import data, investigate
 from tigerfish.ui.style import badge, esc, stat
 
 REVIEW_OPTIONS = ["Confirm", "Dismiss", "Unsure"]
@@ -64,7 +64,7 @@ def evidence_html(items):
     return "".join(rows)
 
 
-def finding_card(report_id, f):
+def finding_card(report_id, f, report_title=""):
     with st.container(border=True):
         known = (f' <span class="tf-check">· matches known issue {esc(f["known_issue"])}</span>'
                  if f.get("known_issue") else "")
@@ -91,6 +91,8 @@ def finding_card(report_id, f):
                     # file names end in _p<NNNN>.png
                     col.image(str(path), caption=f"Page {int(path.stem.rsplit('_p', 1)[1])}",
                               width="stretch")
+
+        investigate.render(report_id, f, report_title)
 
         st.segmented_control("Reviewer", REVIEW_OPTIONS, key=review_key(report_id, f["id"]),
                              label_visibility="collapsed")
