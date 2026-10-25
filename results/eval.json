@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-25 15:09",
+  "generated": "2026-10-25 15:18",
   "seed": 42,
-  "max_cost_usd": 0.03,
+  "max_cost_usd": 0.025,
   "known": {
     "rows": [
       {
@@ -124,28 +124,13 @@
     "triage_validation": {
       "candidates": 21,
       "triage": {
-        "yes": 8,
-        "no": 13,
+        "yes": 19,
+        "no": 2,
         "unsure": 0
       },
       "with_cached_verdict": 20,
-      "violations": [
-        {
-          "claims": [
-            "p851-03",
-            "p940-02"
-          ],
-          "kind": "numeric",
-          "pages": [
-            851,
-            940
-          ],
-          "triage": "no",
-          "ultra_grade": "ORANGE",
-          "violation": true
-        }
-      ],
-      "ultra_calls_saved": 13,
+      "violations": [],
+      "ultra_calls_saved": 2,
       "rows": [
         {
           "claims": [
@@ -229,7 +214,7 @@
             851,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -243,7 +228,7 @@
             818,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -257,7 +242,7 @@
             851,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -299,7 +284,7 @@
             818,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -327,7 +312,7 @@
             851,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -341,7 +326,7 @@
             851,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -355,7 +340,7 @@
             234,
             1141
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -383,7 +368,7 @@
             818,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -397,7 +382,7 @@
             818,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -425,7 +410,7 @@
             818,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -439,9 +424,9 @@
             851,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "ORANGE",
-          "violation": true
+          "violation": false
         }
       ]
     }
@@ -652,13 +637,13 @@
     "triage_validation": {
       "candidates": 75,
       "triage": {
-        "yes": 30,
-        "no": 43,
-        "unsure": 2
+        "yes": 51,
+        "no": 24,
+        "unsure": 0
       },
-      "with_cached_verdict": 28,
+      "with_cached_verdict": 29,
       "violations": [],
-      "ultra_calls_saved": 43,
+      "ultra_calls_saved": 24,
       "rows": [
         {
           "claims": [
@@ -782,7 +767,7 @@
             1117,
             1168
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -894,7 +879,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -908,7 +893,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -922,7 +907,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -936,7 +921,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -950,7 +935,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -964,7 +949,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -978,7 +963,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": "NONE",
           "violation": false
         },
@@ -992,7 +977,7 @@
             642,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1090,8 +1075,8 @@
             851,
             1117
           ],
-          "triage": "no",
-          "ultra_grade": null,
+          "triage": "yes",
+          "ultra_grade": "NONE",
           "violation": false
         },
         {
@@ -1118,7 +1103,7 @@
             777,
             851
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1132,7 +1117,7 @@
             198,
             940
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1146,7 +1131,7 @@
             386,
             1168
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1160,7 +1145,7 @@
             572,
             1168
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1216,7 +1201,7 @@
             198,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1258,7 +1243,7 @@
             818,
             1117
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1272,7 +1257,7 @@
             557,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1286,7 +1271,7 @@
             777,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1328,7 +1313,7 @@
             386,
             851
           ],
-          "triage": "yes",
+          "triage": "no",
           "ultra_grade": null,
           "violation": false
         },
@@ -1496,7 +1481,7 @@
             234,
             403
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1538,7 +1523,7 @@
             198,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1552,7 +1537,7 @@
             386,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1608,7 +1593,7 @@
             198,
             818
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1622,7 +1607,7 @@
             572,
             1168
           ],
-          "triage": "unsure",
+          "triage": "no",
           "ultra_grade": null,
           "violation": false
         },
@@ -1636,7 +1621,7 @@
             198,
             851
           ],
-          "triage": "no",
+          "triage": "yes",
           "ultra_grade": null,
           "violation": false
         },
@@ -1650,7 +1635,7 @@
             572,
             1168
           ],
-          "triage": "unsure",
+          "triage": "no",
           "ultra_grade": null,
           "violation": false
         },
@@ -1664,7 +1649,7 @@
             444,
             572
           ],
-          "triage": "yes",
+          "triage": "no",
           "ultra_grade": null,
           "violation": false
         },
@@ -1904,8 +1889,8 @@
           "new_value": 34,
           "unit": "species",
           "extracted": true,
-          "paired": false,
-          "grade": null,
+          "paired": true,
+          "grade": "NONE",
           "ok": true,
           "stage_missed": null
         },
@@ -1946,7 +1931,7 @@
       "explained_total": 5,
       "other_new_flags": [
         {
-          "id": "ct-015",
+          "id": "ct-016",
           "grade": "ORANGE",
           "pages": [
             730,
@@ -1957,12 +1942,12 @@
       ]
     },
     "candidates": 20,
-    "candidates_dropped": 12,
+    "candidates_dropped": 31,
     "candidates_total": 75,
     "triage": {
-      "yes": 30,
-      "no": 43,
-      "unsure": 2
+      "yes": 51,
+      "no": 24,
+      "unsure": 0
     },
     "rule_claims": 6,
     "stopped": null,
@@ -1980,23 +1965,23 @@
       },
       {
         "stage": "Planted test: triage (Lightning)",
-        "calls": 10,
-        "in_tokens": 7565,
-        "out_tokens": 962,
-        "total_tokens": 8527,
-        "seconds": 9.5,
+        "calls": 48,
+        "in_tokens": 74568,
+        "out_tokens": 2089,
+        "total_tokens": 76657,
+        "seconds": 27.1,
         "time_measured": true,
-        "cost_usd": 0.00068
+        "cost_usd": 0.00498
       },
       {
         "stage": "Planted test: Ultra verdicts",
         "calls": 20,
-        "in_tokens": 50487,
-        "out_tokens": 21306,
-        "total_tokens": 71793,
-        "seconds": 80.5,
+        "in_tokens": 49404,
+        "out_tokens": 23878,
+        "total_tokens": 73282,
+        "seconds": 82.1,
         "time_measured": true,
-        "cost_usd": 0.11441
+        "cost_usd": 0.12104
       }
     ]
   },
@@ -2232,13 +2217,13 @@
       },
       {
         "stage": "Contradiction check (Ultra verdicts)",
-        "calls": 12,
-        "in_tokens": 32642,
-        "out_tokens": 11017,
-        "total_tokens": 43659,
-        "seconds": 33.3,
+        "calls": 33,
+        "in_tokens": 91663,
+        "out_tokens": 25780,
+        "total_tokens": 117443,
+        "seconds": 78.6,
         "time_measured": false,
-        "cost_usd": 0.06312
+        "cost_usd": 0.14879
       },
       {
         "stage": "Copy-paste check (Lightning)",
@@ -2256,7 +2241,7 @@
         "in_tokens": 799,
         "out_tokens": 401,
         "total_tokens": 1200,
-        "seconds": 2.4,
+        "seconds": 0.8,
         "time_measured": false,
         "cost_usd": 0.0006
       }
@@ -2274,26 +2259,26 @@
       "per_unit": {
         "text_page_usd": 0.00032,
         "vision_page_usd": 0.00281,
-        "verdict_usd": 0.005548,
+        "verdict_usd": 0.005091,
         "verdicts_per_page": 2.2,
         "tavily_per_page": 1.5,
         "text_page_s": 5.975,
         "vision_page_s": 15.25,
-        "verdict_s": 3.55625,
-        "triage_pass_rate": 0.380952,
-        "triage_usd_per_candidate": 9e-06,
-        "triage_s_per_candidate": 0.126667
+        "verdict_s": 3.032075,
+        "triage_pass_rate": 0.904762,
+        "triage_usd_per_candidate": 6.6e-05,
+        "triage_s_per_candidate": 0.361333
       },
       "candidates": 2468,
-      "verdicts": 940,
-      "usd": 7.04,
-      "inr": 591,
-      "api_minutes_sequential": 262,
+      "verdicts": 2233,
+      "usd": 13.33,
+      "inr": 1120,
+      "api_minutes_sequential": 329,
       "without_triage": {
         "verdicts": 2468,
-        "usd": 15.49,
-        "inr": 1302,
-        "api_minutes_sequential": 348
+        "usd": 14.37,
+        "inr": 1207,
+        "api_minutes_sequential": 326
       },
       "tavily_credits": 1683,
       "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + candidates x triage_cost_per_candidate + candidates x triage_pass_rate x cost_per_verdict, where candidates = candidates_per_page x pages"

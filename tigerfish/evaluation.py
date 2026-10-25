@@ -197,7 +197,7 @@ def validate_triage(cands, pages, ledger=()):
     A violation is a candidate Ultra graded RED/ORANGE that triage would have dropped.
     Returns counts plus per-candidate rows.
     """
-    answers = contradictions.triage(cands)
+    answers = contradictions.triage(cands, pages)
     rows = []
     for cand, ans in zip(cands, answers):
         grade = cached_grade(cand, pages, ledger)

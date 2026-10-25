@@ -52,7 +52,8 @@ def test_triage_batches_and_answers(monkeypatch):
     cands = [cand("numeric", A, claim(f"x{i}", 3, "area", 9, "ha", f"restoration {i}"))
              for i in range(10)]
     answers = ct.triage(cands)
-    assert fake.batches == [ct.TRIAGE_BATCH, 10 - ct.TRIAGE_BATCH]
+    b = ct.TRIAGE_QUOTE_BATCH          # no page texts: quotes-only view
+    assert fake.batches == [min(b, 10 - i) for i in range(0, 10, b)]
     assert answers == ["yes"] * 9 + ["no"]
 
 
@@ -71,7 +72,7 @@ def test_recycled_figures_skip_triage(monkeypatch):
 
 def test_check_skips_triaged_out_and_keeps_ids_stable(monkeypatch):
     c1, c2, c3 = cand("numeric", A, B), cand("numeric", A, B), cand("numeric", A, B)
-    monkeypatch.setattr(ct, "triage", lambda cands: ["yes", "no", "unsure"])
+    monkeypatch.setattr(ct, "triage", lambda cands, pages=None: ["yes", "no", "unsure"])
     verdicts = []
 
     def fake_chat(model, messages, **kw):
@@ -181,3 +182,52 @@ def test_audit_estimate_formula():
     assert e["candidates"] == 200 and e["ultra_verdicts"] == 100
     assert e["usd"] == {"claims": 0.19, "triage": 0.02, "verdicts": 1.0}
     assert e["tavily_credits"] == 200
+
+
+# ---------- triage context ----------
+
+LONG_PAGE = ("Intro sentence. " * 100 + "The total reclaimed land will be 194 ha. "
+             + "Later sentence. " * 100)
+
+
+def test_quote_context_window():
+    c = claim("t", 444, "area", 194, "ha", "reclaimed land", "The total reclaimed land will be 194 ha.")
+    ctx = ct.quote_context(c, {444: LONG_PAGE})
+    assert "The total reclaimed land will be 194 ha." in ctx
+    assert len(ctx) <= ct.TRIAGE_CONTEXT_CHARS + 10 and ctx.startswith("...") and ctx.endswith("...")
+    assert ct.quote_context(c, {}) == ""
+
+
+def test_triage_messages_include_context_only_with_pages():
+    t = claim("t", 444, "area", 194, "ha", "reclaimed land", "The total reclaimed land will be 194 ha.")
+    p = claim("p", 751, "area", 71, "ha", "airport", "needs 71 ha")
+    plain = ct.triage_messages([cand("numeric", t, p)])
+    rich = ct.triage_messages([cand("numeric", t, p)], {444: LONG_PAGE, 751: "It needs 71 ha for the runway."})
+    assert "Context of A" not in plain[1]["content"]
+    assert "Context of A" in rich[1]["content"] and "It needs 71 ha for the runway." in rich[1]["content"]
+    assert "page text around both quotes" in rich[0]["content"]
+
+
+# ---------- two-view ensemble ----------
+
+@pytest.mark.parametrize("a, b, out", [
+    ("no", "no", "no"), ("no", "yes", "yes"), ("yes", "no", "yes"), ("no", "unsure", "unsure"),
+    ("unsure", "unsure", "unsure"), ("yes", "unsure", "yes"),
+])
+def test_combine_triage(a, b, out):
+    assert ct.combine_triage(a, b) == out
+
+
+def test_triage_with_pages_drops_only_when_both_views_say_no(monkeypatch):
+    """Quotes-only says no to both pairs; the context view rescues pair 2."""
+    def fake(model, messages, **kw):
+        with_context = "Context of A" in messages[1]["content"]
+        n = sum(1 for l in messages[1]["content"].splitlines() if l[:1].isdigit())
+        answers = ["no", "yes"] if with_context and n == 2 else ["no"] * n
+        return json.dumps({"answers": [{"pair": i, "answer": a} for i, a in enumerate(answers, 1)]})
+
+    monkeypatch.setattr(llm, "chat", fake)
+    t = claim("t", 1, "area", 194, "ha", "land", "total land 194 ha")
+    p = claim("p", 2, "area", 71, "ha", "airport", "airport 71 ha")
+    pages = {1: "total land 194 ha", 2: "airport 71 ha"}
+    assert ct.triage([cand("numeric", t, p), cand("numeric", p, t)], pages) == ["no", "yes"]

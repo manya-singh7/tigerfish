@@ -108,7 +108,7 @@ def planted(pages, ledger, budget_usd, dry_run):
     cands.sort(key=priority)
     all_cands = list(cands)
     trace.reset()
-    answers = contradictions.triage(cands)          # LIGHTNING screen (cached)
+    answers = contradictions.triage(cands, texts)   # LIGHTNING screen with page context
     triage_used = list(trace.used)
     total = len(cands)
     passed = [c for c, a in zip(cands, answers) if a != "no"]
@@ -389,13 +389,20 @@ def write_md(res):
                          f"{v['triage']['yes']} / {v['triage']['unsure']} / {v['triage']['no']}",
                          v["ultra_calls_saved"], v["with_cached_verdict"], len(v["violations"])]
                         for name, v in (("Known-issue pages", tk), ("Planted test", tp)) if v]), ""]
+    protected = [r["pages"] for r in _protected_violations(res)]
     for name, v in (("known-issue pages", tk), ("planted test", tp)):
         for r in (v or {}).get("violations", []):
+            what = ("A PROTECTED result (known issue or planted catch)" if r["pages"] in protected
+                    else "Not a known issue, planted catch or the negative control")
             lines.append(f"- Dropped by triage on the {name}: pages {r['pages']} "
-                         f"(Ultra had graded it {r['ultra_grade']}). Not a known issue, planted "
-                         f"catch or the negative control. Triage sees only the two quotes; "
-                         f"Ultra found the problem by reading the whole page.")
-    lines.append("")
+                         f"(Ultra had graded it {r['ultra_grade']}). {what}.")
+    lines += ["", "Triage runs two LIGHTNING views of each pair: the two quotes alone "
+              f"({contradictions.TRIAGE_QUOTE_BATCH} pairs per call) and the quotes with about "
+              f"{contradictions.TRIAGE_CONTEXT_CHARS:,} characters of page context each "
+              f"({contradictions.TRIAGE_BATCH} pairs per call). A pair is dropped only if both "
+              "views say no: in validation, each view alone dropped a different real finding "
+              "(quotes only lost a 648-vs-600 flora ORANGE that needs page context; context alone "
+              "lost a planted RED).", ""]
     lines += ["", "## 3. Planted species (Indira Point, 6.75 N 93.83 E)", "",
               md_table(["Species", "Group", "Lives in", "Grade", "GBIF local / 500 km / world"],
                        [[r["name"], r["group"], r["lives_in"], r["grade"] or "plausible",

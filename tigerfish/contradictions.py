@@ -553,42 +553,102 @@ def align_evidence(f, pages, ledger=()):
 
 
 TRIAGE = True          # LIGHTNING screens candidate pairs before any Ultra verdict
-TRIAGE_BATCH = 8       # pairs per LIGHTNING call
+TRIAGE_BATCH = 2       # pairs per LIGHTNING call; with ~1,500 chars of context per
+                       # quote, larger batches dropped a real ORANGE (validated)
 TRIAGE_ANSWERS = ("yes", "no", "unsure")
 TRIAGE_PROMPT = """You screen pairs of statements from one Indian Environmental Impact \
 Assessment report before a slower, expensive check. For each numbered pair, decide whether \
 the two quotes COULD be about the same subject, place and scope while giving incompatible \
 values or statements.
 
-Answer "no" only when they are clearly about different things (different subjects, places \
-or scopes, or one figure is clearly a part of the other) or clearly compatible. Answer "yes" \
-when they look directly incompatible. If in any doubt, answer "unsure".
+Answer "no" when they are clearly about different things or clearly compatible, for example:
+different groups (birds vs flora, mammals vs reptiles), a subset vs a total (endemic species \
+vs all species, one part vs the whole, with the part not larger than the whole), two \
+different parks or areas with no part-whole relation, distances to different places.
+Answer "yes" when they look directly incompatible. Use "unsure" only when the text leaves \
+it genuinely open.
 
 Return JSON only: {"answers": [{"pair": 1, "answer": "yes" | "no" | "unsure"}, ...]}"""
 
 
-def triage_messages(batch):
+TRIAGE_CONTEXT_CHARS = 1500   # page text shown around each quote
+
+
+def quote_context(claim, pages, chars=TRIAGE_CONTEXT_CHARS):
+    """About `chars` characters of the claim's page around its quote ("" if no page text)."""
+    text = claims_mod.normalize((pages or {}).get(claim["page"], ""))
+    if not text:
+        return ""
+    q = claims_mod.normalize(claim["quote"])
+    at = text.find(q)
+    if at < 0:
+        return text[:chars]
+    half = max(0, (chars - len(q)) // 2)
+    start = max(0, at - half)
+    end = min(len(text), at + len(q) + half)
+    return ("..." if start else "") + text[start:end] + ("..." if end < len(text) else "")
+
+
+def triage_messages(batch, pages=None):
     lines = []
     for i, cand in enumerate(batch, 1):
         a, b = cand["claims"][:2]
         lines.append(f'{i}. A (page {a["page"]}, subject: {a["subject"]}): "{a["quote"]}"\n'
                      f'   B (page {b["page"]}, subject: {b["subject"]}): "{b["quote"]}"')
-    return [{"role": "system", "content": TRIAGE_PROMPT},
+        if pages:
+            lines.append(f"   Context of A: {quote_context(a, pages)}\n"
+                         f"   Context of B: {quote_context(b, pages)}")
+    return [{"role": "system", "content": TRIAGE_PROMPT + (TRIAGE_CONTEXT_NOTE if pages else "")},
             {"role": "user", "content": "\n".join(lines)}]
 
 
-def triage(cands):
+TRIAGE_CONTEXT_NOTE = """
+
+Each pair also shows page text around both quotes. Use it:
+- a nearby sentence may show that a figure refers to something else (e.g. one part of a
+  total), which makes the pair compatible: "no";
+- if one place is part of the other (e.g. a national park inside the island), check the
+  figures for the same kind of thing near both quotes: a figure for the part that is LARGER
+  than the figure for the whole is incompatible: "yes";
+- if the two pages describe the same thing with different numbers: "yes"."""
+
+
+TRIAGE_QUOTE_BATCH = 8   # pairs per call in the quotes-only view
+
+
+def triage(cands, pages=None):
     """yes / no / unsure per candidate (same order), from batched, cached LIGHTNING calls.
 
-    Recycled-figure candidates are not triaged ("yes": the question of incompatible
-    values does not fit identical figures). A missing or unclear answer is "unsure",
-    so a candidate is only skipped when the model clearly says "no".
+    With pages ({page: text}) two views are asked and combined conservatively:
+      quotes only (TRIAGE_QUOTE_BATCH pairs per call) and quotes with ~TRIAGE_CONTEXT_CHARS
+      of page context each (TRIAGE_BATCH pairs per call).
+    A candidate is dropped ("no") only if BOTH views say "no"; "yes" if either says "yes";
+    otherwise "unsure". Validation showed each view alone drops a different real finding.
+    Recycled-figure candidates are not triaged ("yes"). A missing or unclear answer is
+    "unsure", so a candidate is only skipped when the model clearly says "no".
     """
+    if not pages:
+        return _triage_pass(cands, None, TRIAGE_QUOTE_BATCH)
+    quotes_only = _triage_pass(cands, None, TRIAGE_QUOTE_BATCH)
+    with_context = _triage_pass(cands, pages, TRIAGE_BATCH)
+    return [combine_triage(a, b) for a, b in zip(quotes_only, with_context)]
+
+
+def combine_triage(a, b):
+    """Conservative ensemble: no only if both no; yes if either yes; else unsure."""
+    if a == "no" and b == "no":
+        return "no"
+    if "yes" in (a, b):
+        return "yes"
+    return "unsure"
+
+
+def _triage_pass(cands, pages, batch_size):
     answers = ["yes" if c["kind"] == "recycled" else None for c in cands]
     todo = [i for i, a in enumerate(answers) if a is None]
-    for start in range(0, len(todo), TRIAGE_BATCH):
-        idx = todo[start:start + TRIAGE_BATCH]
-        raw = claims_mod.chat_json(llm.LIGHTNING, triage_messages([cands[i] for i in idx]),
+    for start in range(0, len(todo), batch_size):
+        idx = todo[start:start + batch_size]
+        raw = claims_mod.chat_json(llm.LIGHTNING, triage_messages([cands[i] for i in idx], pages),
                                    max_tokens=600)
         got = {}
         for item in (raw or {}).get("answers", []) if isinstance(raw, dict) else []:
@@ -616,7 +676,7 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
     # (triage, failure) never renumbers the others.
     numbered = list(enumerate(cands, 1))
     if use_triage if use_triage is not None else TRIAGE:
-        answers = triage(cands)
+        answers = triage(cands, pages)
         last_run["triage"] = {a: answers.count(a) for a in TRIAGE_ANSWERS}
         last_run["triage_answers"] = answers
         last_run["triaged_out"] = [[c["id"] for c in cand["claims"]]
