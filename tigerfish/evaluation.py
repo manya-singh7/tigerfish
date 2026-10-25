@@ -19,8 +19,11 @@ NUMERIC_TYPES = ("quantity", "count", "area", "distance")
 
 def pick_source_claims(ledger, n, rng, exclude_ids=()):
     """n verified numeric claims with distinct subjects and values, chosen with rng."""
+    # Model-extracted claims only: rule-pass claims are not "real" sources, and including
+    # them would change which claims a given seed picks.
     usable = [c for c in ledger
-              if c.get("verified") and c["type"] in NUMERIC_TYPES and c["id"] not in exclude_ids
+              if c.get("verified") and c.get("source") != "rule"
+              and c["type"] in NUMERIC_TYPES and c["id"] not in exclude_ids
               and isinstance(c["value"], (int, float)) and not isinstance(c["value"], bool)
               and c["value"] >= 4 and c.get("unit")]
     usable.sort(key=lambda c: c["id"])                # stable order before shuffling
@@ -173,6 +176,40 @@ def score_species(results, out_of_place, real):
                       "regional": results[n]["regional_count"], "global": results[n]["global_count"],
                       "gbif_name": results[n]["matched_name"]}
                      for n in list(out_of_place) + list(real)]}
+
+
+# ---------- triage validation ----------
+
+def cached_grade(cand, pages, ledger=()):
+    """The Ultra grade for a candidate if its verdict is already cached, else None (free)."""
+    hits = contradictions.explanation_hits(cand, pages)
+    messages = contradictions.verdict_messages(cand, pages, hits)
+    if not llm.is_cached(llm.ULTRA, messages, thinking=None,
+                         max_tokens=contradictions.VERDICT_MAX_TOKENS, temperature=0):
+        return None
+    out = contradictions.check([cand], pages, ledger=ledger, use_triage=False)
+    return out[0]["grade"] if out else None
+
+
+def validate_triage(cands, pages, ledger=()):
+    """Triage answers vs cached Ultra verdicts for the same candidates.
+
+    A violation is a candidate Ultra graded RED/ORANGE that triage would have dropped.
+    Returns counts plus per-candidate rows.
+    """
+    answers = contradictions.triage(cands)
+    rows = []
+    for cand, ans in zip(cands, answers):
+        grade = cached_grade(cand, pages, ledger)
+        rows.append({"claims": [c["id"] for c in cand["claims"]], "kind": cand["kind"],
+                     "pages": sorted({c["page"] for c in cand["claims"]}),
+                     "triage": ans, "ultra_grade": grade,
+                     "violation": ans == "no" and grade in ("RED", "ORANGE")})
+    return {"candidates": len(cands),
+            "triage": {a: answers.count(a) for a in contradictions.TRIAGE_ANSWERS},
+            "with_cached_verdict": sum(r["ultra_grade"] is not None for r in rows),
+            "violations": [r for r in rows if r["violation"]],
+            "ultra_calls_saved": answers.count("no"), "rows": rows}
 
 
 # ---------- cost, tokens, time (cookbook-style table rows) ----------

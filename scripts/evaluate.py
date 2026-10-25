@@ -71,25 +71,23 @@ def load_pages():
 def known_cases():
     out = check_contradictions.run(GN_PDF, set(KNOWN_PAGES))
     passed, scored = contradictions.score(out["evaluation"])
+    ledger = [c for c in claims.load_ledger(GN_PDF.stem) if c["page"] in KNOWN_PAGES]
+    texts = {p["page"]: p["text"] for p in pdf_reader.read_pdf(GN_PDF) if p["page"] in KNOWN_PAGES}
+    validation = ev.validate_triage(out["candidates"], texts, ledger)
     control = [{"pages": f["pages"], "grade": f["grade"], "reason": f["reason"]}
                for f in out["control_findings"]]
-    return {"rows": out["evaluation"], "passed": passed, "scored": scored, "control": control}
+    return {"rows": out["evaluation"], "passed": passed, "scored": scored, "control": control,
+            "triage_validation": validation}
 
 
 # ---------- 2. planted contradictions ----------
 
 def planted(pages, ledger, budget_usd, dry_run):
+    """Planted test. The dry run builds the candidates and runs triage (cheap, cached), then
+    estimates only the Ultra verdicts that are not cached yet."""
     plants = ev.make_plants(ledger, pages, seed=SEED)
     mod = ev.modified_pages(pages, plants, seed=SEED)
     extract_usd, _ = claims.estimate_cost(list(mod.values()))
-    verdict_usd = EVAL_MAX_CANDIDATES * contradictions.EST_OUTPUT_TOKENS * 3.0 / 1e6 \
-        + EVAL_MAX_CANDIDATES * 4000 * 1.0 / 1e6          # Ultra: ~4k tokens in, 2k out
-    plan = {"plants": plants, "estimate_usd": round(extract_usd + verdict_usd, 4),
-            "estimate_extract_usd": round(extract_usd, 4),
-            "estimate_verdicts_usd": round(verdict_usd, 4)}
-    if dry_run:
-        return plan
-
     start = llm.session_cost_usd
     trace.reset()
     extracted = claims.extract_claims(list(mod.values()), max_cost_usd=budget_usd)
@@ -108,13 +106,28 @@ def planted(pages, ledger, budget_usd, dry_run):
         return 1
 
     cands.sort(key=priority)
-    dropped = max(0, len(cands) - EVAL_MAX_CANDIDATES)
-    cands = cands[:EVAL_MAX_CANDIDATES]
+    all_cands = list(cands)
+    trace.reset()
+    answers = contradictions.triage(cands)          # LIGHTNING screen (cached)
+    triage_used = list(trace.used)
+    total = len(cands)
+    passed = [c for c, a in zip(cands, answers) if a != "no"]
+    dropped = max(0, len(passed) - EVAL_MAX_CANDIDATES)
+    cands = passed[:EVAL_MAX_CANDIDATES]
+    verdict_usd, uncached = contradictions.estimate_cost(cands, texts)
+    plan = {"plants": plants, "estimate_usd": round(extract_usd + verdict_usd, 4),
+            "estimate_extract_usd": round(extract_usd, 4),
+            "estimate_verdicts_usd": round(verdict_usd, 4), "uncached_verdicts": uncached,
+            "spent_before_verdicts": round(llm.session_cost_usd - start, 4)}
+    if dry_run:
+        return plan
+
     trace.reset()
     left = budget_usd - (llm.session_cost_usd - start)
-    findings = contradictions.check(cands, texts, max_cost_usd=left, ledger=pool)
+    findings = contradictions.check(cands, texts, max_cost_usd=left, ledger=pool, use_triage=False)
     verdict_used = list(trace.used)
     score = ev.score_plants(plants, findings, extracted, cands)
+    plan["triage_validation"] = ev.validate_triage(all_cands, texts, pool)
     for row in score["rows"]:      # say why a miss happened
         plant = next(pl for pl in plants if pl["id"] == row["id"])
         got = [c for c in extracted if c["page"] == plant["target_page"]
@@ -128,9 +141,13 @@ def planted(pages, ledger, budget_usd, dry_run):
         elif row["stage_missed"] == "verdict":
             row["note"] = "paired, but Ultra did not grade it RED or ORANGE"
     plan.update(score=score, candidates=len(cands), candidates_dropped=dropped,
+                candidates_total=total,
+                triage={a: answers.count(a) for a in contradictions.TRIAGE_ANSWERS},
+                rule_claims=sum(c.get("source") == "rule" for c in extracted),
                 stopped=contradictions.last_run.get("stopped"),
                 cost_usd=round(llm.session_cost_usd - start, 4),
                 usage=[ev.usage_row("Planted test: claim extraction", extract_used),
+                       ev.usage_row("Planted test: triage (Lightning)", triage_used),
                        ev.usage_row("Planted test: Ultra verdicts", verdict_used)])
     return plan
 
@@ -179,7 +196,8 @@ def stage(name, fn):
     return used, time.time() - started
 
 
-def cost_and_speed(pages):
+def cost_and_speed(pages, triage_counts=None, triage_row=None, triage_candidates=0,
+                   extra_verdict_rows=()):
     gaps = gaps_by_dir()
     known = [pages[n] for n in KNOWN_PAGES]
     text_pages = [p for p in known if not p["needs_vision"]]
@@ -212,25 +230,46 @@ def cost_and_speed(pages):
     per = {
         "text_page_usd": text_row["cost_usd"] / max(1, len(text_pages)),
         "vision_page_usd": vision_row["cost_usd"] / max(1, len(vision_pages)),
-        "verdict_usd": con_row["cost_usd"] / max(1, con_row["calls"]),
+        # all measured Ultra verdicts (known-issue run + planted test), not one small sample
+        "verdict_usd": (con_row["cost_usd"] + sum(r["cost_usd"] for r in extra_verdict_rows))
+                       / max(1, con_row["calls"] + sum(r["calls"] for r in extra_verdict_rows)),
         "verdicts_per_page": n_cands / len(KNOWN_PAGES),
         "tavily_per_page": tavily_copy / len(KNOWN_PAGES),
         "text_page_s": text_row["seconds"] / max(1, len(text_pages)),
         "vision_page_s": vision_row["seconds"] / max(1, len(vision_pages)),
-        "verdict_s": con_row["seconds"] / max(1, con_row["calls"]),
+        "verdict_s": (con_row["seconds"] + sum(r["seconds"] for r in extra_verdict_rows))
+                     / max(1, con_row["calls"] + sum(r["calls"] for r in extra_verdict_rows)),
     }
     verdicts = per["verdicts_per_page"] * (n_text + n_vision)
-    full_usd = (n_text * per["text_page_usd"] + n_vision * per["vision_page_usd"]
-                + verdicts * per["verdict_usd"])
-    full_s = (n_text * per["text_page_s"] + n_vision * per["vision_page_s"]
-              + verdicts * per["verdict_s"])
+    # Triage: share of candidates sent on to Ultra (yes + unsure), measured on the
+    # known-issue pages, and LIGHTNING triage cost per candidate from the planted test.
+    tc = triage_counts or {"yes": 1, "unsure": 0, "no": 0}
+    per["triage_pass_rate"] = (tc["yes"] + tc["unsure"]) / max(1, sum(tc.values()))
+    per["triage_usd_per_candidate"] = (triage_row["cost_usd"] / max(1, triage_candidates)
+                                       if triage_row else 0.0)
+    per["triage_s_per_candidate"] = (triage_row["seconds"] / max(1, triage_candidates)
+                                     if triage_row else 0.0)
+    extract_usd = n_text * per["text_page_usd"] + n_vision * per["vision_page_usd"]
+    extract_s = n_text * per["text_page_s"] + n_vision * per["vision_page_s"]
+    no_triage_usd = extract_usd + verdicts * per["verdict_usd"]
+    no_triage_s = extract_s + verdicts * per["verdict_s"]
+    ultra = verdicts * per["triage_pass_rate"]
+    full_usd = extract_usd + verdicts * per["triage_usd_per_candidate"] + ultra * per["verdict_usd"]
+    full_s = extract_s + verdicts * per["triage_s_per_candidate"] + ultra * per["verdict_s"]
     extrapolation = {
         "pages_total": n_total, "pages_text": n_text, "pages_vision": n_vision,
         "pages_hindi_skipped": len(hindi), "per_unit": {k: round(v, 6) for k, v in per.items()},
-        "verdicts": round(verdicts), "usd": round(full_usd, 2), "inr": round(ev.inr(full_usd)),
-        "api_minutes_sequential": round(full_s / 60), "tavily_credits": round(per["tavily_per_page"] * (n_text + n_vision)),
+        "candidates": round(verdicts), "verdicts": round(ultra),
+        "usd": round(full_usd, 2), "inr": round(ev.inr(full_usd)),
+        "api_minutes_sequential": round(full_s / 60),
+        "without_triage": {"verdicts": round(verdicts), "usd": round(no_triage_usd, 2),
+                           "inr": round(ev.inr(no_triage_usd)),
+                           "api_minutes_sequential": round(no_triage_s / 60)},
+        "tavily_credits": round(per["tavily_per_page"] * (n_text + n_vision)),
         "formula": ("cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page "
-                    "+ (verdicts_per_page x pages) x cost_per_verdict"),
+                    "+ candidates x triage_cost_per_candidate "
+                    "+ candidates x triage_pass_rate x cost_per_verdict, "
+                    "where candidates = candidates_per_page x pages"),
     }
     return {"rows": rows, "tavily_credits": {"copy_paste": tavily_copy, "status": status_credits},
             "gbif_calls": gbif_calls, "extrapolation": extrapolation}
@@ -250,6 +289,20 @@ def tavily_credits(used):
 
 # ---------- report ----------
 
+def _protected_violations(res):
+    """Triage drops of protected results: known issues, planted catches, negative control."""
+    known_pairs = {tuple(sorted(f_pages)) for f_pages in
+                   ([r["pages"] for r in res["known"]["rows"]])}
+    caught = {(r["source_page"], r["target_page"]) for r in
+              res["planted"].get("score", {}).get("rows", []) if r["kind"] == "planted"}
+    bad = []
+    for v in (res["known"]["triage_validation"], res["planted"].get("triage_validation", {})):
+        for r in (v or {}).get("violations", []):
+            pages = tuple(sorted(r["pages"]))
+            if pages in known_pairs or any(set(pg) <= set(pages) for pg in caught):
+                bad.append(r)
+    return bad
+
 def md_table(headers, rows):
     out = ["| " + " | ".join(headers) + " |", "|" + "|".join("---" for _ in headers) + "|"]
     out += ["| " + " | ".join(str(c) for c in r) + " |" for r in rows]
@@ -260,6 +313,8 @@ def write_md(res):
     k, p, s, t, c = res["known"], res["planted"], res["species"], res["table"], res["cost"]
     sc = p.get("score", {})
     x = c["extrapolation"]
+    tk, tp = k["triage_validation"], p.get("triage_validation", {})
+    tri = p.get("triage", {})
     lines = [
         "# TigerFish evaluation", "",
         f"Generated {res['generated']}. Seed {SEED}. Cost of the evaluation's own API calls "
@@ -278,9 +333,20 @@ def write_md(res):
             ["Out-of-place species flagged", f"{s['out_of_place_flagged']}/{s['out_of_place_total']}"],
             ["Locally recorded species wrongly flagged", f"{s['real_wrongly_flagged']}/{s['real_total']}"],
             ["Table 3.16: species judged plausible", f"{len(t['plausible'])} (article: 3)"],
-            ["Full 1,213-page audit (estimate)",
+            ["Triage: Ultra calls saved, known-issue pages",
+             f"{tk['ultra_calls_saved']}/{tk['candidates']}"],
+            ["Triage: Ultra calls saved, planted test",
+             f"{tp.get('ultra_calls_saved')}/{tp.get('candidates')}"],
+            ["Triage: RED/ORANGE findings it would drop",
+             f"{len(tk['violations']) + len(tp.get('violations', []))} "
+             f"(known issues, planted catches and the negative control: none)"
+             if not _protected_violations(res) else "SOME PROTECTED RESULT CHANGED"],
+            ["Full 1,213-page audit (estimate, with triage)",
              f"${x['usd']:.2f} = Rs {x['inr']:,} at 1 USD = {ev.USD_TO_INR} INR; "
              f"about {x['api_minutes_sequential']} min of API time if run one call at a time"],
+            ["Full 1,213-page audit (estimate, without triage)",
+             f"${x['without_triage']['usd']:.2f} = Rs {x['without_triage']['inr']:,}; "
+             f"about {x['without_triage']['api_minutes_sequential']} min"],
         ]), "",
         "## 1. Known issues (data/known_issues.json)", "",
         md_table(["Issue", "Type", "Pages", "Expected", "Grade", "Result", "Status"],
@@ -294,8 +360,13 @@ def write_md(res):
         f"{sc.get('planted_total')} real numeric claims were restated on other real pages with "
         f"a value x0.5 or x1.5, and {sc.get('explained_total')} with an explicit "
         f"'revised from X to Y after the 2021 survey'. Pages were changed in memory only. "
-        f"{p.get('candidates')} candidate pairs were checked ({p.get('candidates_dropped')} "
-        f"dropped by the cap of {EVAL_MAX_CANDIDATES}).", "",
+        f"Recall fixes in this run: (A) a statement with a number and a unit is paired like a "
+        f"quantity; (B) a deterministic pass adds a claim for any sentence with a number and a "
+        f"unit that the model did not cover ({p.get('rule_claims', 0)} added on the modified "
+        f"pages). Of {p.get('candidates_total')} candidate pairs, LIGHTNING triage passed "
+        f"{tri.get('yes', 0)} yes + {tri.get('unsure', 0)} unsure and dropped {tri.get('no', 0)}; "
+        f"{p.get('candidates')} went to Ultra, planted pairs first "
+        f"({p.get('candidates_dropped')} more dropped by the cap of {EVAL_MAX_CANDIDATES}).", "",
         md_table(["Plant", "Kind", "Source p.", "Target p.", "Subject", "Value", "Extracted",
                   "Paired", "Grade", "Result", "Missed at", "Why"],
                  [[r["id"], r["kind"], r["source_page"], r["target_page"], r["subject"],
@@ -303,13 +374,28 @@ def write_md(res):
                    "yes" if r["extracted"] else "no", "yes" if r["paired"] else "no",
                    r["grade"] or "-", "OK" if r["ok"] else "MISS" if r["kind"] == "planted" else "WRONG FLAG",
                    r["stage_missed"] or "", r.get("note", "")] for r in sc.get("rows", [])]), "",
-        "Suggested fix for the pairing miss: treat a statement claim that carries a number and a "
-        "unit as a quantity when pairing. Not applied in this run, to keep the known-issue "
-        "results unchanged.", "",
         "Other new flags on the modified pages (review by hand):", "",
     ]
     lines += [f"- {o['id']} {o['grade']} pages {o['pages']}: {o['reason']}"
               for o in sc.get("other_new_flags", [])] or ["- none"]
+    lines += ["", "### Triage cascade (LIGHTNING before Ultra)", "",
+              "Every candidate pair is first screened by LIGHTNING in batches of "
+              f"{contradictions.TRIAGE_BATCH}: could the two quotes be about the same subject, "
+              "place and scope with incompatible values? Only yes/unsure go to Ultra. Validation: "
+              "triage answers compared with the cached Ultra verdicts for the same pairs.", "",
+              md_table(["Set", "Candidates", "yes / unsure / no", "Ultra calls saved",
+                        "With a cached Ultra verdict", "RED/ORANGE it would drop"],
+                       [[name, v["candidates"],
+                         f"{v['triage']['yes']} / {v['triage']['unsure']} / {v['triage']['no']}",
+                         v["ultra_calls_saved"], v["with_cached_verdict"], len(v["violations"])]
+                        for name, v in (("Known-issue pages", tk), ("Planted test", tp)) if v]), ""]
+    for name, v in (("known-issue pages", tk), ("planted test", tp)):
+        for r in (v or {}).get("violations", []):
+            lines.append(f"- Dropped by triage on the {name}: pages {r['pages']} "
+                         f"(Ultra had graded it {r['ultra_grade']}). Not a known issue, planted "
+                         f"catch or the negative control. Triage sees only the two quotes; "
+                         f"Ultra found the problem by reading the whole page.")
+    lines.append("")
     lines += ["", "## 3. Planted species (Indira Point, 6.75 N 93.83 E)", "",
               md_table(["Species", "Group", "Lives in", "Grade", "GBIF local / 500 km / world"],
                        [[r["name"], r["group"], r["lives_in"], r["grade"] or "plausible",
@@ -348,11 +434,18 @@ def write_md(res):
               f"{x['pages_hindi_skipped']} Hindi pages skipped.", "",
               f"`{x['formula']}`", "",
               md_table(["Unit", "Value"], [[k2, v] for k2, v in x["per_unit"].items()]), "",
-              f"**Estimate: ${x['usd']:.2f} (Rs {x['inr']:,} at 1 USD = {ev.USD_TO_INR} INR, "
+              md_table(["", "Ultra verdicts", "Cost USD", "Cost INR (1 USD = 84 INR)", "API time, one call at a time"],
+                       [["Without triage", f"{x['without_triage']['verdicts']:,}",
+                         f"${x['without_triage']['usd']:.2f}", f"Rs {x['without_triage']['inr']:,}",
+                         f"{x['without_triage']['api_minutes_sequential']} min"],
+                        ["With triage", f"{x['verdicts']:,} of {x['candidates']:,} candidates",
+                         f"${x['usd']:.2f}", f"Rs {x['inr']:,}", f"{x['api_minutes_sequential']} min"]]), "",
+              f"**Estimate with triage: ${x['usd']:.2f} (Rs {x['inr']:,} at 1 USD = {ev.USD_TO_INR} INR, "
               f"labelled rate), about {x['verdicts']:,} Ultra verdicts, about "
               f"{x['api_minutes_sequential']} minutes of API time if run one call at a time "
               f"(less in parallel), and about {x['tavily_credits']:,} Tavily credits for the "
-              f"copy-paste check.** This assumes the same density of claims and contradiction "
+              f"copy-paste check.** The triage pass rate comes from the known-issue pages "
+              f"(a real document). This assumes the same density of claims and contradiction "
               f"candidates as the 10 audited pages, and the candidate cap raised accordingly. "
               f"The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs "
               f"can grow faster than the page count across a whole report, so the real number "
@@ -371,9 +464,9 @@ def main():
     ledger = claims.load_ledger(GN_PDF.stem)
     plan = planted(pages, ledger, args.max_cost, dry_run=True)
     print(f"Planted test estimate: ${plan['estimate_usd']:.3f} "
-          f"(extraction ${plan['estimate_extract_usd']:.3f} + up to {EVAL_MAX_CANDIDATES} Ultra "
-          f"verdicts ${plan['estimate_verdicts_usd']:.3f}); other parts run from cache. "
-          f"Cap ${args.max_cost:.2f}.")
+          f"({plan['uncached_verdicts']} new Ultra verdicts ${plan['estimate_verdicts_usd']:.3f}; "
+          f"extraction and triage already cached or a fraction of a cent: "
+          f"${plan['spent_before_verdicts']:.4f} spent so far). Cap ${args.max_cost:.2f}.")
     if plan["estimate_usd"] > args.max_cost:
         sys.exit("Estimate is above the cap; lower EVAL_MAX_CANDIDATES or raise --max-cost.")
     if args.dry_run:
@@ -385,7 +478,10 @@ def main():
     res["planted"] = planted(pages, ledger, args.max_cost - (llm.session_cost_usd - start), False)
     res["species"] = planted_species()
     res["table"] = table_vs_article()
-    res["cost"] = cost_and_speed(pages)
+    trow = next((r for r in res["planted"].get("usage", []) if "triage" in r["stage"]), None)
+    vrows = [r for r in res["planted"].get("usage", []) if "Ultra" in r["stage"]]
+    res["cost"] = cost_and_speed(pages, res["known"]["triage_validation"]["triage"], trow,
+                                 res["planted"].get("candidates_total", 0), vrows)
     res["eval_cost_usd"] = round(llm.session_cost_usd - start, 4)
     (RESULTS / "eval.json").write_text(json.dumps(res, ensure_ascii=False, indent=2, default=str),
                                        encoding="utf-8")

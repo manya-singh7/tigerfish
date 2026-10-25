@@ -224,7 +224,9 @@ def select_passages(ledger, pages, max_passages=MAX_PASSAGES, use_llm=True):
                      if c["type"] == "species" and c.get("verified") and c["value"]}
     by_text = {}
     for c in ledger:
-        if not c.get("verified") or c["page"] not in pages:
+        # Rule-pass claims (number + unit sentences) help contradiction recall; copy-check
+        # passages come from the model's claims, so the rule pass does not reshuffle them.
+        if not c.get("verified") or c["page"] not in pages or c.get("source") == "rule":
             continue
         text = sentence_for(c["quote"], pages[c["page"]])
         p = by_text.setdefault((c["page"], text), {"page": c["page"], "text": text,

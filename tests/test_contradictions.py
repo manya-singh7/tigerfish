@@ -196,7 +196,7 @@ def test_cost_cap_stops_verdicts(monkeypatch):
         return json.dumps({"grade": "ORANGE", "reason": "Scope unclear."})
 
     monkeypatch.setattr(llm, "chat", fake_chat)
-    out = ct.check([CAND, CAND, CAND, CAND], PAGES, max_cost_usd=0.5)
+    out = ct.check([CAND, CAND, CAND, CAND], PAGES, max_cost_usd=0.5, use_triage=False)
     assert len(calls) == 2 and len(out) == 2
     assert calls == [llm.ULTRA, llm.ULTRA]
     assert "cost cap" in ct.last_run["stopped"]

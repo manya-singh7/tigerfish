@@ -198,10 +198,10 @@ def test_name_column_guessed_from_header():
 
 def test_ledger_merges_by_page(fake):
     fake((FIXTURES / "claims_page_reply.txt").read_text(encoding="utf-8"))
-    claims.extract_claims([page(818), page(851)], pdf_stem="doc")
+    claims.extract_claims([page(818), page(851)], pdf_stem="doc", rule_pass=False)
     assert {c["page"] for c in claims.load_ledger("doc")} == {818, 851}
     fake('{"claims": []}')
-    claims.extract_claims([page(851)], pdf_stem="doc")        # re-run 851 only
+    claims.extract_claims([page(851)], pdf_stem="doc", rule_pass=False)   # re-run 851 only
     ledger = claims.load_ledger("doc")
     assert {c["page"] for c in ledger} == {818} and len(ledger) == 3
 

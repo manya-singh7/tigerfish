@@ -11,10 +11,10 @@
     "Borrowed text (Tavily)"
   ],
   "cost": {
-    "nebius_usd": 0.1617,
+    "nebius_usd": 0.0714,
     "tavily_credits": 15,
     "gbif_calls": 0,
-    "approx_seconds": 320
+    "approx_seconds": 273
   },
   "known_issue_score": {
     "passed": 4,
@@ -159,37 +159,6 @@
       ]
     },
     {
-      "id": "ct-020",
-      "check": "contradiction",
-      "check_name": "Internal contradiction",
-      "grade": "ORANGE",
-      "title": "Pages 851 and 940 disagree",
-      "message": "Inconsistency flagged, verify.",
-      "quotes": [
-        {
-          "page": 851,
-          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families"
-        },
-        {
-          "page": 940,
-          "text": "approximately 600 species of flora reported from Great Nicobar Island"
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Checked by",
-          "value": "Nemotron Ultra, reading both full pages; 12 possible explanation words searched"
-        }
-      ],
-      "why": "Galathea National Park is located within Great Nicobar Island, yet the park's reported flora (648 species) exceeds the island's approximate total (600 species). The report cites different sources and does not clarify the discrepancy.",
-      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
-      "known_issue": null,
-      "images": [
-        "pages/great_nicobar_2021_draft_ct-020_p0851.png",
-        "pages/great_nicobar_2021_draft_ct-020_p0940.png"
-      ]
-    },
-    {
       "id": "bt-p392",
       "check": "borrowed_text",
       "check_name": "Borrowed text",
@@ -225,5 +194,5 @@
       ]
     }
   ],
-  "exported_in_s": 4.9
+  "exported_in_s": 2.1
 }

@@ -299,7 +299,67 @@ def to_claims(raw, page_no, page_text, model, source="page", stats=None):
     return [{"id": c.pop("id"), **c} for c in kept]
 
 
-def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
+# ---------- rule pass: number + unit sentences the model skipped ----------
+
+RULE_UNIT = (r"sq\.?\s?km|km2|km²|hectares?|ha|kms?|metres?|meters?|m|%|percent|species|MW|MVA|"
+             r"KLD|MLD|TPA|TEU|(?:INR|Rs\.?)\s*(?:lacs?|lakhs?|crores?)|lacs?|lakhs?|crores?|"
+             r"tonnes?|MT")
+RULE_MATCH = re.compile(r"(?<![\w.])(\d[\d,]*(?:\.\d+)?)\s*(" + RULE_UNIT + r")(?![A-Za-z])",
+                        re.IGNORECASE)
+RULE_MAX_WORDS = 60          # longer "sentences" are usually tables run together
+RULE_SUBJECT_WORDS = 8       # words before the number used as the subject
+AREA_UNITS = re.compile(r"^(sq\.?\s?km|km2|km²|hectares?|ha)$", re.IGNORECASE)
+LENGTH_UNITS = re.compile(r"^(kms?|metres?|meters?|m)$", re.IGNORECASE)
+
+
+def page_sentences(text):
+    return [s for s in re.split(r"(?<=[.!?;])\s+(?=[A-Z0-9\"(])", normalize(text)) if s]
+
+
+def covered(sentence, existing):
+    """True if an extracted claim already quotes (most of) this sentence."""
+    s_low = sentence.lower()
+    words = set(s_low.split())
+    for c in existing:
+        q = normalize(c["quote"]).lower()
+        if not q:
+            continue
+        if q in s_low or s_low in q:
+            return True
+        if words and len(words & set(q.split())) / len(words) >= 0.6:
+            return True
+    return False
+
+
+def rule_claims(page_no, page_text, existing):
+    """One claim per sentence with a number + unit that no extracted claim covers.
+
+    Deterministic and free. The quote is the exact page sentence (so verified=True),
+    the subject is the few words before the number, source="rule".
+    """
+    out = []
+    for sentence in page_sentences(page_text):
+        if len(sentence.split()) > RULE_MAX_WORDS or covered(sentence, existing + out):
+            continue
+        m = RULE_MATCH.search(sentence)
+        if not m:
+            continue
+        value = float(m.group(1).replace(",", ""))
+        value = int(value) if value.is_integer() else value
+        unit = normalize(m.group(2))
+        ctype = ("area" if AREA_UNITS.match(unit) else
+                 "distance" if LENGTH_UNITS.match(unit) else "quantity")
+        before = re.findall(r"[A-Za-z][A-Za-z\-]*", sentence[:m.start()])
+        subject = " ".join(before[-RULE_SUBJECT_WORDS:]) or unit
+        out.append({"id": f"p{page_no}-r{len(out) + 1:02d}", "page": page_no, "type": ctype,
+                    "subject": subject, "value": value, "unit": unit, "quote": sentence,
+                    "context": "rule pass: number + unit not covered by the model",
+                    "model": "rule", "source": "rule", "verified": True,
+                    "quote_repaired": False})
+    return out
+
+
+def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, rule_pass=True):
     """Extract claims from pdf_reader page dicts. Saves the ledger if pdf_stem is given.
 
     Stops before real spend in this run would pass max_cost_usd. Stats of the run
@@ -324,7 +384,12 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
             log.warning("page %d skipped: no valid JSON", page["page"])
             skipped.append(page["page"])
             continue
-        claims.extend(to_claims(raw, page["page"], page["text"], model, stats=cleaning))
+        page_claims = to_claims(raw, page["page"], page["text"], model, stats=cleaning)
+        if rule_pass:
+            extra = rule_claims(page["page"], page["text"], page_claims)
+            cleaning["rule_added"] = cleaning.get("rule_added", 0) + len(extra)
+            page_claims += extra
+        claims.extend(page_claims)
         done.append(page["page"])
 
     last_run.clear()

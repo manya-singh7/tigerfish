@@ -50,8 +50,11 @@ def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     out["findings"] = ct.check(cands, pages, max_cost_usd=max_cost, pdf_stem=pdf.stem,
                                ledger=ledger)
     out["stopped"] = ct.last_run.get("stopped")
+    out["triage"] = ct.last_run.get("triage")
     left = max_cost - (llm.session_cost_usd - start)
-    out["control_findings"] = ct.check(controls, pages, max_cost_usd=left) if controls else []
+    # The negative control is a deliberate test of Ultra's explanation-reading: never triaged.
+    out["control_findings"] = (ct.check(controls, pages, max_cost_usd=left, use_triage=False)
+                               if controls else [])
     out["evaluation"] = ct.evaluate(out["findings"], known) if known else []
     out["cost"] = llm.session_cost_usd - start
     return out

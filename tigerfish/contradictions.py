@@ -104,9 +104,20 @@ def number(value):
 
 
 def unit_key(unit):
-    """(dimension, factor) for a unit; unknown units compare by their own name."""
+    """(dimension, factor) for a unit; unknown units compare by their own name.
+
+    Money in rupees compares across wordings: "INR Lacs/ Yr", "Rs. lakh", "crore".
+    """
     u = claims_mod.normalize(str(unit or "")).lower().rstrip(".")
-    return UNITS.get(u, (u, 1.0))
+    if u in UNITS:
+        return UNITS[u]
+    if re.search(r"\b(lacs?|lakhs?)\b", u):
+        return ("currency", 1e5)
+    if re.search(r"\bcrores?\b", u):
+        return ("currency", 1e7)
+    if re.search(r"\b(inr|rs|rupees?)\b", u):
+        return ("currency", 1.0)
+    return (u, 1.0)
 
 
 def keywords(text):
@@ -155,8 +166,13 @@ def different_subject(a, b):
 
 
 def numeric(claim):
-    return claim["type"] in ("quantity", "count", "area", "distance") and \
-        number(claim["value"]) is not None
+    """A claim with a single number. A statement counts too when it has a number AND a
+    unit (the model sometimes types "the figure is 95.55 %" as a statement)."""
+    if number(claim["value"]) is None:
+        return False
+    if claim["type"] in ("quantity", "count", "area", "distance"):
+        return True
+    return claim["type"] == "statement" and bool(str(claim.get("unit") or "").strip())
 
 
 def base_value(claim):
@@ -165,8 +181,9 @@ def base_value(claim):
 
 
 def kind(claim):
-    """count and quantity are the same kind when counting things (e.g. 'species')."""
-    return "amount" if claim["type"] in ("quantity", "count") else claim["type"]
+    """count and quantity are the same kind when counting things (e.g. 'species');
+    a numeric statement is an amount too."""
+    return "amount" if claim["type"] in ("quantity", "count", "statement") else claim["type"]
 
 
 # ---------- step 1: candidates ----------
@@ -535,14 +552,79 @@ def align_evidence(f, pages, ledger=()):
     return f
 
 
-def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=()):
+TRIAGE = True          # LIGHTNING screens candidate pairs before any Ultra verdict
+TRIAGE_BATCH = 8       # pairs per LIGHTNING call
+TRIAGE_ANSWERS = ("yes", "no", "unsure")
+TRIAGE_PROMPT = """You screen pairs of statements from one Indian Environmental Impact \
+Assessment report before a slower, expensive check. For each numbered pair, decide whether \
+the two quotes COULD be about the same subject, place and scope while giving incompatible \
+values or statements.
+
+Answer "no" only when they are clearly about different things (different subjects, places \
+or scopes, or one figure is clearly a part of the other) or clearly compatible. Answer "yes" \
+when they look directly incompatible. If in any doubt, answer "unsure".
+
+Return JSON only: {"answers": [{"pair": 1, "answer": "yes" | "no" | "unsure"}, ...]}"""
+
+
+def triage_messages(batch):
+    lines = []
+    for i, cand in enumerate(batch, 1):
+        a, b = cand["claims"][:2]
+        lines.append(f'{i}. A (page {a["page"]}, subject: {a["subject"]}): "{a["quote"]}"\n'
+                     f'   B (page {b["page"]}, subject: {b["subject"]}): "{b["quote"]}"')
+    return [{"role": "system", "content": TRIAGE_PROMPT},
+            {"role": "user", "content": "\n".join(lines)}]
+
+
+def triage(cands):
+    """yes / no / unsure per candidate (same order), from batched, cached LIGHTNING calls.
+
+    Recycled-figure candidates are not triaged ("yes": the question of incompatible
+    values does not fit identical figures). A missing or unclear answer is "unsure",
+    so a candidate is only skipped when the model clearly says "no".
+    """
+    answers = ["yes" if c["kind"] == "recycled" else None for c in cands]
+    todo = [i for i, a in enumerate(answers) if a is None]
+    for start in range(0, len(todo), TRIAGE_BATCH):
+        idx = todo[start:start + TRIAGE_BATCH]
+        raw = claims_mod.chat_json(llm.LIGHTNING, triage_messages([cands[i] for i in idx]),
+                                   max_tokens=600)
+        got = {}
+        for item in (raw or {}).get("answers", []) if isinstance(raw, dict) else []:
+            try:
+                n, ans = int(item.get("pair")), str(item.get("answer", "")).lower().strip()
+            except (TypeError, ValueError, AttributeError):
+                continue
+            if ans in TRIAGE_ANSWERS:
+                got[n] = ans
+        for k, i in enumerate(idx, 1):
+            answers[i] = got.get(k, "unsure")
+    return answers
+
+
+def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use_triage=None):
     """Run the Ultra verdict on each candidate. Returns findings (all grades, incl. NONE).
 
     ledger: the claims, used to re-select evidence quotes (align_evidence).
+    use_triage: LIGHTNING screens the candidates first and those it answers "no" are not
+    sent to Ultra (default TRIAGE). last_run["triage"] counts the answers.
     """
     start = llm.session_cost_usd
     findings, stopped, failed = [], None, 0
-    for cand in cands:
+    # Finding ids follow the position in the full candidate list, so skipping a candidate
+    # (triage, failure) never renumbers the others.
+    numbered = list(enumerate(cands, 1))
+    if use_triage if use_triage is not None else TRIAGE:
+        answers = triage(cands)
+        last_run["triage"] = {a: answers.count(a) for a in TRIAGE_ANSWERS}
+        last_run["triage_answers"] = answers
+        last_run["triaged_out"] = [[c["id"] for c in cand["claims"]]
+                                   for cand, a in zip(cands, answers) if a == "no"]
+        numbered = [(n, cand) for (n, cand), a in zip(numbered, answers) if a != "no"]
+    else:
+        last_run["triage"], last_run["triage_answers"], last_run["triaged_out"] = None, None, []
+    for n, cand in numbered:
         hits = explanation_hits(cand, pages)
         messages = verdict_messages(cand, pages, hits)
         est, _ = estimate_cost([cand], pages)
@@ -558,7 +640,7 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=()):
             log.warning("no valid verdict for candidate %s",
                         [c["id"] for c in cand["claims"]])
             continue
-        findings.append(align_evidence(finding(cand, v, hits, len(findings) + 1), pages, ledger))
+        findings.append(align_evidence(finding(cand, v, hits, n), pages, ledger))
     last_run.update(stopped=stopped, failed=failed, verdicts=len(findings),
                     cost_usd=llm.session_cost_usd - start)
     if pdf_stem:

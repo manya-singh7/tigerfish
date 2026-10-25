@@ -1,6 +1,6 @@
 # TigerFish evaluation
 
-Generated 2026-10-25 07:05. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1243; new spend in this run: $0.0000 (the rest came from cache; cap $0.30).
+Generated 2026-10-25 15:09. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1165; new spend in this run: $0.0000 (the rest came from cache; cap $0.03).
 
 ## Summary
 
@@ -8,13 +8,17 @@ Generated 2026-10-25 07:05. Seed 42. Cost of the evaluation's own API calls (pla
 |---|---|
 | Known issues (scored) | 4/4 pass |
 | Negative control (1045 vs 910 sq km) | not flagged |
-| Planted contradictions caught | 7/10 |
+| Planted contradictions caught | 10/10 |
 | Explained differences wrongly flagged | 0/5 |
 | Other new flags on modified pages | 1 |
 | Out-of-place species flagged | 5/5 |
 | Locally recorded species wrongly flagged | 0/5 |
 | Table 3.16: species judged plausible | 3 (article: 3) |
-| Full 1,213-page audit (estimate) | $19.01 = Rs 1,597 at 1 USD = 84 INR; about 350 min of API time if run one call at a time |
+| Triage: Ultra calls saved, known-issue pages | 13/21 |
+| Triage: Ultra calls saved, planted test | 43/75 |
+| Triage: RED/ORANGE findings it would drop | 1 (known issues, planted catches and the negative control: none) |
+| Full 1,213-page audit (estimate, with triage) | $7.04 = Rs 591 at 1 USD = 84 INR; about 262 min of API time if run one call at a time |
+| Full 1,213-page audit (estimate, without triage) | $15.49 = Rs 1,302; about 348 min |
 
 ## 1. Known issues (data/known_issues.json)
 
@@ -31,31 +35,41 @@ Negative-control pair sent to Ultra directly: NONE. Both statements refer to Gre
 
 ## 2. Planted contradictions
 
-10 real numeric claims were restated on other real pages with a value x0.5 or x1.5, and 5 with an explicit 'revised from X to Y after the 2021 survey'. Pages were changed in memory only. 20 candidate pairs were checked (45 dropped by the cap of 20).
+10 real numeric claims were restated on other real pages with a value x0.5 or x1.5, and 5 with an explicit 'revised from X to Y after the 2021 survey'. Pages were changed in memory only. Recall fixes in this run: (A) a statement with a number and a unit is paired like a quantity; (B) a deterministic pass adds a claim for any sentence with a number and a unit that the model did not cover (6 added on the modified pages). Of 75 candidate pairs, LIGHTNING triage passed 30 yes + 2 unsure and dropped 43; 20 went to Ultra, planted pairs first (12 more dropped by the cap of 20).
 
 | Plant | Kind | Source p. | Target p. | Subject | Value | Extracted | Paired | Grade | Result | Missed at | Why |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | pl-01 | planted | 940 | 198 | flora species reported from Great Nicobar Island | 600 -> 900 species | yes | yes | RED | OK |  |  |
-| pl-02 | planted | 751 | 657 | airport runway reclamation | 71 -> 106 Ha | no | no | - | MISS | extraction | the planted sentence was not extracted as a claim |
+| pl-02 | planted | 751 | 657 | airport runway reclamation | 71 -> 106 Ha | yes | yes | ORANGE | OK |  |  |
 | pl-03 | planted | 234 | 594 | Megapode Island submergence area | 550 -> 275 sq km | yes | yes | RED | OK |  |  |
 | pl-04 | planted | 1168 | 730 | fauna species recorded from GNI | 330 -> 495 species | yes | yes | RED | OK |  |  |
 | pl-05 | planted | 818 | 642 | mangrove species recorded from Campbell Bay National Park | 14 -> 7 species | yes | yes | RED | OK |  |  |
 | pl-06 | planted | 851 | 386 | amphibian species recorded from Galathea National Park | 10 -> 5 species | yes | yes | RED | OK |  |  |
-| pl-07 | planted | 751 | 643 | coral restoration cost | 3200 -> 1600 INR Lacs/ Yr | no | no | - | MISS | extraction | the planted sentence was not extracted as a claim |
+| pl-07 | planted | 751 | 643 | coral restoration cost | 3200 -> 1600 INR Lacs/ Yr | yes | yes | RED | OK |  |  |
 | pl-08 | planted | 1168 | 634 | Shompen population in Great Nicobar Island | 237 -> 356 number | yes | yes | RED | OK |  |  |
 | pl-09 | planted | 1168 | 489 | bird species recorded from GNI | 97 -> 146 species | yes | yes | RED | OK |  |  |
-| pl-10 | planted | 1168 | 572 | male literacy percentage in study area | 63.7 -> 95.55 % | yes | no | - | MISS | pairing | extracted as type 'statement' (95.55 %); numeric pairing only compares quantity/count/area/distance claims |
+| pl-10 | planted | 1168 | 572 | male literacy percentage in study area | 63.7 -> 95.55 % | yes | yes | ORANGE | OK |  |  |
 | ex-11 | explained | 234 | 140 | Great Nicobar Island area post-tsunami | 910 -> 455 sq km | yes | yes | NONE | OK |  |  |
 | ex-12 | explained | 1141 | 403 | Indira Point to international sea route | 25 -> 12 km | yes | yes | NONE | OK |  |  |
-| ex-13 | explained | 1168 | 1117 | reptile species recorded from GNI | 23 -> 34 species | yes | yes | NONE | OK |  |  |
+| ex-13 | explained | 1168 | 1117 | reptile species recorded from GNI | 23 -> 34 species | yes | no | - | OK |  |  |
 | ex-14 | explained | 1168 | 557 | butterfly species recorded from GNI | 52 -> 26 species | yes | yes | NONE | OK |  |  |
 | ex-15 | explained | 1168 | 777 | odonate species recorded from GNI | 24 -> 36 species | yes | yes | NONE | OK |  |  |
 
-Suggested fix for the pairing miss: treat a statement claim that carries a number and a unit as a quantity when pairing. Not applied in this run, to keep the known-issue results unchanged.
-
 Other new flags on the modified pages (review by hand):
 
-- ct-013 ORANGE pages [730, 940]: One figure (695) refers to total fauna species historically reported from Great Nicobar Island, while the other (495) refers to species recorded in a specific field survey; the report does not clarify whether the field survey was intended to be comprehensive or limited in scope.
+- ct-015 ORANGE pages [730, 940]: One figure (695) refers to total fauna species historically reported from Great Nicobar Island, while the other (495) refers to species recorded in a specific field survey; the report does not clarify whether the field survey was intended to be comprehensive or limited in scope.
+
+### Triage cascade (LIGHTNING before Ultra)
+
+Every candidate pair is first screened by LIGHTNING in batches of 8: could the two quotes be about the same subject, place and scope with incompatible values? Only yes/unsure go to Ultra. Validation: triage answers compared with the cached Ultra verdicts for the same pairs.
+
+| Set | Candidates | yes / unsure / no | Ultra calls saved | With a cached Ultra verdict | RED/ORANGE it would drop |
+|---|---|---|---|---|---|
+| Known-issue pages | 21 | 8 / 0 / 13 | 13 | 20 | 1 |
+| Planted test | 75 | 30 / 2 / 43 | 43 | 28 | 0 |
+
+- Dropped by triage on the known-issue pages: pages [851, 940] (Ultra had graded it ORANGE). Not a known issue, planted catch or the negative control. Triage sees only the two quotes; Ultra found the problem by reading the whole page.
+
 
 ## 3. Planted species (Indira Point, 6.75 N 93.83 E)
 
@@ -103,11 +117,12 @@ Per check, for the 10 known-issue pages and Table 3.16 (table layout from the Ne
 |---|---|---|---|---|---|---|---|
 | Claim extraction, text pages (8) | 8 | 11,832 | 7,710 | 19,542 | ~48s | $0.0026 | Rs 0.22 |
 | Claim extraction, vision pages (2) | 3 | 10,842 | 2,625 | 13,467 | ~30s | $0.0056 | Rs 0.47 |
-| Contradiction check (Ultra verdicts) | 21 | 74,327 | 26,354 | 100,681 | ~79s | $0.1534 | Rs 12.88 |
+| Contradiction check (Ultra verdicts) | 12 | 32,642 | 11,017 | 43,659 | ~33s | $0.0631 | Rs 5.30 |
 | Copy-paste check (Lightning) | 1 | 1,632 | 70 | 1,702 | ~132s | $0.0001 | Rs 0.01 |
-| Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~3s | $0.0006 | Rs 0.05 |
+| Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~2s | $0.0006 | Rs 0.05 |
 | Planted test: claim extraction | 15 | 13,688 | 2,571 | 16,259 | 13s | $0.0014 | Rs 0.12 |
-| Planted test: Ultra verdicts | 20 | 52,348 | 23,497 | 75,845 | 79s | $0.1228 | Rs 10.32 |
+| Planted test: triage (Lightning) | 10 | 7,565 | 962 | 8,527 | 10s | $0.0007 | Rs 0.06 |
+| Planted test: Ultra verdicts | 20 | 50,487 | 21,306 | 71,793 | 80s | $0.1144 | Rs 9.61 |
 
 Tavily credits: copy-paste check 15, status check 2. GBIF calls (free): 55.
 
@@ -115,17 +130,25 @@ Tavily credits: copy-paste check 15, status check 2. GBIF calls (free): 55.
 
 Pages: 543 text + 579 vision; 91 Hindi pages skipped.
 
-`cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + (verdicts_per_page x pages) x cost_per_verdict`
+`cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + candidates x triage_cost_per_candidate + candidates x triage_pass_rate x cost_per_verdict, where candidates = candidates_per_page x pages`
 
 | Unit | Value |
 |---|---|
 | text_page_usd | 0.00032 |
 | vision_page_usd | 0.00281 |
-| verdict_usd | 0.007304 |
-| verdicts_per_page | 2.1 |
+| verdict_usd | 0.005548 |
+| verdicts_per_page | 2.2 |
 | tavily_per_page | 1.5 |
 | text_page_s | 5.975 |
 | vision_page_s | 15.25 |
-| verdict_s | 3.780952 |
+| verdict_s | 3.55625 |
+| triage_pass_rate | 0.380952 |
+| triage_usd_per_candidate | 9e-06 |
+| triage_s_per_candidate | 0.126667 |
 
-**Estimate: $19.01 (Rs 1,597 at 1 USD = 84 INR, labelled rate), about 2,356 Ultra verdicts, about 350 minutes of API time if run one call at a time (less in parallel), and about 1,683 Tavily credits for the copy-paste check.** This assumes the same density of claims and contradiction candidates as the 10 audited pages, and the candidate cap raised accordingly. The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs can grow faster than the page count across a whole report, so the real number could be higher unless the cap stays.
+|  | Ultra verdicts | Cost USD | Cost INR (1 USD = 84 INR) | API time, one call at a time |
+|---|---|---|---|---|
+| Without triage | 2,468 | $15.49 | Rs 1,302 | 348 min |
+| With triage | 940 of 2,468 candidates | $7.04 | Rs 591 | 262 min |
+
+**Estimate with triage: $7.04 (Rs 591 at 1 USD = 84 INR, labelled rate), about 940 Ultra verdicts, about 262 minutes of API time if run one call at a time (less in parallel), and about 1,683 Tavily credits for the copy-paste check.** The triage pass rate comes from the known-issue pages (a real document). This assumes the same density of claims and contradiction candidates as the 10 audited pages, and the candidate cap raised accordingly. The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs can grow faster than the page count across a whole report, so the real number could be higher unless the cap stays.

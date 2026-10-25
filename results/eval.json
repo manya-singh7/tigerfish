@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-25 07:05",
+  "generated": "2026-10-25 15:09",
   "seed": 42,
-  "max_cost_usd": 0.3,
+  "max_cost_usd": 0.03,
   "known": {
     "rows": [
       {
@@ -34,7 +34,7 @@
         ],
         "found": true,
         "grade": "NONE",
-        "finding_id": "ct-018",
+        "finding_id": "ct-019",
         "ok": false,
         "status": "under_review",
         "scored": false
@@ -120,7 +120,331 @@
         "grade": "NONE",
         "reason": "Both statements refer to Great Nicobar Island area; the report explains the reduction from 1045 to 910 sq km as due to submergence after the 2004 tsunami."
       }
-    ]
+    ],
+    "triage_validation": {
+      "candidates": 21,
+      "triage": {
+        "yes": 8,
+        "no": 13,
+        "unsure": 0
+      },
+      "with_cached_verdict": 20,
+      "violations": [
+        {
+          "claims": [
+            "p851-03",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "ORANGE",
+          "violation": true
+        }
+      ],
+      "ultra_calls_saved": 13,
+      "rows": [
+        {
+          "claims": [
+            "p818-01",
+            "p851-01"
+          ],
+          "kind": "recycled",
+          "pages": [
+            818,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-06",
+            "p851-07",
+            "p1168-01"
+          ],
+          "kind": "recycled",
+          "pages": [
+            818,
+            851,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p392-01",
+            "p978-03"
+          ],
+          "kind": "statement",
+          "pages": [
+            392,
+            978
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p940-04",
+            "p1168-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            940,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-01",
+            "p751-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            751
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-02",
+            "p940-03"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-02",
+            "p940-03"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-01",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-07",
+            "p940-04"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-r01",
+            "p1141-05"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            1141
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-01",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-06",
+            "p940-04"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-01",
+            "p940-03"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-02",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-03",
+            "p1141-05"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            1141
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-04",
+            "p1141-05"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            1141
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-01",
+            "p940-03"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-02",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-04",
+            "p751-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            751
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-03",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-03",
+            "p940-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": "ORANGE",
+          "violation": true
+        }
+      ]
+    }
   },
   "planted": {
     "plants": [
@@ -320,9 +644,1074 @@
         "sentence": "As per the field survey, the figure for odonate species recorded from GNI was revised from 24 species to 36 species after the 2021 survey."
       }
     ],
-    "estimate_usd": 0.2,
+    "estimate_usd": 0.0,
     "estimate_extract_usd": 0.0,
-    "estimate_verdicts_usd": 0.2,
+    "estimate_verdicts_usd": 0.0,
+    "uncached_verdicts": 0,
+    "spent_before_verdicts": 0.0,
+    "triage_validation": {
+      "candidates": 75,
+      "triage": {
+        "yes": 30,
+        "no": 43,
+        "unsure": 2
+      },
+      "with_cached_verdict": 28,
+      "violations": [],
+      "ultra_calls_saved": 43,
+      "rows": [
+        {
+          "claims": [
+            "p234-01",
+            "p140-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            140,
+            234
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-02",
+            "p594-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            594
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-15",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-11",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p940-02",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            940
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1141-05",
+            "p403-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            403,
+            1141
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-01",
+            "p730-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            730,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-03",
+            "p489-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            489,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-04",
+            "p1117-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            1117,
+            1168
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-06",
+            "p557-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            557,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-07",
+            "p777-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            777,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-10",
+            "p634-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            634,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-14",
+            "p572-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            572,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": "ORANGE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p751-01",
+            "p657-r01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            657,
+            751
+          ],
+          "triage": "yes",
+          "ultra_grade": "ORANGE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p751-03",
+            "p643-r01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            643,
+            751
+          ],
+          "triage": "yes",
+          "ultra_grade": "RED",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p940-04",
+            "p730-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            730,
+            940
+          ],
+          "triage": "yes",
+          "ultra_grade": "ORANGE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-06",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-07",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-01",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-04",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-05",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-08",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-09",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-10",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-11",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-12",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-13",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-01",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-07",
+            "p730-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            730,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-09",
+            "p489-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            489,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-10",
+            "p1117-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            851,
+            1117
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-12",
+            "p557-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            557,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-13",
+            "p777-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            777,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p940-03",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            940
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-05",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            1168
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-15",
+            "p572-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            572,
+            1168
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-02",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-14",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-r01",
+            "p403-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            403
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-01",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-06",
+            "p730-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            730,
+            818
+          ],
+          "triage": "yes",
+          "ultra_grade": "NONE",
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-08",
+            "p489-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            489,
+            818
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-09",
+            "p1117-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            818,
+            1117
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-11",
+            "p557-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            557,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-12",
+            "p777-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            777,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-01",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-02",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-04",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-05",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-06",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-07",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-08",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-09",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-10",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-12",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-13",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-14",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-11",
+            "p634-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            634,
+            1168
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-03",
+            "p403-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            403
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p234-04",
+            "p403-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            234,
+            403
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-01",
+            "p657-r01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            657
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-r01",
+            "p572-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            572
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-02",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-10",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-02",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-06",
+            "p642-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            642,
+            851
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-15",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p818-03",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            818
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-17",
+            "p572-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            572,
+            1168
+          ],
+          "triage": "unsure",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-03",
+            "p198-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            198,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1168-16",
+            "p572-02"
+          ],
+          "kind": "numeric",
+          "pages": [
+            572,
+            1168
+          ],
+          "triage": "unsure",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-01",
+            "p572-04"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            572
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p851-03",
+            "p386-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            386,
+            851
+          ],
+          "triage": "no",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p444-r01",
+            "p572-03"
+          ],
+          "kind": "numeric",
+          "pages": [
+            444,
+            572
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        },
+        {
+          "claims": [
+            "p1141-01",
+            "p140-01"
+          ],
+          "kind": "numeric",
+          "pages": [
+            140,
+            1141
+          ],
+          "triage": "yes",
+          "ultra_grade": null,
+          "violation": false
+        }
+      ]
+    },
     "score": {
       "rows": [
         {
@@ -349,12 +1738,11 @@
           "source_value": 71,
           "new_value": 106,
           "unit": "Ha",
-          "extracted": false,
-          "paired": false,
-          "grade": null,
-          "ok": false,
-          "stage_missed": "extraction",
-          "note": "the planted sentence was not extracted as a claim"
+          "extracted": true,
+          "paired": true,
+          "grade": "ORANGE",
+          "ok": true,
+          "stage_missed": null
         },
         {
           "id": "pl-03",
@@ -425,12 +1813,11 @@
           "source_value": 3200,
           "new_value": 1600,
           "unit": "INR Lacs/ Yr",
-          "extracted": false,
-          "paired": false,
-          "grade": null,
-          "ok": false,
-          "stage_missed": "extraction",
-          "note": "the planted sentence was not extracted as a claim"
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
         },
         {
           "id": "pl-08",
@@ -472,11 +1859,10 @@
           "new_value": 95.55,
           "unit": "%",
           "extracted": true,
-          "paired": false,
-          "grade": null,
-          "ok": false,
-          "stage_missed": "pairing",
-          "note": "extracted as type 'statement' (95.55 %); numeric pairing only compares quantity/count/area/distance claims"
+          "paired": true,
+          "grade": "ORANGE",
+          "ok": true,
+          "stage_missed": null
         },
         {
           "id": "ex-11",
@@ -518,8 +1904,8 @@
           "new_value": 34,
           "unit": "species",
           "extracted": true,
-          "paired": true,
-          "grade": "NONE",
+          "paired": false,
+          "grade": null,
           "ok": true,
           "stage_missed": null
         },
@@ -554,13 +1940,13 @@
           "stage_missed": null
         }
       ],
-      "planted_caught": 7,
+      "planted_caught": 10,
       "planted_total": 10,
       "explained_wrongly_flagged": 0,
       "explained_total": 5,
       "other_new_flags": [
         {
-          "id": "ct-013",
+          "id": "ct-015",
           "grade": "ORANGE",
           "pages": [
             730,
@@ -571,7 +1957,14 @@
       ]
     },
     "candidates": 20,
-    "candidates_dropped": 45,
+    "candidates_dropped": 12,
+    "candidates_total": 75,
+    "triage": {
+      "yes": 30,
+      "no": 43,
+      "unsure": 2
+    },
+    "rule_claims": 6,
     "stopped": null,
     "cost_usd": 0.0,
     "usage": [
@@ -586,14 +1979,24 @@
         "cost_usd": 0.00144
       },
       {
+        "stage": "Planted test: triage (Lightning)",
+        "calls": 10,
+        "in_tokens": 7565,
+        "out_tokens": 962,
+        "total_tokens": 8527,
+        "seconds": 9.5,
+        "time_measured": true,
+        "cost_usd": 0.00068
+      },
+      {
         "stage": "Planted test: Ultra verdicts",
         "calls": 20,
-        "in_tokens": 52348,
-        "out_tokens": 23497,
-        "total_tokens": 75845,
-        "seconds": 78.7,
+        "in_tokens": 50487,
+        "out_tokens": 21306,
+        "total_tokens": 71793,
+        "seconds": 80.5,
         "time_measured": true,
-        "cost_usd": 0.12284
+        "cost_usd": 0.11441
       }
     ]
   },
@@ -829,13 +2232,13 @@
       },
       {
         "stage": "Contradiction check (Ultra verdicts)",
-        "calls": 21,
-        "in_tokens": 74327,
-        "out_tokens": 26354,
-        "total_tokens": 100681,
-        "seconds": 79.4,
+        "calls": 12,
+        "in_tokens": 32642,
+        "out_tokens": 11017,
+        "total_tokens": 43659,
+        "seconds": 33.3,
         "time_measured": false,
-        "cost_usd": 0.15339
+        "cost_usd": 0.06312
       },
       {
         "stage": "Copy-paste check (Lightning)",
@@ -853,7 +2256,7 @@
         "in_tokens": 799,
         "out_tokens": 401,
         "total_tokens": 1200,
-        "seconds": 3.3,
+        "seconds": 2.4,
         "time_measured": false,
         "cost_usd": 0.0006
       }
@@ -871,19 +2274,29 @@
       "per_unit": {
         "text_page_usd": 0.00032,
         "vision_page_usd": 0.00281,
-        "verdict_usd": 0.007304,
-        "verdicts_per_page": 2.1,
+        "verdict_usd": 0.005548,
+        "verdicts_per_page": 2.2,
         "tavily_per_page": 1.5,
         "text_page_s": 5.975,
         "vision_page_s": 15.25,
-        "verdict_s": 3.780952
+        "verdict_s": 3.55625,
+        "triage_pass_rate": 0.380952,
+        "triage_usd_per_candidate": 9e-06,
+        "triage_s_per_candidate": 0.126667
       },
-      "verdicts": 2356,
-      "usd": 19.01,
-      "inr": 1597,
-      "api_minutes_sequential": 350,
+      "candidates": 2468,
+      "verdicts": 940,
+      "usd": 7.04,
+      "inr": 591,
+      "api_minutes_sequential": 262,
+      "without_triage": {
+        "verdicts": 2468,
+        "usd": 15.49,
+        "inr": 1302,
+        "api_minutes_sequential": 348
+      },
       "tavily_credits": 1683,
-      "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + (verdicts_per_page x pages) x cost_per_verdict"
+      "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + candidates x triage_cost_per_candidate + candidates x triage_pass_rate x cost_per_verdict, where candidates = candidates_per_page x pages"
     }
   },
   "eval_cost_usd": 0.0
