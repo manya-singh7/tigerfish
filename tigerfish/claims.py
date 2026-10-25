@@ -118,16 +118,16 @@ def parse_json(reply):
     return data
 
 
-def chat_json(model, messages, max_tokens):
+def chat_json(model, messages, max_tokens, thinking=False):
     """chat() and parse JSON; on failure retry once with RETRY_MSG. None if still broken."""
-    reply = llm.chat(model, messages, thinking=False, max_tokens=max_tokens, temperature=0)
+    reply = llm.chat(model, messages, thinking=thinking, max_tokens=max_tokens, temperature=0)
     try:
         return parse_json(reply)
     except ValueError as e:
         log.info("broken JSON from %s (%s); retrying once", model, e)
     retry = messages + [{"role": "assistant", "content": reply},
                         {"role": "user", "content": RETRY_MSG}]
-    reply = llm.chat(model, retry, thinking=False, max_tokens=max_tokens, temperature=0)
+    reply = llm.chat(model, retry, thinking=thinking, max_tokens=max_tokens, temperature=0)
     try:
         return parse_json(reply)
     except ValueError as e:
