@@ -155,6 +155,41 @@ def omission_findings():
     return out
 
 
+ACCREDITATION = ROOT / "cache" / "findings" / GN_PDF.stem / "accreditation.json"
+
+
+def accreditation_findings():
+    """The accreditation check as one finding (any grade except GREY)."""
+    if not ACCREDITATION.exists():
+        return []
+    a = json.loads(ACCREDITATION.read_text(encoding="utf-8"))
+    if a["grade"] in ("GREY", "NONE") or not a.get("entry"):
+        return []
+    d, e = a["details"], a["entry"]
+    quotes = [{"page": d[f]["page"], "text": d[f]["quote"]}
+              for f in ("certificate_number", "project_category", "report_date")
+              if d.get(f) and d[f]["verified"]]
+    compact = next((s["quote"] for s in e["sectors"] if not s.get("schedule")), None)
+    ev = [{"label": f"Closest {e.get('label', 'official source')} to the report date: "
+                    f"{e.get('kind', 'accredited list')}, {e['revision'] or 'undated'}",
+           "value": "; ".join(f"sector {r['sector']['number']} {r['sector']['name']}: "
+                              f"Category {r['sector']['category']}" for r in a["rows"] if r["sector"])
+                    + (f'. Source text: "{compact}"' if compact else ""),
+           "url": e["url"]}]
+    ev += [{"label": f"Also found: {r['kind']}, {r['revision']}",
+            "value": "; ".join(f"sector {s['number']}: Category {s['category']}" for s in r["sectors"]
+                               if s["number"] in {x["sector"]["number"] for x in a["rows"] if x["sector"]}),
+            "url": r["url"]} for r in a.get("records", []) if r["url"] != e["url"]]
+    ev += [{"label": "Project category (report)", "value": d["project_category"]["value"]
+            if d.get("project_category") else "not stated"},
+           {"label": "Validity", "value": a["validity"]}]
+    not_covered = [r for r in a["rows"] if not r["covered"]]
+    why = "; ".join(f"{r['component']}: {r['why']}" for r in not_covered)
+    return [finding("ac-01", "accreditation", a["grade"],
+                    f"{d['consultant_name']['value']}: accreditation scope", " ".join(a["messages"]),
+                    quotes, ev, why or a["validity"])]
+
+
 def species_pages_read():
     """Pages the species-table check read (empty set if it has not been run)."""
     if not SPECIES_PAGES.exists():
@@ -216,6 +251,7 @@ def great_nicobar():
 
     findings += species_table_findings(report_id)
     findings += omission_findings()
+    findings += accreditation_findings()
     usd, credits, gbif, seconds = run_cost(trace.used)
     return report_id, {
         "id": report_id, "title": "Great Nicobar EIA (2021 draft)",
@@ -225,7 +261,8 @@ def great_nicobar():
                    "Internal contradictions and recycled figures (Nemotron Ultra)",
                    "Copied text (Tavily)", "Borrowed text (Tavily)",
                    "Species tables in the report (GBIF)",
-                   "Threatened species not mentioned (GBIF)"],
+                   "Threatened species not mentioned (GBIF)",
+                   "Consultant accreditation (NABET, official list)"],
         "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
                  "approx_seconds": seconds},
         "known_issue_score": dict(zip(("passed", "scored"),

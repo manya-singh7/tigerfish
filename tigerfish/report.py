@@ -10,6 +10,7 @@ CHECK_NAMES = {
     "species_range": "Species out of range", "iucn_status": "IUCN status",
     "legal_schedule": "Legal schedule", "copy_paste": "Copied text",
     "borrowed_text": "Borrowed text", "omission": "Not mentioned",
+    "accreditation": "Consultant accreditation",
 }
 CLEAR = {
     "contradiction": "A statement in the report that the two passages cover different areas, "
@@ -23,6 +24,7 @@ CLEAR = {
     "copy_paste": "A citation for the matching text, or site-specific data for this project.",
     "borrowed_text": "A citation to the source near this text.",
     "omission": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+    "accreditation": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
 }
 GRADE_ORDER = {"RED": 0, "ORANGE": 1, "INFO": 2}
 

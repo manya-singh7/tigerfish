@@ -10,7 +10,8 @@
     "Copied text (Tavily)",
     "Borrowed text (Tavily)",
     "Species tables in the report (GBIF)",
-    "Threatened species not mentioned (GBIF)"
+    "Threatened species not mentioned (GBIF)",
+    "Consultant accreditation (NABET, official list)"
   ],
   "cost": {
     "nebius_usd": 0.1571,
@@ -602,7 +603,58 @@
       "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
       "known_issue": null,
       "images": []
+    },
+    {
+      "id": "ac-01",
+      "check": "accreditation",
+      "check_name": "Consultant accreditation",
+      "grade": "ORANGE",
+      "title": "Vimta Labs Ltd: accreditation scope",
+      "message": "Accreditation could not be confirmed for International Container Transshipment Terminal (port) at the report date. Verify. Accreditation could not be confirmed for Township & Area Development (township) at the report date. Verify.",
+      "quotes": [
+        {
+          "page": 44,
+          "text": "NABET/EIA/1720/SA 088"
+        },
+        {
+          "page": 18,
+          "text": "falls under category ‘A’"
+        },
+        {
+          "page": 5,
+          "text": "December 2021"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Closest official source to the report date: Accreditation Committee minutes, AC meeting 061/2021, October 26, 2021",
+          "value": "sector 33 Ports, harbours, break waters and dredging: Category B; sector 29 Air ports: Category A; sector 39 Townships and Area development projects: Category B; sector 4 Thermal power plants: Category A. Source text: \"accredited for sectors 2(A), 4(A), 6(A), 7(A), 8(A), 9(A), 12(A), 21(A), 27(A), 28(B), 29(A), 31(A), 31(A), 33(B), 38(A) and 39(B)\"",
+          "url": "https://eiameeting.qci.org.in/Environment/meetings/MOM-Supple%28Website%20upload%29-%20dt%20Oct%2026%2C%202021_15.11.2021.pdf"
+        },
+        {
+          "label": "Also found: accredited list, Rev. 78, July 10, 2019",
+          "value": "sector 4: Category A; sector 29: Category A; sector 33: Category B; sector 39: Category B",
+          "url": "https://nabet.qci.org.in/eiafile/List%20of%20Accredited%20EIA%20Consultant%20Organizations%20with%20accredited%20sectors.pdf"
+        },
+        {
+          "label": "Also found: Accreditation Committee minutes, AC meeting, June 15, 2021",
+          "value": "sector 4: Category A; sector 29: Category A; sector 33: Category B; sector 39: Category B",
+          "url": "https://eiameeting.qci.org.in/Environment/meetings/RA%20AC%20MoM%20-%20June%2015,%202021-%20Vimta%20Labs,%20web%20(1).pdf"
+        },
+        {
+          "label": "Project category (report)",
+          "value": "A"
+        },
+        {
+          "label": "Validity",
+          "value": "the source states no validity date; the source (AC meeting 061/2021, October 26, 2021) predates the report date (December 2021), so status at the report date could differ"
+        }
+      ],
+      "why": "International Container Transshipment Terminal: accredited for Category B only; project is Category A; Township & Area Development: accredited for Category B only; project is Category A",
+      "clear": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
+      "known_issue": null,
+      "images": []
     }
   ],
-  "exported_in_s": 1.8
+  "exported_in_s": 2.4
 }

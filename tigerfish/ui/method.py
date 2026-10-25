@@ -59,6 +59,9 @@ wrong, only that it does not agree with another statement or with public records
   those absent from the whole region.** Birds, marine species and plants recorded anywhere
   in the Andaman & Nicobar Islands, or within {species.FAR_KM:,} km, are not flagged.
   Terrestrial mammals, amphibians and land reptiles keep the strict distance rules.
+- **Consultant accreditation.** The consultant's NABET sectors and categories come from the
+  official QCI/NABET list (quoted). That list may predate the report; when it states no
+  validity date, status at the report date cannot be confirmed from it.
 - **Omissions.** Threatened species recorded by GBIF near the site but never mentioned are
   listed. GBIF coverage is sparse, and a missing mention is a question for the reviewer, not
   proof of a gap in the assessment. Pages without usable text (scans) are not searched.
