@@ -59,6 +59,9 @@ wrong, only that it does not agree with another statement or with public records
   those absent from the whole region.** Birds, marine species and plants recorded anywhere
   in the Andaman & Nicobar Islands, or within {species.FAR_KM:,} km, are not flagged.
   Terrestrial mammals, amphibians and land reptiles keep the strict distance rules.
+- **Omissions.** Threatened species recorded by GBIF near the site but never mentioned are
+  listed. GBIF coverage is sparse, and a missing mention is a question for the reviewer, not
+  proof of a gap in the assessment. Pages without usable text (scans) are not searched.
 - **Taxonomy.** GBIF's synonyms can differ from current usage (for example, it maps *Pteropus
   giganteus* to *P. vampyrus*). Status differences after a name correction are graded GREY.
 - **Hindi pages are skipped.** The text layer of the Hindi summary does not extract cleanly.

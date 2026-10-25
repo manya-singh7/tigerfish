@@ -9,7 +9,8 @@
     "Internal contradictions and recycled figures (Nemotron Ultra)",
     "Copied text (Tavily)",
     "Borrowed text (Tavily)",
-    "Species tables in the report (GBIF)"
+    "Species tables in the report (GBIF)",
+    "Threatened species not mentioned (GBIF)"
   ],
   "cost": {
     "nebius_usd": 0.1571,
@@ -259,7 +260,349 @@
       "images": [
         "pages/great_nicobar_2021_draft_species_p0954.png"
       ]
+    },
+    {
+      "id": "om-01",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Neonauclea gageana (IUCN CR) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Neonauclea gageana: 1 record(s) within 25 km of Galathea Bay, latest 2022"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN CR)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2022"
+        },
+        {
+          "label": "Names searched for",
+          "value": "neonauclea gageana, n. gageana, n.gageana, neonaucleagageana, neonauclea g ageana, nauclea gageana, naucleagageana, nauclea g ageana"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Neonauclea gageana",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2919572&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN CR species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-02",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Orthetrum andamanicum (IUCN EN) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Orthetrum andamanicum: 1 record(s) within 25 km of Galathea Bay, latest 2026"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN EN)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2026"
+        },
+        {
+          "label": "Names searched for",
+          "value": "orthetrum andamanicum, o. andamanicum, o.andamanicum, orthetrumandamanicum, orthetrum a ndamanicum, Andaman Marsh Hawk"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Orthetrum andamanicum",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=10874109&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN EN species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-03",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Egretta eulophotes (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Egretta eulophotes: 5 record(s) within 25 km of Galathea Bay, latest 2022"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "1 within 10 km (1 since 2000), 5 within 25 km; latest 2022"
+        },
+        {
+          "label": "Names searched for",
+          "value": "egretta eulophotes, e. eulophotes, e.eulophotes, egrettaeulophotes, egretta e ulophotes, herodias eulophotes, h. eulophotes, h.eulophotes, herodiaseulophotes, herodias e ulophotes, Chinese Egret, Chinese egret, Swinhoe's egret, chinese egret"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Egretta eulophotes",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2480887&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 5 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-04",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Actinopyga mauritiana (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Actinopyga mauritiana: 3 record(s) within 25 km of Galathea Bay, latest 2026"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "1 within 10 km (1 since 2000), 3 within 25 km; latest 2026"
+        },
+        {
+          "label": "Names searched for",
+          "value": "actinopyga mauritiana, a. mauritiana, a.mauritiana, actinopygamauritiana, actinopyga m auritiana, holothuria mauritiana, h. mauritiana, h.mauritiana, holothuriamauritiana, holothuria m auritiana, muelleria mauritiana, m. mauritiana, m.mauritiana, muelleriamauritiana, muelleria m auritiana, mulleria mauritiana, mulleriamauritiana, mulleria m auritiana, Surf Redfish, Surge Sea Cucumber, White-spotted Sea Cucumber, Yellow Surfish"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Actinopyga mauritiana",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=4343105&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 3 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-05",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Dipterocarpus grandiflorus (IUCN EN) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Dipterocarpus grandiflorus: 1 record(s) within 25 km of Galathea Bay, latest unknown"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN EN)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest unknown"
+        },
+        {
+          "label": "Names searched for",
+          "value": "dipterocarpus grandiflorus, d. grandiflorus, d.grandiflorus, dipterocarpusgrandiflorus, dipterocarpus g randiflorus, dipterocarpus blancoi, d. blancoi, d.blancoi, dipterocarpusblancoi, dipterocarpus b lancoi, dipterocarpus griffithii, d. griffithii, d.griffithii, dipterocarpusgriffithii, dipterocarpus g riffithii, dipterocarpus motleyanus, d. motleyanus, d.motleyanus, dipterocarpusmotleyanus, dipterocarpus m otleyanus, dipterocarpus pterygocalyx, d. pterygocalyx, d.pterygocalyx, dipterocarpuspterygocalyx, dipterocarpus p terygocalyx, mocanera grandiflora, m. grandiflora, m.grandiflora, mocaneragrandiflora, mocanera g randiflora, vatica trigyna, v. trigyna, v.trigyna, vaticatrigyna, vatica t rigyna"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Dipterocarpus grandiflorus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=7685317&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN EN species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-06",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Pteropus melanotus (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Pteropus melanotus: 1 record(s) within 25 km of Galathea Bay, latest 1901"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1901"
+        },
+        {
+          "label": "Names searched for",
+          "value": "pteropus melanotus, p. melanotus, p.melanotus, pteropusmelanotus, pteropus m elanotus, Black-eared Flying Fox, Black-eared Flying Fox., Black-eared Flying-fox, Black-eared flying fox, Blyth's Flying Fox, Christmas Island Flying Fox, Christmas Island Flying Fox (natalis)"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Pteropus melanotus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5218681&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-07",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Rhinomyias brunneatus (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Rhinomyias brunneatus: 1 record(s) within 25 km of Galathea Bay, latest 1901"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1901"
+        },
+        {
+          "label": "Names searched for",
+          "value": "rhinomyias brunneatus, r. brunneatus, r.brunneatus, rhinomyiasbrunneatus, rhinomyias b runneatus, cyornis brunneatus, c. brunneatus, c.brunneatus, cyornisbrunneatus, cyornis b runneatus"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Rhinomyias brunneatus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5788870&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-08",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Tursiops aduncus (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Tursiops aduncus: 1 record(s) within 25 km of Galathea Bay, latest 2019"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2019"
+        },
+        {
+          "label": "Names searched for",
+          "value": "tursiops aduncus, t. aduncus, t.aduncus, tursiopsaduncus, tursiops a duncus, clymenia gudamu, c. gudamu, c.gudamu, clymeniagudamu, clymenia g udamu, delphinus aduncus, d. aduncus, d.aduncus, delphinusaduncus, delphinus a duncus, sotalia gadumu, s. gadumu, s.gadumu, sotaliagadumu, sotalia g adumu, tursiops truncatus, t. truncatus, t.truncatus, tursiopstruncatus, tursiops t runcatus, Bottle-nose Dolphin, Indian Ocean Bottlenose Dolphin, Indian Ocean bottlenose dolphin, Indian Ocean bottlenose dolphin, tuyiin, Indo-Pacific Bottlenose Dolphin, Indo-Pacific bottlenose dolphin, Red Sea bottlenose dolphin, southern bottlenose dolphin"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Tursiops aduncus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2440455&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-09",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Oligodon woodmasoni (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Oligodon woodmasoni: 1 record(s) within 25 km of Galathea Bay, latest 2016"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2016"
+        },
+        {
+          "label": "Names searched for",
+          "value": "oligodon woodmasoni, o. woodmasoni, o.woodmasoni, oligodonwoodmasoni, oligodon w oodmasoni, simotes woodmasoni, s. woodmasoni, s.woodmasoni, simoteswoodmasoni, simotes w oodmasoni, Andaman Black Kukri Snake, Woodmason's Kukri Snake, Yellow -striped Kukri Snake, Yellow-striped Kukri Snake"
+        },
+        {
+          "label": "Pages searched",
+          "value": "1132 of 1213 with usable text (81 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Oligodon woodmasoni",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5222499&geo_distance=6.83,93.87,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
     }
   ],
-  "exported_in_s": 2.1
+  "exported_in_s": 1.8
 }

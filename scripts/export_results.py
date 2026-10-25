@@ -125,6 +125,36 @@ def species_table_findings(report_id):
     return out
 
 
+OMISSIONS = ROOT / "cache" / "findings" / GN_PDF.stem / "omissions.json"
+
+
+def omission_findings():
+    """RED/ORANGE/INFO results of scripts/check_omissions.py as findings."""
+    if not OMISSIONS.exists():
+        return []
+    data = json.loads(OMISSIONS.read_text(encoding="utf-8"))
+    n_pages, n_empty = data["pages_searched"], len(data["pages_without_text"])
+    out = []
+    for i, r in enumerate([r for r in data["rows"] if r["grade"]], 1):
+        latest = r["latest_year"] or "unknown"
+        names = [s.split(": ", 1)[1] for s in r["searched_for"]]
+        ev = [{"label": "GBIF records (IUCN " + r["category"] + ")",
+               "value": f"{r['near']} within 10 km ({r['near_since_2000']} since 2000), "
+                        f"{r['wide']} within 25 km; latest {latest}"},
+              {"label": "Names searched for", "value": ", ".join(dict.fromkeys(names))},
+              {"label": "Pages searched", "value": f"{n_pages - n_empty} of {n_pages} with usable "
+                                                   f"text ({n_empty} scanned pages not searched)"},
+              {"label": "GBIF map of these records", "value": r["name"], "url": r["map"]}]
+        out.append(finding(f"om-{i:02d}", "omission", r["grade"],
+                           f"{r['name']} (IUCN {r['category']}) not mentioned", r["message"],
+                           [{"page": None, "where": "GBIF, near the site",
+                             "text": f"{r['name']}: {r['wide']} record(s) within 25 km of Galathea Bay, "
+                                     f"latest {latest}"}],
+                           ev, f"GBIF has {r['wide']} record(s) of this IUCN {r['category']} species "
+                               f"within 25 km of the site; no page of the report names it."))
+    return out
+
+
 def species_pages_read():
     """Pages the species-table check read (empty set if it has not been run)."""
     if not SPECIES_PAGES.exists():
@@ -184,8 +214,8 @@ def great_nicobar():
                                  dpi=PAGE_DPI)
         attach_images([f], images, relative_to=RESULTS)
 
-    species_findings = species_table_findings(report_id)
-    findings += species_findings
+    findings += species_table_findings(report_id)
+    findings += omission_findings()
     usd, credits, gbif, seconds = run_cost(trace.used)
     return report_id, {
         "id": report_id, "title": "Great Nicobar EIA (2021 draft)",
@@ -194,7 +224,8 @@ def great_nicobar():
         "checks": ["Claim extraction (Nemotron Lightning / Super-VL)",
                    "Internal contradictions and recycled figures (Nemotron Ultra)",
                    "Copied text (Tavily)", "Borrowed text (Tavily)",
-                   "Species tables in the report (GBIF)"],
+                   "Species tables in the report (GBIF)",
+                   "Threatened species not mentioned (GBIF)"],
         "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
                  "approx_seconds": seconds},
         "known_issue_score": dict(zip(("passed", "scored"),

@@ -9,7 +9,7 @@ CHECK_NAMES = {
     "contradiction": "Internal contradiction", "recycled_figure": "Recycled figure",
     "species_range": "Species out of range", "iucn_status": "IUCN status",
     "legal_schedule": "Legal schedule", "copy_paste": "Copied text",
-    "borrowed_text": "Borrowed text",
+    "borrowed_text": "Borrowed text", "omission": "Not mentioned",
 }
 CLEAR = {
     "contradiction": "A statement in the report that the two passages cover different areas, "
@@ -22,6 +22,7 @@ CLEAR = {
     "legal_schedule": "The species' schedule under the Wild Life (Protection) Act as amended in 2022.",
     "copy_paste": "A citation for the matching text, or site-specific data for this project.",
     "borrowed_text": "A citation to the source near this text.",
+    "omission": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
 }
 GRADE_ORDER = {"RED": 0, "ORANGE": 1, "INFO": 2}
 
