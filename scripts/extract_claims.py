@@ -61,7 +61,7 @@ def main():
 
     print(f"\n{'page':>5} {'type':10} {'ok':3} {'value':>10} {'unit':8} quote")
     for c in found:
-        ok = {True: "yes", False: "NO", None: "-"}[c["verified"]]
+        ok = "fix" if c.get("quote_repaired") else {True: "yes", False: "NO", None: "-"}[c["verified"]]
         quote = c["quote"] if len(c["quote"]) <= 90 else c["quote"][:87] + "..."
         print(f"{c['page']:>5} {c['type']:10} {ok:3} {str(c['value'])[:10]:>10} "
               f"{str(c['unit'] or '')[:8]:8} {quote}")
@@ -69,7 +69,10 @@ def main():
     rate = run["verified_rate"]
     print(f"\nClaims: {run['claims']}  by type: {dict(Counter(c['type'] for c in found))}")
     print(f"Verified quotes: {run['verified']}/{run['claims']}"
-          + (f" ({rate:.0%})" if rate is not None else ""))
+          + (f" ({rate:.0%})" if rate is not None else "")
+          + f", of which {run['repaired']} repaired to the exact page text (ok = fix)")
+    print(f"Junk removed: {run['dropped_value']} with value not in quote, "
+          f"{run['dropped_duplicate']} near-duplicates")
     print(f"Pages done: {run['pages_done']}")
     if run["pages_skipped"]:
         print(f"Pages skipped: {run['pages_skipped']}")

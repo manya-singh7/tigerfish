@@ -22,7 +22,7 @@ from tigerfish import claims, pdf_reader  # noqa: E402
 IMAGE = ROOT / "data" / "demo" / "indira_point_table_3_16_mammals.png"
 PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 KNOWN = json.loads((ROOT / "data" / "known_issues.json").read_text(encoding="utf-8"))
-KNOWN_PAGES = [234, 392, 444, 751, 818, 851, 940, 1141, 1168]
+KNOWN_PAGES = [234, 392, 444, 751, 818, 851, 940, 978, 1141, 1168]
 
 # Zoological names exactly as printed in Table 3.16 (including the report's typo).
 TABLE_3_16_NAMES = [
@@ -103,7 +103,7 @@ def test_report_known_issue_quotes_captured():
         for q in issue["quotes"]:
             total += 1
             if q["page"] not in KNOWN_PAGES:
-                print(f"  {issue['id']:11} p.{q['page']:<5} NOT RUN (page not in the 9-page set)")
+                print(f"  {issue['id']:11} p.{q['page']:<5} NOT RUN (page not in KNOWN_PAGES)")
                 continue
             c, how = captured(q["text"], [c for c in found if c["page"] == q["page"]])
             hit += c is not None

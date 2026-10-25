@@ -204,3 +204,84 @@ def test_ledger_merges_by_page(fake):
     claims.extract_claims([page(851)], pdf_stem="doc")        # re-run 851 only
     ledger = claims.load_ledger("doc")
     assert {c["page"] for c in ledger} == {818} and len(ledger) == 3
+
+
+# ---------- quote repair ----------
+
+PAGE_234 = ("Submergence of West Coast Significant change occurred post tsunami resulting\n"
+            "complete submergence of Megapode Island. About 550 sq.km was badly affected. Before\n"
+            "Tusnami the GNI had total area of 1045 sq km which reduced to 910 sqkm after the\n"
+            "Tsunami due to the submergence of part of the island.")
+
+
+def test_repair_restores_report_typo():
+    model_quote = ("Before Tsunami the GNI had total area of 1045 sq km which reduced to "
+                   "910 sqkm after the Tsunami due to the submergence of part of the island.")
+    exact, ratio = claims.repair_quote(model_quote, PAGE_234)
+    assert exact.startswith("Before Tusnami the GNI")          # the report's own spelling
+    assert exact in claims.normalize(PAGE_234) and ratio >= 0.9
+
+
+def test_repair_rejects_paraphrase():
+    exact, ratio = claims.repair_quote("The island lost a lot of land in the tsunami.", PAGE_234)
+    assert exact is None and ratio < 0.9
+
+
+def test_to_claims_marks_repaired_quote():
+    raw = {"claims": [{"type": "area", "subject": "GNI area", "value": 910, "unit": "sq km",
+                       "quote": "Before Tsunami the GNI had total area of 1045 sq km which "
+                                "reduced to 910 sqkm after the Tsunami"}]}
+    stats = {}
+    [c] = claims.to_claims(raw, 234, PAGE_234, llm.LIGHTNING, stats=stats)
+    assert c["verified"] is True and c["quote_repaired"] is True
+    assert "Tusnami" in c["quote"] and "Tsunami the GNI" in c["model_quote"]
+    assert stats["repaired"] == 1
+
+
+def test_exact_quote_is_not_marked_repaired():
+    raw = {"claims": [{"type": "area", "value": 550, "quote": "About 550 sq.km was badly affected."}]}
+    [c] = claims.to_claims(raw, 234, PAGE_234, llm.LIGHTNING)
+    assert c["verified"] and not c["quote_repaired"] and "model_quote" not in c
+
+
+# ---------- junk filter ----------
+
+@pytest.mark.parametrize("value, quote, ok", [
+    (1045, "original notified area of 1,045 Sq.km.", True),
+    (4, "Approximately 4ha of Coral restoration", True),
+    (2, "it would not exceed 1-2 ha at the maximum", True),
+    ("1-2", "it would not exceed 1-2 ha at the maximum", True),
+    (22.73, "equivalent to 22.73%", True),
+    (16610, "at Great Nicobar Island, Nicobar District", False),
+    (330, "a total of 331 species of fauna", False),
+    ("no coral exists in the bay portion", "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay.", True),
+    ("prevent collisions with turtles", "Roads are an integral part of the transport system", False),
+    (None, "anything", True),
+])
+def test_value_in_quote(value, quote, ok):
+    assert claims.value_in_quote(value, quote) is ok
+
+
+def test_dedupe_merges_near_duplicates_only():
+    base = {"page": 392, "type": "statement", "subject": "Road construction", "verified": False}
+    a = {**base, "quote": "Roads are an integral part of the transport system for the proposed project"}
+    b = {**base, "quote": "Roads are an integral part of the transport system for the proposed projects",
+         "verified": True}
+    other_subject = {**a, "subject": "Beach lighting"}
+    other_type = {**a, "type": "quantity"}
+    kept = claims.dedupe([a, b, other_subject, other_type])
+    assert len(kept) == 3
+    assert kept[0] is b                       # the verified duplicate wins
+
+
+def test_to_claims_reports_removed_junk():
+    raw = {"claims": [
+        {"type": "area", "subject": "project", "value": 16610, "unit": "ha",
+         "quote": "About 550 sq.km was badly affected."},                     # value not in quote
+        {"type": "area", "subject": "affected area", "value": 550, "quote": "About 550 sq.km was badly affected."},
+        {"type": "area", "subject": "affected area", "value": 550, "quote": "About 550 sq.km was badly affected"},
+    ]}
+    stats = {}
+    out = claims.to_claims(raw, 234, PAGE_234, llm.LIGHTNING, stats=stats)
+    assert len(out) == 1 and out[0]["id"] == "p234-01"
+    assert stats["dropped_value"] == 1 and stats["dropped_duplicate"] == 1

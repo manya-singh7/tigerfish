@@ -43,13 +43,13 @@ LIGHTNING = "nvidia/Nemotron-3_5-Lightning"   # fast, cheap claim extraction
 DEFAULT_THINKING = {LIGHTNING: False}
 
 # USD per 1M tokens as (input, output). Models left out are logged with cost_usd = None.
-# Source: third-party listing of Nebius Token Factory prices (typingmind.com, Aug 2026);
-# check against the Nebius billing page. Super-VL price was not found anywhere: the
-# Ultra price is used as a deliberately high placeholder so cost caps err on the safe side.
+# Lightning and Ultra: third-party listing of Nebius Token Factory prices
+# (typingmind.com, Aug 2026). Super-VL: from the Token Factory model catalog.
+# All: verify on the Nebius billing page.
 PRICES = {
     LIGHTNING: (0.06, 0.24),
     ULTRA: (1.00, 3.00),
-    SUPER_VL: (1.00, 3.00),   # UNVERIFIED placeholder
+    SUPER_VL: (0.30, 0.90),   # from catalog, verify on billing page
 }
 
 load_dotenv(ROOT / ".env")

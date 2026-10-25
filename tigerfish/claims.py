@@ -4,7 +4,12 @@ Each claim: {id, page, type, subject, value, unit, quote, context, model, source
   type     quantity | distance | area | species | count | statement
   quote    verbatim from the page; verified=True only if it appears in the page text
            after whitespace normalisation (same rule as tests/test_known_issues.py).
+           If the model's quote is slightly off (it "fixed" a typo), the closest page
+           substring with similarity >= MIN_QUOTE_SIMILARITY replaces it and
+           quote_repaired=True (the model's version is kept as model_quote).
            Unverified claims (verified=False) must never be shown as evidence.
+  Junk filter: claims whose value is not in their quote are dropped, and near-duplicates
+  on a page (same type and subject, similar quotes) are merged.
            Claims read from a standalone image have no text layer: verified=None.
 
 Text pages go to LIGHTNING (thinking off), one page per call. Pages flagged
@@ -14,6 +19,7 @@ A cost cap (MAX_COST_USD) stops the run before it would be exceeded.
 The ledger is saved to cache/claims/<pdf_stem>/claims.jsonl.
 """
 
+import difflib
 import json
 import logging
 import re
@@ -32,6 +38,10 @@ VISION_MAX_TOKENS = 4000
 EST_OUTPUT_TOKENS = 1500     # used only for cost estimates
 EST_IMAGE_TOKENS = 3000      # rough token cost of one 150-dpi page image, for estimates
 CHARS_PER_TOKEN = 4
+MIN_QUOTE_SIMILARITY = 0.90      # fuzzy quote repair: accept the closest page text at/above this
+MIN_DUPLICATE_SIMILARITY = 0.85  # same page+type+subject and quotes this similar = duplicate
+REPAIR_CANDIDATES = 5            # quote repair: word windows refined at character level
+REPAIR_SLACK = 3                 # ...each nudged by up to this many words at either end
 
 log = logging.getLogger(__name__)
 last_run = {}                # stats of the most recent extract_claims() call
@@ -70,7 +80,10 @@ TABLE_PROMPT = """Transcribe the table in this image exactly as printed. Return 
 
 Rules:
 - One entry in rows per table row; each row has one cell per column, in column order.
-- Copy every cell exactly as printed, keeping spelling mistakes (do NOT correct names).
+- Copy every cell character by character exactly as printed, INCLUDING misspellings.
+  Never correct spelling, even when you know the right name. This is an audit: a
+  misspelled species name (for example "Taupaia" instead of "Tupaia") is evidence and
+  must be preserved exactly.
 - A cell printed over two lines is one cell: join the lines with a single space.
 - Use "" for empty cells. Flatten grouped headers (e.g. "Status IUCN Category")."""
 
@@ -155,21 +168,135 @@ def estimate_cost(pages):
     return sum(costs), sum(1 for c in costs if c > 0)
 
 
-def to_claims(raw, page_no, page_text, model, source="page"):
-    """Clean the model's claims and verify each quote against the page text."""
+def repair_quote(quote, page_text, min_similarity=MIN_QUOTE_SIMILARITY):
+    """Closest substring of the (whitespace-normalised) page to a model's quote.
+
+    Models sometimes "fix" the report's text (Tusnami -> Tsunami). Returns
+    (exact page substring, similarity) if similarity >= min_similarity, else (None, best).
+
+    Two passes, so a 6,000-character page takes milliseconds:
+    1. word overlap: score every window of the quote's word count, keep the best few;
+    2. character similarity (difflib) on spans around those windows, nudging the
+       start and end by a few words. Spans always start and end on word boundaries.
+    """
+    q, page = normalize(quote), normalize(page_text)
+    if not q or not page:
+        return None, 0.0
+    words = page.split(" ")
+    starts, pos = [], 0
+    for w in words:
+        starts.append(pos)
+        pos += len(w) + 1
+    qwords = q.lower().split(" ")
+    n, qset = len(qwords), set(qwords)
+    lowered = [w.lower() for w in words]
+    overlap = [sum(w in qset for w in lowered[i:i + n]) for i in range(max(1, len(words) - n + 1))]
+    candidates = sorted(range(len(overlap)), key=overlap.__getitem__, reverse=True)[:REPAIR_CANDIDATES]
+
+    best, best_ratio = None, 0.0
+    matcher = difflib.SequenceMatcher(autojunk=False)
+    matcher.set_seq2(q)
+    for i in candidates:
+        for a in range(max(0, i - REPAIR_SLACK), min(len(words), i + REPAIR_SLACK + 1)):
+            for b in range(max(a + 1, i + n - REPAIR_SLACK), min(len(words), i + n + REPAIR_SLACK) + 1):
+                span = page[starts[a]:starts[b - 1] + len(words[b - 1])]
+                matcher.set_seq1(span)
+                if matcher.quick_ratio() <= best_ratio:
+                    continue
+                ratio = matcher.ratio()
+                if ratio > best_ratio:
+                    best, best_ratio = span, ratio
+    return (best, best_ratio) if best_ratio >= min_similarity else (None, best_ratio)
+
+
+NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+
+def _numbers(text):
+    out = set()
+    for n in NUMBER.findall(str(text)):
+        try:
+            out.add(float(n.replace(",", "")))
+        except ValueError:
+            pass
+    return out
+
+
+def value_in_quote(value, quote):
+    """Does the claim's value actually appear in its quote?
+
+    Numbers: every number in the value must appear as a number in the quote
+    (1,045 == 1045; 4 matches "4ha"). Text: the value appears in the quote, or at
+    least 80% of its words (4+ letters) do. Empty values pass (nothing to check).
+    """
+    if value is None or str(value).strip() == "":
+        return True
+    if isinstance(value, bool):
+        return True
+    numbers = _numbers(value) if isinstance(value, (int, float, str)) else set()
+    if numbers:
+        return numbers <= _numbers(quote)
+    v, q = normalize(str(value)).lower(), normalize(quote).lower()
+    if v in q:
+        return True
+    words = [w for w in re.findall(r"[a-z]{4,}", v)]
+    return bool(words) and sum(w in q for w in words) / len(words) >= 0.8
+
+
+def similar(a, b):
+    return difflib.SequenceMatcher(None, normalize(a).lower(), normalize(b).lower()).ratio()
+
+
+def dedupe(claims):
+    """Merge near-duplicates on a page: same type and subject, quote similarity >= threshold.
+
+    The first claim is kept, unless a later duplicate is verified and it is not.
+    """
+    kept = []
+    for c in claims:
+        subject = normalize(str(c["subject"] or "")).lower()
+        dup = next((k for k in kept if k["page"] == c["page"] and k["type"] == c["type"]
+                    and normalize(str(k["subject"] or "")).lower() == subject
+                    and similar(k["quote"], c["quote"]) >= MIN_DUPLICATE_SIMILARITY), None)
+        if dup is None:
+            kept.append(c)
+        elif c["verified"] and not dup["verified"]:
+            kept[kept.index(dup)] = c
+    return kept
+
+
+def to_claims(raw, page_no, page_text, model, source="page", stats=None):
+    """Clean the model's claims: verify (or repair) quotes, drop junk, merge duplicates.
+
+    stats (a dict, optional) gets counters added: repaired, dropped_value, dropped_duplicate.
+    """
+    stats = stats if stats is not None else {}
     claims = []
     for item in raw.get("claims", []) if isinstance(raw, dict) else []:
         if not isinstance(item, dict):
             continue
         quote = str(item.get("quote") or "").strip()
         ctype = item.get("type") if item.get("type") in CLAIM_TYPES else "statement"
-        claims.append({
-            "id": f"p{page_no}-{len(claims) + 1:02d}", "page": page_no, "type": ctype,
-            "subject": item.get("subject"), "value": item.get("value"), "unit": item.get("unit"),
-            "quote": quote, "context": item.get("context"), "model": model, "source": source,
-            "verified": quote_on_page(quote, page_text),
-        })
-    return claims
+        claim = {"page": page_no, "type": ctype, "subject": item.get("subject"),
+                 "value": item.get("value"), "unit": item.get("unit"), "quote": quote,
+                 "context": item.get("context"), "model": model, "source": source,
+                 "verified": quote_on_page(quote, page_text), "quote_repaired": False}
+        if not claim["verified"] and quote:
+            exact, ratio = repair_quote(quote, page_text)
+            if exact is not None:
+                claim.update(quote=exact, model_quote=quote, verified=True, quote_repaired=True,
+                             quote_similarity=round(ratio, 3))
+        if not value_in_quote(claim["value"], claim["quote"]):
+            stats["dropped_value"] = stats.get("dropped_value", 0) + 1
+            continue
+        claims.append(claim)
+
+    kept = dedupe(claims)
+    stats["dropped_duplicate"] = stats.get("dropped_duplicate", 0) + len(claims) - len(kept)
+    stats["repaired"] = stats.get("repaired", 0) + sum(c["quote_repaired"] for c in kept)
+    for i, c in enumerate(kept, 1):
+        c["id"] = f"p{page_no}-{i:02d}"
+    return [{"id": c.pop("id"), **c} for c in kept]
 
 
 def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
@@ -180,6 +307,7 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
     """
     start_cost = llm.session_cost_usd
     claims, done, skipped, stopped = [], [], [], None
+    cleaning = {"repaired": 0, "dropped_value": 0, "dropped_duplicate": 0}
     for page in pages:
         if page.get("error") or not (page.get("text", "").strip() or page.get("image_path")):
             skipped.append(page["page"])
@@ -196,11 +324,11 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
             log.warning("page %d skipped: no valid JSON", page["page"])
             skipped.append(page["page"])
             continue
-        claims.extend(to_claims(raw, page["page"], page["text"], model))
+        claims.extend(to_claims(raw, page["page"], page["text"], model, stats=cleaning))
         done.append(page["page"])
 
     last_run.clear()
-    last_run.update(pages_done=done, pages_skipped=skipped, stopped=stopped,
+    last_run.update(pages_done=done, pages_skipped=skipped, stopped=stopped, **cleaning,
                     cost_usd=llm.session_cost_usd - start_cost, **verified_stats(claims))
     if pdf_stem:
         save_ledger(pdf_stem, claims, done)
