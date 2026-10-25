@@ -34,8 +34,8 @@ def main():
 
     src = out["wpa_source"]
     if src:
-        print(f"\nCurrent WPA schedules (from source, {src['support']} supporting sentence(s)): "
-              f"{src['count']}")
+        print(f"\nCurrent WPA schedules ({src['label']}, {src['support']} supporting "
+              f"sentence(s)): {src['count']}")
         print(f"  {src['url']}")
         print(f"  \"{src['quote']}\"")
         print(f"  agreeing sources: {', '.join(src['sources'])}")

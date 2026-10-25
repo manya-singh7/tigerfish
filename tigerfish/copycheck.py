@@ -37,7 +37,7 @@ from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 from tigerfish import claims as claims_mod
-from tigerfish import llm
+from tigerfish import llm, trace
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "cache" / "tavily"
@@ -121,6 +121,7 @@ def _cache_path(endpoint, params):
 def tavily_call(endpoint, budget, est_credits, **params):
     """Cached Tavily search/extract. Credits come from the response's usage when given."""
     path = _cache_path(endpoint, params)
+    trace.record("tavily", path)
     if path.exists():
         budget.cached += 1
         return json.loads(path.read_text(encoding="utf-8"))["data"]
@@ -135,19 +136,28 @@ def tavily_call(endpoint, budget, est_credits, **params):
     return data
 
 
-def search(query, budget, exact=True):
+def search(query, budget, exact=True, include_domains=None):
+    """Tavily basic search (1 credit). include_domains restricts results to those sites
+    (then this report's own hosts need no excluding)."""
+    if include_domains:
+        return tavily_call("search", budget, 1, query=query, search_depth="basic",
+                           max_results=SEARCH_RESULTS, exact_match=exact,
+                           include_domains=list(include_domains))
     return tavily_call("search", budget, 1, query=query, search_depth="basic",
                        max_results=SEARCH_RESULTS, exact_match=exact,
                        exclude_domains=EXCLUDE_DOMAINS)
 
 
-def extract(urls, budget):
-    """{url: text} for the URLs Tavily could extract (failed URLs cost nothing)."""
+def extract(urls, budget, max_chars=MAX_HIT_CHARS):
+    """{url: text} for the URLs Tavily could extract (failed URLs cost nothing).
+
+    Text is cut to max_chars (None = full text; the cache always keeps the full text).
+    """
     if not urls:
         return {}
     data = tavily_call("extract", budget, math.ceil(len(urls) / 5), urls=sorted(urls),
                        extract_depth="basic")
-    return {r["url"]: (r.get("raw_content") or "")[:MAX_HIT_CHARS]
+    return {r["url"]: (r.get("raw_content") or "")[:max_chars]
             for r in data.get("results", [])}
 
 

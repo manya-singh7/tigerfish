@@ -5,3 +5,4 @@ tavily-python>=0.5
 requests>=2.31
 streamlit>=1.38
 pytest>=8.0
+python-docx>=1.1

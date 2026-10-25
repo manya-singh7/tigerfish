@@ -26,6 +26,8 @@ from urllib.parse import urlencode
 
 import requests
 
+from tigerfish import trace
+
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "cache" / "gbif"
 API = "https://api.gbif.org/v1"
@@ -53,6 +55,7 @@ def gbif_get(path, **params):
     """GET {API}{path}?params as JSON. Cached by URL; one retry on error."""
     url = f"{API}{path}?{urlencode(sorted(params.items()))}"
     cache = CACHE_DIR / f"{hashlib.sha256(url.encode()).hexdigest()}.json"
+    trace.record("gbif", cache)
     if cache.exists():
         return json.loads(cache.read_text(encoding="utf-8"))["data"]
 

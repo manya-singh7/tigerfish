@@ -26,6 +26,10 @@ IUCN_WORDS = {"extinct in the wild": "EW", "extinct": "EX", "critically endanger
 WPA_QUERY = "Wild Life (Protection) Amendment Act 2022 number of schedules"
 WPA_SOURCES = 3     # top search results whose text is extracted
 OFFICIAL_DOMAINS = ("gov.in", "nic.in", "indiacode", "prsindia.org", "egazette", "sansad.in")
+# Searched first (Tavily include_domains); the open web is only a fallback.
+OFFICIAL_SEARCH_DOMAINS = ["indiacode.nic.in", "egazette.gov.in", "prsindia.org",
+                           "moef.gov.in", "pib.gov.in", "sansad.in"]
+NON_OFFICIAL_LABEL = "non-official source"
 NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
                 "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 ROMAN = {"I": 1, "V": 5, "X": 10}
@@ -117,11 +121,17 @@ def _num(word):
 
 
 SCHEDULE_PATTERNS = [
-    # "reduces the number of schedules from six to four", "schedules from 6 to 4"
-    re.compile(r"schedules?\b[^.]{0,60}?\bfrom\s+(\w+)\s+to\s+(\w+)", re.IGNORECASE),
+    # "reduces the number of schedules from six to four", "Schedules from present six to four".
+    # Not "Schedules for protected animal species from four to two": a "for ..." qualifier
+    # between "schedules" and "from" means a sub-count, not the total.
+    re.compile(r"schedules?\b(?:(?!\bfor\b)[^.]){0,60}?\bfrom\s+(?:the\s+)?"
+               r"(?:present|existing|current)?\s*(\w+)\s+to\s+(\w+)", re.IGNORECASE),
     # "from six schedules to four", "six schedules to four schedules"
     re.compile(r"\b(?:from\s+)?(\w+)\s+schedules?\s+(?:to|into)\s+(\w+)", re.IGNORECASE),
 ]
+# "The Bill reduces the total number of schedules to four" (target count only)
+REDUCED_TO_PATTERN = re.compile(r"\b(?:reduc\w*|cut\w*|rationalis\w*|rationaliz\w*)\b[^.]{0,40}?"
+                                r"\bschedules?\s+to\s+(\w+)\b", re.IGNORECASE)
 NOW_PATTERN = re.compile(r"\b(?:now|currently|only)\s+(?:has\s+|have\s+|contains?\s+)?(\w+)\s+"
                          r"schedules\b", re.IGNORECASE)
 
@@ -146,25 +156,45 @@ def schedule_count_from_text(text):
                 found.append((_num(m.group(2)), sentence))
                 break
         else:
-            m = NOW_PATTERN.search(sentence)
+            m = REDUCED_TO_PATTERN.search(sentence) or NOW_PATTERN.search(sentence)
             if m and _num(m.group(1)):
                 found.append((_num(m.group(1)), sentence))
     return found
 
 
-def current_schedules(budget):
-    """Current number of WPA schedules from retrieved sources, with the quoted evidence.
-
-    Returns {"count", "quote", "url", "support"} (support = sentences agreeing) or None.
-    """
-    results = copycheck.search(WPA_QUERY, budget, exact=False).get("results", [])
-    texts = copycheck.extract([r["url"] for r in results[:WPA_SOURCES]], budget)
+def schedule_votes(budget, include_domains=None):
+    """[(count, sentence, url)] from one Tavily search (+ extract of the top hits)."""
+    results = copycheck.search(WPA_QUERY, budget, exact=False,
+                               include_domains=include_domains).get("results", [])
+    # Full text: in a Bill, the sentence saying how many schedules remain is often in the
+    # Statement of Objects at the very end.
+    texts = copycheck.extract([r["url"] for r in results[:WPA_SOURCES]], budget, max_chars=None)
     votes = []
     for r in results:
         text = texts.get(r["url"]) or r.get("content", "")
         votes += [(count, sentence, r["url"]) for count, sentence in schedule_count_from_text(text)]
+    return votes
+
+
+def current_schedules(budget):
+    """Current number of WPA schedules from retrieved sources, with the quoted evidence.
+
+    Official sites are searched first (OFFICIAL_SEARCH_DOMAINS); the open web only if
+    they give no usable sentence, and then the result is labelled NON_OFFICIAL_LABEL.
+    Returns {"count", "quote", "url", "support", "sources", "official", "label"} or None.
+    """
+    votes = schedule_votes(budget, OFFICIAL_SEARCH_DOMAINS)
+    official = bool(votes)
+    if not votes:
+        votes = schedule_votes(budget)
     if not votes:
         return None
+    result = _best_vote(votes)
+    result.update(official=official, label="official source" if official else NON_OFFICIAL_LABEL)
+    return result
+
+
+def _best_vote(votes):
     count, support = Counter(v[0] for v in votes).most_common(1)[0]
     agreeing = [v for v in votes if v[0] == count]
     _, quote, url = max(agreeing, key=lambda v: quote_rank(v[1], v[2]))
@@ -191,10 +221,11 @@ def check_schedule(name, report_value, current):
     out = {**base, "current_value": f"{current['count']} schedules", "url": current["url"],
            "quote": current["quote"]}
     if n > current["count"]:
-        return {**out, "grade": "ORANGE",
+        label = "" if current.get("official", True) else f" ({NON_OFFICIAL_LABEL})"
+        return {**out, "grade": "ORANGE", "source_label": current.get("label"),
                 "message": "Legal schedule may be outdated. Verify.",
-                "evidence": (f"Report lists Schedule {report_value}; {current['url']} says: "
-                             f"\"{current['quote']}\"")}
+                "evidence": (f"Report lists Schedule {report_value}; {current['url']}{label} "
+                             f"says: \"{current['quote']}\"")}
     return {**out, "grade": "NONE",
             "evidence": (f"Schedule {n} still exists ({current['count']} schedules now); its "
                          f"contents may have changed in the amendment.")}

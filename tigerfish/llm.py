@@ -25,6 +25,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import os
 
+from tigerfish import trace
+
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "cache" / "llm"
 USAGE_LOG = ROOT / "logs" / "usage.jsonl"
@@ -195,6 +197,7 @@ def chat(model, messages, mock_key=None, thinking=None, cache=True, **kwargs):
     kwargs = _with_thinking(model, thinking, kwargs)
     key = _cache_key(model, messages, kwargs)
     path = CACHE_DIR / f"{key}.json"
+    trace.record("llm", path)
     if cache and path.exists():
         data = json.loads(path.read_text(encoding="utf-8"))
         _log_usage(model, data.get("usage"), cached=True)

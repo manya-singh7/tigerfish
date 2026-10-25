@@ -22,6 +22,8 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Add verified_by, verified_on, verification_note to each entry
 - [ ] rf-001 / gn-005: compare the flora figures on p.818 (Campbell Bay NP) vs p.851 (Galathea NP): 648 species, 422 genera, 142 families, 48 endemic, 85 rare on both. If confirmed, change status to verified.
 - [ ] ct-005: p.444 (total reclaimed land 194 ha) vs p.751 (71 ha for the airport): likely part-vs-total; Ultra now grades NONE. Confirm the 71 ha is a component of the 194 ha.
+- [ ] Table 3.16 status: Macaca fascicularis listed VU in the report, IUCN now EN (GBIF https://www.gbif.org/species/2436603). Confirm on the IUCN Red List and note the assessment year.
+- [ ] Table 3.16 taxonomy: Pteropus giganteus. GBIF (and GBIF's IUCN data) map it to P. vampyrus (EN); the Indian flying fox is usually P. medius (LC). Decide which name the report means before using any status for it.
 - [ ] gn-002 (under_review): p.751, whose budget is the 4 ha of coral restoration? Ultra says it covers the entire project (Port, Power plant, Township), not just the airport. If so, delete gn-002.
 
 ## Block B (PDF reader + Super-VL)

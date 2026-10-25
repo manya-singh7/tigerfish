@@ -82,6 +82,15 @@ def test_schedule_number(value, n):
     ("Schedules were rationalised from 6 to 4.", 4),
     ("It cut the six schedules to four schedules.", 4),
     ("The Act now has four schedules.", 4),
+    # wordings from the official sources (PRS bill track, Bill text)
+    ("The Bill reduces the total number of schedules to four by: (i) reducing the number.", 4),
+    ("this clause seeks to reduce the number of Schedules from present six to four as follows.", 4),
+    # sub-count first ("for protected animal species from four to two"), total later
+    ("With the deletion of the Schedule for vermin, and the reduction in the number of Schedules "
+     "for protected animal species from four to two, along with the addition of a Schedule for "
+     "species listed on the Appendices, this clause seeks to reduce the number of Schedules from "
+     "present six to four as follows.", 4),
+    ("Schedules for protected animal species reduced from four to two.", None),
     ("Schedule I covers the most protected species.", None),     # no count stated
 ])
 def test_schedule_count_from_text(text, count):
@@ -189,3 +198,47 @@ def test_markdown_removed_from_quotes():
 def test_quote_prefers_official_source():
     assert status.quote_rank("cut from six to four", "https://prsindia.org/bill") > \
         status.quote_rank("The 2022 amendment cut schedules from six to four", "https://blog.example")
+
+
+class TwoTierTavily:
+    """Official sites (include_domains set) return `official_text`; the open web returns SOURCE."""
+
+    def __init__(self, official_text):
+        self.official_text, self.searches = official_text, []
+
+    def search(self, **kw):
+        self.searches.append(kw.get("include_domains"))
+        url = "https://prsindia.org/wpa" if kw.get("include_domains") else "https://blog.example/wpa"
+        return {"results": [{"url": url, "content": ""}], "usage": {"credits": 1}}
+
+    def extract(self, **kw):
+        text = self.official_text if "prsindia" in kw["urls"][0] else SOURCE
+        return {"results": [{"url": u, "raw_content": text} for u in kw["urls"]]}
+
+
+@pytest.fixture
+def two_tier(monkeypatch, tmp_path):
+    def install(official_text):
+        fake = TwoTierTavily(official_text)
+        monkeypatch.setattr(copycheck, "CACHE_DIR", tmp_path)
+        monkeypatch.setattr(copycheck, "client", lambda: fake)
+        return fake
+    return install
+
+
+def test_official_sources_searched_first(two_tier):
+    fake = two_tier("The Bill reduces the number of schedules from six to four.")
+    cur = status.current_schedules(copycheck.Budget(10))
+    assert fake.searches == [status.OFFICIAL_SEARCH_DOMAINS]        # no open-web search needed
+    assert cur["official"] and cur["url"] == "https://prsindia.org/wpa"
+    v = status.check_schedule("Rattus rattus", "Sch-V", cur)
+    assert "non-official" not in v["evidence"]
+
+
+def test_open_web_fallback_is_labelled(two_tier):
+    fake = two_tier("Nothing about how many schedules there are.")
+    cur = status.current_schedules(copycheck.Budget(10))
+    assert fake.searches == [status.OFFICIAL_SEARCH_DOMAINS, None]
+    assert not cur["official"] and cur["label"] == "non-official source"
+    v = status.check_schedule("Rattus rattus", "Sch-V", cur)
+    assert "(non-official source)" in v["evidence"] and v["grade"] == "ORANGE"

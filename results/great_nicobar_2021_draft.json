@@ -1,0 +1,229 @@
+{
+  "id": "great_nicobar_2021_draft",
+  "title": "Great Nicobar EIA (2021 draft)",
+  "source": "Draft EIA by Vimta Labs for ANIIDCO, December 2021",
+  "pages_read": 10,
+  "pages_total": 1213,
+  "checks": [
+    "Claim extraction (Nemotron Lightning / Super-VL)",
+    "Internal contradictions and recycled figures (Nemotron Ultra)",
+    "Copied text (Tavily)",
+    "Borrowed text (Tavily)"
+  ],
+  "cost": {
+    "nebius_usd": 0.1617,
+    "tavily_credits": 15,
+    "gbif_calls": 0,
+    "approx_seconds": 320
+  },
+  "known_issue_score": {
+    "passed": 4,
+    "scored": 4
+  },
+  "findings": [
+    {
+      "id": "rf-001",
+      "check": "recycled_figure",
+      "check_name": "Recycled figure",
+      "grade": "RED",
+      "title": "Same figure for different places, pages 818, 851",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 818,
+          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families"
+        },
+        {
+          "page": 851,
+          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 13 possible explanation words searched"
+        },
+        {
+          "label": "Other figures shared by these pages",
+          "value": "4, 10, 14, 20, 23, 24, 28, 48, 52, 76, 77, 85, 97, 330"
+        }
+      ],
+      "why": "The same flora and fauna species counts with identical breakdowns are given for two different national parks (Campbell Bay and Galathea) without any explanation for the duplication.",
+      "clear": "Separate survey data for each site, or a note that one common source covers all of them.",
+      "known_issue": "gn-005",
+      "images": [
+        "pages/great_nicobar_2021_draft_rf-001_p0818.png",
+        "pages/great_nicobar_2021_draft_rf-001_p0851.png"
+      ]
+    },
+    {
+      "id": "rf-002",
+      "check": "recycled_figure",
+      "check_name": "Recycled figure",
+      "grade": "RED",
+      "title": "Same figure for different places, pages 818, 851, 1168",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 818,
+          "text": "a total of 330 species of fauna are recorded from the Campbell Bay National Park"
+        },
+        {
+          "page": 851,
+          "text": "a total of 330 species of fauna are recorded from the Galathea National Park"
+        },
+        {
+          "page": 1168,
+          "text": "A total of 330 species of fauna are recorded from the whole GNI area"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 22 possible explanation words searched"
+        },
+        {
+          "label": "Other figures shared by these pages",
+          "value": "10, 20, 23, 24, 28, 52, 76, 97"
+        }
+      ],
+      "why": "The identical figure of 330 fauna species with the same taxonomic breakdown appears for three different geographic subjects (Campbell Bay National Park, Galathea National Park, and the whole GNI area) without any stated justification.",
+      "clear": "Separate survey data for each site, or a note that one common source covers all of them.",
+      "known_issue": "gn-003",
+      "images": [
+        "pages/great_nicobar_2021_draft_rf-002_p0818.png",
+        "pages/great_nicobar_2021_draft_rf-002_p0851.png",
+        "pages/great_nicobar_2021_draft_rf-002_p1168.png"
+      ]
+    },
+    {
+      "id": "ct-003",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 392 and 978 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 392,
+          "text": "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay."
+        },
+        {
+          "page": 978,
+          "text": "Coral reef exists in the proposed site for Transshipment / Port"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 11 possible explanation words searched"
+        }
+      ],
+      "why": "Page 392 states the ZSI report found no coral in the bay portion of Galathea Bay, while page 978's preliminary assessment states a coral reef exists in the proposed transshipment/port site, which is located in Galathea Bay. The report does not reconcile these contradictory findings on these pages.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": "gn-001",
+      "images": [
+        "pages/great_nicobar_2021_draft_ct-003_p0392.png",
+        "pages/great_nicobar_2021_draft_ct-003_p0978.png"
+      ]
+    },
+    {
+      "id": "ct-004",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 940 and 1168 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 940,
+          "text": "A total of 695 species of fauna with the endemism of 158 species"
+        },
+        {
+          "page": 1168,
+          "text": "A total of 330 species of fauna are recorded from the whole GNI area"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 14 possible explanation words searched"
+        }
+      ],
+      "why": "Page 940 reports 695 fauna species from Great Nicobar Island, while page 1168 records 330 fauna species from the whole GNI area. The report does not explain this discrepancy on these pages.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": "gn-004",
+      "images": [
+        "pages/great_nicobar_2021_draft_ct-004_p0940.png",
+        "pages/great_nicobar_2021_draft_ct-004_p1168.png"
+      ]
+    },
+    {
+      "id": "ct-020",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "ORANGE",
+      "title": "Pages 851 and 940 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 851,
+          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families"
+        },
+        {
+          "page": 940,
+          "text": "approximately 600 species of flora reported from Great Nicobar Island"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 12 possible explanation words searched"
+        }
+      ],
+      "why": "Galathea National Park is located within Great Nicobar Island, yet the park's reported flora (648 species) exceeds the island's approximate total (600 species). The report cites different sources and does not clarify the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_ct-020_p0851.png",
+        "pages/great_nicobar_2021_draft_ct-020_p0940.png"
+      ]
+    },
+    {
+      "id": "bt-p392",
+      "check": "borrowed_text",
+      "check_name": "Borrowed text",
+      "grade": "INFO",
+      "title": "Page 392 uses uncited text from www.fhwa.dot.gov",
+      "message": "25 consecutive words match https://www.fhwa.dot.gov/clas/ctip/wildlife_crossing_structures/ch_3.aspx verbatim; no citation to this source found on p.392. Consider citing it.",
+      "quotes": [
+        {
+          "page": 392,
+          "text": "before initiating project planning for wildlife habitat connectivity, the first step in avoiding impacts from road construction on wildlife populations and their habitats is to"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Source",
+          "value": "FHWA - Center for Local Aid Support - Publications",
+          "url": "https://www.fhwa.dot.gov/clas/ctip/wildlife_crossing_structures/ch_3.aspx"
+        },
+        {
+          "label": "Verbatim run",
+          "value": "25 words"
+        },
+        {
+          "label": "Source text",
+          "value": "...habitat, (2) mitigate affected wildlife populations and habitats, or (3) compensate for the loss of wildlife habitat as Figure 11 shows. Before initiating project planning for wildlife habitat connectivity, the first step in avoiding impacts from road construction on wildlife populations and their habitats is to make alignment adjustments to prevent conflicts. The majority of major road construction projects today are expansions or reconstructions, so there..."
+        }
+      ],
+      "why": "25 consecutive words match a generic external source, and page 392 does not cite it.",
+      "clear": "A citation to the source near this text.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_bt-p392_p0392.png"
+      ]
+    }
+  ],
+  "exported_in_s": 4.9
+}

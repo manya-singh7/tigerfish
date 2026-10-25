@@ -1,0 +1,290 @@
+{
+  "id": "indira_point_table_3_16",
+  "title": "Indira Point REIA, Table 3.16 (as published by Scroll.in)",
+  "source": "Table 3.16 of the WAPCOS Indira Point REIA (Apr 2026), as published by Scroll.in, 31 Aug 2026",
+  "pages_read": 1,
+  "pages_total": 1,
+  "unit": "table",
+  "checks": [
+    "Table reading (Nemotron Super-VL)",
+    "Species range (GBIF)",
+    "IUCN status (GBIF / IUCN Red List)",
+    "WPA schedule (Tavily, official sources)"
+  ],
+  "cost": {
+    "nebius_usd": 0.0006,
+    "tavily_credits": 2,
+    "gbif_calls": 67,
+    "approx_seconds": 477
+  },
+  "findings": [
+    {
+      "id": "sp-01",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Axis axis at Indira Point",
+      "message": "0 GBIF records of Axis axis within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Axis axis"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 8,050 worldwide"
+        },
+        {
+          "label": "Survey effort (Mammalia)",
+          "value": "85 records within 100 km, 513 within 500 km"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Axis axis",
+          "url": "https://www.gbif.org/species/2440934"
+        },
+        {
+          "label": "GBIF records near the site",
+          "value": "map of records within 500 km",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2440934&geo_distance=6.75,93.83,500km"
+        }
+      ],
+      "why": "0 GBIF records of Axis axis within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "sp-02",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Cervus unicolor at Indira Point",
+      "message": "0 GBIF records of Rusa unicolor within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Cervus unicolor"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Name",
+          "value": "\"Cervus unicolor\" is a synonym; GBIF accepted name is Rusa unicolor"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 67,764 worldwide"
+        },
+        {
+          "label": "Survey effort (Mammalia)",
+          "value": "85 records within 100 km, 513 within 500 km"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Rusa unicolor",
+          "url": "https://www.gbif.org/species/7261386"
+        },
+        {
+          "label": "GBIF records near the site",
+          "value": "map of records within 500 km",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=7261386&geo_distance=6.75,93.83,500km"
+        }
+      ],
+      "why": "0 GBIF records of Rusa unicolor within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "sp-03",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Felis chaus at Indira Point",
+      "message": "0 GBIF records of Felis chaus within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Felis chaus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 3,692 worldwide"
+        },
+        {
+          "label": "Survey effort (Mammalia)",
+          "value": "85 records within 100 km, 513 within 500 km"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Felis chaus",
+          "url": "https://www.gbif.org/species/2435066"
+        },
+        {
+          "label": "GBIF records near the site",
+          "value": "map of records within 500 km",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2435066&geo_distance=6.75,93.83,500km"
+        }
+      ],
+      "why": "0 GBIF records of Felis chaus within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "sp-04",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Funambulus pennantii at Indira Point",
+      "message": "0 GBIF records of Funambulus pennantii within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Funambulus pennantii"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 5,443 worldwide"
+        },
+        {
+          "label": "Survey effort (Mammalia)",
+          "value": "85 records within 100 km, 513 within 500 km"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Funambulus pennantii",
+          "url": "https://www.gbif.org/species/2437243"
+        },
+        {
+          "label": "GBIF records near the site",
+          "value": "map of records within 500 km",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2437243&geo_distance=6.75,93.83,500km"
+        }
+      ],
+      "why": "0 GBIF records of Funambulus pennantii within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "sp-05",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Muntiacus muntjak at Indira Point",
+      "message": "0 GBIF records of Muntiacus muntjak within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Muntiacus muntjak"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 6,147 worldwide"
+        },
+        {
+          "label": "Survey effort (Mammalia)",
+          "value": "85 records within 100 km, 513 within 500 km"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Muntiacus muntjak",
+          "url": "https://www.gbif.org/species/2440943"
+        },
+        {
+          "label": "GBIF records near the site",
+          "value": "map of records within 500 km",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2440943&geo_distance=6.75,93.83,500km"
+        }
+      ],
+      "why": "0 GBIF records of Muntiacus muntjak within 500 km. Local survey data is thin (85 Mammalia records within 100 km), but the wider 500 km region is surveyed (513 Mammalia records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "st-06",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Macaca fascicularis: IUCN category VU",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Macaca fascicularis | VU"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "VU"
+        },
+        {
+          "label": "Current",
+          "value": "EN"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Macaca fascicularis",
+          "url": "https://www.gbif.org/species/2436603"
+        }
+      ],
+      "why": "Report says VU; GBIF/IUCN Red List says EN (ENDANGERED) for Macaca fascicularis: https://www.gbif.org/species/2436603",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "st-07",
+      "check": "legal_schedule",
+      "check_name": "Legal schedule",
+      "grade": "ORANGE",
+      "title": "Rattus rattus: WPA schedule Sch-V",
+      "message": "Legal schedule may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Table 3.16",
+          "text": "Rattus rattus | Sch-V"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Sch-V"
+        },
+        {
+          "label": "Current",
+          "value": "4 schedules"
+        },
+        {
+          "label": "Source (official source)",
+          "value": "The Bill reduces the total number of schedules to four by: (i) reducing the number of schedules for specially protected animals to two (one for greater protection level), (ii) removes the schedule for vermin species, and (iii) inserts a new schedule for specimens listed in the Appendices under CITES (scheduled specimens).",
+          "url": "https://prsindia.org/billtrack/the-wild-life-protection-amendment-bill-2021"
+        }
+      ],
+      "why": "Report lists Schedule Sch-V; https://prsindia.org/billtrack/the-wild-life-protection-amendment-bill-2021 says: \"The Bill reduces the total number of schedules to four by: (i) reducing the number of schedules for specially protected animals to two (one for greater protection level), (ii) removes the schedule for vermin species, and (iii) inserts a new schedule for specimens listed in the Appendices under CITES (scheduled specimens).\"",
+      "clear": "The species' schedule under the Wild Life (Protection) Act as amended in 2022.",
+      "known_issue": null,
+      "images": []
+    }
+  ],
+  "exported_in_s": 0.4
+}
