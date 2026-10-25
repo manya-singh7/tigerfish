@@ -67,3 +67,11 @@ def test_every_finding_has_card_fields():
             assert f["why"] and f["clear"] and f["quotes"] and f["message"]
             for rel in f["images"]:
                 assert data.image_path(rel) is not None, rel
+
+
+@pytest.mark.skipif(not (ROOT / "results" / "eval.json").exists(), reason="no results/eval.json")
+def test_method_tab_shows_evaluation(no_keys):
+    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    text = "\n".join(m.value for m in at.markdown)
+    assert "#### Evaluation" in text and "Planted contradictions" in text
+    assert "1 USD = 84 INR" in text

@@ -151,7 +151,7 @@ def _mock_reply(model, mock_key):
     return reply
 
 
-def _log_usage(model, usage, cached, mock=False):
+def _log_usage(model, usage, cached, mock=False, seconds=None):
     global session_cost_usd
     prompt = usage.get("prompt_tokens", 0) if usage else 0
     completion = usage.get("completion_tokens", 0) if usage else 0
@@ -160,7 +160,8 @@ def _log_usage(model, usage, cached, mock=False):
         session_cost_usd += cost
     entry = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": model,
              "mode": "MOCK" if mock else "REAL", "cached": cached,
-             "prompt_tokens": prompt, "completion_tokens": completion, "cost_usd": cost}
+             "prompt_tokens": prompt, "completion_tokens": completion, "cost_usd": cost,
+             "seconds": seconds}
     USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
     with USAGE_LOG.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry) + "\n")
@@ -203,11 +204,13 @@ def chat(model, messages, mock_key=None, thinking=None, cache=True, **kwargs):
         _log_usage(model, data.get("usage"), cached=True)
         return strip_think(data["choices"][0]["message"]["content"])
 
+    started = time.perf_counter()
     response = client().chat.completions.create(model=model, messages=messages, **kwargs)
     data = response.model_dump()
+    data["_latency_s"] = round(time.perf_counter() - started, 3)   # measured, for cost reports
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    _log_usage(model, data.get("usage"), cached=False)
+    _log_usage(model, data.get("usage"), cached=False, seconds=data["_latency_s"])
     if data["choices"][0]["finish_reason"] == "length":
         print(f"[llm] warning: {model} hit max_tokens; reply may be cut off")
     return strip_think(data["choices"][0]["message"]["content"])

@@ -1,0 +1,890 @@
+{
+  "generated": "2026-10-25 07:05",
+  "seed": 42,
+  "max_cost_usd": 0.3,
+  "known": {
+    "rows": [
+      {
+        "id": "gn-001",
+        "type": "contradiction",
+        "pages": [
+          392,
+          978
+        ],
+        "expected": [
+          "RED",
+          "ORANGE"
+        ],
+        "found": true,
+        "grade": "RED",
+        "finding_id": "ct-003",
+        "ok": true,
+        "status": null,
+        "scored": true
+      },
+      {
+        "id": "gn-002",
+        "type": "mismatch",
+        "pages": [
+          444,
+          751
+        ],
+        "expected": [
+          "ORANGE"
+        ],
+        "found": true,
+        "grade": "NONE",
+        "finding_id": "ct-018",
+        "ok": false,
+        "status": "under_review",
+        "scored": false
+      },
+      {
+        "id": "gn-003",
+        "type": "recycled_figure",
+        "pages": [
+          818,
+          851,
+          1168
+        ],
+        "expected": [
+          "RED"
+        ],
+        "found": true,
+        "grade": "RED",
+        "finding_id": "rf-002",
+        "ok": true,
+        "status": null,
+        "scored": true
+      },
+      {
+        "id": "gn-004",
+        "type": "contradiction",
+        "pages": [
+          1168,
+          940
+        ],
+        "expected": [
+          "RED"
+        ],
+        "found": true,
+        "grade": "RED",
+        "finding_id": "ct-004",
+        "ok": true,
+        "status": null,
+        "scored": true
+      },
+      {
+        "id": "gn-neg-001",
+        "type": "negative_control",
+        "pages": [
+          234,
+          1141
+        ],
+        "expected": [
+          "NONE"
+        ],
+        "found": false,
+        "grade": null,
+        "finding_id": null,
+        "ok": true,
+        "status": null,
+        "scored": true
+      },
+      {
+        "id": "gn-005",
+        "type": "recycled_figure",
+        "pages": [
+          818,
+          851
+        ],
+        "expected": [
+          "RED"
+        ],
+        "found": true,
+        "grade": "RED",
+        "finding_id": "rf-001",
+        "ok": true,
+        "status": "candidate_new_finding",
+        "scored": false
+      }
+    ],
+    "passed": 4,
+    "scored": 4,
+    "control": [
+      {
+        "pages": [
+          234,
+          1141
+        ],
+        "grade": "NONE",
+        "reason": "Both statements refer to Great Nicobar Island area; the report explains the reduction from 1045 to 910 sq km as due to submergence after the 2004 tsunami."
+      }
+    ]
+  },
+  "planted": {
+    "plants": [
+      {
+        "id": "pl-01",
+        "kind": "planted",
+        "source_id": "p940-02",
+        "source_page": 940,
+        "source_quote": "approximately 600 species of flora reported from Great Nicobar Island",
+        "source_value": 600,
+        "new_value": 900,
+        "unit": "species",
+        "subject": "flora species reported from Great Nicobar Island",
+        "target_page": 198,
+        "sentence": "As per the field survey, the figure for flora species reported from Great Nicobar Island is 900 species."
+      },
+      {
+        "id": "pl-02",
+        "kind": "planted",
+        "source_id": "p751-01",
+        "source_page": 751,
+        "source_quote": "needs to reclaim land approximately 71 Ha of land in order to establish an operational airport.",
+        "source_value": 71,
+        "new_value": 106,
+        "unit": "Ha",
+        "subject": "airport runway reclamation",
+        "target_page": 657,
+        "sentence": "As per the field survey, the figure for airport runway reclamation is 106 Ha."
+      },
+      {
+        "id": "pl-03",
+        "kind": "planted",
+        "source_id": "p234-02",
+        "source_page": 234,
+        "source_quote": "About 550 sq.km was badly affected.",
+        "source_value": 550,
+        "new_value": 275,
+        "unit": "sq km",
+        "subject": "Megapode Island submergence area",
+        "target_page": 594,
+        "sentence": "As per the field survey, the figure for Megapode Island submergence area is 275 sq km."
+      },
+      {
+        "id": "pl-04",
+        "kind": "planted",
+        "source_id": "p1168-01",
+        "source_page": 1168,
+        "source_quote": "A total of 330 species of fauna are recorded from the whole GNI area",
+        "source_value": 330,
+        "new_value": 495,
+        "unit": "species",
+        "subject": "fauna species recorded from GNI",
+        "target_page": 730,
+        "sentence": "As per the field survey, the figure for fauna species recorded from GNI is 495 species."
+      },
+      {
+        "id": "pl-05",
+        "kind": "planted",
+        "source_id": "p818-15",
+        "source_page": 818,
+        "source_quote": "14 species of mangroves are recorded from the area",
+        "source_value": 14,
+        "new_value": 7,
+        "unit": "species",
+        "subject": "mangrove species recorded from Campbell Bay National Park",
+        "target_page": 642,
+        "sentence": "As per the field survey, the figure for mangrove species recorded from Campbell Bay National Park is 7 species."
+      },
+      {
+        "id": "pl-06",
+        "kind": "planted",
+        "source_id": "p851-11",
+        "source_page": 851,
+        "source_quote": "10 species of amphibians",
+        "source_value": 10,
+        "new_value": 5,
+        "unit": "species",
+        "subject": "amphibian species recorded from Galathea National Park",
+        "target_page": 386,
+        "sentence": "As per the field survey, the figure for amphibian species recorded from Galathea National Park is 5 species."
+      },
+      {
+        "id": "pl-07",
+        "kind": "planted",
+        "source_id": "p751-03",
+        "source_page": 751,
+        "source_quote": "3200",
+        "source_value": 3200,
+        "new_value": 1600,
+        "unit": "INR Lacs/ Yr",
+        "subject": "coral restoration cost",
+        "target_page": 643,
+        "sentence": "As per the field survey, the figure for coral restoration cost is 1600 INR Lacs/ Yr."
+      },
+      {
+        "id": "pl-08",
+        "kind": "planted",
+        "source_id": "p1168-10",
+        "source_page": 1168,
+        "source_quote": "237 number of Shompen",
+        "source_value": 237,
+        "new_value": 356,
+        "unit": "number",
+        "subject": "Shompen population in Great Nicobar Island",
+        "target_page": 634,
+        "sentence": "As per the field survey, the figure for Shompen population in Great Nicobar Island is 356 number."
+      },
+      {
+        "id": "pl-09",
+        "kind": "planted",
+        "source_id": "p1168-03",
+        "source_page": 1168,
+        "source_quote": "97 species of birds",
+        "source_value": 97,
+        "new_value": 146,
+        "unit": "species",
+        "subject": "bird species recorded from GNI",
+        "target_page": 489,
+        "sentence": "As per the field survey, the figure for bird species recorded from GNI is 146 species."
+      },
+      {
+        "id": "pl-10",
+        "kind": "planted",
+        "source_id": "p1168-14",
+        "source_page": 1168,
+        "source_quote": "The percentage of male literates to the total literates of the study area works out to be 63.70%",
+        "source_value": 63.7,
+        "new_value": 95.55,
+        "unit": "%",
+        "subject": "male literacy percentage in study area",
+        "target_page": 572,
+        "sentence": "As per the field survey, the figure for male literacy percentage in study area is 95.55 %."
+      },
+      {
+        "id": "ex-11",
+        "kind": "explained",
+        "source_id": "p234-01",
+        "source_page": 234,
+        "source_quote": "Before Tusnami the GNI had total area of 1045 sq km which reduced to 910 sqkm after the Tsunami due to the submergence of part of the island.",
+        "source_value": 910,
+        "new_value": 455,
+        "unit": "sq km",
+        "subject": "Great Nicobar Island area post-tsunami",
+        "target_page": 140,
+        "sentence": "As per the field survey, the figure for Great Nicobar Island area post-tsunami was revised from 910 sq km to 455 sq km after the 2021 survey."
+      },
+      {
+        "id": "ex-12",
+        "kind": "explained",
+        "source_id": "p1141-05",
+        "source_page": 1141,
+        "source_quote": "The southern tip of the Island at Indira Point is about 25-40 km from the major international sea route",
+        "source_value": 25,
+        "new_value": 12,
+        "unit": "km",
+        "subject": "Indira Point to international sea route",
+        "target_page": 403,
+        "sentence": "As per the field survey, the figure for Indira Point to international sea route was revised from 25 km to 12 km after the 2021 survey."
+      },
+      {
+        "id": "ex-13",
+        "kind": "explained",
+        "source_id": "p1168-04",
+        "source_page": 1168,
+        "source_quote": "23 species of reptiles",
+        "source_value": 23,
+        "new_value": 34,
+        "unit": "species",
+        "subject": "reptile species recorded from GNI",
+        "target_page": 1117,
+        "sentence": "As per the field survey, the figure for reptile species recorded from GNI was revised from 23 species to 34 species after the 2021 survey."
+      },
+      {
+        "id": "ex-14",
+        "kind": "explained",
+        "source_id": "p1168-06",
+        "source_page": 1168,
+        "source_quote": "52 species of butterflies",
+        "source_value": 52,
+        "new_value": 26,
+        "unit": "species",
+        "subject": "butterfly species recorded from GNI",
+        "target_page": 557,
+        "sentence": "As per the field survey, the figure for butterfly species recorded from GNI was revised from 52 species to 26 species after the 2021 survey."
+      },
+      {
+        "id": "ex-15",
+        "kind": "explained",
+        "source_id": "p1168-07",
+        "source_page": 1168,
+        "source_quote": "24 species of odonates",
+        "source_value": 24,
+        "new_value": 36,
+        "unit": "species",
+        "subject": "odonate species recorded from GNI",
+        "target_page": 777,
+        "sentence": "As per the field survey, the figure for odonate species recorded from GNI was revised from 24 species to 36 species after the 2021 survey."
+      }
+    ],
+    "estimate_usd": 0.2,
+    "estimate_extract_usd": 0.0,
+    "estimate_verdicts_usd": 0.2,
+    "score": {
+      "rows": [
+        {
+          "id": "pl-01",
+          "kind": "planted",
+          "source_page": 940,
+          "target_page": 198,
+          "subject": "flora species reported from Great Nicobar Island",
+          "source_value": 600,
+          "new_value": 900,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-02",
+          "kind": "planted",
+          "source_page": 751,
+          "target_page": 657,
+          "subject": "airport runway reclamation",
+          "source_value": 71,
+          "new_value": 106,
+          "unit": "Ha",
+          "extracted": false,
+          "paired": false,
+          "grade": null,
+          "ok": false,
+          "stage_missed": "extraction",
+          "note": "the planted sentence was not extracted as a claim"
+        },
+        {
+          "id": "pl-03",
+          "kind": "planted",
+          "source_page": 234,
+          "target_page": 594,
+          "subject": "Megapode Island submergence area",
+          "source_value": 550,
+          "new_value": 275,
+          "unit": "sq km",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-04",
+          "kind": "planted",
+          "source_page": 1168,
+          "target_page": 730,
+          "subject": "fauna species recorded from GNI",
+          "source_value": 330,
+          "new_value": 495,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-05",
+          "kind": "planted",
+          "source_page": 818,
+          "target_page": 642,
+          "subject": "mangrove species recorded from Campbell Bay National Park",
+          "source_value": 14,
+          "new_value": 7,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-06",
+          "kind": "planted",
+          "source_page": 851,
+          "target_page": 386,
+          "subject": "amphibian species recorded from Galathea National Park",
+          "source_value": 10,
+          "new_value": 5,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-07",
+          "kind": "planted",
+          "source_page": 751,
+          "target_page": 643,
+          "subject": "coral restoration cost",
+          "source_value": 3200,
+          "new_value": 1600,
+          "unit": "INR Lacs/ Yr",
+          "extracted": false,
+          "paired": false,
+          "grade": null,
+          "ok": false,
+          "stage_missed": "extraction",
+          "note": "the planted sentence was not extracted as a claim"
+        },
+        {
+          "id": "pl-08",
+          "kind": "planted",
+          "source_page": 1168,
+          "target_page": 634,
+          "subject": "Shompen population in Great Nicobar Island",
+          "source_value": 237,
+          "new_value": 356,
+          "unit": "number",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-09",
+          "kind": "planted",
+          "source_page": 1168,
+          "target_page": 489,
+          "subject": "bird species recorded from GNI",
+          "source_value": 97,
+          "new_value": 146,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "RED",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "pl-10",
+          "kind": "planted",
+          "source_page": 1168,
+          "target_page": 572,
+          "subject": "male literacy percentage in study area",
+          "source_value": 63.7,
+          "new_value": 95.55,
+          "unit": "%",
+          "extracted": true,
+          "paired": false,
+          "grade": null,
+          "ok": false,
+          "stage_missed": "pairing",
+          "note": "extracted as type 'statement' (95.55 %); numeric pairing only compares quantity/count/area/distance claims"
+        },
+        {
+          "id": "ex-11",
+          "kind": "explained",
+          "source_page": 234,
+          "target_page": 140,
+          "subject": "Great Nicobar Island area post-tsunami",
+          "source_value": 910,
+          "new_value": 455,
+          "unit": "sq km",
+          "extracted": true,
+          "paired": true,
+          "grade": "NONE",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "ex-12",
+          "kind": "explained",
+          "source_page": 1141,
+          "target_page": 403,
+          "subject": "Indira Point to international sea route",
+          "source_value": 25,
+          "new_value": 12,
+          "unit": "km",
+          "extracted": true,
+          "paired": true,
+          "grade": "NONE",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "ex-13",
+          "kind": "explained",
+          "source_page": 1168,
+          "target_page": 1117,
+          "subject": "reptile species recorded from GNI",
+          "source_value": 23,
+          "new_value": 34,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "NONE",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "ex-14",
+          "kind": "explained",
+          "source_page": 1168,
+          "target_page": 557,
+          "subject": "butterfly species recorded from GNI",
+          "source_value": 52,
+          "new_value": 26,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "NONE",
+          "ok": true,
+          "stage_missed": null
+        },
+        {
+          "id": "ex-15",
+          "kind": "explained",
+          "source_page": 1168,
+          "target_page": 777,
+          "subject": "odonate species recorded from GNI",
+          "source_value": 24,
+          "new_value": 36,
+          "unit": "species",
+          "extracted": true,
+          "paired": true,
+          "grade": "NONE",
+          "ok": true,
+          "stage_missed": null
+        }
+      ],
+      "planted_caught": 7,
+      "planted_total": 10,
+      "explained_wrongly_flagged": 0,
+      "explained_total": 5,
+      "other_new_flags": [
+        {
+          "id": "ct-013",
+          "grade": "ORANGE",
+          "pages": [
+            730,
+            940
+          ],
+          "reason": "One figure (695) refers to total fauna species historically reported from Great Nicobar Island, while the other (495) refers to species recorded in a specific field survey; the report does not clarify whether the field survey was intended to be comprehensive or limited in scope."
+        }
+      ]
+    },
+    "candidates": 20,
+    "candidates_dropped": 45,
+    "stopped": null,
+    "cost_usd": 0.0,
+    "usage": [
+      {
+        "stage": "Planted test: claim extraction",
+        "calls": 15,
+        "in_tokens": 13688,
+        "out_tokens": 2571,
+        "total_tokens": 16259,
+        "seconds": 13.2,
+        "time_measured": true,
+        "cost_usd": 0.00144
+      },
+      {
+        "stage": "Planted test: Ultra verdicts",
+        "calls": 20,
+        "in_tokens": 52348,
+        "out_tokens": 23497,
+        "total_tokens": 75845,
+        "seconds": 78.7,
+        "time_measured": true,
+        "cost_usd": 0.12284
+      }
+    ]
+  },
+  "species": {
+    "out_of_place_flagged": 5,
+    "out_of_place_total": 5,
+    "out_of_place_grey": 0,
+    "real_wrongly_flagged": 0,
+    "real_total": 5,
+    "rows": [
+      {
+        "name": "Hydrocynus vittatus",
+        "group": "out of place",
+        "grade": "RED",
+        "local": 0,
+        "regional": 0,
+        "global": 1342,
+        "gbif_name": "Hydrocynus vittatus",
+        "lives_in": "Africa (tigerfish)"
+      },
+      {
+        "name": "Semaprochilodus insignis",
+        "group": "out of place",
+        "grade": "RED",
+        "local": 0,
+        "regional": 0,
+        "global": 8669,
+        "gbif_name": "Semaprochilodus insignis",
+        "lives_in": "South America (Amazon fish)"
+      },
+      {
+        "name": "Erinaceus europaeus",
+        "group": "out of place",
+        "grade": "ORANGE",
+        "local": 0,
+        "regional": 0,
+        "global": 956468,
+        "gbif_name": "Erinaceus europaeus",
+        "lives_in": "Europe (hedgehog)"
+      },
+      {
+        "name": "Antilope cervicapra",
+        "group": "out of place",
+        "grade": "ORANGE",
+        "local": 0,
+        "regional": 0,
+        "global": 2332,
+        "gbif_name": "Antilope cervicapra",
+        "lives_in": "mainland India (blackbuck)"
+      },
+      {
+        "name": "Giraffa camelopardalis",
+        "group": "out of place",
+        "grade": "ORANGE",
+        "local": 0,
+        "regional": 0,
+        "global": 5644,
+        "gbif_name": "Giraffa camelopardalis",
+        "lives_in": "Africa (giraffe)"
+      },
+      {
+        "name": "Macaca fascicularis",
+        "group": "recorded locally",
+        "grade": null,
+        "local": 16,
+        "regional": 39,
+        "global": 20211,
+        "gbif_name": "Macaca fascicularis",
+        "lives_in": "Great Nicobar"
+      },
+      {
+        "name": "Tupaia nicobarica",
+        "group": "recorded locally",
+        "grade": null,
+        "local": 40,
+        "regional": 42,
+        "global": 42,
+        "gbif_name": "Tupaia nicobarica",
+        "lives_in": "Great Nicobar"
+      },
+      {
+        "name": "Megapodius nicobariensis",
+        "group": "recorded locally",
+        "grade": null,
+        "local": 128,
+        "regional": 205,
+        "global": 228,
+        "gbif_name": "Megapodius nicobariensis",
+        "lives_in": "Great Nicobar"
+      },
+      {
+        "name": "Dermochelys coriacea",
+        "group": "recorded locally",
+        "grade": null,
+        "local": 3,
+        "regional": 3,
+        "global": 53588,
+        "gbif_name": "Dermochelys coriacea",
+        "lives_in": "Great Nicobar"
+      },
+      {
+        "name": "Crocodylus porosus",
+        "group": "recorded locally",
+        "grade": null,
+        "local": 1,
+        "regional": 2,
+        "global": 107676,
+        "gbif_name": "Crocodylus porosus",
+        "lives_in": "Great Nicobar"
+      }
+    ]
+  },
+  "table": {
+    "article": {
+      "title": "'Fake claims': Great Nicobar lighthouse project study lists species found in Africa, Amazon",
+      "author": "Pankaj Sekhsaria",
+      "date": "31 Aug 2026",
+      "url": "https://scroll.in/article/1095311/fake-claims-great-nicobar-lighthouse-project-study-lists-species-found-in-africa-amazon",
+      "quote": "Of the 12 mammals in the table, only three are found on Great Nicobar.",
+      "named_mainland": [
+        "Cervus unicolor",
+        "Muntiacus muntjak"
+      ]
+    },
+    "rows": [
+      {
+        "name": "Axis axis",
+        "gbif_name": "Axis axis",
+        "grade": "ORANGE",
+        "local": 0
+      },
+      {
+        "name": "Cervus unicolor",
+        "gbif_name": "Rusa unicolor",
+        "grade": "ORANGE",
+        "local": 0
+      },
+      {
+        "name": "Crocidura hispida",
+        "gbif_name": "Crocidura hispida",
+        "grade": "GREY",
+        "local": 0
+      },
+      {
+        "name": "Felis chaus",
+        "gbif_name": "Felis chaus",
+        "grade": "ORANGE",
+        "local": 0
+      },
+      {
+        "name": "Funambulus pennantii",
+        "gbif_name": "Funambulus pennantii",
+        "grade": "ORANGE",
+        "local": 0
+      },
+      {
+        "name": "Macaca fascicularis",
+        "gbif_name": "Macaca fascicularis",
+        "grade": null,
+        "local": 16
+      },
+      {
+        "name": "Muntiacus muntjak",
+        "gbif_name": "Muntiacus muntjak",
+        "grade": "ORANGE",
+        "local": 0
+      },
+      {
+        "name": "Paguma larvata",
+        "gbif_name": "Paguma larvata",
+        "grade": "GREY",
+        "local": 0
+      },
+      {
+        "name": "Pteropus giganteus",
+        "gbif_name": "Pteropus vampyrus",
+        "grade": "GREY",
+        "local": 0
+      },
+      {
+        "name": "Rattus rattus",
+        "gbif_name": "Rattus rattus",
+        "grade": "GREY",
+        "local": 0
+      },
+      {
+        "name": "Sus scrofa andamanensis",
+        "gbif_name": "Sus scrofa",
+        "grade": null,
+        "local": 2
+      },
+      {
+        "name": "Tupaia nicobarica nicobarica",
+        "gbif_name": "Tupaia nicobarica",
+        "grade": null,
+        "local": 40
+      }
+    ],
+    "plausible": [
+      "Macaca fascicularis",
+      "Sus scrofa andamanensis",
+      "Tupaia nicobarica nicobarica"
+    ],
+    "flagged": 5,
+    "grey": 4,
+    "others": 9,
+    "named_mainland_grades": {
+      "Cervus unicolor": "ORANGE",
+      "Muntiacus muntjak": "ORANGE"
+    }
+  },
+  "cost": {
+    "rows": [
+      {
+        "stage": "Claim extraction, text pages (8)",
+        "calls": 8,
+        "in_tokens": 11832,
+        "out_tokens": 7710,
+        "total_tokens": 19542,
+        "seconds": 47.8,
+        "time_measured": false,
+        "cost_usd": 0.00256
+      },
+      {
+        "stage": "Claim extraction, vision pages (2)",
+        "calls": 3,
+        "in_tokens": 10842,
+        "out_tokens": 2625,
+        "total_tokens": 13467,
+        "seconds": 30.5,
+        "time_measured": false,
+        "cost_usd": 0.00562
+      },
+      {
+        "stage": "Contradiction check (Ultra verdicts)",
+        "calls": 21,
+        "in_tokens": 74327,
+        "out_tokens": 26354,
+        "total_tokens": 100681,
+        "seconds": 79.4,
+        "time_measured": false,
+        "cost_usd": 0.15339
+      },
+      {
+        "stage": "Copy-paste check (Lightning)",
+        "calls": 1,
+        "in_tokens": 1632,
+        "out_tokens": 70,
+        "total_tokens": 1702,
+        "seconds": 131.8,
+        "time_measured": false,
+        "cost_usd": 0.00011
+      },
+      {
+        "stage": "Table reading (Super-VL) + GBIF",
+        "calls": 1,
+        "in_tokens": 799,
+        "out_tokens": 401,
+        "total_tokens": 1200,
+        "seconds": 3.3,
+        "time_measured": false,
+        "cost_usd": 0.0006
+      }
+    ],
+    "tavily_credits": {
+      "copy_paste": 15,
+      "status": 2
+    },
+    "gbif_calls": 55,
+    "extrapolation": {
+      "pages_total": 1213,
+      "pages_text": 543,
+      "pages_vision": 579,
+      "pages_hindi_skipped": 91,
+      "per_unit": {
+        "text_page_usd": 0.00032,
+        "vision_page_usd": 0.00281,
+        "verdict_usd": 0.007304,
+        "verdicts_per_page": 2.1,
+        "tavily_per_page": 1.5,
+        "text_page_s": 5.975,
+        "vision_page_s": 15.25,
+        "verdict_s": 3.780952
+      },
+      "verdicts": 2356,
+      "usd": 19.01,
+      "inr": 1597,
+      "api_minutes_sequential": 350,
+      "tavily_credits": 1683,
+      "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + (verdicts_per_page x pages) x cost_per_verdict"
+    }
+  },
+  "eval_cost_usd": 0.0
+}

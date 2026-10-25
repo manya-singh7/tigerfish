@@ -1,5 +1,8 @@
 """The "Method & limits" tab."""
 
+import json
+from pathlib import Path
+
 import streamlit as st
 
 from tigerfish import claims, contradictions, copycheck, species
@@ -65,5 +68,43 @@ wrong, only that it does not agree with another statement or with public records
 """
 
 
+EVAL_FILE = Path(__file__).resolve().parents[2] / "results" / "eval.json"
+
+
+def _table(headers, rows):
+    out = ["| " + " | ".join(headers) + " |", "|" + "|".join("---" for _ in headers) + "|"]
+    out += ["| " + " | ".join(str(c) for c in r) + " |" for r in rows]
+    return "\n".join(out)
+
+
+def render_evaluation():
+    """The Evaluation section, from results/eval.json (written by scripts/evaluate.py)."""
+    if not EVAL_FILE.exists():
+        return
+    e = json.loads(EVAL_FILE.read_text(encoding="utf-8"))
+    k, s, t = e["known"], e["species"], e["table"]
+    sc = e["planted"].get("score", {})
+    x = e["cost"]["extrapolation"]
+    neg_ok = all(r["ok"] for r in k["rows"] if r["id"] == "gn-neg-001")
+    st.markdown("#### Evaluation")
+    st.markdown(_table(["Test", "Result"], [
+        ["Known issues in the Great Nicobar EIA", f"{k['passed']} of {k['scored']} scored issues found"],
+        ["Negative control (explained 1045 vs 910 sq km)", "not flagged" if neg_ok else "flagged"],
+        ["Planted contradictions", f"{sc.get('planted_caught')} of {sc.get('planted_total')} caught"],
+        ["Planted differences the text explains",
+         f"{sc.get('explained_wrongly_flagged')} of {sc.get('explained_total')} wrongly flagged"],
+        ["Planted out-of-place species", f"{s['out_of_place_flagged']} of {s['out_of_place_total']} flagged"],
+        ["Species recorded at the site", f"{s['real_wrongly_flagged']} of {s['real_total']} wrongly flagged"],
+        ["Table 3.16, species judged plausible", f"{len(t['plausible'])} of 12 (Scroll.in: three)"],
+    ]))
+    st.markdown(
+        f"**Full 1,213-page audit, estimated:** about ${x['usd']:.2f} (Rs {x['inr']:,} at "
+        f"1 USD = 84 INR) and about {x['api_minutes_sequential']} minutes of model time if run "
+        f"one call at a time. Estimate from the audited pages: `{x['formula']}`.")
+    st.caption(f"Generated {e['generated']} by scripts/evaluate.py (seed {e['seed']}). "
+               f"Full tables in results/eval.md.")
+
+
 def render():
     st.markdown(METHOD)
+    render_evaluation()
