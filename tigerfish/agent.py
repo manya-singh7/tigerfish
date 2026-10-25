@@ -108,7 +108,11 @@ TOOL_SPECS = [
                                "required": ["quote", "note"]}},
                            "conclusion": {"type": "string", "enum": list(CONCLUSIONS)},
                            "reasons": {"type": "array", "items": {"type": "string"},
-                                       "description": "one-line reasons for the conclusion"}}}}},
+                                       "description": "one-line reasons for the conclusion, each citing "
+                                                      "the evidence items it rests on by id: [E1] is the "
+                                                      "first evidence item, [E2] the second, [D1] the first "
+                                                      "species check. Reasons without a citation are shown "
+                                                      "as unverified."}}}}},
 ]
 TOOL_NAMES = [t["function"]["name"] for t in TOOL_SPECS]
 FINISH_ONLY = [t for t in TOOL_SPECS if t["function"]["name"] == "finish"]
@@ -281,7 +285,7 @@ def build_memo(ctx, args, stopped=None):
     """Validate finish() arguments: keep only verified quotes, a known conclusion."""
     args = args if isinstance(args, dict) else {}
     kept, dropped = [], []
-    for e in args.get("evidence") or []:
+    for n, e in enumerate(args.get("evidence") or [], 1):
         if not isinstance(e, dict):
             continue
         quote, url, page = str(e.get("quote") or ""), e.get("url"), e.get("page")
@@ -298,8 +302,8 @@ def build_memo(ctx, args, stopped=None):
                 if p in ctx.pages and (exact := verify_quote(quote, ctx.pages[p])):
                     where = {"page": p}
                     break
-        if exact:
-            kept.append({**where, "quote": exact, "note": str(e.get("note") or "")})
+        if exact:   # the id keeps the model's numbering, so its [E2] citations still point right
+            kept.append({"id": f"E{n}", **where, "quote": exact, "note": str(e.get("note") or "")})
         else:
             dropped.append({"page": page, "url": url, "quote": quote[:200]})
     conclusion = str(args.get("conclusion") or "").lower().strip()
@@ -308,8 +312,87 @@ def build_memo(ctx, args, stopped=None):
     reasons = lines(args.get("reasons"))
     if stopped and not reasons:
         reasons = [f"Stopped before a conclusion ({stopped})."]
-    return {"conclusion": conclusion, "reasons": reasons, "checked": lines(args.get("checked")),
-            "evidence": kept, "data": list(ctx.data), "dropped_quotes": dropped, "stopped": stopped}
+    data = [{"id": f"D{n}", **d} for n, d in enumerate(ctx.data, 1)]
+    supported, unverified = link_reasons(reasons, kept, data)
+    return {"conclusion": conclusion, "reasons": supported, "unverified_reasons": unverified,
+            "checked": lines(args.get("checked")), "evidence": kept, "data": data,
+            "dropped_quotes": dropped, "stopped": stopped}
+
+
+# ---------- reasons -> verified evidence ----------
+# A reason is kept as supported only if it points to at least one verified item:
+#   1. by id: "[E2]", "[D1]" (what the finish() schema asks for)
+#   2. by naming something that item contains: its page ("page 392", "pages 392, 738",
+#      "p.954"), its source document's date ("Oct 26, 2021"), a phrase it puts in quotes,
+#      a code or figure from it ("7(E)", "294,577"), or GBIF for an attached GBIF result.
+# Everything else goes to "unverified_reasons" (shown greyed out as not checked).
+
+CITED_ID = re.compile(r"\[\s*([ED]\d+(?:\s*,\s*[ED]\d+)*)\s*\]")
+PAGE_REF = re.compile(r"\b(?:pages?|pp?\.)\s*(\d+(?:\s*(?:,|and|&|-)\s*\d+)*)", re.IGNORECASE)
+DATE_REF = re.compile(r"\b([A-Z][a-z]{2})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})")
+QUOTED = re.compile(r"[\"“]([^\"”]{8,})[\"”]")
+CODE = re.compile(r"\b\d{1,2}\s*\([a-z]\)|\b\d{1,3}(?:,\d{3})+\b|\b\d{4,}\b", re.IGNORECASE)
+YEAR = re.compile(r"^(19|20)\d\d$")
+
+
+def _codes(text):
+    return {re.sub(r"\s+", "", c.lower()) for c in CODE.findall(text or "") if not YEAR.match(c)}
+
+
+def _dates(text):
+    return {(m[0].lower(), int(m[1]), m[2]) for m in DATE_REF.findall(text or "")}
+
+
+def item_text(item):
+    """Everything a reason may name about an item: quote/value, page, source URL (decoded)."""
+    from urllib.parse import unquote
+    return " ".join(str(item.get(k) or "") for k in ("quote", "value", "about", "source")) + " " + \
+        unquote(str(item.get("url") or ""))
+
+
+def cites(reason, item):
+    if item.get("page"):
+        for group in PAGE_REF.findall(reason):
+            if item["page"] in {int(n) for n in re.findall(r"\d+", group)}:
+                return True
+    text = item_text(item)
+    norm = claims_mod.normalize(text).lower()
+    if _dates(reason) & _dates(text):
+        return True
+    if any(claims_mod.normalize(q).lower() in norm for q in QUOTED.findall(reason)):
+        return True
+    if _codes(reason) & _codes(text):
+        return True
+    return bool(item.get("source", "").startswith("GBIF") and re.search(r"\bGBIF\b", reason))
+
+
+def link_reasons(reasons, evidence, data=()):
+    """([{text, evidence: [ids]}], [unverified text]) — see the rules above."""
+    items = {i["id"]: i for i in [*evidence, *data]}
+    supported, unverified = [], []
+    for r in reasons:
+        ids = [x.strip() for m in CITED_ID.findall(r) for x in m.split(",")]
+        text = CITED_ID.sub("", r).strip()
+        linked = [i for i in dict.fromkeys(ids) if i in items]
+        if not ids:
+            linked = [i for i, item in items.items() if cites(text, item)]
+        if linked:
+            supported.append({"text": text, "evidence": linked})
+        else:
+            unverified.append(text)
+    return supported, unverified
+
+
+def relink_memo(memo):
+    """Re-render a saved memo under these rules (no model call): ids on evidence and data,
+    reasons split into supported and unverified."""
+    evidence = [{"id": e.get("id") or f"E{n}", **e} for n, e in enumerate(memo.get("evidence") or [], 1)]
+    data = [{"id": d.get("id") or f"D{n}", **d} for n, d in enumerate(memo.get("data") or [], 1)]
+    texts = [f"{r['text']} [{', '.join(r['evidence'])}]" if isinstance(r, dict) else r
+             for r in memo.get("reasons") or []]
+    texts += memo.get("unverified_reasons") or []
+    supported, unverified = link_reasons(texts, evidence, data)
+    return {**memo, "evidence": evidence, "data": data, "reasons": supported, "unverified_reasons": unverified}
 
 
 # ---------- model calls ----------

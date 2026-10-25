@@ -7,10 +7,18 @@
  "memo": {
   "conclusion": "strengthens",
   "reasons": [
-   "GBIF confirms zero records of Panulirus interruptus within 3,000 km of Campbell Bay (294,577 global records are from Eastern Pacific)",
-   "The report's claim that this species is \"landed in considerable quantity\" at Campbell Bay is inconsistent with global distribution data",
-   "Independent research indicates other Panulirus species (e.g., P. polyphagus) are the ones found in Andaman & Nicobar waters",
-   "The finding's flag for verification is warranted"
+   {
+    "text": "GBIF confirms zero records of Panulirus interruptus within 3,000 km of Campbell Bay (294,577 global records are from Eastern Pacific)",
+    "evidence": [
+     "D1"
+    ]
+   },
+   {
+    "text": "The report's claim that this species is \"landed in considerable quantity\" at Campbell Bay is inconsistent with global distribution data",
+    "evidence": [
+     "E1"
+    ]
+   }
   ],
   "checked": [
    "Read page 954 of the Great Nicobar EIA report to confirm Panulirus interruptus mention at Campbell Bay",
@@ -20,6 +28,7 @@
   ],
   "evidence": [
    {
+    "id": "E1",
     "page": 954,
     "quote": "Apart from that shrimps (tiger prawn Penaeus monodon), rock lobsters (Panulirus interruptus) also being landed in considerable quantity.",
     "note": "Report claims Panulirus interruptus (rock lobster) is landed at Campbell Bay in considerable quantity"
@@ -27,6 +36,7 @@
   ],
   "data": [
    {
+    "id": "D1",
     "source": "GBIF (TigerFish species check)",
     "about": "Panulirus interruptus at 7, 93.93",
     "value": "0 GBIF records of Panulirus interruptus within 3,000 km; its 294,577 records worldwide are mostly from United States of America, Mexico, Canada. Local survey effort is low (150 Malacostraca records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
@@ -45,7 +55,11 @@
     "quote": "Six spiny lobsters species. Panulirus polyphagus (mud spiny lobster), are common spiny lobsters reported in A&N waters."
    }
   ],
-  "stopped": null
+  "stopped": null,
+  "unverified_reasons": [
+   "Independent research indicates other Panulirus species (e.g., P. polyphagus) are the ones found in Andaman & Nicobar waters",
+   "The finding's flag for verification is warranted"
+  ]
  },
  "trace": [
   {

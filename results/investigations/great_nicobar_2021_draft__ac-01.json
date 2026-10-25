@@ -7,10 +7,26 @@
  "memo": {
   "conclusion": "strengthens",
   "reasons": [
-   "Vimta Labs is accredited for sector 33 (Ports, harbours) only at Category B, but the report maps ICTT to Category 7(E) which corresponds to sector 33 and the integrated project is Category A",
-   "Vimta Labs is accredited for sector 39 (Townships and Area development) only at Category B, but the report maps Township to Category 8(b) which corresponds to sector 39 and the integrated project is Category A",
-   "Both AC meeting sources (Oct 26, 2021 and June 15, 2021) predate the report date (December 2021) and consistently show Category B accreditation for the relevant sectors",
-   "The NABET scheme requires consultants to hold Category A accreditation for Category A projects; Vimta Labs holds only Category B for sectors 33 and 39"
+   {
+    "text": "Vimta Labs is accredited for sector 33 (Ports, harbours) only at Category B, but the report maps ICTT to Category 7(E) which corresponds to sector 33 and the integrated project is Category A",
+    "evidence": [
+     "E2",
+     "E4"
+    ]
+   },
+   {
+    "text": "Vimta Labs is accredited for sector 39 (Townships and Area development) only at Category B, but the report maps Township to Category 8(b) which corresponds to sector 39 and the integrated project is Category A",
+    "evidence": [
+     "E2",
+     "E5"
+    ]
+   },
+   {
+    "text": "Both AC meeting sources (Oct 26, 2021 and June 15, 2021) predate the report date (December 2021) and consistently show Category B accreditation for the relevant sectors",
+    "evidence": [
+     "E3"
+    ]
+   }
   ],
   "checked": [
    "Report page 44: Vimta Labs Ltd accreditation certificate number NABET/EIA/1720/SA 088",
@@ -22,26 +38,31 @@
   ],
   "evidence": [
    {
+    "id": "E1",
     "page": 44,
     "quote": "M/s. Vimta Labs Ltd, Hyderabad (A QCI/NABET accredited organization with certificate no: NABET/EIA/1720/SA 088)",
     "note": "Report states Vimta Labs Ltd holds NABET certificate NABET/EIA/1720/SA 088"
    },
    {
+    "id": "E2",
     "page": 18,
     "quote": "An International Container Transhipment Terminal (ICTT), Category 7(E), i.e.; Port, Harbours category is proposed;  The Green Field International Airport under Category 7(a);  Township and Area Development under Category 8(b); and  Power Plant under Category 1(d). Holistic Development of GNI project at Andaman & Nicobar Islands falls under category ‘A’",
     "note": "Report maps ICTT to Category 7(E) (Port, Harbours) and Township to Category 8(b); integrated project is Category A"
    },
    {
+    "id": "E3",
     "url": "https://eiameeting.qci.org.in/Environment/meetings/MOM-Supple%28Website%20upload%29-%20dt%20Oct%2026%2C%202021_15.11.2021.pdf",
     "quote": "ACO was accredited for sectors 2(A), 4(A), 6(A), 7(A), 8(A), 9(A), 12(A), 21(A), 27(A), 28(B), 29(A), 31(A), 31(A), 33(B), 38(A) and 39(B)",
     "note": "AC Meeting Oct 26, 2021: Vimta Labs accredited for sector 33 (Ports, harbours) Category B and sector 39 (Townships) Category B"
    },
    {
+    "id": "E4",
     "page": 18,
     "quote": "An International Container Transhipment Terminal (ICTT), Category 7(E), i.e.; Port, Harbours category is proposed",
     "note": "Report confirms ICTT maps to Category 7(E) which corresponds to sector 33 (Ports, harbours)"
    },
    {
+    "id": "E5",
     "page": 18,
     "quote": "Township and Area Development under Category 8(b)",
     "note": "Report confirms Township maps to Category 8(b) which corresponds to sector 39 (Townships and Area development)"
@@ -60,7 +81,10 @@
     "quote": "33 Ports, harbours, break waters and dredging B 7 (e) ... 39 Townships and Area development projects B 8 (b)"
    }
   ],
-  "stopped": null
+  "stopped": null,
+  "unverified_reasons": [
+   "The NABET scheme requires consultants to hold Category A accreditation for Category A projects; Vimta Labs holds only Category B for sectors 33 and 39"
+  ]
  },
  "trace": [
   {

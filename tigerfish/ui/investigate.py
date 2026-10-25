@@ -85,21 +85,27 @@ def memo_html(memo):
     out = [f'<div class="tf-memo-head tf-memo-{esc(memo["conclusion"])}">'
            f'{esc(CONCLUSION_LABELS.get(memo["conclusion"], memo["conclusion"]))}</div>']
     if memo.get("reasons"):
-        out.append("<ul class='tf-memo-list'>" + "".join(f"<li>{esc(r)}</li>" for r in memo["reasons"]) + "</ul>")
-    if memo.get("evidence"):
-        out.append('<div class="tf-memo-sub">Verified quotes</div>')
-        for e in memo["evidence"]:
-            if e.get("page"):
-                where = f"Page {e['page']}"
-            else:
-                where = (f'<a href="{esc(e["url"])}" target="_blank">'
-                         f'{esc(urlsplit(e["url"]).netloc)}</a>')
-            out.append(f'<div class="tf-quote-label">{where if e.get("url") else esc(where)}</div>'
-                       f'<div class="tf-quote">{esc(e["quote"])}</div>'
-                       f'<div class="tf-memo-note">{esc(e["note"])}</div>')
+        out.append("<ul class='tf-memo-list'>" + "".join(
+            f"<li>{esc(r['text'])} " + "".join(f'<span class="tf-ref">{esc(i)}</span>' for i in r["evidence"])
+            + "</li>" for r in memo["reasons"]) + "</ul>")
+    if memo.get("unverified_reasons"):
+        out.append('<div class="tf-unverified"><div class="tf-memo-sub">Unverified reasoning (not checked)</div>'
+                   '<ul class="tf-memo-list">' + "".join(f"<li>{esc(r)}</li>" for r in memo["unverified_reasons"])
+                   + "</ul></div>")
+    if memo.get("evidence") or memo.get("data"):
+        out.append('<div class="tf-memo-sub">Verified evidence</div>')
+    for e in memo.get("evidence") or []:
+        if e.get("page"):
+            where = esc(f"Page {e['page']}")
+        else:
+            where = f'<a href="{esc(e["url"])}" target="_blank">{esc(urlsplit(e["url"]).netloc)}</a>'
+        out.append(f'<div class="tf-quote-label"><span class="tf-ref">{esc(e.get("id", ""))}</span>{where}</div>'
+                   f'<div class="tf-quote">{esc(e["quote"])}</div>'
+                   f'<div class="tf-memo-note">{esc(e["note"])}</div>')
     for d in memo.get("data") or []:
         link = f' <a href="{esc(d["url"])}" target="_blank">GBIF page</a>' if d.get("url") else ""
-        out.append(f'<div class="tf-ev"><span class="tf-ev-label">{esc(d["source"])}, {esc(d["about"])}:</span> '
+        out.append(f'<div class="tf-ev"><span class="tf-ref">{esc(d.get("id", ""))}</span>'
+                   f'<span class="tf-ev-label">{esc(d["source"])}, {esc(d["about"])}:</span> '
                    f'{esc(d["value"])}{link}</div>')
     if memo.get("checked"):
         out.append('<div class="tf-memo-sub">What was checked</div><ul class="tf-memo-list">'
@@ -111,8 +117,8 @@ def memo_html(memo):
                      f"page or source text and {'were' if dropped > 1 else 'was'} dropped.")
     if memo.get("stopped"):
         notes.append(f"Stopped early: {memo['stopped']}.")
-    notes.append("Reasons are the model's summary; only the quotes above are verified. "
-                 "The grade is unchanged: the reviewer decides.")
+    notes.append("Each reason above points to verified evidence by id; reasons without verified "
+                 "support are listed as unverified. The grade is unchanged: the reviewer decides.")
     out.append(f'<div class="tf-memo-foot">{esc(" ".join(notes))}</div>')
     return "".join(out)
 

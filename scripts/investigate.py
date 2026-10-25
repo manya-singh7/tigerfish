@@ -27,8 +27,12 @@ def main():
     parser.add_argument("findings", nargs="*", default=DEFAULT)
     parser.add_argument("--report", default="great_nicobar_2021_draft")
     parser.add_argument("--total-cap", type=float, default=0.20)
+    parser.add_argument("--rerender", action="store_true",
+                        help="re-render the saved memos (link reasons to evidence); no model calls")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if args.rerender:
+        return rerender(args.report, args.findings)
 
     report = data.load(args.report)
     pdf, site = REPORTS[args.report]
@@ -58,6 +62,28 @@ def main():
         print(f"  dropped unverified quotes: {len(m['dropped_quotes'])}")
         print(f"  totals: {t}  -> {path.relative_to(ROOT)}")
     print(f"\nTotal model cost (as if uncached): ${total:.4f}; new API spend this run: ${llm.session_cost_usd:.4f}")
+
+
+def rerender(report_id, finding_ids):
+    for fid in finding_ids:
+        inv = agent.load(report_id, fid)
+        if inv is None:
+            print(f"{fid}: no saved investigation")
+            continue
+        inv.pop("report_id", None)
+        inv["memo"] = agent.relink_memo(inv["memo"])
+        agent.save(report_id, inv)
+        m = inv["memo"]
+        print(f"\n=== {fid}: {m['conclusion']}")
+        for e in [*m["evidence"], *m["data"]]:
+            where = f"p.{e['page']}" if e.get("page") else (e.get("url") or e.get("source"))
+            print(f"  {e['id']}  [{where}] {(e.get('quote') or e.get('value'))[:110]}")
+        print("  Reasons (supported):")
+        for r in m["reasons"]:
+            print(f"   - {r['text']}  [{', '.join(r['evidence'])}]")
+        print("  Unverified reasoning (not checked):")
+        for r in m["unverified_reasons"]:
+            print(f"   - {r}")
 
 
 if __name__ == "__main__":

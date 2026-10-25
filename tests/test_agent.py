@@ -216,7 +216,7 @@ def test_species_results_are_attached_as_data(monkeypatch):
     ctx = agent.Context(PAGES)
     agent.dispatch(ctx, "check_species", {"name": "Panulirus interruptus", "lat": 7, "lon": 93.93})
     memo = agent.build_memo(ctx, {"conclusion": "strengthens"})
-    assert memo["data"] == [{"source": "GBIF (TigerFish species check)", "about": "Panulirus interruptus at 7, 93.93",
+    assert memo["data"] == [{"id": "D1", "source": "GBIF (TigerFish species check)", "about": "Panulirus interruptus at 7, 93.93",
                              "value": "0 GBIF records within 3,000 km", "url": "u"}]
 
 
@@ -233,3 +233,61 @@ def test_full_length_tool_call_counts_as_cut_off(monkeypatch):
 ])
 def test_memo_lists_accept_strings(value, expected):
     assert agent.lines(value) == expected
+
+
+# ---------- reasons must point to verified evidence ----------
+
+EVIDENCE = [{"id": "E1", "page": 392, "quote": "no coral exists in the bay portion of the Galathea Bay", "note": ""},
+            {"id": "E3", "url": "https://x.qci.org.in/MoM%20dt%20Oct%2026%2C%202021.pdf",
+             "quote": "ACO was accredited for sectors 29(A), 33(B) and 39(B)", "note": ""}]
+DATA = [{"id": "D1", "source": "GBIF (TigerFish species check)", "about": "Panulirus interruptus at 7, 93.93",
+         "value": "0 GBIF records within 3,000 km; 294,577 worldwide", "url": "u"}]
+
+
+@pytest.mark.parametrize("reason, ids", [
+    ("Page 392 limits the statement to the bay portion [E1]", ["E1"]),          # explicit id
+    ("Both sources agree [E1, E3]", ["E1", "E3"]),
+    ("The ZSI report (pages 392, 738) finds no coral in the bay", ["E1"]),       # names the page
+    ("Minutes of Oct 26, 2021 show Category B", ["E3"]),                         # names the source date
+    ("Sector 33(B) is Category B only", ["E3"]),                                 # code from the quote
+    ('The report says "no coral exists in the bay portion"', ["E1"]),           # quoted phrase
+    ("GBIF shows no nearby records", ["D1"]),                                    # GBIF data attached
+    ("294,577 records worldwide, none nearby", ["D1"]),
+])
+def test_reason_linked_to_verified_evidence(reason, ids):
+    supported, unverified = agent.link_reasons([reason], EVIDENCE, DATA)
+    assert unverified == [] and supported[0]["evidence"] == ids and "[" not in supported[0]["text"]
+
+
+@pytest.mark.parametrize("reason", [
+    "Independent research indicates other Panulirus species occur here",         # nothing cited
+    "Cites a dropped quote [E2]",                                                # id of a dropped item
+    "Page 978 says coral exists",                                                # page not in evidence
+    "The report was published in 2021",                                         # a year is not a code
+    'It says "something the source never says"',
+])
+def test_reason_without_verified_support_is_unverified(reason):
+    supported, unverified = agent.link_reasons([reason], EVIDENCE, DATA)
+    assert supported == [] and unverified == [agent.CITED_ID.sub("", reason).strip()]
+
+
+def test_build_memo_ids_follow_model_numbering(monkeypatch):
+    ctx = agent.Context(PAGES)
+    memo = agent.build_memo(ctx, {"conclusion": "weakens", "evidence": [
+        {"page": 392, "quote": "invented text", "note": "dropped"},
+        {"page": 392, "quote": "no coral exists in the bay portion of the Galathea Bay", "note": "kept"}],
+        "reasons": ["The scope is the bay portion [E2]", "Unsupported claim [E1]", "No citation at all"]})
+    assert [e["id"] for e in memo["evidence"]] == ["E2"]
+    assert memo["reasons"] == [{"text": "The scope is the bay portion", "evidence": ["E2"]}]
+    assert memo["unverified_reasons"] == ["Unsupported claim", "No citation at all"]
+
+
+def test_relink_saved_memo_is_idempotent():
+    old = {"conclusion": "strengthens", "reasons": ["The ZSI report (pages 392, 738) says no coral",
+                                                    "The two statements cannot both be right"],
+           "evidence": [{"page": 392, "quote": "no coral exists", "note": ""}], "data": [], "checked": []}
+    once = agent.relink_memo(old)
+    assert once["evidence"][0]["id"] == "E1"
+    assert once["reasons"] == [{"text": "The ZSI report (pages 392, 738) says no coral", "evidence": ["E1"]}]
+    assert once["unverified_reasons"] == ["The two statements cannot both be right"]
+    assert agent.relink_memo(once) == once

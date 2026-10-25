@@ -7,10 +7,20 @@
  "memo": {
   "conclusion": "strengthens",
   "reasons": [
-   "The ZSI report (pages 392, 738) consistently states no coral exists in the Galathea Bay area/bay portion, with corals only on the eastern peninsula outside the construction area",
-   "The preliminary assessment (page 978) states coral reef exists in the proposed transshipment/port site, which is confirmed to be in Galathea Bay (page 559)",
-   "The two statements refer to the same geographic area (Galathea Bay / proposed port site) but reach opposite conclusions about coral presence",
-   "The report does not reconcile this contradiction between the ZSI survey findings and the preliminary assessment"
+   {
+    "text": "The ZSI report (pages 392, 738) consistently states no coral exists in the Galathea Bay area/bay portion, with corals only on the eastern peninsula outside the construction area",
+    "evidence": [
+     "E1",
+     "E2"
+    ]
+   },
+   {
+    "text": "The preliminary assessment (page 978) states coral reef exists in the proposed transshipment/port site, which is confirmed to be in Galathea Bay (page 559)",
+    "evidence": [
+     "E3",
+     "E4"
+    ]
+   }
   ],
   "checked": [
    "Page 392: ZSI report statement on coral in Galathea Bay",
@@ -20,21 +30,25 @@
   ],
   "evidence": [
    {
+    "id": "E1",
     "page": 392,
     "quote": "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay. However, some coral were found on the eastern flank near the peninsular part. These patches of coral are not in the port construction area.",
     "note": "ZSI report finds no coral in the bay portion of Galathea Bay; corals on eastern flank are explicitly outside the port construction area"
    },
    {
+    "id": "E2",
     "page": 738,
     "quote": "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) some corals were noticed.",
     "note": "Environment Management Plan repeats ZSI finding: no coral in Galathea Bay area, only on eastern peninsula outside construction area"
    },
    {
+    "id": "E3",
     "page": 978,
     "quote": "2. Are any coral reefs in the area? Yes Coral reef exists in the proposed site for Transshipment / Port",
     "note": "Preliminary assessment table states coral reef exists in the proposed transshipment/port site"
    },
    {
+    "id": "E4",
     "page": 559,
     "quote": "Figure-5.2: Galathea Bay Location – Proposed Layout – Selected Site the Present Project",
     "note": "Confirms the proposed transshipment/port site is located in Galathea Bay"
@@ -42,7 +56,11 @@
   ],
   "data": [],
   "dropped_quotes": [],
-  "stopped": null
+  "stopped": null,
+  "unverified_reasons": [
+   "The two statements refer to the same geographic area (Galathea Bay / proposed port site) but reach opposite conclusions about coral presence",
+   "The report does not reconcile this contradiction between the ZSI survey findings and the preliminary assessment"
+  ]
  },
  "trace": [
   {

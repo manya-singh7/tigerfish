@@ -60,6 +60,11 @@ CSS = f"""
                   margin: 0.6rem 0 0.3rem 0; }}
   .tf-memo-list {{ margin: 0.1rem 0 0.4rem 1.1rem; padding: 0; font-size: 0.92rem; }}
   .tf-memo-note {{ font-size: 0.85rem; color: {MUTED}; margin: 0.2rem 0 0.6rem 0; }}
+  .tf-ref {{ font-family: ui-monospace, Consolas, monospace; font-size: 0.7rem; font-weight: 700;
+             color: {ACCENT}; background: #EAF2F2; border-radius: 4px; padding: 0.02rem 0.3rem;
+             margin: 0 0.35rem 0 0.1rem; }}
+  .tf-unverified {{ color: #8A979D; }}
+  .tf-unverified .tf-memo-sub {{ color: #9AA6AB; }}
   .tf-memo-foot {{ font-size: 0.8rem; color: {MUTED}; margin-top: 0.6rem; }}
   a {{ color: {ACCENT}; }}
 </style>

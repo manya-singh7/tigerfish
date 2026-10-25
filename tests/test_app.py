@@ -84,6 +84,7 @@ def test_prerecorded_investigations_replay(no_keys):
     assert len(labels) == 3                                    # ct-003, ac-01, sp-p954-001
     html = "\n".join(m.value for m in at.markdown)
     assert 'class="tf-timeline"' in html and "READ PAGE" in html and "Evidence memo" in html
+    assert "Unverified reasoning (not checked)" in html and 'class="tf-ref"' in html
     # findings without a recording get an Investigate button, disabled without a key
     buttons = [b for b in at.button if b.label == "Investigate"]
     assert buttons and all(b.disabled for b in buttons)
@@ -99,7 +100,10 @@ def test_saved_investigations_are_neutral_and_verified():
         memo = inv["memo"]
         assert memo["conclusion"] in agent.CONCLUSIONS and inv["totals"]["cost_usd"] <= agent.MAX_COST_USD
         assert inv["totals"]["steps"] <= agent.MAX_STEPS and inv["totals"]["tavily_credits"] <= agent.MAX_CREDITS
-        text = " ".join(memo["reasons"] + memo["checked"] + [e["note"] for e in memo["evidence"]]).lower()
+        ids = {i["id"] for i in memo["evidence"] + memo["data"]}
+        assert all(r["evidence"] and set(r["evidence"]) <= ids for r in memo["reasons"]), p.name
+        text = " ".join([r["text"] for r in memo["reasons"]] + memo["unverified_reasons"] + memo["checked"]
+                        + [e["note"] for e in memo["evidence"]]).lower()
         assert not any(w.startswith(b) for w in text.split() for b in BANNED), p.name
         for e in memo["evidence"]:
             if e.get("page") and pages:
