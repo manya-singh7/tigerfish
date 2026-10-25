@@ -293,3 +293,128 @@ def test_quotes_match():
 def test_banned_words(reason, kept):
     v = ct.parse_verdict({"grade": "ORANGE", "reason": reason}, CAND, PAGES)
     assert (v["reason"] == reason) is kept
+
+
+# ---------- part vs total ----------
+
+TOTAL_194 = claim("p444-01", 444, "area", 194, "ha", "reclaimed land for airport runway",
+                  "The total reclaimed land will be 194 ha.")
+PART_71 = claim("p751-01", 751, "area", 71, "Ha", "airport runway reclamation",
+                "needs to reclaim land approximately 71 Ha of land in order to establish an "
+                "operational airport.")
+
+
+def test_part_vs_total_detected():
+    [cand] = ct.numeric_pairs([TOTAL_194, PART_71])
+    assert cand["part_total"] is True
+
+
+@pytest.mark.parametrize("a, b", [
+    # both quotes state a total: two totals can contradict
+    (claim("a", 1168, "count", 330, "species", "fauna", "A total of 330 species of fauna"),
+     claim("b", 940, "count", 695, "species", "fauna", "A total of 695 species of fauna")),
+    # neither states a total
+    (CORAL_LOSS, CORAL_RESTORE),
+    # the "total" is the SMALLER figure: not the part-vs-total pattern
+    (claim("a", 1, "area", 50, "ha", "airport land", "The total land is 50 ha."),
+     claim("b", 2, "area", 71, "ha", "airport land", "The airport needs 71 ha.")),
+])
+def test_part_vs_total_not_detected(a, b):
+    assert ct.part_vs_total(a, b) is False
+
+
+def test_part_total_rule_only_in_flagged_prompts():
+    pages = {444: "The total reclaimed land will be 194 ha.", 751: PART_71["quote"]}
+    [cand] = ct.numeric_pairs([TOTAL_194, PART_71])
+    flagged = ct.verdict_messages(cand, pages, [])[0]["content"]
+    plain = ct.verdict_messages({**cand, "part_total": False}, pages, [])[0]["content"]
+    assert "Part-vs-total rule" in flagged and "Part-vs-total rule" not in plain
+    assert plain == ct.VERDICT_PROMPT          # unchanged prompt keeps old cache keys valid
+
+
+# ---------- evidence matches reason ----------
+
+PAGE_851 = ("About 648 species of flora have been reported from the area belonging to 422 genera. "
+            "Out of which 48 species of endemic flora and 85 species of non-endemic flora are rare.")
+PAGE_940 = "There are approximately 600 species of flora reported from Great Nicobar Island."
+LEDGER = [
+    claim("p851-01", 851, "count", 648, "species", "flora Galathea",
+          "About 648 species of flora have been reported from the area belonging to 422 genera."),
+    claim("p851-02", 851, "count", 48, "species", "endemic flora Galathea",
+          "Out of which 48 species of endemic flora"),
+    claim("p940-01", 940, "quantity", 600, "species", "flora GNI",
+          "approximately 600 species of flora reported from Great Nicobar Island"),
+]
+
+
+def ct025(grade="ORANGE", reason="The park's flora (648 species) exceeds the island's total (600)."):
+    return {"id": "ct-025", "grade": grade, "reason": reason, "pages": [851, 940],
+            "quotes": [{"page": 851, "text": "Out of which 48 species of endemic flora",
+                        "claim_id": "p851-02", "value": 48},
+                       {"page": 940, "text": LEDGER[2]["quote"], "claim_id": "p940-01",
+                        "value": 600}]}
+
+
+def test_evidence_reselected_to_match_reason():
+    f = ct.align_evidence(ct025(), {851: PAGE_851, 940: PAGE_940}, LEDGER)
+    q851 = f["quotes"][0]
+    assert q851["claim_id"] == "p851-01" and "648" in q851["text"] and q851["reselected"]
+    assert "reselected" not in f["quotes"][1]          # already showed 600
+    assert f["grade"] == "ORANGE" and "evidence_note" not in f
+
+
+def test_evidence_falls_back_to_page_sentence():
+    f = ct.align_evidence(ct025(), {851: PAGE_851, 940: PAGE_940}, ledger=[])
+    q851 = f["quotes"][0]
+    assert q851["text"].startswith("About 648 species") and q851["claim_id"] is None
+
+
+def test_red_drops_to_orange_when_no_quote_fits(monkeypatch):
+    # 648 is on the page but not in the ledger, and the page sentence fails verification
+    monkeypatch.setattr(ct.claims_mod, "quote_on_page", lambda q, t: False)
+    pages = {851: "The figure 648 appears here", 940: PAGE_940}
+    out = ct.align_evidence(ct025(grade="RED"), pages, ledger=[])
+    assert out["grade"] == "ORANGE" and "verify" in out["evidence_note"]
+
+
+# ---------- suppression under recycled figures ----------
+
+def test_numeric_pairs_inside_recycled_group_are_suppressed():
+    cl = park_page(818, "Campbell Bay National Park") + park_page(851, "Galathea National Park")
+    cl += [claim("x", 851, "count", 23, "species", "mammal species recorded from Galathea", "23")]
+    cands = ct.candidate_pairs(cl)
+    assert all(c["kind"] == "recycled" for c in cands)
+    assert ct.last_run["candidates_suppressed"] >= 1
+
+
+def test_score_skips_not_scored_issues():
+    rows = [{"ok": True, "scored": True}, {"ok": False, "scored": False},
+            {"ok": False, "scored": True}]
+    assert ct.score(rows) == (1, 2)
+
+
+def test_evaluate_marks_status():
+    issues = ISSUES + [issue("gn-002", "mismatch", [392, 978], "ORANGE", status="under_review")]
+    row = {r["id"]: r for r in ct.evaluate([], issues)}["gn-002"]
+    assert row["scored"] is False and row["status"] == "under_review"
+
+
+def test_header_digit_does_not_trigger_reselection():
+    """Reason mentions '4 ha' (p.751). A '4' in p.444's header must not replace p.444's quote."""
+    pages = {444: "Chapter-4(B) Impacts. It would not exceed 1-2 ha at the maximum.",
+             751: "Approximately 4ha of Coral restoration has been considered."}
+    ledger = [{**CORAL_LOSS, "id": "p444-01"}, {**CORAL_RESTORE, "id": "p751-01"}]
+    f = {"grade": "NONE", "reason": "The 4 ha restoration covers the entire project.",
+         "quotes": [{"page": 444, "text": CORAL_LOSS["quote"]},
+                    {"page": 751, "text": CORAL_RESTORE["quote"]}]}
+    out = ct.align_evidence(f, pages, ledger)
+    assert out["quotes"][0]["text"] == CORAL_LOSS["quote"]
+    assert not any(q.get("reselected") for q in out["quotes"])
+
+
+def test_label_numbers_in_reason_are_ignored():
+    """'Statement 2' / 'page 940' are labels, not the figure 2 or 940."""
+    ledger = LEDGER + [claim("p940-09", 940, "count", 2, None, "amphibians", "2 species are amphibians")]
+    f = ct025(reason="Statement 1 (page 851) and Statement 2 (p.940) differ in scope.")
+    out = ct.align_evidence(f, {851: PAGE_851, 940: PAGE_940 + " 2 species are amphibians"}, ledger)
+    assert not any(q.get("reselected") for q in out["quotes"])

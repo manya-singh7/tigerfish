@@ -1,6 +1,6 @@
 {
   "document": "data/eias/great_nicobar_2021_draft_eia.pdf",
-  "notes": "Hand-verified findings used as an evaluation set. Pages are 1-based physical PDF pages. Quotes are exact substrings of the page text after collapsing whitespace (\" \".join(text.split())). Issues with expected_grade NONE are negative controls and must NOT be flagged.",
+  "notes": "Hand-verified findings used as an evaluation set. Pages are 1-based physical PDF pages. Quotes are exact substrings of the page text after collapsing whitespace (\" \".join(text.split())). Issues with expected_grade NONE are negative controls and must NOT be flagged. Issues with status under_review or candidate_new_finding are reported but not scored.",
   "issues": [
     {
       "id": "gn-001",
@@ -27,6 +27,7 @@
         {"page": 751, "text": "Approximately 4ha of Coral restoration has been considered."}
       ],
       "expected_grade": "ORANGE",
+      "status": "under_review",
       "verified_by": null,
       "verified_on": null,
       "verification_note": null
@@ -70,6 +71,22 @@
         {"page": 1141, "text": "The GNI, with an area of 910 sq.km (original notified area of 1045 Sq.km.)"}
       ],
       "expected_grade": "NONE",
+      "verified_by": null,
+      "verified_on": null,
+      "verification_note": null
+    },
+    {
+      "id": "gn-005",
+      "type": "recycled_figure",
+      "summary": "Identical flora figures (648 species, 422 genera, 142 families, 48 endemic, 85 rare) given for Campbell Bay NP and Galathea NP.",
+      "pages": [818, 851],
+      "quotes": [
+        {"page": 818, "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."},
+        {"page": 851, "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."}
+      ],
+      "expected_grade": "RED",
+      "status": "candidate_new_finding",
+      "source_finding": "rf-001 (contradiction check, Block C)",
       "verified_by": null,
       "verified_on": null,
       "verification_note": null

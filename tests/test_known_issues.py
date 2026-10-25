@@ -46,6 +46,20 @@ def test_every_issue_has_verification_fields():
         assert all(field in issue for field in VERIFY_FIELDS), issue["id"]
 
 
+STATUSES = {None, "under_review", "candidate_new_finding"}
+
+
+def test_statuses_are_valid_and_ids_unique():
+    ids = [i["id"] for i in ISSUES["issues"]]
+    assert len(ids) == len(set(ids))
+    for issue in ISSUES["issues"]:
+        assert issue.get("status") in STATUSES, issue["id"]
+    by_id = {i["id"]: i for i in ISSUES["issues"]}
+    assert by_id["gn-002"]["status"] == "under_review"
+    assert by_id["gn-005"]["status"] == "candidate_new_finding"
+    assert by_id["gn-005"]["verified_by"] is None
+
+
 def test_grade_ok_uses_acceptable_grades():
     by_id = {i["id"]: i for i in ISSUES["issues"]}
     assert grade_ok(by_id["gn-001"], "RED") and grade_ok(by_id["gn-001"], "ORANGE")

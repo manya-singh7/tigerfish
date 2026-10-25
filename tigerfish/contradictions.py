@@ -42,6 +42,10 @@ EST_OUTPUT_TOKENS = 2000     # for cost estimates
 NEUTRAL = "Inconsistency flagged, verify."
 GRADES = ("RED", "ORANGE", "NONE")
 
+TOTAL_WORDS = re.compile(r"\b(total|overall|entire|whole|in all|altogether|combined|aggregate)\b",
+                         re.IGNORECASE)
+NOT_SCORED = {"under_review", "candidate_new_finding"}   # known issues printed, not scored
+
 EXPLANATION_WORDS = ["before", "after", "earlier", "original", "originally", "revised",
                      "proposed", "existing", "phase", "tsunami", "reduced", "increased",
                      "excluding", "including", "total", "of which"]
@@ -181,9 +185,34 @@ def numeric_pairs(claims):
         if max(abs(va), abs(vb)) == 0 or abs(va - vb) / max(abs(va), abs(vb)) <= MIN_DIFFERENCE:
             continue
         out.append({"kind": "numeric", "claims": [a, b],
-                    "overlap": subject_overlap(a["subject"], b["subject"])})
+                    "overlap": subject_overlap(a["subject"], b["subject"]),
+                    "part_total": part_vs_total(a, b)})
     # Most alike subjects first, so the candidate cap keeps the best pairs.
     return sorted(out, key=lambda c: -c["overlap"])
+
+
+def part_vs_total(a, b):
+    """True when exactly one quote states a total and that one has the larger value.
+
+    e.g. "The total reclaimed land will be 194 ha" vs "needs to reclaim ... 71 Ha ...
+    airport": the smaller figure is probably a component of the total, not a contradiction.
+    """
+    ta = bool(TOTAL_WORDS.search(claims_mod.normalize(a["quote"])))
+    tb = bool(TOTAL_WORDS.search(claims_mod.normalize(b["quote"])))
+    if ta == tb:
+        return False
+    total, part = (a, b) if ta else (b, a)
+    return base_value(total) > base_value(part)
+
+
+def covered_by_recycled(cand, recycled):
+    """A numeric pair whose figures all belong to one recycled-figure group (redundant)."""
+    for r in recycled:
+        pages = {c["page"] for c in r["claims"]}
+        values = {r["value"], *r["breakdown"]}
+        if all(c["page"] in pages and number(c["value"]) in values for c in cand["claims"]):
+            return True
+    return False
 
 
 def absence_topic(claim):
@@ -258,8 +287,16 @@ def recycled_figures(claims):
 
 
 def candidate_pairs(claims, max_candidates=MAX_CANDIDATES):
-    """All candidates (recycled first, then statements, then numeric), capped."""
-    found = recycled_figures(claims) + statement_pairs(claims) + numeric_pairs(claims)
+    """All candidates (recycled first, then statements, then numeric), capped.
+
+    Numeric pairs already covered by a recycled-figure group are suppressed (counted
+    in last_run["candidates_suppressed"]).
+    """
+    recycled = recycled_figures(claims)
+    numeric_ = numeric_pairs(claims)
+    kept_numeric = [c for c in numeric_ if not covered_by_recycled(c, recycled)]
+    last_run["candidates_suppressed"] = len(numeric_) - len(kept_numeric)
+    found = recycled + statement_pairs(claims) + kept_numeric
     seen, unique = set(), []
     for cand in found:
         key = (cand["kind"], tuple(sorted(c["id"] for c in cand["claims"])))
@@ -348,6 +385,15 @@ Grades:
 explanation_quote must be copied character for character from the page text, or null."""
 
 
+PART_TOTAL_RULE = """
+
+Part-vs-total rule (applies here: one statement gives a total, the other a smaller figure):
+a smaller value for a component (e.g. "the airport needs 71 ha") is NOT inconsistent with
+a larger total (e.g. "total reclaimed land 194 ha") unless the report says the component
+IS the total. In that case grade NONE and say which figure is the part and which the total.
+Grade RED or ORANGE only if the report presents the smaller figure as the whole amount."""
+
+
 def verdict_messages(cand, pages, hits):
     lines = []
     for i, c in enumerate(cand["claims"], 1):
@@ -361,6 +407,9 @@ def verdict_messages(cand, pages, hits):
     user = "\n".join(lines) + "\n\nPossible explanation words found:\n" + \
         ("\n".join(hit_lines) or "- none") + "\n\n" + "\n\n".join(page_blocks)
     system = RECYCLED_PROMPT if cand["kind"] == "recycled" else VERDICT_PROMPT
+    if cand.get("part_total"):
+        # Added only for part-vs-total pairs, so cached verdicts for other pairs stay valid.
+        system += PART_TOTAL_RULE
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
@@ -426,12 +475,71 @@ def finding(cand, v, hits, n):
         "explanation_quote": v["explanation_quote"], "explanation_page": v["explanation_page"],
         "explanation_hits": len(hits),
         "same_subject": v["same_subject"], "incompatible": v["incompatible"],
-        "explained": v["explained"], "model": llm.ULTRA,
+        "explained": v["explained"], "part_total": cand.get("part_total", False),
+        "model": llm.ULTRA,
     }
 
 
-def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
-    """Run the Ultra verdict on each candidate. Returns findings (all grades, incl. NONE)."""
+def sentence_with(number_, text):
+    """First sentence of the (normalised) page text that contains the number, or None."""
+    for sentence in re.split(r"(?<=[.;])\s+", claims_mod.normalize(text)):
+        if number_ in claims_mod._numbers(sentence):
+            return sentence
+    return None
+
+
+def align_evidence(f, pages, ledger=()):
+    """Make each shown quote contain a figure the reason talks about.
+
+    For each quote: the reason's numbers that are claim VALUES on that page are the
+    figures the reason means there (any digit in the page text is not enough: a "4" in
+    a page header like "Chapter-4(B)" is not the "4 ha" the reason talks about). Without
+    a ledger, numbers in the page text are used instead. If the quote has none of them,
+    use a verified ledger claim on that page with that value, else the page sentence
+    with it (exact page text). If nothing fits, a RED finding drops to ORANGE with a
+    note. Deterministic, no LLM.
+    """
+    # Numbers in labels ("Statement 2", "page 851", "p.940") are not figures.
+    reason = re.sub(r"\b(?:statements?|pages?|p\.)\s*\d+(?:\s*(?:and|,|&)\s*\d+)*", " ",
+                    f["reason"], flags=re.IGNORECASE)
+    wanted = claims_mod._numbers(reason)
+    for q in f["quotes"]:
+        page_text = pages.get(q["page"], "")
+        if ledger:
+            values = {number(c["value"]) for c in ledger
+                      if c["page"] == q["page"] and c.get("verified")}
+            on_page = wanted & values
+        else:
+            on_page = wanted & claims_mod._numbers(page_text)
+        if not on_page or claims_mod._numbers(q["text"]) & on_page:
+            continue
+        match = next((c for c in ledger if c["page"] == q["page"] and c.get("verified")
+                      and number(c["value"]) in on_page), None)
+        if match is None:
+            match = next((c for c in ledger if c["page"] == q["page"] and c.get("verified")
+                          and claims_mod._numbers(c["quote"]) & on_page), None)
+        if match is not None:
+            new = {"text": match["quote"], "claim_id": match["id"], "subject": match["subject"],
+                   "value": match["value"], "unit": match["unit"]}
+        else:
+            sentence = next((s for n in sorted(on_page) if (s := sentence_with(n, page_text))),
+                            None)
+            new = {"text": sentence, "claim_id": None} if sentence else None
+        if new and claims_mod.quote_on_page(new["text"], page_text):
+            q.update(new, reselected=True)
+        else:
+            if f["grade"] == "RED":
+                f["grade"] = "ORANGE"
+            f["evidence_note"] = (f"p.{q['page']}: no quote found with the figure the reason "
+                                  f"refers to; verify.")
+    return f
+
+
+def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=()):
+    """Run the Ultra verdict on each candidate. Returns findings (all grades, incl. NONE).
+
+    ledger: the claims, used to re-select evidence quotes (align_evidence).
+    """
     start = llm.session_cost_usd
     findings, stopped, failed = [], None, 0
     for cand in cands:
@@ -450,7 +558,7 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None):
             log.warning("no valid verdict for candidate %s",
                         [c["id"] for c in cand["claims"]])
             continue
-        findings.append(finding(cand, v, hits, len(findings) + 1))
+        findings.append(align_evidence(finding(cand, v, hits, len(findings) + 1), pages, ledger))
     last_run.update(stopped=stopped, failed=failed, verdicts=len(findings),
                     cost_usd=llm.session_cost_usd - start)
     if pdf_stem:
@@ -518,7 +626,11 @@ def match_issue(issue, findings):
 
 
 def evaluate(findings, known_issues):
-    """Per known issue: found?, grade, ok?. Negative controls pass when not flagged."""
+    """Per known issue: found?, grade, ok?. Negative controls pass when not flagged.
+
+    Issues whose status is in NOT_SCORED (under_review, candidate_new_finding) are
+    reported with scored=False and left out of score().
+    """
     rows = []
     for issue in known_issues:
         f = match_issue(issue, findings)
@@ -531,8 +643,16 @@ def evaluate(findings, known_issues):
         rows.append({"id": issue["id"], "type": issue["type"], "pages": issue["pages"],
                      "expected": issue.get("acceptable_grades", [issue["expected_grade"]]),
                      "found": f is not None, "grade": grade if f else None,
-                     "finding_id": f["id"] if f else None, "ok": ok})
+                     "finding_id": f["id"] if f else None, "ok": ok,
+                     "status": issue.get("status"),
+                     "scored": issue.get("status") not in NOT_SCORED})
     return rows
+
+
+def score(rows):
+    """(passed, scored) over the scored rows only."""
+    scored = [r for r in rows if r["scored"]]
+    return sum(r["ok"] for r in scored), len(scored)
 
 
 def control_candidate(issue):

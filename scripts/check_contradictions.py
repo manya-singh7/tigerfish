@@ -47,7 +47,8 @@ def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     if dry_run:
         return out
     start = llm.session_cost_usd
-    out["findings"] = ct.check(cands, pages, max_cost_usd=max_cost, pdf_stem=pdf.stem)
+    out["findings"] = ct.check(cands, pages, max_cost_usd=max_cost, pdf_stem=pdf.stem,
+                               ledger=ledger)
     out["stopped"] = ct.last_run.get("stopped")
     left = max_cost - (llm.session_cost_usd - start)
     out["control_findings"] = ct.check(controls, pages, max_cost_usd=left) if controls else []
@@ -78,6 +79,9 @@ def main():
         kinds[c["kind"]] = kinds.get(c["kind"], 0) + 1
     print(f"{first['ledger']} claims on {len(wanted)} pages -> {len(first['candidates'])} "
           f"candidates {kinds} (+{len(first['controls'])} negative-control pair)")
+    if ct.last_run.get("candidates_suppressed"):
+        print(f"  {ct.last_run['candidates_suppressed']} numeric pairs suppressed "
+              f"(already covered by a recycled-figure group)")
     if ct.last_run.get("candidates_dropped"):
         print(f"  {ct.last_run['candidates_dropped']} candidates dropped by MAX_CANDIDATES")
     print(f"{first['uncached']} Ultra calls needed. Estimated cost: ${first['estimate']:.4f} "
@@ -88,15 +92,22 @@ def main():
     out = run(args.pdf, wanted, max_cost=args.max_cost)
     print(f"\n{'id':7} {'grade':6} {'type':15} {'pages':16} reason")
     for f in out["findings"]:
-        print(f"{f['id']:7} {f['grade']:6} {f['type']:15} {str(f['pages']):16} {short(f['reason'], 90)}")
+        tag = " [part-vs-total]" if f.get("part_total") else ""
+        print(f"{f['id']:7} {f['grade']:6} {f['type']:15} {str(f['pages']):16} "
+              f"{short(f['reason'], 90)}{tag}")
 
     if out["known"]:
         print("\n=== Evaluation against data/known_issues.json")
-        print(f"{'issue':11} {'type':17} {'pages':16} {'expected':16} {'found':6} {'grade':7} ok")
+        print(f"{'issue':11} {'type':17} {'pages':16} {'expected':11} {'found':6} {'grade':7} "
+              f"{'result':12} status")
         for r in out["evaluation"]:
-            print(f"{r['id']:11} {r['type']:17} {str(r['pages']):16} {'/'.join(r['expected']):16} "
-                  f"{'yes' if r['found'] else 'no':6} {str(r['grade']):7} "
-                  f"{'PASS' if r['ok'] else 'FAIL'}")
+            result = ("PASS" if r["ok"] else "FAIL") + ("" if r["scored"] else " (unscored)")
+            print(f"{r['id']:11} {r['type']:17} {str(r['pages']):16} {'/'.join(r['expected']):11} "
+                  f"{'yes' if r['found'] else 'no':6} {str(r['grade']):7} {result:12} "
+                  f"{r['status'] or ''}")
+        passed, scored = ct.score(out["evaluation"])
+        print(f"Score: {passed}/{scored} scored issues pass "
+              f"(under_review / candidate_new_finding are printed but not scored)")
         for f in out["control_findings"]:
             print(f"\nNegative-control pair {f['pages']} sent to Ultra directly: grade {f['grade']}"
                   f" -> {'PASS (not flagged)' if f['grade'] == 'NONE' else 'FAIL (flagged)'}")
@@ -110,7 +121,10 @@ def main():
         for f in others:
             print(f"{f['id']} {f['grade']} {f['type']} pages {f['pages']}: {f['reason']}")
             for q in f["quotes"]:
-                print(f"    p.{q['page']}: {short(q['text'], 110)}")
+                mark = " (re-selected to match reason)" if q.get("reselected") else ""
+                print(f"    p.{q['page']}: {short(q['text'], 110)}{mark}")
+            if f.get("evidence_note"):
+                print(f"    note: {f['evidence_note']}")
         none_count = sum(f["grade"] == "NONE" for f in out["findings"])
         print(f"\n({none_count} candidates judged NONE: explained or different scope)")
 
