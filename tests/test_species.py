@@ -235,3 +235,134 @@ def test_genus_only_match_is_not_checked(monkeypatch):
 def test_exact_accepted_name_has_no_note(monkeypatch):
     monkeypatch.setattr(species, "gbif_get", fake_match({("Testus fakeus", None): MATCH}))
     assert species.resolve_name("Testus fakeus")[3] is None
+
+
+# ---------- failed lookups are never counts ----------
+
+@pytest.mark.parametrize("reply", [{"count": None}, {}, {"error": "timeout"}, {"count": -1},
+                                   {"count": "12"}, None, []])
+def test_checked_count_rejects_bad_replies(reply):
+    with pytest.raises(species.LookupFailed):
+        species.checked_count(reply)
+
+
+def test_failed_lookup_is_grey_not_zero(monkeypatch):
+    def gbif_get(path, **params):
+        if path == "/species/match":
+            return MATCH
+        if params.get("geoDistance", "").endswith(",500km"):
+            raise species.requests.ConnectionError("timed out")      # the 500 km count fails
+        return {"count": 0 if "geoDistance" in params else 900}
+
+    monkeypatch.setattr(species, "gbif_get", gbif_get)
+    r = species.check_species("Testus fakeus", 7.0, 93.85)
+    assert r["grade"] == "GREY" and r["lookup_failed"]
+    assert r["evidence"].startswith("lookup failed")
+    assert r["regional_count"] is None                                 # never filled with 0
+
+
+def test_error_reply_is_grey(monkeypatch):
+    def gbif_get(path, **params):
+        return MATCH if path == "/species/match" else {"error": "service unavailable"}
+    monkeypatch.setattr(species, "gbif_get", gbif_get)
+    assert species.check_species("Testus fakeus", 7.0, 93.85)["grade"] == "GREY"
+
+
+# ---------- archipelago rule ----------
+
+BIRD = {**MATCH, "class": "Aves", "classKey": 212, "canonicalName": "Testus fakeus"}
+
+
+def bird_gbif(archipelago):
+    def gbif_get(path, **params):
+        if path == "/species/match":
+            return BIRD
+        if path == "/enumeration/country":
+            return []
+        if params.get("facet") == "country":
+            return {"count": 0, "facets": []}
+        if params.get("gadmGid") == species.ANDAMAN_NICOBAR_GADM:
+            return {"count": archipelago}
+        if params["taxonKey"] == 212:
+            return {"count": 23000}                       # birds well surveyed
+        return {"count": 0 if "geoDistance" in params else 5000}
+    return gbif_get
+
+
+def test_bird_recorded_in_archipelago_is_not_flagged(monkeypatch):
+    monkeypatch.setattr(species, "gbif_get", bird_gbif(archipelago=14))
+    r = species.check_species("Testus fakeus", 7.0, 93.85)
+    assert r["grade"] is None and r["archipelago_count"] == 14
+    assert "recorded elsewhere in the Andaman & Nicobar Islands" in r["evidence"]
+
+
+def test_bird_absent_from_archipelago_stays_flagged(monkeypatch):
+    monkeypatch.setattr(species, "gbif_get", bird_gbif(archipelago=0))
+    r = species.check_species("Testus fakeus", 7.0, 93.85)
+    assert r["grade"] in ("RED", "ORANGE") and r["archipelago_count"] == 0
+
+
+def test_mammals_keep_the_strict_rule(monkeypatch):
+    asked = []
+
+    def gbif_get(path, **params):
+        if params.get("gadmGid"):
+            asked.append(params)
+        return bird_gbif(archipelago=99)(path, **params)
+
+    monkeypatch.setattr(species, "gbif_get", lambda path, **p: (
+        {**BIRD, "class": "Mammalia", "classKey": 212} if path == "/species/match" else gbif_get(path, **p)))
+    r = species.check_species("Testus fakeus", 7.0, 93.85)
+    assert r["grade"] in ("RED", "ORANGE") and not asked          # archipelago never consulted
+
+
+@pytest.mark.parametrize("m, label, mobile", [
+    ({"class": "Aves"}, "Aves", True),
+    ({"phylumKey": 44}, "ray-finned fish", True),
+    ({"class": "Malacostraca"}, "Malacostraca", True),
+    ({"class": "Mammalia", "order": "Cetacea"}, "Mammalia", True),
+    ({"class": "Testudines", "family": "Cheloniidae"}, "Testudines", True),
+    ({"kingdom": "Plantae", "class": "Magnoliopsida"}, "Magnoliopsida", True),
+    ({"class": "Mammalia", "order": "Artiodactyla"}, "Mammalia", False),
+    ({"class": "Amphibia"}, "Amphibia", False),
+    ({"class": "Squamata", "family": "Agamidae"}, "Squamata", False),
+])
+def test_is_mobile(m, label, mobile):
+    assert species.is_mobile(m, label) is mobile
+
+
+def test_apply_archipelago():
+    assert species.apply_archipelago("RED", True, 3) is None
+    assert species.apply_archipelago("ORANGE", True, 0) == "ORANGE"
+    assert species.apply_archipelago("RED", False, 3) == "RED"
+    assert species.apply_archipelago("GREY", True, 3) == "GREY"
+
+
+# ---------- mobile species: only absence from the whole region is flagged ----------
+
+@pytest.mark.parametrize("grade_, mobile, regional, far, out", [
+    ("ORANGE", True, 3, None, "GREY"),        # records within 500 km
+    ("RED", True, 0, 73, "GREY"),             # records within 3,000 km
+    ("RED", True, 0, 0, "RED"),               # absent from the whole region: stays RED
+    ("RED", False, 0, 73, "RED"),             # mammals etc. keep the strict rule
+    ("ORANGE", False, 3, None, "ORANGE"),
+    (None, True, 3, 9, None),
+])
+def test_apply_mobile_region(grade_, mobile, regional, far, out):
+    assert species.apply_mobile_region(grade_, mobile, regional, far) == out
+
+
+def test_mobile_bird_in_wider_region_is_grey(monkeypatch):
+    def gbif_get(path, **params):
+        if params.get("geoDistance", "").endswith(",3000km"):
+            return {"count": 73}
+        return bird_gbif(archipelago=0)(path, **params)
+    monkeypatch.setattr(species, "gbif_get", gbif_get)
+    r = species.check_species("Testus fakeus", 7.0, 93.85)
+    assert r["grade"] == "GREY" and r["mobile_region"]
+    assert species.MOBILE_REGION_NOTE in r["evidence"]
+
+
+def test_mobile_bird_absent_from_region_stays_red(monkeypatch):
+    monkeypatch.setattr(species, "gbif_get", bird_gbif(archipelago=0))   # 0 within 3,000 km
+    assert species.check_species("Testus fakeus", 7.0, 93.85)["grade"] == "RED"

@@ -87,6 +87,56 @@ def display_snippet(text):
     return "..." + " ".join(words) + "..."
 
 
+SPECIES_PAGES = ROOT / "cache" / "findings" / GN_PDF.stem / "species_pages.json"
+# Plants: GBIF has few digitised plant records for Great Nicobar but many within 500 km
+# (Sumatra, Andamans), so the "region surveyed, species absent" rule flags most plant names
+# (206 of 334 in the first run). Those stay in species_pages.json but are not app findings.
+EXPORT_PLANT_FLAGS = False
+PLANT_CLASSES = {"Magnoliopsida", "Liliopsida", "Polypodiopsida", "Cycadopsida", "Pinopsida",
+                 "Gnetopsida", "Lycopodiopsida", "Bryopsida"}
+
+
+def species_table_findings(report_id):
+    """RED/ORANGE results of scripts/check_species_pages.py as findings (one shared,
+    highlighted image per page, so many flagged names don't mean many images)."""
+    if not SPECIES_PAGES.exists():
+        return []
+    rows = [r for r in json.loads(SPECIES_PAGES.read_text(encoding="utf-8"))["rows"]
+            if r["grade"] in ("RED", "ORANGE")
+            and (EXPORT_PLANT_FLAGS or r["class"] not in PLANT_CLASSES)]
+    out = []
+    for i, r in enumerate(rows, 1):
+        ev = [{"label": "Checked at", "value": f"{r['location']} ({r['lat']}, {r['lon']}): {r['reason']}"},
+              {"label": "GBIF records of this species",
+               "value": f"{fmt_count(r['local'])} within 100 km, {fmt_count(r['regional'])} within "
+                        f"500 km, {fmt_count(r['global'])} worldwide"},
+              {"label": "GBIF species page", "value": r["gbif_name"],
+               "url": (r.get("links") or {}).get("species")}]
+        if r.get("name_note"):
+            ev.insert(0, {"label": "Name", "value": r["name_note"]})
+        out.append(finding(f"sp-p{r['page']}-{i:03d}", "species_range", r["grade"],
+                           f"{r['name']} at {r['location']} (p.{r['page']})", r["evidence"],
+                           [{"page": r["page"], "text": r["name"]}], ev, r["evidence"]))
+    by_page = {}
+    for f in out:
+        by_page.setdefault(f["quotes"][0]["page"], []).append(f["quotes"][0]["text"])
+    images = highlight_pages(GN_PDF, by_page, PAGES_OUT, f"{report_id}_species", dpi=PAGE_DPI)
+    attach_images(out, images, relative_to=RESULTS)
+    return out
+
+
+def species_pages_read():
+    """Pages the species-table check read (empty set if it has not been run)."""
+    if not SPECIES_PAGES.exists():
+        return set()
+    data = json.loads(SPECIES_PAGES.read_text(encoding="utf-8"))
+    return set(data["table_pages"]) | set(data["vision_pages"])
+
+
+def fmt_count(n):
+    return "-" if n is None else f"{n:,}"
+
+
 def great_nicobar():
     report_id = "great_nicobar_2021_draft"
     pages = set(GN_PAGES)
@@ -134,14 +184,17 @@ def great_nicobar():
                                  dpi=PAGE_DPI)
         attach_images([f], images, relative_to=RESULTS)
 
+    species_findings = species_table_findings(report_id)
+    findings += species_findings
     usd, credits, gbif, seconds = run_cost(trace.used)
     return report_id, {
         "id": report_id, "title": "Great Nicobar EIA (2021 draft)",
         "source": "Draft EIA by Vimta Labs for ANIIDCO, December 2021",
-        "pages_read": len(pages), "pages_total": 1213,
+        "pages_read": len(pages | species_pages_read()), "pages_total": 1213,
         "checks": ["Claim extraction (Nemotron Lightning / Super-VL)",
                    "Internal contradictions and recycled figures (Nemotron Ultra)",
-                   "Copied text (Tavily)", "Borrowed text (Tavily)"],
+                   "Copied text (Tavily)", "Borrowed text (Tavily)",
+                   "Species tables in the report (GBIF)"],
         "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
                  "approx_seconds": seconds},
         "known_issue_score": dict(zip(("passed", "scored"),

@@ -20,6 +20,7 @@ Every GBIF response is cached in cache/gbif/, keyed by URL, so no URL is fetched
 import difflib
 import hashlib
 import json
+import threading
 import time
 from pathlib import Path
 from urllib.parse import urlencode
@@ -43,6 +44,18 @@ MIN_GLOBAL_FAR = 100        # ...if the species is well recorded elsewhere: RED 
                             # effort is low. Set FAR_KM = None to turn this rule off.
 MIN_NAME_SIMILARITY = 0.85  # accept a GBIF fuzzy name correction only if this similar
 TOP_COUNTRIES = 3           # countries named in the evidence sentence
+
+# Archipelago rule: mobile taxa (birds, marine species, plants) disperse between islands, so
+# a record anywhere in the Andaman & Nicobar Islands clears a RED/ORANGE. Terrestrial
+# mammals, amphibians and land reptiles keep the strict distance rule (islands isolate them).
+ANDAMAN_NICOBAR_GADM = "IND.1_1"   # GBIF GADM id, "Andaman and Nicobar" (verified)
+MOBILE_CLASSES = {"Aves", "Actinopterygii", "Elasmobranchii", "Holocephali", "Malacostraca",
+                  "Maxillopoda", "Hexanauplia", "Bivalvia", "Gastropoda", "Cephalopoda",
+                  "Polyplacophora", "Anthozoa", "Hydrozoa", "Scyphozoa", "Holothuroidea",
+                  "Echinoidea", "Asteroidea", "Ophiuroidea", "Crinoidea", "Polychaeta"}
+MOBILE_ORDERS = {"Cetacea", "Sirenia"}                         # whales, dolphins, dugong
+MOBILE_FAMILIES = {"Cheloniidae", "Dermochelyidae", "Crocodylidae", "Hydrophiidae"}
+MOBILE_KINGDOMS = {"Plantae"}
 
 REQUEST_DELAY = 0.3         # seconds before each uncached request (be polite to GBIF)
 RETRY_DELAY = 2.0
@@ -72,7 +85,10 @@ def gbif_get(path, **params):
             time.sleep(RETRY_DELAY)
 
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps({"url": url, "data": data}, ensure_ascii=False), encoding="utf-8")
+    # Write then rename, so a parallel reader never sees a half-written file.
+    tmp = cache.with_suffix(f".{threading.get_ident()}.tmp")
+    tmp.write_text(json.dumps({"url": url, "data": data}, ensure_ascii=False), encoding="utf-8")
+    tmp.replace(cache)
     return data
 
 
@@ -128,13 +144,59 @@ def resolve_name(scientific_name):
     return m, key, accepted, "; ".join(notes) or None
 
 
-def count(taxon_key, lat=None, lon=None, km=None):
-    """Number of georeferenced occurrence records for a taxon (optionally near a point)."""
+class LookupFailed(RuntimeError):
+    """A GBIF lookup failed or returned no usable count. Never treat it as zero."""
+
+
+def checked_count(data):
+    """The 'count' of a GBIF search reply, or LookupFailed if it is missing or invalid."""
+    c = data.get("count") if isinstance(data, dict) else None
+    if isinstance(c, bool) or not isinstance(c, int) or c < 0:
+        raise LookupFailed(f"GBIF reply without a valid count: {str(data)[:120]}")
+    return c
+
+
+def count(taxon_key, lat=None, lon=None, km=None, gadm=None):
+    """Number of georeferenced occurrence records for a taxon, optionally within km of a
+    point or inside a GADM area. Raises LookupFailed instead of ever returning a guess."""
     params = {"taxonKey": taxon_key, "limit": 0, "hasCoordinate": "true",
               "hasGeospatialIssue": "false"}
     if km is not None:
         params["geoDistance"] = f"{lat},{lon},{km}km"
-    return gbif_get("/occurrence/search", **params)["count"]
+    if gadm is not None:
+        params["gadmGid"] = gadm
+    try:
+        data = gbif_get("/occurrence/search", **params)
+    except (requests.RequestException, ValueError) as e:
+        raise LookupFailed(str(e)) from e
+    return checked_count(data)
+
+
+def is_mobile(m, class_label=None):
+    """Birds, marine species and plants: taxa the archipelago rule applies to."""
+    return (m.get("class") in MOBILE_CLASSES or class_label == "ray-finned fish"
+            or m.get("order") in MOBILE_ORDERS or m.get("family") in MOBILE_FAMILIES
+            or m.get("kingdom") in MOBILE_KINGDOMS)
+
+
+def apply_archipelago(grade_, mobile, archipelago):
+    """Clear a RED/ORANGE for a mobile taxon recorded anywhere in the A&N Islands."""
+    if grade_ in ("RED", "ORANGE") and mobile and archipelago:
+        return None
+    return grade_
+
+
+MOBILE_REGION_NOTE = ("mobile species recorded in the wider region; local absence likely "
+                      "reflects survey gaps")
+
+
+def apply_mobile_region(grade_, mobile, regional, far):
+    """A mobile taxon with any record within FAR_KM is GREY, not RED/ORANGE: GBIF coverage
+    of the Nicobar Islands is sparse, so only absence from the whole region is flagged."""
+    in_region = bool(regional) or bool(far)
+    if grade_ in ("RED", "ORANGE") and mobile and in_region:
+        return "GREY"
+    return grade_
 
 
 def effort_count(m, lat, lon, km=LOCAL_KM):
@@ -149,11 +211,14 @@ def effort_count(m, lat, lon, km=LOCAL_KM):
     if "classKey" in m:
         return count(m["classKey"], lat, lon, km), m.get("class", "the same class")
     if m.get("phylumKey") == CHORDATA_KEY:
-        data = gbif_get("/occurrence/search", taxonKey=CHORDATA_KEY, limit=0,
-                        hasCoordinate="true", hasGeospatialIssue="false",
-                        geoDistance=f"{lat},{lon},{km}km", facet="classKey", facetLimit=200)
+        try:
+            data = gbif_get("/occurrence/search", taxonKey=CHORDATA_KEY, limit=0,
+                            hasCoordinate="true", hasGeospatialIssue="false",
+                            geoDistance=f"{lat},{lon},{km}km", facet="classKey", facetLimit=200)
+        except (requests.RequestException, ValueError) as e:
+            raise LookupFailed(str(e)) from e
         classed = sum(c["count"] for f in data.get("facets", []) for c in f["counts"])
-        return data["count"] - classed, "ray-finned fish"
+        return checked_count(data) - classed, "ray-finned fish"
     if "phylumKey" in m:
         return count(m["phylumKey"], lat, lon, km), m.get("phylum", "the same phylum")
     return 0, "the same group"
@@ -271,9 +336,13 @@ def check_species(scientific_name, lat, lon):
               "name_note": None, "class_name": None, "grade": "GREY",
               "local_count": None, "regional_count": None, "effort_count": None,
               "regional_effort_count": None, "global_count": None, "far_count": None,
+              "archipelago_count": None, "lookup_failed": False,
               "evidence": "", "gbif_links": {}}
 
-    resolved = resolve_name(scientific_name)
+    try:
+        resolved = resolve_name(scientific_name)
+    except (requests.RequestException, ValueError) as e:
+        return _lookup_failed(result, e)
     if resolved is None:
         result["evidence"] = evidence(result)
         return result
@@ -281,18 +350,52 @@ def check_species(scientific_name, lat, lon):
     m, key, accepted, note = resolved
     result.update(gbif_key=key, matched_name=accepted, name_note=note,
                   gbif_links=gbif_links(key, lat, lon))
-    result["local_count"] = count(key, lat, lon, LOCAL_KM)
-    result["regional_count"] = count(key, lat, lon, REGIONAL_KM)
-    result["effort_count"], result["class_name"] = effort_count(m, lat, lon)
-    result["global_count"] = count(key)
-    if result["local_count"] == 0:
-        if FAR_KM is not None and result["regional_count"] == 0:
-            result["far_count"] = count(key, lat, lon, FAR_KM)
-        if result["effort_count"] < MIN_EFFORT:
-            result["regional_effort_count"] = effort_count(m, lat, lon, REGIONAL_KM)[0]
-    result["grade"] = grade(True, result["local_count"], result["regional_count"],
-                            result["effort_count"], result["global_count"],
-                            result["far_count"], result["regional_effort_count"])
-    countries = top_countries(key) if result["grade"] == "RED" else ()
-    result["evidence"] = evidence(result, countries)
+    try:
+        result["local_count"] = count(key, lat, lon, LOCAL_KM)
+        result["regional_count"] = count(key, lat, lon, REGIONAL_KM)
+        result["effort_count"], result["class_name"] = effort_count(m, lat, lon)
+        result["global_count"] = count(key)
+        if result["local_count"] == 0:
+            if FAR_KM is not None and result["regional_count"] == 0:
+                result["far_count"] = count(key, lat, lon, FAR_KM)
+            if result["effort_count"] < MIN_EFFORT:
+                result["regional_effort_count"] = effort_count(m, lat, lon, REGIONAL_KM)[0]
+        result["grade"] = grade(True, result["local_count"], result["regional_count"],
+                                result["effort_count"], result["global_count"],
+                                result["far_count"], result["regional_effort_count"])
+        mobile = is_mobile(m, result["class_name"])
+        if result["grade"] in ("RED", "ORANGE") and mobile:
+            result["archipelago_count"] = count(key, gadm=ANDAMAN_NICOBAR_GADM)
+            result["grade"] = apply_archipelago(result["grade"], mobile, result["archipelago_count"])
+        if result["grade"] in ("RED", "ORANGE") and mobile:
+            if result["regional_count"] == 0 and result["far_count"] is None:
+                result["far_count"] = count(key, lat, lon, FAR_KM)
+            flagged = result["grade"]
+            result["grade"] = apply_mobile_region(flagged, mobile, result["regional_count"],
+                                                  result["far_count"])
+            result["mobile_region"] = result["grade"] != flagged
+        countries = top_countries(key) if result["grade"] == "RED" else ()
+    except (LookupFailed, requests.RequestException, ValueError) as e:
+        return _lookup_failed(result, e)
+    if result.get("mobile_region"):
+        within = result["regional_count"] or result["far_count"]
+        km = REGIONAL_KM if result["regional_count"] else FAR_KM
+        result["evidence"] = (f"0 GBIF records of {accepted} within {LOCAL_KM} km or in the "
+                              f"Andaman & Nicobar Islands, but {within:,} within {km:,} km: "
+                              f"{MOBILE_REGION_NOTE}. Not graded.")
+    elif result["archipelago_count"] and result["grade"] is None:
+        result["evidence"] = (f"0 GBIF records of {accepted} within {LOCAL_KM} km, but "
+                              f"{result['archipelago_count']:,} elsewhere in the Andaman & Nicobar "
+                              f"Islands: recorded elsewhere in the Andaman & Nicobar Islands, "
+                              f"so not flagged.")
+    else:
+        result["evidence"] = evidence(result, countries)
+    return result
+
+
+def _lookup_failed(result, error):
+    """GREY with the note "lookup failed": a failed lookup is never turned into a count."""
+    result.update(grade="GREY", lookup_failed=True,
+                  evidence=f"lookup failed: GBIF did not return a usable answer ({str(error)[:80]}); "
+                           f"not graded.")
     return result

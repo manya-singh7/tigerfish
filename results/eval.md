@@ -1,6 +1,6 @@
 # TigerFish evaluation
 
-Generated 2026-10-25 15:18. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1275; new spend in this run: $0.0000 (the rest came from cache; cap $0.03).
+Generated 2026-10-25 18:41. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1282; new spend in this run: $0.0000 (the rest came from cache; cap $0.01).
 
 ## Summary
 
@@ -69,6 +69,8 @@ Every candidate pair is first screened by LIGHTNING in batches of 2: could the t
 | Planted test | 75 | 51 / 0 / 24 | 24 | 29 | 0 |
 
 
+Fast mode (`scripts/audit.py --triage fast`, quotes-only view alone) on the known-issue pages: yes / unsure / no = 10 / 0 / 11, and it would drop 2 RED/ORANGE finding(s) that safe mode keeps.
+
 Triage runs two LIGHTNING views of each pair: the two quotes alone (8 pairs per call) and the quotes with about 1,500 characters of page context each (2 pairs per call). A pair is dropped only if both views say no: in validation, each view alone dropped a different real finding (quotes only lost a 648-vs-600 flora ORANGE that needs page context; context alone lost a planted RED).
 
 
@@ -123,6 +125,7 @@ Per check, for the 10 known-issue pages and Table 3.16 (table layout from the Ne
 | Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~1s | $0.0006 | Rs 0.05 |
 | Planted test: claim extraction | 15 | 13,688 | 2,571 | 16,259 | 13s | $0.0014 | Rs 0.12 |
 | Planted test: triage (Lightning) | 48 | 74,568 | 2,089 | 76,657 | 27s | $0.0050 | Rs 0.42 |
+| Planted test: fast triage, quotes only (Lightning) | 10 | 7,995 | 960 | 8,955 | 8s | $0.0007 | Rs 0.06 |
 | Planted test: Ultra verdicts | 20 | 49,404 | 23,878 | 73,282 | 82s | $0.1210 | Rs 10.17 |
 
 Tavily credits: copy-paste check 15, status check 2. GBIF calls (free): 55.
@@ -144,6 +147,9 @@ Pages: 543 text + 579 vision; 91 Hindi pages skipped.
 | vision_page_s | 15.25 |
 | verdict_s | 3.032075 |
 | triage_pass_rate | 0.904762 |
+| triage_pass_rate_fast | 0.47619 |
+| triage_usd_per_candidate_fast | 9e-06 |
+| triage_s_per_candidate_fast | 0.104 |
 | triage_usd_per_candidate | 6.6e-05 |
 | triage_s_per_candidate | 0.361333 |
 

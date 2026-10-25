@@ -614,6 +614,7 @@ Each pair also shows page text around both quotes. Use it:
 
 
 TRIAGE_QUOTE_BATCH = 8   # pairs per call in the quotes-only view
+TRIAGE_MODE = "safe"     # safe: two views (quotes, quotes + context); fast: quotes only
 
 
 def triage(cands, pages=None):
@@ -676,7 +677,7 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
     # (triage, failure) never renumbers the others.
     numbered = list(enumerate(cands, 1))
     if use_triage if use_triage is not None else TRIAGE:
-        answers = triage(cands, pages)
+        answers = triage(cands, pages if TRIAGE_MODE == "safe" else None)
         last_run["triage"] = {a: answers.count(a) for a in TRIAGE_ANSWERS}
         last_run["triage_answers"] = answers
         last_run["triaged_out"] = [[c["id"] for c in cand["claims"]]

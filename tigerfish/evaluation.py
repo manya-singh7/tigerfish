@@ -198,6 +198,7 @@ def validate_triage(cands, pages, ledger=()):
     Returns counts plus per-candidate rows.
     """
     answers = contradictions.triage(cands, pages)
+    fast = contradictions._triage_pass(cands, None, contradictions.TRIAGE_QUOTE_BATCH)
     rows = []
     for cand, ans in zip(cands, answers):
         grade = cached_grade(cand, pages, ledger)
@@ -207,6 +208,9 @@ def validate_triage(cands, pages, ledger=()):
                      "violation": ans == "no" and grade in ("RED", "ORANGE")})
     return {"candidates": len(cands),
             "triage": {a: answers.count(a) for a in contradictions.TRIAGE_ANSWERS},
+            "triage_fast": {a: fast.count(a) for a in contradictions.TRIAGE_ANSWERS},
+            "fast_violations": sum(1 for r, f in zip(rows, fast)
+                                   if f == "no" and r["ultra_grade"] in ("RED", "ORANGE")),
             "with_cached_verdict": sum(r["ultra_grade"] is not None for r in rows),
             "violations": [r for r in rows if r["violation"]],
             "ultra_calls_saved": answers.count("no"), "rows": rows}

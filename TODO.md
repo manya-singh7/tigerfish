@@ -26,6 +26,9 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Table 3.16 taxonomy: Pteropus giganteus. GBIF (and GBIF's IUCN data) map it to P. vampyrus (EN); the Indian flying fox is usually P. medius (LC). Decide which name the report means before using any status for it.
 - [ ] gn-002 (under_review): p.751, whose budget is the 4 ha of coral restoration? Ultra says it covers the entire project (Port, Power plant, Township), not just the airport. If so, delete gn-002.
 
+- [ ] Species table p.954: Panulirus interruptus, RED at Campbell Bay: GBIF 0 within 100 km, 0 within 500 km, 0 in the A&N Islands, 0 within 3,000 km, 294,577 worldwide. Is it really recorded at Great Nicobar?
+- [ ] Species tables, flora (not in the app): Musa sabuana p.310, Phalaenopsis speciosa p.317, Phalaenopsis speciosa p.1030: each has only 1 GBIF record worldwide; likely data gaps (Phalaenopsis speciosa is native to the islands). Check against the Flora of Andaman & Nicobar.
+
 ## Block B (PDF reader + Super-VL)
 - [ ] Demo: Super-VL reads the table image -> species list -> species check. This is the headline demo shot.
 

@@ -110,6 +110,9 @@ def planted(pages, ledger, budget_usd, dry_run):
     trace.reset()
     answers = contradictions.triage(cands, texts)   # LIGHTNING screen with page context
     triage_used = list(trace.used)
+    trace.reset()                                   # the quotes-only view on its own (cached)
+    contradictions._triage_pass(cands, None, contradictions.TRIAGE_QUOTE_BATCH)
+    fast_used = list(trace.used)
     total = len(cands)
     passed = [c for c, a in zip(cands, answers) if a != "no"]
     dropped = max(0, len(passed) - EVAL_MAX_CANDIDATES)
@@ -148,6 +151,7 @@ def planted(pages, ledger, budget_usd, dry_run):
                 cost_usd=round(llm.session_cost_usd - start, 4),
                 usage=[ev.usage_row("Planted test: claim extraction", extract_used),
                        ev.usage_row("Planted test: triage (Lightning)", triage_used),
+                       ev.usage_row("Planted test: fast triage, quotes only (Lightning)", fast_used),
                        ev.usage_row("Planted test: Ultra verdicts", verdict_used)])
     return plan
 
@@ -197,7 +201,7 @@ def stage(name, fn):
 
 
 def cost_and_speed(pages, triage_counts=None, triage_row=None, triage_candidates=0,
-                   extra_verdict_rows=()):
+                   extra_verdict_rows=(), fast_counts=None, fast_row=None):
     gaps = gaps_by_dir()
     known = [pages[n] for n in KNOWN_PAGES]
     text_pages = [p for p in known if not p["needs_vision"]]
@@ -245,6 +249,12 @@ def cost_and_speed(pages, triage_counts=None, triage_row=None, triage_candidates
     # known-issue pages, and LIGHTNING triage cost per candidate from the planted test.
     tc = triage_counts or {"yes": 1, "unsure": 0, "no": 0}
     per["triage_pass_rate"] = (tc["yes"] + tc["unsure"]) / max(1, sum(tc.values()))
+    tf = fast_counts or tc
+    per["triage_pass_rate_fast"] = (tf["yes"] + tf["unsure"]) / max(1, sum(tf.values()))
+    per["triage_usd_per_candidate_fast"] = (fast_row["cost_usd"] / max(1, triage_candidates)
+                                            if fast_row else 0.0)
+    per["triage_s_per_candidate_fast"] = (fast_row["seconds"] / max(1, triage_candidates)
+                                          if fast_row else 0.0)
     per["triage_usd_per_candidate"] = (triage_row["cost_usd"] / max(1, triage_candidates)
                                        if triage_row else 0.0)
     per["triage_s_per_candidate"] = (triage_row["seconds"] / max(1, triage_candidates)
@@ -396,6 +406,10 @@ def write_md(res):
                     else "Not a known issue, planted catch or the negative control")
             lines.append(f"- Dropped by triage on the {name}: pages {r['pages']} "
                          f"(Ultra had graded it {r['ultra_grade']}). {what}.")
+    lines += ["", f"Fast mode (`scripts/audit.py --triage fast`, quotes-only view alone) on the "
+              f"known-issue pages: yes / unsure / no = {tk['triage_fast']['yes']} / "
+              f"{tk['triage_fast']['unsure']} / {tk['triage_fast']['no']}, and it would drop "
+              f"{tk['fast_violations']} RED/ORANGE finding(s) that safe mode keeps."]
     lines += ["", "Triage runs two LIGHTNING views of each pair: the two quotes alone "
               f"({contradictions.TRIAGE_QUOTE_BATCH} pairs per call) and the quotes with about "
               f"{contradictions.TRIAGE_CONTEXT_CHARS:,} characters of page context each "
@@ -485,10 +499,13 @@ def main():
     res["planted"] = planted(pages, ledger, args.max_cost - (llm.session_cost_usd - start), False)
     res["species"] = planted_species()
     res["table"] = table_vs_article()
-    trow = next((r for r in res["planted"].get("usage", []) if "triage" in r["stage"]), None)
+    trow = next((r for r in res["planted"].get("usage", [])
+                 if r["stage"].endswith(": triage (Lightning)")), None)
+    frow = next((r for r in res["planted"].get("usage", []) if "fast triage" in r["stage"]), None)
     vrows = [r for r in res["planted"].get("usage", []) if "Ultra" in r["stage"]]
     res["cost"] = cost_and_speed(pages, res["known"]["triage_validation"]["triage"], trow,
-                                 res["planted"].get("candidates_total", 0), vrows)
+                                 res["planted"].get("candidates_total", 0), vrows,
+                                 res["known"]["triage_validation"]["triage_fast"], frow)
     res["eval_cost_usd"] = round(llm.session_cost_usd - start, 4)
     (RESULTS / "eval.json").write_text(json.dumps(res, ensure_ascii=False, indent=2, default=str),
                                        encoding="utf-8")

@@ -1,63 +1,214 @@
-"""Draft letter (.docx) from confirmed findings: neutral, factual, with page citations."""
+"""Draft letter (.docx) from confirmed findings: neutral, factual, with page citations.
+
+Languages: "en", "hi" (Hindi) or "both" (English, then Hindi). Hindi is machine-translated
+by LIGHTNING (thinking off, cached), and only OUR text is translated: quotes from the
+report, evidence values, page numbers and links stay exactly as they are. A translated
+segment that loses or changes a number or link is kept in English instead.
+"""
 
 import io
+import json
+import re
 from datetime import date
 
 from docx import Document
+from docx.enum.text import WD_BREAK
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Pt, RGBColor
 
-ACCENT = RGBColor(0x0F, 0x5E, 0x5E)
+from tigerfish import claims as claims_mod
+from tigerfish import llm
 
+ACCENT = RGBColor(0x0F, 0x5E, 0x5E)
+DEVANAGARI_FONT = "Nirmala UI"     # ships with Windows; Mangal is the older alternative
+LATIN_FONT = "Calibri"
+MACHINE_NOTE = "Machine-translated; please review."
+TRANSLATE_CHUNK = 8                # segments per LIGHTNING call
+URL = re.compile(r"https?://\S+")
+DEVANAGARI = re.compile(r"[ऀ-ॿ]")
+NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+TRANSLATE_PROMPT = """You translate English into formal, plain Hindi (Devanagari script) for \
+a letter to a government committee.
+Input: JSON {"texts": [...]}. Output: JSON only, {"translations": [...]}, with the Hindi \
+translation of each text, same order and same count. Write the translation itself, in \
+Devanagari; do not copy the English and do not add numbering.
+Keep every number, page number, URL, species name and report title exactly as written \
+(use Western digits 0-9) and keep placeholders in square brackets like [Name] unchanged.
+Example: {"texts": ["Sir / Madam,", "Clarification requested: page 12"]} -> \
+{"translations": ["महोदय / महोदया,", "स्पष्टीकरण का अनुरोध: पृष्ठ 12"]}"""
+
+
+class TranslationUnavailable(RuntimeError):
+    pass
+
+
+# ---------- letter content (English blocks) ----------
 
 def where(q):
     return f"page {q['page']}" if q.get("page") else q.get("where", "the report")
 
 
-def build_letter(report, findings):
-    """Return .docx bytes. Wording stays neutral: observations and requests to verify."""
-    doc = Document()
-    style = doc.styles["Normal"]
-    style.font.name = "Calibri"
-    style.font.size = Pt(11)
-
-    doc.add_paragraph(date.today().strftime("%d %B %Y"))
-    doc.add_paragraph("To,\nThe Member Secretary\nExpert Appraisal Committee\n"
-                      "Ministry of Environment, Forest and Climate Change\n[address]")
-    title = doc.add_paragraph()
-    run = title.add_run(f"Subject: Observations on {report['title']}, request for clarification")
-    run.bold = True
-    run.font.color.rgb = ACCENT
-
-    doc.add_paragraph("Sir / Madam,")
-    doc.add_paragraph(
-        f"I have reviewed {report['title']} ({report.get('source', '')}). The points below are "
-        f"statements in the report that appear inconsistent with each other or with public "
-        f"records. Each point cites the page and the exact text. I request that the project "
-        f"proponent and the consultant verify these points and clarify or correct them before "
-        f"the report is relied upon.")
-
+def blocks(report, findings):
+    """The letter as blocks. kind: text (ours, translatable), quote / data (never translated),
+    heading / subject (ours, translatable, styled), break."""
+    out = [("data", date.today().strftime("%d %B %Y")),
+           ("text", "To,\nThe Member Secretary\nExpert Appraisal Committee\n"
+                    "Ministry of Environment, Forest and Climate Change\n[address]"),
+           ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
+           ("text", "Sir / Madam,"),
+           ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "
+                    f"below are statements in the report that appear inconsistent with each other "
+                    f"or with public records. Each point cites the page and the exact text. I "
+                    f"request that the project proponent and the consultant verify these points "
+                    f"and clarify or correct them before the report is relied upon.")]
     for i, f in enumerate(findings, 1):
-        h = doc.add_paragraph()
-        r = h.add_run(f"{i}. {f['check_name']}: {f['title']}")
-        r.bold = True
+        out.append(("heading", f"{i}. {f['check_name']}: {f['title']}"))
         for q in f["quotes"]:
-            p = doc.add_paragraph(style="List Bullet")
-            p.add_run(f"The report states ({where(q)}): ").italic = True
-            p.add_run(f"“{q['text']}”")
-        doc.add_paragraph(f"Observation: {f['why']}")
+            out.append(("quote_label", f"The report states ({where(q)}):"))
+            out.append(("quote", f"“{q['text']}”"))
+        out.append(("text", f"Observation: {f['why']}"))
         for e in f["evidence"]:
-            line = f"{e['label']}: {e.get('value') or ''}"
-            if e.get("url"):
-                line += f" ({e['url']})"
-            doc.add_paragraph(line, style="List Bullet 2")
-        doc.add_paragraph(f"Clarification requested: {f['clear']}")
+            out.append(("evidence", e["label"], str(e.get("value") or ""), e.get("url")))
+        out.append(("text", f"Clarification requested: {f['clear']}"))
+    out += [("text", "These observations were prepared with the help of TigerFish, an automated "
+                     "accuracy checker, and each point was reviewed by me before inclusion. They "
+                     "are offered so that the record can be verified and, where needed, corrected."),
+            ("text", "Yours faithfully,\n\n[Name]\n[Address / organisation]\n[Contact]")]
+    return out
 
-    doc.add_paragraph(
-        "These observations were prepared with the help of TigerFish, an automated accuracy "
-        "checker, and each point was reviewed by me before inclusion. They are offered so that "
-        "the record can be verified and, where needed, corrected.")
-    doc.add_paragraph("Yours faithfully,\n\n[Name]\n[Address / organisation]\n[Contact]")
 
+def translatable(blks):
+    """The English strings we translate (our own text only), in block order."""
+    out = []
+    for b in blks:
+        if b[0] in ("text", "subject", "heading", "quote_label"):
+            out.append(b[1])
+        elif b[0] == "evidence":
+            out.append(b[1])                    # the label only; the value is data
+    return out
+
+
+# ---------- translation ----------
+
+def keeps_numbers_and_links(src, dst):
+    """Every number and URL in the English text must appear unchanged in the translation."""
+    return (set(NUM.findall(src)) <= set(NUM.findall(dst))
+            and set(URL.findall(src)) <= set(URL.findall(dst)))
+
+
+def is_translation(src, dst):
+    """Hindi (Devanagari) that differs from the English, keeping its numbers and links."""
+    return (bool(DEVANAGARI.search(dst)) and dst.strip() != src.strip()
+            and keeps_numbers_and_links(src, dst))
+
+
+def translate(texts):
+    """{english: hindi} via LIGHTNING (cached). Unsafe or missing translations are left out
+    (the English stays). Raises TranslationUnavailable if the model can't be reached."""
+    out = {}
+    unique = list(dict.fromkeys(t for t in texts if t.strip()))
+    for start in range(0, len(unique), TRANSLATE_CHUNK):
+        _translate_chunk(unique[start:start + TRANSLATE_CHUNK], out)
+    return out
+
+
+def _translate_chunk(chunk, out):
+    """Translate one chunk into `out`; if the reply is unusable, split it and try the halves
+    (down to single texts), so one bad reply doesn't leave a whole chunk in English."""
+    try:
+        raw = claims_mod.chat_json(llm.LIGHTNING, [
+            {"role": "system", "content": TRANSLATE_PROMPT},
+            {"role": "user", "content": json.dumps({"texts": chunk}, ensure_ascii=False)}],
+            max_tokens=4000)
+    except Exception as e:                      # no key, network, ...
+        raise TranslationUnavailable(str(e)) from e
+    got = (raw or {}).get("translations") if isinstance(raw, dict) else None
+    if not isinstance(got, list) or len(got) != len(chunk):
+        if len(chunk) > 1:
+            half = len(chunk) // 2
+            _translate_chunk(chunk[:half], out)
+            _translate_chunk(chunk[half:], out)
+        return
+    for src, dst in zip(chunk, got):
+        if isinstance(dst, str) and is_translation(src, dst):
+            out[src] = dst.strip()
+
+
+# ---------- rendering ----------
+
+def set_font(run, name):
+    """Set a run's font for Latin, East Asian and complex scripts (Devanagari is 'cs')."""
+    run.font.name = name
+    rpr = run._element.get_or_add_rPr()
+    fonts = rpr.find(qn("w:rFonts"))
+    if fonts is None:
+        fonts = OxmlElement("w:rFonts")
+        rpr.insert(0, fonts)
+    for attr in ("w:ascii", "w:hAnsi", "w:eastAsia", "w:cs"):
+        fonts.set(qn(attr), name)
+
+
+def add_run(par, text, bold=False, italic=False, color=None):
+    """A run with the right font: Devanagari text gets DEVANAGARI_FONT and a Hindi tag."""
+    run = par.add_run(text)
+    if re.search(r"[ऀ-ॿ]", text):
+        set_font(run, DEVANAGARI_FONT)
+        lang = OxmlElement("w:lang")
+        lang.set(qn("w:bidi"), "hi-IN")
+        lang.set(qn("w:val"), "hi-IN")
+        run._element.get_or_add_rPr().append(lang)
+    else:
+        set_font(run, LATIN_FONT)
+    run.bold, run.italic = bold or None, italic or None
+    if color:
+        run.font.color.rgb = color
+    return run
+
+
+def render(doc, blks, tr=None):
+    tr = tr or {}
+    t = lambda s: tr.get(s, s)                      # noqa: E731
+    for b in blks:
+        kind = b[0]
+        if kind == "data":
+            add_run(doc.add_paragraph(), b[1])
+        elif kind == "subject":
+            add_run(doc.add_paragraph(), t(b[1]), bold=True, color=ACCENT)
+        elif kind == "heading":
+            add_run(doc.add_paragraph(), t(b[1]), bold=True)
+        elif kind == "quote_label":
+            par = doc.add_paragraph(style="List Bullet")
+            add_run(par, t(b[1]) + " ", italic=True)
+        elif kind == "quote":                          # appended to the label's paragraph
+            add_run(doc.paragraphs[-1], b[1])          # never translated
+        elif kind == "evidence":
+            _, label, value, url = b
+            par = doc.add_paragraph(style="List Bullet 2")
+            add_run(par, f"{t(label)}: ")
+            add_run(par, value)                        # data: kept as is
+            if url:
+                add_run(par, f" ({url})")
+        else:
+            add_run(doc.add_paragraph(), t(b[1]))
+
+
+def build_letter(report, findings, language="en"):
+    """Return .docx bytes. language: "en", "hi" or "both"."""
+    doc = Document()
+    doc.styles["Normal"].font.size = Pt(11)
+    blks = blocks(report, findings)
+    if language in ("en", "both"):
+        render(doc, blks)
+    if language in ("hi", "both"):
+        tr = translate(translatable(blks) + [MACHINE_NOTE])
+        if language == "both":
+            doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
+        add_run(doc.add_paragraph(), MACHINE_NOTE, bold=True)
+        if MACHINE_NOTE in tr:
+            add_run(doc.add_paragraph(), tr[MACHINE_NOTE], italic=True)
+        render(doc, blks, tr)
     buf = io.BytesIO()
     doc.save(buf)
     return buf.getvalue()

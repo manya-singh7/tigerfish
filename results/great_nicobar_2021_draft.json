@@ -2,13 +2,14 @@
   "id": "great_nicobar_2021_draft",
   "title": "Great Nicobar EIA (2021 draft)",
   "source": "Draft EIA by Vimta Labs for ANIIDCO, December 2021",
-  "pages_read": 10,
+  "pages_read": 47,
   "pages_total": 1213,
   "checks": [
     "Claim extraction (Nemotron Lightning / Super-VL)",
     "Internal contradictions and recycled figures (Nemotron Ultra)",
     "Copied text (Tavily)",
-    "Borrowed text (Tavily)"
+    "Borrowed text (Tavily)",
+    "Species tables in the report (GBIF)"
   ],
   "cost": {
     "nebius_usd": 0.1571,
@@ -223,7 +224,42 @@
       "images": [
         "pages/great_nicobar_2021_draft_bt-p392_p0392.png"
       ]
+    },
+    {
+      "id": "sp-p954-001",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "RED",
+      "title": "Panulirus interruptus at Campbell Bay (p.954)",
+      "message": "0 GBIF records of Panulirus interruptus within 3,000 km; its 294,577 records worldwide are mostly from United States of America, Mexico, Canada. Local survey effort is low (150 Malacostraca records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 954,
+          "text": "Panulirus interruptus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Campbell Bay (7.0, 93.93): continues the table from p.953 ('Campbell Bay' named 4 time(s) on p.952-953 (also: Galathea 1))"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 294,577 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Panulirus interruptus",
+          "url": "https://www.gbif.org/species/2221647"
+        }
+      ],
+      "why": "0 GBIF records of Panulirus interruptus within 3,000 km; its 294,577 records worldwide are mostly from United States of America, Mexico, Canada. Local survey effort is low (150 Malacostraca records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_species_p0954.png"
+      ]
     }
   ],
-  "exported_in_s": 2.0
+  "exported_in_s": 2.1
 }

@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-25 15:18",
+  "generated": "2026-10-25 18:41",
   "seed": 42,
-  "max_cost_usd": 0.025,
+  "max_cost_usd": 0.01,
   "known": {
     "rows": [
       {
@@ -128,6 +128,12 @@
         "no": 2,
         "unsure": 0
       },
+      "triage_fast": {
+        "yes": 10,
+        "no": 11,
+        "unsure": 0
+      },
+      "fast_violations": 2,
       "with_cached_verdict": 20,
       "violations": [],
       "ultra_calls_saved": 2,
@@ -641,6 +647,12 @@
         "no": 24,
         "unsure": 0
       },
+      "triage_fast": {
+        "yes": 39,
+        "no": 36,
+        "unsure": 0
+      },
+      "fast_violations": 1,
       "with_cached_verdict": 29,
       "violations": [],
       "ultra_calls_saved": 24,
@@ -1974,6 +1986,16 @@
         "cost_usd": 0.00498
       },
       {
+        "stage": "Planted test: fast triage, quotes only (Lightning)",
+        "calls": 10,
+        "in_tokens": 7995,
+        "out_tokens": 960,
+        "total_tokens": 8955,
+        "seconds": 7.8,
+        "time_measured": true,
+        "cost_usd": 0.00071
+      },
+      {
         "stage": "Planted test: Ultra verdicts",
         "calls": 20,
         "in_tokens": 49404,
@@ -2241,7 +2263,7 @@
         "in_tokens": 799,
         "out_tokens": 401,
         "total_tokens": 1200,
-        "seconds": 0.8,
+        "seconds": 0.9,
         "time_measured": false,
         "cost_usd": 0.0006
       }
@@ -2266,6 +2288,9 @@
         "vision_page_s": 15.25,
         "verdict_s": 3.032075,
         "triage_pass_rate": 0.904762,
+        "triage_pass_rate_fast": 0.47619,
+        "triage_usd_per_candidate_fast": 9e-06,
+        "triage_s_per_candidate_fast": 0.104,
         "triage_usd_per_candidate": 6.6e-05,
         "triage_s_per_candidate": 0.361333
       },

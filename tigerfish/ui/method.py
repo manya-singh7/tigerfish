@@ -55,6 +55,10 @@ wrong, only that it does not agree with another statement or with public records
   too little surveyed (GREY), unless the wider {species.REGIONAL_KM} km region is surveyed
   ({species.MIN_REGIONAL_EFFORT} records) or the species has no records within
   {species.FAR_KM:,} km at all.
+- **GBIF coverage of the Nicobar Islands is sparse; for mobile species TigerFish only flags
+  those absent from the whole region.** Birds, marine species and plants recorded anywhere
+  in the Andaman & Nicobar Islands, or within {species.FAR_KM:,} km, are not flagged.
+  Terrestrial mammals, amphibians and land reptiles keep the strict distance rules.
 - **Taxonomy.** GBIF's synonyms can differ from current usage (for example, it maps *Pteropus
   giganteus* to *P. vampyrus*). Status differences after a name correction are graded GREY.
 - **Hindi pages are skipped.** The text layer of the Hindi summary does not extract cleanly.

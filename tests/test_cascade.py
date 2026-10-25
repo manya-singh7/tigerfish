@@ -231,3 +231,28 @@ def test_triage_with_pages_drops_only_when_both_views_say_no(monkeypatch):
     p = claim("p", 2, "area", 71, "ha", "airport", "airport 71 ha")
     pages = {1: "total land 194 ha", 2: "airport 71 ha"}
     assert ct.triage([cand("numeric", t, p), cand("numeric", p, t)], pages) == ["no", "yes"]
+
+
+def test_audit_fast_triage_uses_its_own_rates():
+    per = {"text_page_usd": 0.0, "vision_page_usd": 0.0, "verdicts_per_page": 1.0,
+           "triage_pass_rate": 0.9, "triage_pass_rate_fast": 0.5,
+           "triage_usd_per_candidate": 0.001, "triage_usd_per_candidate_fast": 0.0002,
+           "verdict_usd": 0.01, "text_page_s": 0, "vision_page_s": 0,
+           "triage_s_per_candidate": 0, "triage_s_per_candidate_fast": 0, "verdict_s": 0}
+    kept = [{"page": i, "needs_vision": False} for i in range(100)]
+    safe, fast = audit.estimate(kept, per, 0, "safe"), audit.estimate(kept, per, 0, "fast")
+    assert (safe["ultra_verdicts"], fast["ultra_verdicts"]) == (90, 50)
+    assert fast["total_usd"] < safe["total_usd"]
+
+
+def test_check_fast_mode_triages_without_context(monkeypatch):
+    seen = {}
+
+    def fake_triage(cands, pages=None):
+        seen["pages"] = pages
+        return ["no"] * len(cands)
+
+    monkeypatch.setattr(ct, "triage", fake_triage)
+    monkeypatch.setattr(ct, "TRIAGE_MODE", "fast")
+    ct.check([cand("numeric", A, B)], {1: "x", 2: "y"}, use_triage=True)
+    assert seen["pages"] is None

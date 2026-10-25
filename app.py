@@ -71,16 +71,29 @@ with findings_tab:
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
                 f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept for this '
                 f'session only.</div>', unsafe_allow_html=True)
+    lang_label = st.radio("Letter language", ["English", "Hindi", "Both"], horizontal=True,
+                          help="Hindi is machine-translated. Quotes from the report, page "
+                               "numbers and links are never translated.")
+    lang = {"English": "en", "Hindi": "hi", "Both": "both"}[lang_label]
+    docx_bytes, letter_error = b"", None
+    if confirmed:
+        try:
+            docx_bytes = letter.build_letter(report, confirmed, lang)
+        except letter.TranslationUnavailable:
+            letter_error = ("The Hindi letter needs the translation model (NEBIUS_API_KEY), and "
+                            "this selection has not been translated before. Choose English.")
     st.download_button(
         "Draft objection letter (.docx)",
-        data=letter.build_letter(report, confirmed) if confirmed else b"",
-        file_name=f"tigerfish_{report['id']}_letter.docx",
+        data=docx_bytes,
+        file_name=f"tigerfish_{report['id']}_letter_{lang}.docx",
         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        disabled=not confirmed, type="primary",
+        disabled=not confirmed or bool(letter_error), type="primary",
         help="Built from the findings you marked Confirm. Neutral and factual, with page "
              "citations and evidence links.")
     if not confirmed:
         st.caption("Mark at least one finding as Confirm to draft the letter.")
+    if letter_error:
+        st.caption(letter_error)
 
 with method_tab:
     method.render()

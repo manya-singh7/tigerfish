@@ -27,19 +27,26 @@ CREDITS_PER_PASSAGE = 2          # 1 search + up to 1 extract call per passage
 TAVILY_FREE_CREDITS = 1000
 
 
-def estimate(kept, per, top_passages):
-    """USD, minutes and Tavily credits for auditing `kept` pages (no model calls)."""
+def estimate(kept, per, top_passages, triage="safe"):
+    """USD, minutes and Tavily credits for auditing `kept` pages (no model calls).
+
+    triage: "safe" (two views; nothing real dropped in validation) or "fast" (quotes
+    only; cheaper, but it dropped a real ORANGE in validation).
+    """
+    sfx = "_fast" if triage == "fast" else ""
     n_vision = sum(1 for p in kept if p.get("needs_vision"))
     n_text = len(kept) - n_vision
     candidates = per["verdicts_per_page"] * len(kept)
-    verdicts = candidates * per["triage_pass_rate"]
+    verdicts = candidates * per.get("triage_pass_rate" + sfx, per["triage_pass_rate"])
+    triage_usd = per.get("triage_usd_per_candidate" + sfx, per["triage_usd_per_candidate"])
+    triage_s = per.get("triage_s_per_candidate" + sfx, per["triage_s_per_candidate"])
     usd = {
         "claims": n_text * per["text_page_usd"] + n_vision * per["vision_page_usd"],
-        "triage": candidates * per["triage_usd_per_candidate"],
+        "triage": candidates * triage_usd,
         "verdicts": verdicts * per["verdict_usd"],
     }
     seconds = (n_text * per["text_page_s"] + n_vision * per["vision_page_s"]
-               + candidates * per["triage_s_per_candidate"] + verdicts * per["verdict_s"])
+               + candidates * triage_s + verdicts * per["verdict_s"])
     return {"pages": len(kept), "text_pages": n_text, "vision_pages": n_vision,
             "candidates": round(candidates), "ultra_verdicts": round(verdicts),
             "usd": {k: round(v, 2) for k, v in usd.items()}, "total_usd": round(sum(usd.values()), 2),
@@ -52,6 +59,8 @@ def main():
     parser.add_argument("pdf")
     parser.add_argument("--scope", action="store_true", help="skip pages not worth auditing")
     parser.add_argument("--top-passages", type=int, default=100)
+    parser.add_argument("--triage", choices=["safe", "fast"], default="safe",
+                        help="safe: quotes + page context (default); fast: quotes only")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--run", action="store_true", help="actually run the audit (costs money)")
     parser.add_argument("--max-cost", type=float, default=contradictions.MAX_COST_USD)
@@ -69,13 +78,21 @@ def main():
         shown = ", ".join(map(str, nums[:15])) + (" ..." if len(nums) > 15 else "")
         print(f"  skipped {reason:10} {len(nums):4}  pages {shown}")
 
-    full = estimate(pages, per, args.top_passages)
-    est = estimate(kept, per, args.top_passages)
+    est = estimate(kept, per, args.top_passages, args.triage)
     print(f"\nEstimate (unit costs measured on the audited pages, see results/eval.md):")
-    print(f"{'':22} {'pages':>6} {'Ultra verdicts':>15} {'USD':>8} {'INR':>8} {'API min':>8}")
-    for label, e in (("all pages", full), ("scoped" if args.scope else "same", est)):
-        print(f"{label:22} {e['pages']:>6} {e['ultra_verdicts']:>15,} {e['total_usd']:>8.2f} "
-              f"{round(ev.inr(e['total_usd'])):>8,} {e['minutes_sequential']:>8}")
+    print(f"{'':30} {'pages':>6} {'Ultra verdicts':>15} {'USD':>8} {'INR':>8} {'API min':>8}")
+    rows = [("all pages", pages)] + ([("scoped", kept)] if args.scope else [])
+    for mode in ("safe", "fast"):
+        for label, sel in rows:
+            e = estimate(sel, per, args.top_passages, mode)
+            mark = "  <- selected" if mode == args.triage and sel is kept else ""
+            print(f"{label + ', ' + mode + ' triage':30} {e['pages']:>6} "
+                  f"{e['ultra_verdicts']:>15,} {e['total_usd']:>8.2f} "
+                  f"{round(ev.inr(e['total_usd'])):>8,} {e['minutes_sequential']:>8}{mark}")
+    val = json.loads(EVAL.read_text(encoding="utf-8"))["known"]["triage_validation"]
+    print(f"  safe: quotes + page context; RED/ORANGE dropped in validation: {len(val['violations'])}")
+    print(f"  fast: quotes only, cheaper; RED/ORANGE dropped in validation: "
+          f"{val.get('fast_violations', '?')} (see results/eval.md, triage cascade)")
     print(f"  of which: claims ${est['usd']['claims']:.2f}, triage ${est['usd']['triage']:.2f}, "
           f"Ultra verdicts ${est['usd']['verdicts']:.2f}  (1 USD = {ev.USD_TO_INR} INR)")
     print(f"  copy-paste: top {args.top_passages} passages, about {est['tavily_credits']} Tavily "
@@ -87,6 +104,7 @@ def main():
             print("\nDry run only. Add --run to audit (costs money).")
         return
     # ---- the real run (not used in development; capped) ----
+    contradictions.TRIAGE_MODE = args.triage
     spent0 = claims.llm.session_cost_usd
     found = claims.extract_claims(kept, max_cost_usd=args.max_cost, pdf_stem=Path(args.pdf).stem)
     texts = {p["page"]: p["text"] for p in kept}
