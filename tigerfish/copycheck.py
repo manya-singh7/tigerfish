@@ -14,6 +14,9 @@ is mostly deterministic so results are reproducible and cheap.
                            DIFFERENT place
                      ORANGE near-identical description, place names changed
                      NONE  generic text, or the same project / coverage of it
+   borrowed_text     INFO (own section, never RED/ORANGE): >= BORROWED_RUN verbatim
+                     words from generic external guidance, with no citation of that
+                     source (domain name or title) anywhere on our page
 5. hunt_species_source  Tavily searches for combinations of a table's unusual names
 
 Every Tavily response is cached in cache/tavily/ (cached calls cost no credits).
@@ -29,6 +32,7 @@ import os
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 
@@ -48,6 +52,7 @@ NGRAM = 8
 MIN_RUN = 8                   # a match needs a common run of >= 8 words...
 MIN_NGRAM = 0.20              # ...or >= 20% of the passage's 8-grams in the hit
 ORANGE_NGRAM = 0.50           # near-identical text
+BORROWED_RUN = 20             # verbatim words from generic guidance, uncited -> INFO
 MAX_HIT_CHARS = 200_000       # extracted page text kept per hit
 HUNT_QUERIES = 4              # species source hunt: searches per table
 HUNT_NAMES_PER_QUERY = 3
@@ -312,13 +317,54 @@ def describe_place(url, text):
 
 # ---------- 2 + 4: run over passages ----------
 
-def check_passage(passage, budget, species_names=()):
-    """Search, extract, score and grade one passage. Returns a list of graded hits."""
+# ---------- borrowed text (INFO) ----------
+
+DOMAIN_NOISE = {"www", "gov", "org", "com", "net", "in", "nic", "dot", "edu", "ac", "co", "uk",
+                "int", "res", "gc", "ca", "au", "us"}
+
+
+def citation_terms(url, title=None):
+    """Names a page might use to cite a source: distinctive domain labels and the title."""
+    labels = [w for w in re.split(r"[.\-]", urlparse(url).netloc.lower())
+              if len(w) >= 3 and w not in DOMAIN_NOISE]
+    terms = labels + ([claims_mod.normalize(title)] if title and len(title) > 10 else [])
+    return terms
+
+
+def cited_on_page(url, title, page_text):
+    """The first citation term found on the page, or None."""
+    low = claims_mod.normalize(page_text).lower()
+    return next((t for t in citation_terms(url, title) if t.lower() in low), None)
+
+
+def borrowed_text(passage, page_text, hit, run_words):
+    """INFO finding for a long verbatim run from a generic external source, uncited on the page.
+
+    Only for hits graded NONE as generic wording (never RED/ORANGE, never same project).
+    """
+    if hit["grade"] != "NONE" or hit["why"] != "partial overlap of generic wording":
+        return None
+    if hit["longest_run"] < BORROWED_RUN or cited_on_page(hit["url"], hit["title"], page_text):
+        return None
+    ours = matching_snippet(run_words, passage["text"], context=0)
+    return {"type": "borrowed_text", "grade": "INFO", "page": passage["page"], "quote": ours,
+            "url": hit["url"], "title": hit["title"], "longest_run": hit["longest_run"],
+            "source_snippet": hit["snippet"],
+            "message": (f"{hit['longest_run']} consecutive words match {hit['url']} verbatim; "
+                        f"no citation to this source found on p.{passage['page']}. "
+                        f"Consider citing it.")}
+
+
+def check_passage(passage, budget, species_names=(), page_text=None):
+    """Search, extract, score and grade one passage. Returns graded hits and borrowed text.
+
+    page_text (the passage's full page) is needed for the borrowed-text citation check.
+    """
     phrase = distinctive_phrase(passage["text"])
     results = search(f'"{phrase}"', budget).get("results", [])
     top = [r["url"] for r in results if not same_project(r["url"], r.get("content", ""))]
     texts = extract(top[:EXTRACT_TOP], budget)
-    hits = []
+    hits, borrowed = [], []
     for r in results:
         url = r["url"]
         text = texts.get(url) or r.get("content", "")
@@ -334,16 +380,23 @@ def check_passage(passage, budget, species_names=()):
             hit["place"] = describe_place(url, text)
             hit["message"] = NEUTRAL.format(url=url, place=hit["place"])
         hits.append(hit)
+        b = borrowed_text(passage, page_text or passage["text"], hit, ov.get("run_words"))
+        if b and not any(x["url"] == b["url"] for x in borrowed):
+            borrowed.append(b)
     return {"page": passage["page"], "passage": passage["text"], "phrase": phrase,
-            "claim_ids": passage["claim_ids"], "results": len(results), "hits": hits}
+            "claim_ids": passage["claim_ids"], "results": len(results), "hits": hits,
+            "borrowed": borrowed}
 
 
-def check_passages(passages, budget, species_names=()):
-    """Run check_passage over all passages; stops cleanly at the credit cap."""
+def check_passages(passages, budget, species_names=(), pages=None):
+    """Run check_passage over all passages; stops cleanly at the credit cap.
+
+    pages: {page number: text}, for the borrowed-text citation check.
+    """
     out, stopped = [], None
     for p in passages:
         try:
-            out.append(check_passage(p, budget, species_names))
+            out.append(check_passage(p, budget, species_names, (pages or {}).get(p["page"])))
         except CreditCapReached as e:
             stopped = str(e)
             log.warning(stopped)

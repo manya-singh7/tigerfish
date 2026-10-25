@@ -268,3 +268,58 @@ def test_hunt_ranks_by_names_found(fake_tavily, monkeypatch):
     ranked, stopped = cc.hunt_species_source(NAMES, cc.Budget(50))
     assert stopped is None and ranked[0]["url"] == "https://a.org"
     assert len(ranked[0]["names"]) == 2
+
+
+# ---------- borrowed text (INFO) ----------
+
+GUIDE = ("Maintaining wildlife habitat connectivity is the first step in avoiding impacts from "
+         "road construction on animal movement, and crossing structures should be placed where "
+         "animals already move across the landscape between patches of habitat. Fencing is "
+         "used to guide animals towards these structures and away from the road surface.")
+
+
+def generic_hit(url="https://www.fhwa.dot.gov/clas/ctip/ch_3.aspx", title="Wildlife Crossing Structures"):
+    # The source shares a 22-word run with our 40-word passage (like the real p.392 match:
+    # a long verbatim run inside a longer sentence), so the hit is generic NONE, not ORANGE.
+    text = ("Federal guidance. " + " ".join(GUIDE.split()[:22]) +
+            " and should be planned with state agencies before design begins.")
+    ov = cc.overlap(GUIDE, text)
+    grade, why = cc.grade_hit(GUIDE, text, ov, is_same_project=False)
+    hit = {"url": url, "title": title, "grade": grade, "why": why,
+           "longest_run": ov["longest_run"], "snippet": cc.matching_snippet(ov["run_words"], text)}
+    return hit, ov
+
+
+def test_borrowed_text_flagged_as_info_when_uncited():
+    hit, ov = generic_hit()
+    assert hit["grade"] == "NONE"                     # generic guidance: never RED/ORANGE
+    b = cc.borrowed_text({"page": 392, "text": GUIDE}, "Page 392 text. " + GUIDE, hit, ov["run_words"])
+    assert b["type"] == "borrowed_text" and b["grade"] == "INFO"
+    assert b["longest_run"] >= 20 and b["quote"] in GUIDE
+    assert "fhwa.dot.gov" in b["message"] and "no citation" in b["message"]
+
+
+@pytest.mark.parametrize("citation", ["(FHWA, 2011)", "see Wildlife Crossing Structures guidance"])
+def test_borrowed_text_not_flagged_when_cited(citation):
+    hit, ov = generic_hit()
+    page = GUIDE + " " + citation
+    assert cc.borrowed_text({"page": 392, "text": GUIDE}, page, hit, ov["run_words"]) is None
+
+
+def test_borrowed_text_needs_long_run():
+    hit, ov = generic_hit()
+    hit["longest_run"] = 19
+    assert cc.borrowed_text({"page": 392, "text": GUIDE}, GUIDE, hit, ov["run_words"]) is None
+
+
+@pytest.mark.parametrize("grade, why", [("RED", "data"), ("ORANGE", "near-identical"),
+                                        ("NONE", "same project or coverage of it")])
+def test_borrowed_text_only_for_generic_hits(grade, why):
+    hit, ov = generic_hit()
+    hit.update(grade=grade, why=why)
+    assert cc.borrowed_text({"page": 392, "text": GUIDE}, GUIDE, hit, ov["run_words"]) is None
+
+
+def test_citation_terms():
+    assert cc.citation_terms("https://www.fhwa.dot.gov/x", "Chapter 3: Wildlife crossings") == \
+        ["fhwa", "Chapter 3: Wildlife crossings"]
