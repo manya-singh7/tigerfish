@@ -76,10 +76,11 @@ CSS = f"""
                   padding: 0.4rem 0.5rem; }}
   .tf-table td {{ border-bottom: 1px solid {BORDER}; padding: 0.45rem 0.5rem; vertical-align: top;
                   color: {TEXT}; overflow-wrap: anywhere; }}
-  .tf-off, .tf-open {{ display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 999px;
+  .tf-off, .tf-open, .tf-auth {{ display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 999px;
                        padding: 0.05rem 0.5rem; white-space: nowrap; }}
   .tf-off {{ color: {ACCENT}; background: #E3F0F0; }}
   .tf-open {{ color: #8A4B08; background: #FDF0D9; }}
+  .tf-auth {{ color: #3D4A8A; background: #E8EBF7; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

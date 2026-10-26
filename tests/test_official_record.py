@@ -123,6 +123,10 @@ def test_official_labels():
     assert off.source_label("https://parivesh.nic.in/x") == "official source"
     assert off.source_label("https://apwd.and.nic.in/x") == "government website"
     assert off.source_label("https://thewire.in/x") == off.OPEN_WEB_LABEL
+    # PRS Legislative Research: reputable, but not a government source
+    assert off.source_label("https://prsindia.org/billtrack/x") == "authoritative, non-government"
+    assert not off.is_official("https://prsindia.org/billtrack/x")
+    assert off.source_label("https://egazette.gov.in/WriteReadData/2022/x.pdf") == "official source"
 
 
 def test_rank_results_puts_official_first():

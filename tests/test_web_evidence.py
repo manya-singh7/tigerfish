@@ -1,5 +1,6 @@
 """The official-record section and the "Evidence from the web" tab, in replay with no keys."""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -27,7 +28,7 @@ def test_collect_covers_every_tavily_backed_check():
         assert "Official record" in checks
     for r in rows:
         assert r["url"].startswith("http") and r["verified"] and r["label"]
-        assert r["official"] == (r["label"] != "open web (not an official source)")
+        assert r["official"] == (r["label"] in ("official source", "government website"))
 
 
 def test_stats_add_up():
@@ -70,3 +71,30 @@ def test_indira_point_has_no_official_record_section(app):
     html = "\n".join(m.value for m in app.markdown)
     assert "Does it match the official record?" not in html
     assert "Evidence from the web" in html                     # the tab covers all reports
+
+
+def test_prs_is_never_called_official():
+    """The WPA schedule source (PRS Legislative Research) is authoritative but non-government."""
+    prs = [r for r in web_evidence.collect() if r["host"] == "prsindia.org"]
+    assert prs, "the saved WPA finding cites PRS"
+    for r in prs:
+        assert r["label"] == "authoritative, non-government" and not r["official"]
+        assert "authoritative, non-government" in web_evidence.badge_html(r)
+    s = web_evidence.stats(web_evidence.collect())
+    assert s["authoritative_sources"] == len({r["url"] for r in prs})
+
+
+def test_saved_wpa_finding_is_labelled_honestly():
+    rep = json.loads((ROOT / "results" / "indira_point_table_3_16.json").read_text(encoding="utf-8"))
+    f = next(f for f in rep["findings"] if f["check"] == "legal_schedule")
+    labels = [e["label"] for e in f["evidence"]]
+    assert "Source (authoritative, non-government)" in labels
+    assert not any("official source" in l for l in labels) and "official source" not in f["why"]
+    assert "India Code / Gazette" in labels                    # searched first, said why not used
+    assert "(authoritative, non-government)" in f["why"]
+
+
+def test_web_tab_shows_authoritative_badge(app):
+    assert not app.exception
+    html = "\n".join(m.value for m in app.markdown)
+    assert "authoritative, non-government" in html and "Source type" in html

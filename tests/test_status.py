@@ -196,49 +196,79 @@ def test_markdown_removed_from_quotes():
 
 
 def test_quote_prefers_official_source():
-    assert status.quote_rank("cut from six to four", "https://prsindia.org/bill") > \
-        status.quote_rank("The 2022 amendment cut schedules from six to four", "https://blog.example")
+    assert status.quote_rank("cut from six to four", "https://prsindia.org/bill") >         status.quote_rank("The 2022 amendment cut schedules from six to four", "https://blog.example")
+    assert status.quote_rank("cut from six to four", "https://indiacode.nic.in/act") >         status.quote_rank("The 2022 amendment cut schedules from six to four", "https://prsindia.org/b")
 
 
-class TwoTierTavily:
-    """Official sites (include_domains set) return `official_text`; the open web returns SOURCE."""
+def test_prs_is_authoritative_not_government():
+    assert status.wpa_label("https://prsindia.org/billtrack/x") == "authoritative, non-government"
+    assert status.wpa_label("https://indiacode.nic.in/handle/x") == "official source"
+    assert status.wpa_label("https://egazette.gov.in/WriteReadData/2022/x.pdf") == "official source"
+    assert status.wpa_label("https://blog.example/x") == "non-official source"
 
-    def __init__(self, official_text):
-        self.official_text, self.searches = official_text, []
+
+class TieredTavily:
+    """India Code / Gazette return `primary_text`, official sites + PRS return `official_text`,
+    the open web returns SOURCE."""
+
+    def __init__(self, primary_text, official_text):
+        self.primary_text, self.official_text, self.searches = primary_text, official_text, []
 
     def search(self, **kw):
-        self.searches.append(kw.get("include_domains"))
-        url = "https://prsindia.org/wpa" if kw.get("include_domains") else "https://blog.example/wpa"
+        domains = kw.get("include_domains")
+        self.searches.append(domains)
+        url = ("https://egazette.gov.in/wpa.pdf" if domains == status.PRIMARY_SEARCH_DOMAINS else
+               "https://prsindia.org/wpa" if domains else "https://blog.example/wpa")
         return {"results": [{"url": url, "content": ""}], "usage": {"credits": 1}}
 
     def extract(self, **kw):
-        text = self.official_text if "prsindia" in kw["urls"][0] else SOURCE
+        url = kw["urls"][0]
+        text = (self.primary_text if "egazette" in url else
+                self.official_text if "prsindia" in url else SOURCE)
         return {"results": [{"url": u, "raw_content": text} for u in kw["urls"]]}
 
 
 @pytest.fixture
-def two_tier(monkeypatch, tmp_path):
-    def install(official_text):
-        fake = TwoTierTavily(official_text)
+def tiered(monkeypatch, tmp_path):
+    def install(primary_text, official_text=""):
+        fake = TieredTavily(primary_text, official_text)
         monkeypatch.setattr(copycheck, "CACHE_DIR", tmp_path)
         monkeypatch.setattr(copycheck, "client", lambda: fake)
         return fake
     return install
 
 
-def test_official_sources_searched_first(two_tier):
-    fake = two_tier("The Bill reduces the number of schedules from six to four.")
+NOTHING = "Nothing about how many schedules there are."
+
+
+def test_india_code_and_gazette_searched_first(tiered):
+    fake = tiered("The Act reduces the number of schedules from six to four.")
     cur = status.current_schedules(copycheck.Budget(10))
-    assert fake.searches == [status.OFFICIAL_SEARCH_DOMAINS]        # no open-web search needed
-    assert cur["official"] and cur["url"] == "https://prsindia.org/wpa"
+    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS]          # nothing else needed
+    assert cur["official"] and cur["label"] == "official source"
+    assert cur["url"] == "https://egazette.gov.in/wpa.pdf"
     v = status.check_schedule("Rattus rattus", "Sch-V", cur)
-    assert "non-official" not in v["evidence"]
+    assert v["grade"] == "ORANGE"
+    assert "non-official" not in v["evidence"] and "authoritative" not in v["evidence"]
 
 
-def test_open_web_fallback_is_labelled(two_tier):
-    fake = two_tier("Nothing about how many schedules there are.")
+def test_prs_fallback_is_labelled_authoritative_non_government(tiered):
+    fake = tiered(NOTHING, "The Bill reduces the number of schedules from six to four.")
     cur = status.current_schedules(copycheck.Budget(10))
-    assert fake.searches == [status.OFFICIAL_SEARCH_DOMAINS, None]
+    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS, status.OFFICIAL_SEARCH_DOMAINS]
+    assert not cur["official"] and cur["label"] == "authoritative, non-government"
+    assert [t["found"] for t in cur["tiers"]] == [False, True]
+    v = status.check_schedule("Rattus rattus", "Sch-V", cur)
+    assert "(authoritative, non-government)" in v["evidence"] and "official source" not in v["evidence"]
+    assert v["source_label"] == "authoritative, non-government"
+    assert v["source_tiers"][0] == {"tier": "India Code / Gazette",
+                                    "domains": status.PRIMARY_SEARCH_DOMAINS, "found": False}
+
+
+def test_open_web_fallback_is_labelled(tiered):
+    fake = tiered(NOTHING, NOTHING)
+    cur = status.current_schedules(copycheck.Budget(10))
+    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS, status.OFFICIAL_SEARCH_DOMAINS, None]
     assert not cur["official"] and cur["label"] == "non-official source"
     v = status.check_schedule("Rattus rattus", "Sch-V", cur)
     assert "(non-official source)" in v["evidence"] and v["grade"] == "ORANGE"

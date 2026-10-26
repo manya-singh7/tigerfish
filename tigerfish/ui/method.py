@@ -30,8 +30,9 @@ spelling mistakes are resolved and reported), then GBIF occurrence records are c
 well the area has been surveyed at all.
 
 **Status.** IUCN Red List categories are compared with GBIF's current IUCN data. Wild Life
-(Protection) Act schedules are compared with the current schedule structure, read from official
-sources (India Code, the Gazette, PRS, PIB, MoEFCC, Sansad) and quoted.
+(Protection) Act schedules are compared with the current schedule structure, read from retrieved
+sources and quoted: India Code and the Gazette first, then official sites (PIB, MoEFCC, Sansad)
+and PRS Legislative Research, which is labelled authoritative but non-government.
 
 **Copied and borrowed text.** Distinctive, site-specific sentences are searched on the web with
 Tavily. A match with a document about a different place is flagged. Long verbatim runs from

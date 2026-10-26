@@ -6,7 +6,10 @@
 2. WPA schedule: the current schedule structure of the Wild Life (Protection) Act is
    read from sources retrieved with Tavily (cached, counted against the credit cap),
    NOT hardcoded. A schedule number above the current count (e.g. Sch-V after the 2022
-   amendment) -> ORANGE, with the source URL and the quoted source sentence.
+   amendment) -> ORANGE, with the source URL and the quoted source sentence. Sources are
+   searched in tiers: India Code / the Gazette (primary legal text), then other official
+   sites and PRS Legislative Research, then the open web. Each source is labelled by who
+   publishes it (official_record.source_label): PRS is "authoritative, non-government".
 
 Grades: ORANGE (verify), NONE (consistent), GREY (not enough data; never shown as a finding).
 """
@@ -18,6 +21,7 @@ import requests
 
 from tigerfish import claims as claims_mod
 from tigerfish import copycheck, species
+from tigerfish.official_record import AUTHORITATIVE_LABEL, OPEN_WEB_LABEL, source_label
 
 IUCN_CODES = {"EX", "EW", "CR", "EN", "VU", "NT", "LC", "DD", "NE"}
 IUCN_WORDS = {"extinct in the wild": "EW", "extinct": "EX", "critically endangered": "CR",
@@ -25,11 +29,15 @@ IUCN_WORDS = {"extinct in the wild": "EW", "extinct": "EX", "critically endanger
               "least concern": "LC", "data deficient": "DD", "not evaluated": "NE"}
 WPA_QUERY = "Wild Life (Protection) Amendment Act 2022 number of schedules"
 WPA_SOURCES = 3     # top search results whose text is extracted
-OFFICIAL_DOMAINS = ("gov.in", "nic.in", "indiacode", "prsindia.org", "egazette", "sansad.in")
-# Searched first (Tavily include_domains); the open web is only a fallback.
+# Searched first: the primary legal text (India Code, the Gazette of India).
+PRIMARY_SEARCH_DOMAINS = ["indiacode.nic.in", "egazette.gov.in"]
+# Then official sites plus PRS (authoritative, non-government); the open web is the last resort.
 OFFICIAL_SEARCH_DOMAINS = ["indiacode.nic.in", "egazette.gov.in", "prsindia.org",
                            "moef.gov.in", "pib.gov.in", "sansad.in"]
 NON_OFFICIAL_LABEL = "non-official source"
+SEARCH_TIERS = [("India Code / Gazette", PRIMARY_SEARCH_DOMAINS),
+                ("official sites and PRS", OFFICIAL_SEARCH_DOMAINS),
+                ("open web", None)]
 NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
                 "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 ROMAN = {"I": 1, "V": 5, "X": 10}
@@ -176,21 +184,33 @@ def schedule_votes(budget, include_domains=None):
     return votes
 
 
+def wpa_label(url):
+    """Who publishes a source: "official source", "government website", AUTHORITATIVE_LABEL
+    (e.g. PRS) or NON_OFFICIAL_LABEL (open web)."""
+    label = source_label(url)
+    return NON_OFFICIAL_LABEL if label == OPEN_WEB_LABEL else label
+
+
 def current_schedules(budget):
     """Current number of WPA schedules from retrieved sources, with the quoted evidence.
 
-    Official sites are searched first (OFFICIAL_SEARCH_DOMAINS); the open web only if
-    they give no usable sentence, and then the result is labelled NON_OFFICIAL_LABEL.
-    Returns {"count", "quote", "url", "support", "sources", "official", "label"} or None.
+    Tiers (SEARCH_TIERS): India Code / Gazette first; then official sites and PRS; then the
+    open web, each only if the earlier tiers gave no usable sentence. The chosen source is
+    labelled by wpa_label. Returns {"count", "quote", "url", "support", "sources", "official",
+    "label", "tiers"} or None; "tiers" says what each searched tier gave.
     """
-    votes = schedule_votes(budget, OFFICIAL_SEARCH_DOMAINS)
-    official = bool(votes)
-    if not votes:
-        votes = schedule_votes(budget)
+    tiers = []
+    for name, domains in SEARCH_TIERS:
+        votes = schedule_votes(budget, domains)
+        tiers.append({"tier": name, "domains": domains, "found": bool(votes)})
+        if votes:
+            break
     if not votes:
         return None
     result = _best_vote(votes)
-    result.update(official=official, label="official source" if official else NON_OFFICIAL_LABEL)
+    label = wpa_label(result["url"])
+    result.update(official=label in ("official source", "government website"), label=label,
+                  tiers=tiers)
     return result
 
 
@@ -202,11 +222,14 @@ def _best_vote(votes):
     return {"count": count, "quote": quote, "url": url, "support": support, "sources": sources}
 
 
+SOURCE_RANK = {"official source": 3, "government website": 2, AUTHORITATIVE_LABEL: 1}
+
+
 def quote_rank(sentence, url):
-    """Prefer official sources, then sentences that name the 2022 amendment, then shorter."""
-    official = any(d in url for d in OFFICIAL_DOMAINS)
+    """Prefer official, then government, then authoritative non-government sources; then
+    sentences that name the 2022 amendment; then shorter."""
     names_act = bool(re.search(r"amendment|2022", sentence, re.IGNORECASE))
-    return (official, names_act, -len(sentence))
+    return (SOURCE_RANK.get(wpa_label(url), 0), names_act, -len(sentence))
 
 
 def check_schedule(name, report_value, current):
@@ -221,8 +244,9 @@ def check_schedule(name, report_value, current):
     out = {**base, "current_value": f"{current['count']} schedules", "url": current["url"],
            "quote": current["quote"]}
     if n > current["count"]:
-        label = "" if current.get("official", True) else f" ({NON_OFFICIAL_LABEL})"
+        label = "" if current.get("official", True) else f" ({current.get('label') or NON_OFFICIAL_LABEL})"
         return {**out, "grade": "ORANGE", "source_label": current.get("label"),
+                "source_tiers": current.get("tiers") or [],
                 "message": "Legal schedule may be outdated. Verify.",
                 "evidence": (f"Report lists Schedule {report_value}; {current['url']}{label} "
                              f"says: \"{current['quote']}\"")}

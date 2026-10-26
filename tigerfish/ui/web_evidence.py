@@ -5,7 +5,7 @@ quote was verified; plus Tavily usage (searches, extracts, credits, share offici
 import json
 from pathlib import Path
 
-from tigerfish.official_record import host, is_official, source_label
+from tigerfish.official_record import AUTHORITATIVE_LABEL, host, is_official, source_label
 from tigerfish.ui import data, official
 from tigerfish.ui.cards import TAVILY_CHECKS
 
@@ -104,9 +104,22 @@ def stats(rows):
         out.append({"what": "Investigate agent (recorded runs)", "searches": searches,
                     "extracts": extracts, "credits": credits})
     urls = {r["url"]: r["official"] for r in rows}
+    authoritative = {r["url"] for r in rows if r["label"] == AUTHORITATIVE_LABEL}
     return {"rows": out, "credits": sum(r["credits"] for r in out),
             "sources": len(urls), "official_sources": sum(urls.values()),
+            "authoritative_sources": len(authoritative),
             "official_share": (sum(urls.values()) / len(urls)) if urls else None}
+
+
+def badge_html(row):
+    """Who publishes the source: official / government / authoritative non-government / open web."""
+    if row["label"] == "official source":
+        return "<span class='tf-off'>official</span>"
+    if row["official"]:
+        return "<span class='tf-off'>government</span>"
+    if row["label"] == AUTHORITATIVE_LABEL:
+        return "<span class='tf-auth'>authoritative, non-government</span>"
+    return "<span class='tf-open'>open web</span>"
 
 
 def render():
@@ -114,10 +127,13 @@ def render():
     from tigerfish.ui.style import esc
     rows = collect()
     s = stats(rows)
+    auth_note = (f", {s['authoritative_sources']} authoritative non-government "
+                 f"(PRS Legislative Research)" if s["authoritative_sources"] else "")
     st.markdown("#### Evidence from the web")
     st.markdown(f'<div class="tf-message">{len(rows)} facts across all checks rest on web sources '
                 f'found with Tavily: {s["sources"]} distinct sources, {s["official_sources"]} of them '
-                f'official or government sites ({(s["official_share"] or 0):.0%}).</div>',
+                f'official or government sites ({(s["official_share"] or 0):.0%})'
+                f'{auth_note}.</div>',
                 unsafe_allow_html=True)
     lines = ["| Where | Searches | Extracts | Credits |", "|---|---:|---:|---:|"]
     for r in s["rows"]:
@@ -129,14 +145,12 @@ def render():
                "Investigate agent; for the other checks the saved results keep only their credits (-).")
     body = []
     for r in rows:
-        badge = ("<span class='tf-off'>official</span>" if r["label"] == "official source" else
-                 "<span class='tf-off'>government</span>" if r["official"] else
-                 "<span class='tf-open'>open web</span>")
+        badge = badge_html(r)
         body.append(f"<tr><td>{esc(r['check'])}<div class='tf-ev-label' style='font-size:0.78rem'>"
                     f"{esc(r['report'])}</div></td><td>{esc(r['claim'])}</td>"
                     f"<td><a href='{esc(r['url'])}' target='_blank'>{esc(r['source'])}</a>"
                     f"<div class='tf-ev-label' style='font-size:0.78rem'>{esc(r['host'])}</div></td>"
                     f"<td>{badge}</td><td style='font-size:0.82rem'>{esc(r['verified'])}</td></tr>")
     st.markdown("<table class='tf-table'><tr><th>Check</th><th>Fact</th><th>Source</th>"
-                "<th>Official?</th><th>How the quote was verified</th></tr>" + "".join(body)
+                "<th>Source type</th><th>How the quote was verified</th></tr>" + "".join(body)
                 + "</table>", unsafe_allow_html=True)

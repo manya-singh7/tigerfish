@@ -44,7 +44,12 @@ OFFICIAL_DOMAINS = ["pib.gov.in", "parivesh.nic.in", "environmentclearance.nic.i
 GOVERNMENT_SUFFIXES = (".gov.in", ".nic.in")
 # Labelled official but not searched here: QCI runs the statutory NABET accreditation used by
 # the accreditation check (eiameeting.qci.org.in, nabet.qci.org.in).
-OTHER_OFFICIAL_DOMAINS = ["qci.org.in"]
+# The Gazette of India is the official publication of Acts and notifications.
+OTHER_OFFICIAL_DOMAINS = ["qci.org.in", "egazette.gov.in"]
+# Reputable but not government: PRS Legislative Research (an independent non-profit) summarises
+# Bills and hosts copies of Bill / Act texts. Never labelled official.
+AUTHORITATIVE_DOMAINS = ["prsindia.org"]
+AUTHORITATIVE_LABEL = "authoritative, non-government"
 OPEN_WEB_LABEL = "open web (not an official source)"
 
 # Report pages the facts are read from: Chapter 1 (project description, size, cost, land),
@@ -287,15 +292,19 @@ def _on(h, domains):
 
 
 def is_official(url):
-    return source_label(url) != OPEN_WEB_LABEL
+    """True only for official / government sites (not for authoritative non-government ones)."""
+    return source_label(url) in ("official source", "government website")
 
 
 def source_label(url):
+    """"official source" | "government website" | AUTHORITATIVE_LABEL | OPEN_WEB_LABEL."""
     h = host(url)
     if _on(h, OFFICIAL_DOMAINS + OTHER_OFFICIAL_DOMAINS):
         return "official source"
     if h.endswith(GOVERNMENT_SUFFIXES):
         return "government website"
+    if _on(h, AUTHORITATIVE_DOMAINS):
+        return AUTHORITATIVE_LABEL
     return OPEN_WEB_LABEL
 
 
@@ -304,7 +313,7 @@ def rank_results(results):
     keeping Tavily's order within each group."""
     def tier(r):
         lab = source_label(r.get("url"))
-        return 0 if lab == "official source" else 1 if lab == "government website" else 2
+        return {"official source": 0, "government website": 1, AUTHORITATIVE_LABEL: 2}.get(lab, 3)
     return sorted(results, key=tier)
 
 
