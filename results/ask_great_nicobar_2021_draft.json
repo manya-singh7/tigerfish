@@ -1,0 +1,412 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "created": "2026-10-27",
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "pages_included": 1071,
+  "skipped": {
+    "no text layer (scanned or photographed page)": [
+      1,
+      2,
+      3,
+      4,
+      15,
+      16,
+      48,
+      105,
+      141,
+      205,
+      219,
+      380,
+      435,
+      487,
+      527,
+      556,
+      585,
+      593,
+      695,
+      708,
+      727,
+      772,
+      780,
+      798,
+      831,
+      846,
+      865,
+      866,
+      867,
+      873,
+      874,
+      875,
+      876,
+      877,
+      878,
+      885,
+      895,
+      896,
+      897,
+      898,
+      899,
+      900,
+      901,
+      902,
+      903,
+      904,
+      905,
+      907,
+      908,
+      909,
+      910,
+      911,
+      912,
+      913,
+      914,
+      915,
+      916,
+      935,
+      947,
+      957,
+      976,
+      977,
+      995,
+      1109,
+      1139
+    ],
+    "Hindi page": [
+      799,
+      800,
+      801,
+      802,
+      803,
+      804,
+      805,
+      806,
+      807,
+      808,
+      809,
+      810,
+      811,
+      812,
+      813,
+      814,
+      815,
+      816,
+      817,
+      827,
+      832,
+      833,
+      834,
+      835,
+      836,
+      837,
+      838,
+      839,
+      840,
+      841,
+      842,
+      843,
+      844,
+      845,
+      848,
+      850,
+      862,
+      1174,
+      1175,
+      1176,
+      1177,
+      1178,
+      1179,
+      1180,
+      1181,
+      1182,
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198,
+      1199,
+      1200,
+      1201,
+      1202,
+      1203,
+      1204,
+      1205,
+      1206,
+      1207,
+      1208,
+      1209,
+      1210,
+      1211,
+      1212,
+      1213
+    ]
+  },
+  "prices_usd_per_million": {
+    "input": 1.0,
+    "cached_input": 0.12,
+    "output": 3.0
+  },
+  "answers": [
+    {
+      "question": "How long did the terrestrial flora and fauna baseline survey last?",
+      "answer": "Based on the report text, the ecological survey for the EIA was conducted during a specific period in December 2020. The report states: \"Hence, the survey was carried out covering the entire stretch from Campbell Bay to Galathea River mouth on both sides of the road covering all accessible areas for seven days from 15th through 21st December 2020.\" [p.294] Additionally, the report mentions: \"In addition, team had gone in to the Campbell Bay National Park through the west-east road up to the bridge on Galathea River accompanied by a forest officer. The survey covered a stretch of 12 km within the National Park.\" [p.294] The baseline environmental studies were conducted during winter season (1st December 2020 to 28th February 2021) as stated in multiple sections of the report.",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 293,
+          "quote": "Hence, the survey was carried out covering the entire stretch from Campbell Bay to Galathea River mouth on both sides of the road covering all accessible areas for seven days from 15th through 21st December 2020.",
+          "cited_page": 294,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 294,
+          "quote": "In addition, team had gone in to the Campbell Bay National Park through the west-east road up to the bridge on Galathea River accompanied by a forest officer. The survey covered a stretch of 12 km within the National Park.",
+          "verified": false
+        }
+      ],
+      "salvaged_from_invalid_json": true,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 1090872,
+        "cached_tokens": 1079296,
+        "uncached_tokens": 11576,
+        "completion_tokens": 9262,
+        "cost_usd": 0.168878,
+        "cost_if_uncached_usd": 1.118658,
+        "saving_usd": 0.94978
+      },
+      "calls": 2,
+      "finish_reason": "stop",
+      "latency_s": 96.3
+    },
+    {
+      "question": "What does the report say about leatherback turtle nesting at Galathea Bay?",
+      "answer": "The report identifies Galathea Bay as one of the three most important nesting sites for leatherback turtles in Great Nicobar Island, with nesting numbers increasing significantly in recent years. ZSI data shows 255 nests monitored between 2003-2004, with 691 nests recorded in 2020-21, up from 483 in 2019-20 and 103 in 2018-19. The port design was modified to avoid the western flank where leatherback nesting occurs, moving the port to the eastern flank and designing breakwaters to allow turtle access to nesting sites. Hatchling success rates have increased from 59% in 2018 to 63.5% in 2020, and the nesting population is believed to have recovered from the 2004 tsunami impacts.",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 390,
+          "quote": "The western flank of the Galathea Bay is one of the nesting sites for the Leather back turtles. ZSI did a study for GNI development project with specific reference to leather back turtles. As per the ZSI data a total of 255 nests were monitored and estimated that 114 individuals nested during the season between November 2003 and February 2004 and during November 2004, 137 leatherbacks were encountered with 84 nesting (Andrews et al., 2006). In Galathea bay, nesting, egg laying and hatchling are more for Leatherback turtle compared to the other regions of Great Nicobar Island.",
+          "cited_page": 391,
+          "verified": true
+        },
+        {
+          "page": 390,
+          "quote": "The number of nesting, eggs laid, and number of hatchlings have been increasing over past four years. The number of hatchlings increases at a rate of 21 % from 2018 to 2019 while it increases at a rate of 147 % from 2019 to 2020 (Table 16). During the period 2004-05, the number of nesting was very less (84 nos.) due to anthropogenic and natural threats which caused negative impact on leatherback turtles. The last five years data shows that, there is an increase in the number of nesting and egg laid in Great Nicobar Island.",
+          "cited_page": 391,
+          "verified": true
+        },
+        {
+          "page": 390,
+          "quote": "The port design was initially given by WAPCOS where the port was located on the western flank of the Galathea Bay. AECOM, due to nesting of leather back turtles in the western side of the bay moved the port to the eastern flank where leatherback nesting is not known. The design of the port and the breakwater was modified to accommodate the nesting of leatherback turtle on the western flank. The breakwater was also designed in a way so that the turtles can entre to the nesting site without any hinderance.",
+          "cited_page": 391,
+          "verified": true
+        },
+        {
+          "page": 1047,
+          "quote": "The vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764) is predominantly found at the Galathea Bay during the breeding season and signifies the importance of this region as one of the largest breeding grounds across the world. During the present year, a total of 691 nests are recorded while it was 483 nests in 2019-20, 103 nests in 2018-19, and 182 nests in 2017-18.",
+          "cited_page": 1048,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [],
+      "salvaged_from_invalid_json": false,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 545440,
+        "cached_tokens": 539648,
+        "uncached_tokens": 5792,
+        "completion_tokens": 1742,
+        "cost_usd": 0.075776,
+        "cost_if_uncached_usd": 0.550666,
+        "saving_usd": 0.47489
+      },
+      "calls": 1,
+      "finish_reason": "stop",
+      "latency_s": 24.4
+    },
+    {
+      "question": "Does the report assess impacts on dugongs?",
+      "answer": "The report does not assess impacts on dugongs. The ZSI marine ecological study identifies the crab-eating macaque, giant robber crab, megapode, leatherback turtles, and olive ridley turtle as the representative fauna of Great Nicobar Island, but does not include dugong. While the Campbell Bay National Park notification lists dugong as part of the threatened and endemic fauna, the EIA report does not evaluate specific impacts on dugongs from the proposed development.",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 340,
+          "quote": "The report states that the Crab-eating macaque, Giant robber crab, Megapode, Leatherback turtles and Olive Ridley turtle are the representative fauna of Great Nicobar Island.",
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 819,
+          "quote": "the major threatened and endemic fauna recorded from the national park are Nicobar Crab eating Macaque (Macaca fascicularis fascicularis umbrosa), Nicobar Wild Pig (Sus scrofa nicobarica), Dugong (Dugong dugon), Nicobar Tree Shrew (Tupaia nicobarica nicobarica), Nicobar Flying Fox (Pteropus faunulus), Spiny Shrew (Crocidura nicobarica) and Nicobar Leaf nosed Bat (Hipposideros ater nicobarulae)",
+          "verified": false
+        }
+      ],
+      "salvaged_from_invalid_json": false,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 545433,
+        "cached_tokens": 539648,
+        "uncached_tokens": 5785,
+        "completion_tokens": 3019,
+        "cost_usd": 0.0796,
+        "cost_if_uncached_usd": 0.55449,
+        "saving_usd": 0.47489
+      },
+      "calls": 1,
+      "finish_reason": "stop",
+      "latency_s": 33.1
+    },
+    {
+      "question": "How much coral area will be affected, and what is proposed for it?",
+      "answer": "The EIA states that capital dredging and construction of approach channels, breakwaters, and cargo berths will “apparently destroy the corals and coral beds” in the nearshore waters where the port is proposed [p.1083]. However, the report notes that coral transplantation is a “worldwide solution which could be easily executed in Great Nicobar island in alternate suitable offshore habitats” and cites successful coral reef restoration with >90% survival in the Gulf of Kachchh [p.1083]. The ZSI recommends that any coral colonies affected by the project be translocated to areas with similar environmental and topographic features [p.1082].",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 1082,
+          "quote": "apparently destroy the corals and coral beds",
+          "cited_page": 1083,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 1083,
+          "quote": "worldwide solution which could be easily executed in Great Nicobar island in alternate suitable offshore habitats",
+          "verified": false
+        }
+      ],
+      "salvaged_from_invalid_json": true,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 1636559,
+        "cached_tokens": 1618944,
+        "uncached_tokens": 17615,
+        "completion_tokens": 11854,
+        "cost_usd": 0.247451,
+        "cost_if_uncached_usd": 1.672121,
+        "saving_usd": 1.42467
+      },
+      "calls": 3,
+      "finish_reason": "stop",
+      "latency_s": 132.8
+    },
+    {
+      "question": "Who prepared the report, and what accreditation is stated?",
+      "answer": "The report was prepared by Vimta Labs Ltd as the EIA Consultant, with AECOM India Pvt. Ltd as the DPR Consultant, for the project proponent Andaman and Nicobar Islands Integrated Development Corporation Ltd (ANIIDCO). The accreditation stated for the EIA consultant is QCI-NABET (Quality Council of India / National Accreditation Board of Education and Training).",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 5,
+          "quote": "EIA Consultant Vimta Labs Ltd, 142, IDA, Phase II, Cherlapally, Hyderabad - 500051, India.",
+          "verified": true
+        },
+        {
+          "page": 18,
+          "quote": "M/s. AECOM in turn has engaged M/s. Vimta Labs Limited, Hyderabad, QCI-NABET accredited consultant to undertake an Environmental Impact Assessment (EIA) study",
+          "cited_page": 20,
+          "verified": true
+        },
+        {
+          "page": 1173,
+          "quote": "EIA Consultant Vimta Labs Ltd, 142, IDA, Phase II, Cherlapally, Hyderabad - 500051, India.",
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 775,
+          "quote": "The consultants involved in preparation of EIA/EMP report after accreditation with Quality Council of India/National Accreditation Board of Education and Training (QCI/NABET) would need to include a certificate in this regard",
+          "verified": false,
+          "found_on": [
+            934
+          ]
+        }
+      ],
+      "salvaged_from_invalid_json": false,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 545436,
+        "cached_tokens": 539648,
+        "uncached_tokens": 5788,
+        "completion_tokens": 1048,
+        "cost_usd": 0.07369,
+        "cost_if_uncached_usd": 0.54858,
+        "saving_usd": 0.47489
+      },
+      "calls": 1,
+      "finish_reason": "stop",
+      "latency_s": 14.3
+    },
+    {
+      "question": "What does the report say about the Shompen community?",
+      "answer": "The Shompen (or Shompens) are the indigenous people of the interior of Great Nicobar Island, part of the Indian union territory of Andaman and Nicobar Islands, and are a designated Scheduled Tribe in India. They practice a hunter-gatherer subsistence economy, hunting wild game such as pigs, birds and small animals while foraging for fruits and forest foods, and also keep pigs and farm yams, roots, vegetables, and tobacco. The Shompens live in isolated environments with no contact with mainstream people, and their population was estimated at approximately 300 in 2001, with only 10 and 44 people remaining in their two villages by the 2011 census. They are shy in nature, avoid contact with outsiders, and maintain traditional beliefs and customs, though modern education and government jobs are accepted if available in their own place. The Shompens inhabit areas along perennial freshwater rivers and construct huts using palm and pandanus leaves. They cultivate yams, pandanus, coconuts, arecanuts, bananas, maintain small herds of pigs, and hunt wild pigs with spears and fish with harpoons. The Shompens are entirely dependent on forest resources and sea products for their sustenance.",
+      "report_says": true,
+      "citations": [
+        {
+          "page": 345,
+          "quote": "Generally, Shompen tribes are hunter-gatherer subsistence people, hunting wild game such as pigs, birds and small animals while they are foraging for fruits and forest foods. They also keep pigs and farm yams, roots, vegetables, and tobacco.",
+          "verified": true
+        },
+        {
+          "page": 345,
+          "quote": "In 2001, the population was estimated at approximately 300. Shompen Village-A and Shompen Village-B are home to most Shompens. Before the 2004 Indian Ocean earthquake and tsunami, the villages were home to 103 and 106 Shompens respectively. However, by the time of 2011 census, only 10 and 44 people were left in these villages respectively.",
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 345,
+          "quote": "The Shompen or ShomPen are the indigenous people of the interior of Great Nicobar Island, part of the Indian union territory of Andaman and Nicobar Islands. The Shompens are a designated Scheduled Tribe in India.",
+          "verified": false
+        },
+        {
+          "page": 346,
+          "quote": "The Shompens are hunters and food gatherers leading a semi-nomadic life with stone-age civilization. They cultivate yams, pandanus, coconuts, arecanuts, bananas etc. They maintain small herds of pigs and also hunt wild pigs with spears and fish with harpoons.",
+          "verified": false,
+          "found_on": [
+            940,
+            954
+          ]
+        }
+      ],
+      "salvaged_from_invalid_json": false,
+      "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+      "cost": {
+        "prompt_tokens": 545436,
+        "cached_tokens": 539648,
+        "uncached_tokens": 5788,
+        "completion_tokens": 652,
+        "cost_usd": 0.072502,
+        "cost_if_uncached_usd": 0.547392,
+        "saving_usd": 0.47489
+      },
+      "calls": 1,
+      "finish_reason": "stop",
+      "latency_s": 11.3
+    }
+  ],
+  "totals": {
+    "prompt_tokens": 4909176,
+    "cached_tokens": 4856832,
+    "uncached_tokens": 52344,
+    "completion_tokens": 27577,
+    "cost_usd": 0.717897,
+    "cost_if_uncached_usd": 4.991907,
+    "saving_usd": 4.27401,
+    "cached_share": 0.9893
+  }
+}

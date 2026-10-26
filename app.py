@@ -7,8 +7,8 @@ Live mode appears only when NEBIUS_API_KEY is set.
 
 import streamlit as st
 
-from tigerfish.ui import (cards, data, feedback, inspector, letter, live, method, official, promises,
-                          rti, species_map, web_evidence)
+from tigerfish.ui import (cards, data, feedback, inspector, letter, live, memo_ask, method, official,
+                          promises, rti, species_map, web_evidence)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -44,8 +44,9 @@ else:
     report = data.load(titles[choice])
     st.caption(f"Saved results. Source: {report.get('source', '')}")
 
-findings_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
-    ["Findings", "ToR promises", "Evidence from the web", "Scanned pages", "Method & limits"])
+findings_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
+    ["Findings", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web", "Scanned pages",
+     "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -118,6 +119,9 @@ with findings_tab:
 
     st.write("")
     feedback.panel(report["id"], findings)
+
+with memo_tab:
+    memo_ask.render(report["id"])
 
 with promises_tab:
     promises.render(report["id"])
