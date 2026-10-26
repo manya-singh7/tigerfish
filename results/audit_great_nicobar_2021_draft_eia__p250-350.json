@@ -4,66 +4,80 @@
   "pages": "250-350",
   "triage": "safe",
   "workers": 6,
-  "max_cost_usd": 0.85,
+  "max_cost_usd": 1.5,
   "pages_audited": 94,
-  "claims": 1387,
-  "candidates": 280,
+  "claims": 1424,
+  "candidates": 9,
   "triage_answers": {
-    "yes": 85,
-    "no": 195,
+    "yes": 3,
+    "no": 6,
     "unsure": 0
   },
-  "verdicts": 85,
+  "verdicts": 3,
   "verdicts_failed": 0,
   "stopped": null,
   "copy_passages": 100,
   "copy_stopped": null,
-  "cost_usd": 0.8475,
-  "wall_clock_s": 214.8,
+  "pairing": {
+    "subjects": 227,
+    "key_calls": 6,
+    "keys_missing": 0,
+    "numeric_claims": 331,
+    "groups": 154,
+    "representatives": 165,
+    "readings_without_station": 62,
+    "dropped_by_cap": 0,
+    "pairs_same_key": 3,
+    "pairs_related_key": 6,
+    "pairs_part_whole": 0
+  },
+  "pairing_dropped_by_cap": [],
+  "cost_usd": 0.0331,
+  "wall_clock_s": 36.6,
   "stages": {
     "claims": {
-      "seconds": 63.9,
-      "usd": 0.0926
+      "seconds": 2.2,
+      "usd": 0.0
     },
     "triage + verdicts": {
-      "seconds": 109.4,
-      "usd": 0.6307
+      "seconds": 11.9,
+      "usd": 0.0265
     },
     "copy-paste": {
-      "seconds": 7.8,
-      "usd": 0.0033
+      "seconds": 12.6,
+      "usd": 0.0034
     }
   },
   "calls_per_model": {
     "nvidia/Nemotron-3_5-Lightning": {
-      "api_calls": 19,
-      "cache_hits": 204,
-      "prompt_tokens": 76709,
-      "completion_tokens": 1942,
-      "cost_usd": 0.0051,
-      "api_seconds": 27.292
+      "api_calls": 16,
+      "cache_hits": 45,
+      "prompt_tokens": 77727,
+      "completion_tokens": 10386,
+      "cost_usd": 0.0072,
+      "api_seconds": 57.993
     },
     "nvidia/Nemotron-3.5-Super-VL": {
-      "api_calls": 14,
-      "cache_hits": 96,
-      "prompt_tokens": 99568,
-      "completion_tokens": 69685,
-      "cost_usd": 0.0926,
-      "api_seconds": 231.062
+      "api_calls": 0,
+      "cache_hits": 111,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cost_usd": 0.0,
+      "api_seconds": 0.0
     },
     "nvidia/Nemotron-3-Ultra-550b-a55b": {
-      "api_calls": 104,
+      "api_calls": 3,
       "cache_hits": 0,
-      "prompt_tokens": 272013,
-      "completion_tokens": 159276,
-      "cost_usd": 0.7498,
-      "api_seconds": 699.31
+      "prompt_tokens": 9715,
+      "completion_tokens": 5413,
+      "cost_usd": 0.026,
+      "api_seconds": 23.76
     }
   },
   "tavily": {
-    "calls": 0,
-    "cached": 157,
-    "credits": 0
+    "calls": 2,
+    "cached": 156,
+    "credits": 2
   },
   "retries": {
     "retries": 0,
@@ -73,19 +87,40 @@
   },
   "findings_by_check": {
     "contradiction": {
-      "RED": 2,
+      "RED": 1,
       "ORANGE": 0,
-      "NONE": 83
+      "NONE": 2
     },
     "copy_paste": {
-      "NONE": 100
+      "NONE": 99,
+      "RED": 1
     }
   },
   "known_issues_matched": {},
   "new_flagged": 2,
   "flags": [
     {
-      "id": "ct-037",
+      "id": "cp-p327-1",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        327
+      ],
+      "quotes": [
+        {
+          "page": 327,
+          "text": "A total of 10 species of amphibians have been reported from the island including the endemic Nicobar Tree Frog (Polypedatesinsularis), Red eared frog (Hylaranaerythraea), Cricket Frog (Acris gryllus) and the Indian Toad (Duttaphrynusmelanostictus) Avi Fauna of Great Nicobar Island The endemic birds include the Nicobar sparrow hawk, great Nicobar serpent eagle, Nicobar megapode, Nicobar parakeet, Nicobar imperial pigeon, Nicobar scops-owl, Nicobar bulbul, and Nicobar jungle flycatcher, all now threatened by human settlements and resulting habitat modification."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [10.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://zsi.gov.in/public/PDFVolumes/ess/016/index.pdf"
+      ]
+    },
+    {
+      "id": "ct-001",
       "grade": "RED",
       "type": "contradiction",
       "pages": [
@@ -94,44 +129,15 @@
       ],
       "quotes": [
         {
-          "page": 291,
-          "text": "The annual rainfall ranges from 3000 to 3500 Cm"
-        },
-        {
           "page": 337,
           "text": "heavy annual rainfall of 300 to 350 Cm spreading over 9 months"
-        }
-      ],
-      "reason": "Both statements refer to annual rainfall on Great Nicobar Island but give values differing by a factor of ten (3000–3500 cm vs 300–350 cm) with no explanation in the text.",
-      "part_total": false,
-      "answers": {
-        "same_subject": true,
-        "same_place": true,
-        "same_scope": true,
-        "incompatible": true,
-        "explained": false
-      },
-      "urls": null
-    },
-    {
-      "id": "ct-105",
-      "grade": "RED",
-      "type": "contradiction",
-      "pages": [
-        285,
-        286
-      ],
-      "quotes": [
-        {
-          "page": 285,
-          "text": "The chlorides and sulphates were found to be in the range of 18 to 16300 mg/l"
         },
         {
-          "page": 286,
-          "text": "The chlorides and sulphates were found to be in the range of 18 to 16,300 mg/l and 4.8 to 2150 mg/l respectively"
+          "page": 291,
+          "text": "The annual rainfall ranges from 3000 to 3500 Cm"
         }
       ],
-      "reason": "Statement 1 gives a single range for both chlorides and sulphates, while Statement 2 gives separate ranges for each parameter.",
+      "reason": "The two statements give different numerical ranges for annual rainfall (300–350 cm vs 3000–3500 cm) for the same island, with no explanation in the report for the discrepancy.",
       "part_total": false,
       "answers": {
         "same_subject": true,
@@ -143,16 +149,5 @@
       "urls": null
     }
   ],
-  "triage_audit": {
-    "dropped": 195,
-    "sampled": 20,
-    "checked": 19,
-    "grades": {
-      "RED": 0,
-      "ORANGE": 0,
-      "NONE": 19
-    },
-    "cost_usd": 0.121,
-    "flagged": []
-  }
+  "triage_audit": null
 }

@@ -96,7 +96,8 @@ def planted(pages, ledger, budget_usd, dry_run):
     texts = {n: pages[n]["text"] for n in KNOWN_PAGES}
     texts.update({n: p["text"] for n, p in mod.items()})
     cands = [c for c in contradictions.candidate_pairs(pool, max_candidates=10**6,
-                                                       tor_counts=check_contradictions.tor_counts_for(GN_PDF))
+                                                       tor_counts=check_contradictions.tor_counts_for(GN_PDF),
+                                                       keyed=True)
              if any(cl["page"] in mod for cl in c["claims"])]
 
     def priority(cand):          # pairs linking a plant to its source claim first
@@ -483,7 +484,9 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     pages = load_pages()
-    ledger = claims.load_ledger(GN_PDF.stem)
+    # The known-issue pages only: a full audit adds every page to the same ledger, and the
+    # plants (sources and target pages) must not change with it.
+    ledger = [c for c in claims.load_ledger(GN_PDF.stem) if c["page"] in KNOWN_PAGES]
     plan = planted(pages, ledger, args.max_cost, dry_run=True)
     print(f"Planted test estimate: ${plan['estimate_usd']:.3f} "
           f"({plan['uncached_verdicts']} new Ultra verdicts ${plan['estimate_verdicts_usd']:.3f}; "

@@ -58,6 +58,11 @@ def contradiction_findings(con_findings, known=None):
         if f.get("explanation_quote"):
             evidence.append({"label": f"Possible explanation in the report (p.{f['explanation_page']})",
                              "value": f["explanation_quote"]})
+        for q in f["quotes"]:
+            if q.get("also_on"):
+                evidence.append({"label": f"Same figure as p.{q['page']} ({q.get('value')} "
+                                          f"{q.get('unit') or ''})".replace(" )", ")"),
+                                 "value": "also on pp. " + ", ".join(map(str, q["also_on"]))})
         if f.get("evidence_note"):
             evidence.append({"label": "Note", "value": f["evidence_note"]})
         out.append(finding(f["id"], check, f["grade"], title, f["message"],

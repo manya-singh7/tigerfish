@@ -45,7 +45,7 @@ def run_audit(pdf, pages, progress):
                               pdf_stem=pdf.stem)
     ledger = claims.load_ledger(pdf.stem)
     texts = {p["page"]: p["text"] for p in pages}
-    cands = contradictions.candidate_pairs(ledger)
+    cands = contradictions.candidate_pairs(ledger, keyed=True)
     found = []
     for i, cand in enumerate(cands, 1):
         progress.progress(min(0.99, (len(pages) + i / max(1, len(cands))) / (len(pages) + 1)),

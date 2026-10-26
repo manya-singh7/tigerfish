@@ -1,4 +1,38 @@
-# Full-run estimate (Great Nicobar draft EIA, scoped), from the p.250-350 rehearsal
+# Full-run estimate (Great Nicobar draft EIA, scoped)
+
+## Update, 2026-10-27: keyed pairing (tigerfish/pairing.py)
+
+The first full run (`--max-cost 18`) finished claim extraction (1,114 pages, 10,297 claims,
+$1.96, 15.6 min) and then found **67,689 candidate pairs** (second estimate: ~$509 of Ultra
+verdicts). Repeated header figures ("Power plant capacity 450 MVA" on hundreds of pages) were
+paired against every other figure with a similar subject. The run was stopped during triage
+(system memory), after about $2.9 in total.
+
+Numeric pairs now come from a LIGHTNING subject key per distinct subject ("flora species count"
+| "galathea national park"; 101 cached calls, $0.06), with repeats collapsed to one claim per
+distinct value ("also on pp. ..."), monitoring readings paired only at the same station, and at
+most 8 pairs per subject group. The Ultra verdict prompt is unchanged (frozen).
+
+| Set | Pairs before | Pairs after | Checks |
+|---|---:|---:|---|
+| 10 known-issue pages | 21 | 11 | gn-001 ORANGE, gn-003/004/005 RED, control not flagged (unchanged) |
+| Planted test | 75 | 23 | 10/10 caught, 0/5 explained flagged (unchanged) |
+| Rehearsal p.250-350 | 280 | 9 | rainfall p.291 vs p.337 RED kept; chloride p.285/286 false alarm gone; $0.03 |
+| Full scoped report (cached claims) | 67,689 | 1,799 | 13 recycled, 178 statement, 1,608 numeric; 910 dropped by the per-group cap |
+
+Full run from the cached claims (claims free; triage ~$0.13; Ultra $0.0084 per verdict with
+2,000 output tokens assumed, $0.0056 measured in the rehearsal):
+
+| Triage pass rate | Ultra verdicts | Total | Wall clock (6 workers) |
+|---|---:|---:|---:|
+| 0.33 (rehearsal, 3 of 9) | ~600 | **~$5.1** | ~20 min |
+| 0.5 | ~900 | ~$7.6 | ~25 min |
+| 1.0 (worst case) | 1,792 | ~$15.2 (~$10.2 at the measured verdict cost) | ~40 min |
+
+Plus copy-paste: top 100 passages, about 200 Tavily credits. Recommendation: `--max-cost 12`
+as a hard cap (verdict order: recycled, statements, numeric with the most alike subjects first).
+
+## Earlier estimate (before keyed pairing), from the p.250-350 rehearsal
 
 Measured on 2026-10-27: `scripts/audit.py --pages 250-350 --scope --triage safe --run --max-cost 1.50`,
 6 workers. 94 pages audited (50 scanned/table pages on Super-VL, 44 text pages on Lightning),

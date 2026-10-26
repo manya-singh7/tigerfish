@@ -31,7 +31,7 @@ def summary_strip(report):
         pages_note = "image of the published table"
     else:
         pages = f"{report['pages_read']:,} of {report['pages_total']:,}"
-        pages_note = "pages audited in this run"
+        pages_note = report.get("pages_note", "pages audited in this run")
     usd = cost.get("nebius_usd")
     credits = cost.get("tavily_credits", 0)
     cost_value = f"${usd:.2f}" if usd is not None else "-"
@@ -46,7 +46,8 @@ def summary_strip(report):
     cols[2].markdown(stat("Checks run", str(len(report["checks"])), "see Method & limits"),
                      unsafe_allow_html=True)
     cols[3].markdown(stat("Cost", cost_value, cost_note), unsafe_allow_html=True)
-    cols[4].markdown(stat("Time", fmt_time(cost.get("approx_seconds")), "API time, estimated"),
+    cols[4].markdown(stat("Time", fmt_time(cost.get("approx_seconds")),
+                          cost.get("time_note", "API time, estimated")),
                      unsafe_allow_html=True)
 
 

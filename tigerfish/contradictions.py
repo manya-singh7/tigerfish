@@ -350,16 +350,29 @@ def recycled_figures(claims, tor_counts=()):
     return list(groups.values())
 
 
-def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=()):
+def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=(), keyed=False):
     """All candidates (recycled first, then statements, then numeric), capped.
 
     Numeric pairs already covered by a recycled-figure group are suppressed (counted
     in last_run["candidates_suppressed"]). tor_counts: see recycled_figures.
+    keyed: numeric pairs by LIGHTNING subject key, repeats collapsed and capped per group
+    (tigerfish/pairing.py; needed for long reports). False: every numeric claim against
+    every other with a similar subject (deterministic, no LLM; small page sets and tests).
     """
     recycled = recycled_figures(claims, tor_counts)
-    numeric_ = numeric_pairs(claims)
-    kept_numeric = [c for c in numeric_ if not covered_by_recycled(c, recycled)]
-    last_run["candidates_suppressed"] = len(numeric_) - len(kept_numeric)
+    if keyed:
+        from tigerfish import pairing   # local: pairing imports this module
+        numeric_iter = pairing.keyed_numeric_pairs(claims, pairing.subject_keys(claims))
+    else:
+        numeric_iter = numeric_pairs(claims)
+    kept_numeric, suppressed = [], 0
+    for c in numeric_iter:          # streamed: the all-pairs list is never built
+        if covered_by_recycled(c, recycled):
+            suppressed += 1
+        else:
+            kept_numeric.append(c)
+    kept_numeric.sort(key=lambda c: -c["overlap"])
+    last_run["candidates_suppressed"] = suppressed
     found = recycled + statement_pairs(claims) + kept_numeric
     seen, unique = set(), []
     for cand in found:
@@ -635,7 +648,8 @@ def finding(cand, v, hits, n):
         "message": NEUTRAL if v["grade"] in ("RED", "ORANGE") else "Explained or normal; not a finding.",
         "reason": v["reason"], "pages": sorted({c["page"] for c in cand["claims"]}),
         "quotes": [{"page": c["page"], "text": c["quote"], "claim_id": c["id"],
-                    "subject": c["subject"], "value": c["value"], "unit": c["unit"]}
+                    "subject": c["subject"], "value": c["value"], "unit": c["unit"],
+                    **({"also_on": c["also_on"]} if c.get("also_on") else {})}
                    for c in cand["claims"]],
         "breakdown": cand.get("breakdown"),
         "explanation_quote": v["explanation_quote"], "explanation_page": v["explanation_page"],
@@ -816,27 +830,29 @@ def _triage_pass(cands, pages, batch_size):
     return answers
 
 
+CHUNK = 400   # candidates triaged + judged per round (multiple of both triage batch sizes)
+
+
 def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use_triage=None):
     """Run the Ultra verdict on each candidate. Returns findings (all grades, incl. NONE).
 
     ledger: the claims, used to re-select evidence quotes (align_evidence).
     use_triage: LIGHTNING screens the candidates first and those it answers "no" are not
     sent to Ultra (default TRIAGE). last_run["triage"] counts the answers.
+    Candidates go through in rounds of CHUNK (triage, then verdicts), so memory stays
+    small on long reports; with pdf_stem, findings are written after every round, so an
+    interrupted run keeps what it has (and resumes from the cache).
     """
     start = llm.session_cost_usd
     findings, stopped, failed = [], None, 0
-    # Finding ids follow the position in the full candidate list, so skipping a candidate
-    # (triage, failure) never renumbers the others.
-    numbered = list(enumerate(cands, 1))
-    if use_triage if use_triage is not None else TRIAGE:
-        answers = triage(cands, pages if TRIAGE_MODE == "safe" else None)
-        last_run["triage"] = {a: answers.count(a) for a in TRIAGE_ANSWERS}
-        last_run["triage_answers"] = answers
-        last_run["triaged_out"] = [[c["id"] for c in cand["claims"]]
-                                   for cand, a in zip(cands, answers) if a == "no"]
-        numbered = [(n, cand) for (n, cand), a in zip(numbered, answers) if a != "no"]
-    else:
-        last_run["triage"], last_run["triage_answers"], last_run["triaged_out"] = None, None, []
+    do_triage = use_triage if use_triage is not None else TRIAGE
+    all_answers, triaged_out = [], []
+    path = None
+    if pdf_stem:
+        path = FINDINGS_DIR / pdf_stem / "contradictions.jsonl"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("", encoding="utf-8")
+
     def ask(item):   # runs on the thread pool; results are used in candidate order
         _, cand = item
         hits = explanation_hits(cand, pages)
@@ -844,28 +860,55 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
                                    VERDICT_MAX_TOKENS, thinking=None)
         return hits, raw
 
-    # The cap counts triage spend too (start is taken before triage).
-    replies, stop = llm.run_parallel(
-        ask, numbered, estimate=lambda item: estimate_cost([item[1]], pages)[0],
-        max_cost_usd=max_cost_usd - (llm.session_cost_usd - start))
-    if stop is not None:
-        stopped = (f"cost cap ${max_cost_usd:.2f} reached "
-                   f"(spent ${llm.session_cost_usd - start:.4f}); "
-                   f"{len(numbered) - stop} verdicts not run")
-        log.warning(stopped)
-        numbered = numbered[:stop]
-    for (n, cand), (hits, raw) in zip(numbered, replies):
-        v = parse_verdict(raw, cand, pages)
-        if v is None:
-            failed += 1
-            log.warning("no valid verdict for candidate %s",
-                        [c["id"] for c in cand["claims"]])
-            continue
-        findings.append(align_evidence(finding(cand, v, hits, n), pages, ledger))
+    for lo in range(0, len(cands), CHUNK):
+        chunk = cands[lo:lo + CHUNK]
+        # Finding ids follow the position in the full candidate list, so skipping a
+        # candidate (triage, failure) never renumbers the others.
+        numbered = list(enumerate(chunk, lo + 1))
+        if do_triage:
+            answers = triage(chunk, pages if TRIAGE_MODE == "safe" else None)
+            all_answers += answers
+            triaged_out += [[c["id"] for c in cand["claims"]]
+                            for cand, a in zip(chunk, answers) if a == "no"]
+            numbered = [(n, cand) for (n, cand), a in zip(numbered, answers) if a != "no"]
+        # The cap counts triage spend too (start is taken before triage).
+        left = max_cost_usd - (llm.session_cost_usd - start)
+        replies, stop = llm.run_parallel(
+            ask, numbered, estimate=lambda item: estimate_cost([item[1]], pages)[0],
+            max_cost_usd=left)
+        if stop is not None:
+            not_run = len(numbered) - stop + len(cands) - (lo + len(chunk))
+            stopped = (f"cost cap ${max_cost_usd:.2f} reached "
+                       f"(spent ${llm.session_cost_usd - start:.4f}); "
+                       f"stopped at candidate {numbered[stop][0] if stop < len(numbered) else lo + len(chunk)} "
+                       f"of {len(cands)}; about {not_run} candidates not judged")
+            log.warning(stopped)
+            numbered = numbered[:stop]
+        new = []
+        for (n, cand), (hits, raw) in zip(numbered, replies):
+            v = parse_verdict(raw, cand, pages)
+            if v is None:
+                failed += 1
+                log.warning("no valid verdict for candidate %s",
+                            [c["id"] for c in cand["claims"]])
+                continue
+            new.append(align_evidence(finding(cand, v, hits, n), pages, ledger))
+        findings += new
+        if path:
+            with path.open("a", encoding="utf-8") as f:
+                for x in new:
+                    f.write(json.dumps(x, ensure_ascii=False) + "\n")
+        if stopped:
+            break
+
+    if do_triage:
+        last_run["triage"] = {a: all_answers.count(a) for a in TRIAGE_ANSWERS}
+        last_run["triage_answers"] = all_answers
+        last_run["triaged_out"] = triaged_out
+    else:
+        last_run["triage"], last_run["triage_answers"], last_run["triaged_out"] = None, None, []
     last_run.update(stopped=stopped, failed=failed, verdicts=len(findings),
                     cost_usd=llm.session_cost_usd - start)
-    if pdf_stem:
-        save_findings(pdf_stem, findings)
     return findings
 
 

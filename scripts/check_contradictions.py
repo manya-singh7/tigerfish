@@ -42,7 +42,7 @@ def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     pdf = Path(pdf)
     ledger = [c for c in claims.load_ledger(pdf.stem) if c["page"] in pages_wanted]
     pages = {p["page"]: p["text"] for p in pdf_reader.read_pdf(pdf) if p["page"] in pages_wanted}
-    cands = ct.candidate_pairs(ledger, tor_counts=tor_counts_for(pdf))
+    cands = ct.candidate_pairs(ledger, tor_counts=tor_counts_for(pdf), keyed=True)
     known = known_issues_for(pdf)
     controls = [ct.control_candidate(i) for i in known
                 if i["expected_grade"] == "NONE" and set(i["pages"]) <= set(pages)]

@@ -26,9 +26,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import check_contradictions  # noqa: E402
 import check_copypaste  # noqa: E402
 import demo_table  # noqa: E402
-from tigerfish import claims, copycheck, llm, pdf_reader, promises, status, trace  # noqa: E402
-from tigerfish.report import (attach_images, contradiction_findings, finding,  # noqa: E402
-                              highlight_pages)
+from tigerfish import claims, copycheck, llm, pdf_reader, promises, scope, status, trace  # noqa: E402
+from tigerfish import contradictions as ct  # noqa: E402
+from tigerfish.report import (GRADE_ORDER, attach_images, contradiction_findings,  # noqa: E402
+                              finding, highlight_pages, sort_findings)
 
 RESULTS = ROOT / "results"
 PAGES_OUT = RESULTS / "pages"
@@ -39,6 +40,10 @@ GN_PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 GN_PAGES = [234, 392, 444, 751, 818, 851, 940, 978, 1141, 1168]
 TABLE_IMAGE = ROOT / "data" / "demo" / "indira_point_table_3_16_mammals.png"
 INDIRA_POINT = (6.75, 93.83)
+# Full audit (scripts/audit.py without --pages). Its contradiction findings are kept under
+# full_run/ because the 10-page evaluation rewrites contradictions.jsonl in the same folder.
+FULL_RUN = RESULTS / f"audit_{GN_PDF.stem}.json"
+FULL_FINDINGS = ROOT / "cache" / "findings" / GN_PDF.stem / "full_run" / "contradictions.jsonl"
 
 # ---------- cost and time from the cache files a run used ----------
 
@@ -246,21 +251,11 @@ def fmt_count(n):
     return "-" if n is None else f"{n:,}"
 
 
-def great_nicobar():
-    report_id = "great_nicobar_2021_draft"
-    pages = set(GN_PAGES)
-    trace.reset()
-    started = time.time()
-    page_dicts = [p for p in pdf_reader.read_pdf(GN_PDF) if p["page"] in pages]
-    claims.extract_claims(page_dicts)                      # from cache: counts extraction cost
-    con = check_contradictions.run(GN_PDF, pages)
-    cp = check_copypaste.run(GN_PDF, pages)
-    known = {r["finding_id"]: r["id"] for r in con["evaluation"] if r["finding_id"]}
-
-    findings = contradiction_findings(con["findings"], known)
-
-    for r in cp["results"]:
-        grade, hits = copycheck.flagged_hits(r)     # one finding per passage
+def copy_findings(results):
+    """Copied-text (one per passage) and borrowed-text findings from copycheck results."""
+    out = []
+    for r in results:
+        grade, hits = copycheck.flagged_hits(r)
         if grade:
             h = hits[0]
             evidence = [{"label": "Matching document" + (f" {i}" if len(hits) > 1 else ""),
@@ -269,14 +264,14 @@ def great_nicobar():
             evidence += [{"label": "Matching text", "value": h["snippet"]},
                          {"label": "Overlap", "value": f"longest run {h['longest_run']} words, "
                                                        f"8-gram overlap {h['ngram']:.0%}"}]
-            findings.append(finding(
-                f"cp-p{r['page']}-{len(findings)}", "copy_paste", grade,
+            out.append(finding(
+                f"cp-p{r['page']}-{len(out)}", "copy_paste", grade,
                 f"Page {r['page']} text found in "
                 + ("another document" if len(hits) == 1 else f"{len(hits)} other documents"),
                 h["message"], [{"page": r["page"], "text": r["passage"]}], evidence, h["why"]))
         for b in r["borrowed"]:
-            findings.append(finding(
-                f"bt-p{b['page']}", "borrowed_text", "INFO",
+            out.append(finding(
+                f"bt-p{b['page']}-{len(out)}", "borrowed_text", "INFO",
                 f"Page {b['page']} uses uncited text from {b['url'].split('/')[2]}", b["message"],
                 [{"page": b["page"], "text": b["quote"]}],
                 [{"label": "Source", "value": b["title"] or b["url"], "url": b["url"]},
@@ -284,29 +279,114 @@ def great_nicobar():
                  {"label": "Source text", "value": display_snippet(b["source_snippet"])}],
                 f"{b['longest_run']} consecutive words match a generic external source, and "
                 f"page {b['page']} does not cite it."))
+    return out
 
-    # One image set per finding, so each page shows only that finding's quotes highlighted.
-    for old in PAGES_OUT.glob(f"{report_id}_*.png"):
-        old.unlink()
+
+def same_finding(a, b):
+    """Same check, same pages, and every quote of a matches a quote of b on the same page."""
+    if a["check"] != b["check"]:
+        return False
+    if {q.get("page") for q in a["quotes"]} != {q.get("page") for q in b["quotes"]}:
+        return False
+    return all(any(q.get("page") == r.get("page") and ct.quotes_match(q["text"], r["text"])
+                   for r in b["quotes"]) for q in a["quotes"])
+
+
+def dedupe(findings):
+    """RED/ORANGE/INFO only, duplicates removed (the higher grade is kept), sorted by
+    grade then check."""
+    out = []
+    for f in sort_findings([f for f in findings if f["grade"] in GRADE_ORDER]):
+        if not any(same_finding(f, g) for g in out):
+            out.append(f)
+    return sort_findings(out)
+
+
+def page_images(prefix, findings, shared):
+    """Highlighted page images. shared=False: one image set per finding (only its quotes
+    highlighted). shared=True (full run, many findings): one image per page with every
+    finding's quotes on it, so the image count is bounded by the pages."""
+    if shared:
+        by_page = {}
+        for f in findings:
+            for q in f["quotes"]:
+                if q.get("page"):
+                    by_page.setdefault(q["page"], []).append(q["text"])
+        images = highlight_pages(GN_PDF, by_page, PAGES_OUT, prefix, dpi=PAGE_DPI)
+        attach_images(findings, images, relative_to=RESULTS)
+        return
     for f in findings:
         quotes_by_page = {}
         for q in f["quotes"]:
             quotes_by_page.setdefault(q["page"], []).append(q["text"])
-        images = highlight_pages(GN_PDF, quotes_by_page, PAGES_OUT, f"{report_id}_{f['id']}",
+        images = highlight_pages(GN_PDF, quotes_by_page, PAGES_OUT, f"{prefix}_{f['id']}",
                                  dpi=PAGE_DPI)
         attach_images([f], images, relative_to=RESULTS)
+
+
+SKIP_LABELS = {"hindi": "Hindi", "lab_report": "lab sheets", "annexure": "forms",
+               "error": "unreadable"}
+
+
+def full_run_core():
+    """Contradiction and copy-paste findings of the full audit (scripts/audit.py without
+    --pages), rebuilt from cache. (findings, known-issue rows, extras) or None."""
+    if not (FULL_RUN.exists() and FULL_FINDINGS.exists()):
+        return None
+    run = json.loads(FULL_RUN.read_text(encoding="utf-8"))
+    kept, skipped = scope.select_pages(pdf_reader.read_pdf(GN_PDF))
+    texts = {p["page"]: p["text"] for p in kept}
+    con = [json.loads(line) for line in FULL_FINDINGS.read_text(encoding="utf-8").splitlines()
+           if line.strip()]
+    rows = ct.evaluate(con, check_contradictions.known_issues_for(GN_PDF))
+    known = {r["finding_id"]: r["id"] for r in rows if r["finding_id"]}
+    ledger = [c for c in claims.load_ledger(GN_PDF.stem) if c["page"] in texts]
+    budget = copycheck.Budget(max(run["tavily"]["credits"], 1))  # cached: no new credits
+    passages = copycheck.select_passages(ledger, texts, max_passages=run["copy_passages"])
+    copy, stopped = copycheck.check_passages(passages, budget, pages=texts)
+    if stopped:
+        print(f"WARNING copy-paste export stopped: {stopped}")
+    findings = contradiction_findings(con, known) + copy_findings(copy)
+    return findings, rows, {"run": run, "kept": {p["page"] for p in kept}, "skipped": skipped}
+
+
+def great_nicobar():
+    report_id = "great_nicobar_2021_draft"
+    trace.reset()
+    started = time.time()
+    for old in PAGES_OUT.glob(f"{report_id}_*.png"):
+        old.unlink()
+    full = full_run_core()
+    if full:
+        findings, rows, extra = full
+        pages = extra["kept"]
+    else:                     # no full run yet: the 10 known-issue pages
+        pages = set(GN_PAGES)
+        page_dicts = [p for p in pdf_reader.read_pdf(GN_PDF) if p["page"] in pages]
+        claims.extract_claims(page_dicts)                  # from cache: counts extraction cost
+        con = check_contradictions.run(GN_PDF, pages)
+        cp = check_copypaste.run(GN_PDF, pages)
+        rows = con["evaluation"]
+        known = {r["finding_id"]: r["id"] for r in rows if r["finding_id"]}
+        findings = contradiction_findings(con["findings"], known) + copy_findings(cp["results"])
+        page_images(report_id, findings, shared=False)
 
     findings += species_table_findings(report_id)
     findings += omission_findings()
     findings += accreditation_findings()
     findings += promise_findings(report_id)
+    findings = dedupe(findings)
+    if full:   # species/ToR images are made above; the rest share one image per page
+        page_images(f"{report_id}_full", [f for f in findings if not f["images"]], shared=True)
+
     usd, credits, gbif, seconds = run_cost(trace.used)
-    if PROMISES.exists():      # its model calls ran in scripts/check_promises.py, not in this trace
-        usd = round(usd + json.loads(PROMISES.read_text(encoding="utf-8")).get("cost_usd", 0), 4)
-    return report_id, {
+    promises_usd = (json.loads(PROMISES.read_text(encoding="utf-8")).get("cost_usd", 0)
+                    if PROMISES.exists() else 0)   # its calls ran in scripts/check_promises.py
+    pages_read = pages | species_pages_read()
+    out = {
         "id": report_id, "title": "Great Nicobar EIA (2021 draft)",
         "source": "Draft EIA by Vimta Labs for ANIIDCO, December 2021",
-        "pages_read": len(pages | species_pages_read()), "pages_total": 1213,
+        "pages_read": len(pages_read), "pages_total": 1213,
         "checks": ["Claim extraction (Nemotron Lightning / Super-VL)",
                    "Internal contradictions and recycled figures (Nemotron Ultra)",
                    "Copied text (Tavily)", "Borrowed text (Tavily)",
@@ -314,12 +394,28 @@ def great_nicobar():
                    "Threatened species not mentioned (GBIF)",
                    "Consultant accreditation (NABET, official list)",
                    "Terms of Reference promises (Nemotron Lightning / Ultra)"],
-        "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
-                 "approx_seconds": seconds},
-        "known_issue_score": dict(zip(("passed", "scored"),
-                                      check_contradictions.ct.score(con["evaluation"]))),
+        "cost": {"nebius_usd": round(usd + promises_usd, 4), "tavily_credits": credits,
+                 "gbif_calls": gbif, "approx_seconds": seconds},
+        "known_issue_score": dict(zip(("passed", "scored"), ct.score(rows))),
         "findings": findings, "exported_in_s": round(time.time() - started, 1),
     }
+    if full:
+        run, skipped = extra["run"], extra["skipped"]
+        n_skipped = 1213 - len(pages_read)
+        kinds = [SKIP_LABELS.get(k, k) for k, v in sorted(skipped.items(), key=lambda kv: -len(kv[1]))
+                 if set(v) - pages_read]
+        out["pages_skipped"] = n_skipped
+        out["pages_note"] = (f"pages audited; {n_skipped} skipped: {'/'.join(kinds)}"
+                             if n_skipped else "pages audited")
+        # The full audit's own cost, credits and wall clock, plus the separate ToR run.
+        out["cost"] = {"nebius_usd": round(run["cost_usd"] + promises_usd, 4),
+                       "tavily_credits": run["tavily"]["credits"], "gbif_calls": gbif,
+                       "approx_seconds": run["wall_clock_s"],
+                       "time_note": "wall clock, full audit, 6 parallel calls"}
+        out["full_run"] = {"file": FULL_RUN.name, "cost_usd": run["cost_usd"],
+                           "wall_clock_s": run["wall_clock_s"],
+                           "pages_audited": run["pages_audited"]}
+    return report_id, out
 
 
 def indira_point_table():

@@ -34,6 +34,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, promises, scope  # noqa: E402
+from tigerfish import pairing  # noqa: E402
 from check_contradictions import known_issues_for  # noqa: E402
 from extract_claims import parse_pages  # noqa: E402
 
@@ -150,7 +151,12 @@ def run_audit(args, kept, per):
     texts = {p["page"]: p["text"] for p in kept}
     tor = (contradictions.tor_location_counts(promises.TOR_PDF)
            if Path(args.pdf).name == promises.EIA_PDF.name else ())
-    cands = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor)
+    cands = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor, keyed=True)
+    st = pairing.last_stats
+    print(f"Pairing: {st.get('numeric_claims')} numeric claims -> {st.get('groups')} subject groups, "
+          f"{st.get('representatives')} distinct values; {st.get('pairs_same_key')} same-key + "
+          f"{st.get('pairs_part_whole')} part>whole pairs; {st.get('dropped_by_cap')} dropped by the "
+          f"per-group cap; {st.get('readings_without_station')} readings without a station not paired")
     ultra_all, uncached = contradictions.estimate_cost(cands, texts)
     rate = per.get("triage_pass_rate" + ("_fast" if args.triage == "fast" else ""),
                    per["triage_pass_rate"])
@@ -168,6 +174,8 @@ def run_audit(args, kept, per):
     findings = contradictions.check(cands, texts, max_cost_usd=left, pdf_stem=name,
                                     ledger=found)
     stage("triage + verdicts", t0, c0)
+    if not args.pages:   # the 10-page evaluation rewrites <stem>/contradictions.jsonl; keep a copy
+        contradictions.save_findings(f"{stem}/full_run", findings)
     con_run = dict(contradictions.last_run)
     audit = triage_audit(args, cands, con_run, texts, found, spent0) if args.triage_audit else None
 
@@ -239,6 +247,8 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         "triage_answers": con_run.get("triage"), "verdicts": con_run.get("verdicts"),
         "verdicts_failed": con_run.get("failed"), "stopped": con_run.get("stopped"),
         "copy_passages": len(copy), "copy_stopped": copy_stopped,
+        "pairing": {k: v for k, v in pairing.last_stats.items() if k != "dropped_groups"},
+        "pairing_dropped_by_cap": pairing.last_stats.get("dropped_groups", []),
         "cost_usd": round(spent, 4), "wall_clock_s": round(wall_s, 1), "stages": stages,
         "calls_per_model": {m: {k: round(v, 4) if isinstance(v, float) else v
                                 for k, v in st.items()} for m, st in llm.call_stats.items()},
@@ -247,7 +257,9 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         "findings_by_check": by_check, "known_issues_matched": known_ids,
         "new_flagged": len(new),
         "flags": [{"id": f["id"], "grade": f["grade"], "type": f["type"], "pages": f["pages"],
-                   "quotes": [{"page": q["page"], "text": q["text"]} for q in f["quotes"]],
+                   "quotes": [{"page": q["page"], "text": q["text"],
+                               **({"also_on": q["also_on"]} if q.get("also_on") else {})}
+                              for q in f["quotes"]],
                    "reason": f["reason"], "part_total": f.get("part_total"),
                    "answers": {k: f.get(k) for k in ("same_subject", "same_place", "same_scope",
                                                      "incompatible", "explained") if k in f},
@@ -258,6 +270,7 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
 
 def report_md(r):
     lines = [f"# Audit run: {r['pdf']}, pages {r['pages'] or 'all'}", "",
+             f"Pairing: {r.get('pairing')}", "",
              f"Pages audited {r['pages_audited']}, claims {r['claims']}, candidate pairs "
              f"{r['candidates']}, triage {r['triage_answers']}, Ultra verdicts {r['verdicts']} "
              f"(failed {r['verdicts_failed']}), copy-paste passages {r['copy_passages']}.", "",
@@ -279,7 +292,9 @@ def report_md(r):
               f"## All {r['new_flagged']} new RED/ORANGE flags", ""]
     for f in r["flags"]:
         lines.append(f"**{f['id']} {f['grade']}** ({f['type']}, pages {f['pages']})")
-        lines += [f"- p.{q['page']}: \"{q['text']}\"" for q in f["quotes"]]
+        lines += [f"- p.{q['page']}: \"{q['text']}\""
+                  + (f" (also on pp. {', '.join(map(str, q['also_on']))})" if q.get("also_on") else "")
+                  for q in f["quotes"]]
         lines.append(f"- Why: {f['reason']}")
         if f.get("answers"):
             lines.append(f"- Ultra's answers: {f['answers']}")

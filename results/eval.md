@@ -1,6 +1,6 @@
 # TigerFish evaluation
 
-Generated 2026-10-27 02:07. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1534; new spend in this run: $0.0000 (the rest came from cache; cap $0.05).
+Generated 2026-10-27 03:57. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1925; new spend in this run: $0.1648 (the rest came from cache; cap $0.30).
 
 ## Summary
 
@@ -14,18 +14,18 @@ Generated 2026-10-27 02:07. Seed 42. Cost of the evaluation's own API calls (pla
 | Out-of-place species flagged | 5/5 |
 | Locally recorded species wrongly flagged | 0/5 |
 | Table 3.16: species judged plausible | 3 (article: 3) |
-| Triage: Ultra calls saved, known-issue pages | 2/21 |
-| Triage: Ultra calls saved, planted test | 24/75 |
+| Triage: Ultra calls saved, known-issue pages | 0/11 |
+| Triage: Ultra calls saved, planted test | 0/23 |
 | Triage: RED/ORANGE findings it would drop | 0 (known issues, planted catches and the negative control: none) |
-| Full 1,213-page audit (estimate, with triage) | $16.45 = Rs 1,382 at 1 USD = 84 INR; about 457 min of API time if run one call at a time |
-| Full 1,213-page audit (estimate, without triage) | $17.81 = Rs 1,496; about 467 min |
+| Full 1,213-page audit (estimate, with triage) | $11.32 = Rs 951 at 1 USD = 84 INR; about 358 min of API time if run one call at a time |
+| Full 1,213-page audit (estimate, without triage) | $11.24 = Rs 944; about 345 min |
 
 ## 1. Known issues (data/known_issues.json)
 
 | Issue | Type | Pages | Expected | Grade | Result | Status |
 |---|---|---|---|---|---|---|
 | gn-001 | contradiction | [392, 978] | RED/ORANGE | ORANGE | PASS |  |
-| gn-002 | mismatch | [444, 751] | ORANGE | NONE | FAIL (unscored) | under_review |
+| gn-002 | mismatch | [444, 751] | ORANGE | - | FAIL (unscored) | under_review |
 | gn-003 | recycled_figure | [818, 851, 1168] | RED | RED | PASS |  |
 | gn-004 | contradiction | [1168, 940] | RED | RED | PASS |  |
 | gn-neg-001 | negative_control | [234, 1141] | NONE | - | PASS |  |
@@ -35,13 +35,13 @@ Negative-control pair sent to Ultra directly: NONE. Both statements refer to the
 
 ## 2. Planted contradictions
 
-10 real numeric claims were restated on other real pages with a value x0.5 or x1.5, and 5 with an explicit 'revised from X to Y after the 2021 survey'. Pages were changed in memory only. Recall fixes in this run: (A) a statement with a number and a unit is paired like a quantity; (B) a deterministic pass adds a claim for any sentence with a number and a unit that the model did not cover (6 added on the modified pages). Of 75 candidate pairs, LIGHTNING triage passed 51 yes + 0 unsure and dropped 24; 20 went to Ultra, planted pairs first (31 more dropped by the cap of 20).
+10 real numeric claims were restated on other real pages with a value x0.5 or x1.5, and 5 with an explicit 'revised from X to Y after the 2021 survey'. Pages were changed in memory only. Recall fixes in this run: (A) a statement with a number and a unit is paired like a quantity; (B) a deterministic pass adds a claim for any sentence with a number and a unit that the model did not cover (6 added on the modified pages). Of 23 candidate pairs, LIGHTNING triage passed 23 yes + 0 unsure and dropped 0; 20 went to Ultra, planted pairs first (3 more dropped by the cap of 20).
 
 | Plant | Kind | Source p. | Target p. | Subject | Value | Extracted | Paired | Grade | Result | Missed at | Why |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | pl-01 | planted | 940 | 198 | flora species reported from Great Nicobar Island | 600 -> 900 species | yes | yes | RED | OK |  |  |
 | pl-02 | planted | 751 | 657 | airport runway reclamation | 71 -> 106 Ha | yes | yes | RED | OK |  |  |
-| pl-03 | planted | 234 | 594 | Megapode Island submergence area | 550 -> 275 sq km | yes | yes | RED | OK |  |  |
+| pl-03 | planted | 234 | 594 | Megapode Island submergence area | 550 -> 275 sq km | yes | yes | ORANGE | OK |  |  |
 | pl-04 | planted | 1168 | 730 | fauna species recorded from GNI | 330 -> 495 species | yes | yes | RED | OK |  |  |
 | pl-05 | planted | 818 | 642 | mangrove species recorded from Campbell Bay National Park | 14 -> 7 species | yes | yes | RED | OK |  |  |
 | pl-06 | planted | 851 | 386 | amphibian species recorded from Galathea National Park | 10 -> 5 species | yes | yes | RED | OK |  |  |
@@ -65,11 +65,11 @@ Every candidate pair is first screened by LIGHTNING in batches of 2: could the t
 
 | Set | Candidates | yes / unsure / no | Ultra calls saved | With a cached Ultra verdict | RED/ORANGE it would drop |
 |---|---|---|---|---|---|
-| Known-issue pages | 21 | 19 / 0 / 2 | 2 | 19 | 0 |
-| Planted test | 75 | 51 / 0 / 24 | 24 | 20 | 0 |
+| Known-issue pages | 11 | 11 / 0 / 0 | 0 | 11 | 0 |
+| Planted test | 23 | 23 / 0 / 0 | 0 | 20 | 0 |
 
 
-Fast mode (`scripts/audit.py --triage fast`, quotes-only view alone) on the known-issue pages: yes / unsure / no = 10 / 0 / 11, and it would drop 3 RED/ORANGE finding(s) that safe mode keeps.
+Fast mode (`scripts/audit.py --triage fast`, quotes-only view alone) on the known-issue pages: yes / unsure / no = 9 / 0 / 2, and it would drop 0 RED/ORANGE finding(s) that safe mode keeps.
 
 Triage runs two LIGHTNING views of each pair: the two quotes alone (8 pairs per call) and the quotes with about 1,500 characters of page context each (2 pairs per call). A pair is dropped only if both views say no: in validation, each view alone dropped a different real finding (quotes only lost a 648-vs-600 flora ORANGE that needs page context; context alone lost a planted RED).
 
@@ -120,13 +120,13 @@ Per check, for the 10 known-issue pages and Table 3.16 (table layout from the Ne
 |---|---|---|---|---|---|---|---|
 | Claim extraction, text pages (8) | 8 | 11,832 | 7,710 | 19,542 | ~48s | $0.0026 | Rs 0.22 |
 | Claim extraction, vision pages (2) | 3 | 10,842 | 2,625 | 13,467 | ~30s | $0.0056 | Rs 0.47 |
-| Contradiction check (Ultra verdicts) | 33 | 98,179 | 39,832 | 138,011 | 207s | $0.1975 | Rs 16.59 |
+| Contradiction check (Ultra verdicts) | 21 | 60,218 | 22,978 | 83,196 | 111s | $0.1050 | Rs 8.82 |
 | Copy-paste check (Lightning) | 1 | 1,632 | 70 | 1,702 | ~132s | $0.0001 | Rs 0.01 |
-| Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~1s | $0.0006 | Rs 0.05 |
+| Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~0s | $0.0006 | Rs 0.05 |
 | Planted test: claim extraction | 15 | 13,688 | 2,571 | 16,259 | 13s | $0.0014 | Rs 0.12 |
-| Planted test: triage (Lightning) | 48 | 74,568 | 2,089 | 76,657 | 27s | $0.0050 | Rs 0.42 |
-| Planted test: fast triage, quotes only (Lightning) | 10 | 7,995 | 960 | 8,955 | 8s | $0.0007 | Rs 0.06 |
-| Planted test: Ultra verdicts | 20 | 56,362 | 29,975 | 86,337 | 136s | $0.1463 | Rs 12.29 |
+| Planted test: triage (Lightning) | 15 | 22,144 | 643 | 22,787 | 13s | $0.0015 | Rs 0.12 |
+| Planted test: fast triage, quotes only (Lightning) | 3 | 2,494 | 294 | 2,788 | 4s | $0.0002 | Rs 0.02 |
+| Planted test: Ultra verdicts | 21 | 65,486 | 41,294 | 106,780 | 158s | $0.1894 | Rs 15.91 |
 
 Tavily credits: copy-paste check 15, status check 2. GBIF calls (free): 55.
 
@@ -140,22 +140,22 @@ Pages: 543 text + 579 vision; 91 Hindi pages skipped.
 |---|---|
 | text_page_usd | 0.00032 |
 | vision_page_usd | 0.00281 |
-| verdict_usd | 0.006486 |
-| verdicts_per_page | 2.2 |
+| verdict_usd | 0.007009 |
+| verdicts_per_page | 1.2 |
 | tavily_per_page | 1.5 |
 | text_page_s | 5.975 |
 | vision_page_s | 15.25 |
-| verdict_s | 6.471698 |
-| triage_pass_rate | 0.904762 |
-| triage_pass_rate_fast | 0.47619 |
-| triage_usd_per_candidate_fast | 9e-06 |
-| triage_s_per_candidate_fast | 0.104 |
-| triage_usd_per_candidate | 6.6e-05 |
-| triage_s_per_candidate | 0.361333 |
+| verdict_s | 6.404762 |
+| triage_pass_rate | 1.0 |
+| triage_pass_rate_fast | 0.818182 |
+| triage_usd_per_candidate_fast | 1e-05 |
+| triage_s_per_candidate_fast | 0.191304 |
+| triage_usd_per_candidate | 6.4e-05 |
+| triage_s_per_candidate | 0.582609 |
 
 |  | Ultra verdicts | Cost USD | Cost INR (1 USD = 84 INR) | API time, one call at a time |
 |---|---|---|---|---|
-| Without triage | 2,468 | $17.81 | Rs 1,496 | 467 min |
-| With triage | 2,233 of 2,468 candidates | $16.45 | Rs 1,382 | 457 min |
+| Without triage | 1,346 | $11.24 | Rs 944 | 345 min |
+| With triage | 1,346 of 1,346 candidates | $11.32 | Rs 951 | 358 min |
 
-**Estimate with triage: $16.45 (Rs 1,382 at 1 USD = 84 INR, labelled rate), about 2,233 Ultra verdicts, about 457 minutes of API time if run one call at a time (less in parallel), and about 1,683 Tavily credits for the copy-paste check.** The triage pass rate comes from the known-issue pages (a real document). This assumes the same density of claims and contradiction candidates as the 10 audited pages, and the candidate cap raised accordingly. The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs can grow faster than the page count across a whole report, so the real number could be higher unless the cap stays.
+**Estimate with triage: $11.32 (Rs 951 at 1 USD = 84 INR, labelled rate), about 1,346 Ultra verdicts, about 358 minutes of API time if run one call at a time (less in parallel), and about 1,683 Tavily credits for the copy-paste check.** The triage pass rate comes from the known-issue pages (a real document). This assumes the same density of claims and contradiction candidates as the 10 audited pages, and the candidate cap raised accordingly. The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs can grow faster than the page count across a whole report, so the real number could be higher unless the cap stays.
