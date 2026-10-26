@@ -15,3 +15,4 @@ data/eias/*.pdf
 data/demo/*.png
 
 .streamlit/secrets.toml
+feedback/

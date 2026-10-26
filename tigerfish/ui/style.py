@@ -66,6 +66,10 @@ CSS = f"""
   .tf-unverified {{ color: #8A979D; }}
   .tf-unverified .tf-memo-sub {{ color: #9AA6AB; }}
   .tf-memo-foot {{ font-size: 0.8rem; color: {MUTED}; margin-top: 0.6rem; }}
+  .tf-tavily {{ display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em;
+                color: #5A3E99 !important; background: #EFEAFB; border: 1px solid #D9CFF5;
+                border-radius: 999px; padding: 0.02rem 0.45rem; margin-left: 0.35rem;
+                text-decoration: none !important; vertical-align: 1px; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

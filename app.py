@@ -7,7 +7,8 @@ Live mode appears only when NEBIUS_API_KEY is set.
 
 import streamlit as st
 
-from tigerfish.ui import cards, data, letter, live, method, promises
+from tigerfish.ui import cards, data, feedback, letter, live, method, promises, rti, species_map
+from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
 st.set_page_config(page_title="TigerFish", layout="wide", initial_sidebar_state="collapsed")
@@ -55,12 +56,18 @@ with findings_tab:
     check_names = sorted({f["check_name"] for f in findings})
     checks = f2.multiselect("Check", check_names, default=check_names)
     shown = data.filter_findings(findings, grades, checks)
+    feedback.reviewer_input(report["id"], findings)
 
     if not findings:
         st.info("No RED, ORANGE or INFO findings for this report.")
     elif not shown:
         st.info("No findings match these filters.")
+    map_drawn = False
     for f in shown:
+        if f["check"] in species_map.SPECIES_CHECKS and not map_drawn:
+            site = (REPORTS.get(report["id"]) or (None, None))[1]
+            species_map.render({**report, "findings": shown}, site)
+            map_drawn = True
         cards.finding_card(report["id"], f, report.get("title", ""))
 
     # ---------- letter from confirmed findings ----------
@@ -69,8 +76,8 @@ with findings_tab:
     dismissed = cards.reviewed(report["id"], findings, "Dismiss")
     unsure = cards.reviewed(report["id"], findings, "Unsure")
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
-                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept for this '
-                f'session only.</div>', unsafe_allow_html=True)
+                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are saved on this '
+                f'computer (feedback/feedback.json).</div>', unsafe_allow_html=True)
     lang_label = st.radio("Letter language", ["English", "Hindi", "Both"], horizontal=True,
                           help="Hindi is machine-translated. Quotes from the report, page "
                                "numbers and links are never translated.")
@@ -90,10 +97,21 @@ with findings_tab:
         disabled=not confirmed or bool(letter_error), type="primary",
         help="Built from the findings you marked Confirm. Neutral and factual, with page "
              "citations and evidence links.")
+    st.download_button(
+        "RTI + public hearing pack (.zip)",
+        data=rti.build_pack(report, confirmed) if confirmed else b"",
+        file_name=f"tigerfish_{report['id']}_rti_hearing_pack.zip", mime="application/zip",
+        disabled=not confirmed,
+        help="Drafts, please review: written comments for the EIA public consultation (EIA "
+             "Notification, 2006) and RTI applications (Section 6, RTI Act 2005), one question "
+             "per confirmed finding. English only; fill in the [placeholders].")
     if not confirmed:
-        st.caption("Mark at least one finding as Confirm to draft the letter.")
+        st.caption("Mark at least one finding as Confirm to draft the letter and the pack.")
     if letter_error:
         st.caption(letter_error)
+
+    st.write("")
+    feedback.panel(report["id"], findings)
 
 with promises_tab:
     promises.render(report["id"])

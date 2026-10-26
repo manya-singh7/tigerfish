@@ -2,14 +2,26 @@
 
 import streamlit as st
 
-from tigerfish.ui import data, investigate
+from tigerfish.ui import crops, data, feedback, investigate
 from tigerfish.ui.style import badge, esc, stat
 
-REVIEW_OPTIONS = ["Confirm", "Dismiss", "Unsure"]
+REVIEW_OPTIONS = list(feedback.DECISIONS)
+# Checks whose linked evidence was found with Tavily search / extract (every URL in their
+# evidence comes from a cached Tavily response). GBIF and report-page links are not Tavily.
+TAVILY_CHECKS = ("copy_paste", "borrowed_text", "accreditation", "legal_schedule")
 
 
 def review_key(report_id, finding_id):
-    return f"review::{report_id}::{finding_id}"
+    return feedback.widget_key(report_id, finding_id)
+
+
+def from_tavily(check, e):
+    return check in TAVILY_CHECKS and bool(e.get("url"))
+
+
+def tavily_tag(url):
+    return (f' <a class="tf-tavily" href="{esc(url)}" target="_blank" '
+            f'title="This source was found with Tavily web search">Found via Tavily</a>')
 
 
 def reviewed(report_id, findings, choice):
@@ -54,12 +66,14 @@ def quote_label(q):
     return f"Page {q['page']}" if q.get("page") else q.get("where", "Source")
 
 
-def evidence_html(items):
+def evidence_html(items, check=None):
     rows = []
     for e in items:
         value = esc(e.get("value"))
         if e.get("url"):
             value = f'<a href="{esc(e["url"])}" target="_blank">{value or esc(e["url"])}</a>'
+        if from_tavily(check, e):
+            value += tavily_tag(e["url"])
         rows.append(f'<div class="tf-ev"><span class="tf-ev-label">{esc(e["label"])}:</span> {value}</div>')
     return "".join(rows)
 
@@ -78,21 +92,41 @@ def finding_card(report_id, f, report_title=""):
             col.markdown(f'<div class="tf-quote-label">{esc(quote_label(q))}</div>'
                          f'<div class="tf-quote">{esc(q["text"])}</div>', unsafe_allow_html=True)
 
-        st.markdown(f'<div style="margin-top:0.7rem">{evidence_html(f["evidence"])}</div>'
+        st.markdown(f'<div style="margin-top:0.7rem">{evidence_html(f["evidence"], f.get("check"))}</div>'
                     f'<div class="tf-line" style="margin-top:0.6rem"><b>Why flagged</b> &nbsp;{esc(f["why"])}</div>'
                     f'<div class="tf-line"><b>What would clear this</b> &nbsp;{esc(f["clear"])}</div>',
                     unsafe_allow_html=True)
 
         images = list(dict.fromkeys(f.get("images") or []))
+        if crops.wants_crops(f):
+            zoomed(images)
         if images:
             with st.expander("Show highlighted page" + ("s" if len(images) > 1 else "")):
                 paths = [p for p in (data.image_path(rel) for rel in images) if p]
                 for col, path in zip(st.columns(len(paths)) if paths else [], paths):
-                    # file names end in _p<NNNN>.png
-                    col.image(str(path), caption=f"Page {int(path.stem.rsplit('_p', 1)[1])}",
-                              width="stretch")
+                    col.image(str(path), caption=f"Page {page_no(path)}", width="stretch")
 
         investigate.render(report_id, f, report_title)
 
-        st.segmented_control("Reviewer", REVIEW_OPTIONS, key=review_key(report_id, f["id"]),
-                             label_visibility="collapsed")
+        feedback.review_widgets(report_id, f)
+
+
+@st.cache_data(show_spinner=False)
+def _crop(path):
+    return crops.crop(path)
+
+
+def page_no(path):
+    return int(path.stem.rsplit("_p", 1)[1])       # file names end in _p<NNNN>.png
+
+
+def zoomed(images):
+    """The highlighted lines of each page, side by side (the full pages are below)."""
+    shown = [(p, c) for p in (data.image_path(rel) for rel in images) if p
+             for c in [_crop(str(p))] if c]
+    if not shown:
+        return
+    st.markdown('<div class="tf-quote-label" style="margin-top:0.7rem">Highlighted lines, zoomed</div>',
+                unsafe_allow_html=True)
+    for col, (path, png) in zip(st.columns(len(shown)), shown):
+        col.image(png, caption=f"Page {page_no(path)}", width="stretch")

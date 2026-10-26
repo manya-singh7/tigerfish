@@ -6,6 +6,7 @@ from pathlib import Path
 import streamlit as st
 
 from tigerfish import claims, contradictions, copycheck, promises, species
+from tigerfish.ui import costs
 
 METHOD = f"""
 #### What TigerFish checks
@@ -130,6 +131,7 @@ def render_evaluation():
         f"one call at a time. Estimate from the audited pages: `{x['formula']}`.")
     st.caption(f"Generated {e['generated']} by scripts/evaluate.py (seed {e['seed']}). "
                f"Full tables in results/eval.md.")
+    costs.render(e)
 
 
 def render():
