@@ -7,6 +7,7 @@ needed stay under the usual caps) and writes:
   results/index.json                      list of reports
   results/<report>.json                   summary + findings in one shape for the UI
   results/pages/<report>_p<NNNN>.png      only pages that have findings, quotes highlighted
+  (results/<report>_promises.json, the ToR table + timeline, is written by check_promises.py)
 No PDFs, no source images (the Scroll table image stays local), no API keys.
 """
 
@@ -25,7 +26,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import check_contradictions  # noqa: E402
 import check_copypaste  # noqa: E402
 import demo_table  # noqa: E402
-from tigerfish import claims, copycheck, llm, pdf_reader, status, trace  # noqa: E402
+from tigerfish import claims, copycheck, llm, pdf_reader, promises, status, trace  # noqa: E402
 from tigerfish.report import (attach_images, contradiction_findings, finding,  # noqa: E402
                               highlight_pages)
 
@@ -190,6 +191,49 @@ def accreditation_findings():
                     quotes, ev, why or a["validity"])]
 
 
+PROMISES = ROOT / "cache" / "findings" / GN_PDF.stem / "promises.json"
+
+
+def promise_findings(report_id):
+    """ORANGE/INFO results of scripts/check_promises.py (ToR vs EIA) as findings, check "promise".
+    Quotes: the ToR sentence (trimmed around the number), the report's text, and any other
+    report page that says otherwise. Report pages get highlighted images."""
+    if not PROMISES.exists():
+        return []
+    data = json.loads(PROMISES.read_text(encoding="utf-8"))
+    out = []
+    for p in [p for p in data["promises"] if p["grade"] in ("ORANGE", "INFO")]:
+        quotes = [{"page": None, "where": f"Terms of Reference p.{p['page']}",
+                   "text": promises.quote_around(p["quote"], p["measure"])}]
+        if p.get("eia_quote"):
+            quotes.append({"page": p["eia_page"], "text": p["eia_quote"]})
+        if p.get("supporting_quote"):
+            quotes.append({"page": p["supporting_page"], "text": p["supporting_quote"]})
+        by = ("Nemotron Ultra, reading the cited report pages" if p["verdict_by"] == "ultra"
+              else "Nemotron Lightning (first pass only; not confirmed by Ultra)"
+              if p["verdict_by"] == "lightning" else "regex only")
+        ev = [{"label": f"ToR commitment (p.{p['page']})", "value": f"{p['commitment']} ({p['measure']})"},
+              {"label": "Report describes" + (f" (p.{p['eia_page']})" if p.get("eia_page") else ""),
+               "value": p["report_describes"]},
+              {"label": "Verdict", "value": f"{p['verdict']}, checked by {by}"}]
+        if p.get("supporting_quote"):
+            ev.append({"label": f"Also in the report (p.{p['supporting_page']})", "value": p["supporting_quote"]})
+        if p.get("eia_page"):
+            ev.append({"label": "Report page", "value": f"EIA p.{p['eia_page']}",
+                       "url": f"{promises.EIA_URL}#page={p['eia_page']}"})
+        out.append(finding(f"pr-{p['id'][1:]}", "promise", p["grade"],
+                           f"{p['topic'].capitalize()}: {p['measure']} in the Terms of Reference",
+                           p["message"], quotes, ev, p.get("reason") or p["message"]))
+    for f in out:
+        by_page = {}
+        for q in f["quotes"]:
+            if q.get("page"):
+                by_page.setdefault(q["page"], []).append(q["text"])
+        images = highlight_pages(GN_PDF, by_page, PAGES_OUT, f"{report_id}_{f['id']}", dpi=PAGE_DPI)
+        attach_images([f], images, relative_to=RESULTS)
+    return out
+
+
 def species_pages_read():
     """Pages the species-table check read (empty set if it has not been run)."""
     if not SPECIES_PAGES.exists():
@@ -252,7 +296,10 @@ def great_nicobar():
     findings += species_table_findings(report_id)
     findings += omission_findings()
     findings += accreditation_findings()
+    findings += promise_findings(report_id)
     usd, credits, gbif, seconds = run_cost(trace.used)
+    if PROMISES.exists():      # its model calls ran in scripts/check_promises.py, not in this trace
+        usd = round(usd + json.loads(PROMISES.read_text(encoding="utf-8")).get("cost_usd", 0), 4)
     return report_id, {
         "id": report_id, "title": "Great Nicobar EIA (2021 draft)",
         "source": "Draft EIA by Vimta Labs for ANIIDCO, December 2021",
@@ -262,7 +309,8 @@ def great_nicobar():
                    "Copied text (Tavily)", "Borrowed text (Tavily)",
                    "Species tables in the report (GBIF)",
                    "Threatened species not mentioned (GBIF)",
-                   "Consultant accreditation (NABET, official list)"],
+                   "Consultant accreditation (NABET, official list)",
+                   "Terms of Reference promises (Nemotron Lightning / Ultra)"],
         "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
                  "approx_seconds": seconds},
         "known_issue_score": dict(zip(("passed", "scored"),

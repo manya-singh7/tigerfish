@@ -29,6 +29,13 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Species table p.954: Panulirus interruptus, RED at Campbell Bay: GBIF 0 within 100 km, 0 within 500 km, 0 in the A&N Islands, 0 within 3,000 km, 294,577 worldwide. Is it really recorded at Great Nicobar?
 - [ ] Species tables, flora (not in the app): Musa sabuana p.310, Phalaenopsis speciosa p.317, Phalaenopsis speciosa p.1030: each has only 1 GBIF record worldwide; likely data gaps (Phalaenopsis speciosa is native to the islands). Check against the Flora of Andaman & Nicobar.
 
+- [ ] ToR promises (ORANGE, check by hand against data/eias/great_nicobar_tor_2021.pdf and the draft EIA):
+  - [ ] pr-06: ToR p.1 baseline "3 months" (flora & fauna listed) vs p.292 "Quick primary survey" 14-22 Dec 2020 (9 days) + turtle survey 12-18 Feb 2021. Does any other page show a longer ecology survey?
+  - [ ] pr-08: ToR p.2 corals "up to a depth of about 40 m" vs p.987 transects "deeper reef-16-30m". Check the ZSI coral pages for any dive deeper than 30 m.
+  - [ ] pr-13: ToR p.3 water "20 locations" vs p.279 "sixteen locations" (8 surface + 8 ground water). Check Table 3.18 / Figure 3.34.
+  - [ ] pr-15: ToR p.3 soil "three different levels up to a depth of 90 cm" vs p.258 "three different depths viz. 30 cm" and "up to a depth of 30 cm"; but p.870 (annexure) says "30 cm, 60 cm and 90 cm". Also p.258 says "20 locations" and "A total of 10 numbers of samples". Which is right?
+  - [ ] Compare against the ToR actually granted (MoEFCC letter of 25 May 2021, cited on EIA p.44); our file is the proposed ToR.
+
 ## Block B (PDF reader + Super-VL)
 - [ ] Demo: Super-VL reads the table image -> species list -> species check. This is the headline demo shot.
 
@@ -42,7 +49,7 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Regional-effort fallback is borderline here: 513 mammal records within 500 km vs threshold 500
 
 ## What's next / stretch
-- [ ] ToR vs EIA check: compare promises in data/eias/great_nicobar_tor_2021.pdf (3-month baseline, corals to 40 m, 20 water/noise sites) with what the EIA delivered.
+- [x] ToR vs EIA check: compare promises in data/eias/great_nicobar_tor_2021.pdf (3-month baseline, corals to 40 m, 20 water/noise sites) with what the EIA delivered (tigerfish/promises.py, scripts/check_promises.py, "ToR promises" tab).
 
 ## Block E (copy-paste check, Tavily)
 - [x] Use the "Deep Research Agent with Tavily + Token Factory" cookbook (github.com/nebius/token-factory-cookbook) as the reference pattern

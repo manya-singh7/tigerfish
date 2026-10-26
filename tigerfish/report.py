@@ -11,6 +11,7 @@ CHECK_NAMES = {
     "legal_schedule": "Legal schedule", "copy_paste": "Copied text",
     "borrowed_text": "Borrowed text", "omission": "Not mentioned",
     "accreditation": "Consultant accreditation",
+    "promise": "ToR promise",
 }
 CLEAR = {
     "contradiction": "A statement in the report that the two passages cover different areas, "
@@ -25,6 +26,7 @@ CLEAR = {
     "borrowed_text": "A citation to the source near this text.",
     "omission": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
     "accreditation": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
+    "promise": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
 }
 GRADE_ORDER = {"RED": 0, "ORANGE": 1, "INFO": 2}
 

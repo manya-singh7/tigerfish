@@ -7,7 +7,7 @@ Live mode appears only when NEBIUS_API_KEY is set.
 
 import streamlit as st
 
-from tigerfish.ui import cards, data, letter, live, method
+from tigerfish.ui import cards, data, letter, live, method, promises
 from tigerfish.ui.style import CSS
 
 st.set_page_config(page_title="TigerFish", layout="wide", initial_sidebar_state="collapsed")
@@ -42,7 +42,7 @@ else:
     report = data.load(titles[choice])
     st.caption(f"Saved results. Source: {report.get('source', '')}")
 
-findings_tab, method_tab = st.tabs(["Findings", "Method & limits"])
+findings_tab, promises_tab, method_tab = st.tabs(["Findings", "ToR promises", "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -94,6 +94,9 @@ with findings_tab:
         st.caption("Mark at least one finding as Confirm to draft the letter.")
     if letter_error:
         st.caption(letter_error)
+
+with promises_tab:
+    promises.render(report["id"])
 
 with method_tab:
     method.render()

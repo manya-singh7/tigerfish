@@ -11,13 +11,14 @@
     "Borrowed text (Tavily)",
     "Species tables in the report (GBIF)",
     "Threatened species not mentioned (GBIF)",
-    "Consultant accreditation (NABET, official list)"
+    "Consultant accreditation (NABET, official list)",
+    "Terms of Reference promises (Nemotron Lightning / Ultra)"
   ],
   "cost": {
-    "nebius_usd": 0.1571,
+    "nebius_usd": 0.1726,
     "tavily_credits": 15,
     "gbif_calls": 0,
-    "approx_seconds": 376
+    "approx_seconds": 377
   },
   "known_issue_score": {
     "passed": 4,
@@ -654,7 +655,368 @@
       "clear": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
       "known_issue": null,
       "images": []
+    },
+    {
+      "id": "pr-06",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "ORANGE",
+      "title": "Terrestrial ecology: 3 months in the Terms of Reference",
+      "message": "The ToR commits to collect terrestrial ecology baseline data for 3 months (ToR p.1); the report describes quick primary survey over nine days in December 2020 and seven days in February 2021 (EIA p.292). Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.1",
+          "text": "The base line data to be collected for 3 months to represent a season."
+        },
+        {
+          "page": 292,
+          "text": "Area Expert (FAE) in Ecology & Biodiversity and Soil Conservation (Category A) of the Vimta Labs Ltd., Hyderabad during December 2020 (14 to 22 December 2020)."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.1)",
+          "value": "collect terrestrial ecology baseline data for 3 months (3 months)"
+        },
+        {
+          "label": "Report describes (p.292)",
+          "value": "quick primary survey over nine days in December 2020 and seven days in February 2021"
+        },
+        {
+          "label": "Verdict",
+          "value": "not met, checked by Nemotron Ultra, reading the cited report pages"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.292",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=292"
+        }
+      ],
+      "why": "The report describes only a quick primary survey spanning nine days in December 2020 and a separate seven-day turtle survey in February 2021, not three months of baseline data collection.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-06_p0292.png"
+      ]
+    },
+    {
+      "id": "pr-07",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "INFO",
+      "title": "Socio-economic: 3 months in the Terms of Reference",
+      "message": "The ToR commits to collect socio-economic baseline data for 3 months (ToR p.1); the report text searched does not show how this was done. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.1",
+          "text": "The base line data to be collected for 3 months to represent a season."
+        },
+        {
+          "page": 345,
+          "text": "Primary social survey was conducted along with Tribal welfare Department officials in Greater Nicobar Islands in December 2020."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.1)",
+          "value": "collect socio-economic baseline data for 3 months (3 months)"
+        },
+        {
+          "label": "Report describes (p.345)",
+          "value": "no socio-economic baseline data collection period stated"
+        },
+        {
+          "label": "Verdict",
+          "value": "not found, checked by Nemotron Ultra, reading the cited report pages"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.345",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=345"
+        }
+      ],
+      "why": "The report mentions a primary social survey in December 2020 but does not state the duration of socio-economic baseline data collection.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-07_p0345.png"
+      ]
+    },
+    {
+      "id": "pr-08",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "ORANGE",
+      "title": "Corals: 40 m in the Terms of Reference",
+      "message": "The ToR commits to carry out study up to a depth of about 40 m through appropriate transacts at suitable intervals (ToR p.2); the report describes coral surveys up to 30 m depth (EIA p.987). Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.2",
+          "text": "The study will have to carried out up to a depth of about 40 m through appropriate transacts at suitable intervals."
+        },
+        {
+          "page": 987,
+          "text": "deeper reef-16-30m (English et al., 1994). In total, 5 LITs were laid in each Monitoring Plot"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.2)",
+          "value": "carry out study up to a depth of about 40 m through appropriate transacts at suitable intervals (40 m)"
+        },
+        {
+          "label": "Report describes (p.987)",
+          "value": "coral surveys up to 30 m depth"
+        },
+        {
+          "label": "Verdict",
+          "value": "not met, checked by Nemotron Ultra, reading the cited report pages"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.987",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=987"
+        }
+      ],
+      "why": "The report states coral surveys were conducted only up to 30 m depth, not the required 40 m.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-08_p0987.png"
+      ]
+    },
+    {
+      "id": "pr-09",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "INFO",
+      "title": "Marine ecology: 40 m in the Terms of Reference",
+      "message": "The ToR commits to undertake study up to depth of about 40 m (ToR p.2); the report describes 20m long Line Intercept Transects (LITs) covering various zones in shallow- upto 6 m, medium- 6- 15m and deeper reef-16-30m (EIA p.987). A possible shortfall, not confirmed by the second reading. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.2",
+          "text": "The study is to be undertaken up to depth of about 40 m."
+        },
+        {
+          "page": 987,
+          "text": "assessment of live corals within the Monitoring Plots has been done by randomly laying out 20m long Line Intercept Transects (LITs) covering various zones in shallow- upto 6 m, medium- 6- 15m and deeper reef-16-30m (English et al., 1994)."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.2)",
+          "value": "undertake study up to depth of about 40 m (40 m)"
+        },
+        {
+          "label": "Report describes (p.987)",
+          "value": "20m long Line Intercept Transects (LITs) covering various zones in shallow- upto 6 m, medium- 6- 15m and deeper reef-16-30m"
+        },
+        {
+          "label": "Verdict",
+          "value": "not met, checked by Nemotron Lightning (first pass only; not confirmed by Ultra)"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.987",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=987"
+        }
+      ],
+      "why": "The ToR commits to undertake study up to depth of about 40 m (ToR p.2); the report describes 20m long Line Intercept Transects (LITs) covering various zones in shallow- upto 6 m, medium- 6- 15m and deeper reef-16-30m (EIA p.987). A possible shortfall, not confirmed by the second reading. Verify.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-09_p0987.png"
+      ]
+    },
+    {
+      "id": "pr-12",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "INFO",
+      "title": "Met: one location in the Terms of Reference",
+      "message": "The ToR commits to generate primary micro-meteorological data for temperature, wind speed, wind direction, relative humidity (min & max), rainfall, and cloud cover for a period of three months at one location (ToR p.3); the report text searched does not show how this was done. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.3",
+          "text": "2 Meteorologic al data Primary micro-meteorological data will be generated for temperature, wind speed, wind direction, relative humidity (min & max), rainfall, and cloud cover for a period of three months at one location."
+        },
+        {
+          "page": 590,
+          "text": "3 Meteorology Meteorological station in the proposed project site Wind speed, direction, temperature, relative humidity and rainfall."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.3)",
+          "value": "generate primary micro-meteorological data for temperature, wind speed, wind direction, relative humidity (min & max), rainfall, and cloud cover for a period of three months at one location (one location)"
+        },
+        {
+          "label": "Report describes (p.590)",
+          "value": "Meteorological station in the proposed project site Wind speed, direction, temperature, relative humidity and rainfall"
+        },
+        {
+          "label": "Verdict",
+          "value": "not found, checked by Nemotron Lightning (first pass only; not confirmed by Ultra)"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.590",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=590"
+        }
+      ],
+      "why": "The ToR commits to generate primary micro-meteorological data for temperature, wind speed, wind direction, relative humidity (min & max), rainfall, and cloud cover for a period of three months at one location (ToR p.3); the report text searched does not show how this was done. Verify.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-12_p0590.png"
+      ]
+    },
+    {
+      "id": "pr-13",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "ORANGE",
+      "title": "Water: 20 locations in the Terms of Reference",
+      "message": "The ToR commits to collect water samples once during the study period at 20 locations covering 10 km radius area (ToR p.3); the report describes water samples from sixteen locations (EIA p.279). Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.3",
+          "text": "3 Water Quality Water samples will be collected once during the study period at 20 locations covering 10 km radius area."
+        },
+        {
+          "page": 279,
+          "text": "Water samples were collected from sixteen locations."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.3)",
+          "value": "collect water samples once during the study period at 20 locations covering 10 km radius area (20 locations)"
+        },
+        {
+          "label": "Report describes (p.279)",
+          "value": "water samples from sixteen locations"
+        },
+        {
+          "label": "Verdict",
+          "value": "not met, checked by Nemotron Ultra, reading the cited report pages"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.279",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=279"
+        }
+      ],
+      "why": "The report states samples were collected from sixteen locations, which is fewer than the 20 locations committed in the ToR.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-13_p0279.png"
+      ]
+    },
+    {
+      "id": "pr-15",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "ORANGE",
+      "title": "Soil: 90 cm in the Terms of Reference",
+      "message": "The ToR commits to collect soil samples once during the study period at 20 locations from three different levels up to a depth of 90 cm and analyzed for the parameters such as grain size, pH, salinity, electrical conductivity, organic carbon, NPK, TDS, Na, Mg, Ca, Cl-, F- etc (ToR p.3); the report describes soil samples from 20 locations at 30 cm depth only (EIA p.258). Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.3",
+          "text": "4 Soil Quality Soil samples will be collected once during the study period at 20 location from three different levels up to a depth of 90 cm and analyzed for the parameters such as grain size, pH, salinity, electrical conductivity, organic carbon, NPK, TDS, Na, Mg, Ca, Cl-, F- etc."
+        },
+        {
+          "page": 258,
+          "text": "At each location, soil samples were collected from three different depths viz. 30 cm below the surface and are homogenized."
+        },
+        {
+          "page": 870,
+          "text": "At each location, soil samples were collected from three different depths viz. 30 cm, 60 cm and 90 cm below the surface and are homogenized."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.3)",
+          "value": "collect soil samples once during the study period at 20 locations from three different levels up to a depth of 90 cm and analyzed for the parameters such as grain size, pH, salinity, electrical conductivity, organic carbon, NPK, TDS, Na, Mg, Ca, Cl-, F- etc. (90 cm)"
+        },
+        {
+          "label": "Report describes (p.258)",
+          "value": "soil samples from 20 locations at 30 cm depth only"
+        },
+        {
+          "label": "Verdict",
+          "value": "not met, checked by Nemotron Ultra, reading the cited report pages"
+        },
+        {
+          "label": "Also in the report (p.870)",
+          "value": "At each location, soil samples were collected from three different depths viz. 30 cm, 60 cm and 90 cm below the surface and are homogenized."
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.258",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=258"
+        }
+      ],
+      "why": "The report states sampling only at 30 cm depth on page 258, not at three levels up to 90 cm as required.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-15_p0258.png",
+        "pages/great_nicobar_2021_draft_pr-15_p0870.png"
+      ]
+    },
+    {
+      "id": "pr-17",
+      "check": "promise",
+      "check_name": "ToR promise",
+      "grade": "INFO",
+      "title": "Marine ecology: 6 appropriate locations in the Terms of Reference",
+      "message": "The ToR commits to collect marine water from 6 appropriate locations within the marked area once during the monitoring period (ToR p.6); the report text searched does not show how this was done. Verify.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "Terms of Reference p.6",
+          "text": "Marine Environment As a part of Marine study, the following Biological parameters will be analyzed The marine water will be collected from 6 appropriate locations within the marked area once during the monitoring period. a) Primary productivity, mg C/m3 day b) Chlorophyll, mg/m3 c) Phaeophytin, mg/m3"
+        },
+        {
+          "page": 1062,
+          "text": "Water samples collected have been analyzed for nitrate, nitrite, phosphate and silicate with a spectrophotometer."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "ToR commitment (p.6)",
+          "value": "collect marine water from 6 appropriate locations within the marked area once during the monitoring period (6 appropriate locations)"
+        },
+        {
+          "label": "Report describes (p.1062)",
+          "value": "Water samples collected have been analyzed for nitrate, nitrite, phosphate and silicate with a spectrophotometer"
+        },
+        {
+          "label": "Verdict",
+          "value": "not found, checked by Nemotron Lightning (first pass only; not confirmed by Ultra)"
+        },
+        {
+          "label": "Report page",
+          "value": "EIA p.1062",
+          "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=1062"
+        }
+      ],
+      "why": "The ToR commits to collect marine water from 6 appropriate locations within the marked area once during the monitoring period (ToR p.6); the report text searched does not show how this was done. Verify.",
+      "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_pr-17_p1062.png"
+      ]
     }
   ],
-  "exported_in_s": 2.4
+  "exported_in_s": 8.3
 }

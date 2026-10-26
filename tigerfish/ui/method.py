@@ -5,7 +5,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from tigerfish import claims, contradictions, copycheck, species
+from tigerfish import claims, contradictions, copycheck, promises, species
 
 METHOD = f"""
 #### What TigerFish checks
@@ -35,6 +35,17 @@ sources (India Code, the Gazette, PRS, PIB, MoEFCC, Sansad) and quoted.
 **Copied and borrowed text.** Distinctive, site-specific sentences are searched on the web with
 Tavily. A match with a document about a different place is flagged. Long verbatim runs from
 generic guidance without a citation are listed as INFO.
+
+**Terms of Reference promises.** Every measurable number in the project's Terms of Reference
+(ToR) is found by regex (durations, numbers of sampling locations, depths, sampling frequency);
+Nemotron Lightning says which are commitments and names the topic. The report is then searched
+(BM25 over page texts, the same search the Investigate agent uses) and the matching numbers are
+read by regex, only from sentences that name the topic and not from future monitoring plans.
+Durations come from the dated field studies in the report (the survey timeline). Lightning
+gives a first verdict; Nemotron Ultra re-reads the cited pages for possible shortfalls
+(at most {promises.MAX_ULTRA} per report). ORANGE needs Ultra's confirmation and verified quotes
+from both documents; a shortfall only the first pass saw, or a promise not found in the report
+text, is INFO.
 
 #### Grades
 
@@ -70,6 +81,12 @@ wrong, only that it does not agree with another statement or with public records
 - **Hindi pages are skipped.** The text layer of the Hindi summary does not extract cleanly.
 - **Models.** Models can misread tables or silently correct spelling; quotes are verified against
   the page, and table names keep the spelling the model read.
+- **Terms of Reference.** Only the proposed ToR document is compared (data/eias); the ToR
+  granted by MoEFCC (25 May 2021) may differ, and a committee can approve changes. A promise that
+  says "3 months" for a list of attributes is read as applying to each; the timeline shows dates
+  only where the report states them, so a study without stated dates has no bar. Regex can miss
+  numbers written in tables split across pages. An ORANGE finding is a question for the reviewer,
+  not a finding of non-compliance.
 - **Thresholds.** Lower thresholds find more and flag more noise; higher ones miss weaker cases.
   Current values: contradiction difference {contradictions.MIN_DIFFERENCE:.0%}; quote match
   {claims.MIN_QUOTE_SIMILARITY:.0%}; borrowed text {copycheck.BORROWED_RUN}+ words; candidate cap
