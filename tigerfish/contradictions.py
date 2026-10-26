@@ -647,10 +647,12 @@ def combine_triage(a, b):
 def _triage_pass(cands, pages, batch_size):
     answers = ["yes" if c["kind"] == "recycled" else None for c in cands]
     todo = [i for i, a in enumerate(answers) if a is None]
-    for start in range(0, len(todo), batch_size):
-        idx = todo[start:start + batch_size]
-        raw = claims_mod.chat_json(llm.LIGHTNING, triage_messages([cands[i] for i in idx], pages),
-                                   max_tokens=600)
+    batches = [todo[s:s + batch_size] for s in range(0, len(todo), batch_size)]
+    raws, _ = llm.run_parallel(
+        lambda idx: claims_mod.chat_json(
+            llm.LIGHTNING, triage_messages([cands[i] for i in idx], pages), max_tokens=600),
+        batches)
+    for idx, raw in zip(batches, raws):
         got = {}
         for item in (raw or {}).get("answers", []) if isinstance(raw, dict) else []:
             try:
@@ -685,16 +687,24 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
         numbered = [(n, cand) for (n, cand), a in zip(numbered, answers) if a != "no"]
     else:
         last_run["triage"], last_run["triage_answers"], last_run["triaged_out"] = None, None, []
-    for n, cand in numbered:
+    def ask(item):   # runs on the thread pool; results are used in candidate order
+        _, cand = item
         hits = explanation_hits(cand, pages)
-        messages = verdict_messages(cand, pages, hits)
-        est, _ = estimate_cost([cand], pages)
-        spent = llm.session_cost_usd - start
-        if spent + est > max_cost_usd:
-            stopped = f"cost cap ${max_cost_usd:.2f} reached (spent ${spent:.4f})"
-            log.warning(stopped)
-            break
-        raw = claims_mod.chat_json(llm.ULTRA, messages, VERDICT_MAX_TOKENS, thinking=None)
+        raw = claims_mod.chat_json(llm.ULTRA, verdict_messages(cand, pages, hits),
+                                   VERDICT_MAX_TOKENS, thinking=None)
+        return hits, raw
+
+    # The cap counts triage spend too (start is taken before triage).
+    replies, stop = llm.run_parallel(
+        ask, numbered, estimate=lambda item: estimate_cost([item[1]], pages)[0],
+        max_cost_usd=max_cost_usd - (llm.session_cost_usd - start))
+    if stop is not None:
+        stopped = (f"cost cap ${max_cost_usd:.2f} reached "
+                   f"(spent ${llm.session_cost_usd - start:.4f}); "
+                   f"{len(numbered) - stop} verdicts not run")
+        log.warning(stopped)
+        numbered = numbered[:stop]
+    for (n, cand), (hits, raw) in zip(numbered, replies):
         v = parse_verdict(raw, cand, pages)
         if v is None:
             failed += 1

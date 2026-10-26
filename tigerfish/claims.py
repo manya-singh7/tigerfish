@@ -368,18 +368,26 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, rule_pass=Tr
     start_cost = llm.session_cost_usd
     claims, done, skipped, stopped = [], [], [], None
     cleaning = {"repaired": 0, "dropped_value": 0, "dropped_duplicate": 0}
+    usable = []
     for page in pages:
         if page.get("error") or not (page.get("text", "").strip() or page.get("image_path")):
             skipped.append(page["page"])
-            continue
-        spent = llm.session_cost_usd - start_cost
-        if spent + estimate_page_cost(page) > max_cost_usd:
-            stopped = (f"cost cap ${max_cost_usd:.2f} reached at page {page['page']} "
-                       f"(spent ${spent:.4f})")
-            log.warning(stopped)
-            break
+        else:
+            usable.append(page)
+
+    def ask(page):   # runs on the thread pool; everything after it runs in page order
         model, messages, max_tokens = page_request(page)
-        raw = chat_json(model, messages, max_tokens)
+        return model, chat_json(model, messages, max_tokens)
+
+    replies, stop = llm.run_parallel(ask, usable, estimate=estimate_page_cost,
+                                     max_cost_usd=max_cost_usd)
+    if stop is not None:
+        spent = llm.session_cost_usd - start_cost
+        stopped = (f"cost cap ${max_cost_usd:.2f} reached at page {usable[stop]['page']} "
+                   f"(spent ${spent:.4f})")
+        log.warning(stopped)
+        usable = usable[:stop]
+    for page, (model, raw) in zip(usable, replies):
         if raw is None:
             log.warning("page %d skipped: no valid JSON", page["page"])
             skipped.append(page["page"])

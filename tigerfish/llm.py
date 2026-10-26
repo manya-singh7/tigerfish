@@ -12,18 +12,26 @@
   key uses the image's sha256, not the base64 text.
 - Cost: session_cost_usd adds up real (uncached) calls; is_cached() tells you
   in advance whether a call would be free.
+- Speed: run_parallel() runs calls on a thread pool (WORKERS threads), results in input
+  order, with an optional cost cap. 429 / 5xx / connection errors are retried with
+  exponential backoff + jitter (MAX_RETRIES). Cache files are written atomically, so an
+  interrupted run resumes from the cache without paying for any call twice.
 """
 
 import base64
 import hashlib
 import json
+import os
+import random
 import re
+import threading
 import time
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from pathlib import Path
 
+import openai
 from dotenv import load_dotenv
 from openai import OpenAI
-import os
 
 from tigerfish import trace
 
@@ -54,20 +62,156 @@ PRICES = {
     SUPER_VL: (0.30, 0.90),   # from catalog, verify on billing page
 }
 
+WORKERS = 6              # parallel API calls in run_parallel()
+MAX_RETRIES = 6          # retries of one call on 429 / 5xx / connection errors
+BACKOFF_BASE_S = 2.0     # wait before retry k: random(0.5, 1) x min(BACKOFF_MAX_S, base x 2^k)
+BACKOFF_MAX_S = 60.0
+REQUEST_TIMEOUT_S = 600  # Ultra with reasoning can take minutes on long pages
+RESERVE_FACTOR = 2.0     # cost cap: a running call is counted as this x its estimate
+
 load_dotenv(ROOT / ".env")
 _client = None
+_lock = threading.Lock()  # guards session_cost_usd, retry_stats, the usage log and the client
 session_cost_usd = 0.0   # cost of real (uncached) API calls made by this process
+retry_stats = {"retries": 0, "rate_limited": 0, "server_errors": 0, "connection_errors": 0}
+call_stats = {}   # model -> {api_calls, cache_hits, prompt_tokens, completion_tokens, cost_usd, api_seconds}
 
 
 def client():
     """Lazily build one shared OpenAI client pointed at Nebius."""
     global _client
-    if _client is None:
-        key = os.getenv("NEBIUS_API_KEY")
-        if not key:
-            raise RuntimeError("NEBIUS_API_KEY is missing; add it to .env")
-        _client = OpenAI(base_url=BASE_URL, api_key=key)
-    return _client
+    with _lock:
+        if _client is None:
+            key = os.getenv("NEBIUS_API_KEY")
+            if not key:
+                raise RuntimeError("NEBIUS_API_KEY is missing; add it to .env")
+            # Retries are ours (_create), so the SDK's own are off.
+            _client = OpenAI(base_url=BASE_URL, api_key=key, max_retries=0,
+                             timeout=REQUEST_TIMEOUT_S)
+        return _client
+
+
+def _retry_kind(error):
+    """'rate_limited' | 'server_errors' | 'connection_errors' if worth retrying, else None."""
+    if isinstance(error, openai.RateLimitError):
+        return "rate_limited"
+    if isinstance(error, openai.APIStatusError) and error.status_code >= 500:
+        return "server_errors"
+    if isinstance(error, openai.APIConnectionError):   # includes timeouts
+        return "connection_errors"
+    return None
+
+
+def backoff_seconds(attempt, retry_after=None):
+    """Exponential backoff with jitter; never shorter than the server's Retry-After."""
+    wait_s = min(BACKOFF_MAX_S, BACKOFF_BASE_S * 2 ** attempt) * random.uniform(0.5, 1.0)
+    return max(wait_s, retry_after or 0)
+
+
+def _retry_after(error):
+    try:
+        return float(error.response.headers.get("retry-after"))
+    except (AttributeError, TypeError, ValueError):
+        return None
+
+
+def _create(model, messages, kwargs, sleep=time.sleep):
+    """client.chat.completions.create with retries on 429 / 5xx / connection errors."""
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            return client().chat.completions.create(model=model, messages=messages, **kwargs)
+        except Exception as e:   # noqa: BLE001 (re-raised unless retryable)
+            kind = _retry_kind(e)
+            if kind is None or attempt == MAX_RETRIES:
+                raise
+            delay = backoff_seconds(attempt, _retry_after(e))
+            with _lock:
+                retry_stats["retries"] += 1
+                retry_stats[kind] += 1
+            print(f"[llm] {model}: {type(e).__name__}; retry {attempt + 1}/{MAX_RETRIES} "
+                  f"in {delay:.1f}s")
+            sleep(delay)
+
+
+def _read_cache(path):
+    """Cached response dict, or None (missing, or a broken file left by an old crash)."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return None
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        print(f"[llm] ignoring broken cache file {path.name}")
+        return None
+
+
+def _write_cache(path, data):
+    """Write to a temp file, then rename: a killed run never leaves half a file behind."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.{threading.get_ident()}.tmp")
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def _call(model, messages, kwargs, path):
+    """Real API call, timed and cached. Returns the response dict."""
+    started = time.perf_counter()
+    response = _create(model, messages, kwargs)
+    data = response.model_dump()
+    data["_latency_s"] = round(time.perf_counter() - started, 3)   # measured, incl. retries
+    _write_cache(path, data)
+    return data
+
+
+def run_parallel(fn, items, workers=None, estimate=None, max_cost_usd=None):
+    """fn(item) for every item on a thread pool. Returns (results in input order, stop).
+
+    Cost cap (estimate and max_cost_usd both given): an item starts only if
+    real spend since this call + RESERVE_FACTOR x the estimates of the items still
+    running + estimate(item) stays within max_cost_usd (estimates can be low, so running
+    calls are counted generously). If it does not fit, wait for the running items; if it
+    still does not fit with nothing running, stop: `stop` is that item's index, and its
+    result and all later ones are None. That is the sequential rule (spent + estimate >
+    cap -> stop), so a cached re-run stops at the same place.
+    workers=1 runs in this thread, one item at a time (the old sequential behaviour).
+    Ctrl+C: no new calls start; calls already running finish and are cached.
+    """
+    workers = workers or WORKERS
+    results, start = [None] * len(items), session_cost_usd
+    capped = estimate is not None and max_cost_usd is not None
+
+    def fits(est, reserved):
+        return session_cost_usd - start + reserved + est <= max_cost_usd
+
+    if workers == 1:
+        for i, item in enumerate(items):
+            if capped and not fits(estimate(item), 0):
+                return results, i
+            results[i] = fn(item)
+        return results, None
+
+    pool = ThreadPoolExecutor(max_workers=workers)
+    running = {}   # future -> (index, estimate)
+    stop = None
+    try:
+        for i, item in enumerate(items):
+            est = estimate(item) if capped else 0.0
+            while running and (len(running) >= workers or
+                               (capped and not fits(est, RESERVE_FACTOR * sum(e for _, e in running.values())))):
+                done, _ = wait(running, return_when=FIRST_COMPLETED)
+                for f in done:
+                    results[running.pop(f)[0]] = f.result()
+            if capped and not fits(est, 0):
+                stop = i
+                break
+            running[pool.submit(fn, item)] = (i, est)
+        for f in list(running):
+            results[running.pop(f)[0]] = f.result()
+    except BaseException:
+        pool.shutdown(wait=False, cancel_futures=True)
+        print("[llm] stopping: no new calls start; running calls finish and are cached")
+        raise
+    pool.shutdown()
+    return results, stop
 
 
 def image_part(path):
@@ -156,17 +300,29 @@ def _log_usage(model, usage, cached, mock=False, seconds=None):
     prompt = usage.get("prompt_tokens", 0) if usage else 0
     completion = usage.get("completion_tokens", 0) if usage else 0
     cost = cost_usd(model, prompt, completion)
-    if cost is not None and not cached and not mock:
-        session_cost_usd += cost
     entry = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": model,
              "mode": "MOCK" if mock else "REAL", "cached": cached,
              "prompt_tokens": prompt, "completion_tokens": completion, "cost_usd": cost,
              "seconds": seconds}
-    USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
-    with USAGE_LOG.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(entry) + "\n")
     tag = "MOCK" if mock else "cache hit" if cached else "api call"
-    print(f"[llm] {model} ({tag}): {prompt} in + {completion} out tokens")
+    with _lock:
+        if cost is not None and not cached and not mock:
+            session_cost_usd += cost
+        st = call_stats.setdefault(model, {"api_calls": 0, "cache_hits": 0, "prompt_tokens": 0,
+                                           "completion_tokens": 0, "cost_usd": 0.0,
+                                           "api_seconds": 0.0})
+        if cached:
+            st["cache_hits"] += 1
+        elif not mock:
+            st["api_calls"] += 1
+            st["prompt_tokens"] += prompt
+            st["completion_tokens"] += completion
+            st["cost_usd"] += cost or 0.0
+            st["api_seconds"] += seconds or 0.0
+        USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with USAGE_LOG.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+        print(f"[llm] {model} ({tag}): {prompt} in + {completion} out tokens")
 
 
 def strip_think(text):
@@ -199,17 +355,12 @@ def chat(model, messages, mock_key=None, thinking=None, cache=True, **kwargs):
     key = _cache_key(model, messages, kwargs)
     path = CACHE_DIR / f"{key}.json"
     trace.record("llm", path)
-    if cache and path.exists():
-        data = json.loads(path.read_text(encoding="utf-8"))
+    data = _read_cache(path) if cache else None
+    if data is not None:
         _log_usage(model, data.get("usage"), cached=True)
         return strip_think(data["choices"][0]["message"]["content"])
 
-    started = time.perf_counter()
-    response = client().chat.completions.create(model=model, messages=messages, **kwargs)
-    data = response.model_dump()
-    data["_latency_s"] = round(time.perf_counter() - started, 3)   # measured, for cost reports
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    data = _call(model, messages, kwargs, path)
     _log_usage(model, data.get("usage"), cached=False, seconds=data["_latency_s"])
     if data["choices"][0]["finish_reason"] == "length":
         print(f"[llm] warning: {model} hit max_tokens; reply may be cut off")
@@ -225,16 +376,10 @@ def chat_message(model, messages, thinking=None, cache=True, **kwargs):
     key = _cache_key(model, messages, kwargs)
     path = CACHE_DIR / f"{key}.json"
     trace.record("llm", path)
-    cached = cache and path.exists()
-    if cached:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    else:
-        started = time.perf_counter()
-        response = client().chat.completions.create(model=model, messages=messages, **kwargs)
-        data = response.model_dump()
-        data["_latency_s"] = round(time.perf_counter() - started, 3)
-        CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    data = _read_cache(path) if cache else None
+    cached = data is not None
+    if not cached:
+        data = _call(model, messages, kwargs, path)
     usage = data.get("usage") or {}
     _log_usage(model, usage, cached=cached, seconds=None if cached else data["_latency_s"])
     choice = data["choices"][0]

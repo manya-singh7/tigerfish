@@ -131,8 +131,10 @@ def tavily_call(endpoint, budget, est_credits, **params):
     credits = (data.get("usage") or {}).get("credits")
     budget.add(credits if isinstance(credits, (int, float)) else est_credits)
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"endpoint": endpoint, "params": params, "data": data},
-                               ensure_ascii=False), encoding="utf-8")
+    tmp = path.with_name(path.name + ".tmp")   # temp + rename: a killed run leaves no half file
+    tmp.write_text(json.dumps({"endpoint": endpoint, "params": params, "data": data},
+                              ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp, path)
     return data
 
 

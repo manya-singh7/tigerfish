@@ -4,25 +4,40 @@ the estimated cost, and calls no model.
 Usage:
   python scripts/audit.py <pdf> --scope --dry-run [--top-passages 100]
   python scripts/audit.py <pdf> --scope --run --max-cost 10   (runs the audit: costs money)
+  python scripts/audit.py <pdf> --pages 250-350 --scope --triage safe --run --max-cost 1.50
+                                                              (rehearsal on a page range)
 
 --scope skips Hindi pages, lab-report sheets, blank forms and annexure boilerplate
 (tigerfish/scope.py) and limits the copy-paste check to the --top-passages most
 site-specific passages (default 100, within the Tavily free plan of 1,000 credits/month).
 Unit costs (per page, per candidate, triage pass rate) come from results/eval.json,
 measured by scripts/evaluate.py; the estimate is labelled as such.
+
+--run: model calls run in parallel (tigerfish.llm.WORKERS threads) and every reply is
+cached, so an interrupted run is resumed by running the same command again (cached calls
+are free). After claim extraction the real candidate count is known and a second,
+cache-aware estimate is printed. The run report (cost, wall-clock time per stage, calls
+per model, findings by check and grade) goes to results/audit_<name>.json and .md.
+A --pages run keeps its ledger and findings under its own name, e.g.
+cache/findings/<stem>__p250-350/, so it never overwrites the evaluation's files.
 """
 
 import argparse
 import json
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
 
-from tigerfish import claims, contradictions, copycheck, evaluation as ev, pdf_reader, scope  # noqa: E402
+from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, scope  # noqa: E402
+from check_contradictions import known_issues_for  # noqa: E402
+from extract_claims import parse_pages  # noqa: E402
 
 EVAL = ROOT / "results" / "eval.json"
+RESULTS = ROOT / "results"
 CREDITS_PER_PASSAGE = 2          # 1 search + up to 1 extract call per passage
 TAVILY_FREE_CREDITS = 1000
 
@@ -57,6 +72,7 @@ def estimate(kept, per, top_passages, triage="safe"):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf")
+    parser.add_argument("--pages", help="page range to audit, e.g. 250-350 (default: all)")
     parser.add_argument("--scope", action="store_true", help="skip pages not worth auditing")
     parser.add_argument("--top-passages", type=int, default=100)
     parser.add_argument("--triage", choices=["safe", "fast"], default="safe",
@@ -71,6 +87,9 @@ def main():
     per = json.loads(EVAL.read_text(encoding="utf-8"))["cost"]["extrapolation"]["per_unit"]
 
     pages = pdf_reader.read_pdf(args.pdf)
+    if args.pages:
+        wanted = set(parse_pages(args.pages))
+        pages = [p for p in pages if p["page"] in wanted]
     kept, skipped = scope.select_pages(pages) if args.scope else (pages, {})
     print(f"{Path(args.pdf).name}: {len(pages)} pages, {len(kept)} kept"
           + (" (scope on)" if args.scope else " (scope off)"))
@@ -97,26 +116,146 @@ def main():
           f"Ultra verdicts ${est['usd']['verdicts']:.2f}  (1 USD = {ev.USD_TO_INR} INR)")
     print(f"  copy-paste: top {args.top_passages} passages, about {est['tavily_credits']} Tavily "
           f"credits (free plan: {TAVILY_FREE_CREDITS}/month)")
-    print("  API minutes assume one call at a time; parallel calls finish sooner.")
+    print(f"  API minutes assume one call at a time; --run uses {llm.WORKERS} parallel calls.")
 
     if args.dry_run or not args.run:
         if not args.run:
             print("\nDry run only. Add --run to audit (costs money).")
         return
-    # ---- the real run (not used in development; capped) ----
+    run_audit(args, kept, per)
+
+
+def run_audit(args, kept, per):
+    """The real run (capped). Prints and saves the run report."""
+    stem = Path(args.pdf).stem
+    name = f"{stem}__p{args.pages}" if args.pages else stem
     contradictions.TRIAGE_MODE = args.triage
-    spent0 = claims.llm.session_cost_usd
-    found = claims.extract_claims(kept, max_cost_usd=args.max_cost, pdf_stem=Path(args.pdf).stem)
+    spent0, wall0 = llm.session_cost_usd, time.perf_counter()
+    stages = {}
+
+    def stage(label, t0, c0):
+        stages[label] = {"seconds": round(time.perf_counter() - t0, 1),
+                         "usd": round(llm.session_cost_usd - c0, 4)}
+        print(f"== {label}: {stages[label]['seconds']}s, ${stages[label]['usd']:.4f}")
+
+    t0, c0 = time.perf_counter(), llm.session_cost_usd
+    found = claims.extract_claims(kept, max_cost_usd=args.max_cost, pdf_stem=name)
+    stage("claims", t0, c0)
+    if claims.last_run.get("stopped"):
+        print(f"Stopped: {claims.last_run['stopped']}")
+
     texts = {p["page"]: p["text"] for p in kept}
-    left = args.max_cost - (claims.llm.session_cost_usd - spent0)
     cands = contradictions.candidate_pairs(found, max_candidates=10**6)
-    findings = contradictions.check(cands, texts, max_cost_usd=left, pdf_stem=Path(args.pdf).stem,
+    ultra_all, uncached = contradictions.estimate_cost(cands, texts)
+    rate = per.get("triage_pass_rate" + ("_fast" if args.triage == "fast" else ""),
+                   per["triage_pass_rate"])
+    spent = llm.session_cost_usd - spent0
+    print(f"\nMeasured: {len(found)} claims, {len(cands)} candidate pairs "
+          f"({uncached} without a cached verdict). Second estimate: Ultra verdicts about "
+          f"${ultra_all * rate:.2f} (triage pass rate {rate:.2f}); spent so far ${spent:.2f}; "
+          f"cap ${args.max_cost:.2f}.")
+    if spent + ultra_all * rate > args.max_cost:
+        print("  The cap will stop the Ultra verdicts partway (candidate order: recycled, "
+              "statements, numeric).")
+
+    t0, c0 = time.perf_counter(), llm.session_cost_usd
+    left = args.max_cost - (llm.session_cost_usd - spent0)
+    findings = contradictions.check(cands, texts, max_cost_usd=left, pdf_stem=name,
                                     ledger=found)
+    stage("triage + verdicts", t0, c0)
+    con_run = dict(contradictions.last_run)
+
+    t0, c0 = time.perf_counter(), llm.session_cost_usd
+    budget = copycheck.Budget(args.top_passages * 3)
     passages = copycheck.select_passages(found, texts, max_passages=args.top_passages)
-    copy, stopped = copycheck.check_passages(passages, copycheck.Budget(args.top_passages * 3),
-                                             pages=texts)
-    print(f"Done: {len(found)} claims, {len(findings)} verdicts, {len(copy)} passages searched. "
-          f"Spent ${claims.llm.session_cost_usd - spent0:.2f}. {stopped or ''}")
+    copy, copy_stopped = copycheck.check_passages(passages, budget, pages=texts)
+    stage("copy-paste", t0, c0)
+
+    report = build_report(args, name, kept, found, cands, findings, con_run, copy, budget,
+                          copy_stopped, stages, llm.session_cost_usd - spent0,
+                          time.perf_counter() - wall0)
+    RESULTS.mkdir(exist_ok=True)
+    out = RESULTS / f"audit_{name}.json"
+    out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    (RESULTS / f"audit_{name}.md").write_text(report_md(report), encoding="utf-8")
+    print("\n" + report_md(report))
+    print(f"Saved {out.relative_to(ROOT)} and .md")
+
+
+def build_report(args, name, kept, found, cands, findings, con_run, copy, budget,
+                 copy_stopped, stages, spent, wall_s):
+    known_ids = {}
+    for issue in known_issues_for(args.pdf):
+        f = contradictions.match_issue(issue, findings)
+        if f:
+            known_ids[f["id"]] = issue["id"]
+    by_check = {}
+    for f in findings:
+        row = by_check.setdefault(f["type"], {"RED": 0, "ORANGE": 0, "NONE": 0})
+        row[f["grade"]] = row.get(f["grade"], 0) + 1
+    copy_rows = []
+    for r in copy:
+        for h in r["hits"]:
+            row = by_check.setdefault("copy_paste", {})
+            row[h["grade"]] = row.get(h["grade"], 0) + 1
+            if h["grade"] in ("RED", "ORANGE"):
+                copy_rows.append({"id": f"cp-p{r['page']}-{len(copy_rows) + 1}",
+                                  "grade": h["grade"], "type": "copy_paste", "pages": [r["page"]],
+                                  "quotes": [{"page": r["page"], "text": r["passage"]}],
+                                  "reason": f"{h['why']} ({h['url']})"})
+        if r["borrowed"]:
+            row = by_check.setdefault("borrowed_text", {"count": 0})
+            row["count"] += len(r["borrowed"])
+    flagged = [f for f in findings if f["grade"] in ("RED", "ORANGE")] + copy_rows
+    new = [f for f in flagged if f["id"] not in known_ids]
+    new.sort(key=lambda f: ({"RED": 0, "ORANGE": 1}[f["grade"]], f["id"]))
+    return {
+        "pdf": Path(args.pdf).name, "name": name, "pages": args.pages, "triage": args.triage,
+        "workers": llm.WORKERS, "max_cost_usd": args.max_cost,
+        "pages_audited": len(kept), "claims": len(found), "candidates": len(cands),
+        "triage_answers": con_run.get("triage"), "verdicts": con_run.get("verdicts"),
+        "verdicts_failed": con_run.get("failed"), "stopped": con_run.get("stopped"),
+        "copy_passages": len(copy), "copy_stopped": copy_stopped,
+        "cost_usd": round(spent, 4), "wall_clock_s": round(wall_s, 1), "stages": stages,
+        "calls_per_model": {m: {k: round(v, 4) if isinstance(v, float) else v
+                                for k, v in st.items()} for m, st in llm.call_stats.items()},
+        "tavily": {"calls": budget.calls, "cached": budget.cached, "credits": budget.used},
+        "retries": dict(llm.retry_stats),
+        "findings_by_check": by_check, "known_issues_matched": known_ids,
+        "new_flagged": len(new),
+        "top_new": [{"id": f["id"], "grade": f["grade"], "type": f["type"], "pages": f["pages"],
+                     "quotes": [{"page": q["page"], "text": q["text"]} for q in f["quotes"]],
+                     "reason": f["reason"], "part_total": f.get("part_total")}
+                    for f in new[:15]],
+    }
+
+
+def report_md(r):
+    lines = [f"# Audit run: {r['pdf']}, pages {r['pages'] or 'all'}", "",
+             f"Pages audited {r['pages_audited']}, claims {r['claims']}, candidate pairs "
+             f"{r['candidates']}, triage {r['triage_answers']}, Ultra verdicts {r['verdicts']} "
+             f"(failed {r['verdicts_failed']}), copy-paste passages {r['copy_passages']}.", "",
+             f"**Cost ${r['cost_usd']:.4f}** (INR {ev.inr(r['cost_usd']):.0f}), "
+             f"**wall clock {r['wall_clock_s'] / 60:.1f} min** with {r['workers']} workers. "
+             f"Cap ${r['max_cost_usd']:.2f}. Stopped: {r['stopped'] or 'no'}.", "",
+             "| Stage | Seconds | USD |", "|---|---:|---:|"]
+    lines += [f"| {k} | {v['seconds']} | {v['usd']:.4f} |" for k, v in r["stages"].items()]
+    lines += ["", "| Model | API calls | Cache hits | Tokens in | Tokens out | USD | API seconds |",
+              "|---|---:|---:|---:|---:|---:|---:|"]
+    lines += [f"| {m.split('/')[-1]} | {s['api_calls']} | {s['cache_hits']} | "
+              f"{s['prompt_tokens']:,} | {s['completion_tokens']:,} | {s['cost_usd']:.4f} | "
+              f"{s['api_seconds']:.0f} |" for m, s in r["calls_per_model"].items()]
+    t = r["tavily"]
+    lines += [f"| Tavily | {t['calls']} | {t['cached']} | | | {t['credits']} credits | |", "",
+              f"Retries: {r['retries']}", "", "Findings by check and grade:", ""]
+    lines += [f"- {k}: {v}" for k, v in r["findings_by_check"].items()]
+    lines += ["", f"Known issues matched: {r['known_issues_matched'] or 'none'}", "",
+              f"## Top {len(r['top_new'])} new RED/ORANGE (of {r['new_flagged']})", ""]
+    for f in r["top_new"]:
+        lines.append(f"**{f['id']} {f['grade']}** ({f['type']}, pages {f['pages']})")
+        lines += [f"- p.{q['page']}: \"{q['text']}\"" for q in f["quotes"]]
+        lines += [f"- Why: {f['reason']}", ""]
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":

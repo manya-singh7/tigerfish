@@ -3,8 +3,9 @@
 Agent: at the start of every block, read this file and remind the user of the items for that block.
 
 ## Waiting on (check daily)
-- [ ] Hackathon credits promo code (form sent Oct 24, ~10:40pm IST)
-- [ ] Builders Program email ($25 Token Factory, $25 Tavily, $100 LangSmith, $100 Toloka)
+- [x] Hackathon credits promo code (form sent Oct 24, ~10:40pm IST): ARRIVED (Oct 27)
+- [x] Builders Program email ($25 Token Factory, $25 Tavily, $100 LangSmith, $100 Toloka): ARRIVED (Oct 27)
+- Balance as of Oct 27: Token Factory ~$29.50, Tavily ~4,000 credits
 - [ ] Replies: Discord #devpost-global-ai-hackathon, sujee@nebius.com, support@devpost.com, Token Factory "Contact us" ticket, Devpost forum
 - [ ] When a Token Factory promo code arrives: Billing > Top up > With promo code
 - [ ] When a Tavily promo code arrives: Tavily dashboard > Billing
@@ -63,6 +64,10 @@ Agent: at the start of every block, read this file and remind the user of the it
 ## Block G (evaluation)
 - [x] Use the "Agentic Cost Benchmark" cookbook to report cost, tokens and time per audit ("Full 1,213-page EIA audit: Rs X, Y min")
 - [x] gn-001 counts as caught if graded RED or ORANGE
+- [x] Parallel calls (6 workers, retries, resumable) + rehearsal on p.250-350: $0.80, 7.2 min (results/audit_great_nicobar_2021_draft_eia__p250-350.md, results/full_run_estimate.md)
+- [ ] Review the 8 rehearsal RED/ORANGE flags by hand (rainfall p.291 vs p.337 looks real; the copy-paste noise-meter boilerplate and "20 locations" look like false alarms)
+- [ ] Before the full run: raise Super-VL VISION_MAX_TOKENS (p.307, p.330 lost to max_tokens); p.279 gave zero claims
+- [ ] Full run: `scripts/audit.py ... --scope --triage safe --run --max-cost 18` (not run yet)
 
 ## Write-up (Oct 29)
 - [ ] "What's next": route uncertain ORANGE flags to human experts via Toloka
