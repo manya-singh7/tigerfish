@@ -71,7 +71,14 @@ BOILERPLATE = re.compile(
     r"as per (the )?(guidelines|norms|standards)|permissible limit|prescribed|"
     r"Terms of Reference|ToR|EIA Notification|CRZ|National Ambient Air Quality|NAAQS|"
     r"\bAct,?\s+(19|20)\d\d\b|"
-    r"sampling (was|were|has been) (carried out|done) (as per|following))",
+    r"sampling (was|were|has been) (carried out|done) (as per|following)|"
+    # instrument specs: "sound level meter ... (model OB-100) ... 31.5 to 16000 Hz"
+    r"sound level meter|octave|frequency range|\d\s?k?Hz\b|\bmodel\s*(no\.?\s*)?[A-Z]{1,5}[- ]?\d|"
+    r"calibrat\w+|instrument\w*|"
+    # method definitions: "L10 is the noise level exceeded 10 per cent of the time", Leq
+    r"\bL\s?(10|50|90|eq|dn|day|night)\b[^.]{0,40}\b(is|are|denotes?|means?|defined|"
+    r"represents?)\b|exceeded\s+\d+\s*(per\s?cent|%)\s+of the time|statistical quantities|"
+    r"equivalent continuous|standard methods?)",
     re.IGNORECASE)
 
 log = logging.getLogger(__name__)
@@ -400,6 +407,15 @@ def check_passage(passage, budget, species_names=(), page_text=None):
     return {"page": passage["page"], "passage": passage["text"], "phrase": phrase,
             "claim_ids": passage["claim_ids"], "results": len(results), "hits": hits,
             "borrowed": borrowed}
+
+
+def flagged_hits(result):
+    """(best grade, RED/ORANGE hits, best first) for one passage, or (None, []).
+
+    A passage is listed once, with every matching document under it."""
+    hits = sorted((h for h in result["hits"] if h["grade"] in ("RED", "ORANGE")),
+                  key=lambda h: (h["grade"] != "RED", -h["longest_run"]))
+    return (hits[0]["grade"] if hits else None), hits
 
 
 def check_passages(passages, budget, species_names=(), pages=None):

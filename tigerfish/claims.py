@@ -35,6 +35,7 @@ MAX_COST_USD = 0.50          # stop a run before real API spend would pass this
 MAX_PAGE_CHARS = 12000       # page text sent to the model (EIA pages are ~2-6k)
 TEXT_MAX_TOKENS = 3000       # reply budget per page
 VISION_MAX_TOKENS = 4000
+VISION_LONG_MAX_TOKENS = 12000   # re-ask with this when a page's reply was cut off (long tables)
 EST_OUTPUT_TOKENS = 1500     # used only for cost estimates
 EST_IMAGE_TOKENS = 3000      # rough token cost of one 150-dpi page image, for estimates
 CHARS_PER_TOKEN = 4
@@ -116,6 +117,23 @@ def parse_json(reply):
     if not isinstance(data, dict):
         raise ValueError("JSON is not an object")
     return data
+
+
+def salvage_claims(reply):
+    """{"claims": [...]} from a reply cut off mid-list (or stuck repeating one row until the
+    limit): keeps every complete claim object before the cut. None if nothing is usable.
+    Repeated rows are merged later by dedupe()."""
+    text = reply or ""
+    start = text.find('"claims"')
+    if start == -1:
+        return None
+    for end in (m.start() for m in reversed(list(re.finditer(r"\}\s*,\s*\{", text)))):
+        try:
+            data = json.loads("{" + text[start:end + 1] + "]}")
+        except ValueError:
+            continue
+        return data if data.get("claims") else None
+    return None
 
 
 def chat_json(model, messages, max_tokens, thinking=False):
@@ -210,6 +228,12 @@ def repair_quote(quote, page_text, min_similarity=MIN_QUOTE_SIMILARITY):
 
 
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
+SMALL_NUMBERS = ("zero one two three four five six seven eight nine ten eleven twelve thirteen "
+                 "fourteen fifteen sixteen seventeen eighteen nineteen").split()
+TENS = {w: 10 * i for i, w in enumerate(
+    "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()) if w != "_"}
+WORD_NUMBER = re.compile(r"\b(" + "|".join(list(TENS) + SMALL_NUMBERS) + r")(?:[\s-](" +
+                         "|".join(SMALL_NUMBERS[1:10]) + r"))?\b", re.IGNORECASE)
 
 
 def _numbers(text):
@@ -222,11 +246,23 @@ def _numbers(text):
     return out
 
 
+def word_numbers(text):
+    """Numbers written as words: "Six locations" -> {6.0}, "twenty-five" -> {25.0}."""
+    out = set()
+    for m in WORD_NUMBER.finditer(str(text)):
+        first, second = m.group(1).lower(), (m.group(2) or "").lower()
+        value = TENS.get(first, SMALL_NUMBERS.index(first) if first in SMALL_NUMBERS else 0)
+        if second and first in TENS:
+            value += SMALL_NUMBERS.index(second)
+        out.add(float(value))
+    return out
+
+
 def value_in_quote(value, quote):
     """Does the claim's value actually appear in its quote?
 
     Numbers: every number in the value must appear as a number in the quote
-    (1,045 == 1045; 4 matches "4ha"). Text: the value appears in the quote, or at
+    (1,045 == 1045; 4 matches "4ha"; 8 matches "Eight"). Text: the value appears in the quote, or at
     least 80% of its words (4+ letters) do. Empty values pass (nothing to check).
     """
     if value is None or str(value).strip() == "":
@@ -235,7 +271,7 @@ def value_in_quote(value, quote):
         return True
     numbers = _numbers(value) if isinstance(value, (int, float, str)) else set()
     if numbers:
-        return numbers <= _numbers(quote)
+        return numbers <= _numbers(quote) | word_numbers(quote)
     v, q = normalize(str(value)).lower(), normalize(quote).lower()
     if v in q:
         return True
@@ -377,7 +413,18 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, rule_pass=Tr
 
     def ask(page):   # runs on the thread pool; everything after it runs in page order
         model, messages, max_tokens = page_request(page)
-        return model, chat_json(model, messages, max_tokens)
+        raw = chat_json(model, messages, max_tokens)
+        # A long species table can fill the reply limit: ask again with a bigger one.
+        # (Only for replies that were cut off, so every other cached page stays valid.)
+        if model == llm.SUPER_VL and llm.finish_reason(
+                model, messages, thinking=False, max_tokens=max_tokens, temperature=0) == "length":
+            log.info("page %d: reply cut off at %d tokens; asking with %d",
+                     page["page"], max_tokens, VISION_LONG_MAX_TOKENS)
+            raw = chat_json(model, messages, VISION_LONG_MAX_TOKENS) or raw
+            if raw is None:   # stuck repeating a row: keep the complete rows (cached reply)
+                raw = salvage_claims(llm.chat(model, messages, thinking=False,
+                                              max_tokens=VISION_LONG_MAX_TOKENS, temperature=0))
+        return model, raw
 
     replies, stop = llm.run_parallel(ask, usable, estimate=estimate_page_cost,
                                      max_cost_usd=max_cost_usd)

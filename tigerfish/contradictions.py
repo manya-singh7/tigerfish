@@ -10,7 +10,10 @@ Step 1  candidate_pairs(claims)        deterministic pairing, no LLM:
 Step 2  explanation_hits(...)          deterministic search for explanation words
                                        around both quotes and in the rest of both pages
 Step 3  verdict(...)                   ULTRA (thinking on), one cached call per candidate:
-                                       grade RED | ORANGE | NONE, reason, explanation_quote
+                                       answers same_subject / same_place / same_scope /
+                                       incompatible / explained (+ reason, explanation_quote);
+                                       the grade RED | ORANGE | NONE is computed in code
+                                       (compute_grade), never taken from the model
 Step 4  evaluate(...)                  compare findings with data/known_issues.json
 
 Findings are saved to cache/findings/<pdf_stem>/contradictions.jsonl.
@@ -33,7 +36,8 @@ MAX_CANDIDATES = 30          # Ultra calls per run at most; extra candidates are
 MAX_COST_USD = 0.50
 MIN_DIFFERENCE = 0.05        # numeric values must differ by more than 5%
 MIN_SUBJECT_SIMILARITY = 0.75
-MIN_BREAKDOWN = 3            # recycled figure: at least this many other figures shared too
+MIN_BREAKDOWN = 3            # recycled figure: at least this many other non-trivial figures shared
+TRIVIAL_MAX = 25             # recycled figure: values up to this (e.g. "20 locations") are too common
 EXPLANATION_WINDOW = 600     # characters either side of a quote
 MAX_HITS = 12                # explanation hits passed to the model
 MAX_PAGE_CHARS = 8000        # each full page sent to Ultra
@@ -74,6 +78,11 @@ ABSENT_THING = re.compile(r"\b(?:no|none of|devoid of(?: any)?|absence of|withou
                           re.IGNORECASE)
 PRESENCE = re.compile(r"\b(exist\w*|found|present|presence|observed|recorded|reported|occur\w*|"
                       r"sighted|seen|noticed|nest\w*|available)\b", re.IGNORECASE)
+# Not the absent thing X itself: place names and words about presence/absence.
+# ("not found in Andaman Islands" is about some species, not about Andaman.)
+TOPIC_IGNORE = set("""andaman galathea campbell bay katchal indira point reserve biosphere coast
+    coastal india iba location village distribution presence absence absent occurrence status
+    some few any record sighting observed""".split())
 
 log = logging.getLogger(__name__)
 last_run = {}
@@ -232,21 +241,45 @@ def covered_by_recycled(cand, recycled):
     return False
 
 
+def quote_sentences(quote):
+    return [s for s in re.split(r"(?<=[.!?;])\s+", claims_mod.normalize(quote)) if s]
+
+
+def absence_sentence(claim):
+    """The sentence of the quote that states the absence, or None."""
+    return next((s for s in quote_sentences(claim["quote"]) if ABSENCE.search(s)), None)
+
+
 def absence_topic(claim):
-    """Key words of the thing said to be absent, or None if the claim is not an absence."""
-    text = claims_mod.normalize(claim["quote"])
-    if not ABSENCE.search(text):
+    """Key words of the thing X said to be absent, or None if the claim is not an absence.
+
+    Place names and presence/absence words are not X (TOPIC_IGNORE).
+    """
+    text = absence_sentence(claim)
+    if not text:
         return None
     m = ABSENT_THING.search(text)
     if m:   # "no coral exists in" -> coral
         after = " ".join(re.findall(r"[A-Za-z]+", text[m.end():])[:3])
-        topic = {w for w in keywords(after) if not PRESENCE.fullmatch(w)}
+        topic = {w for w in keywords(after) if not PRESENCE.fullmatch(w)} - TOPIC_IGNORE
         if topic:
             return topic
-    return keywords(claim["subject"]) - keywords("presence absence")
+    return (keywords(claim["subject"]) - keywords("presence absence") - TOPIC_IGNORE) or None
+
+
+def trimmed(claim, sentence):
+    """The claim with its quote cut to one sentence (still verbatim page text)."""
+    if sentence == claims_mod.normalize(claim["quote"]):
+        return claim
+    return {**claim, "quote": sentence, "quote_trimmed": True}
 
 
 def statement_pairs(claims):
+    """"No X" on one page vs "X exists/found" on another.
+
+    The presence sentence must name ALL of X's key words (a shared place word is not
+    enough), and both quotes are trimmed to the sentence that says it.
+    """
     out = []
     usable = [c for c in claims if c.get("verified")]
     for a in usable:
@@ -255,23 +288,34 @@ def statement_pairs(claims):
         topic = absence_topic(a)
         if not topic:
             continue
+        a_short = trimmed(a, absence_sentence(a))
         for b in usable:
             if b["page"] == a["page"] or b["type"] not in ("statement", "species"):
                 continue
-            q = claims_mod.normalize(b["quote"])
-            if NEGATION.search(q) or not PRESENCE.search(q):
-                continue
-            if topic & keywords(q):
-                out.append({"kind": "statement", "claims": [a, b]})
+            s = next((s for s in quote_sentences(b["quote"])
+                      if not NEGATION.search(s) and PRESENCE.search(s)
+                      and topic <= keywords(s)), None)
+            if s:
+                out.append({"kind": "statement", "claims": [a_short, trimmed(b, s)]})
     return out
 
 
-def recycled_figures(claims):
+def tor_location_counts(tor_pdf):
+    """Numbers of sampling locations the ToR asks for (e.g. {6, 20}). Regex only, free."""
+    from tigerfish import pdf_reader, promises   # local: promises imports agent, copycheck
+    pages = pdf_reader.read_pdf(tor_pdf, render=False)
+    return {float(i["value"]) for i in promises.tor_items(pages) if i["kind"] == "locations"}
+
+
+def recycled_figures(claims, tor_counts=()):
     """The same figure + same breakdown on different pages for different subjects.
 
     Groups sharing the same set of pages are merged; the largest figure is the headline
-    and the other shared figures are its breakdown.
+    and the other shared figures are its breakdown. Headline figures <= TRIVIAL_MAX or equal
+    to a ToR location count (every survey uses "20 locations") are skipped, and at least
+    MIN_BREAKDOWN shared figures above TRIVIAL_MAX are needed.
     """
+    tor_counts = {float(v) for v in tor_counts}
     usable = [c for c in claims if numeric(c) and c.get("verified") and kind(c) == "amount"]
     by_value = {}
     for c in usable:
@@ -283,6 +327,8 @@ def recycled_figures(claims):
 
     groups = {}
     for (value, _), group in by_value.items():
+        if value <= TRIVIAL_MAX or value in tor_counts:
+            continue
         first_per_page = {}
         for c in group:
             first_per_page.setdefault(c["page"], c)
@@ -293,7 +339,8 @@ def recycled_figures(claims):
                    for a, b in combinations(members, 2)):
             continue
         pages = frozenset(first_per_page)
-        shared = set.intersection(*(page_values[p] for p in pages)) - {value}
+        shared = {v for v in set.intersection(*(page_values[p] for p in pages)) - {value}
+                  if v > TRIVIAL_MAX}
         if len(shared) < MIN_BREAKDOWN:
             continue
         best = groups.get(pages)
@@ -303,13 +350,13 @@ def recycled_figures(claims):
     return list(groups.values())
 
 
-def candidate_pairs(claims, max_candidates=MAX_CANDIDATES):
+def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=()):
     """All candidates (recycled first, then statements, then numeric), capped.
 
     Numeric pairs already covered by a recycled-figure group are suppressed (counted
-    in last_run["candidates_suppressed"]).
+    in last_run["candidates_suppressed"]). tor_counts: see recycled_figures.
     """
-    recycled = recycled_figures(claims)
+    recycled = recycled_figures(claims, tor_counts)
     numeric_ = numeric_pairs(claims)
     kept_numeric = [c for c in numeric_ if not covered_by_recycled(c, recycled)]
     last_run["candidates_suppressed"] = len(numeric_) - len(kept_numeric)
@@ -359,25 +406,47 @@ def explanation_hits(cand, pages):
 
 # ---------- step 3: verdict ----------
 
+# FROZEN (2026-10-27): VERDICT_PROMPT, RECYCLED_PROMPT, PART_TOTAL_RULE and the statement
+# text built in verdict_messages() are frozen: no further wording changes before submission.
+# Validated on results/eval.json (gn-001 ORANGE; gn-003/004/005 RED; negative control NONE;
+# planted 10/10 with 0/5 explained flagged). Any change re-keys every cached Ultra verdict
+# and needs a full evaluation re-run. Grading rules live in compute_grade().
+
 VERDICT_PROMPT = """You check an Indian Environmental Impact Assessment (EIA) report for \
 internal inconsistencies. You are a neutral accuracy checker: never accuse anyone, never \
 use words like "lie", "fraud" or "fake".
 
+Answer each question about the statements. Do not give a grade: it is computed from your answers.
 Return JSON only:
-{"same_subject": true/false, "incompatible": true/false, "explained": true/false,
- "grade": "RED" | "ORANGE" | "NONE",
+{"same_subject": true/false,
+ "same_place": true/false/"unclear",
+ "same_scope": true/false/"unclear",
+ "incompatible": true/false,
+ "explained": true/false,
  "reason": "1-2 neutral sentences",
  "explanation_quote": "verbatim sentence from one of the pages that explains the difference, or null",
  "explanation_page": page number of that quote, or null}
 
-Grades:
-- RED: same subject, place and scope; the statements are directly incompatible; the report
-  does not explain the difference anywhere on these pages.
-- ORANGE: likely inconsistent, but the scope is ambiguous (e.g. different survey areas or
-  dates might be meant).
-- NONE: the report explains the difference (e.g. before/after an event, revised figures,
-  a subset vs a total), the scopes clearly differ, or it is normal practice (e.g. restoring
-  more area than is lost).
+Questions (answer each one on its own):
+- same_subject: are both statements about the same kind of fact (e.g. both the number of
+  fauna species, both whether coral is present, both the coral area lost)? Judge the kind
+  of fact only; differences of place belong in same_place. Different groups (mammals vs
+  mangroves, flora vs fauna) are different subjects.
+- same_place: the same place? false only if they are clearly different places that do not
+  overlap (e.g. two different parks); "unclear" if one may lie inside the other (a port site
+  in a bay) or the pages do not say; true if the same place.
+- same_scope: false ONLY if the pages state that the figures cover different extents: a named
+  part vs the whole, a subset vs a total, or before vs after a dated event or a stated
+  revision. A different source, survey, census, method or report section is NOT a different
+  scope: a report should give consistent figures for the same thing wherever they come from.
+  Differences of place belong in same_place, not in same_scope (a bay vs a site in it).
+  "unclear" only if the pages give a concrete reason the extents might differ, and name
+  that reason in reason; true otherwise.
+- incompatible: can the two statements NOT both be right? Different numbers for the same
+  count, or "no X" vs "X exists", are incompatible. (Restoring more area than is lost is
+  normal practice: not incompatible.)
+- explained: does the report itself explain the difference (e.g. before/after an event,
+  revised figures, a subset vs a total)? If true, give explanation_quote.
 explanation_quote must be copied character for character from the page text, or null."""
 
 RECYCLED_PROMPT = """You check an Indian Environmental Impact Assessment (EIA) report for \
@@ -385,20 +454,20 @@ recycled figures: the same number with the same breakdown given for DIFFERENT pl
 subjects, which suggests text was copied rather than measured. You are a neutral accuracy \
 checker: never accuse anyone, never use words like "lie", "fraud" or "fake".
 
+Answer each question. Do not give a grade: it is computed from your answers.
 Return JSON only:
-{"same_subject": true/false, "incompatible": true/false, "explained": true/false,
- "grade": "RED" | "ORANGE" | "NONE",
+{"different_subjects": true/false/"unclear",
+ "explained": true/false,
  "reason": "1-2 neutral sentences",
  "explanation_quote": "verbatim sentence that explains why the figures are identical, or null",
  "explanation_page": page number of that quote, or null}
 
-Grades:
-- RED: clearly different subjects (e.g. two different parks, or one park and the whole
-  island) share an identical figure and breakdown, with no explanation.
-- ORANGE: identical figures, but the subjects might overlap or the report may cite one
-  common source.
-- NONE: the report explains it (e.g. the figure is explicitly for the whole area in each
-  place), or the subjects are actually the same.
+Questions:
+- different_subjects: are the figures given for clearly different places or subjects (e.g.
+  two different parks, or one park and the whole island)? false if they are the same
+  subject; "unclear" if the subjects might overlap or the report may cite one common source.
+- explained: does the report explain it (e.g. says the figure is for the whole area in
+  each place, or names one common source for all)? If true, give explanation_quote.
 explanation_quote must be copied character for character from the page text, or null."""
 
 
@@ -407,14 +476,84 @@ PART_TOTAL_RULE = """
 Part-vs-total rule (applies here: one statement gives a total, the other a smaller figure):
 a smaller value for a component (e.g. "the airport needs 71 ha") is NOT inconsistent with
 a larger total (e.g. "total reclaimed land 194 ha") unless the report says the component
-IS the total. In that case grade NONE and say which figure is the part and which the total.
-Grade RED or ORANGE only if the report presents the smaller figure as the whole amount."""
+IS the total. In that case set same_scope to false and say which figure is the part and
+which the total. Set same_scope true only if the report presents the smaller figure as the
+whole amount."""
+
+
+def tri(value):
+    """true / false / "unclear" from a model answer (missing or odd values are "unclear")."""
+    if isinstance(value, bool):
+        return value
+    v = str(value).strip().lower()
+    return True if v == "true" else False if v == "false" else "unclear"
+
+
+def compute_grade(kind, v):
+    """The grade from the model's answers (never the model's own grade).
+
+    pairs:    RED    same subject, same place, same scope, incompatible, not explained
+              ORANGE same subject, incompatible, not explained, place or scope unclear
+              NONE   otherwise
+    recycled: RED    clearly different subjects, not explained; ORANGE unclear; NONE otherwise
+    statement pairs ("no X" vs "X exists") are incompatible by construction (statement_pairs
+    only pairs opposite claims about the same X), so the model's incompatible answer is not
+    used for them: whether the places differ is already asked in same_place.
+    """
+    if v["explained"] is True:
+        return "NONE"
+    if kind == "recycled":
+        return {True: "RED", "unclear": "ORANGE"}.get(v["different_subjects"], "NONE")
+    incompatible = True if kind == "statement" else v["incompatible"]
+    if v["same_subject"] is not True or incompatible is not True:
+        return "NONE"
+    if v["same_place"] is True and v["same_scope"] is True:
+        return "RED"
+    if False in (v["same_place"], v["same_scope"]):
+        return "NONE"
+    return "ORANGE"
+
+
+# A sentence ends at . ! ? before a capital or digit ("sq.km" or "No.15" do not end one),
+# or at a bullet glyph from Word/PDF lists.
+SENTENCE_END = re.compile(r"[.!?](?=\s+(?:[^\w\s]\s+)?[\"'(]?[A-Z0-9])|[\uf0b7\uf0a7\uf0d8\u2022\u25aa\u25cf]\s*")
+MAX_SENTENCE_CHARS = 800     # tables run together have no sentence ends: cap the window
+
+
+def full_sentences(quote, page_text):
+    """The complete sentence(s) of the page that contain the quote, never a fragment.
+
+    "...in the range of 18 to 16300 mg/l" -> "The chlorides and sulphates were found to be in
+    the range of 18 to 16300 mg/l and 4.8 to 2150 mg/l respectively." Falls back to the quote
+    if it is not on the page. Text with no sentence ends is cut at word boundaries around
+    the quote (MAX_SENTENCE_CHARS).
+    """
+    q, page = claims_mod.normalize(quote), claims_mod.normalize(page_text)
+    i = page.find(q) if q else -1
+    if i == -1:
+        exact, _ = claims_mod.repair_quote(q, page)
+        i = page.find(exact) if exact else -1
+        if i == -1:
+            return q
+        q = exact
+    j = i + len(q)
+    ends = [m.end() for m in SENTENCE_END.finditer(page)]
+    start = max([e for e in ends if e <= i], default=0)
+    end = min([e for e in ends if e >= j], default=len(page))
+    spare = max(0, (MAX_SENTENCE_CHARS - len(q)) // 2)
+    start, end = max(start, i - spare), min(end, j + spare)
+    if start > 0 and page[start - 1] != " " and start != i:     # cut window: whole words only
+        start = page.find(" ", start) + 1 or start
+    if end < len(page) and page[end - 1] not in ".!?" and end != j:
+        end = page.rfind(" ", j, end) if page.rfind(" ", j, end) > 0 else end
+    return page[start:end].strip()
 
 
 def verdict_messages(cand, pages, hits):
     lines = []
     for i, c in enumerate(cand["claims"], 1):
-        lines.append(f'Statement {i} (page {c["page"]}, subject: {c["subject"]}): "{c["quote"]}"')
+        text = full_sentences(c["quote"], pages.get(c["page"], "")) if pages.get(c["page"]) else c["quote"]
+        lines.append(f'Statement {i} (page {c["page"]}, subject: {c["subject"]}): "{text}"')
     if cand["kind"] == "recycled":
         lines.append(f"Other figures shared by all these pages: {cand['breakdown']}")
     hit_lines = [f'- p.{h["page"]} {"near quote" if h["near_quote"] else "elsewhere"}, '
@@ -434,9 +573,12 @@ def parse_verdict(raw, cand, pages):
     """Validate the model's verdict; verify explanation_quote; enforce neutral wording."""
     if not isinstance(raw, dict):
         return None
-    grade = str(raw.get("grade", "")).upper()
-    if grade not in GRADES:
+    needed = (("different_subjects", "explained") if cand["kind"] == "recycled" else
+              ("same_subject", "same_place", "same_scope", "incompatible", "explained"))
+    if any(k not in raw for k in needed):
         return None
+    answers = {k: tri(raw[k]) for k in needed}
+    grade = compute_grade(cand["kind"], answers)
     reason = claims_mod.normalize(str(raw.get("reason") or ""))
     if not reason or BANNED_WORDS.search(reason):
         reason = "The two statements give different information; see quotes."
@@ -445,8 +587,15 @@ def parse_verdict(raw, cand, pages):
         expl, expl_page = verify_explanation(str(expl), raw.get("explanation_page"), cand, pages)
     return {"grade": grade, "reason": reason, "explanation_quote": expl,
             "explanation_page": expl_page,
-            "same_subject": raw.get("same_subject"), "incompatible": raw.get("incompatible"),
-            "explained": raw.get("explained")}
+            "same_subject": answers.get("same_subject",
+                                        None if cand["kind"] != "recycled"
+                                        else tri_not(answers["different_subjects"])),
+            "same_place": answers.get("same_place"), "same_scope": answers.get("same_scope"),
+            "incompatible": answers.get("incompatible"), "explained": answers["explained"]}
+
+
+def tri_not(value):
+    return value if value == "unclear" else not value
 
 
 def verify_explanation(quote, page_hint, cand, pages):
@@ -491,7 +640,8 @@ def finding(cand, v, hits, n):
         "breakdown": cand.get("breakdown"),
         "explanation_quote": v["explanation_quote"], "explanation_page": v["explanation_page"],
         "explanation_hits": len(hits),
-        "same_subject": v["same_subject"], "incompatible": v["incompatible"],
+        "same_subject": v["same_subject"], "same_place": v.get("same_place"),
+        "same_scope": v.get("same_scope"), "incompatible": v["incompatible"],
         "explained": v["explained"], "part_total": cand.get("part_total", False),
         "model": llm.ULTRA,
     }

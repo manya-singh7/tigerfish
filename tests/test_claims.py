@@ -285,3 +285,40 @@ def test_to_claims_reports_removed_junk():
     out = claims.to_claims(raw, 234, PAGE_234, llm.LIGHTNING, stats=stats)
     assert len(out) == 1 and out[0]["id"] == "p234-01"
     assert stats["dropped_value"] == 1 and stats["dropped_duplicate"] == 1
+
+
+# ---------- numbers written as words (p.270 / p.279 lost every claim to this) ----------
+
+@pytest.mark.parametrize("value, quote", [
+    (8, "Eight surface water and Eight ground water sources were examined"),
+    (6, "stations were set up at Six locations"),
+    (25, "twenty-five sampling sites"), (16, "sixteen locations"), (40, "forty metres"),
+])
+def test_value_written_as_word_is_in_quote(value, quote):
+    assert claims.value_in_quote(value, quote)
+
+
+def test_word_numbers_need_whole_words():
+    assert claims.word_numbers("often, someone, tension") == set()
+
+
+# ---------- cut-off scanned pages are asked again with a bigger reply limit ----------
+
+def test_cut_off_vision_page_is_asked_again(fake, monkeypatch, tmp_path):
+    png = tmp_path / "p307.png"
+    png.write_bytes(b"\x89PNG\r\n\x1a\n")
+    monkeypatch.setattr(llm, "image_part", lambda path: {"type": "image_url", "image_url": {"url": "x"}})
+    monkeypatch.setattr(llm, "finish_reason", lambda model, messages, **kw:
+                        "length" if kw["max_tokens"] == claims.VISION_MAX_TOKENS else "stop")
+    chat = fake('{"claims": [', '{"claims": [', '{"claims": []}')   # cut off, retry cut off, long ok
+    claims.extract_claims([page(307, needs_vision=True, image_path=str(png))])
+    assert [kw["max_tokens"] for _, _, kw in chat.calls] == [
+        claims.VISION_MAX_TOKENS, claims.VISION_MAX_TOKENS, claims.VISION_LONG_MAX_TOKENS]
+    assert claims.last_run["pages_done"] == [307]
+
+
+def test_salvage_keeps_complete_rows_of_a_cut_off_reply():
+    row = '{"type": "species", "subject": "Motacilla flava", "value": "x", "quote": "x"}'
+    reply = '{"claims": [' + ", ".join([row] * 5) + ', {"type": "species", "subj'
+    assert len(claims.salvage_claims(reply)["claims"]) == 5
+    assert claims.salvage_claims("no json") is None

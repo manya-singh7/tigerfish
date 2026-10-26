@@ -89,7 +89,7 @@ def test_statement_pair_not_found(quote):
 # ---------- step 1: recycled figures ----------
 
 def park_page(page, place, total=330):
-    figures = [(total, "fauna"), (28, "mammal"), (97, "bird"), (23, "reptile")]
+    figures = [(total, "fauna"), (28, "mammal"), (97, "bird"), (23, "reptile"), (52, "butterfly")]
     return [claim(f"p{page}-{i}", page, "count", v, "species",
                   f"{what} species recorded from {place}",
                   f"{v} species of {what}") for i, (v, what) in enumerate(figures)]
@@ -99,7 +99,7 @@ def test_recycled_figure_found_once_with_breakdown():
     cl = park_page(818, "Campbell Bay National Park") + park_page(851, "Galathea National Park") \
         + park_page(1168, "GNI")
     [rec] = ct.recycled_figures(cl)
-    assert rec["value"] == 330 and rec["breakdown"] == [23.0, 28.0, 97.0]
+    assert rec["value"] == 330 and rec["breakdown"] == [28.0, 52.0, 97.0]   # 23 is trivial
     assert sorted(c["page"] for c in rec["claims"]) == [818, 851, 1168]
 
 
@@ -147,13 +147,16 @@ CAND = {"kind": "numeric", "claims": [
     claim("a", 234, "area", 910, "sq km", "GNI area", "910 sqkm"),
     claim("b", 1141, "area", 910, "sq km", "GNI area", "910 sq.km")]}
 PAGES = {234: PAGE_234, 1141: "The GNI, with an area of 910 sq.km (original notified area of 1045 Sq.km.)"}
+# Ultra's answers for a RED pair; tests override single fields.
+ANSWERS = {"same_subject": True, "same_place": True, "same_scope": True, "incompatible": True,
+           "explained": False}
 
 
 def test_parse_verdict_valid_and_verified_explanation():
-    raw = {"grade": "none", "reason": "The report explains the change.",
+    raw = {**ANSWERS, "explained": True, "reason": "The report explains the change.",
            "explanation_quote": "Before Tsunami the GNI had total area of 1045 sq km which "
                                 "reduced to 910 sqkm after the Tsunami.",
-           "explanation_page": 234, "same_subject": True, "incompatible": False, "explained": True}
+           "explanation_page": 234}
     v = ct.parse_verdict(raw, CAND, PAGES)
     assert v["grade"] == "NONE"
     assert v["explanation_page"] == 234
@@ -161,18 +164,19 @@ def test_parse_verdict_valid_and_verified_explanation():
 
 
 def test_parse_verdict_ignores_unverifiable_explanation():
-    raw = {"grade": "RED", "reason": "Different areas.", "explanation_quote": "Nothing like this."}
+    raw = {**ANSWERS, "reason": "Different areas.", "explanation_quote": "Nothing like this."}
     v = ct.parse_verdict(raw, CAND, PAGES)
     assert v["grade"] == "RED" and v["explanation_quote"] is None
 
 
-@pytest.mark.parametrize("raw", [None, [], {"grade": "MAYBE"}, {"reason": "x"}])
+@pytest.mark.parametrize("raw", [None, [], {"grade": "RED", "reason": "x"}, {"reason": "x"},
+                                 {"same_subject": True, "reason": "x"}])
 def test_parse_verdict_rejects_bad(raw):
     assert ct.parse_verdict(raw, CAND, PAGES) is None
 
 
 def test_parse_verdict_enforces_neutral_wording():
-    v = ct.parse_verdict({"grade": "RED", "reason": "The consultant appears to lie about it."},
+    v = ct.parse_verdict({**ANSWERS, "reason": "The consultant appears to lie about it."},
                          CAND, PAGES)
     assert "lie" not in v["reason"].lower()
 
@@ -193,7 +197,7 @@ def test_cost_cap_stops_verdicts(monkeypatch):
     def fake_chat(model, messages, **kw):
         calls.append(model)
         llm.session_cost_usd += 0.2
-        return json.dumps({"grade": "ORANGE", "reason": "Scope unclear."})
+        return json.dumps({**ANSWERS, "same_scope": "unclear", "reason": "Scope unclear."})
 
     monkeypatch.setattr(llm, "chat", fake_chat)
     out = ct.check([CAND, CAND, CAND, CAND], PAGES, max_cost_usd=0.5, use_triage=False)
@@ -207,7 +211,7 @@ def test_ultra_called_with_thinking_on(monkeypatch):
 
     def fake_chat(model, messages, **kw):
         seen.update(kw, model=model)
-        return '{"grade": "NONE", "reason": "Explained."}'
+        return json.dumps({**ANSWERS, "explained": True, "reason": "Explained."})
 
     monkeypatch.setattr(llm, "chat", fake_chat)
     monkeypatch.setattr(llm, "is_cached", lambda *a, **k: True)
@@ -291,7 +295,7 @@ def test_quotes_match():
     ("The figures are fake.", False),
 ])
 def test_banned_words(reason, kept):
-    v = ct.parse_verdict({"grade": "ORANGE", "reason": reason}, CAND, PAGES)
+    v = ct.parse_verdict({**ANSWERS, "reason": reason}, CAND, PAGES)
     assert (v["reason"] == reason) is kept
 
 
@@ -381,7 +385,7 @@ def test_red_drops_to_orange_when_no_quote_fits(monkeypatch):
 
 def test_numeric_pairs_inside_recycled_group_are_suppressed():
     cl = park_page(818, "Campbell Bay National Park") + park_page(851, "Galathea National Park")
-    cl += [claim("x", 851, "count", 23, "species", "mammal species recorded from Galathea", "23")]
+    cl += [claim("x", 851, "count", 97, "species", "mammal species recorded from Galathea", "97")]
     cands = ct.candidate_pairs(cl)
     assert all(c["kind"] == "recycled" for c in cands)
     assert ct.last_run["candidates_suppressed"] >= 1
@@ -418,3 +422,112 @@ def test_label_numbers_in_reason_are_ignored():
     f = ct025(reason="Statement 1 (page 851) and Statement 2 (p.940) differ in scope.")
     out = ct.align_evidence(f, {851: PAGE_851, 940: PAGE_940 + " 2 species are amphibians"}, ledger)
     assert not any(q.get("reselected") for q in out["quotes"])
+
+
+# ---------- grade computed from Ultra's answers ----------
+
+@pytest.mark.parametrize("change, grade", [
+    ({}, "RED"),
+    ({"same_scope": "unclear"}, "ORANGE"),
+    ({"same_place": "unclear"}, "ORANGE"),
+    ({"same_scope": False}, "NONE"),          # e.g. part vs total, before vs after
+    ({"same_place": False}, "NONE"),
+    ({"same_subject": False}, "NONE"),
+    ({"incompatible": False}, "NONE"),
+    ({"explained": True}, "NONE"),
+    ({"same_scope": "UNCLEAR", "same_place": "true"}, "ORANGE"),   # strings tolerated
+])
+def test_grade_is_computed_from_answers(change, grade):
+    v = ct.parse_verdict({**ANSWERS, **change, "reason": "r"}, CAND, PAGES)
+    assert v["grade"] == grade
+
+
+def test_model_grade_is_ignored():
+    v = ct.parse_verdict({**ANSWERS, "same_scope": False, "grade": "RED", "reason": "r"}, CAND, PAGES)
+    assert v["grade"] == "NONE"
+
+
+@pytest.mark.parametrize("answer, grade", [(True, "RED"), ("unclear", "ORANGE"), (False, "NONE")])
+def test_recycled_grade_from_answers(answer, grade):
+    rec = {"kind": "recycled", "claims": CAND["claims"]}
+    v = ct.parse_verdict({"different_subjects": answer, "explained": False, "reason": "r"}, rec, PAGES)
+    assert v["grade"] == grade
+
+
+# ---------- recycled figures: trivial values and ToR counts ----------
+
+def locations_page(page, what):
+    return [claim(f"p{page}-{i}", page, "count", v, "locations", f"{what} {label}", f"{v} {label}")
+            for i, (v, label) in enumerate([(20, "locations"), (8, "surface"), (12, "ground"),
+                                            (6, "stations")])]
+
+
+def test_recycled_ignores_small_counts():
+    cl = locations_page(258, "soil sampling") + locations_page(287, "noise monitoring")
+    assert ct.recycled_figures(cl) == []
+
+
+def test_recycled_ignores_tor_counts():
+    cl = park_page(818, "Campbell Bay National Park") + park_page(851, "Galathea National Park")
+    assert ct.recycled_figures(cl)[0]["value"] == 330
+    assert all(r["value"] != 330 for r in ct.recycled_figures(cl, tor_counts={330}))
+
+
+# ---------- statement pairs: same subject X, one sentence ----------
+
+def test_statement_pair_needs_the_absent_thing_not_a_place():
+    absent = claim("a", 331, "statement", None, None, "Restricted range birds in Nicobar Islands",
+                   "They are not found in Andaman Islands or in other IBAs.")
+    present = claim("b", 292, "statement", None, None, "endemic fauna of Great Nicobar",
+                    "Endemic birds of the Nicobar Islands include the Nicobar pigeon. "
+                    "Coconut crab is also found in Great Nicobar Island.")
+    assert ct.statement_pairs([absent, present]) == []
+
+
+def test_statement_pair_quotes_are_trimmed_to_one_sentence():
+    present = {**CORAL_EXISTS, "quote": "Are any coral reefs in the area? Yes Coral reef exists "
+                                        "in the proposed site for Transshipment / Port"}
+    [pair] = ct.statement_pairs([NO_CORAL, present])
+    assert pair["claims"][1]["quote"] == "Yes Coral reef exists in the proposed site for Transshipment / Port"
+
+
+# ---------- Ultra always sees whole sentences (ct-105: a cut-off quote looked like a contradiction) ----------
+
+P285 = ("The TDS was observed in the range of 69 mg/l to 35400 mg/l.  The chlorides and sulphates "
+        "were found to be in the range of 18 to 16300 mg/l and 4.8 to 2150 mg/l respectively. "
+        "The surface water quality is good.")
+
+
+def test_full_sentences_completes_a_cut_off_quote():
+    q = "The chlorides and sulphates were found to be in the range of 18 to 16300 mg/l"
+    assert ct.full_sentences(q, P285) == ("The chlorides and sulphates were found to be in the range "
+                                          "of 18 to 16300 mg/l and 4.8 to 2150 mg/l respectively.")
+
+
+def test_full_sentences_keeps_abbreviations_and_spans_two_sentences():
+    page = "Intro. The GNI, with an area of 910 sq.km (original 1045 Sq.km.) is large. It is green. End."
+    assert ct.full_sentences("910 sq.km", page) == "The GNI, with an area of 910 sq.km (original 1045 Sq.km.) is large."
+    assert ct.full_sentences("is large. It is", page) == \
+        "The GNI, with an area of 910 sq.km (original 1045 Sq.km.) is large. It is green."
+
+
+def test_full_sentences_caps_text_without_sentence_ends():
+    page = " ".join(f"cell{i}" for i in range(500))
+    out = ct.full_sentences("cell250 cell251", page)
+    assert "cell250 cell251" in out and len(out) <= ct.MAX_SENTENCE_CHARS and out in page
+
+
+def test_verdict_prompt_shows_the_whole_sentence():
+    c = claim("p285-01", 285, "quantity", 16300, "mg/l", "chlorides",
+              "The chlorides and sulphates were found to be in the range of 18 to 16300 mg/l")
+    msgs = ct.verdict_messages({"kind": "numeric", "claims": [c, c]}, {285: P285}, [])
+    assert "4.8 to 2150 mg/l respectively." in msgs[1]["content"].split("Possible explanation")[0]
+
+
+def test_statement_pairs_are_incompatible_by_construction():
+    pair = {"kind": "statement", "claims": [NO_CORAL, CORAL_EXISTS]}
+    pages = {392: NO_CORAL["quote"], 978: CORAL_EXISTS["quote"]}
+    unclear = {**ANSWERS, "same_place": "unclear", "same_scope": "unclear", "incompatible": False}
+    assert ct.parse_verdict({**unclear, "reason": "r"}, pair, pages)["grade"] == "ORANGE"
+    assert ct.parse_verdict({**unclear, "same_place": False, "reason": "r"}, pair, pages)["grade"] == "NONE"
+    assert ct.parse_verdict({**unclear, "reason": "r"}, CAND, PAGES)["grade"] == "NONE"   # numeric: model decides

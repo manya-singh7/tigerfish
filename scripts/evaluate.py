@@ -95,7 +95,8 @@ def planted(pages, ledger, budget_usd, dry_run):
     pool = [c for c in ledger if c["page"] in KNOWN_PAGES] + extracted
     texts = {n: pages[n]["text"] for n in KNOWN_PAGES}
     texts.update({n: p["text"] for n, p in mod.items()})
-    cands = [c for c in contradictions.candidate_pairs(pool, max_candidates=10**6)
+    cands = [c for c in contradictions.candidate_pairs(pool, max_candidates=10**6,
+                                                       tor_counts=check_contradictions.tor_counts_for(GN_PDF))
              if any(cl["page"] in mod for cl in c["claims"])]
 
     def priority(cand):          # pairs linking a plant to its source claim first

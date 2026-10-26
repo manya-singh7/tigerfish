@@ -65,8 +65,12 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [x] Use the "Agentic Cost Benchmark" cookbook to report cost, tokens and time per audit ("Full 1,213-page EIA audit: Rs X, Y min")
 - [x] gn-001 counts as caught if graded RED or ORANGE
 - [x] Parallel calls (6 workers, retries, resumable) + rehearsal on p.250-350: $0.80, 7.2 min (results/audit_great_nicobar_2021_draft_eia__p250-350.md, results/full_run_estimate.md)
-- [ ] Review the 8 rehearsal RED/ORANGE flags by hand (rainfall p.291 vs p.337 looks real; the copy-paste noise-meter boilerplate and "20 locations" look like false alarms)
-- [ ] Before the full run: raise Super-VL VISION_MAX_TOKENS (p.307, p.330 lost to max_tokens); p.279 gave zero claims
+- [x] False-alarm fixes (structured Ultra verdicts, statement subject X, recycled >25 / ToR counts, copy-paste boilerplate, Super-VL long retry + salvage, number words): rehearsal now 2 flags
+- [ ] Rainfall p.291 "3000 to 3500 Cm" vs p.337 "300 to 350 Cm": confirm by hand (looks real; probably mm vs cm)
+- [x] gn-001 wording fix applied ("differences of place belong in same_place"): gn-001 now ORANGE
+- [x] Scope wording applied ("unclear only with a concrete, named reason"); statement pairs are incompatible by construction (compute_grade). Eval: gn-001 ORANGE, gn-003/004/005 RED, control NONE, planted 10/10, 0/5 explained
+- **Ultra verdict prompt is FROZEN (Oct 27): no further wording changes before submission** (tigerfish/contradictions.py, step 3)
+- [x] Ultra now gets the full sentence(s) around each quote: ct-105 (p.285 vs p.286) is NONE
 - [ ] Full run: `scripts/audit.py ... --scope --triage safe --run --max-cost 18` (not run yet)
 
 ## Write-up (Oct 29)

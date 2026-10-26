@@ -24,6 +24,7 @@ cache/findings/<stem>__p250-350/, so it never overwrites the evaluation's files.
 
 import argparse
 import json
+import random
 import sys
 import time
 from pathlib import Path
@@ -32,7 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, scope  # noqa: E402
+from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, promises, scope  # noqa: E402
 from check_contradictions import known_issues_for  # noqa: E402
 from extract_claims import parse_pages  # noqa: E402
 
@@ -80,6 +81,8 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--run", action="store_true", help="actually run the audit (costs money)")
     parser.add_argument("--max-cost", type=float, default=contradictions.MAX_COST_USD)
+    parser.add_argument("--triage-audit", type=int, default=0, metavar="N",
+                        help="also send N random triage-dropped pairs to Ultra and report grades")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if not EVAL.exists():
@@ -145,7 +148,9 @@ def run_audit(args, kept, per):
         print(f"Stopped: {claims.last_run['stopped']}")
 
     texts = {p["page"]: p["text"] for p in kept}
-    cands = contradictions.candidate_pairs(found, max_candidates=10**6)
+    tor = (contradictions.tor_location_counts(promises.TOR_PDF)
+           if Path(args.pdf).name == promises.EIA_PDF.name else ())
+    cands = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor)
     ultra_all, uncached = contradictions.estimate_cost(cands, texts)
     rate = per.get("triage_pass_rate" + ("_fast" if args.triage == "fast" else ""),
                    per["triage_pass_rate"])
@@ -164,6 +169,7 @@ def run_audit(args, kept, per):
                                     ledger=found)
     stage("triage + verdicts", t0, c0)
     con_run = dict(contradictions.last_run)
+    audit = triage_audit(args, cands, con_run, texts, found, spent0) if args.triage_audit else None
 
     t0, c0 = time.perf_counter(), llm.session_cost_usd
     budget = copycheck.Budget(args.top_passages * 3)
@@ -174,12 +180,28 @@ def run_audit(args, kept, per):
     report = build_report(args, name, kept, found, cands, findings, con_run, copy, budget,
                           copy_stopped, stages, llm.session_cost_usd - spent0,
                           time.perf_counter() - wall0)
+    report["triage_audit"] = audit
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / f"audit_{name}.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (RESULTS / f"audit_{name}.md").write_text(report_md(report), encoding="utf-8")
     print("\n" + report_md(report))
     print(f"Saved {out.relative_to(ROOT)} and .md")
+
+
+def triage_audit(args, cands, con_run, texts, found, spent0, seed=42):
+    """Ultra verdicts on a random sample of the pairs triage dropped (not saved as findings)."""
+    dropped = [c for c, a in zip(cands, con_run.get("triage_answers") or []) if a == "no"]
+    sample = random.Random(seed).sample(dropped, min(args.triage_audit, len(dropped)))
+    left, c0 = args.max_cost - (llm.session_cost_usd - spent0), llm.session_cost_usd
+    got = contradictions.check(sample, texts, max_cost_usd=left, ledger=found, use_triage=False)
+    grades = {g: sum(f["grade"] == g for f in got) for g in ("RED", "ORANGE", "NONE")}
+    print(f"== triage audit: {len(got)} of {len(dropped)} dropped pairs checked by Ultra: {grades}")
+    return {"dropped": len(dropped), "sampled": len(sample), "checked": len(got), "grades": grades,
+            "cost_usd": round(llm.session_cost_usd - c0, 4),
+            "flagged": [{"pages": f["pages"], "grade": f["grade"], "reason": f["reason"],
+                         "quotes": [{"page": q["page"], "text": q["text"]} for q in f["quotes"]]}
+                        for f in got if f["grade"] in ("RED", "ORANGE")]}
 
 
 def build_report(args, name, kept, found, cands, findings, con_run, copy, budget,
@@ -194,15 +216,16 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         row = by_check.setdefault(f["type"], {"RED": 0, "ORANGE": 0, "NONE": 0})
         row[f["grade"]] = row.get(f["grade"], 0) + 1
     copy_rows = []
-    for r in copy:
-        for h in r["hits"]:
-            row = by_check.setdefault("copy_paste", {})
-            row[h["grade"]] = row.get(h["grade"], 0) + 1
-            if h["grade"] in ("RED", "ORANGE"):
-                copy_rows.append({"id": f"cp-p{r['page']}-{len(copy_rows) + 1}",
-                                  "grade": h["grade"], "type": "copy_paste", "pages": [r["page"]],
-                                  "quotes": [{"page": r["page"], "text": r["passage"]}],
-                                  "reason": f"{h['why']} ({h['url']})"})
+    for r in copy:   # one row per passage; matching documents listed under it
+        grade, hits = copycheck.flagged_hits(r)
+        row = by_check.setdefault("copy_paste", {})
+        row[grade or "NONE"] = row.get(grade or "NONE", 0) + 1
+        if grade:
+            copy_rows.append({"id": f"cp-p{r['page']}-{len(copy_rows) + 1}",
+                              "grade": grade, "type": "copy_paste", "pages": [r["page"]],
+                              "quotes": [{"page": r["page"], "text": r["passage"]}],
+                              "reason": hits[0]["why"],
+                              "urls": [f"{h['grade']} {h['url']}" for h in hits]})
         if r["borrowed"]:
             row = by_check.setdefault("borrowed_text", {"count": 0})
             row["count"] += len(r["borrowed"])
@@ -223,10 +246,13 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         "retries": dict(llm.retry_stats),
         "findings_by_check": by_check, "known_issues_matched": known_ids,
         "new_flagged": len(new),
-        "top_new": [{"id": f["id"], "grade": f["grade"], "type": f["type"], "pages": f["pages"],
-                     "quotes": [{"page": q["page"], "text": q["text"]} for q in f["quotes"]],
-                     "reason": f["reason"], "part_total": f.get("part_total")}
-                    for f in new[:15]],
+        "flags": [{"id": f["id"], "grade": f["grade"], "type": f["type"], "pages": f["pages"],
+                   "quotes": [{"page": q["page"], "text": q["text"]} for q in f["quotes"]],
+                   "reason": f["reason"], "part_total": f.get("part_total"),
+                   "answers": {k: f.get(k) for k in ("same_subject", "same_place", "same_scope",
+                                                     "incompatible", "explained") if k in f},
+                   "urls": f.get("urls")}
+                  for f in new],
     }
 
 
@@ -250,11 +276,22 @@ def report_md(r):
               f"Retries: {r['retries']}", "", "Findings by check and grade:", ""]
     lines += [f"- {k}: {v}" for k, v in r["findings_by_check"].items()]
     lines += ["", f"Known issues matched: {r['known_issues_matched'] or 'none'}", "",
-              f"## Top {len(r['top_new'])} new RED/ORANGE (of {r['new_flagged']})", ""]
-    for f in r["top_new"]:
+              f"## All {r['new_flagged']} new RED/ORANGE flags", ""]
+    for f in r["flags"]:
         lines.append(f"**{f['id']} {f['grade']}** ({f['type']}, pages {f['pages']})")
         lines += [f"- p.{q['page']}: \"{q['text']}\"" for q in f["quotes"]]
-        lines += [f"- Why: {f['reason']}", ""]
+        lines.append(f"- Why: {f['reason']}")
+        if f.get("answers"):
+            lines.append(f"- Ultra's answers: {f['answers']}")
+        lines += [f"- Match: {u}" for u in f.get("urls") or []] + [""]
+    a = r.get("triage_audit")
+    if a:
+        lines += ["## Triage audit", "",
+                  f"{a['checked']} of {a['dropped']} triage-dropped pairs (random sample) sent to "
+                  f"Ultra: {a['grades']}", ""]
+        for f in a["flagged"]:
+            lines.append(f"- {f['grade']} pages {f['pages']}: {f['reason']}")
+            lines += [f"  - p.{q['page']}: \"{q['text']}\"" for q in f["quotes"]]
     return "\n".join(lines)
 
 

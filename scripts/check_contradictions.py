@@ -31,12 +31,18 @@ def known_issues_for(pdf):
     return data["issues"] if Path(data["document"]).name == Path(pdf).name else []
 
 
+def tor_counts_for(pdf):
+    """ToR location counts when we hold this report's ToR (recycled-figure filter)."""
+    from tigerfish import promises
+    return ct.tor_location_counts(promises.TOR_PDF) if Path(pdf).name == promises.EIA_PDF.name else ()
+
+
 def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     """Returns a dict with candidates, findings, controls, evaluation, cost."""
     pdf = Path(pdf)
     ledger = [c for c in claims.load_ledger(pdf.stem) if c["page"] in pages_wanted]
     pages = {p["page"]: p["text"] for p in pdf_reader.read_pdf(pdf) if p["page"] in pages_wanted}
-    cands = ct.candidate_pairs(ledger)
+    cands = ct.candidate_pairs(ledger, tor_counts=tor_counts_for(pdf))
     known = known_issues_for(pdf)
     controls = [ct.control_candidate(i) for i in known
                 if i["expected_grade"] == "NONE" and set(i["pages"]) <= set(pages)]

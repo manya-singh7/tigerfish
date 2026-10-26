@@ -260,17 +260,20 @@ def great_nicobar():
     findings = contradiction_findings(con["findings"], known)
 
     for r in cp["results"]:
-        for h in r["hits"]:
-            if h["grade"] in ("RED", "ORANGE"):
-                findings.append(finding(
-                    f"cp-p{r['page']}-{len(findings)}", "copy_paste", h["grade"],
-                    f"Page {r['page']} text found in another document", h["message"],
-                    [{"page": r["page"], "text": r["passage"]}],
-                    [{"label": "Matching document", "value": h["title"] or h["url"], "url": h["url"]},
-                     {"label": "Matching text", "value": h["snippet"]},
-                     {"label": "Overlap", "value": f"longest run {h['longest_run']} words, "
-                                                   f"8-gram overlap {h['ngram']:.0%}"}],
-                    h["why"]))
+        grade, hits = copycheck.flagged_hits(r)     # one finding per passage
+        if grade:
+            h = hits[0]
+            evidence = [{"label": "Matching document" + (f" {i}" if len(hits) > 1 else ""),
+                         "value": x["title"] or x["url"], "url": x["url"]}
+                        for i, x in enumerate(hits, 1)]
+            evidence += [{"label": "Matching text", "value": h["snippet"]},
+                         {"label": "Overlap", "value": f"longest run {h['longest_run']} words, "
+                                                       f"8-gram overlap {h['ngram']:.0%}"}]
+            findings.append(finding(
+                f"cp-p{r['page']}-{len(findings)}", "copy_paste", grade,
+                f"Page {r['page']} text found in "
+                + ("another document" if len(hits) == 1 else f"{len(hits)} other documents"),
+                h["message"], [{"page": r["page"], "text": r["passage"]}], evidence, h["why"]))
         for b in r["borrowed"]:
             findings.append(finding(
                 f"bt-p{b['page']}", "borrowed_text", "INFO",

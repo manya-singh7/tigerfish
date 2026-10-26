@@ -77,7 +77,8 @@ def test_check_skips_triaged_out_and_keeps_ids_stable(monkeypatch):
 
     def fake_chat(model, messages, **kw):
         verdicts.append(model)
-        return '{"grade": "ORANGE", "reason": "Scope unclear."}'
+        return json.dumps({"same_subject": True, "same_place": True, "same_scope": "unclear",
+                           "incompatible": True, "explained": False, "reason": "Scope unclear."})
 
     monkeypatch.setattr(llm, "chat", fake_chat)
     monkeypatch.setattr(llm, "is_cached", lambda *a, **k: True)

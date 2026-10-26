@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-25 18:41",
+  "generated": "2026-10-27 02:07",
   "seed": 42,
-  "max_cost_usd": 0.01,
+  "max_cost_usd": 0.05,
   "known": {
     "rows": [
       {
@@ -16,7 +16,7 @@
           "ORANGE"
         ],
         "found": true,
-        "grade": "RED",
+        "grade": "ORANGE",
         "finding_id": "ct-003",
         "ok": true,
         "status": null,
@@ -118,7 +118,7 @@
           1141
         ],
         "grade": "NONE",
-        "reason": "Both statements refer to Great Nicobar Island area; the report explains the reduction from 1045 to 910 sq km as due to submergence after the 2004 tsunami."
+        "reason": "Both statements refer to the area of Great Nicobar Island (GNI), noting a reduction from 1045 sq km to 910 sq km. The report explains this difference as resulting from land submergence caused by the 2004 tsunami."
       }
     ],
     "triage_validation": {
@@ -133,8 +133,8 @@
         "no": 11,
         "unsure": 0
       },
-      "fast_violations": 2,
-      "with_cached_verdict": 20,
+      "fast_violations": 3,
+      "with_cached_verdict": 19,
       "violations": [],
       "ultra_calls_saved": 2,
       "rows": [
@@ -179,7 +179,7 @@
             978
           ],
           "triage": "yes",
-          "ultra_grade": "RED",
+          "ultra_grade": "ORANGE",
           "violation": false
         },
         {
@@ -249,7 +249,7 @@
             940
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": "ORANGE",
           "violation": false
         },
         {
@@ -361,7 +361,7 @@
             1141
           ],
           "triage": "no",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -653,7 +653,7 @@
         "unsure": 0
       },
       "fast_violations": 1,
-      "with_cached_verdict": 29,
+      "with_cached_verdict": 20,
       "violations": [],
       "ultra_calls_saved": 24,
       "rows": [
@@ -836,7 +836,7 @@
             1168
           ],
           "triage": "yes",
-          "ultra_grade": "ORANGE",
+          "ultra_grade": "RED",
           "violation": false
         },
         {
@@ -850,7 +850,7 @@
             751
           ],
           "triage": "yes",
-          "ultra_grade": "ORANGE",
+          "ultra_grade": "RED",
           "violation": false
         },
         {
@@ -878,7 +878,7 @@
             940
           ],
           "triage": "yes",
-          "ultra_grade": "ORANGE",
+          "ultra_grade": "NONE",
           "violation": false
         },
         {
@@ -948,7 +948,7 @@
             818
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -962,7 +962,7 @@
             818
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -976,7 +976,7 @@
             818
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1046,7 +1046,7 @@
             851
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1060,7 +1060,7 @@
             851
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1074,7 +1074,7 @@
             851
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1088,7 +1088,7 @@
             1117
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1102,7 +1102,7 @@
             851
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1228,7 +1228,7 @@
             818
           ],
           "triage": "yes",
-          "ultra_grade": "NONE",
+          "ultra_grade": null,
           "violation": false
         },
         {
@@ -1737,7 +1737,7 @@
           "unit": "Ha",
           "extracted": true,
           "paired": true,
-          "grade": "ORANGE",
+          "grade": "RED",
           "ok": true,
           "stage_missed": null
         },
@@ -1857,7 +1857,7 @@
           "unit": "%",
           "extracted": true,
           "paired": true,
-          "grade": "ORANGE",
+          "grade": "RED",
           "ok": true,
           "stage_missed": null
         },
@@ -1941,17 +1941,7 @@
       "planted_total": 10,
       "explained_wrongly_flagged": 0,
       "explained_total": 5,
-      "other_new_flags": [
-        {
-          "id": "ct-016",
-          "grade": "ORANGE",
-          "pages": [
-            730,
-            940
-          ],
-          "reason": "One figure (695) refers to total fauna species historically reported from Great Nicobar Island, while the other (495) refers to species recorded in a specific field survey; the report does not clarify whether the field survey was intended to be comprehensive or limited in scope."
-        }
-      ]
+      "other_new_flags": []
     },
     "candidates": 20,
     "candidates_dropped": 31,
@@ -1998,12 +1988,12 @@
       {
         "stage": "Planted test: Ultra verdicts",
         "calls": 20,
-        "in_tokens": 49404,
-        "out_tokens": 23878,
-        "total_tokens": 73282,
-        "seconds": 82.1,
+        "in_tokens": 56362,
+        "out_tokens": 29975,
+        "total_tokens": 86337,
+        "seconds": 136.3,
         "time_measured": true,
-        "cost_usd": 0.12104
+        "cost_usd": 0.14629
       }
     ]
   },
@@ -2240,12 +2230,12 @@
       {
         "stage": "Contradiction check (Ultra verdicts)",
         "calls": 33,
-        "in_tokens": 91663,
-        "out_tokens": 25780,
-        "total_tokens": 117443,
-        "seconds": 78.6,
-        "time_measured": false,
-        "cost_usd": 0.14879
+        "in_tokens": 98179,
+        "out_tokens": 39832,
+        "total_tokens": 138011,
+        "seconds": 206.7,
+        "time_measured": true,
+        "cost_usd": 0.19747
       },
       {
         "stage": "Copy-paste check (Lightning)",
@@ -2263,7 +2253,7 @@
         "in_tokens": 799,
         "out_tokens": 401,
         "total_tokens": 1200,
-        "seconds": 0.9,
+        "seconds": 0.8,
         "time_measured": false,
         "cost_usd": 0.0006
       }
@@ -2281,12 +2271,12 @@
       "per_unit": {
         "text_page_usd": 0.00032,
         "vision_page_usd": 0.00281,
-        "verdict_usd": 0.005091,
+        "verdict_usd": 0.006486,
         "verdicts_per_page": 2.2,
         "tavily_per_page": 1.5,
         "text_page_s": 5.975,
         "vision_page_s": 15.25,
-        "verdict_s": 3.032075,
+        "verdict_s": 6.471698,
         "triage_pass_rate": 0.904762,
         "triage_pass_rate_fast": 0.47619,
         "triage_usd_per_candidate_fast": 9e-06,
@@ -2296,14 +2286,14 @@
       },
       "candidates": 2468,
       "verdicts": 2233,
-      "usd": 13.33,
-      "inr": 1120,
-      "api_minutes_sequential": 329,
+      "usd": 16.45,
+      "inr": 1382,
+      "api_minutes_sequential": 457,
       "without_triage": {
         "verdicts": 2468,
-        "usd": 14.37,
-        "inr": 1207,
-        "api_minutes_sequential": 326
+        "usd": 17.81,
+        "inr": 1496,
+        "api_minutes_sequential": 467
       },
       "tavily_credits": 1683,
       "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + candidates x triage_cost_per_candidate + candidates x triage_pass_rate x cost_per_verdict, where candidates = candidates_per_page x pages"

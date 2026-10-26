@@ -4,66 +4,66 @@
   "pages": "250-350",
   "triage": "safe",
   "workers": 6,
-  "max_cost_usd": 1.5,
+  "max_cost_usd": 0.85,
   "pages_audited": 94,
-  "claims": 1325,
-  "candidates": 286,
+  "claims": 1387,
+  "candidates": 280,
   "triage_answers": {
-    "yes": 84,
-    "no": 198,
-    "unsure": 4
+    "yes": 85,
+    "no": 195,
+    "unsure": 0
   },
-  "verdicts": 88,
+  "verdicts": 85,
   "verdicts_failed": 0,
   "stopped": null,
   "copy_passages": 100,
   "copy_stopped": null,
-  "cost_usd": 0.7984,
-  "wall_clock_s": 435.0,
+  "cost_usd": 0.8475,
+  "wall_clock_s": 214.8,
   "stages": {
     "claims": {
-      "seconds": 156.0,
-      "usd": 0.2814
+      "seconds": 63.9,
+      "usd": 0.0926
     },
     "triage + verdicts": {
-      "seconds": 105.3,
-      "usd": 0.5138
+      "seconds": 109.4,
+      "usd": 0.6307
     },
     "copy-paste": {
-      "seconds": 172.1,
-      "usd": 0.0032
+      "seconds": 7.8,
+      "usd": 0.0033
     }
   },
   "calls_per_model": {
     "nvidia/Nemotron-3_5-Lightning": {
-      "api_calls": 229,
-      "cache_hits": 0,
-      "prompt_tokens": 415278,
-      "completion_tokens": 37659,
-      "cost_usd": 0.034,
-      "api_seconds": 295.358
+      "api_calls": 19,
+      "cache_hits": 204,
+      "prompt_tokens": 76709,
+      "completion_tokens": 1942,
+      "cost_usd": 0.0051,
+      "api_seconds": 27.292
     },
     "nvidia/Nemotron-3.5-Super-VL": {
-      "api_calls": 96,
-      "cache_hits": 0,
-      "prompt_tokens": 417109,
-      "completion_tokens": 162366,
-      "cost_usd": 0.2713,
-      "api_seconds": 749.039
+      "api_calls": 14,
+      "cache_hits": 96,
+      "prompt_tokens": 99568,
+      "completion_tokens": 69685,
+      "cost_usd": 0.0926,
+      "api_seconds": 231.062
     },
     "nvidia/Nemotron-3-Ultra-550b-a55b": {
-      "api_calls": 88,
+      "api_calls": 104,
       "cache_hits": 0,
-      "prompt_tokens": 215920,
-      "completion_tokens": 92422,
-      "cost_usd": 0.4932,
-      "api_seconds": 356.406
+      "prompt_tokens": 272013,
+      "completion_tokens": 159276,
+      "cost_usd": 0.7498,
+      "api_seconds": 699.31
     }
   },
   "tavily": {
-    "calls": 64,
-    "cached": 93,
-    "credits": 59
+    "calls": 0,
+    "cached": 157,
+    "credits": 0
   },
   "retries": {
     "retries": 0,
@@ -72,74 +72,20 @@
     "connection_errors": 0
   },
   "findings_by_check": {
-    "recycled_figure": {
-      "RED": 1,
-      "ORANGE": 0,
-      "NONE": 1
-    },
     "contradiction": {
-      "RED": 1,
-      "ORANGE": 3,
-      "NONE": 82
+      "RED": 2,
+      "ORANGE": 0,
+      "NONE": 83
     },
     "copy_paste": {
-      "NONE": 112,
-      "RED": 3
+      "NONE": 100
     }
   },
   "known_issues_matched": {},
-  "new_flagged": 8,
-  "top_new": [
+  "new_flagged": 2,
+  "flags": [
     {
-      "id": "cp-p287-1",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        287
-      ],
-      "quotes": [
-        {
-          "page": 287,
-          "text": "The integrating sound level meter is an integrating/logging type with Octave filter attachment (model OB-100) with frequency range of 31.5 to 16000 Hz."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [31.5, 100.0, 16000.0]; species []) (https://jsw-steel-s3.s3.ap-south-1.amazonaws.com/jsw-steel-images/uploads/2026/01/JSW_Narayanposhi-Mines_OCT.2023-MAR.2024-Six-monthly-EC-Compliance_compressed.pdf)",
-      "part_total": null
-    },
-    {
-      "id": "cp-p287-2",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        287
-      ],
-      "quotes": [
-        {
-          "page": 287,
-          "text": "The integrating sound level meter is an integrating/logging type with Octave filter attachment (model OB-100) with frequency range of 31.5 to 16000 Hz."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [31.5, 100.0, 16000.0]; species []) (https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngAshokleyland2482.pdf)",
-      "part_total": null
-    },
-    {
-      "id": "cp-p288-3",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        288
-      ],
-      "quotes": [
-        {
-          "page": 288,
-          "text": "The notation for the statistical quantities of noise levels are described below: • L10 is the noise level exceeded 10 per cent of the time; • L50 is the noise level exceeded 50 per cent of the time; and • L90 is the noise level exceeded 90 per cent of the time."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [10.0, 50.0]; species []) (https://www.studocu.com/ph/document/polytechnic-university-of-the-philippines/human-resources-management/eia-report-for-textile-processing-cluster-project-eia-tp-2020/166816780)",
-      "part_total": null
-    },
-    {
-      "id": "ct-047",
+      "id": "ct-037",
       "grade": "RED",
       "type": "contradiction",
       "pages": [
@@ -156,92 +102,57 @@
           "text": "heavy annual rainfall of 300 to 350 Cm spreading over 9 months"
         }
       ],
-      "reason": "Both statements refer to annual rainfall on Great Nicobar Island but give values differing by a factor of ten (3000–3500 cm vs 300–350 cm) with no explanation in the provided pages.",
-      "part_total": false
+      "reason": "Both statements refer to annual rainfall on Great Nicobar Island but give values differing by a factor of ten (3000–3500 cm vs 300–350 cm) with no explanation in the text.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
     },
     {
-      "id": "rf-001",
+      "id": "ct-105",
       "grade": "RED",
-      "type": "recycled_figure",
-      "pages": [
-        258,
-        287
-      ],
-      "quotes": [
-        {
-          "page": 258,
-          "text": "20 locations within study area from the proposed development area were selected for soil sampling."
-        },
-        {
-          "page": 287,
-          "text": "The noise monitoring has been conducted for determination of noise levels at 20 locations in the study area for winter season (1st December 2020 to 28th February 2021)."
-        }
-      ],
-      "reason": "Soil sampling and noise monitoring each report 20 locations in the study area, but the subjects are different and the report does not explain why the same number appears for both.",
-      "part_total": false
-    },
-    {
-      "id": "ct-008",
-      "grade": "ORANGE",
       "type": "contradiction",
       "pages": [
-        292,
-        331
+        285,
+        286
       ],
       "quotes": [
         {
-          "page": 331,
-          "text": "They are not found in Andaman Islands or in other IBAs."
+          "page": 285,
+          "text": "The chlorides and sulphates were found to be in the range of 18 to 16300 mg/l"
         },
         {
-          "page": 292,
-          "text": "Kailash Chandra (1999) states that the interesting and endemic species of higher animals of Great Nicobar Biosphere Reserve include the Nicobar crab-eating monkey, Nicobar fruit-bat, Nicobar flying fox, Nicobar tree-shrew among mammals; and Nicobar serpent eagle, South Nicobar-Megapode, Nicobar quill, Nicobar pigeon, Nicobar cuckoo-dove, Nicobar parakeet, white bellied swiftlet, Nicobar kingfisher, Nicobar myna, Nicobar sun-bird etc. among the birds. The other interesting fauna belonging to amphibians and reptiles are - Nicobar tree frog, Nicobar toad. Nicobarese tree skink, water monitor lizard, Daniel's forest lizard, worm lizard, Nicobar water snake, reticulated python, leather - back sea turtle, green sea turtle, Hawk's bill turtle, Olive Ridley turtle, south east Asian box turtle, estuarine crocodile ete. Among the invertebrates. Coconut crab and endemic insects including butterflies are also found in Great Nicobar Island."
+          "page": 286,
+          "text": "The chlorides and sulphates were found to be in the range of 18 to 16,300 mg/l and 4.8 to 2150 mg/l respectively"
         }
       ],
-      "reason": "The statements cite different sources (1999 vs 2010) and different geographic scopes (Great Nicobar Biosphere Reserve vs. Nicobar Islands), so any inconsistency is ambiguous.",
-      "part_total": false
-    },
-    {
-      "id": "ct-010",
-      "grade": "ORANGE",
-      "type": "contradiction",
-      "pages": [
-        292,
-        332
-      ],
-      "quotes": [
-        {
-          "page": 332,
-          "text": "This macaque is found in Great Nicobar, Little Nicobar and Katchal islands of the Nicobar group. It is not found in Andaman Islands."
-        },
-        {
-          "page": 292,
-          "text": "Kailash Chandra (1999) states that the interesting and endemic species of higher animals of Great Nicobar Biosphere Reserve include the Nicobar crab-eating monkey, Nicobar fruit-bat, Nicobar flying fox, Nicobar tree-shrew among mammals; and Nicobar serpent eagle, South Nicobar-Megapode, Nicobar quill, Nicobar pigeon, Nicobar cuckoo-dove, Nicobar parakeet, white bellied swiftlet, Nicobar kingfisher, Nicobar myna, Nicobar sun-bird etc. among the birds. The other interesting fauna belonging to amphibians and reptiles are - Nicobar tree frog, Nicobar toad. Nicobarese tree skink, water monitor lizard, Daniel's forest lizard, worm lizard, Nicobar water snake, reticulated python, leather - back sea turtle, green sea turtle, Hawk's bill turtle, Olive Ridley turtle, south east Asian box turtle, estuarine crocodile ete. Among the invertebrates. Coconut crab and endemic insects including butterflies are also found in Great Nicobar Island."
-        }
-      ],
-      "reason": "Statement 1 describes the macaque's distribution across three Nicobar islands, while Statement 2 lists it as an endemic species of the Great Nicobar Biosphere Reserve, which appears to cover only Great Nicobar Island. The scopes differ (entire Nicobar group vs. a single reserve) and the sources differ (current survey vs. Kailash Chandra 1999), but the report does not clarify whether 'endemic to the Biosphere Reserve' implies exclusivity.",
-      "part_total": false
-    },
-    {
-      "id": "ct-215",
-      "grade": "ORANGE",
-      "type": "contradiction",
-      "pages": [
-        292,
-        315
-      ],
-      "quotes": [
-        {
-          "page": 292,
-          "text": "About 600 plant species of different groups are known from the biosphere reserve"
-        },
-        {
-          "page": 315,
-          "text": "As many as 640 species of higher plants belonging to 422 genera and 142 families have been reported from the Island."
-        }
-      ],
-      "reason": "Statement 1 cites ~600 plant species of all groups in the biosphere reserve; Statement 2 cites 640 higher-plant species on the whole island. The geographic and taxonomic scopes differ (reserve vs. island; all groups vs. higher plants only), but the report does not clarify the relationship between these figures on the given pages.",
-      "part_total": false
+      "reason": "Statement 1 gives a single range for both chlorides and sulphates, while Statement 2 gives separate ranges for each parameter.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
     }
-  ]
+  ],
+  "triage_audit": {
+    "dropped": 195,
+    "sampled": 20,
+    "checked": 19,
+    "grades": {
+      "RED": 0,
+      "ORANGE": 0,
+      "NONE": 19
+    },
+    "cost_usd": 0.121,
+    "flagged": []
+  }
 }

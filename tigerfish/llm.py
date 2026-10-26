@@ -265,6 +265,15 @@ def is_cached(model, messages, thinking=None, **kwargs):
     return (CACHE_DIR / f"{key}.json").exists()
 
 
+def finish_reason(model, messages, thinking=None, **kwargs):
+    """finish_reason of the cached reply ("stop", "length", ...), or None if not cached / mock."""
+    if is_mock():
+        return None
+    key = _cache_key(model, messages, _with_thinking(model, thinking, kwargs))
+    data = _read_cache(CACHE_DIR / f"{key}.json")
+    return data["choices"][0].get("finish_reason") if data else None
+
+
 def cost_usd(model, prompt_tokens, completion_tokens):
     """Cost in USD from PRICES, or None if the model has no price."""
     if model not in PRICES:
