@@ -70,6 +70,16 @@ CSS = f"""
                 color: #5A3E99 !important; background: #EFEAFB; border: 1px solid #D9CFF5;
                 border-radius: 999px; padding: 0.02rem 0.45rem; margin-left: 0.35rem;
                 text-decoration: none !important; vertical-align: 1px; }}
+  .tf-table {{ width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.4rem 0 0.8rem 0; }}
+  .tf-table th {{ text-align: left; color: {MUTED}; font-weight: 600; font-size: 0.78rem;
+                  text-transform: uppercase; letter-spacing: 0.03em; border-bottom: 1px solid {BORDER};
+                  padding: 0.4rem 0.5rem; }}
+  .tf-table td {{ border-bottom: 1px solid {BORDER}; padding: 0.45rem 0.5rem; vertical-align: top;
+                  color: {TEXT}; overflow-wrap: anywhere; }}
+  .tf-off, .tf-open {{ display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 999px;
+                       padding: 0.05rem 0.5rem; white-space: nowrap; }}
+  .tf-off {{ color: {ACCENT}; background: #E3F0F0; }}
+  .tf-open {{ color: #8A4B08; background: #FDF0D9; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

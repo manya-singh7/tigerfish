@@ -1,0 +1,1190 @@
+{
+ "id": "official_record_great_nicobar_2021_draft",
+ "report_id": "great_nicobar_2021_draft",
+ "title": "Great Nicobar EIA (2021 draft): does it match the official record?",
+ "generated": "2026-10-27 03:37",
+ "seconds": 22.4,
+ "eia_date": "December 2021",
+ "facts": {
+  "port_capacity": {
+   "key": "port_capacity",
+   "value": 14.2,
+   "unit": "Million TEU",
+   "scope": "International Container Transshipment Terminal",
+   "normalized": 14200000.0,
+   "dimension": "teu",
+   "page": 1148,
+   "quote": "14.2 Million TEU",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    24,
+    518,
+    1141,
+    1145,
+    1146,
+    1148,
+    1150,
+    1151,
+    1152,
+    1159,
+    1160,
+    1164,
+    1165
+   ],
+   "also": []
+  },
+  "airport_capacity": {
+   "key": "airport_capacity",
+   "value": 4000.0,
+   "unit": "Peak Hour Passengers",
+   "scope": "whole project",
+   "normalized": 4000.0,
+   "dimension": "pax_peak_hour",
+   "page": 1151,
+   "quote": "4000 Peak Hour Passengers",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    23,
+    24,
+    159,
+    518,
+    1141,
+    1142,
+    1145,
+    1146,
+    1147,
+    1148,
+    1149,
+    1150,
+    1151,
+    1152,
+    1153,
+    1154,
+    1155,
+    1159,
+    1160,
+    1164,
+    1165
+   ],
+   "also": []
+  },
+  "power_capacity": {
+   "key": "power_capacity",
+   "value": 450.0,
+   "unit": "MVA",
+   "scope": "whole project",
+   "normalized": 450.0,
+   "dimension": "power_mva",
+   "page": 1151,
+   "quote": "450 MVA Gas and Solar based Power Plant",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    23,
+    24,
+    159,
+    518,
+    1141,
+    1142,
+    1145,
+    1146,
+    1147,
+    1148,
+    1149,
+    1150,
+    1151,
+    1152,
+    1153,
+    1155,
+    1156,
+    1159,
+    1160,
+    1164,
+    1165
+   ],
+   "also": [
+    {
+     "value": 110.0,
+     "unit": "MW",
+     "scope": "whole project",
+     "page": 1157,
+     "quote": "Net Power 110 - 130 MW (approx.)"
+    },
+    {
+     "value": 512.0,
+     "unit": "MVA",
+     "scope": "maximum power demand",
+     "page": 1148,
+     "quote": "maximum power demand estimated at 512 MVA"
+    }
+   ]
+  },
+  "total_project_area": {
+   "key": "total_project_area",
+   "value": 166.1,
+   "unit": "sq.km",
+   "scope": "whole project",
+   "normalized": 16610.0,
+   "dimension": "area",
+   "page": 1143,
+   "quote": "the development area has been limited to a 166.1 sq.km area along the south-eastern and southern coastlines",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    1143,
+    1144
+   ],
+   "also": []
+  },
+  "forest_diversion": {
+   "key": "forest_diversion",
+   "value": 130.75,
+   "unit": "sq. km",
+   "scope": "whole project",
+   "normalized": 13075.0,
+   "dimension": "area",
+   "page": 1145,
+   "quote": "diversion of 130.75 sq. km of forest land",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    518,
+    1145
+   ],
+   "also": [
+    {
+     "value": 121.87,
+     "unit": "sq.km",
+     "scope": "forest land to be diverted",
+     "page": 1144,
+     "quote": "121.87sq.km. of land falls under Protected Forest"
+    },
+    {
+     "value": 736.9,
+     "unit": "ha",
+     "scope": "ICTT only",
+     "page": 1150,
+     "quote": "Forest Land:736.9 ha including deemed forest"
+    },
+    {
+     "value": 676.9,
+     "unit": "ha",
+     "scope": "ICTT only",
+     "page": 1164,
+     "quote": "676.9 ha of land is under forest"
+    }
+   ]
+  },
+  "water_demand": {
+   "key": "water_demand",
+   "value": 43.0,
+   "unit": "MLD",
+   "scope": "potable water demand at build-out in 2052",
+   "normalized": 43.0,
+   "dimension": "water_mld",
+   "page": 1148,
+   "quote": "Potable and non-potable water demand are estimated at build-out in 2052 at 43 and 40 MLD",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    1148
+   ],
+   "also": [
+    {
+     "value": 40.0,
+     "unit": "MLD",
+     "scope": "non-potable water demand at build-out in 2052",
+     "page": 1148,
+     "quote": "Potable and non-potable water demand are estimated at build-out in 2052 at 43 and 40 MLD"
+    },
+    {
+     "value": 60.0,
+     "unit": "MLD",
+     "scope": "waste water generated at build-out in 2052",
+     "page": 1148,
+     "quote": "The corresponding volume of waste water generated is estimated at 60 MLD"
+    }
+   ]
+  },
+  "project_cost": {
+   "key": "project_cost",
+   "value": 72000.0,
+   "unit": "Crores",
+   "scope": "whole project",
+   "normalized": 72000.0,
+   "dimension": "money",
+   "page": 24,
+   "quote": "~Rs. 72,000 Crores",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    24
+   ],
+   "also": []
+  },
+  "township_population": {
+   "key": "township_population",
+   "value": 3.3,
+   "unit": "lakh persons",
+   "scope": "whole project",
+   "normalized": 330000.0,
+   "dimension": "count",
+   "page": 159,
+   "quote": "Great Nicobar island is designed for resident population of around 3.3 lakh persons",
+   "quote_check": "verbatim on the page",
+   "pages_with_same_value": [
+    159
+   ],
+   "also": []
+  }
+ },
+ "not_found_in_report": [
+  "trees_felled",
+  "displacement"
+ ],
+ "comparisons": [
+  {
+   "fact": "port_capacity",
+   "label": "Port capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "later",
+   "report": {
+    "value": 14.2,
+    "unit": "Million TEU",
+    "scope": "International Container Transshipment Terminal",
+    "normalized": 14200000.0,
+    "dimension": "teu",
+    "page": 1148,
+    "quote": "14.2 Million TEU",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 14.2,
+    "unit": "million TEU",
+    "normalized": 14200000.0,
+    "dimension": "teu",
+    "quote": "International Container Transhipment Terminal (ICTT) with a capacity of 14.2 million TEU (Twenty -Foot Equivalent Unit) 2.",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+    "title": "Great Nicobar Project - Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "1 May , 2026",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": "2026-05-01"
+   },
+   "message": "The report states 14.2 Million TEU (p.1148); Great Nicobar Project - Press Information Bureau (static.pib.gov.in, 01 May 2026) states 14.2 million TEU. Verify which applies."
+  },
+  {
+   "fact": "port_capacity",
+   "label": "Port capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 14.2,
+    "unit": "Million TEU",
+    "scope": "International Container Transshipment Terminal",
+    "normalized": 14200000.0,
+    "dimension": "teu",
+    "page": 1148,
+    "quote": "14.2 Million TEU",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 14.2,
+    "unit": "million TEU",
+    "normalized": 14200000.0,
+    "dimension": "teu",
+    "quote": "International Container Transhipment Terminal (ICTT) with a capacity of 14.2 million TEU (Twenty-Foot Equivalent Unit) 2.",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174",
+    "title": "Press Release Page | Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 14.2 Million TEU (p.1148); Press Release Page | Press Information Bureau (pib.gov.in, date not found) states 14.2 million TEU. Verify which applies."
+  },
+  {
+   "fact": "airport_capacity",
+   "label": "Airport capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "later",
+   "report": {
+    "value": 4000.0,
+    "unit": "Peak Hour Passengers",
+    "scope": "whole project",
+    "normalized": 4000.0,
+    "dimension": "pax_peak_hour",
+    "page": 1151,
+    "quote": "4000 Peak Hour Passengers",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 4000.0,
+    "unit": "Peak Hour Passengers",
+    "normalized": 4000.0,
+    "dimension": "pax_peak_hour",
+    "quote": "It includes major infrastructure components: a 14.2 million twenty foot equivalent unit( MTEU) International Container Transshipment Terminal, a Greenfield International Airport (4000 Peak Hour Passengers-PHP)., a 450 MVA gas –solar power plant, and a planned township.",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+    "title": "Great Nicobar Project - Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "1 May , 2026",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": "2026-05-01"
+   },
+   "message": "The report states 4,000 Peak Hour Passengers (p.1151); Great Nicobar Project - Press Information Bureau (static.pib.gov.in, 01 May 2026) states 4,000 Peak Hour Passengers. Verify which applies."
+  },
+  {
+   "fact": "airport_capacity",
+   "label": "Airport capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 4000.0,
+    "unit": "Peak Hour Passengers",
+    "scope": "whole project",
+    "normalized": 4000.0,
+    "dimension": "pax_peak_hour",
+    "page": 1151,
+    "quote": "4000 Peak Hour Passengers",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 4000.0,
+    "unit": "Peak Hour Passengers",
+    "normalized": 4000.0,
+    "dimension": "pax_peak_hour",
+    "quote": "infrastructure components: a 14.2 million twenty foot equivalent unit( MTEU) International Container Transshipment Terminal, a Greenfield International Airport (4000 Peak Hour Passengers-PHP)., a 450 MVA gas–solar power plant, and a planned township. * The development",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174",
+    "title": "Press Release Page | Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 4,000 Peak Hour Passengers (p.1151); Press Release Page | Press Information Bureau (pib.gov.in, date not found) states 4,000 Peak Hour Passengers. Verify which applies."
+  },
+  {
+   "fact": "power_capacity",
+   "label": "Power plant capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "later",
+   "report": {
+    "value": 450.0,
+    "unit": "MVA",
+    "scope": "whole project",
+    "normalized": 450.0,
+    "dimension": "power_mva",
+    "page": 1151,
+    "quote": "450 MVA Gas and Solar based Power Plant",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 450.0,
+    "unit": "MVA",
+    "normalized": 450.0,
+    "dimension": "power_mva",
+    "quote": "It includes major infrastructure components: a 14.2 million twenty foot equivalent unit( MTEU) International Container Transshipment Terminal, a Greenfield International Airport (4000 Peak Hour Passengers-PHP)., a 450 MVA gas –solar power plant, and a planned township.",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+    "title": "Great Nicobar Project - Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "1 May , 2026",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": "2026-05-01"
+   },
+   "message": "The report states 450 MVA (p.1151); Great Nicobar Project - Press Information Bureau (static.pib.gov.in, 01 May 2026) states 450 MVA. Verify which applies."
+  },
+  {
+   "fact": "power_capacity",
+   "label": "Power plant capacity",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 450.0,
+    "unit": "MVA",
+    "scope": "whole project",
+    "normalized": 450.0,
+    "dimension": "power_mva",
+    "page": 1151,
+    "quote": "450 MVA Gas and Solar based Power Plant",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 450.0,
+    "unit": "MVA",
+    "normalized": 450.0,
+    "dimension": "power_mva",
+    "quote": "million twenty foot equivalent unit( MTEU) International Container Transshipment Terminal, a Greenfield International Airport (4000 Peak Hour Passengers-PHP)., a 450 MVA gas–solar power plant, and a planned township. * The development follows a regulated",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174",
+    "title": "Press Release Page | Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 450 MVA (p.1151); Press Release Page | Press Information Bureau (pib.gov.in, date not found) states 450 MVA. Verify which applies."
+  },
+  {
+   "fact": "total_project_area",
+   "label": "Total project area",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 166.1,
+    "unit": "sq.km",
+    "scope": "whole project",
+    "normalized": 16610.0,
+    "dimension": "area",
+    "page": 1143,
+    "quote": "the development area has been limited to a 166.1 sq.km area along the south-eastern and southern coastlines",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 166.1,
+    "unit": "sq.km",
+    "normalized": 16610.0,
+    "dimension": "area",
+    "quote": "With a view to preserving the valuable ecological and anthropological assets on Great Nicobar Island, the development area has been limited to a 166.1 sq.km area along the south-eastern and southern coastlines.",
+    "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+    "title": "DownloadPfdFile.aspx",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 166.1 sq.km (p.1143); DownloadPfdFile.aspx (environmentclearance.nic.in, date not found) states 166.1 sq.km. Verify which applies."
+  },
+  {
+   "fact": "total_project_area",
+   "label": "Total project area",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 166.1,
+    "unit": "sq.km",
+    "scope": "whole project",
+    "normalized": 16610.0,
+    "dimension": "area",
+    "page": 1143,
+    "quote": "the development area has been limited to a 166.1 sq.km area along the south-eastern and southern coastlines",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 166.1,
+    "unit": "sq.km",
+    "normalized": 16610.0,
+    "dimension": "area",
+    "quote": "The developed area within GNI Development Area (admeasuring 166.10 sq.km) with land under Agricultural use occupying 17.25 sq.km (around 10% of the total development area).",
+    "url": "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+    "title": "Draft Master Plan For Great Nicobar Island (GNI) Development ...",
+    "official": true,
+    "label": "government website",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 166.1 sq.km (p.1143); Draft Master Plan For Great Nicobar Island (GNI) Development ... (apwd.and.nic.in, date not found) states 166.1 sq.km. Verify which applies."
+  },
+  {
+   "fact": "forest_diversion",
+   "label": "Forest land to be diverted",
+   "grade": "NONE",
+   "difference": 0.0,
+   "date_relation": "unknown",
+   "report": {
+    "value": 130.75,
+    "unit": "sq. km",
+    "scope": "whole project",
+    "normalized": 13075.0,
+    "dimension": "area",
+    "page": 1145,
+    "quote": "diversion of 130.75 sq. km of forest land",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 130.75,
+    "unit": "sq.km",
+    "normalized": 13075.0,
+    "dimension": "area",
+    "quote": "erosion/ falling outside the delineated boundary for GNI project) within the administrative jurisdiction of these 7 revenue villages. The proposal for diversion of 130.75 sq.km of forest land (including the protected forest land with an area of 121.87 sq.km",
+    "url": "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+    "title": "Draft Master Plan For Great Nicobar Island (GNI) Development ...",
+    "official": true,
+    "label": "government website",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 130.75 sq. km (p.1145); Draft Master Plan For Great Nicobar Island (GNI) Development ... (apwd.and.nic.in, date not found) states 130.75 sq.km. Verify which applies."
+  },
+  {
+   "fact": "water_demand",
+   "label": "Water demand",
+   "grade": "GREY",
+   "difference": 0.5222,
+   "date_relation": "unknown",
+   "report": {
+    "value": 43.0,
+    "unit": "MLD",
+    "scope": "potable water demand at build-out in 2052",
+    "normalized": 43.0,
+    "dimension": "water_mld",
+    "page": 1148,
+    "quote": "Potable and non-potable water demand are estimated at build-out in 2052 at 43 and 40 MLD",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 90.0,
+    "unit": "MLD",
+    "normalized": 90.0,
+    "dimension": "water_mld",
+    "quote": "MLD Non- Potable Water Treated Water Generation (100 MLD) Recreational Purposes, Ship Washing etc. Source from Surface Water and Sea Water Water Plant Capacity (90 MLD) Potable Water Demand (90 MLD) Recycled Water Demand (70 MLD) Sewage (65 MLD) STP",
+    "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+    "title": "DownloadPfdFile.aspx",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 43 MLD (p.1148); DownloadPfdFile.aspx (environmentclearance.nic.in, date not found) states 90 MLD. Verify which applies. The source's date could not be found, so it is not compared."
+  },
+  {
+   "fact": "water_demand",
+   "label": "Water demand",
+   "grade": "NONE",
+   "difference": 0.0233,
+   "date_relation": "unknown",
+   "report": {
+    "value": 43.0,
+    "unit": "MLD",
+    "scope": "potable water demand at build-out in 2052",
+    "normalized": 43.0,
+    "dimension": "water_mld",
+    "page": 1148,
+    "quote": "Potable and non-potable water demand are estimated at build-out in 2052 at 43 and 40 MLD",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 42.0,
+    "unit": "MLD",
+    "normalized": 42.0,
+    "dimension": "water_mld",
+    "quote": "FIGURE 6-1 : PROJECTED WATER DEMAND IN GNI (Source: Consultant’s Analysis) The water demand of 42 MLD potable water translates to 15.3 MCM for 2047 and 54 MLD translates to 19.7 MCM for 2055.",
+    "url": "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+    "title": "Draft Master Plan For Great Nicobar Island (GNI) Development ...",
+    "official": true,
+    "label": "government website",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 43 MLD (p.1148); Draft Master Plan For Great Nicobar Island (GNI) Development ... (apwd.and.nic.in, date not found) states 42 MLD. Verify which applies."
+  },
+  {
+   "fact": "project_cost",
+   "label": "Project cost",
+   "grade": "NONE",
+   "difference": 0.04,
+   "date_relation": "unknown",
+   "report": {
+    "value": 72000.0,
+    "unit": "Crores",
+    "scope": "whole project",
+    "normalized": 72000.0,
+    "dimension": "money",
+    "page": 24,
+    "quote": "~Rs. 72,000 Crores",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 75000.0,
+    "unit": "crore",
+    "normalized": 75000.0,
+    "dimension": "money",
+    "quote": "### Components [[edit](/w/index.php?title=Great_Nicobar_Island_Development_Project&action=edit&section=4 \"Edit section: Components\")] The total project cost is ₹75,000 crore (US$9.4 billion in 2022)[[11]](#cite_note-hindustantimes.com-11) and corrected to",
+    "url": "https://en.wikipedia.org/wiki/Great_Nicobar_Island_Development_Project",
+    "title": "Great Nicobar Island Development Project - Wikipedia",
+    "official": false,
+    "label": "open web (not an official source)",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 72,000 Crores (p.24); Great Nicobar Island Development Project - Wikipedia (en.wikipedia.org, date not found) states 75,000 crore. Verify which applies."
+  },
+  {
+   "fact": "project_cost",
+   "label": "Project cost",
+   "grade": "GREY",
+   "difference": 0.2174,
+   "date_relation": "unknown",
+   "report": {
+    "value": 72000.0,
+    "unit": "Crores",
+    "scope": "whole project",
+    "normalized": 72000.0,
+    "dimension": "money",
+    "page": 24,
+    "quote": "~Rs. 72,000 Crores",
+    "quote_check": "verbatim on the page"
+   },
+   "official": {
+    "value": 92000.0,
+    "unit": "crore",
+    "normalized": 92000.0,
+    "dimension": "money",
+    "quote": "Photo: Prasun Goswami/CC BY-SA 4.0 Advertisement **New Delhi:** The Great Nicobar island – which will lose 130 square kilometers of rainforest to upcoming controversial infrastructure projects worth Rs 92,000 crore – could soon also host a ‘green’ AI data centre run by a private sector entity if the Andaman and Nicobar Administration has its way.",
+    "url": "https://m.thewire.in/article/environment/island-administration-now-wants-a-private-green-ai-data-centre-on-great-nicobar",
+    "title": "Island Administration Now Wants A Private, ‘Green’ AI Data Centre on Great Nicobar - The Wire",
+    "official": false,
+    "label": "open web (not an official source)",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "The report states 72,000 Crores (p.24); Island Administration Now Wants A Private, ‘Green’ AI Data Centre on Great Nicobar - The Wire (m.thewire.in, date not found) states 92,000 crore. Verify which applies. The source's date could not be found, so it is not compared."
+  }
+ ],
+ "official_only": [
+  {
+   "fact": "trees_felled",
+   "label": "Trees to be felled",
+   "official": {
+    "value": 7.11,
+    "unit": "lakh trees",
+    "normalized": 711000.0,
+    "dimension": "count",
+    "quote": "The estimated number of trees in this area is 18.65 lakh, though the maximum number expected to be felled is 7.11 lakh within 49.86 sq. km of forest.",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+    "title": "Great Nicobar Project - Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "1 May , 2026",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": "2026-05-01"
+   },
+   "message": "Great Nicobar Project - Press Information Bureau (static.pib.gov.in, 01 May 2026) states 7.11 lakh trees; the report pages read do not state this figure. Verify whether the report states it elsewhere."
+  },
+  {
+   "fact": "trees_felled",
+   "label": "Trees to be felled",
+   "official": {
+    "value": 7.11,
+    "unit": "lakh trees",
+    "normalized": 711000.0,
+    "dimension": "count",
+    "quote": "The estimated number of trees in this area is 18.65 lakh, though the maximum number expected to be felled is 7.11 lakh within 49.86 sq. km of forest.",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+    "title": "Press Note Details: Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "Press Note Details: Press Information Bureau (pib.gov.in, date not found) states 7.11 lakh trees; the report pages read do not state this figure. Verify whether the report states it elsewhere."
+  },
+  {
+   "fact": "displacement",
+   "label": "Displacement / relocation",
+   "official": {
+    "value": 0.0,
+    "unit": "persons (none, as stated)",
+    "normalized": 0.0,
+    "dimension": "count",
+    "quote": "Tribal welfare remains central, with no displacement proposed for Shompen and Nicobarese communities and a net increase in notified tribal reserve area through re -notification measures.",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+    "title": "Great Nicobar Project - Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "1 May , 2026",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": "2026-05-01"
+   },
+   "message": "Great Nicobar Project - Press Information Bureau (static.pib.gov.in, 01 May 2026) states that none is proposed; the report pages read do not state this figure. Verify whether the report states it elsewhere."
+  },
+  {
+   "fact": "displacement",
+   "label": "Displacement / relocation",
+   "official": {
+    "value": 0.0,
+    "unit": "persons (none, as stated)",
+    "normalized": 0.0,
+    "dimension": "count",
+    "quote": "The Great Nicobar Project has been carefully designed to ensure that the Nicobarese and Shompen tribes are not displaced.",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+    "title": "Press Note Details: Press Information Bureau",
+    "official": true,
+    "label": "official source",
+    "date_quote": "",
+    "quote_check": "exact sentence from the Tavily-extracted text",
+    "date": null
+   },
+   "message": "Press Note Details: Press Information Bureau (pib.gov.in, date not found) states that none is proposed; the report pages read do not state this figure. Verify whether the report states it elsewhere."
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+   "title": "Great Nicobar Project - Press Information Bureau",
+   "host": "static.pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar Island holistic development project",
+   "date": "2026-05-01",
+   "date_quote": "1 May , 2026"
+  },
+  {
+   "url": "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+   "title": "Press Note Details: Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar Island holistic development project",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://moef.gov.in/uploads/2018/03/agenda-23.pdf",
+   "title": "STANDING COMMITTEE OF NATIONAL BOARD FOR ...",
+   "host": "moef.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project forest clearance trees Rajya Sabha",
+   "date": "2011-09-01",
+   "date_quote": "SEPTEMBER 2011"
+  },
+  {
+   "url": "https://moef.gov.in/uploads/2018/04/AR-EngVol2-1.pdf",
+   "title": "Role and Mandate of the Ministry",
+   "host": "moef.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project forest clearance trees Rajya Sabha",
+   "date": "2018-04-01",
+   "date_quote": "URL path /2018/04/"
+  },
+  {
+   "url": "https://moef.gov.in/uploads/2021/12/Induction-Material-2021.pdf",
+   "title": "INTERNAL WORK STUDY UNIT December 2021",
+   "host": "moef.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project forest clearance trees Rajya Sabha",
+   "date": "2021-12-01",
+   "date_quote": "December 2021"
+  },
+  {
+   "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=158406&ModuleId=3&reg=20&lang=1",
+   "title": "Press Note Details: Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar transshipment port airport township power plant",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174",
+   "title": "Press Release Page | Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar transshipment port airport township power plant",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174&reg=48&lang=2",
+   "title": "Press Release Page | Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar transshipment port airport township power plant",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "http://niti.gov.in/sites/default/files/2020-07/ANI-RfP-Package-IV-Islands_sites-in-Islands.pdf",
+   "title": "TECHNICAL CONSULTANT",
+   "host": "niti.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": "2020-07-01",
+   "date_quote": "URL path /2020-07/"
+  },
+  {
+   "url": "https://niti.gov.in/sites/default/files/2019-07/Transforming-the-Islands-through-Creativity-%26-Innovation.pdf",
+   "title": "Transforming-the-Islands-through-Creativity-&-Innovation.pdf",
+   "host": "niti.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": "2019-07-01",
+   "date_quote": "URL path /2019-07/"
+  },
+  {
+   "url": "https://www.niti.gov.in/sites/default/files/2023-08/PackageVI-RfQ-cum-RfP.pdf",
+   "title": "cum-Request for Proposal (RfP) for Consultancy for “ ...",
+   "host": "niti.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": "2023-08-01",
+   "date_quote": "URL path /2023-08/"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/30_Apr_2018_195653620R6LSTPKUAdditionaldetails-400MLD.pdf",
+   "title": "Additional details requested by EAC of MoEF&CC for ...",
+   "host": "environmentclearance.nic.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar water demand MLD",
+   "date": "2017-10-12",
+   "date_quote": "dated 12.10.2017"
+  },
+  {
+   "url": "https://moef.gov.in/uploads/2019/10/Climate-Change-and-the-Vulnerable-Indian-Coast_compressed.pdf",
+   "title": "Climate Change and the Vulnerable Indian Coast",
+   "host": "moef.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar water demand MLD",
+   "date": "2019-10-01",
+   "date_quote": "URL path /2019/10/"
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2310538",
+   "title": "Press Release:Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar water demand MLD",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1894045",
+   "title": "Press Release:Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project cost crore",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1979157",
+   "title": "Press Release:Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project cost crore",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2089049",
+   "title": "Press Release Page | Press Information Bureau",
+   "host": "pib.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar project cost crore",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://earth.org/the-great-nicobar-gamble-exploring-the-hidden-toll-of-the-10-billion-development-project",
+   "title": "The Hidden Toll of the $10bn Great Nicobar Development Project",
+   "host": "earth.org",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/Great_Nicobar_Island_Development_Project",
+   "title": "Great Nicobar Island Development Project - Wikipedia",
+   "host": "en.wikipedia.org",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://frontline.thehindu.com/environment/proposed-infrastructure-project-in-great-nicobar-island-a-mega-folly/article66349362.ece",
+   "title": "Proposed infrastructure project in Great Nicobar Island a mega folly - Frontline",
+   "host": "frontline.thehindu.com",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar holistic development project area sq km",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+   "title": "Draft Master Plan For Great Nicobar Island (GNI) Development ...",
+   "host": "apwd.and.nic.in",
+   "official": true,
+   "label": "government website",
+   "query": "Great Nicobar water demand MLD",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://m.thewire.in/article/environment/island-administration-now-wants-a-private-green-ai-data-centre-on-great-nicobar",
+   "title": "Island Administration Now Wants A Private, ‘Green’ AI Data Centre on Great Nicobar - The Wire",
+   "host": "m.thewire.in",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar water demand MLD",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.niti.gov.in/sites/default/files/2023-03/Development%20of%20Water%20Resources%20in%20Little%20Andaman%20and%20Great%20Nicobar%20Islands.pdf",
+   "title": "Development of Water Resources in Little Andaman and ...",
+   "host": "niti.gov.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar water demand MLD",
+   "date": "2023-03-01",
+   "date_quote": "URL path /2023-03/"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+   "title": "DownloadPfdFile.aspx",
+   "host": "environmentclearance.nic.in",
+   "official": true,
+   "label": "official source",
+   "query": "Great Nicobar township population lakh",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://thedailybrief.zerodha.com/p/whats-behind-the-great-nicobar-megaproject",
+   "title": "What’s behind the Great Nicobar Megaproject?",
+   "host": "thedailybrief.zerodha.com",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar township population lakh",
+   "date": null,
+   "date_quote": ""
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=4VsHAl-RaZY",
+   "title": "Why India is spending ₹91000 crore on Great Nicobar",
+   "host": "youtube.com",
+   "official": false,
+   "label": "open web (not an official source)",
+   "query": "Great Nicobar township population lakh",
+   "date": null,
+   "date_quote": ""
+  }
+ ],
+ "tavily": {
+  "searches": 10,
+  "extracts": 9,
+  "credits": 15,
+  "credits_spent_this_run": 0,
+  "cached_calls": 19,
+  "sources": 26,
+  "official_sources": 20,
+  "official_share": 0.769,
+  "queries": [
+   {
+    "query": "Great Nicobar Island holistic development project",
+    "official_only": true,
+    "fact": null,
+    "results": [
+     "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+     "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+     "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "https://niti.gov.in/sites/default/files/2019-07/Transforming-the-Islands-through-Creativity-%26-Innovation.pdf",
+     "https://niti.gov.in/sites/default/files/2020-09/GreatNicobar-RfP.pdf"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar project forest clearance trees Rajya Sabha",
+    "official_only": true,
+    "fact": null,
+    "results": [
+     "https://moef.gov.in/uploads/2018/03/agenda-23.pdf",
+     "https://moef.gov.in/uploads/2018/04/AR-EngVol2-1.pdf",
+     "https://moef.gov.in/uploads/2021/12/Induction-Material-2021.pdf",
+     "https://moef.gov.in/uploads/2018/04/Annual_Report_ENG_0809.pdf",
+     "https://moef.gov.in/uploads/2022/03/Annual-report-2021-22-Final.pdf"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar transshipment port airport township power plant",
+    "official_only": true,
+    "fact": null,
+    "results": [
+     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174",
+     "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=158406&ModuleId=3&reg=20&lang=1",
+     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174&reg=48&lang=2",
+     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174&amp%3Breg=3&amp%3Blang=2",
+     "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1894045"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar holistic development project area sq km",
+    "official_only": true,
+    "fact": "total_project_area",
+    "results": [
+     "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+     "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/may/doc202654862601.pdf",
+     "https://niti.gov.in/sites/default/files/2019-07/Transforming-the-Islands-through-Creativity-%26-Innovation.pdf",
+     "http://niti.gov.in/sites/default/files/2020-07/ANI-RfP-Package-IV-Islands_sites-in-Islands.pdf",
+     "https://www.niti.gov.in/sites/default/files/2023-08/PackageVI-RfQ-cum-RfP.pdf"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar water demand MLD",
+    "official_only": true,
+    "fact": "water_demand",
+    "results": [
+     "https://environmentclearance.nic.in/writereaddata/Online/EDS/30_Apr_2018_195653620R6LSTPKUAdditionaldetails-400MLD.pdf",
+     "https://moef.gov.in/uploads/2019/10/Climate-Change-and-the-Vulnerable-Indian-Coast_compressed.pdf",
+     "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2310538",
+     "https://moef.gov.in/uploads/2023/05/Annual-Report-English-2023-24.pdf",
+     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2223850&reg=3&lang=1"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar project cost crore",
+    "official_only": true,
+    "fact": "project_cost",
+    "results": [
+     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2089049",
+     "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1894045",
+     "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1979157",
+     "https://niti.gov.in/sites/default/files/2019-07/Transforming-the-Islands-through-Creativity-%26-Innovation.pdf",
+     "https://archive.pib.gov.in/4yearsofnda/Comprehensive-Materials/shipping.pdf"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar township population lakh",
+    "official_only": true,
+    "fact": "township_population",
+    "results": [],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar holistic development project area sq km",
+    "official_only": false,
+    "fact": "total_project_area",
+    "results": [
+     "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+     "https://en.wikipedia.org/wiki/Great_Nicobar_Island_Development_Project",
+     "https://frontline.thehindu.com/environment/proposed-infrastructure-project-in-great-nicobar-island-a-mega-folly/article66349362.ece",
+     "https://earth.org/the-great-nicobar-gamble-exploring-the-hidden-toll-of-the-10-billion-development-project",
+     "https://www.pmfias.com/great-nicobar-project"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar water demand MLD",
+    "official_only": false,
+    "fact": "water_demand",
+    "results": [
+     "https://www.niti.gov.in/sites/default/files/2023-03/Development%20of%20Water%20Resources%20in%20Little%20Andaman%20and%20Great%20Nicobar%20Islands.pdf",
+     "https://www.pib.gov.in/PressNoteDetails.aspx?id=158406&NoteId=158406&ModuleId=3&reg=3&lang=2",
+     "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+     "https://en.wikipedia.org/wiki/Great_Nicobar_Island_Development_Project",
+     "https://m.thewire.in/article/environment/island-administration-now-wants-a-private-green-ai-data-centre-on-great-nicobar"
+    ],
+    "credits": 1
+   },
+   {
+    "query": "Great Nicobar township population lakh",
+    "official_only": false,
+    "fact": "township_population",
+    "results": [
+     "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "https://www.youtube.com/watch?v=4VsHAl-RaZY",
+     "https://thedailybrief.zerodha.com/p/whats-behind-the-great-nicobar-megaproject",
+     "https://en.wikipedia.org/wiki/Great_Nicobar_Island_Development_Project",
+     "https://therevelator.org/great-nicobar-island"
+    ],
+    "credits": 1
+   }
+  ]
+ },
+ "research_endpoint": {
+  "available": true,
+  "used": false,
+  "why": "Tavily research sets its credit cost per request and reports it only when finished, so it cannot be kept under the run's credit cap; search + extract (1 credit per search, 1 per 5 extracted pages) were used instead."
+ },
+ "cost": {
+  "nebius_usd": 0.0033,
+  "nebius_usd_spent_this_run": 0.0,
+  "lightning_calls": 27,
+  "tavily_credits": 15,
+  "tavily_credits_spent_this_run": 0
+ },
+ "method": {
+  "min_difference": 0.05,
+  "comparable_after_days": 183,
+  "official_domains": [
+   "pib.gov.in",
+   "parivesh.nic.in",
+   "environmentclearance.nic.in",
+   "moef.gov.in",
+   "greentribunal.gov.in",
+   "sansad.in",
+   "niti.gov.in",
+   "andaman.gov.in",
+   "indiacode.nic.in"
+  ],
+  "report_pages": [
+   1141,
+   1142,
+   1143,
+   1144,
+   1145,
+   1146,
+   1147,
+   1148,
+   1149,
+   1150,
+   1151,
+   1152,
+   1153,
+   1154,
+   1155,
+   1156,
+   1157,
+   1158,
+   1159,
+   1160,
+   1164,
+   1165,
+   23,
+   24,
+   28,
+   159,
+   518
+  ]
+ }
+}
