@@ -1,0 +1,2241 @@
+{
+  "id": "cuddalore_port_2026_draft",
+  "title": "Cuddalore Port expansion EIA (2026 draft)",
+  "source": "Draft EIA/EMP report by Falcon Resilient Infra Consultants for Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL), May 2026",
+  "state": "Tamil Nadu",
+  "site": {
+    "lat": 11.7062,
+    "lon": 79.7751,
+    "label": "Cuddalore Port",
+    "source": "report p.491: latitude 11°42'22.43\" N, longitude 79°46'30.52\" E (also p.33, p.35)"
+  },
+  "audit_status": {
+    "complete": false,
+    "judged": 1077,
+    "candidates": 1589,
+    "label": "Audit partial: 1,077 of 1,589 candidate pairs judged"
+  },
+  "human_reviewed": false,
+  "notices": [
+    "Audit partial: 1,077 of 1,589 candidate pairs judged; the pairs not yet judged may hold more flags.",
+    "Flags not yet human-reviewed: each one is flagged for checking; verify it against the report before relying on it."
+  ],
+  "pages_read": 768,
+  "pages_total": 802,
+  "pages_skipped": 34,
+  "pages_note": "pages audited; 34 skipped: blank_form/lab sheets/forms",
+  "checks": [
+    "Claim extraction (Nemotron Lightning / Super-VL)",
+    "Internal contradictions and recycled figures (Nemotron Ultra)",
+    "Copied text (Tavily)",
+    "Species tables in the report (GBIF)",
+    "Threatened species not mentioned (GBIF)",
+    "IUCN status and WPA schedules in the report's tables (GBIF, Tavily)",
+    "Consultant accreditation (NABET, official list)"
+  ],
+  "cost": {
+    "nebius_usd": 10.0006,
+    "tavily_credits": 54,
+    "gbif_calls": 0,
+    "approx_seconds": 3900.8,
+    "time_note": "wall clock, full audit, 6 parallel calls",
+    "note": "Nebius models: full audit $10.00 (audit partial: 1,077 of 1,589 candidate pairs judged); Tavily: audit 47 + accreditation 7 credits"
+  },
+  "full_run": {
+    "file": "audit_cuddalore_port_2026_draft_eia.json",
+    "cost_usd": 10.0006,
+    "wall_clock_s": 3900.8,
+    "pages_audited": 768
+  },
+  "known_issues": [],
+  "findings": [
+    {
+      "id": "ct-1009",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 40 and 453 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 40,
+          "text": "25"
+        },
+        {
+          "page": 453,
+          "text": "Effluent Treatment Plant KLD - 25 25 No change"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 7 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.40 (25 KLD)",
+          "value": "also on pp. 74"
+        }
+      ],
+      "why": "Page 40 shows an approved capacity of 25 KLD for the Effluent Treatment Plant, while page 453 shows no approved capacity (dash) for the same item; the remarks also differ (\"New proposal\" vs \"No change\").",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0040.png",
+        "pages/cuddalore_port_2026_draft_full_p0453.png"
+      ]
+    },
+    {
+      "id": "ct-354",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 57 and 499 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 499,
+          "text": "traffic densities and parking capabilities in a 0.5 kms radius from the site"
+        },
+        {
+          "page": 57,
+          "text": "in a 05 kms radius from the site"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 12 possible explanation words searched"
+        }
+      ],
+      "why": "The two statements specify different assessment radii (0.5 km vs 05 km) for the same traffic and parking impact assessment, making them numerically incompatible.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0499.png",
+        "pages/cuddalore_port_2026_draft_full_p0057.png"
+      ]
+    },
+    {
+      "id": "ct-506",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 98 and 99 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 98,
+          "text": "Theta =130) and (Hs = 1.5m;"
+        },
+        {
+          "page": 99,
+          "text": "Theta =70) To assess the wave tranquillity of proposed port expansion during extreme wave conditions, offshore wave climate of 2m has been considered for the analysis."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 5 possible explanation words searched"
+        }
+      ],
+      "why": "Statement 1 assigns Figures 2-30 to 2-32 to three operational wave conditions, while Statement 2 assigns the same figures to two extreme wave conditions. The same figures cannot represent both sets of conditions simultaneously.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0098.png",
+        "pages/cuddalore_port_2026_draft_full_p0099.png"
+      ]
+    },
+    {
+      "id": "ct-509",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 622 and 623 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 623,
+          "text": "current speeds are observed in the range of 0.01 m/s to 1.2 m/s"
+        },
+        {
+          "page": 622,
+          "text": "current speeds are observed in the range of 0.01 m/s to 1.30 m/s"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages"
+        }
+      ],
+      "why": "Both statements describe the observed range of current speeds during the same 15-day measurement period at Cuddalore Port, but they give different maximum values (1.2 m/s vs 1.30 m/s).",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0623.png",
+        "pages/cuddalore_port_2026_draft_full_p0622.png"
+      ]
+    },
+    {
+      "id": "ct-535",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 239 and 433 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 239,
+          "text": "Among the 107 plant species reported from the study area, none of the species is listed in IUCN threatened category."
+        },
+        {
+          "page": 433,
+          "text": "Among the 187 plant species reported from the study area, none of the species is listed in IUCN threatened category."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 2 possible explanation words searched"
+        }
+      ],
+      "why": "The two statements report different totals of plant species from the study area (107 vs 187) without any stated reason for the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0239.png",
+        "pages/cuddalore_port_2026_draft_full_p0433.png"
+      ]
+    },
+    {
+      "id": "ct-839",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 31 and 39 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 31,
+          "text": "Dredging for Turning Circle area with depth -11 m CD, Diameter 300 m,"
+        },
+        {
+          "page": 39,
+          "text": "Turning Circle Diameter m 310.0 90 400 Increase in diameter and depth"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 7 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.39 (400 m)",
+          "value": "also on pp. 73, 150"
+        }
+      ],
+      "why": "Statement 1 lists the turning circle diameter as 300 m and depth as -11 m CD under developed facilities, while Statement 2 shows the approved diameter as 310 m and depth as -10 m CD in the comparison table. The report does not explicitly explain this discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0031.png",
+        "pages/cuddalore_port_2026_draft_full_p0039.png"
+      ]
+    },
+    {
+      "id": "ct-846",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 253 and 459 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 253,
+          "text": "The Working population in the project study area is 208711 which are around 41.47%;"
+        },
+        {
+          "page": 459,
+          "text": "The Working population in the project study area is 208711"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 16 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.459 (208711 people)",
+          "value": "also on pp. 253"
+        }
+      ],
+      "why": "Statement 1 (Table 3-34) gives a non-working population of 294,621 for the study area, while Statement 2 gives 4,294,621; the working population figures (208,711, 41.47%) are identical.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0253.png",
+        "pages/cuddalore_port_2026_draft_full_p0459.png"
+      ]
+    },
+    {
+      "id": "ct-869",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 38 and 39 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 38,
+          "text": "8.54"
+        },
+        {
+          "page": 39,
+          "text": "Cargo handling capacity MTPA 5.68 5.8 11.48 Increase in cargo handling capacity"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 15 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.38 (8.54 MTPA)",
+          "value": "also on pp. 75, 371, 454"
+        },
+        {
+          "label": "Same figure as p.39 (11.48 MTPA)",
+          "value": "also on pp. 38, 72, 73, 75, 371, 451, 452, 454, 494"
+        }
+      ],
+      "why": "Statement 1 lists bulk berth capacity as 8.54 MTPA within a total of 11.48 MTPA, while Statement 2 lists the proposed capacity increase as 5.8 MTPA on top of an approved 5.68 MTPA to reach the same total; the bulk berth capacity exceeds the proposed increase without explanation.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0038.png",
+        "pages/cuddalore_port_2026_draft_full_p0039.png"
+      ]
+    },
+    {
+      "id": "ct-875",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 108 and 451 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 451,
+          "text": "2"
+        },
+        {
+          "page": 108,
+          "text": "(2- Multipurpose Cargo berths [440m length]"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 18 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.451 (2 No.)",
+          "value": "also on pp. 491"
+        }
+      ],
+      "why": "Statement 1 shows three multipurpose berths totaling 440m quay length (2 approved + 1 proposed), while Statement 2 describes two multipurpose cargo berths of 440m length as proposed, creating a numerical discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0451.png",
+        "pages/cuddalore_port_2026_draft_full_p0108.png"
+      ]
+    },
+    {
+      "id": "ct-924",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 451 and 491 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 451,
+          "text": "21"
+        },
+        {
+          "page": 491,
+          "text": "Width m 21 21 21"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 21 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.451 (21 m)",
+          "value": "also on pp. 491"
+        },
+        {
+          "label": "Same figure as p.491 (21 m)",
+          "value": "also on pp. 451"
+        }
+      ],
+      "why": "Both statements refer to the width of multipurpose berths in the same expansion plan table, but page 451 shows a dash for the proposed width while page 491 shows 21 m, making the proposed values contradictory.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0451.png",
+        "pages/cuddalore_port_2026_draft_full_p0491.png"
+      ]
+    },
+    {
+      "id": "ct-962",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 38 and 494 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 38,
+          "text": "11.48"
+        },
+        {
+          "page": 494,
+          "text": "8.54"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 24 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.38 (11.48 MTPA)",
+          "value": "also on pp. 39, 72, 73, 75, 371, 451, 452, 454, 494"
+        }
+      ],
+      "why": "Both statements report a total cargo handling capacity of 11.48 MTPA and a bulk berth capacity of 8.54 MTPA, but the bulk berth cargo mix differs: Statement 1 includes Slag while Statement 2 does not, making the two descriptions mutually exclusive for the same berth.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0038.png",
+        "pages/cuddalore_port_2026_draft_full_p0494.png"
+      ]
+    },
+    {
+      "id": "cp-p103-3",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 103 text found in another document",
+      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
+      "quotes": [
+        {
+          "page": 103,
+          "text": "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "r Area 12.31 8.43 Mahanthi Cuddalore port and Maritime Private Limited (MCPMPL) C25014 Executive Summary DL004, Rev.0 6 S. No. Category Area in Ac. % 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail sliding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipb"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 48 words, 8-gram overlap 82%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [0.01, 0.02, 0.47, 0.69, 0.79, 1.16, 1.46, 2.52, 3.68, 4.8, 5.23, 5.45, 5.67, 7.01, 7.58, 7.64, 7.96, 8.28, 8.43, 10.0, 10.41, 11.0, 11.07, 11.71, 12.0, 12.31, 12.4, 13.0, 14.0, 15.0, 15.2, 17.1, 18.14, 23.51, 34.29, 93.58, 111.72]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0103.png"
+      ]
+    },
+    {
+      "id": "cp-p40-1",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 40 text found in another document",
+      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
+      "quotes": [
+        {
+          "page": 40,
+          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "nd remaining 3 MCM for beach nourishment towards north side of north breakwater and south side of south breakwater) 16 Maintenance Dredge disposal M. Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non-hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient. Mahanthi Cuddalore port and Maritime Private Limited (MCPMPL) C25014 Executive Summary DL004, Rev.0 5 S. No Description Unit Approved Proposed Total"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 130 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0040.png"
+      ]
+    },
+    {
+      "id": "cp-p428-0",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 428 text found in another document",
+      "message": "Text closely matches https://cuddalore.nic.in/fisheries, which describes Cuddalore district, Tamil Nadu, India. Verify.",
+      "quotes": [
+        {
+          "page": 428,
+          "text": "There are 235 Mechanized fishing boats and 2345 FRP boats, Non motorised boats 1906 are operating in this district."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Fisheries | Cuddalore District, Government of Tamilnadu",
+          "url": "https://cuddalore.nic.in/fisheries"
+        },
+        {
+          "label": "Matching text",
+          "value": "l marine fishermen population of 47000. Among them 23840 are active fishermen and nearly 15000 fisherwomen are engaged in fishing related activities. There are 235 Mechanized fishing boats and 2345 FRP boats, Non motorised boats 1906 are operating in this district. There are 36 Marine Fishermen Coop Societies, and 41 Marine Fisherwomen Coop societies, 22 Inland Fishermen Co-op. Societies and 6 Inland Fisherwome"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 19 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [235.0, 1906.0, 2345.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0428.png"
+      ]
+    },
+    {
+      "id": "cp-p74-2",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 74 text found in another document",
+      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
+      "quotes": [
+        {
+          "page": 74,
+          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcoke, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD is not being consumed yet."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "nd remaining 3 MCM for beach nourishment towards north side of north breakwater and south side of south breakwater) 16 Maintenance Dredge disposal M. Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non-hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oi"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 73 words, 8-gram overlap 96%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0074.png"
+      ]
+    },
+    {
+      "id": "sp-p737-001",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "RED",
+      "title": "Rana temporaria at Cuddalore Port (p.737)",
+      "message": "0 GBIF records of Rana temporaria within 3,000 km; its 812,268 records worldwide are mostly from Switzerland, Netherlands, United Kingdom of Great Britain and Northern Ireland. Local survey effort is low (338 Amphibia records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 737,
+          "text": "Rana temporaria"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Cuddalore Port (11.7062, 79.7751): continues the table from p.730 (no site named on this or the previous page)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 812,268 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Rana temporaria",
+          "url": "https://www.gbif.org/species/2426805"
+        }
+      ],
+      "why": "0 GBIF records of Rana temporaria within 3,000 km; its 812,268 records worldwide are mostly from Switzerland, Netherlands, United Kingdom of Great Britain and Northern Ireland. Local survey effort is low (338 Amphibia records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_species_p0737.png"
+      ]
+    },
+    {
+      "id": "ct-562",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "ORANGE",
+      "title": "Pages 84 and 725 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 725,
+          "text": "08-09-2025 19:40 116.41 9.48 0.55 3.67"
+        },
+        {
+          "page": 84,
+          "text": "The observation period at Cuddalore port crosses one neap and one spring tide. It shows that the significant wave height varies from 0.4m to 1.1m."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 1 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.84 (0.4 m)",
+          "value": "also on pp. 622"
+        }
+      ],
+      "why": "Statement 1 shows significant wave height (Hs) measurements ranging from 0.43 to 0.55 m, while Statement 2 states that at Cuddalore port the significant wave height varies from 0.4 m to 1.1 m with a maximum of 1.1 m. The report does not explain why the measured maximum in the table is lower than the reported maximum for the observation period.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0725.png",
+        "pages/cuddalore_port_2026_draft_full_p0084.png"
+      ]
+    },
+    {
+      "id": "ct-946",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "ORANGE",
+      "title": "Pages 39 and 150 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 150,
+          "text": "APPROACH CHANNEL (110m WIDE)"
+        },
+        {
+          "page": 39,
+          "text": "Unprotected area/outer channel m - 160 160"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 15 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.39 (160 m)",
+          "value": "also on pp. 452"
+        }
+      ],
+      "why": "Statement 1 gives a single approach channel width of 110 m, while Statement 2 lists several distinct widths for different channel sections (60 m, 100 m, 130 m, 160 m) without indicating that 110 m corresponds to any of them.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0150.png",
+        "pages/cuddalore_port_2026_draft_full_p0039.png"
+      ]
+    },
+    {
+      "id": "st-01",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Aegle marmelos: IUCN category LC (p.730)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 730,
+          "text": "Aegle marmelos"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Aegle marmelos",
+          "url": "https://www.gbif.org/species/5421195"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Aegle marmelos: https://www.gbif.org/species/5421195",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0730.png"
+      ]
+    },
+    {
+      "id": "st-02",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Carica papaya: IUCN category LC (p.730)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 730,
+          "text": "Carica papaya"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "DD"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Carica papaya",
+          "url": "https://www.gbif.org/species/2874484"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says DD (DATA_DEFICIENT) for Carica papaya: https://www.gbif.org/species/2874484",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0730.png"
+      ]
+    },
+    {
+      "id": "st-03",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Mangifera indica: IUCN category LC (p.731)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 731,
+          "text": "Mangifera indica"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "DD"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Mangifera indica",
+          "url": "https://www.gbif.org/species/3190638"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says DD (DATA_DEFICIENT) for Mangifera indica: https://www.gbif.org/species/3190638",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0731.png"
+      ]
+    },
+    {
+      "id": "st-04",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Saraca asoca: IUCN category Vu (p.731)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 731,
+          "text": "Saraca asoca"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Vu"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Saraca asoca",
+          "url": "https://www.gbif.org/species/7458904"
+        }
+      ],
+      "why": "Report says VU; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Saraca asoca: https://www.gbif.org/species/7458904",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0731.png"
+      ]
+    },
+    {
+      "id": "st-05",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Sesbania grandiflora: IUCN category LC (p.731)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 731,
+          "text": "Sesbania grandiflora"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "DD"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Sesbania grandiflora",
+          "url": "https://www.gbif.org/species/8281950"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says DD (DATA_DEFICIENT) for Sesbania grandiflora: https://www.gbif.org/species/8281950",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0731.png"
+      ]
+    },
+    {
+      "id": "st-06",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Tectona grandis: IUCN category LC (p.732)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 732,
+          "text": "Tectona grandis"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "EN"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Tectona grandis",
+          "url": "https://www.gbif.org/species/2925649"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says EN (ENDANGERED) for Tectona grandis: https://www.gbif.org/species/2925649",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_status_p0732.png"
+      ]
+    },
+    {
+      "id": "om-01",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Rhinobatos lionotus (IUCN CR) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Rhinobatos lionotus: 1 record(s) within 25 km of Cuddalore Port, latest 2019"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN CR)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2019"
+        },
+        {
+          "label": "Names searched for",
+          "value": "rhinobatos lionotus, r. lionotus, r.lionotus, rhinobatoslionotus, rhinobatos l ionotus, rhinobatus lionotus, rhinobatuslionotus, rhinobatus l ionotus, Smoothback Guitarfish"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Rhinobatos lionotus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2419003&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN CR species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-02",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Mobula mobular (IUCN CR) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Mobula mobular: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN CR)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "mobula mobular, m. mobular, m.mobular, mobulamobular, mobula m obular, aodon cornu, a. cornu, a.cornu, aodoncornu, aodon c ornu, apterurus fabroni, a. fabroni, a.fabroni, apterurusfabroni, apterurus f abroni, cephaloptera giorna, c. giorna, c.giorna, cephalopteragiorna, cephaloptera g iorna, cephaloptera tatraniana, c. tatraniana, c.tatraniana, cephalopteratatraniana, cephaloptera t atraniana, cephalopterus edentula, c. edentula, c.edentula, cephalopterusedentula, cephalopterus e dentula, cephalopterus giornae, c. giornae, c.giornae, cephalopterusgiornae, cephalopterus g iornae, cephalopterus massena, c. massena, c.massena, cephalopterusmassena, cephalopterus m assena, dicerobatis giornae, d. giornae, d.giornae, dicerobatisgiornae, dicerobatis g iornae, manta mobular, mantamobular, manta m obular, mobula auriculata, m. auriculata, m.auriculata, mobulaauriculata, mobula a uriculata, mobula diabolus, m. diabolus, m.diabolus, mobuladiabolus, mobula d iabolus, mobular mobular, mobularmobular, mobular m obular, raia fabroniana, r. fabroniana, r.fabroniana, raiafabroniana, raia f abroniana, raia mobular, r. mobular, r.mobular, raiamobular, raia m obular, raja cephaloptera, r. cephaloptera, r.cephaloptera, rajacephaloptera, raja c ephaloptera, raja diabolus, r. diabolus, r.diabolus, rajadiabolus, raja d iabolus, raja fabroniana, rajafabroniana, raja f abroniana, raja giorna, r. giorna, r.giorna, rajagiorna, raja g iorna, squalus edentulus, s. edentulus, s.edentulus, squalusedentulus, squalus e dentulus, Devilfish, Giant Devil Ray, Giant devilray, Horned Ray, Japanese Devil Ray, Spinetail Devil Ray, Spinetail Devilray, Spinetail devil ray, devil fish, giant devil ray, spinetail mobula"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Mobula mobular",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2419188&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN CR species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-03",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Alopias pelagicus (IUCN EN) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Alopias pelagicus: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN EN)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "alopias pelagicus, a. pelagicus, a.pelagicus, alopiaspelagicus, alopias p elagicus, Fox Shark, Pelagic Thresher, Pelagic Tresher Shark, Smalltooth Thresher Shark, Whiptail Shark, fox shark, pelagic thresher, pelagic thresher shark, whiptail shark"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Alopias pelagicus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2420809&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN EN species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-04",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Pluvialis squatarola (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Pluvialis squatarola: 41 record(s) within 25 km of Cuddalore Port, latest 2025"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "1 within 10 km (1 since 2000), 41 within 25 km; latest 2025"
+        },
+        {
+          "label": "Names searched for",
+          "value": "pluvialis squatarola, p. squatarola, p.squatarola, pluvialissquatarola, pluvialis s quatarola, charadarius squatarola, c. squatarola, c.squatarola, charadariussquatarola, charadarius s quatarola, squatarola cinerea, s. cinerea, s.cinerea, squatarolacinerea, squatarola c inerea, squatarola helvetica, s. helvetica, s.helvetica, squatarolahelvetica, squatarola h elvetica, squatarola squatarola, s. squatarola, s.squatarola, squatarolasquatarola, squatarola s quatarola, tringa spec, t. spec, t.spec, tringaspec, vanellus melanogaster, v. melanogaster, v.melanogaster, vanellusmelanogaster, vanellus m elanogaster, Black Bellied Plover, Black-bellied Plover / Gray Plover, Grey Plover, Grey Plover, Black-bellied Plover, Silver Plover, Soldier Bird, grey plover"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Pluvialis squatarola",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2480327&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 41 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-05",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Oreochromis mossambicus (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Oreochromis mossambicus: 6 record(s) within 25 km of Cuddalore Port, latest 2025"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 6 within 25 km; latest 2025"
+        },
+        {
+          "label": "Names searched for",
+          "value": "oreochromis mossambicus, o. mossambicus, o.mossambicus, oreochromismossambicus, oreochromis m ossambicus, chromis dumerilii, c. dumerilii, c.dumerilii, chromisdumerilii, chromis d umerilii, chromis mossambicus, c. mossambicus, c.mossambicus, chromismossambicus, chromis m ossambicus, chromis natalensis, c. natalensis, c.natalensis, chromisnatalensis, chromis n atalensis, chromis niloticus, c. niloticus, c.niloticus, chromisniloticus, chromis n iloticus, chromis vorax, c. vorax, c.vorax, chromisvorax, chromis v orax, cromis mossambicus, cromismossambicus, cromis m ossambicus, orechromis mossambica, o. mossambica, o.mossambica, orechromismossambica, orechromis m ossambica, oreochromis mozambica, o. mozambica, o.mozambica, oreochromismozambica, oreochromis m ozambica, sarotherodon mossambicum, s. mossambicum, s.mossambicum, sarotherodonmossambicum, sarotherodon m ossambicum, sarotherodon mossambicus, s. mossambicus, s.mossambicus, sarotherodonmossambicus, sarotherodon m ossambicus, sarothredon mossambica, s. mossambica, s.mossambica, sarothredonmossambica, sarothredon m ossambica, telapia mossambica, t. mossambica, t.mossambica, telapiamossambica, telapia m ossambica, tilapia arnoldi, t. arnoldi, t.arnoldi, tilapiaarnoldi, tilapia a rnoldi, tilapia dumerilii, t. dumerilii, t.dumerilii, tilapiadumerilii, tilapia d umerilii, tilapia mossambica, tilapiamossambica, tilapia m ossambica, tilapia mozambique, t. mozambique, t.mozambique, tilapiamozambique, tilapia m ozambique, tilapia natalensis, t. natalensis, t.natalensis, tilapianatalensis, tilapia n atalensis, tilapia vorax, t. vorax, t.vorax, tilapiavorax, tilapia v orax, Mozambique Mouthbrooder, Mozambique Tilapia, Mozambique cichlid, Mozambique mouth-breeder, Mozambique mouthbrooder, Mozambique tilapia"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Oreochromis mossambicus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2372396&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 6 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-06",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Macaca radiata (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Macaca radiata: 3 record(s) within 25 km of Cuddalore Port, latest 2025"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 3 within 25 km; latest 2025"
+        },
+        {
+          "label": "Names searched for",
+          "value": "macaca radiata, m. radiata, m.radiata, macacaradiata, macaca r adiata, cercocebus radiatus, c. radiatus, c.radiatus, cercocebusradiatus, cercocebus r adiatus, macaco radiata, macacoradiata, macaco r adiata, macacus radiatus, m. radiatus, m.radiatus, macacusradiatus, macacus r adiatus, Dark-bellied Bonnet Macaque (radiata), Light-bellied, Light-bellied / Pale-bellied Bonnet Macaque (diluta), Pale-bellied Bonnet Macaque"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Macaca radiata",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2436612&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 3 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-07",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Calidris ferruginea (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Calidris ferruginea: 3 record(s) within 25 km of Cuddalore Port, latest 2024"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 3 within 25 km; latest 2024"
+        },
+        {
+          "label": "Names searched for",
+          "value": "calidris ferruginea, c. ferruginea, c.ferruginea, calidrisferruginea, calidris f erruginea, calidris testacea, c. testacea, c.testacea, calidristestacea, calidris t estacea, erolia ferruginea, e. ferruginea, e.ferruginea, eroliaferruginea, erolia f erruginea, scolopax testacea, s. testacea, s.testacea, scolopaxtestacea, scolopax t estacea, tringa ferrugineus, t. ferrugineus, t.ferrugineus, tringaferrugineus, tringa f errugineus, tringa spec, t. spec, t.spec, tringaspec, tringa subarquata, t. subarquata, t.subarquata, tringasubarquata, tringa s ubarquata, Curlew Sandpiper, curlew sandpiper, curlew sanspiper"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Calidris ferruginea",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481741&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 3 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-08",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Brevitrygon imbricata (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Brevitrygon imbricata: 2 record(s) within 25 km of Cuddalore Port, latest 2025"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "1 within 10 km (2 since 2000), 2 within 25 km; latest 2025"
+        },
+        {
+          "label": "Names searched for",
+          "value": "brevitrygon imbricata, b. imbricata, b.imbricata, brevitrygonimbricata, brevitrygon i mbricata, amphotistius imbricatus, a. imbricatus, a.imbricatus, amphotistiusimbricatus, amphotistius i mbricatus, dasyatis imbricatus, d. imbricatus, d.imbricatus, dasyatisimbricatus, dasyatis i mbricatus, dasybatus imbricatus, dasybatusimbricatus, dasybatus i mbricatus, himantura dadong, h. dadong, h.dadong, himanturadadong, himantura d adong, himantura imbricatus, h. imbricatus, h.imbricatus, himanturaimbricatus, himantura i mbricatus, himuntura imbricata, h. imbricata, h.imbricata, himunturaimbricata, himuntura i mbricata, leiobatis polylepis, l. polylepis, l.polylepis, leiobatispolylepis, leiobatis p olylepis, raja imbricata, r. imbricata, r.imbricata, rajaimbricata, raja i mbricata, raja obtusa, r. obtusa, r.obtusa, rajaobtusa, raja o btusa, trygon dadong, t. dadong, t.dadong, trygondadong, trygon d adong, trygon imbricata, t. imbricata, t.imbricata, trygonimbricata, trygon i mbricata, Bengal Whipray, Coromandel Whipray, Dwarf Whipray, Laccadive Whipray, Scaly Whipray"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Brevitrygon imbricata",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=9295191&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 2 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-09",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Narcine timlei (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Narcine timlei: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "narcine timlei, n. timlei, n.timlei, narcinetimlei, narcine t imlei, narcine indica, n. indica, n.indica, narcineindica, narcine i ndica, narcine macrura, n. macrura, n.macrura, narcinemacrura, narcine m acrura, narcine microphthalma, n. microphthalma, n.microphthalma, narcinemicrophthalma, narcine m icrophthalma, raja timlei, r. timlei, r.timlei, rajatimlei, raja t imlei, Brown Numbfish"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Narcine timlei",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2417758&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-10",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Alopias superciliosus (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Alopias superciliosus: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "alopias superciliosus, a. superciliosus, a.superciliosus, alopiassuperciliosus, alopias s uperciliosus, alopecias superciliosus, alopeciassuperciliosus, alopecias s uperciliosus, alopias profundus, a. profundus, a.profundus, alopiasprofundus, alopias p rofundus, alopias superciliousus, a. superciliousus, a.superciliousus, alopiassuperciliousus, alopias s uperciliousus, Big-eye shark, Bigeye Thresher Shark, Bigeye Tresher shark, False Thresher, Long-tailed Shark, Long-tailed shark, bigeye thresher shark, deepsea bigeye thresher"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Alopias superciliosus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2420813&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-11",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Geochelone elegans (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Geochelone elegans: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "geochelone elegans, g. elegans, g.elegans, geocheloneelegans, geochelone e legans, peltastes stellatus, p. stellatus, p.stellatus, peltastesstellatus, peltastes s tellatus, testudo actinodes, t. actinodes, t.actinodes, testudoactinodes, testudo a ctinodes, testudo actinoides, t. actinoides, t.actinoides, testudoactinoides, testudo a ctinoides, testudo elegans, t. elegans, t.elegans, testudoelegans, testudo e legans, testudo megalopus, t. megalopus, t.megalopus, testudomegalopus, testudo m egalopus, testudo stellata, t. stellata, t.stellata, testudostellata, testudo s tellata, (Indian) Star Tortoise, Indian Star Tortoise, Indian star tortoise, Starred Tortoise"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Geochelone elegans",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2441535&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-12",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Buceros bicornis (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Buceros bicornis: 1 record(s) within 25 km of Cuddalore Port, latest 2014"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2014"
+        },
+        {
+          "label": "Names searched for",
+          "value": "buceros bicornis, b. bicornis, b.bicornis, bucerosbicornis, buceros b icornis, Great Hornbill, Great Indian Hornbill, Great Pied Hornbill, great Indian hornbill"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Buceros bicornis",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2476012&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-13",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Istiophorus platypterus (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Istiophorus platypterus: 1 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "istiophorus platypterus, i. platypterus, i.platypterus, istiophorusplatypterus, istiophorus p latypterus, histiophorus ancipitirostris, h. ancipitirostris, h.ancipitirostris, histiophorusancipitirostris, histiophorus a ncipitirostris, histiophorus dubius, h. dubius, h.dubius, histiophorusdubius, histiophorus d ubius, histiophorus gladius, h. gladius, h.gladius, histiophorusgladius, histiophorus g ladius, histiophorus gracilirostris, h. gracilirostris, h.gracilirostris, histiophorusgracilirostris, histiophorus g racilirostris, histiophorus immaculatus, h. immaculatus, h.immaculatus, histiophorusimmaculatus, histiophorus i mmaculatus, histiophorus indicus, h. indicus, h.indicus, histiophorusindicus, histiophorus i ndicus, histiophorus magnioci, h. magnioci, h.magnioci, histiophorusmagnioci, histiophorus m agnioci, histiophorus orientalis, h. orientalis, h.orientalis, histiophorusorientalis, histiophorus o rientalis, istiophorus amarui, i. amarui, i.amarui, istiophorusamarui, istiophorus a marui, istiophorus brookei, i. brookei, i.brookei, istiophorusbrookei, istiophorus b rookei, istiophorus dubius, i. dubius, i.dubius, istiophorusdubius, istiophorus d ubius, istiophorus eriquius, i. eriquius, i.eriquius, istiophoruseriquius, istiophorus e riquius, istiophorus gladifer, i. gladifer, i.gladifer, istiophorusgladifer, istiophorus g ladifer, istiophorus gladius, i. gladius, i.gladius, istiophorusgladius, istiophorus g ladius, istiophorus gladus, i. gladus, i.gladus, istiophorusgladus, istiophorus g ladus, istiophorus greyii, i. greyii, i.greyii, istiophorusgreyii, istiophorus g reyii, istiophorus immaculatus, i. immaculatus, i.immaculatus, istiophorusimmaculatus, istiophorus i mmaculatus, istiophorus japonicus, i. japonicus, i.japonicus, istiophorusjaponicus, istiophorus j aponicus, istiophorus ludibundus, i. ludibundus, i.ludibundus, istiophorusludibundus, istiophorus l udibundus, istiophorus orientalis, i. orientalis, i.orientalis, istiophorusorientalis, istiophorus o rientalis, istiophorus triactis, i. triactis, i.triactis, istiophorustriactis, istiophorus t riactis, scomber gladius, s. gladius, s.gladius, scombergladius, scomber g ladius, xiphias platypterus, x. platypterus, x.platypterus, xiphiasplatypterus, xiphias p latypterus, xiphias velifer, x. velifer, x.velifer, xiphiasvelifer, xiphias v elifer, Atlantic Sailfish, Atlantic sailfish, Bayonet-fish, Indo-Pacific Sailfish, Indo-Pacific sailfish, Pacific Sailfish, Pacific sailfish, bayonet fish"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Istiophorus platypterus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5211984&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-14",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Halcyon pileata (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Halcyon pileata: 1 record(s) within 25 km of Cuddalore Port, latest 2019"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2019"
+        },
+        {
+          "label": "Names searched for",
+          "value": "halcyon pileata, h. pileata, h.pileata, halcyonpileata, halcyon p ileata, alcedo pileata, a. pileata, a.pileata, alcedopileata, alcedo p ileata, Black-capped Kingfisher, black-capped kingfisher"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Halcyon pileata",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5228310&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-15",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "ORANGE",
+      "title": "Sterna aurantia (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Sterna aurantia: 1 record(s) within 25 km of Cuddalore Port, latest 2017"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2017"
+        },
+        {
+          "label": "Names searched for",
+          "value": "sterna aurantia, s. aurantia, s.aurantia, sternaaurantia, sterna a urantia, Indian River Tern, Indian river tern"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Sterna aurantia",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5229239&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "sp-p738-002",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Hemidactylus brookii at Cuddalore Port (p.738)",
+      "message": "0 GBIF records of Hemidactylus brookii within 100 km, but 47 within 500 km. 738 records of other Squamata within 100 km, so the area is surveyed. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 738,
+          "text": "Hemidactylus brookii"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Cuddalore Port (11.7062, 79.7751): continues the table from p.730 (no site named on this or the previous page)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 47 within 500 km, 2,183 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Hemidactylus brookii",
+          "url": "https://www.gbif.org/species/5960063"
+        }
+      ],
+      "why": "0 GBIF records of Hemidactylus brookii within 100 km, but 47 within 500 km. 738 records of other Squamata within 100 km, so the area is surveyed. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_species_p0738.png"
+      ]
+    },
+    {
+      "id": "sp-p738-003",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Ahaetulla mycterizans at Cuddalore Port (p.738)",
+      "message": "0 GBIF records of Ahaetulla mycterizans within 100 km, but 2 within 500 km. 738 records of other Squamata within 100 km, so the area is surveyed. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 738,
+          "text": "Ahaetulla mycterizans"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Cuddalore Port (11.7062, 79.7751): continues the table from p.730 (no site named on this or the previous page)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 2 within 500 km, 387 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Ahaetulla mycterizans",
+          "url": "https://www.gbif.org/species/7898948"
+        }
+      ],
+      "why": "0 GBIF records of Ahaetulla mycterizans within 100 km, but 2 within 500 km. 738 records of other Squamata within 100 km, so the area is surveyed. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_species_p0738.png"
+      ]
+    },
+    {
+      "id": "ac-02",
+      "check": "accreditation",
+      "check_name": "Consultant accreditation",
+      "grade": "INFO",
+      "title": "The report gives 2 different NABET certificate numbers",
+      "message": "The report states more than one NABET certificate number for its consultant. Flagged, verify which certificate covers this report.",
+      "quotes": [
+        {
+          "page": 1,
+          "text": "Tamil Nadu Submitted by QCI-NABET Accredited EIA Consultant QCI-NABET Accredited EIA Consultant NABET/EIA/23-26/SA 0236 NABET/EIA/23-26/SA 0236 C25014 DL003, Rev 0 Mahathi Cuddalore Port and Maritime"
+        },
+        {
+          "page": 469,
+          "text": "NABET/EIA/2326/IA 0123 valid up to August 16, 2026 attached as Appendix M for carrying out EIA studies"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Certificate numbers in the report",
+          "value": "NABET/EIA/23-26/SA 0236 (p.1, also pp. 8, 9); NABET/EIA/2326/IA 0123 (p.469)"
+        }
+      ],
+      "why": "Different certificate numbers appear in the report: NABET/EIA/23-26/SA 0236 (p.1, also pp. 8, 9); NABET/EIA/2326/IA 0123 (p.469).",
+      "clear": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
+      "known_issue": null,
+      "images": [
+        "pages/cuddalore_port_2026_draft_full_p0001.png",
+        "pages/cuddalore_port_2026_draft_full_p0469.png"
+      ]
+    },
+    {
+      "id": "om-16",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Sphyrna lewini (IUCN CR) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Sphyrna lewini: 1 record(s) within 25 km of Cuddalore Port, latest 1966"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN CR)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1966"
+        },
+        {
+          "label": "Names searched for",
+          "value": "sphyrna lewini, s. lewini, s.lewini, sphyrnalewini, sphyrna l ewini, cestracion leeuwenii, c. leeuwenii, c.leeuwenii, cestracionleeuwenii, cestracion l eeuwenii, cestracion oceanica, c. oceanica, c.oceanica, cestracionoceanica, cestracion o ceanica, sphyrna diplana, s. diplana, s.diplana, sphyrnadiplana, sphyrna d iplana, sphyrna leweni, s. leweni, s.leweni, sphyrnaleweni, sphyrna l eweni, zygaena erythraea, z. erythraea, z.erythraea, zygaenaerythraea, zygaena e rythraea, zygaena indica, z. indica, z.indica, zygaenaindica, zygaena i ndica, zygaena lewini, z. lewini, z.lewini, zygaenalewini, zygaena l ewini, Bronze hammerhead shark, Hammer-head Shark, Kidney-headed Shark, Scalloped Hammerhead, Scalloped Hammerhead Shark, Scalloped hammerhead, Southern hammerhead shark, gebuchteter Hammerhai, scalloped hammerhead"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Sphyrna lewini",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2418789&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN CR species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-17",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Rhynchobatus djiddensis (IUCN CR) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Rhynchobatus djiddensis: 1 record(s) within 25 km of Cuddalore Port, latest 1966"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN CR)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1966"
+        },
+        {
+          "label": "Names searched for",
+          "value": "rhynchobatus djiddensis, r. djiddensis, r.djiddensis, rhynchobatusdjiddensis, rhynchobatus d jiddensis, raja djiddensis, rajadjiddensis, raja d jiddensis, rhinchobatus djiddensis, rhinchobatusdjiddensis, rhinchobatus d jiddensis, rhinobatus djiddensis, rhinobatusdjiddensis, rhinobatus d jiddensis, rhinobatus maculata, r. maculata, r.maculata, rhinobatusmaculata, rhinobatus m aculata, rhynchobatis djiddensis, rhynchobatisdjiddensis, rhynchobatis d jiddensis, rhynchobatus djeddensis, r. djeddensis, r.djeddensis, rhynchobatusdjeddensis, rhynchobatus d jeddensis, rhynchobatus djiddenis, r. djiddenis, r.djiddenis, rhynchobatusdjiddenis, rhynchobatus d jiddenis, rhyncobatis djeddensis, rhyncobatisdjeddensis, rhyncobatis d jeddensis, rhyncobatus djeddensis, rhyncobatusdjeddensis, rhyncobatus d jeddensis, rhyncobatus djiddensis, rhyncobatusdjiddensis, rhyncobatus d jiddensis, rynchobatus djiddensis, rynchobatusdjiddensis, rynchobatus d jiddensis, Giant guitarfish, Whitespotted Wedgefish, spotted guitarfish, whitespotted wedgefish"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Rhynchobatus djiddensis",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2418935&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN CR species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-18",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Ixora notoniana (IUCN EN) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Ixora notoniana: 1 record(s) within 25 km of Cuddalore Port, latest 1997"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN EN)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1997"
+        },
+        {
+          "label": "Names searched for",
+          "value": "ixora notoniana, i. notoniana, i.notoniana, ixoranotoniana, ixora n otoniana, ixora grandiflora, i. grandiflora, i.grandiflora, ixoragrandiflora, ixora g randiflora, ixora saulierei, i. saulierei, i.saulierei, ixorasaulierei, ixora s aulierei, ixora sivarajiana, i. sivarajiana, i.sivarajiana, ixorasivarajiana, ixora s ivarajiana, ixora wightiana, i. wightiana, i.wightiana, ixorawightiana, ixora w ightiana, Large-flower Ixora"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Ixora notoniana",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2905952&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN EN species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-19",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Telatrygon zugei (IUCN EN) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Telatrygon zugei: 1 record(s) within 25 km of Cuddalore Port, latest 1966"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN EN)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1966"
+        },
+        {
+          "label": "Names searched for",
+          "value": "telatrygon zugei, t. zugei, t.zugei, telatrygonzugei, telatrygon z ugei, amphotistius zugei, a. zugei, a.zugei, amphotistiuszugei, amphotistius z ugei, dasyatis cheni, d. cheni, d.cheni, dasyatischeni, dasyatis c heni, dasyatis zugei, d. zugei, d.zugei, dasyatiszugei, dasyatis z ugei, telatrygon crozieri, t. crozieri, t.crozieri, telatrygoncrozieri, telatrygon c rozieri, trygon crozieri, trygoncrozieri, trygon c rozieri, trygon zugei, trygonzugei, trygon z ugei, Pale-edge Sharpnose Ray, Pale-edged Stingray"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Telatrygon zugei",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=9601413&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN EN species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-20",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Narke dipterygia (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Narke dipterygia: 3 record(s) within 25 km of Cuddalore Port, latest 1966"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 3 within 25 km; latest 1966"
+        },
+        {
+          "label": "Names searched for",
+          "value": "narke dipterygia, n. dipterygia, n.dipterygia, narkedipterygia, narke d ipterygia, bengalichthys impennis, b. impennis, b.impennis, bengalichthysimpennis, bengalichthys i mpennis, raja dipterygia, r. dipterygia, r.dipterygia, rajadipterygia, raja d ipterygia, Spottail Sleeper Ray"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Narke dipterygia",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2419760&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 3 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-21",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Santalum album (IUCN VU) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Santalum album: 1 record(s) within 25 km of Cuddalore Port, latest 1998"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN VU)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1998"
+        },
+        {
+          "label": "Names searched for",
+          "value": "santalum album, s. album, s.album, santalumalbum, santalum a lbum, santalum ellipticum, s. ellipticum, s.ellipticum, santalumellipticum, santalum e llipticum, santalum myrtifolium, s. myrtifolium, s.myrtifolium, santalummyrtifolium, santalum m yrtifolium, santalum ovatum, s. ovatum, s.ovatum, santalumovatum, santalum o vatum, sirium myrtifolium, siriummyrtifolium, sirium m yrtifolium, East Indian Sandalwood, East Indian sandalwood, Indian Sandalwood, Indian sandalwood, Sandalwood, Sandal, Sandal tree, White sandal tree, White sandalwood, Indian sandalwood, white sandalwood, white saunders, yellow sandalwood, yellow saunders"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Santalum album",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2889785&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN VU species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-22",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Coracias benghalensis (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Coracias benghalensis: 915 record(s) within 25 km of Cuddalore Port, latest 2025"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "48 within 10 km (48 since 2000), 915 within 25 km; latest 2025"
+        },
+        {
+          "label": "Names searched for",
+          "value": "coracias benghalensis, c. benghalensis, c.benghalensis, coraciasbenghalensis, coracias b enghalensis, Indian Roller, Indian roller"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Coracias benghalensis",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2475379&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 915 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-23",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Falco chicquera (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Falco chicquera: 45 record(s) within 25 km of Cuddalore Port, latest 2022"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 45 within 25 km; latest 2022"
+        },
+        {
+          "label": "Names searched for",
+          "value": "falco chicquera, f. chicquera, f.chicquera, falcochicquera, falco c hicquera, Red-headed Falcon, Red-necked Falcon"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Falco chicquera",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481019&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 45 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-24",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Numenius arquata (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Numenius arquata: 29 record(s) within 25 km of Cuddalore Port, latest 2024"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "2 within 10 km (2 since 2000), 29 within 25 km; latest 2024"
+        },
+        {
+          "label": "Names searched for",
+          "value": "numenius arquata, n. arquata, n.arquata, numeniusarquata, numenius a rquata, scolopax arcuata, s. arcuata, s.arcuata, scolopaxarcuata, scolopax a rcuata, scolopax spec, s. spec, s.spec, scolopaxspec, tringa arquata, t. arquata, t.arquata, tringaarquata, tringa a rquata, Common Curlew, Curlew, Eurasian Curlew, European Curlew, Western Curlew, curlew, eurasian curlew, western curlew"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Numenius arquata",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481792&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 29 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-25",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Limosa limosa (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Limosa limosa: 25 record(s) within 25 km of Cuddalore Port, latest 2024"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "1 within 10 km (1 since 2000), 25 within 25 km; latest 2024"
+        },
+        {
+          "label": "Names searched for",
+          "value": "limosa limosa, l. limosa, l.limosa, limosalimosa, limosa l imosa, limosa belgica, l. belgica, l.belgica, limosabelgica, limosa b elgica, scolopax spec, s. spec, s.spec, scolopaxspec, European Black-tailed Godwit"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Limosa limosa",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481685&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 25 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-26",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Haematopus ostralegus (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Haematopus ostralegus: 7 record(s) within 25 km of Cuddalore Port, latest 2021"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 7 within 25 km; latest 2021"
+        },
+        {
+          "label": "Names searched for",
+          "value": "haematopus ostralegus, h. ostralegus, h.ostralegus, haematopusostralegus, haematopus o stralegus, Eurasian Pied Oystercatcher, European Oystercatcher, Northern Oystercatcher, Northern Pied Oystercatcher, Palearctic oystercatcher, oystercatcher, eurasian oystercatcher"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Haematopus ostralegus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=7788295&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 7 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-27",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Circus macrourus (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Circus macrourus: 5 record(s) within 25 km of Cuddalore Port, latest 2020"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 5 within 25 km; latest 2020"
+        },
+        {
+          "label": "Names searched for",
+          "value": "circus macrourus, c. macrourus, c.macrourus, circusmacrourus, circus m acrourus, accipiter macrourus, a. macrourus, a.macrourus, accipitermacrourus, accipiter m acrourus, Pale Harrier, Pallid Harrier, Pallid harrier, Pallid/Montagu's Harrier, pallid harrier"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Circus macrourus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2480491&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 5 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-28",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Ciconia episcopus (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Ciconia episcopus: 3 record(s) within 25 km of Cuddalore Port, latest 2017"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "1 within 10 km (1 since 2000), 3 within 25 km; latest 2017"
+        },
+        {
+          "label": "Names searched for",
+          "value": "ciconia episcopus, c. episcopus, c.episcopus, ciconiaepiscopus, ciconia e piscopus, dissoura episcopus, d. episcopus, d.episcopus, dissouraepiscopus, dissoura e piscopus, Asian Woolly-necked Stork, Asian Woollyneck, Asian woollyneck, White-necked Stork"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Ciconia episcopus",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481918&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 3 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-29",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Scomberomorus commerson (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Scomberomorus commerson: 2 record(s) within 25 km of Cuddalore Port, latest 2026"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 2 within 25 km; latest 2026"
+        },
+        {
+          "label": "Names searched for",
+          "value": "scomberomorus commerson, s. commerson, s.commerson, scomberomoruscommerson, scomberomorus c ommerson, cibium commersonii, c. commersonii, c.commersonii, cibiumcommersonii, cibium c ommersonii, cybium commersoni, c. commersoni, c.commersoni, cybiumcommersoni, cybium c ommersoni, cybium konam, c. konam, c.konam, cybiumkonam, cybium k onam, cybium multifasciatum, c. multifasciatum, c.multifasciatum, cybiummultifasciatum, cybium m ultifasciatum, scomber commerson, scombercommerson, scomber c ommerson, scomber commersonii, s. commersonii, s.commersonii, scombercommersonii, scomber c ommersonii, scomber maculosus, s. maculosus, s.maculosus, scombermaculosus, scomber m aculosus, scomberomorous commerson, scomberomorouscommerson, scomberomorous c ommerson, scomberomorus commercon, s. commercon, s.commercon, scomberomoruscommercon, scomberomorus c ommercon, scomberomorus commersonii, scomberomoruscommersonii, scomberomorus c ommersonii, scomerommorus commerson, scomerommoruscommerson, scomerommorus c ommerson, Narrow-barred Spanish Mackerel, Narrow-barred Spanish mackerel, narrow-barred Spanish mackerel, narrow-barred spanish mackerel"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Scomberomorus commerson",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2374255&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 2 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-30",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Calidris alpina (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Calidris alpina: 2 record(s) within 25 km of Cuddalore Port, latest 2023"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "2 within 10 km (2 since 2000), 2 within 25 km; latest 2023"
+        },
+        {
+          "label": "Names searched for",
+          "value": "calidris alpina, c. alpina, c.alpina, calidrisalpina, calidris a lpina, calidris variabilis, c. variabilis, c.variabilis, calidrisvariabilis, calidris v ariabilis, erolia alpina, e. alpina, e.alpina, eroliaalpina, erolia a lpina, pelidna alpina, p. alpina, p.alpina, pelidnaalpina, pelidna a lpina, tringa variabilis, t. variabilis, t.variabilis, tringavariabilis, tringa v ariabilis, Dunlin (sakhalina Group), Dunlin (staging), Lapland Dunlin, Lapland dunlin, Red-backed Sandpiper"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Calidris alpina",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481759&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 2 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-31",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Rhizoprionodon oligolinx (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Rhizoprionodon oligolinx: 1 record(s) within 25 km of Cuddalore Port, latest 1966"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 1966"
+        },
+        {
+          "label": "Names searched for",
+          "value": "rhizoprionodon oligolinx, r. oligolinx, r.oligolinx, rhizoprionodonoligolinx, rhizoprionodon o ligolinx, rizoprionodon oligolinx, rizoprionodonoligolinx, rizoprionodon o ligolinx, Grey Sharpnose Shark, grey sharpnose shark"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Rhizoprionodon oligolinx",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2417863&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-32",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Arenaria interpres (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Arenaria interpres: 1 record(s) within 25 km of Cuddalore Port, latest 2023"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2023"
+        },
+        {
+          "label": "Names searched for",
+          "value": "arenaria interpres, a. interpres, a.interpres, arenariainterpres, arenaria i nterpres, strepsilas interpres, s. interpres, s.interpres, strepsilasinterpres, strepsilas i nterpres, Pond bird, Ruddy Turnstone, Turn-stone, calico-back, ruddy turnstone"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Arenaria interpres",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=2481776&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    },
+    {
+      "id": "om-33",
+      "check": "omission",
+      "check_name": "Not mentioned",
+      "grade": "INFO",
+      "title": "Calophyllum polyanthum (IUCN NT) not mentioned",
+      "message": "Recorded near the project site (GBIF) but not mentioned in the report. Verify whether it was assessed.",
+      "quotes": [
+        {
+          "page": null,
+          "where": "GBIF, near the site",
+          "text": "Calophyllum polyanthum: 1 record(s) within 25 km of Cuddalore Port, latest 2007"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "GBIF records (IUCN NT)",
+          "value": "0 within 10 km (0 since 2000), 1 within 25 km; latest 2007"
+        },
+        {
+          "label": "Names searched for",
+          "value": "calophyllum polyanthum, c. polyanthum, c.polyanthum, calophyllumpolyanthum, calophyllum p olyanthum, calophyllum amoenum, c. amoenum, c.amoenum, calophyllumamoenum, calophyllum a moenum, calophyllum angustifolium, c. angustifolium, c.angustifolium, calophyllumangustifolium, calophyllum a ngustifolium, calophyllum elatum, c. elatum, c.elatum, calophyllumelatum, calophyllum e latum, calophyllum smilesianum, c. smilesianum, c.smilesianum, calophyllumsmilesianum, calophyllum s milesianum, calophyllum williamsianum, c. williamsianum, c.williamsianum, calophyllumwilliamsianum, calophyllum w illiamsianum, Poonspar Tree, sirpoontree"
+        },
+        {
+          "label": "Pages searched",
+          "value": "747 of 802 with usable text (55 scanned pages not searched)"
+        },
+        {
+          "label": "GBIF map of these records",
+          "value": "Calophyllum polyanthum",
+          "url": "https://www.gbif.org/occurrence/search?taxon_key=5556276&geo_distance=11.7062,79.7751,25km&occurrence_status=present"
+        }
+      ],
+      "why": "GBIF has 1 record(s) of this IUCN NT species within 25 km of the site; no page of the report names it.",
+      "clear": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
+      "known_issue": null,
+      "images": []
+    }
+  ],
+  "exported_in_s": 20.5
+}

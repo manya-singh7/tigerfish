@@ -20,6 +20,7 @@ CENTROIDS = {
     "FI": ("Finland", 64.5, 26.3), "FJ": ("Fiji", -17.4, 178.1),
     "FR": ("France", 46.6, 2.4), "GB": ("United Kingdom", 54.0, -2.5),
     "GR": ("Greece", 39.1, 22.9), "GT": ("Guatemala", 15.7, -90.4),
+    "GH": ("Ghana", 7.9, -1.0), "CM": ("Cameroon", 5.7, 12.7),
     "HK": ("Hong Kong", 22.4, 114.1), "ID": ("Indonesia", -2.2, 117.3),
     "IE": ("Ireland", 53.2, -8.1), "IL": ("Israel", 31.4, 35.0),
     "IN": ("India", 22.9, 79.6), "IQ": ("Iraq", 33.0, 43.7),

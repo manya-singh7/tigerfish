@@ -90,25 +90,29 @@ def confirm(name):
     return m
 
 
-def location_for(page_no, texts):
-    """(lat, lon, label, reason) from the site most often named on the page and the page before."""
+def location_for(page_no, texts, sites=None, centre=None, centre_label="island centre"):
+    """(lat, lon, label, reason) from the site most often named on the page and the page before.
+    sites / centre default to the Great Nicobar ones (SITES, ISLAND_CENTRE); other reports
+    pass their own (tigerfish/sites.py)."""
+    sites = sites or SITES
+    centre = centre or ISLAND_CENTRE
     text = " ".join(texts.get(n, "") for n in (page_no - 1, page_no))
-    counts = Counter({site: len(re.findall(re.escape(site), text, re.IGNORECASE)) for site in SITES})
+    counts = Counter({site: len(re.findall(re.escape(site), text, re.IGNORECASE)) for site in sites})
     site, n = counts.most_common(1)[0]
     if n == 0:
-        return (*ISLAND_CENTRE, "island centre", "no site named on this or the previous page")
+        return (*centre, centre_label, "no site named on this or the previous page")
     others = ", ".join(f"{s} {c}" for s, c in counts.items() if c and s != site)
     reason = f"'{site}' named {n} time(s) on p.{page_no - 1}-{page_no}" + (f" (also: {others})" if others else "")
-    return (*SITES[site], site, reason)
+    return (*sites[site], site, reason)
 
 
-def table_locations(table_pages, texts):
+def table_locations(table_pages, texts, **where):
     """{page: (lat, lon, label, reason)}. Consecutive table pages are one table: they share
     the location found from the table's first page (and the page before it)."""
     out, run_start, run_loc = {}, None, None
     for n in sorted(table_pages):
         if run_start is None or n != prev + 1:              # a new table starts here
-            run_start, run_loc = n, location_for(n, texts)
+            run_start, run_loc = n, location_for(n, texts, **where)
             out[n] = run_loc
         else:
             lat, lon, label, reason = run_loc
@@ -136,13 +140,17 @@ def _parallel(fn, items, workers=GBIF_WORKERS):
         return dict(zip(items, pool.map(fn, items)))
 
 
-def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS):
-    """Rows: {page, name, gbif_name, grade, local, regional, far, global, location, reason, via}."""
+def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS, profile=None):
+    """Rows: {page, name, gbif_name, grade, local, regional, far, global, location, reason, via}.
+    profile: the report's site profile (tigerfish/sites.py); None = the Great Nicobar defaults."""
+    where = ({"sites": profile["sites"], "centre": profile["centre"],
+              "centre_label": profile["centre_label"]} if profile else {})
+    gadm = profile["archipelago_gadm"] if profile else species.ANDAMAN_NICOBAR_GADM
     texts = {p["page"]: p.get("text", "") for p in pages}
     by = {p["page"]: p for p in pages}
     table_pages = species_table_pages(pages)
     vision_pages = scanned_neighbours(pages, table_pages)[:max_vision] if use_vision else []
-    locations = table_locations(table_pages + vision_pages, texts)
+    locations = table_locations(table_pages + vision_pages, texts, **where)
 
     # 1. names per page (GBIF name matching in parallel)
     raw = {n: candidate_names(texts[n]) for n in table_pages}
@@ -155,7 +163,8 @@ def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS):
     for page_no in sorted(table_pages + vision_pages):
         lat, lon, site, _ = locations[page_no]
         jobs += [(name, lat, lon) for name in names_by_page[page_no]]
-    results = _parallel(lambda job: species.check_species(*job), jobs, workers)
+    results = _parallel(lambda job: species.check_species(*job, archipelago_gadm=gadm), jobs,
+                        workers)
 
     rows, seen = [], set()
     for page_no in sorted(table_pages + vision_pages):
@@ -176,4 +185,5 @@ def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS):
                          "mobile_region": r.get("mobile_region", False),
                          "links": r["gbif_links"], "location": site, "lat": lat, "lon": lon,
                          "reason": reason, "via": via})
-    return {"table_pages": table_pages, "vision_pages": vision_pages, "rows": rows}
+    return {"table_pages": table_pages, "vision_pages": vision_pages, "rows": rows,
+            "archipelago_rule": gadm}

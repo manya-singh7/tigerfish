@@ -1,6 +1,7 @@
 """Export saved results for the app's replay mode into results/ (committed, unlike cache/).
 
-Usage: python scripts/export_results.py
+Usage: python scripts/export_results.py                  (every report)
+       python scripts/export_results.py --only cuddalore  (one report; the others are kept)
 
 Runs each report's pipeline from cache (no new API calls are expected; any that are
 needed stay under the usual caps) and writes:
@@ -11,9 +12,11 @@ needed stay under the usual caps) and writes:
 No PDFs, no source images (the Scroll table image stays local), no API keys.
 """
 
+import argparse
 import json
 import math
 import os
+import re
 import statistics
 import sys
 import time
@@ -26,7 +29,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import check_contradictions  # noqa: E402
 import check_copypaste  # noqa: E402
 import demo_table  # noqa: E402
-from tigerfish import claims, copycheck, llm, pdf_reader, promises, scope, status, trace  # noqa: E402
+from tigerfish import (accreditation, claims, copycheck, llm, pdf_reader, promises,  # noqa: E402
+                       scope, sites, status, trace)
 from tigerfish import contradictions as ct  # noqa: E402
 from tigerfish.report import (GRADE_ORDER, attach_images, contradiction_findings,  # noqa: E402
                               finding, highlight_pages, sort_findings)
@@ -40,6 +44,7 @@ GN_PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 GN_PAGES = [234, 392, 444, 751, 818, 851, 940, 978, 1141, 1168]
 TABLE_IMAGE = ROOT / "data" / "demo" / "indira_point_table_3_16_mammals.png"
 INDIRA_POINT = (6.75, 93.83)
+CUD_PDF = ROOT / "data" / "eias" / "cuddalore_port_2026_draft_eia.pdf"
 # Full audit (scripts/audit.py without --pages). Its contradiction findings are kept under
 # full_run/ because the 10-page evaluation rewrites contradictions.jsonl in the same folder.
 FULL_RUN = RESULTS / f"audit_{GN_PDF.stem}.json"
@@ -93,7 +98,11 @@ def display_snippet(text):
     return "..." + " ".join(words) + "..."
 
 
-SPECIES_PAGES = ROOT / "cache" / "findings" / GN_PDF.stem / "species_pages.json"
+def findings_file(pdf, name):
+    """cache/findings/<pdf stem>/<name>: a check's saved results for one report."""
+    return ROOT / "cache" / "findings" / pdf.stem / name
+
+
 # Plants: GBIF has few digitised plant records for Great Nicobar but many within 500 km
 # (Sumatra, Andamans), so the "region surveyed, species absent" rule flags most plant names
 # (206 of 334 in the first run). Those stay in species_pages.json but are not app findings.
@@ -102,12 +111,13 @@ PLANT_CLASSES = {"Magnoliopsida", "Liliopsida", "Polypodiopsida", "Cycadopsida",
                  "Gnetopsida", "Lycopodiopsida", "Bryopsida"}
 
 
-def species_table_findings(report_id):
+def species_table_findings(report_id, pdf=GN_PDF):
     """RED/ORANGE results of scripts/check_species_pages.py as findings (one shared,
     highlighted image per page, so many flagged names don't mean many images)."""
-    if not SPECIES_PAGES.exists():
+    path = findings_file(pdf, "species_pages.json")
+    if not path.exists():
         return []
-    rows = [r for r in json.loads(SPECIES_PAGES.read_text(encoding="utf-8"))["rows"]
+    rows = [r for r in json.loads(path.read_text(encoding="utf-8"))["rows"]
             if r["grade"] in ("RED", "ORANGE")
             and (EXPORT_PLANT_FLAGS or r["class"] not in PLANT_CLASSES)]
     out = []
@@ -126,19 +136,17 @@ def species_table_findings(report_id):
     by_page = {}
     for f in out:
         by_page.setdefault(f["quotes"][0]["page"], []).append(f["quotes"][0]["text"])
-    images = highlight_pages(GN_PDF, by_page, PAGES_OUT, f"{report_id}_species", dpi=PAGE_DPI)
+    images = highlight_pages(pdf, by_page, PAGES_OUT, f"{report_id}_species", dpi=PAGE_DPI)
     attach_images(out, images, relative_to=RESULTS)
     return out
 
 
-OMISSIONS = ROOT / "cache" / "findings" / GN_PDF.stem / "omissions.json"
-
-
-def omission_findings():
+def omission_findings(pdf=GN_PDF, site_label="Galathea Bay"):
     """RED/ORANGE/INFO results of scripts/check_omissions.py as findings."""
-    if not OMISSIONS.exists():
+    path = findings_file(pdf, "omissions.json")
+    if not path.exists():
         return []
-    data = json.loads(OMISSIONS.read_text(encoding="utf-8"))
+    data = json.loads(path.read_text(encoding="utf-8"))
     n_pages, n_empty = data["pages_searched"], len(data["pages_without_text"])
     out = []
     for i, r in enumerate([r for r in data["rows"] if r["grade"]], 1):
@@ -154,21 +162,19 @@ def omission_findings():
         out.append(finding(f"om-{i:02d}", "omission", r["grade"],
                            f"{r['name']} (IUCN {r['category']}) not mentioned", r["message"],
                            [{"page": None, "where": "GBIF, near the site",
-                             "text": f"{r['name']}: {r['wide']} record(s) within 25 km of Galathea Bay, "
+                             "text": f"{r['name']}: {r['wide']} record(s) within 25 km of {site_label}, "
                                      f"latest {latest}"}],
                            ev, f"GBIF has {r['wide']} record(s) of this IUCN {r['category']} species "
                                f"within 25 km of the site; no page of the report names it."))
     return out
 
 
-ACCREDITATION = ROOT / "cache" / "findings" / GN_PDF.stem / "accreditation.json"
-
-
-def accreditation_findings():
+def accreditation_findings(pdf=GN_PDF):
     """The accreditation check as one finding (any grade except GREY)."""
-    if not ACCREDITATION.exists():
+    path = findings_file(pdf, "accreditation.json")
+    if not path.exists():
         return []
-    a = json.loads(ACCREDITATION.read_text(encoding="utf-8"))
+    a = json.loads(path.read_text(encoding="utf-8"))
     if a["grade"] in ("GREY", "NONE") or not a.get("entry"):
         return []
     d, e = a["details"], a["entry"]
@@ -239,11 +245,12 @@ def promise_findings(report_id):
     return out
 
 
-def species_pages_read():
+def species_pages_read(pdf=GN_PDF):
     """Pages the species-table check read (empty set if it has not been run)."""
-    if not SPECIES_PAGES.exists():
+    path = findings_file(pdf, "species_pages.json")
+    if not path.exists():
         return set()
-    data = json.loads(SPECIES_PAGES.read_text(encoding="utf-8"))
+    data = json.loads(path.read_text(encoding="utf-8"))
     return set(data["table_pages"]) | set(data["vision_pages"])
 
 
@@ -288,8 +295,16 @@ def same_finding(a, b):
         return False
     if {q.get("page") for q in a["quotes"]} != {q.get("page") for q in b["quotes"]}:
         return False
-    return all(any(q.get("page") == r.get("page") and ct.quotes_match(q["text"], r["text"])
-                   for r in b["quotes"]) for q in a["quotes"])
+    return all(any(same_quote(q, r) for r in b["quotes"]) for q in a["quotes"])
+
+
+def same_quote(q, r):
+    """Report quotes match loosely (ct.quotes_match) on the same page. A quote with no page is
+    our own summary line (e.g. an omission's GBIF line): those differ only in the species name
+    and numbers, so they must match exactly, or every omission collapses into one."""
+    if q.get("page") is None or r.get("page") is None:
+        return q.get("page") == r.get("page") and q["text"] == r["text"]
+    return q["page"] == r["page"] and ct.quotes_match(q["text"], r["text"])
 
 
 def dedupe(findings):
@@ -302,7 +317,7 @@ def dedupe(findings):
     return sort_findings(out)
 
 
-def page_images(prefix, findings, shared):
+def page_images(prefix, findings, shared, pdf=GN_PDF):
     """Highlighted page images. shared=False: one image set per finding (only its quotes
     highlighted). shared=True (full run, many findings): one image per page with every
     finding's quotes on it, so the image count is bounded by the pages."""
@@ -312,14 +327,14 @@ def page_images(prefix, findings, shared):
             for q in f["quotes"]:
                 if q.get("page"):
                     by_page.setdefault(q["page"], []).append(q["text"])
-        images = highlight_pages(GN_PDF, by_page, PAGES_OUT, prefix, dpi=PAGE_DPI)
+        images = highlight_pages(pdf, by_page, PAGES_OUT, prefix, dpi=PAGE_DPI)
         attach_images(findings, images, relative_to=RESULTS)
         return
     for f in findings:
         quotes_by_page = {}
         for q in f["quotes"]:
             quotes_by_page.setdefault(q["page"], []).append(q["text"])
-        images = highlight_pages(GN_PDF, quotes_by_page, PAGES_OUT, f"{prefix}_{f['id']}",
+        images = highlight_pages(pdf, quotes_by_page, PAGES_OUT, f"{prefix}_{f['id']}",
                                  dpi=PAGE_DPI)
         attach_images([f], images, relative_to=RESULTS)
 
@@ -363,19 +378,21 @@ SKIP_LABELS = {"hindi": "Hindi", "lab_report": "lab sheets", "annexure": "forms"
                "error": "unreadable"}
 
 
-def full_run_core():
+def full_run_core(pdf=GN_PDF):
     """Contradiction and copy-paste findings of the full audit (scripts/audit.py without
     --pages), rebuilt from cache. (findings, known-issue rows, extras) or None."""
-    if not (FULL_RUN.exists() and FULL_FINDINGS.exists()):
+    run_file = RESULTS / f"audit_{pdf.stem}.json"
+    findings_jsonl = findings_file(pdf, "full_run/contradictions.jsonl")
+    if not (run_file.exists() and findings_jsonl.exists()):
         return None
-    run = json.loads(FULL_RUN.read_text(encoding="utf-8"))
-    kept, skipped = scope.select_pages(pdf_reader.read_pdf(GN_PDF))
+    run = json.loads(run_file.read_text(encoding="utf-8"))
+    kept, skipped = scope.select_pages(pdf_reader.read_pdf(pdf))
     texts = {p["page"]: p["text"] for p in kept}
-    con = [json.loads(line) for line in FULL_FINDINGS.read_text(encoding="utf-8").splitlines()
+    con = [json.loads(line) for line in findings_jsonl.read_text(encoding="utf-8").splitlines()
            if line.strip()]
-    rows = ct.evaluate(con, check_contradictions.known_issues_for(GN_PDF))
+    rows = ct.evaluate(con, check_contradictions.known_issues_for(pdf))
     known = {r["finding_id"]: r["id"] for r in rows if r["finding_id"]}
-    ledger = [c for c in claims.load_ledger(GN_PDF.stem) if c["page"] in texts]
+    ledger = [c for c in claims.load_ledger(pdf.stem) if c["page"] in texts]
     budget = copycheck.Budget(max(run["tavily"]["credits"], 1))  # cached: no new credits
     if run.get("copy_passage_list"):     # the passages the run checked, as it saved them
         passages = [{"page": p["page"], "text": p["text"], "claim_ids": p.get("claim_ids", []),
@@ -549,6 +566,152 @@ def indira_point_table():
     }
 
 
+# ---------- Cuddalore Port expansion (2026 draft EIA) ----------
+
+STOPPED_AT = re.compile(r"stopped at candidate (\d+) of (\d+)")
+
+
+def audit_status(run):
+    """How much of the audit's candidate list was judged, from the run report. It updates by
+    itself after a resume: a run that was not stopped judged every candidate."""
+    total = run["candidates"]
+    m = STOPPED_AT.search(run.get("stopped") or "")
+    if m:
+        judged, total = int(m.group(1)), int(m.group(2))
+        return {"complete": False, "judged": judged, "candidates": total,
+                "label": f"Audit partial: {judged:,} of {total:,} candidate pairs judged"}
+    return {"complete": True, "judged": total, "candidates": total,
+            "label": f"Audit complete: all {total:,} candidate pairs judged"}
+
+
+def status_table_findings(report_id, pdf):
+    """ORANGE results of scripts/check_status_pages.py (IUCN / WPA in the report's own
+    tables) as findings. The same name, check and printed value on several pages is one
+    finding citing every page."""
+    path = findings_file(pdf, "status_pages.json")
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    groups = {}
+    for r in data["results"]:
+        if r["grade"] == "ORANGE":
+            groups.setdefault((r["check"], r["name"], str(r["report_value"])), []).append(r)
+    out = []
+    for (chk, name, value), rs in groups.items():
+        s, pages = rs[0], sorted({r["page"] for r in rs})
+        check = "iucn_status" if chk == "iucn" else "legal_schedule"
+        ev = [{"label": "Report says", "value": value},
+              {"label": "Current", "value": str(s.get("current_value"))}]
+        if check == "iucn_status":
+            ev.append({"label": "GBIF / IUCN Red List", "value": s.get("gbif_name"), "url": s.get("url")})
+        else:
+            ev.append({"label": f"Source ({s.get('source_label') or 'source'})",
+                       "value": s.get("quote"), "url": s.get("url")})
+            ev += [{"label": t["tier"], "value": tier_note(t)}
+                   for t in s.get("source_tiers") or [] if not t["found"]]
+        where = ", ".join(f"p.{n}" for n in pages)
+        what = "IUCN category" if check == "iucn_status" else "WPA schedule"
+        out.append(finding(f"st-{len(out) + 1:02d}", check, "ORANGE",
+                           f"{name}: {what} {value} ({where})", s["message"],
+                           [{"page": n, "text": name} for n in pages], ev, s["evidence"]))
+    by_page = {}
+    for f in out:
+        for q in f["quotes"]:
+            by_page.setdefault(q["page"], []).append(q["text"])
+    images = highlight_pages(pdf, by_page, PAGES_OUT, f"{report_id}_status", dpi=PAGE_DPI)
+    attach_images(out, images, relative_to=RESULTS)
+    return out
+
+
+def certificate_findings(pages):
+    """INFO: the report states more than one NABET certificate number (read from the
+    report's own text; nothing is looked up). One quote per distinct number."""
+    found = accreditation.certificate_numbers(pages)
+    if len(found) < 2:
+        return []
+    listed = "; ".join(f"{c['number']} (p.{c['page']}"
+                       + (f", also pp. {', '.join(map(str, c['also_on']))}" if c["also_on"] else "")
+                       + ")" for c in found)
+    return [finding("ac-02", "accreditation", "INFO",
+                    f"The report gives {len(found)} different NABET certificate numbers",
+                    "The report states more than one NABET certificate number for its consultant. "
+                    "Flagged, verify which certificate covers this report.",
+                    [{"page": c["page"], "text": c["quote"]} for c in found],
+                    [{"label": "Certificate numbers in the report", "value": listed}],
+                    f"Different certificate numbers appear in the report: {listed}.")]
+
+
+def cuddalore():
+    report_id = "cuddalore_port_2026_draft"
+    prof = sites.profile(CUD_PDF.stem)
+    trace.reset()
+    started = time.time()
+    for old in PAGES_OUT.glob(f"{report_id}_*.png"):
+        old.unlink()
+    full = full_run_core(CUD_PDF)
+    if not full:
+        sys.exit(f"No audit run for {CUD_PDF.name}: run scripts/audit.py first.")
+    findings, _, extra = full
+    run, kept, skipped = extra["run"], extra["kept"], extra["skipped"]
+    all_pages = pdf_reader.read_pdf(CUD_PDF)
+    findings += species_table_findings(report_id, CUD_PDF)
+    findings += omission_findings(CUD_PDF, prof["site_label"])
+    findings += status_table_findings(report_id, CUD_PDF)
+    findings += accreditation_findings(CUD_PDF)
+    findings += certificate_findings(all_pages)
+    findings = dedupe(findings)
+    page_images(f"{report_id}_full", [f for f in findings if not f["images"]], shared=True,
+                pdf=CUD_PDF)
+
+    audit = audit_status(run)
+    pages_read = kept | species_pages_read(CUD_PDF)
+    n_total = len(all_pages)
+    n_skipped = n_total - len(pages_read)
+    kinds = [SKIP_LABELS.get(k, k) for k, v in sorted(skipped.items(), key=lambda kv: -len(kv[1]))
+             if set(v) - pages_read]
+    tot = run.get("run_totals") or {"cost_usd": run["cost_usd"],
+                                    "tavily_credits": run["tavily"]["credits"],
+                                    "wall_clock_s": run["wall_clock_s"]}
+    acc = findings_file(CUD_PDF, "accreditation.json")
+    acc_credits = json.loads(acc.read_text(encoding="utf-8")).get("tavily_credits", 0) if acc.exists() else 0
+    _, _, gbif, _ = run_cost(trace.used)
+    notices = [audit["label"] + ("" if audit["complete"]
+                                 else "; the pairs not yet judged may hold more flags."),
+               "Flags not yet human-reviewed: each one is flagged for checking; verify it "
+               "against the report before relying on it."]
+    out = {
+        "id": report_id, "title": "Cuddalore Port expansion EIA (2026 draft)",
+        "source": "Draft EIA/EMP report by Falcon Resilient Infra Consultants for Mahathi "
+                  "Cuddalore Port and Maritime Private Limited (MCPMPL), May 2026",
+        "state": prof["state"],
+        "site": {"lat": prof["site"][0], "lon": prof["site"][1], "label": prof["site_label"],
+                 "source": prof["site_source"]},
+        "audit_status": audit, "human_reviewed": False, "notices": notices,
+        "pages_read": len(pages_read), "pages_total": n_total, "pages_skipped": n_skipped,
+        "pages_note": (f"pages audited; {n_skipped} skipped: {'/'.join(kinds)}"
+                       if n_skipped else "pages audited"),
+        "checks": ["Claim extraction (Nemotron Lightning / Super-VL)",
+                   "Internal contradictions and recycled figures (Nemotron Ultra)",
+                   "Copied text (Tavily)",
+                   "Species tables in the report (GBIF)",
+                   "Threatened species not mentioned (GBIF)",
+                   "IUCN status and WPA schedules in the report's tables (GBIF, Tavily)",
+                   "Consultant accreditation (NABET, official list)"],
+        "cost": {"nebius_usd": round(tot["cost_usd"], 4),
+                 "tavily_credits": tot["tavily_credits"] + acc_credits, "gbif_calls": gbif,
+                 "approx_seconds": tot["wall_clock_s"],
+                 "time_note": "wall clock, full audit, 6 parallel calls",
+                 "note": (f"Nebius models: full audit ${tot['cost_usd']:.2f} "
+                          f"({audit['label'][0].lower() + audit['label'][1:]}); Tavily: audit "
+                          f"{tot['tavily_credits']} + accreditation {acc_credits} credits")},
+        "full_run": {"file": f"audit_{CUD_PDF.stem}.json", "cost_usd": tot["cost_usd"],
+                     "wall_clock_s": tot["wall_clock_s"], "pages_audited": run["pages_audited"]},
+        "known_issues": [],
+        "findings": findings, "exported_in_s": round(time.time() - started, 1),
+    }
+    return report_id, out
+
+
 def no_secrets_in(folder):
     keys = [v for k, v in os.environ.items() if k.endswith("_API_KEY") and v and len(v) > 12]
     for p in folder.rglob("*.json"):
@@ -556,18 +719,35 @@ def no_secrets_in(folder):
         assert not any(k in text for k in keys), f"API key found in {p}"
 
 
+# --only name -> (builder, report id); this order is the report picker's order
+BUILDERS = {"great_nicobar": (great_nicobar, "great_nicobar_2021_draft"),
+            "cuddalore": (cuddalore, "cuddalore_port_2026_draft"),
+            "indira_point": (indira_point_table, "indira_point_table_3_16")}
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--only", choices=list(BUILDERS),
+                        help="export one report; the others in results/index.json are kept")
+    args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     RESULTS.mkdir(exist_ok=True)
+    index_path = RESULTS / "index.json"
+    earlier = ({e["id"]: e for e in json.loads(index_path.read_text(encoding="utf-8"))}
+               if index_path.exists() else {})
     index = []
-    for build in (great_nicobar, indira_point_table):
+    for key, (build, rid) in BUILDERS.items():
+        if args.only and key != args.only:
+            if rid in earlier:            # not rebuilt this time: keep its earlier entry
+                index.append(earlier[rid])
+            continue
         report_id, data = build()
         (RESULTS / f"{report_id}.json").write_text(
             json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         grades = {g: sum(f["grade"] == g for f in data["findings"]) for g in ("RED", "ORANGE", "INFO")}
         index.append({"id": report_id, "title": data["title"], "file": f"{report_id}.json"})
         print(f"{report_id}: {len(data['findings'])} findings {grades}; cost {data['cost']}")
-    (RESULTS / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
+    index_path.write_text(json.dumps(index, indent=2), encoding="utf-8")
     no_secrets_in(RESULTS)
     print(f"Wrote {RESULTS} ({sum(1 for _ in PAGES_OUT.glob('*.png'))} page images). "
           f"New API spend: ${llm.session_cost_usd:.4f}")

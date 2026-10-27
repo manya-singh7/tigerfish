@@ -366,3 +366,20 @@ def test_mobile_bird_in_wider_region_is_grey(monkeypatch):
 def test_mobile_bird_absent_from_region_stays_red(monkeypatch):
     monkeypatch.setattr(species, "gbif_get", bird_gbif(archipelago=0))   # 0 within 3,000 km
     assert species.check_species("Testus fakeus", 7.0, 93.85)["grade"] == "RED"
+
+
+def test_archipelago_rule_off_for_mainland_sites(monkeypatch):
+    """archipelago_gadm=None (e.g. Cuddalore): no A&N lookup; the mobile-taxa rule still
+    applies, and the evidence does not mention the islands."""
+    asked = []
+    inner = bird_gbif(archipelago=14)
+
+    def gbif_get(path, **params):
+        asked.append(params.get("gadmGid"))
+        return inner(path, **params)
+
+    monkeypatch.setattr(species, "gbif_get", gbif_get)
+    r = species.check_species("Testus fakeus", 11.7, 79.78, archipelago_gadm=None)
+    assert species.ANDAMAN_NICOBAR_GADM not in asked
+    assert r["archipelago_count"] is None
+    assert "Andaman" not in r["evidence"]

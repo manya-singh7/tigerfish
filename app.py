@@ -51,6 +51,8 @@ else:
         st.stop()
     report = data.load(titles[choice])
     st.caption(f"Saved results. Source: {report.get('source', '')}")
+    for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
+        st.warning(notice)
     with hero_slot:
         hero.render(report)
 
@@ -101,15 +103,22 @@ with findings_tab:
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
                 f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
                 f'{feedback.where()}.</div>', unsafe_allow_html=True)
-    lang_label = st.radio("Letter language", ["English", "Hindi", "Both"], horizontal=True,
-                          help="Hindi is machine-translated. Quotes from the report, page "
-                               "numbers and links are never translated.")
-    lang = {"English": "en", "Hindi": "hi", "Both": "both"}[lang_label]
+    lang_options = {"English": "en", "Hindi": "hi", "Both": "both"}
+    state_lang = letter.state_language(report)        # e.g. Tamil for a Tamil Nadu report
+    if state_lang:
+        name = letter.LANGUAGES[state_lang]["name"]
+        lang_options.update({name: state_lang, f"English + {name}": f"en+{state_lang}"})
+    lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
+                          help="Hindi and Tamil are machine-translated (Tamil is offered for "
+                               "reports from Tamil Nadu). Quotes from the report, page numbers "
+                               "and links are never translated. Both = English + Hindi.")
+    lang = lang_options[lang_label]
+    lang_name = " and ".join(letter.LANGUAGES[x]["name"] for x in letter.parts(lang) if x != "en")
     docx_bytes, letter_error = b"", None
     if confirmed:
         try:
             if lang != "en" and hosted.is_hosted():
-                # Hindi is a paid (Lightning) call: the session's key and the daily budget
+                # A translation is a paid (Lightning) call: the session's key and the daily budget
                 if not hosted.paid_key(st.session_state):
                     raise letter.TranslationUnavailable("no key on the hosted app")
                 with hosted.paid_calls(st.session_state):
@@ -117,8 +126,9 @@ with findings_tab:
             else:
                 docx_bytes = letter.build_letter(report, confirmed, lang)
         except letter.TranslationUnavailable:
-            letter_error = ("The Hindi letter needs the translation model (NEBIUS_API_KEY), and "
-                            "this selection has not been translated before. Choose English.")
+            letter_error = (f"The {lang_name} letter needs the translation model "
+                            f"(NEBIUS_API_KEY), and this selection has not been translated "
+                            f"before. Choose English.")
     st.download_button(
         "Draft objection letter (.docx)",
         data=docx_bytes,

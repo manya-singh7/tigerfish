@@ -95,6 +95,13 @@ def highlight_pages(pdf, quotes_by_page, out_dir, prefix, dpi=110):
                 quads = page.search_for(q, quads=True)
                 if not quads:   # fall back to the first 8 words (e.g. a typo-repaired quote)
                     quads = page.search_for(" ".join(q.split()[:8]), quads=True)
+                words = q.split()
+                for skip in range(1, min(3, len(words) - 3) + 1):
+                    if quads:
+                        break
+                    # a leading token split at a line end ("(2-" + newline) is read as a
+                    # hyphenation and dropped by the search: start a word or two later
+                    quads = page.search_for(" ".join(words[skip:skip + 8]), quads=True)
                 if quads:
                     page.add_highlight_annot(quads)
             path = out_dir / f"{prefix}_p{page_no:04d}.png"

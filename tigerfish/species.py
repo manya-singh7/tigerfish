@@ -330,8 +330,12 @@ def evidence(result, countries=()):
 
 # ---------- main entry point ----------
 
-def check_species(scientific_name, lat, lon):
-    """Check whether a species is plausible at (lat, lon). See module docstring."""
+def check_species(scientific_name, lat, lon, archipelago_gadm=ANDAMAN_NICOBAR_GADM):
+    """Check whether a species is plausible at (lat, lon). See module docstring.
+
+    archipelago_gadm: GBIF GADM region for the archipelago rule (default: the Andaman &
+    Nicobar Islands); None turns the rule off (mainland sites, see tigerfish/sites.py).
+    The mobile-taxa rule (apply_mobile_region) applies either way."""
     result = {"name": scientific_name, "gbif_key": None, "matched_name": None,
               "name_note": None, "class_name": None, "grade": "GREY",
               "local_count": None, "regional_count": None, "effort_count": None,
@@ -364,8 +368,8 @@ def check_species(scientific_name, lat, lon):
                                 result["effort_count"], result["global_count"],
                                 result["far_count"], result["regional_effort_count"])
         mobile = is_mobile(m, result["class_name"])
-        if result["grade"] in ("RED", "ORANGE") and mobile:
-            result["archipelago_count"] = count(key, gadm=ANDAMAN_NICOBAR_GADM)
+        if result["grade"] in ("RED", "ORANGE") and mobile and archipelago_gadm:
+            result["archipelago_count"] = count(key, gadm=archipelago_gadm)
             result["grade"] = apply_archipelago(result["grade"], mobile, result["archipelago_count"])
         if result["grade"] in ("RED", "ORANGE") and mobile:
             if result["regional_count"] == 0 and result["far_count"] is None:
@@ -380,8 +384,11 @@ def check_species(scientific_name, lat, lon):
     if result.get("mobile_region"):
         within = result["regional_count"] or result["far_count"]
         km = REGIONAL_KM if result["regional_count"] else FAR_KM
-        result["evidence"] = (f"0 GBIF records of {accepted} within {LOCAL_KM} km or in the "
-                              f"Andaman & Nicobar Islands, but {within:,} within {km:,} km: "
+        where = (" or in the Andaman & Nicobar Islands"
+                 if archipelago_gadm == ANDAMAN_NICOBAR_GADM else
+                 f" or in GADM region {archipelago_gadm}" if archipelago_gadm else "")
+        result["evidence"] = (f"0 GBIF records of {accepted} within {LOCAL_KM} km{where}, "
+                              f"but {within:,} within {km:,} km: "
                               f"{MOBILE_REGION_NOTE}. Not graded.")
     elif result["archipelago_count"] and result["grade"] is None:
         result["evidence"] = (f"0 GBIF records of {accepted} within {LOCAL_KM} km, but "

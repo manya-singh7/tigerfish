@@ -63,7 +63,7 @@ def test_check_pages_one_check_per_name_and_site(monkeypatch):
     monkeypatch.setattr(sp, "confirm", lambda n: {"ok": True})
     calls = []
 
-    def check(name, lat, lon):
+    def check(name, lat, lon, archipelago_gadm=None):
         calls.append(name)
         return {"matched_name": name, "name_note": None, "grade": "ORANGE", "local_count": 0,
                 "regional_count": 0, "far_count": 3, "global_count": 9, "class_name": "Mammalia",
@@ -80,3 +80,28 @@ def test_hyphenated_epithets_and_non_species():
     names = sp.candidate_names("Shoe flower Hibiscus rosa-sinensis Malvaceae; Citrus hybrid; Ficus sp.")
     assert "Hibiscus rosa-sinensis" in names
     assert not any(n.startswith("Citrus") or n.startswith("Ficus") for n in names)
+
+
+def test_profile_sets_location_and_turns_off_the_archipelago_rule(monkeypatch):
+    """A mainland report (Cuddalore) uses its own site and never the A&N archipelago rule."""
+    from tigerfish import sites
+    monkeypatch.setattr(sp, "confirm", lambda n: {"ok": True})
+    seen = []
+
+    def check(name, lat, lon, archipelago_gadm="unset"):
+        seen.append((lat, lon, archipelago_gadm))
+        return {"matched_name": name, "name_note": None, "grade": None, "local_count": 5,
+                "regional_count": 5, "far_count": None, "global_count": 9,
+                "class_name": "Mammalia", "evidence": "e", "gbif_links": {}}
+
+    monkeypatch.setattr(sp.species, "check_species", check)
+    prof = sites.profile(sites.CUDDALORE)
+    out = sp.check_pages([{"page": 10, "text": TABLE, "reasons": []}], use_vision=False,
+                         profile=prof)
+    assert seen and all(s == (*prof["site"], None) for s in seen)
+    assert out["archipelago_rule"] is None
+    assert {r["location"] for r in out["rows"]} == {prof["centre_label"]}
+    # Great Nicobar (no profile passed) keeps the A&N rule
+    seen.clear()
+    sp.check_pages([{"page": 10, "text": TABLE, "reasons": []}], use_vision=False)
+    assert all(s[2] == sp.species.ANDAMAN_NICOBAR_GADM for s in seen)
