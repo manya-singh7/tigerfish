@@ -1,0 +1,61 @@
+{
+  "200k": {
+    "step": "200k",
+    "pages_included": 371,
+    "first_page": 5,
+    "last_page": 383,
+    "chars": 719707,
+    "skipped": {
+      "no text layer (scanned or photographed page)": 12
+    },
+    "answer": {
+      "first_page": 5,
+      "last_page": 383,
+      "last_page_opening": "Environmental Impact Assessment for International Container"
+    },
+    "correct_last_page": true,
+    "correct_opening_words": 6,
+    "expected_opening": "Environmental Impact Assessment for International Container Transshipment Terminal",
+    "chars_per_token": 3.766,
+    "latency_s": 8.773,
+    "prompt_tokens": 191126,
+    "cached_tokens": 0,
+    "uncached_tokens": 191126,
+    "completion_tokens": 32,
+    "cost_usd": 0.191222,
+    "cost_if_uncached_usd": 0.191222,
+    "saving_usd": 0.0,
+    "replayed_from_local_cache": true
+  },
+  "full": {
+    "step": "full",
+    "pages_included": 1071,
+    "first_page": 5,
+    "last_page": 1173,
+    "chars": 2101126,
+    "skipped": {
+      "no text layer (scanned or photographed page)": 65,
+      "Hindi page": 77
+    },
+    "answer": {
+      "_raw_reply": "{\"first_page\": 5, \"last_page\": 1143, \"last_page_opening\": \"Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Island, Nicobar District Chapter-11 Executive Summary C11-3",
+      "_not_valid_json": true,
+      "first_page": 5,
+      "last_page": 1143,
+      "last_page_opening": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Island, Nicobar District Chapter-11 Executive Summary C11-3"
+    },
+    "correct_last_page": false,
+    "correct_opening_words": 0,
+    "expected_opening": "COMPREHENSIVE ENVIRONMENTAL IMPACT ASSESSMENT REPORT FOR HOLISTIC DEVELOPMENT",
+    "chars_per_token": 3.853,
+    "latency_s": 18.973,
+    "prompt_tokens": 545374,
+    "cached_tokens": 182784,
+    "uncached_tokens": 362590,
+    "completion_tokens": 114,
+    "cost_usd": 0.384866,
+    "cost_if_uncached_usd": 0.545716,
+    "saving_usd": 0.16085,
+    "replayed_from_local_cache": true
+  }
+}

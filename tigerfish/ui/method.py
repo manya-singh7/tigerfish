@@ -6,6 +6,9 @@ from pathlib import Path
 import streamlit as st
 
 from tigerfish import claims, contradictions, copycheck, promises, species
+from tigerfish.ui import costs
+
+LIMITATIONS_URL = "https://github.com/manya-singh7/tigerfish/blob/main/docs/LIMITATIONS.md"
 
 METHOD = f"""
 #### What TigerFish checks
@@ -29,8 +32,9 @@ spelling mistakes are resolved and reported), then GBIF occurrence records are c
 well the area has been surveyed at all.
 
 **Status.** IUCN Red List categories are compared with GBIF's current IUCN data. Wild Life
-(Protection) Act schedules are compared with the current schedule structure, read from official
-sources (India Code, the Gazette, PRS, PIB, MoEFCC, Sansad) and quoted.
+(Protection) Act schedules are compared with the current schedule structure, read from retrieved
+sources and quoted: India Code and the Gazette first, then official sites (PIB, MoEFCC, Sansad)
+and PRS Legislative Research, which is labelled authoritative but non-government.
 
 **Copied and borrowed text.** Distinctive, site-specific sentences are searched on the web with
 Tavily. A match with a document about a different place is flagged. Long verbatim runs from
@@ -60,6 +64,10 @@ Every finding is phrased as something to verify. TigerFish does not say why a st
 wrong, only that it does not agree with another statement or with public records.
 
 #### Known limits
+
+The full list of limitations and failure cases, with evidence from our own runs, is in
+[docs/LIMITATIONS.md]({LIMITATIONS_URL}) (also shown below this section). Every flag is a lead
+for human review, not a verdict.
 
 - **GBIF sampling gaps.** Absence of GBIF records does not prove absence of a species. Areas with
   fewer than {species.MIN_EFFORT} records of the same class within {species.LOCAL_KM} km count as
@@ -96,6 +104,7 @@ wrong, only that it does not agree with another statement or with public records
 
 
 EVAL_FILE = Path(__file__).resolve().parents[2] / "results" / "eval.json"
+LIMITATIONS_FILE = Path(__file__).resolve().parents[2] / "docs" / "LIMITATIONS.md"
 
 
 def _table(headers, rows):
@@ -130,8 +139,25 @@ def render_evaluation():
         f"one call at a time. Estimate from the audited pages: `{x['formula']}`.")
     st.caption(f"Generated {e['generated']} by scripts/evaluate.py (seed {e['seed']}). "
                f"Full tables in results/eval.md.")
+    costs.render(e)
+
+
+def limitations_text():
+    """docs/LIMITATIONS.md without its title line, or "" if the file is missing."""
+    if not LIMITATIONS_FILE.exists():
+        return ""
+    lines = LIMITATIONS_FILE.read_text(encoding="utf-8").splitlines()
+    return "\n".join(lines[1:] if lines and lines[0].startswith("# ") else lines).strip()
+
+
+def render_limitations():
+    text = limitations_text()
+    if text:
+        with st.expander("Known limitations and failure cases (docs/LIMITATIONS.md)"):
+            st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
 
 
 def render():
     st.markdown(METHOD)
+    render_limitations()
     render_evaluation()

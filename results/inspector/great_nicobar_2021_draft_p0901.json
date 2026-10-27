@@ -1,0 +1,506 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "page": 901,
+  "label": "",
+  "title": "Patients treated and medical intelligence data, PHC Gandhinagar, 2020 (handwritten table)",
+  "why": "Monthly patient numbers and outpatient / inpatient counts are handwritten in a table that was photographed. Text search finds nothing on this page.",
+  "image": "great_nicobar_2021_draft_p0901.jpg",
+  "image_source_px": [
+    1240,
+    1755
+  ],
+  "text_layer": {
+    "chars": 0,
+    "text": "",
+    "how": "PyMuPDF page.get_text(), non-whitespace characters"
+  },
+  "vision_reasons": [
+    "little_text",
+    "large_image"
+  ],
+  "model": "nvidia/Nemotron-3.5-Super-VL",
+  "max_tokens": 4000,
+  "cache_files": [
+    "cache/llm/f2501abdbaf73830c09ad33fc607ac651ffd2936ca8b6659fe5a73b26cc31595.json"
+  ],
+  "rows": [
+    {
+      "read": "May 276 147 115 14",
+      "values": [
+        "276 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "May new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "June 223 87 136 10",
+      "values": [
+        "223 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "June new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "July 381 177 204 27",
+      "values": [
+        "381 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "July new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "August 331 144 184 23",
+      "values": [
+        "331 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "August new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "September 307 170 128 18",
+      "values": [
+        "307 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "September new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "October 291 150 141 09",
+      "values": [
+        "291 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "October new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "November 268 160 108 11",
+      "values": [
+        "268 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "November new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "December 291 135 156 26",
+      "values": [
+        "291 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "December new cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "The rescues accident report to 2020 - NIL",
+      "values": [
+        "NIL"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "rescues accident report to 2020"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Annual snake bite report for the year 2020 - NIL",
+      "values": [
+        "NIL"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "annual snake bite report for the year 2020"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Name of the Hospital : PHC, GANDHINAGAR",
+      "values": [
+        "PHC, GANDHINAGAR"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "hospital name"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "OP 907 583 178 1668 1850 1679 209 3738",
+      "values": [
+        "907 cases",
+        "583 cases",
+        "178 cases",
+        "1668 cases",
+        "1850 cases",
+        "1679 cases",
+        "209 cases",
+        "3738 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "OP new cases male",
+        "OP new cases female",
+        "OP new cases child",
+        "OP new cases total",
+        "OP old cases male",
+        "OP old cases female",
+        "OP old cases child",
+        "OP old cases total"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "IP 01 06 00 07 00 01 00 1",
+      "values": [
+        "1 cases",
+        "6 cases",
+        "0 cases",
+        "7 cases"
+      ],
+      "types": [
+        "quantity"
+      ],
+      "subjects": [
+        "IP new cases male",
+        "IP new cases female",
+        "IP new cases child",
+        "IP new cases total",
+        "IP old cases male",
+        "IP old cases female",
+        "IP old cases child",
+        "IP old cases total"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "NIL NIL NIL NIL NIL NIL",
+      "values": [
+        "NIL"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "maternity normal deliveries",
+        "maternity abnormal deliveries",
+        "maternity total deliveries",
+        "maternity forceps deliveries",
+        "maternity caesarian deliveries",
+        "maternity other deliveries"
+      ],
+      "in_text_layer": false
+    }
+  ],
+  "rows_in_text_layer": 0,
+  "claims": [
+    {
+      "type": "quantity",
+      "subject": "May new cases",
+      "value": 276,
+      "unit": "cases",
+      "quote": "May 276 147 115 14",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "June new cases",
+      "value": 223,
+      "unit": "cases",
+      "quote": "June 223 87 136 10",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "July new cases",
+      "value": 381,
+      "unit": "cases",
+      "quote": "July 381 177 204 27",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "August new cases",
+      "value": 331,
+      "unit": "cases",
+      "quote": "August 331 144 184 23",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "September new cases",
+      "value": 307,
+      "unit": "cases",
+      "quote": "September 307 170 128 18",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "October new cases",
+      "value": 291,
+      "unit": "cases",
+      "quote": "October 291 150 141 09",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "November new cases",
+      "value": 268,
+      "unit": "cases",
+      "quote": "November 268 160 108 11",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "quantity",
+      "subject": "December new cases",
+      "value": 291,
+      "unit": "cases",
+      "quote": "December 291 135 156 26",
+      "context": "handwritten monthly table"
+    },
+    {
+      "type": "statement",
+      "subject": "rescues accident report to 2020",
+      "value": "NIL",
+      "unit": null,
+      "quote": "The rescues accident report to 2020 - NIL",
+      "context": "handwritten note below monthly table"
+    },
+    {
+      "type": "statement",
+      "subject": "annual snake bite report for the year 2020",
+      "value": "NIL",
+      "unit": null,
+      "quote": "Annual snake bite report for the year 2020 - NIL",
+      "context": "handwritten note below rescues report"
+    },
+    {
+      "type": "statement",
+      "subject": "hospital name",
+      "value": "PHC, GANDHINAGAR",
+      "unit": null,
+      "quote": "Name of the Hospital : PHC, GANDHINAGAR",
+      "context": "medical intelligence data header"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP new cases male",
+      "value": 907,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP new cases female",
+      "value": 583,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP new cases child",
+      "value": 178,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP new cases total",
+      "value": 1668,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP old cases male",
+      "value": 1850,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP old cases female",
+      "value": 1679,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP old cases child",
+      "value": 209,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "OP old cases total",
+      "value": 3738,
+      "unit": "cases",
+      "quote": "OP 907 583 178 1668 1850 1679 209 3738",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP new cases male",
+      "value": 1,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP new cases female",
+      "value": 6,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP new cases child",
+      "value": 0,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP new cases total",
+      "value": 7,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP old cases male",
+      "value": 0,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP old cases female",
+      "value": 1,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP old cases child",
+      "value": 0,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "quantity",
+      "subject": "IP old cases total",
+      "value": 1,
+      "unit": "cases",
+      "quote": "IP 01 06 00 07 00 01 00 1",
+      "context": "medical intelligence data table"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity normal deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity abnormal deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity total deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity forceps deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity caesarian deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    },
+    {
+      "type": "statement",
+      "subject": "maternity other deliveries",
+      "value": "NIL",
+      "unit": null,
+      "quote": "NIL NIL NIL NIL NIL NIL",
+      "context": "maternity table row"
+    }
+  ]
+}

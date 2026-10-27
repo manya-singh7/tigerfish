@@ -1,0 +1,347 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "page": 909,
+  "label": "",
+  "title": "Great Nicobar Island land map, legend with areas (scanned)",
+  "why": "The project area (166.104 sq km) and the areas taken from the biosphere reserve, tribal reserve and forest appear here only inside a scanned map.",
+  "image": "great_nicobar_2021_draft_p0909.jpg",
+  "image_source_px": [
+    1240,
+    1755
+  ],
+  "text_layer": {
+    "chars": 18,
+    "text": "Scanned By Scanner Go",
+    "how": "PyMuPDF page.get_text(), non-whitespace characters"
+  },
+  "vision_reasons": [
+    "little_text",
+    "large_image"
+  ],
+  "model": "nvidia/Nemotron-3.5-Super-VL",
+  "max_tokens": 4000,
+  "cache_files": [
+    "cache/llm/c635080c9d1fa28bf8a7947339630f20d17d75f063293a5afc01bcd97be84d49.json",
+    "cache/llm/4caed8ba6df29231d618f7daf55a0c7deec7a1be512136fe41f12f4249272c1d.json"
+  ],
+  "rows": [
+    {
+      "read": "Island Boundary as per SOI (910.074 Sq. Km)*",
+      "values": [
+        "910.074 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Island Boundary as per SOI"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Biosphere Reserved Area (732.797 Sq.Km)",
+      "values": [
+        "732.797 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Biosphere Reserved Area"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Tribal Reserve (751.070Sq.Km)",
+      "values": [
+        "751.07 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Tribal Reserve"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Campbell Bay National Park (391.751 Sq.Km)",
+      "values": [
+        "391.751 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Campbell Bay National Park"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Galathea National Park ( 107.033 Sq.Km)",
+      "values": [
+        "107.033 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Galathea National Park"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Project Area from Biosphere Reserve (26.7494Sq.Km)",
+      "values": [
+        "26.7494 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Project Area from Biosphere Reserve"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Island Boundary Out Side Revenue village(1.013Sq Km)",
+      "values": [
+        "1.013 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Island Boundary Outside Revenue village"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Revenue Area outside SOI Boundary(1.112 Sq.Km)",
+      "values": [
+        "1.112 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Revenue Area outside SOI Boundary"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Project Area(166.104Sq.Km)",
+      "values": [
+        "166.104 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Project Area"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Revenue Land (44.203 Sq.Km)*",
+      "values": [
+        "44.203 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Revenue Land"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Revenue Area 44.203 Sq. Km",
+      "values": [
+        "44.203 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Revenue Area"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Biosphere 26.479 Sq. Km",
+      "values": [
+        "26.479 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Biosphere"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Tribal Reserve 84.100 Sq. Km",
+      "values": [
+        "84.1 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Tribal Reserve"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Forest 121.705 Sq. Km",
+      "values": [
+        "121.705 Sq.Km"
+      ],
+      "types": [
+        "area"
+      ],
+      "subjects": [
+        "Forest"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "*Submerged revenue land out the boundory of SOI shown in blue wash color has been excluded as per approval of EAC by NITI Aayog",
+      "values": [
+        "excluded"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "submerged revenue land outside SOI boundary"
+      ],
+      "in_text_layer": false
+    }
+  ],
+  "rows_in_text_layer": 0,
+  "claims": [
+    {
+      "type": "area",
+      "subject": "Island Boundary as per SOI",
+      "value": 910.074,
+      "unit": "Sq.Km",
+      "quote": "Island Boundary as per SOI (910.074 Sq. Km)*",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Biosphere Reserved Area",
+      "value": 732.797,
+      "unit": "Sq.Km",
+      "quote": "Biosphere Reserved Area (732.797 Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Tribal Reserve",
+      "value": 751.07,
+      "unit": "Sq.Km",
+      "quote": "Tribal Reserve (751.070Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Campbell Bay National Park",
+      "value": 391.751,
+      "unit": "Sq.Km",
+      "quote": "Campbell Bay National Park (391.751 Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Galathea National Park",
+      "value": 107.033,
+      "unit": "Sq.Km",
+      "quote": "Galathea National Park ( 107.033 Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Project Area from Biosphere Reserve",
+      "value": 26.7494,
+      "unit": "Sq.Km",
+      "quote": "Project Area from Biosphere Reserve (26.7494Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Island Boundary Outside Revenue village",
+      "value": 1.013,
+      "unit": "Sq.Km",
+      "quote": "Island Boundary Out Side Revenue village(1.013Sq Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Revenue Area outside SOI Boundary",
+      "value": 1.112,
+      "unit": "Sq.Km",
+      "quote": "Revenue Area outside SOI Boundary(1.112 Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Project Area",
+      "value": 166.104,
+      "unit": "Sq.Km",
+      "quote": "Project Area(166.104Sq.Km)",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Revenue Land",
+      "value": 44.203,
+      "unit": "Sq.Km",
+      "quote": "Revenue Land (44.203 Sq.Km)*",
+      "context": "legend"
+    },
+    {
+      "type": "area",
+      "subject": "Revenue Area",
+      "value": 44.203,
+      "unit": "Sq.Km",
+      "quote": "Revenue Area 44.203 Sq. Km",
+      "context": "table"
+    },
+    {
+      "type": "area",
+      "subject": "Biosphere",
+      "value": 26.479,
+      "unit": "Sq.Km",
+      "quote": "Biosphere 26.479 Sq. Km",
+      "context": "table"
+    },
+    {
+      "type": "area",
+      "subject": "Tribal Reserve",
+      "value": 84.1,
+      "unit": "Sq.Km",
+      "quote": "Tribal Reserve 84.100 Sq. Km",
+      "context": "table"
+    },
+    {
+      "type": "area",
+      "subject": "Forest",
+      "value": 121.705,
+      "unit": "Sq.Km",
+      "quote": "Forest 121.705 Sq. Km",
+      "context": "table"
+    },
+    {
+      "type": "statement",
+      "subject": "submerged revenue land outside SOI boundary",
+      "value": "excluded",
+      "unit": null,
+      "quote": "*Submerged revenue land out the boundory of SOI shown in blue wash color has been excluded as per approval of EAC by NITI Aayog",
+      "context": "footnote"
+    }
+  ]
+}

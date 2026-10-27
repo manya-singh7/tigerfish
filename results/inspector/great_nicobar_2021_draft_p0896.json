@@ -1,0 +1,415 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "page": 896,
+  "label": "",
+  "title": "Health environment data, Campbell Bay Primary Health Centre (photographed form)",
+  "why": "The baseline for public health (doctors, beds, staff, patients treated in 2020) is a photograph of a handwritten form. Text search finds nothing on this page.",
+  "image": "great_nicobar_2021_draft_p0896.jpg",
+  "image_source_px": [
+    1240,
+    1755
+  ],
+  "text_layer": {
+    "chars": 0,
+    "text": "",
+    "how": "PyMuPDF page.get_text(), non-whitespace characters"
+  },
+  "vision_reasons": [
+    "little_text",
+    "large_image"
+  ],
+  "model": "nvidia/Nemotron-3.5-Super-VL",
+  "max_tokens": 4000,
+  "cache_files": [
+    "cache/llm/2cc49ca20a7ae3ccbb837f67178643e582984d4033f044eea9c5340b9ba102d3.json"
+  ],
+  "rows": [
+    {
+      "read": "No. of PHCs : 01",
+      "values": [
+        "1"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Public Health Centers in Campbell Bay Village"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "No. of sub centers : 08",
+      "values": [
+        "8"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "sub centers in Campbell Bay Village PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Doctors in PHC : 02",
+      "values": [
+        "2"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Doctors in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Total number of ANMs : 06",
+      "values": [
+        "6"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "ANMs in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "No. of Beds in PHC : 30",
+      "values": [
+        "30"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Beds in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Male workers : 03",
+      "values": [
+        "3"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Male workers in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Staff nurse : 05",
+      "values": [
+        "5"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Staff nurses in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Pharmacist : 01",
+      "values": [
+        "1"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Pharmacists in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Lab technician : 01",
+      "values": [
+        "1"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Lab technicians in PHC"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "No. of Shompen wards : 01",
+      "values": [
+        "1"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Shompen wards"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Treated in non Covid 19 cases : Male 06 Female 06 12",
+      "values": [
+        "12"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Shompen people treated in non Covid 19 cases"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Jan 2717 1225 1080 412",
+      "values": [
+        "2717",
+        "1225",
+        "1080",
+        "412"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Patients treated in January 2020",
+        "Male patients treated in January 2020",
+        "Female patients treated in January 2020",
+        "Children patients treated in January 2020"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Feb 2439 1063 976 400",
+      "values": [
+        "2439",
+        "1063",
+        "976",
+        "400"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Patients treated in February 2020",
+        "Male patients treated in February 2020",
+        "Female patients treated in February 2020",
+        "Children patients treated in February 2020"
+      ],
+      "in_text_layer": false
+    },
+    {
+      "read": "Mar 2352 1082 934 336",
+      "values": [
+        "2352",
+        "1082",
+        "934",
+        "336"
+      ],
+      "types": [
+        "count"
+      ],
+      "subjects": [
+        "Patients treated in March 2020",
+        "Male patients treated in March 2020",
+        "Female patients treated in March 2020",
+        "Children patients treated in March 2020"
+      ],
+      "in_text_layer": false
+    }
+  ],
+  "rows_in_text_layer": 0,
+  "claims": [
+    {
+      "type": "count",
+      "subject": "Public Health Centers in Campbell Bay Village",
+      "value": 1,
+      "unit": null,
+      "quote": "No. of PHCs : 01",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "sub centers in Campbell Bay Village PHC",
+      "value": 8,
+      "unit": null,
+      "quote": "No. of sub centers : 08",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Doctors in PHC",
+      "value": 2,
+      "unit": null,
+      "quote": "Doctors in PHC : 02",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "ANMs in PHC",
+      "value": 6,
+      "unit": null,
+      "quote": "Total number of ANMs : 06",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Beds in PHC",
+      "value": 30,
+      "unit": null,
+      "quote": "No. of Beds in PHC : 30",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Male workers in PHC",
+      "value": 3,
+      "unit": null,
+      "quote": "Male workers : 03",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Staff nurses in PHC",
+      "value": 5,
+      "unit": null,
+      "quote": "Staff nurse : 05",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Pharmacists in PHC",
+      "value": 1,
+      "unit": null,
+      "quote": "Pharmacist : 01",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Lab technicians in PHC",
+      "value": 1,
+      "unit": null,
+      "quote": "Lab technician : 01",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Shompen wards",
+      "value": 1,
+      "unit": null,
+      "quote": "No. of Shompen wards : 01",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Shompen people treated in non Covid 19 cases",
+      "value": 12,
+      "unit": null,
+      "quote": "Treated in non Covid 19 cases : Male 06 Female 06 12",
+      "context": "Public Health Amenities available in Campbell Bay Village Primary Health Center"
+    },
+    {
+      "type": "count",
+      "subject": "Patients treated in January 2020",
+      "value": 2717,
+      "unit": null,
+      "quote": "Jan 2717 1225 1080 412",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Male patients treated in January 2020",
+      "value": 1225,
+      "unit": null,
+      "quote": "Jan 2717 1225 1080 412",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Female patients treated in January 2020",
+      "value": 1080,
+      "unit": null,
+      "quote": "Jan 2717 1225 1080 412",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Children patients treated in January 2020",
+      "value": 412,
+      "unit": null,
+      "quote": "Jan 2717 1225 1080 412",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Patients treated in February 2020",
+      "value": 2439,
+      "unit": null,
+      "quote": "Feb 2439 1063 976 400",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Male patients treated in February 2020",
+      "value": 1063,
+      "unit": null,
+      "quote": "Feb 2439 1063 976 400",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Female patients treated in February 2020",
+      "value": 976,
+      "unit": null,
+      "quote": "Feb 2439 1063 976 400",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Children patients treated in February 2020",
+      "value": 400,
+      "unit": null,
+      "quote": "Feb 2439 1063 976 400",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Patients treated in March 2020",
+      "value": 2352,
+      "unit": null,
+      "quote": "Mar 2352 1082 934 336",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Male patients treated in March 2020",
+      "value": 1082,
+      "unit": null,
+      "quote": "Mar 2352 1082 934 336",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Female patients treated in March 2020",
+      "value": 934,
+      "unit": null,
+      "quote": "Mar 2352 1082 934 336",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    },
+    {
+      "type": "count",
+      "subject": "Children patients treated in March 2020",
+      "value": 336,
+      "unit": null,
+      "quote": "Mar 2352 1082 934 336",
+      "context": "Patients treated from January 2020 - December 2020 table"
+    }
+  ]
+}

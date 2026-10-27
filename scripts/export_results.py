@@ -438,6 +438,16 @@ def great_nicobar():
     return report_id, out
 
 
+WPA_CHECK_NAME = "WPA schedule (Tavily: India Code / Gazette first, then official sites and PRS)"
+
+
+def tier_note(tier):
+    """Evidence line for a WPA source tier that was searched but gave no usable sentence."""
+    where = ", ".join(tier["domains"] or ["the open web"])
+    return (f"Searched first (Tavily, restricted to {where}); the results read do not state "
+            f"the number of schedules, so the next tier was used.")
+
+
 def indira_point_table():
     report_id = "indira_point_table_3_16"
     trace.reset()
@@ -477,6 +487,8 @@ def indira_point_table():
         else:
             ev.append({"label": f"Source ({s.get('source_label') or 'source'})",
                        "value": s.get("quote"), "url": s.get("url")})
+            ev += [{"label": t["tier"], "value": tier_note(t)}
+                   for t in s.get("source_tiers") or [] if not t["found"]]
         findings.append(finding(
             f"st-{len(findings) + 1:02d}", check, "ORANGE",
             f"{s['name']}: {'IUCN category' if check == 'iucn_status' else 'WPA schedule'} "
@@ -491,7 +503,7 @@ def indira_point_table():
                   "Scroll.in, 31 Aug 2026",
         "pages_read": 1, "pages_total": 1, "unit": "table",
         "checks": ["Table reading (Nemotron Super-VL)", "Species range (GBIF)",
-                   "IUCN status (GBIF / IUCN Red List)", "WPA schedule (Tavily, official sources)"],
+                   "IUCN status (GBIF / IUCN Red List)", WPA_CHECK_NAME],
         "cost": {"nebius_usd": usd, "tavily_credits": credits, "gbif_calls": gbif,
                  "approx_seconds": seconds},
         "findings": findings, "exported_in_s": round(time.time() - started, 1),

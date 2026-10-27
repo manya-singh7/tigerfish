@@ -66,6 +66,34 @@ CSS = f"""
   .tf-unverified {{ color: #8A979D; }}
   .tf-unverified .tf-memo-sub {{ color: #9AA6AB; }}
   .tf-memo-foot {{ font-size: 0.8rem; color: {MUTED}; margin-top: 0.6rem; }}
+  .tf-tavily {{ display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em;
+                color: #5A3E99 !important; background: #EFEAFB; border: 1px solid #D9CFF5;
+                border-radius: 999px; padding: 0.02rem 0.45rem; margin-left: 0.35rem;
+                text-decoration: none !important; vertical-align: 1px; }}
+  .tf-models {{ display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.1rem 0 0.55rem 0; }}
+  .tf-model {{ display: inline-block; font-size: 0.7rem; font-weight: 650; letter-spacing: 0.02em;
+               border-radius: 4px; padding: 0.08rem 0.45rem; border: 1px solid; white-space: nowrap;
+               cursor: help; }}
+  .tf-model-detail {{ font-weight: 500; opacity: 0.8; }}
+  .tf-model-nemotron {{ color: {ACCENT}; background: #EAF2F2; border-color: #C7DEDE; }}
+  .tf-model-tavily {{ color: #5A3E99; background: #EFEAFB; border-color: #D9CFF5; }}
+  .tf-model-gbif {{ color: #3B6B2A; background: #EDF5E8; border-color: #CFE3C4; }}
+  .tf-hero {{ font-size: 0.78rem; color: {ACCENT}; font-weight: 700; text-transform: uppercase;
+              letter-spacing: 0.05em; margin-bottom: 0.3rem; }}
+  .tf-hero-headline {{ font-size: 1.45rem; font-weight: 700; color: {TEXT}; line-height: 1.3;
+                       margin: 0.3rem 0 0.5rem 0; max-width: 52rem; }}
+  .tf-hero-note {{ font-size: 0.82rem; color: {MUTED}; margin-top: 0.4rem; }}
+  .tf-table {{ width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 0.4rem 0 0.8rem 0; }}
+  .tf-table th {{ text-align: left; color: {MUTED}; font-weight: 600; font-size: 0.78rem;
+                  text-transform: uppercase; letter-spacing: 0.03em; border-bottom: 1px solid {BORDER};
+                  padding: 0.4rem 0.5rem; }}
+  .tf-table td {{ border-bottom: 1px solid {BORDER}; padding: 0.45rem 0.5rem; vertical-align: top;
+                  color: {TEXT}; overflow-wrap: anywhere; }}
+  .tf-off, .tf-open, .tf-auth {{ display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 999px;
+                       padding: 0.05rem 0.5rem; white-space: nowrap; }}
+  .tf-off {{ color: {ACCENT}; background: #E3F0F0; }}
+  .tf-open {{ color: #8A4B08; background: #FDF0D9; }}
+  .tf-auth {{ color: #3D4A8A; background: #E8EBF7; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

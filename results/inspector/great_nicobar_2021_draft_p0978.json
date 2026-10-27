@@ -1,0 +1,259 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "page": 978,
+  "label": "",
+  "title": "Table 1, environmental characteristics of the project site (MoEFCC criteria form)",
+  "why": "States \"Coral reef exists in the proposed site for Transshipment / Port\", one half of the p.392 vs p.978 contradiction (ct-003).",
+  "image": "great_nicobar_2021_draft_p0978.jpg",
+  "image_source_px": [
+    1241,
+    1754
+  ],
+  "text_layer": {
+    "chars": 1649,
+    "text": "41 | P a g e 7. PRELIMINARY ASSESSMENT ON LIKELIHOOD IMPACTS Based on the description of the proposed holistic developmental activities such as Port, Airport, Township and Power Plant and area of fore",
+    "how": "PyMuPDF page.get_text(), non-whitespace characters"
+  },
+  "vision_reasons": [
+    "table"
+  ],
+  "model": "nvidia/Nemotron-3.5-Super-VL",
+  "max_tokens": 4000,
+  "cache_files": [
+    "cache/llm/579258916b83d93bdf5b998c883d7033778b3c2750ec113e18872645be4d67ff.json",
+    "cache/llm/20d7efe3c9e2b6496ee74f6a354543696324c26a4154a3a471e0668de1bc1d9d.json"
+  ],
+  "rows": [
+    {
+      "read": "Buffer Zone and Core Zone-II of the Great Nicobar Biosphere Reserve is located about 1.0 km and 2.0.km respectively away from the proposed project site.",
+      "values": [
+        "1.0 km",
+        "2.0 km"
+      ],
+      "types": [
+        "distance"
+      ],
+      "subjects": [
+        "Buffer Zone of Great Nicobar Biosphere Reserve from project site",
+        "Core Zone-II of Great Nicobar Biosphere Reserve from project site"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "Apart from that Galathea wildlife sanctuary is situated just within a km away from the site.",
+      "values": [
+        "1 km"
+      ],
+      "types": [
+        "distance"
+      ],
+      "subjects": [
+        "Galathea wildlife sanctuary from project site"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "Coral reef exists in the proposed site for Transshipment / Port",
+      "values": [
+        "exists"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "coral reefs at proposed Transshipment/Port site"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "Mangrove patches are existing in the Galathea riverine region.",
+      "values": [
+        "existing"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "mangrove patches in Galathea riverine region"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "Turtle nesting ground is existing in the Galathea beach.",
+      "values": [
+        "existing"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "turtle nesting ground at Galathea beach"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "No migratory birds could be noticed in the project area during the surveys.",
+      "values": [
+        "No migratory birds could be noticed"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "migratory birds in project area during surveys"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "values": [
+        "reticulated Python",
+        "Wild Pig",
+        "Crab eating Macaque",
+        "Nicobar Megapode",
+        "Salt Water Crocodile",
+        "Nicobar Tree Shrew"
+      ],
+      "types": [
+        "species"
+      ],
+      "subjects": [
+        "reticulated Python",
+        "Wild Pig",
+        "Crab eating Macaque",
+        "Nicobar Megapode",
+        "Salt Water Crocodile",
+        "Nicobar Tree Shrew"
+      ],
+      "in_text_layer": true
+    },
+    {
+      "read": "Does the area have religious, historic places, archaeological monument sites etc. No",
+      "values": [
+        "No"
+      ],
+      "types": [
+        "statement"
+      ],
+      "subjects": [
+        "religious, historic places, archaeological monument sites in area"
+      ],
+      "in_text_layer": true
+    }
+  ],
+  "rows_in_text_layer": 8,
+  "claims": [
+    {
+      "type": "distance",
+      "subject": "Buffer Zone of Great Nicobar Biosphere Reserve from project site",
+      "value": 1.0,
+      "unit": "km",
+      "quote": "Buffer Zone and Core Zone-II of the Great Nicobar Biosphere Reserve is located about 1.0 km and 2.0.km respectively away from the proposed project site.",
+      "context": "Table 1, Sl. No. 1, Remark"
+    },
+    {
+      "type": "distance",
+      "subject": "Core Zone-II of Great Nicobar Biosphere Reserve from project site",
+      "value": 2.0,
+      "unit": "km",
+      "quote": "Buffer Zone and Core Zone-II of the Great Nicobar Biosphere Reserve is located about 1.0 km and 2.0.km respectively away from the proposed project site.",
+      "context": "Table 1, Sl. No. 1, Remark"
+    },
+    {
+      "type": "distance",
+      "subject": "Galathea wildlife sanctuary from project site",
+      "value": 1,
+      "unit": "km",
+      "quote": "Apart from that Galathea wildlife sanctuary is situated just within a km away from the site.",
+      "context": "Table 1, Sl. No. 1, Remark"
+    },
+    {
+      "type": "statement",
+      "subject": "coral reefs at proposed Transshipment/Port site",
+      "value": "exists",
+      "unit": null,
+      "quote": "Coral reef exists in the proposed site for Transshipment / Port",
+      "context": "Table 1, Sl. No. 2, Remark"
+    },
+    {
+      "type": "statement",
+      "subject": "mangrove patches in Galathea riverine region",
+      "value": "existing",
+      "unit": null,
+      "quote": "Mangrove patches are existing in the Galathea riverine region.",
+      "context": "Table 1, Sl. No. 3, Remark"
+    },
+    {
+      "type": "statement",
+      "subject": "turtle nesting ground at Galathea beach",
+      "value": "existing",
+      "unit": null,
+      "quote": "Turtle nesting ground is existing in the Galathea beach.",
+      "context": "Table 1, Sl. No. 4, Remark"
+    },
+    {
+      "type": "statement",
+      "subject": "migratory birds in project area during surveys",
+      "value": "No migratory birds could be noticed",
+      "unit": null,
+      "quote": "No migratory birds could be noticed in the project area during the surveys.",
+      "context": "Table 1, Sl. No. 5, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "reticulated Python",
+      "value": "reticulated Python",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "Wild Pig",
+      "value": "Wild Pig",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "Crab eating Macaque",
+      "value": "Crab eating Macaque",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "Nicobar Megapode",
+      "value": "Nicobar Megapode",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "Salt Water Crocodile",
+      "value": "Salt Water Crocodile",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "species",
+      "subject": "Nicobar Tree Shrew",
+      "value": "Nicobar Tree Shrew",
+      "unit": "species",
+      "quote": "The reticulated Python, Wild Pig, Crab eating Macaque, Nicobar Megapode, Salt Water Crocodile and Nicobar Tree Shrew are inhabiting in the adjoining areas.",
+      "context": "Table 1, Sl. No. 6, Remark"
+    },
+    {
+      "type": "statement",
+      "subject": "religious, historic places, archaeological monument sites in area",
+      "value": "No",
+      "unit": null,
+      "quote": "Does the area have religious, historic places, archaeological monument sites etc. No",
+      "context": "Table 1, Sl. No. 7"
+    }
+  ]
+}
