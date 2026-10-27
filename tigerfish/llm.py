@@ -18,9 +18,16 @@
   interrupted run resumes from the cache without paying for any call twice.
 - CACHE_ONLY = True: any call not in the cache raises CacheMiss instead of calling the
   API, so a restore or dry run is guaranteed to cost $0.
+- Hosted app (tigerfish/hosted.py): use_key(key) makes calls in this context use a visitor's
+  own key (held in memory for the context only, never written or logged); use_budget(b)
+  makes every real call check b.ensure_room() first and b.add(cost) after. Both are
+  context variables, so concurrent app sessions never see each other's key or budget;
+  run_parallel copies them into its worker threads.
 """
 
 import base64
+import contextlib
+import contextvars
 import hashlib
 import json
 import os
@@ -80,22 +87,66 @@ load_dotenv(ROOT / ".env")
 _client = None
 _lock = threading.Lock()  # guards session_cost_usd, retry_stats, the usage log and the client
 session_cost_usd = 0.0   # cost of real (uncached) API calls made by this process
+_key_client = contextvars.ContextVar("tigerfish_key_client", default=None)   # use_key()
+_budget = contextvars.ContextVar("tigerfish_budget", default=None)           # use_budget()
+_options = contextvars.ContextVar("tigerfish_request_options", default=None)  # request_options()
 retry_stats = {"retries": 0, "rate_limited": 0, "server_errors": 0, "connection_errors": 0}
 call_stats = {}   # model -> {api_calls, cache_hits, prompt_tokens, completion_tokens, cost_usd, api_seconds}
 
 
+def _new_client(key):
+    # Retries are ours (_create), so the SDK's own are off.
+    return OpenAI(base_url=BASE_URL, api_key=key, max_retries=0, timeout=REQUEST_TIMEOUT_S)
+
+
 def client():
-    """Lazily build one shared OpenAI client pointed at Nebius."""
+    """The OpenAI client for this context: a visitor's key (use_key), else one shared client
+    built lazily from NEBIUS_API_KEY."""
+    own = _key_client.get()
+    if own is not None:
+        return own
     global _client
     with _lock:
         if _client is None:
             key = os.getenv("NEBIUS_API_KEY")
             if not key:
                 raise RuntimeError("NEBIUS_API_KEY is missing; add it to .env")
-            # Retries are ours (_create), so the SDK's own are off.
-            _client = OpenAI(base_url=BASE_URL, api_key=key, max_retries=0,
-                             timeout=REQUEST_TIMEOUT_S)
+            _client = _new_client(key)
         return _client
+
+
+@contextlib.contextmanager
+def use_key(key):
+    """Calls inside this block use `key` (a visitor's own key). Nothing is stored: the client
+    lives in a context variable and is dropped when the block ends. key None/"": no change."""
+    if not key:
+        yield
+        return
+    token = _key_client.set(_new_client(key))
+    try:
+        yield
+    finally:
+        _key_client.reset(token)
+
+
+@contextlib.contextmanager
+def use_budget(budget):
+    """Real calls inside this block: budget.ensure_room() before, budget.add(usd) after."""
+    token = _budget.set(budget)
+    try:
+        yield
+    finally:
+        _budget.reset(token)
+
+
+@contextlib.contextmanager
+def request_options(timeout=None, max_retries=None):
+    """Per-context timeout / retry count for real calls (thread-safe; nothing global changes)."""
+    token = _options.set({"timeout": timeout, "max_retries": max_retries})
+    try:
+        yield
+    finally:
+        _options.reset(token)
 
 
 def _retry_kind(error):
@@ -124,18 +175,23 @@ def _retry_after(error):
 
 def _create(model, messages, kwargs, sleep=time.sleep):
     """client.chat.completions.create with retries on 429 / 5xx / connection errors."""
-    for attempt in range(MAX_RETRIES + 1):
+    opts = _options.get() or {}
+    retries = MAX_RETRIES if opts.get("max_retries") is None else opts["max_retries"]
+    for attempt in range(retries + 1):
         try:
-            return client().chat.completions.create(model=model, messages=messages, **kwargs)
+            c = client()
+            if opts.get("timeout"):
+                c = c.with_options(timeout=opts["timeout"])
+            return c.chat.completions.create(model=model, messages=messages, **kwargs)
         except Exception as e:   # noqa: BLE001 (re-raised unless retryable)
             kind = _retry_kind(e)
-            if kind is None or attempt == MAX_RETRIES:
+            if kind is None or attempt == retries:
                 raise
             delay = backoff_seconds(attempt, _retry_after(e))
             with _lock:
                 retry_stats["retries"] += 1
                 retry_stats[kind] += 1
-            print(f"[llm] {model}: {type(e).__name__}; retry {attempt + 1}/{MAX_RETRIES} "
+            print(f"[llm] {model}: {type(e).__name__}; retry {attempt + 1}/{retries} "
                   f"in {delay:.1f}s")
             sleep(delay)
 
@@ -163,9 +219,15 @@ def _call(model, messages, kwargs, path):
     """Real API call, timed and cached. Returns the response dict."""
     if CACHE_ONLY:
         raise CacheMiss(f"{model}: reply not in the cache ({path.name}); CACHE_ONLY is on")
+    budget = _budget.get()
+    if budget is not None:
+        budget.ensure_room()                 # raises before anything is sent
     started = time.perf_counter()
     response = _create(model, messages, kwargs)
     data = response.model_dump()
+    if budget is not None:
+        u = data.get("usage") or {}
+        budget.add(cost_usd(model, u.get("prompt_tokens", 0), u.get("completion_tokens", 0)) or 0.0)
     data["_latency_s"] = round(time.perf_counter() - started, 3)   # measured, incl. retries
     _write_cache(path, data)
     return data
@@ -212,7 +274,8 @@ def run_parallel(fn, items, workers=None, estimate=None, max_cost_usd=None):
             if capped and not fits(est, 0):
                 stop = i
                 break
-            running[pool.submit(fn, item)] = (i, est)
+            # copy_context: the worker sees this context's key and budget (use_key / use_budget)
+            running[pool.submit(contextvars.copy_context().run, fn, item)] = (i, est)
         for f in list(running):
             results[running.pop(f)[0]] = f.result()
     except BaseException:

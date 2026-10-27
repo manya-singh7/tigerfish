@@ -1,0 +1,1706 @@
+{
+  "pdf": "cuddalore_port_2026_draft_eia.pdf",
+  "name": "cuddalore_port_2026_draft_eia",
+  "pages": null,
+  "triage": "safe",
+  "new_pages": null,
+  "workers": 6,
+  "max_cost_usd": 10.0,
+  "pages_audited": 768,
+  "claims": 7019,
+  "candidates": 1589,
+  "triage_answers": {
+    "yes": 685,
+    "no": 514,
+    "unsure": 1
+  },
+  "verdicts": 594,
+  "verdicts_failed": 0,
+  "stopped": "cost cap $7.41 reached (spent $7.4056); stopped at candidate 1077 of 1589; about 481 candidates not judged",
+  "copy_passages": 50,
+  "copy_stopped": null,
+  "copy_passage_list": [
+    {
+      "page": 424,
+      "text": "17 Ficus religiosa Bodhi Native, fast growing and Drought resistance 18 Gmelina arborea Kumizh Maram Broad leaved & Fast growing 19 Lannea coromandelica Uthiyan Native, Fast growing 20 Mangifera indica Maa Maram Fruiting bearing 21 Manilkara zapota Sapota Fruiting bearing 22 Mitragyna parvifolia Neer Kadambu Shady, Native & Fast growing 23 Peltophorum pterocarpum Iyal Vaagai tolerant to moderately tolerant 24 Phoenix sylvestris Eechamaram Fruiting bearing and Drought resistance 25 Phyllanthus emblica Nelli Native, Drought resistance 26 Pongamia pinnata Pungai Fast growing and Drought resistance 27 Psidium guava Koyya Fruiting bearing 28 Semecarpus anacardium Kalakam Fruiting bearing and Drought resistance 29 Spathodea campanulata Thaneerkaai Ornamental avenue tree 30 Syzygium cumini Naaval Shady, Fruiting bearing & Fast growing 31 Tabebuia rosea Vasantha Rani Ornamental, Drought resistance 32 Tectona grandis Thekku Timber yielding 33 Terminalia arjuna Venn Maruthu Timber and shade tree 34 Terminalia bellirica Thantri Native 35 Wrightia tinctoria Veppaalai Native, Drought resistance Shrubs/Bushes recommended for Median plantation in the Project site 1 Agave cylindrica Kattrazhai Drought resistance 2 Aloe vera Kattrazhai Drought resistance 3 Caesalpinia pulcherrima Mayil Konrai Red/Yellow Flowers 4 Cascabela thevetia Thanga Arali Yellow Flowers 5 Cassia glauca Kannimaram Yellow Flowers 6 Jatropa podagarica Kaattu Aamanakku Red Flowers 7 Nerium oleander Arali Pink Flowers 8 Plumeria alba Eezhaththalar i Native having aesthetic value 9 Plumeria obtusa Plumeria White Flowers 10 Tecoma stans Naaga Senbagam Yellow Flowers 11 Vitex negundo Karunochi Native having medicinal Importance",
+      "claim_ids": [
+        "p424-05",
+        "p424-06",
+        "p424-07",
+        "p424-08",
+        "p424-09",
+        "p424-10",
+        "p424-11",
+        "p424-12",
+        "p424-13",
+        "p424-14",
+        "p424-15",
+        "p424-16",
+        "p424-17",
+        "p424-18",
+        "p424-19",
+        "p424-20",
+        "p424-21",
+        "p424-22",
+        "p424-23",
+        "p424-24",
+        "p424-25",
+        "p424-26",
+        "p424-27",
+        "p424-28",
+        "p424-30",
+        "p424-31",
+        "p424-32",
+        "p424-33",
+        "p424-34"
+      ]
+    },
+    {
+      "page": 221,
+      "text": "75 25 50 - 25 50 50 - - - 20 Onuphis gracilis 50 75 25 - - 75 - 50 25 50 21 Pisione africana - 150 50 50 50 50 125 - - - 22 Pista cristata - 125 - 100 50 125 50 25 25 25 23 Polydora capensis 50 50 25 - 175 125 100 50 - - 24 Prionospio cirrifera 75 25 25 75 225 100 150 25 25 25 25 Pygospio elegans - 150 - 50 50 125 75 50 - - 26 Scolelepis squamata 25 75 125 75 - 75 - - 25 - 27 Syllis gracilis - 25 50 25 125 25 150 50 25 25 28 Terebellides stroemi 25 50 75 - 50 100 25 50 - - 29 Ampithoe rubricata 50 50 25 50 75 50 50 25 - - 30 Angeliera phreaticola 50 150 25 50 125 50 125 50 25 50 31 Campylaspis sp. - 125 50 25 150 75 50 25 50 - 32 Copepod nauplii 25 25 - 50 50 100 - - - - 33 Meretrix casta 25 - 75 100 50 75 25 100 125 175 34 M. meretrix 75 25 - 225 125 - 75 50 175 150 35 Perna viridis - 25 50 25 275 175 100 - 25 - 36 Crassostrea madrasensis 50 25 50 75 50 - 50 - - 25 37 Cardium veligers 25 - 50 125 150 125 25 50 25 25 38 Donax scortum 100 50 75 25 25 - - 125 50 75 39 Perna indica - - 100 50 50 25 50 - 50 - 40 Cerithidea cingulata - 25 150 125 - 50 25 25 25 50 41 Bullia vitta 150 75 - 100 25 75 50 50 75 - 42 Murex trapa 25 50 - 75 125 50 50 - - 25 44 Turritella attenuata - 75 50 25 50 - 25 25 25 - 45 Umbonium vestiarium 75 - 75 - 75 100 50 50 - 25 Total 145 0 222 5 197 5 245 0 355 0 260 0 280 0 187 5 875 925",
+      "claim_ids": [
+        "p221-10",
+        "p221-11",
+        "p221-12",
+        "p221-13",
+        "p221-14",
+        "p221-15",
+        "p221-16",
+        "p221-17",
+        "p221-18",
+        "p221-19",
+        "p221-20",
+        "p221-21",
+        "p221-22",
+        "p221-23",
+        "p221-24",
+        "p221-25",
+        "p221-26",
+        "p221-27",
+        "p221-28",
+        "p221-29",
+        "p221-30",
+        "p221-31",
+        "p221-32",
+        "p221-33",
+        "p221-34",
+        "p221-43",
+        "p221-44"
+      ]
+    },
+    {
+      "page": 209,
+      "text": "Table 3-22: Phytoplankton population density (Cells/ m³), in eight different samples Phytoplankton Species MSL1 MSL2 MSL3 MSL4 MSL5 MSL6 MSL7 MSL8 Bacillariophyceae (Diatoms) Asterionella japonica 49 1 55 315 30 34 143 29 Bacteriastrum hyalinum 234 53 25 87 383 1334 597 63 Bellerochea malleus - 119 40 19 440 350 462 44 Biddulphia reticulata 350 22 413 217 1273 22 176 0 Chaetoceros coarctatus 68 132 212 3 172 75 59 3859 Chaetoceros curvisetus 100 189 18 8 286 14 115 24 Chaetoceros lorenzianus 91 76 14 46 61 48 87 211 Eucampia zodiacus 233 46 20 32 124 470 4354 30 Hemidiscus hardmanianus 949 36 65 47 272 112 101 217 Planktoniella sol 18 1605 41 46 177 71 1005 240 Pleurosigma sp.",
+      "claim_ids": [
+        "p209-02",
+        "p209-03",
+        "p209-04",
+        "p209-05",
+        "p209-06",
+        "p209-07",
+        "p209-08",
+        "p209-09",
+        "p209-10",
+        "p209-11"
+      ]
+    },
+    {
+      "page": 225,
+      "text": "No Meiofauna Species Meio benthos Nos/10 cm2 MSL 1 MSL 2 MSL 3 MSL 4 MSL 5 MSL 6 MSL 7 MSL 8 ITD 1 ITD 2 26 Textilaria foliacea 8 6 6 4 12 8 - 8 6 4 Ostracodes 27 Basslerites liebaui 4 6 - 6 8 12 8 4 8 4 28 Bairdoppilata scaura - 8 4 8 10 6 6 6 - - 29 Cytheromorph a fuscata 4 4 - 10 6 6 4 6 6 8 30 Keijella reticulata 6 4 8 6 4 4 12 8 4 - 31 Paijenborchell a cymbula 4 6 4 8 4 2 6 8 - 2 32 Stenocypris major 8 9 12 4 - 8 4 4 4 - 33 Tanella gracilis 4 - 6 - 9 6 7 - 6 - Harpacticoid 34 Macrosetella gracilis - 7 8 6 8 10 6 9 4 - 35 Canuella perplexa 4 6 12 12 16 10 16 9 8 4 36 Euterpina acutifrons 9 8 - 8 8 8 6 - 6 6 37 Tisbe furcata 8 14 8 - 8 10 6 6 - 4 Total 176 226 234 220 324 260 272 196 150 124 Meio-benthic faunal composition: A total of 37 species of meio-benthic organisms were recorded, representing four groups: Foraminiferans, Nematodes, Ostracodes, and Harpacticoids.",
+      "claim_ids": [
+        "p225-01",
+        "p225-06",
+        "p225-07",
+        "p225-08",
+        "p225-10",
+        "p225-12",
+        "p225-13",
+        "p225-14",
+        "p225-15",
+        "p225-16",
+        "p225-17",
+        "p225-18",
+        "p225-19",
+        "p225-20",
+        "p225-21",
+        "p225-22",
+        "p225-23",
+        "p225-24",
+        "p225-25",
+        "p225-26",
+        "p225-27"
+      ]
+    },
+    {
+      "page": 423,
+      "text": "Botanical name Local name Importance in selection of species Greenbelt Trees 1 Acacia auriculiformis Arasi Maram Salt resistant and fast growing 2 Acacia nilotica Karuvelam Native, Shady, Pollutant absorbing 3 Alstonia scholaris Ezilai Paalai Evergreen and Fast growing 4 Anthocephalus cadamba Vellai Kadambu Broad leaved & Fast growing 5 Azadirachta indica Vembu Shady, Pollutant absorbing & Fast growing 6 Bixa orellana Varugamanj al Shady, Native & Fast growing 7 Bombax ceiba Ilavam Attractive & Tall growing 8 Bambusa vulgaris Vellai Moongil Fast growing plant and highly tolerant to air pollution 9 Butea monosperma Purasu intermediately tolerant to moderately tolerant 10 Cassia fistula Konrai Native, Shady, Fast growing 11 Casuarina equisetifolia Savukku Wind resistance 12 Cocos nucifera Thennai Fruit bearing",
+      "claim_ids": [
+        "p423-01",
+        "p423-02",
+        "p423-03",
+        "p423-04",
+        "p423-05",
+        "p423-06",
+        "p423-07",
+        "p423-08",
+        "p423-09",
+        "p423-10",
+        "p423-11",
+        "p423-12"
+      ]
+    },
+    {
+      "page": 210,
+      "text": "669 3 11 21 96 218 73 10 Dinophyceae (Dinoflagellates) Trichodesmium erythraeum 42 613 3647 76 2807 635 253 8 Ceratium extensum 1131 62 108 67 33 37 2385 9 Ceratium furca 253 6 50 5 95 328 186 1407 Ceratium macroceros 199 20 191 62 16 35 31 24 Ceratium trichoceros 2 73 2356 2045 68 67 62 194 Ceratium tripos 10 6 41 10 136 197 7 62 Dinophysis caudata 4324 23 151 2 235 12 118 142 Protoperidinium oceanicum 634 114 24 236 170 120 138 56 Protoperidinium sp.",
+      "claim_ids": [
+        "p210-05",
+        "p210-06",
+        "p210-07",
+        "p210-08",
+        "p210-09",
+        "p210-10",
+        "p210-11",
+        "p210-12",
+        "p210-13"
+      ]
+    },
+    {
+      "page": 221,
+      "text": "No Macrofauna Species Macro Benthos Nos/10 cm2 MSL 1 MSL 2 MSL 3 MSL 4 MSL 5 MSL 6 MSL 7 MSL 8 ITD 1 ITD 2 11 D. gardineri - - 50 125 50 50 50 50 - 25 12 Euchone rosea 75 25 25 50 - 25 50 75 - - 13 Euclymene lumbricoides - 100 - 50 150 50 25 75 - - 14 Exogone clavator 50 75 25 25 - 25 50 50 - 25 15 Glycera benguellana - 25 25 - 50 50 25 50 - - 16 Goniada emeriti 50 100 - 25 225 - 50 50 25 - 17 Notomastus aberans - 25 25 150 75 25 - - - 25 18 Nephtys dibranchis - - 50 75 50 125 175 75 - - 19 Nereis sp.",
+      "claim_ids": [
+        "p221-01",
+        "p221-02",
+        "p221-03",
+        "p221-04",
+        "p221-05",
+        "p221-06",
+        "p221-07",
+        "p221-08",
+        "p221-09"
+      ]
+    },
+    {
+      "page": 227,
+      "text": "Alectis indica, Ambassis commersoni, Boleophthalmus boddarti, Caranx sem, Chanos chanos, Ephippus orbis, Gazza minuta, Platycephalus indicus, Deveximentum insidiator, Gerres filamentosus etc.",
+      "claim_ids": [
+        "p227-01",
+        "p227-02",
+        "p227-03",
+        "p227-04",
+        "p227-05",
+        "p227-06",
+        "p227-07",
+        "p227-08",
+        "p227-09",
+        "p227-10"
+      ]
+    },
+    {
+      "page": 224,
+      "text": "No Meiofauna Species Meio benthos Nos/10 cm2 MSL 1 MSL 2 MSL 3 MSL 4 MSL 5 MSL 6 MSL 7 MSL 8 ITD 1 ITD 2 Nematodes 1 Daptonema conicum 4 6 5 8 8 5 10 - 10 10 2 Astomonema jenneri 7 -- 12 8 10 14 9 10 6 6 3 Epsilonema steiner 7 10 7 6 4 10 - 7 - - 4 Neochromad ora craspedota 8 - 12 - 10 - 8 5 - 6 5 Halalaimus filum - 6 8 8 4 9 10 2 - 8 6 Oxystomina clavicauda 7 8 10 6 9 6 8 8 8 6 7 Rhychonema sp.",
+      "claim_ids": [
+        "p224-02",
+        "p224-03",
+        "p224-04",
+        "p224-05",
+        "p224-06",
+        "p224-07"
+      ]
+    },
+    {
+      "page": 738,
+      "text": "Sl.No Scientific Name Common Name Order Family IUCN IWPA Vernacular Name(Tamil) 12 Hemidactylus brookii Spotted Indian House Gecko Squamata Gekkonidae LC Mara Palli 13 Sitana ponticeriana Fan-Throated Lizard Squamata Agamidae LC Visir i thonta i onan 14 Mabuya carinatus Common skink Squamata Scincidae LC Aranai 15 Ahaetulla mycterizans Common Green Whip Snake Squamata Colubridae LC Pachai pambu 16 Chamaeleo zeylanicus Indian Chameleon Squamata Chamaeleonidae LC Pachondhi 17 Bungarus caeruleus Common Indian Krait Squamata Elapidae LC I Kattu vir iyan",
+      "claim_ids": [
+        "p738-01",
+        "p738-02",
+        "p738-03",
+        "p738-04",
+        "p738-05",
+        "p738-06"
+      ]
+    },
+    {
+      "page": 210,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Description of Environment 3-58 Phytoplankton Species MSL1 MSL2 MSL3 MSL4 MSL5 MSL6 MSL7 MSL8 Triceratium favus 9 69 1096 167 203 113 319 1 Triceratium reticulatum 824 13 7 32 265 37 128 91 Triceratium robertsianum 67 152 38 151 88 212 13 52 Cyanophyceae (Blue-green algae) Oscillatoria sp.",
+      "claim_ids": [
+        "p210-01",
+        "p210-02",
+        "p210-03",
+        "p210-04"
+      ]
+    },
+    {
+      "page": 226,
+      "text": "Asterorotalia dentata Spiroloculina depressa Rosalina globularis Elphidium clavatum Ammonia beccarii Miliolinella subrotunda Exhibit 3-8: Meio-benthos 3.15.5 Common Marine Fish Species at Cuddalore Cuddalore district have a coastline that extends 57.5 Kms and has significant economic activity yielding out of the fishermen population associated with fishing",
+      "claim_ids": [
+        "p226-06"
+      ]
+    },
+    {
+      "page": 737,
+      "text": "Sphaerotheca breviceps Indian burrowing frog Anura Ranidae LC - Reptiles 7 Calotes versicolor Common garden lizard Squamata Gekkonidae LC Onan 8 Ptyas mucosa Common rat snake Squamata Colubridae LC ll Sarai pambu 9 Varanus bengalensis Common Indian monitor Squamata Varanidae NT I Udumbu 10 Eutropis carinata Brahminy skink Squamata Scincidae LC Kattu Aranai 11 Hemidactylus flaviviridis House Gecko Squamata Gekkonidae LC Palli",
+      "claim_ids": [
+        "p737-12",
+        "p737-13",
+        "p737-14",
+        "p737-15",
+        "p737-16",
+        "p737-17"
+      ]
+    },
+    {
+      "page": 225,
+      "text": "The Ostracodes community included species such as Basslerites liebaui, Bairdoppilata scaura, Cytheromorpha fuscata, Keijella reticulata, Paijenborchella cymbula, Stenocypris major, and Tanella gracilis.",
+      "claim_ids": [
+        "p225-09",
+        "p225-11"
+      ]
+    },
+    {
+      "page": 424,
+      "text": "Botanical name Local name Importance in selection of species 13 Delonix regia Semmayir- kondrai effectively traps fugitive dust and absorbs gaseous pollutants 14 Dendrocalamus strictus Kal Moongil Tall growing, Sound barrier 15 Ficus benghalensis Aalamaram Native, fast growing and Drought resistance 16 Ficus carica Seemaiyathi Native, High tolerance for drought and saline soils.",
+      "claim_ids": [
+        "p424-01",
+        "p424-02",
+        "p424-03",
+        "p424-04"
+      ]
+    },
+    {
+      "page": 51,
+      "text": "Recommended Species such as Azadirachta indica, Acacia nilotica, Cassia fistula, Casuarina equisetifolia etc. for Plantation are provided in Section 10.5.5 of Chapter 10.",
+      "claim_ids": [
+        "p51-08"
+      ]
+    },
+    {
+      "page": 209,
+      "text": "1748 32 192 88 3504 6 32 192 Skeletonema costatum 74 97 78 2 436 6043 8 407 Thalassiothrix frauenfeldii 161 11 49 633 29 31 73 6 Thalassiothrix nitzschioides 26 22 18 50 170 575 17 141",
+      "claim_ids": [
+        "p209-14",
+        "p209-15",
+        "p209-16"
+      ]
+    },
+    {
+      "page": 212,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Description of Environment 3-60 Table 3-23: Zooplankton population densities (Nos/m³) in eight different samples Species MSL1 MSL2 MSL3 MSL4 MSL5 MSL6 MSL7 MSL8 Arthropoda (Copepoda) Zooplankton (Nos/M3) Acartia danae 184 2287 37 345 118 77 2195 1853 Acartia spinicauda 5956 306 231 2579 3324 153 109 113 Acrocalanus gracilis 13 405 39 693 204 13 51 89 Copepod nauplii 50 752 37 28 236 190 12 213 Euterpina acutifrons 84 7 205 49 80 233 13 152 Nannocalanus minor 1051 5778 3065 83 9 95 97 2242 Oithona brevicornis 63 114 113 78 114 14 1465 20 Oithona nana 657 130 7 16 164 206 443 34 Oithona rigida 82 28 97 81 330 542 88 36 Oithona similis 368 200 14 192 16 1776 55 27 Oithona simplex 2021 234 3681 77 420 231 29 285 Oncaea venusta 353 576 135 145 306 1918 89 26 Paracalanus parvus 189 475 327 51 89 120 90 51 Undinula sp.",
+      "claim_ids": [
+        "p212-01",
+        "p212-02"
+      ]
+    },
+    {
+      "page": 233,
+      "text": "Mixed vegetation near cuddalore port Neltuma juliflora near cuddalore port Scrub land with shrubs, herbs and grasses Exhibit 3-10: Habitat features in the project site Phytosociological studies in Core Area: Among trees species Neltuma juliflora showed highest IVI (23.77) followed by Butea monosperma (21.24), Morinda pubescens (21.24) and Delonix regia (20.90), these four tree species were significant in occupying majority of space in sampled area.",
+      "claim_ids": [
+        "p233-12",
+        "p233-13",
+        "p233-14",
+        "p233-15"
+      ]
+    },
+    {
+      "page": 237,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Description of Environment 3-85 Figure 3-73: Flora composition in core and buffer area Figure 3-74: Species diversity index of core and buffer area 3.16.4 Status of Faunal Diversity Core Area: During the study period, species such as Lepus nigricollis, Funambulus palmarum, Ardeola greyii, Bubulcus ibis, Corvus splendens, Merops orientalis. were recorded in the project site core area.",
+      "claim_ids": [
+        "p237-02",
+        "p237-03"
+      ]
+    },
+    {
+      "page": 238,
+      "text": "Species includes Calotes versicolor, Ptyas mucosus, Hemidactylus flaviviridis, Chamaeleo zeylanicus, Mabuya carinata and Bungarus caeruleus.",
+      "claim_ids": [
+        "p238-02",
+        "p238-03",
+        "p238-04",
+        "p238-05",
+        "p238-06",
+        "p238-07"
+      ]
+    },
+    {
+      "page": 223,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Description of Environment 3-71 Exhibit 3-7: Macro Benthos Anadara rhombea Ampithoe ramondi Dosinia victoriae Galba longiscata Meretrix casta Cerithidea cingulata",
+      "claim_ids": [
+        "p223-01"
+      ]
+    },
+    {
+      "page": 235,
+      "text": "Among shrub species Calotropis procera showed highest IVI (25.86) followed by Ricinus communis (23.25) and Nerium oleander (20.82).",
+      "claim_ids": [
+        "p235-05",
+        "p235-06",
+        "p235-07"
+      ]
+    },
+    {
+      "page": 242,
+      "text": "Between 2022323 and 2024325, approximately 95 hectares of new mangroves have been developed under initiatives supported by NABARD, the Green Tamil Nadu Mission, and National Highways Authority of India, further expanding the use of modified fishbone designs for sustainable coastal protection and ecosystem recovery.",
+      "claim_ids": [
+        "p242-04"
+      ]
+    },
+    {
+      "page": 258,
+      "text": "Table 3-42: Fishermen household9s details Fishing Villages Fishermen Households and Household Details District S.No Villages Fishermen Households Traditional fishermen Households BPL households Fisher folk population Puducherry 1 Moorthykuppam Pudukuppam 354 354 338 1171 2 Narambai 330 330 329 1151 3 Pannittittu 437 437 425 1466 4 Pudukuppam (Poornakuppam) 271 271 271 986 Cuddalore 1 Akkairaikori 765 765 764 2556 2 Annappanpettai 230 230 230 759 3 Ayyam Pettai 120 120 59 474 4 Chitirai Pettai 269 269 269 1044 5 Cuddalore Port 296 24 295 1259 6 Devanampattinam 1155 1153 790 4115 7 Kinjam Pettai 253 253 253 852 8 Maniyar Pettai 95 95 74 307 9 Nanjalingam Pettai 110 110 110 424 10 Nayakkar Pettai 63 63 63 219 11 Periyakuppam 475 475 475 1803",
+      "claim_ids": [
+        "p258-04",
+        "p258-05",
+        "p258-06",
+        "p258-07",
+        "p258-08",
+        "p258-09",
+        "p258-10",
+        "p258-11",
+        "p258-12",
+        "p258-13",
+        "p258-14",
+        "p258-15",
+        "p258-16",
+        "p258-17",
+        "p258-18",
+        "p258-19",
+        "p258-20",
+        "p258-21",
+        "p258-22",
+        "p258-23",
+        "p258-24",
+        "p258-25",
+        "p258-26",
+        "p258-27",
+        "p258-28",
+        "p258-29",
+        "p258-30",
+        "p258-31",
+        "p258-32",
+        "p258-33"
+      ]
+    },
+    {
+      "page": 259,
+      "text": "Table 3-43: Population details of Fishermen community Fishing Villages Male Female Total Others Villages Adults up to 5 years above 5 years Adults up to 5 years above 5 years Average household size Sex Ratio Puducherry Moorthykuppam Pudukuppam 394 50 160 391 41 135 1171 3 939 Narambai 349 32 183 384 40 163 1151 3 1041 Pannittittu 371 53 341 421 57 223 1466 3 916 Pudukuppam (Poornakuppam) 378 37 82 369 26 94 986 4 984 Cuddalore Akkairaikori 944 91 238 939 135 209 2556 3 1008 Annappanpettai 274 30 104 263 24 64 759 3 860 Ayyam Pettai 213 18 16 172 25 30 474 4 919 Chitirai Pettai 381 56 125 345 45 92 1044 4 858 Cuddalore Port 447 45 129 472 44 122 1259 4 1027 Devanampattinam 1415 174 446 1468 150 462 4115 4 1022 Kinjam Pettai 319 33 61 318 51 70 852 3 861 Maniyar Pettai 133 9 23 113 10 19 307 3 861 Nanjalingam Pettai 150 25 59 136 8 46 424 4 812 Nayakkar Pettai 90 9 15 81 17 7 219 3 921 Periyakuppam 644 63 189 661 56 190 1803 4 1012 Pettodai 316 37 81 266 35 53 788 3 816 Rajapettai 556 46 280 532 52 223 1689 4 915",
+      "claim_ids": [
+        "p259-31",
+        "p259-32",
+        "p259-33",
+        "p259-34",
+        "p259-35",
+        "p259-36"
+      ]
+    },
+    {
+      "page": 260,
+      "text": "Table 3-44: Education details of fishermen community Education Details Fishing Villages Primary Higher secondary Above Higher Secondary Mandal S No Villages Male Female Male Female Male Female Puducherry 1 Moorthykuppam Pudukuppam 79 65 58 60 17 24 2 Narambai 172 148 38 34 23 19 3 Pannittittu 147 143 54 49 41 34 4 Pudukuppam (Poornakuppam) 105 104 142 95 45 28 Cuddalore 1 Akkairaikori 140 97 184 148 67 113 2 Annappanpettai 43 33 95 46 36 25 3 Ayyam Pettai 133 134 48 44 14 4 4 Chitirai Pettai 135 87 168 132 42 14 5 Cuddalore Port 130 98 159 168 66 57 6 Devanampattinam 652 620 383 405 115 102 7 Kinjam Pettai 62 69 174 140 23 8 8 Maniyar Pettai 92 94 21 23 11 1 9 Nanjalingam Pettai 45 32 62 59 29 14 10 Nayakkar Pettai 13 9 20 20 12 2 11 Periyakuppam 173 195 290 262 110 102 12 Pettodai 138 120 109 80 63 22 13 Rajapettai 376 293 279 270 75 36 14 Reddiyar Pettai 75 64 63 70 64 18 15 Singara Thoppu 176 159 323 232 105 91 16 Sonankuppam 222 243 499 456 91 62 17 Sothikuppam 194 166 247 201 97 53 18 Thaikkalthonidurai 95 76 110 76 45 42",
+      "claim_ids": [
+        "p260-03",
+        "p260-04",
+        "p260-05",
+        "p260-06",
+        "p260-07",
+        "p260-08",
+        "p260-09",
+        "p260-10",
+        "p260-11",
+        "p260-12",
+        "p260-13",
+        "p260-14",
+        "p260-15",
+        "p260-16",
+        "p260-17",
+        "p260-18",
+        "p260-19",
+        "p260-20",
+        "p260-21",
+        "p260-22",
+        "p260-23",
+        "p260-24"
+      ]
+    },
+    {
+      "page": 261,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Description of Environment 3-109 Education Details Fishing Villages Primary Higher secondary Above Higher Secondary Mandal S No Villages Male Female Male Female Male Female 19 Thammanam Pettai 9 4 18 23 14 16 20 Thazhanguda 156 112 121 112 38 25 3562 3165 3665 3205 1243 912 3.18.4 Fishermen activity profile The fishermen community activities population in the project area are 8790 which are around 26.94 %.",
+      "claim_ids": [
+        "p261-01",
+        "p261-02"
+      ]
+    },
+    {
+      "page": 261,
+      "text": "Table 3-45: Fishermen activity profile Fishing villages Actual fishing Fish seed Collection Total Full time Part time Full time Part time Mandal S.No Villages Mal e Femal e Mal e Femal e Puducherry 1 Moorthykuppam Pudukuppam 256 0 0 0 0 0 256 2 Narambai 316 0 0 0 0 0 316 3 Pannittittu 385 3 0 0 0 0 388 4 Pudukuppam (Poornakuppam) 205 23 0 0 0 1 229 Cuddalore 1 Akkairaikori 859 0 0 0 0 0 859 2 Annappanpettai 139 24 0 0 0 0 163 3 Ayyam Pettai 90 15 0 0 0 0 105 4 Chitirai Pettai 286 5 0 0 0 0 291 5 Cuddalore Port 290 28 1 0 0 0 319 6 Devanampattinam 1203 28 0 0 0 0 1231 7 Kinjam Pettai 227 9 0 0 0 0 236 8 Maniyar Pettai 67 18 0 0 0 0 85 9 Nanjalingam Pettai 119 0 0 0 0 0 119 10 Nayakkar Pettai 60 0 0 1 0 0 61 11 Periyakuppam 441 29 0 0 0 0 472 12 Pettodai 152 79 0 0 0 0 231 13 Rajapettai 498 0 0 0 0 0 498 14 Reddiyar Pettai 165 52 0 0 0 0 217 15 Singara Thoppu 1301 0 0 3 0 0 1304 16 Sonankuppam 933 29 0 0 0 0 962 17 Sothikuppam 517 0 0 0 0 0 517 18 Thaikkalthonidurai 57 169 0 0 0 0 226 19 Thammanam Pettai 133 41 0 0 0 0 174 20 Thazhanguda 463 0 0 0 0 0 463 9162 552 1 4 0 1 9722 3.18.5 Occupation profile for fishermen Among the affected fishermen community persons, the total occupation is 41.15 % and total non-occupation which includes not in the workforce, dependent, children and unemployed constitutes to be 58.85 % of the total fishing community",
+      "claim_ids": [
+        "p261-03",
+        "p261-04",
+        "p261-05"
+      ]
+    },
+    {
+      "page": 262,
+      "text": "Table 3-46: Fishermen occupation profile S.No Fishing villages occupation profile No.of members involved in fishing allied activities Villages Active fishermen Marketing of fish Making/Repairing net Curing/processing Peeling Labourer Others Other than fishing Total occupied Puducherry 1 Moorthykuppam Pudukuppam 256 100 0 0 0 0 0 0 356 2 Narambai 316 80 0 0 3 0 0 0 399 3 Pannittittu 388 114 0 0 1 30 0 0 533 4 Pudukuppam (Poornakuppam) 229 40 1 0 0 110 1 3 443 Cuddalore 1 Akkairaikori 859 44 0 0 0 0 274 6 1183 2 Annappanpettai 163 93 52 9 0 0 0 8 325 3 Ayyam Pettai 105 65 18 0 0 3 0 1 192 4 Chitirai Pettai 291 53 24 1 0 55 0 3 427 5 Cuddalore Port 319 177 41 22 1 81 7 14 662 6 Devanampattinam 1231 266 70 5 0 83 17 6 1678 7 Kinjam Pettai 236 198 0 0 0 4 0 0 438 8 Maniyar Pettai 85 19 7 0 0 0 9 0 120 9 Nanjalingam Pettai 119 0 9 0 0 0 2 0 130 10 Nayakkar Pettai 61 45 0 0 0 0 0 1 107 11 Periyakuppam 472 301 7 62 5 132 13 60 1052 12 Pettodai 231 40 9 13 1 71 1 4 370 13 Rajapettai 498 57 0 0 0 35 0 0 590 14 Reddiyar Pettai 217 67 0 0 0 0 4 3 291 15 Singara Thoppu 1304 0 11 0 0 0 10 0 1325 16 Sonankuppam 962 132 86 0 0 0 24 0 1204 17 Sothikuppam 517 31 3 0 2 14 49 3 619 18 Thaikkalthonidurai 226 10 11 2 0 3 0 2 254 19 Thammanam Pettai 174 0 0 0 0 0 0 2 254 20 Thazhanguda 463 165 39 7 2 80 8 0 764 9722 2097 388 121 15 701 419 116 13716 3.18.6 Craft owned and fishing profile of fishermen Craft and Fishing Profile: Among the fishing community households the craft owned by the fishing community is outboard with 424 households, and non-motorized households are 181.",
+      "claim_ids": [
+        "p262-01",
+        "p262-02",
+        "p262-03",
+        "p262-04",
+        "p262-05"
+      ]
+    },
+    {
+      "page": 428,
+      "text": "There are 235 Mechanized fishing boats and 2345 FRP boats, Non motorised boats 1906 are operating in this district.",
+      "claim_ids": [
+        "p428-05",
+        "p428-06",
+        "p428-07"
+      ]
+    },
+    {
+      "page": 1,
+      "text": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu Submitted by QCI-NABET Accredited EIA Consultant QCI-NABET Accredited EIA Consultant NABET/EIA/23-26/SA 0236 NABET/EIA/23-26/SA 0236 C25014 DL003, Rev 0 Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) Draft EIA/EMP Report Study Period July to October, 2025 May, 2026",
+      "claim_ids": [
+        "p1-01",
+        "p1-02",
+        "p1-03",
+        "p1-04",
+        "p1-05",
+        "p1-06",
+        "p1-07"
+      ]
+    },
+    {
+      "page": 8,
+      "text": "Signature: 07-05-2026 Name: Susruta Mamidanna Designation: Director Name of the EIA Consultant Organization: Falcon Resilient Infra Consultants NABET Certificate Number & Issue Date: NABET/EIA/23-26/SA 0236 issued on March 18, 2025.",
+      "claim_ids": [
+        "p8-01",
+        "p8-02"
+      ]
+    },
+    {
+      "page": 9,
+      "text": "Date and Sign of EIA Coordinator: Name: Susruta Mamidanna Designation: Director 3 Technical Date and Sign of Head of Accredited Organization: (07.01.2026) Name of the EIA consultant organization: Falcon Resilient Infra Consultants, Hyderabad NABET Certificate No. & Issue Date: NABET/EIA/23-26/SA 0236 dated March 18, 2025",
+      "claim_ids": [
+        "p9-08",
+        "p9-09"
+      ]
+    },
+    {
+      "page": 40,
+      "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient.",
+      "claim_ids": [
+        "p40-01",
+        "p40-02",
+        "p40-03",
+        "p40-04",
+        "p40-05",
+        "p40-06",
+        "p40-07",
+        "p40-15",
+        "p40-18"
+      ]
+    },
+    {
+      "page": 45,
+      "text": "During operation phase, approximately 205 workers will be employed (Direct 82 and Indirect 123).",
+      "claim_ids": [
+        "p45-09"
+      ]
+    },
+    {
+      "page": 73,
+      "text": "No Description Unit Approved Proposed Total Remarks Breakwater South 650 0 650 10 Retaining walls North m 180 0 180 No change South m 230 0 230 No change 11 Turning Circle Diameter m 310.0 90 400 Increase in diameter and depth Depth mCD -10 -16 -16 12 Approach Channel Length m 1500 5000 5000 Increase in approach channel length and width at Protected Area Curved portion of channel Unprotected Width m 60 - - Protected Area/Inner Channel m - 100 100 Curved portion of channel/Inner Channel m - 130 130 Unprotected area/outer channel m - 160 160 13 Cargo handling capacity MTPA 5.68 5.8 11.48 Increase in cargo handling capacity 14 Capital Dredging M.",
+      "claim_ids": [
+        "p73-01",
+        "p73-02",
+        "p73-03",
+        "p73-04",
+        "p73-05",
+        "p73-06",
+        "p73-07",
+        "p73-08",
+        "p73-09",
+        "p73-10",
+        "p73-11"
+      ]
+    },
+    {
+      "page": 74,
+      "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcoke, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD is not being consumed yet.",
+      "claim_ids": [
+        "p74-01",
+        "p74-02",
+        "p74-03",
+        "p74-04",
+        "p74-05",
+        "p74-06",
+        "p74-07",
+        "p74-15"
+      ]
+    },
+    {
+      "page": 85,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Project Description 2-19 Figure 2-13: Significant Wave Height Vs Direction Peak Wave Period (Tp): Peak wave period between a minimum of 1.7sec to 8.5sec, 77% is dominant in below 10sec. & only 23.0% of peak wave period is in between 10s to 12s.",
+      "claim_ids": [
+        "p85-01",
+        "p85-02",
+        "p85-03",
+        "p85-04"
+      ]
+    },
+    {
+      "page": 89,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Project Description 2-23 scatter plot of simulated water levels and measured water levels shows a good agreement with correlation coefficient of 0.86 as presented in Figure 2-19.",
+      "claim_ids": [
+        "p89-01"
+      ]
+    },
+    {
+      "page": 97,
+      "text": "Table 2-5: Scatter table between Mean wave direction and Significant wave height <0.5 0.5 1 1.5 2 2.5 >2.5 Below 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 40 0.00 0.00 0.55 1.47 0.35 0.00 0.00 2.37 70 0.00 1.24 11.06 8.28 1.96 0.27 0.55 23.37 100 0.00 8.40 7.02 0.63 0.01 0.05 0.00 16.11 130 0.00 16.71 11.38 0.18 0.00 0.00 0.00 28.28 160 0.06 14.44 14.70 0.66 0.00 0.00 0.00 29.87 0.06 40.80 44.72 11.22 2.33 0.32 0.55 Table 2-6: Scatter table between significant wave height and Peak wave period <0.5 0.5 1 1.5 2 2.5 >2.5 Below 0.00 0.00 0.31 0.00 0.00 0.00 0.00 0.31 4 0.00 8.62 11.66 0.40 0.00 0.00 0.00 20.68 6 0.00 17.59 26.25 10.29 2.18 0.18 0.00 56.49 8 0.00 9.37 3.14 0.42 0.15 0.14 0.55 13.77 10 0.06 4.09 3.47 0.11 0.00 0.00 0.00 7.73 12 0.00 0.81 0.21 0.00 0.00 0.00 0.00 1.02 0.00 0.00 0.01 0.00 0.00 0.00 0.00 0.01 0.06 40.48 45.04 11.22 2.33 0.32 0.55 Based on the statistical analysis of the wave characteristics, the following wave periods and wave directions were included in the wave disturbance simulations • Significant wave height: 0.5m,1.0m and 1.5m • Peak wave period: 6s, 8s and 10s • Mean wave direction: 70°,130° and 160° Directional irregular waves of above wave conditions were defined using a JONSWAP spectrum and directional spreading of 30° has been used in defined the wave spectrum.",
+      "claim_ids": [
+        "p97-02",
+        "p97-03",
+        "p97-04",
+        "p97-05"
+      ]
+    },
+    {
+      "page": 103,
+      "text": "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51",
+      "claim_ids": [
+        "p103-03",
+        "p103-04",
+        "p103-05",
+        "p103-06",
+        "p103-07",
+        "p103-08",
+        "p103-09",
+        "p103-10",
+        "p103-11",
+        "p103-12",
+        "p103-13",
+        "p103-14",
+        "p103-15",
+        "p103-16",
+        "p103-17",
+        "p103-18"
+      ]
+    },
+    {
+      "page": 104,
+      "text": "Table 2-11: Typical Vessel Types and Key Parameters Vessel class Type Capacity LOA (m) Beam (m) Typical draft (m) Handysize Bulk carrier 10,000 3 40,000 DWT 130 - 180 23-30 9 3 10 (loaded) Handymax/Supramax Bulk carrier 40,000-65,000 DWT 180- 200 30-32 11-13 (loaded)",
+      "claim_ids": [
+        "p104-03",
+        "p104-04",
+        "p104-05",
+        "p104-06",
+        "p104-07",
+        "p104-09",
+        "p104-10"
+      ]
+    },
+    {
+      "page": 105,
+      "text": "Mahathi Cuddalore Port and Maritime Private Limited (MCPMPL) C25014 Draft EIA/EMP Report DL003, Rev.A Project Description 2-39 Vessel class Type Capacity LOA (m) Beam (m) Typical draft (m) Panamax Bulk carrier 65,000-80,000 DWT 225 - 245 32.2 13-14 (loaded) Feeder Container vessel up to 1,500 - 2,000 TEU 150- 180 23-28 8-10 (operating) With the existing -11 m CD draft, the port can accommodate Handysize bulk carriers whereas the proposed dredging operation of -16 m CD in inner harbour can handle larger Handymax/Supramax/ Panamax classes.",
+      "claim_ids": [
+        "p105-01",
+        "p105-02",
+        "p105-03",
+        "p105-06",
+        "p105-07",
+        "p105-09",
+        "p105-13",
+        "p105-17",
+        "p105-21",
+        "p105-25",
+        "p105-28",
+        "p105-29",
+        "p105-30",
+        "p105-32"
+      ]
+    },
+    {
+      "page": 106,
+      "text": "Draft(m) 1 Multipurpose Cargo Min 10,000 100 16 8 Max 45,000 180 32 12 2 Dry Bulk - Coal Min 45,000 200 32 12 Max 80,000 230 32.5 14.3 3 Container Min 1500 150 23 8.0 Max 2000 180 28 10.0 4 Liquid Tanker Min 5000 105 16 6.3 Max 30,000 175 29 9.5",
+      "claim_ids": [
+        "p106-07",
+        "p106-08",
+        "p106-09",
+        "p106-10",
+        "p106-11",
+        "p106-13",
+        "p106-14"
+      ]
+    },
+    {
+      "page": 107,
+      "text": "Draft(m) 1 Bulk Cargo 80,000 230 32.5 14.3 Conclusion for arriving at coal vessel size: 80,000 DWT / 14.3 m draft design gives lower cost per tonne, fewer ship calls, better attraction for cargo, and is future ready.",
+      "claim_ids": [
+        "p107-01",
+        "p107-02",
+        "p107-03",
+        "p107-04",
+        "p107-24"
+      ]
+    },
+    {
+      "page": 109,
+      "text": "Table 2-19: Required length of Cargo Berths Vessel Type Design Vessel Size (DWT) Overall Length LOA (m) Minimum Berth Length (m) Container Vessel 2000 (TEUs) 180 210 Handymax 45,000 180 210 Panamax 80,000 230 270 Deck Top Level The principal criterion for determining the deck top level of a cargo berth is related to optimum position of the cargo transfer equipment to cater for two extreme situations, i.e. with the largest vessel in light displacement condition at high water and with the smallest vessel fully laden at low water.",
+      "claim_ids": [
+        "p109-01",
+        "p109-02",
+        "p109-03"
+      ]
+    },
+    {
+      "page": 109,
+      "text": "Table 2-20: Required Width and Depth of Berth Pockets Particulars Unit Barges Handymax Panamax Overall Length (LOA) of design vessel m 120 180 230 Beam (B) of design vessel m 18 28.4 32.5 Draft (D) of design vessel m CD -8 -10.2 -14.3 Length of Berth pocket m 144 216 276 Width of Berth Pocket m 21 33 37 Depth at Berth Pocket m CD -8.8 -11.3 -15.8 2.8.12.4 Berth Furniture Berth furniture is used for regular operations and protection of berth, and this includes various components such as Bollards, Fenders, QRMH, ladders, etc. which",
+      "claim_ids": [
+        "p109-05",
+        "p109-06",
+        "p109-07",
+        "p109-08",
+        "p109-09",
+        "p109-10",
+        "p109-11",
+        "p109-12",
+        "p109-13",
+        "p109-14",
+        "p109-15",
+        "p109-16",
+        "p109-17",
+        "p109-18",
+        "p109-19",
+        "p109-20",
+        "p109-21",
+        "p109-22"
+      ]
+    },
+    {
+      "page": 111,
+      "text": "Table 2-23: Required Depth of Harbour Basin Particulars Units Overall Length of Design Vessel (LOA) m 230 Beam (B) m 32.5 Draft m 14.3 Depth of Harbour basin m -16.0 2.8.14.2 Turning Circle The turning circle is one of the most critical aspects required for maneuvering of the cargo vessels.",
+      "claim_ids": [
+        "p111-04",
+        "p111-05",
+        "p111-06",
+        "p111-07"
+      ]
+    },
+    {
+      "page": 111,
+      "text": "Table 2-24: Specifications of Turning Circle for Cargo Port Particulars Units Overall Length of Design Vessel (LOA) (m) 230 Beam (B) (m) 32.5 Draft (D) (m) 14.3 Required Stopping distance for design vessel (m) 1725 Proposed Stopping distance (m) 1800 Required width of approach channel (inner harbour 3 one way movement) (m) 107 Proposed width of approach channel (inner harbour) (m) 110 Depth in the entrance channel (m CD) (-) 16.0 A channel width of 110 m (bottom width) has been proposed, considering the favourable hydrodynamic conditions in the area and the assistance of tugs and speed control measures to safely accommodate Panamax vessels under all operating conditions.",
+      "claim_ids": [
+        "p111-08",
+        "p111-09",
+        "p111-10",
+        "p111-11",
+        "p111-12",
+        "p111-13",
+        "p111-14"
+      ]
+    }
+  ],
+  "pairing": {
+    "subjects": 4380,
+    "key_calls": 110,
+    "keys_missing": 4,
+    "numeric_claims": 5138,
+    "groups": 2130,
+    "representatives": 3032,
+    "readings_without_station": 401,
+    "dropped_by_cap": 22242,
+    "pairs_same_key": 366,
+    "pairs_related_key": 1210,
+    "pairs_part_whole": 0
+  },
+  "pairing_dropped_by_cap": [
+    [
+      "bottom layer current direction | great nicobar island",
+      981
+    ],
+    [
+      "bottom layer current direction | great nicobar island  ~  current direction | great nicobar island",
+      1782
+    ],
+    [
+      "current direction | great nicobar island",
+      789
+    ],
+    [
+      "current direction | great nicobar island  ~  current direction deg | great nicobar island",
+      70
+    ],
+    [
+      "current direction | great nicobar island  ~  middle layer current direction | great nicobar island",
+      1109
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction | great nicobar island",
+      2477
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 01 15 on 06 09 2025 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 02 25 on 08 09 2025 | great nicobar island",
+      33
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 02 50 | great nicobar island",
+      33
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 03 20 on 02 09 2025 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 03 45 on 11 09 2025 | great nicobar island",
+      31
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 04 20 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 05 15 | great nicobar island",
+      31
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 05 15 on 06 09 2025 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 05 20 on 06 09 2025 | great nicobar island",
+      33
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 06 50 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 07 45 on 11 09 2025 | great nicobar island",
+      31
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 07 55 on 03 09 2025 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 08 15 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 08 45 on 04 09 2025 | great nicobar island",
+      32
+    ],
+    [
+      "current direction | great nicobar island  ~  surface layer current direction at 08 55 on 05 09 2025 | great nicobar island",
+      33
+    ],
+    [
+      "middle layer current direction | great nicobar island",
+      359
+    ],
+    [
+      "middle layer current direction | great nicobar island  ~  middle layer direction | great nicobar island",
+      968
+    ],
+    [
+      "middle layer direction | great nicobar island",
+      622
+    ],
+    [
+      "pitch angle | great nicobar island",
+      914
+    ],
+    [
+      "roll angle | great nicobar island",
+      398
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 00 10 on 12 09 2025 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 00 45 on 05 09 2025 | great nicobar island",
+      20
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 01 09 2025 02 45 | great nicobar island",
+      18
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 01 09 2025 23 15 | great nicobar island",
+      20
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 01 15 on 06 09 2025 | great nicobar island",
+      20
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 02 09 2025 03 15 | great nicobar island",
+      20
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 02 09 2025 23 45 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 02 15 on 31 08 2025 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 02 20 on 31 08 2025 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 03 09 2025 03 45 | great nicobar island",
+      20
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 03 20 on 02 09 2025 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 03 45 on 11 09 2025 | great nicobar island",
+      18
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 04 10 on 12 09 2025 | great nicobar island",
+      19
+    ],
+    [
+      "roll angle | great nicobar island  ~  roll angle at 04 15 | great nicobar island",
+      19
+    ],
+    [
+      "surface layer current direction | great nicobar island",
+      1815
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 01 15 on 06 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 02 25 on 08 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 02 50 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 03 20 on 02 09 2025 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 03 45 on 11 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 04 20 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 05 15 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 05 15 on 06 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 05 20 on 06 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 06 50 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 07 45 on 11 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 07 55 on 03 09 2025 | great nicobar island",
+      52
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 08 15 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 08 45 on 04 09 2025 | great nicobar island",
+      43
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer current direction at 08 55 on 05 09 2025 | great nicobar island",
+      53
+    ],
+    [
+      "surface layer current direction | great nicobar island  ~  surface layer direction | great nicobar island",
+      964
+    ],
+    [
+      "surface layer current direction at 01 15 on 06 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      6
+    ],
+    [
+      "surface layer current direction at 02 25 on 08 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 02 50 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 03 20 on 02 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 03 45 on 11 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 04 20 | great nicobar island  ~  surface layer direction | great nicobar island",
+      7
+    ],
+    [
+      "surface layer current direction at 05 15 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 05 15 on 06 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 05 20 on 06 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 06 50 | great nicobar island  ~  surface layer direction | great nicobar island",
+      7
+    ],
+    [
+      "surface layer current direction at 07 45 on 11 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      7
+    ],
+    [
+      "surface layer current direction at 07 55 on 03 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      7
+    ],
+    [
+      "surface layer current direction at 08 15 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 08 45 on 04 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      8
+    ],
+    [
+      "surface layer current direction at 08 55 on 05 09 2025 | great nicobar island  ~  surface layer direction | great nicobar island",
+      7
+    ],
+    [
+      "surface layer direction | great nicobar island",
+      111
+    ],
+    [
+      "bottom layer current speed | great nicobar island",
+      519
+    ],
+    [
+      "bottom layer current speed | great nicobar island  ~  bottom layer speed | great nicobar island",
+      504
+    ],
+    [
+      "bottom layer current speed | great nicobar island  ~  current speed | great nicobar island",
+      796
+    ],
+    [
+      "bottom layer speed | great nicobar island",
+      112
+    ],
+    [
+      "current speed | great nicobar island",
+      286
+    ],
+    [
+      "current speed | great nicobar island  ~  middle layer current speed | great nicobar island",
+      675
+    ],
+    [
+      "current speed | great nicobar island  ~  surface layer current speed | great nicobar island",
+      855
+    ],
+    [
+      "middle layer current speed | great nicobar island",
+      370
+    ],
+    [
+      "middle layer current speed | great nicobar island  ~  middle layer speed | great nicobar island",
+      559
+    ],
+    [
+      "middle layer speed | great nicobar island",
+      201
+    ],
+    [
+      "significant wave height | great nicobar island",
+      36
+    ],
+    [
+      "significant wave height | great nicobar island  ~  significant wave height range | great nicobar island",
+      10
+    ],
+    [
+      "significant wave height | great nicobar island  ~  wave height | great nicobar island",
+      2
+    ],
+    [
+      "surface layer current speed | great nicobar island",
+      619
+    ],
+    [
+      "surface layer current speed | great nicobar island  ~  surface layer speed | great nicobar island",
+      1002
+    ],
+    [
+      "surface layer speed | great nicobar island",
+      368
+    ],
+    [
+      "tide | great nicobar island  ~  tide height | great nicobar island",
+      20
+    ],
+    [
+      "tide height | cuddalore",
+      7
+    ],
+    [
+      "tide height | great nicobar island",
+      111
+    ],
+    [
+      "water depth | great nicobar island",
+      13
+    ],
+    [
+      "distance | great nicobar island",
+      78
+    ],
+    [
+      "thermal radiation distance | great nicobar island  ~  thermal radiation threat zone distance | great nicobar island",
+      10
+    ],
+    [
+      "thermal radiation threat zone distance | great nicobar island",
+      3
+    ],
+    [
+      "toxic area radiu | great nicobar island",
+      9
+    ],
+    [
+      "water depth | great nicobar island",
+      1
+    ],
+    [
+      "grain size distribution parameter | great nicobar island",
+      46
+    ],
+    [
+      "fisher folk population | great nicobar island  ~  fisher folk population in village | great nicobar island",
+      9
+    ],
+    [
+      "wave period | great nicobar island",
+      20
+    ]
+  ],
+  "cost_usd": 10.0006,
+  "wall_clock_s": 3900.8,
+  "stages": {
+    "claims": {
+      "seconds": 2573.7,
+      "usd": 2.5238
+    },
+    "triage + verdicts": {
+      "seconds": 895.2,
+      "usd": 7.4056
+    },
+    "copy-paste": {
+      "seconds": 115.8,
+      "usd": 0.0014
+    }
+  },
+  "calls_per_model": {
+    "nvidia/Nemotron-3.5-Super-VL": {
+      "api_calls": 871,
+      "cache_hits": 5,
+      "prompt_tokens": 4153494,
+      "completion_tokens": 1366412,
+      "cost_usd": 2.4758,
+      "api_seconds": 14421.115
+    },
+    "nvidia/Nemotron-3_5-Lightning": {
+      "api_calls": 1179,
+      "cache_hits": 3,
+      "prompt_tokens": 3067023,
+      "completion_tokens": 336311,
+      "cost_usd": 0.2647,
+      "api_seconds": 3074.706
+    },
+    "nvidia/Nemotron-3-Ultra-550b-a55b": {
+      "api_calls": 594,
+      "cache_hits": 2,
+      "prompt_tokens": 3942737,
+      "completion_tokens": 1105777,
+      "cost_usd": 7.2601,
+      "api_seconds": 4461.031
+    }
+  },
+  "tavily": {
+    "calls": 53,
+    "cached": 10,
+    "credits": 47
+  },
+  "retries": {
+    "retries": 10,
+    "rate_limited": 4,
+    "server_errors": 0,
+    "connection_errors": 6
+  },
+  "findings_by_check": {
+    "recycled_figure": {
+      "RED": 0,
+      "ORANGE": 0,
+      "NONE": 5
+    },
+    "contradiction": {
+      "RED": 11,
+      "ORANGE": 2,
+      "NONE": 576
+    },
+    "copy_paste": {
+      "NONE": 46,
+      "RED": 4
+    }
+  },
+  "known_issues_matched": {},
+  "new_flagged": 17,
+  "flags": [
+    {
+      "id": "cp-p103-4",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        103
+      ],
+      "quotes": [
+        {
+          "page": 103,
+          "text": "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51"
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [0.01, 0.02, 0.47, 0.69, 0.79, 1.16, 1.46, 2.52, 3.68, 4.8, 5.23, 5.45, 5.67, 7.01, 7.58, 7.64, 7.96, 8.28, 8.43, 10.0, 10.41, 11.0, 11.07, 11.71, 12.0, 12.31, 12.4, 13.0, 14.0, 15.0, 15.2, 17.1, 18.14, 23.51, 34.29, 93.58, 111.72]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+      ]
+    },
+    {
+      "id": "cp-p40-2",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        40
+      ],
+      "quotes": [
+        {
+          "page": 40,
+          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+      ]
+    },
+    {
+      "id": "cp-p428-1",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        428
+      ],
+      "quotes": [
+        {
+          "page": 428,
+          "text": "There are 235 Mechanized fishing boats and 2345 FRP boats, Non motorised boats 1906 are operating in this district."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [235.0, 1906.0, 2345.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://cuddalore.nic.in/fisheries"
+      ]
+    },
+    {
+      "id": "cp-p74-3",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        74
+      ],
+      "quotes": [
+        {
+          "page": 74,
+          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcoke, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD is not being consumed yet."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
+      ]
+    },
+    {
+      "id": "ct-1009",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        40,
+        453
+      ],
+      "quotes": [
+        {
+          "page": 40,
+          "text": "25",
+          "also_on": [
+            74
+          ]
+        },
+        {
+          "page": 453,
+          "text": "Effluent Treatment Plant KLD - 25 25 No change"
+        }
+      ],
+      "reason": "Page 40 shows an approved capacity of 25 KLD for the Effluent Treatment Plant, while page 453 shows no approved capacity (dash) for the same item; the remarks also differ (\"New proposal\" vs \"No change\").",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-354",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        57,
+        499
+      ],
+      "quotes": [
+        {
+          "page": 499,
+          "text": "traffic densities and parking capabilities in a 0.5 kms radius from the site"
+        },
+        {
+          "page": 57,
+          "text": "in a 05 kms radius from the site"
+        }
+      ],
+      "reason": "The two statements specify different assessment radii (0.5 km vs 05 km) for the same traffic and parking impact assessment, making them numerically incompatible.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-506",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        98,
+        99
+      ],
+      "quotes": [
+        {
+          "page": 98,
+          "text": "Theta =130) and (Hs = 1.5m;"
+        },
+        {
+          "page": 99,
+          "text": "Theta =70) To assess the wave tranquillity of proposed port expansion during extreme wave conditions, offshore wave climate of 2m has been considered for the analysis."
+        }
+      ],
+      "reason": "Statement 1 assigns Figures 2-30 to 2-32 to three operational wave conditions, while Statement 2 assigns the same figures to two extreme wave conditions. The same figures cannot represent both sets of conditions simultaneously.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-509",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        622,
+        623
+      ],
+      "quotes": [
+        {
+          "page": 623,
+          "text": "current speeds are observed in the range of 0.01 m/s to 1.2 m/s"
+        },
+        {
+          "page": 622,
+          "text": "current speeds are observed in the range of 0.01 m/s to 1.30 m/s"
+        }
+      ],
+      "reason": "Both statements describe the observed range of current speeds during the same 15-day measurement period at Cuddalore Port, but they give different maximum values (1.2 m/s vs 1.30 m/s).",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-535",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        239,
+        433
+      ],
+      "quotes": [
+        {
+          "page": 239,
+          "text": "Among the 107 plant species reported from the study area, none of the species is listed in IUCN threatened category."
+        },
+        {
+          "page": 433,
+          "text": "Among the 187 plant species reported from the study area, none of the species is listed in IUCN threatened category."
+        }
+      ],
+      "reason": "The two statements report different totals of plant species from the study area (107 vs 187) without any stated reason for the discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-839",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        31,
+        39
+      ],
+      "quotes": [
+        {
+          "page": 31,
+          "text": "Dredging for Turning Circle area with depth -11 m CD, Diameter 300 m,"
+        },
+        {
+          "page": 39,
+          "text": "Turning Circle Diameter m 310.0 90 400 Increase in diameter and depth",
+          "also_on": [
+            73,
+            150
+          ]
+        }
+      ],
+      "reason": "Statement 1 lists the turning circle diameter as 300 m and depth as -11 m CD under developed facilities, while Statement 2 shows the approved diameter as 310 m and depth as -10 m CD in the comparison table. The report does not explicitly explain this discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-846",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        253,
+        459
+      ],
+      "quotes": [
+        {
+          "page": 253,
+          "text": "The Working population in the project study area is 208711 which are around 41.47%;"
+        },
+        {
+          "page": 459,
+          "text": "The Working population in the project study area is 208711",
+          "also_on": [
+            253
+          ]
+        }
+      ],
+      "reason": "Statement 1 (Table 3-34) gives a non-working population of 294,621 for the study area, while Statement 2 gives 4,294,621; the working population figures (208,711, 41.47%) are identical.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-869",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        38,
+        39
+      ],
+      "quotes": [
+        {
+          "page": 38,
+          "text": "8.54",
+          "also_on": [
+            75,
+            371,
+            454
+          ]
+        },
+        {
+          "page": 39,
+          "text": "Cargo handling capacity MTPA 5.68 5.8 11.48 Increase in cargo handling capacity",
+          "also_on": [
+            38,
+            72,
+            73,
+            75,
+            371,
+            451,
+            452,
+            454,
+            494
+          ]
+        }
+      ],
+      "reason": "Statement 1 lists bulk berth capacity as 8.54 MTPA within a total of 11.48 MTPA, while Statement 2 lists the proposed capacity increase as 5.8 MTPA on top of an approved 5.68 MTPA to reach the same total; the bulk berth capacity exceeds the proposed increase without explanation.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-875",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        108,
+        451
+      ],
+      "quotes": [
+        {
+          "page": 451,
+          "text": "2",
+          "also_on": [
+            491
+          ]
+        },
+        {
+          "page": 108,
+          "text": "(2- Multipurpose Cargo berths [440m length]"
+        }
+      ],
+      "reason": "Statement 1 shows three multipurpose berths totaling 440m quay length (2 approved + 1 proposed), while Statement 2 describes two multipurpose cargo berths of 440m length as proposed, creating a numerical discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-924",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        451,
+        491
+      ],
+      "quotes": [
+        {
+          "page": 451,
+          "text": "21",
+          "also_on": [
+            491
+          ]
+        },
+        {
+          "page": 491,
+          "text": "Width m 21 21 21",
+          "also_on": [
+            451
+          ]
+        }
+      ],
+      "reason": "Both statements refer to the width of multipurpose berths in the same expansion plan table, but page 451 shows a dash for the proposed width while page 491 shows 21 m, making the proposed values contradictory.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-962",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        38,
+        494
+      ],
+      "quotes": [
+        {
+          "page": 38,
+          "text": "11.48",
+          "also_on": [
+            39,
+            72,
+            73,
+            75,
+            371,
+            451,
+            452,
+            454,
+            494
+          ]
+        },
+        {
+          "page": 494,
+          "text": "8.54"
+        }
+      ],
+      "reason": "Both statements report a total cargo handling capacity of 11.48 MTPA and a bulk berth capacity of 8.54 MTPA, but the bulk berth cargo mix differs: Statement 1 includes Slag while Statement 2 does not, making the two descriptions mutually exclusive for the same berth.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-562",
+      "grade": "ORANGE",
+      "type": "contradiction",
+      "pages": [
+        84,
+        725
+      ],
+      "quotes": [
+        {
+          "page": 725,
+          "text": "08-09-2025 19:40 116.41 9.48 0.55 3.67"
+        },
+        {
+          "page": 84,
+          "text": "The observation period at Cuddalore port crosses one neap and one spring tide. It shows that the significant wave height varies from 0.4m to 1.1m.",
+          "also_on": [
+            622
+          ]
+        }
+      ],
+      "reason": "Statement 1 shows significant wave height (Hs) measurements ranging from 0.43 to 0.55 m, while Statement 2 states that at Cuddalore port the significant wave height varies from 0.4 m to 1.1 m with a maximum of 1.1 m. The report does not explain why the measured maximum in the table is lower than the reported maximum for the observation period.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": "unclear",
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-946",
+      "grade": "ORANGE",
+      "type": "contradiction",
+      "pages": [
+        39,
+        150
+      ],
+      "quotes": [
+        {
+          "page": 150,
+          "text": "APPROACH CHANNEL (110m WIDE)"
+        },
+        {
+          "page": 39,
+          "text": "Unprotected area/outer channel m - 160 160",
+          "also_on": [
+            452
+          ]
+        }
+      ],
+      "reason": "Statement 1 gives a single approach channel width of 110 m, while Statement 2 lists several distinct widths for different channel sections (60 m, 100 m, 130 m, 160 m) without indicating that 110 m corresponds to any of them.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": "unclear",
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    }
+  ],
+  "triage_audit": null
+}

@@ -241,11 +241,9 @@ def call(msgs, max_tokens, label, thinking=None, cached_share=0.0, cap=SPEND_CAP
         + (" (answered from the local cache: $0)" if local else f"; spent so far ${spent():.4f}"))
     if not local:
         check_cap(est, cap)
-    saved_retries, saved_client = llm.MAX_RETRIES, llm._client
-    if not local:   # a local cache hit needs no client (replay works without a key)
-        llm.MAX_RETRIES = 0
-        llm._client = llm.client().with_options(timeout=LONG_TIMEOUT_S)
-    try:
+    # No retries and a long timeout for this call only (context-local: other app sessions and
+    # threads keep their own settings and key).
+    with llm.request_options(timeout=LONG_TIMEOUT_S, max_retries=0):
         for wait in (*RATE_LIMIT_WAITS, None):
             try:
                 reply = llm.chat_message(llm.ULTRA, msgs, thinking=thinking, max_tokens=max_tokens,
@@ -256,8 +254,6 @@ def call(msgs, max_tokens, label, thinking=None, cached_share=0.0, cap=SPEND_CAP
                     raise
                 log(f"[{label}] rate limited (HTTP 429, not billed); waiting {wait}s")
                 time.sleep(wait)
-    finally:
-        llm.MAX_RETRIES, llm._client = saved_retries, saved_client
     usd, detail = cost(reply["usage"])
     if not reply["cached"]:
         _record(label, detail, reply.get("seconds"))

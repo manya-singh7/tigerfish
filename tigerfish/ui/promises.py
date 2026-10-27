@@ -79,14 +79,14 @@ def render(report_id):
                "itself says it did. ORANGE: the report's own text shows less than promised "
                "(confirmed by a second reading). INFO: not found, or not confirmed. Each is a "
                "question for the reviewer, not a conclusion.")
-    st.dataframe(pd.DataFrame(table_rows(data)), hide_index=True, use_container_width=True,
+    st.dataframe(pd.DataFrame(table_rows(data)), hide_index=True, width="stretch",
                  column_config={"Link": st.column_config.LinkColumn("Open page", display_text="open")})
 
     st.markdown("#### Survey timeline")
     st.caption("Each bar is a field study's dates as the report states them; the shaded band is "
                "the stated baseline period. Click a bar to open the cited page of the report.")
-    st.altair_chart(chart(data), use_container_width=True, theme="streamlit")
+    st.altair_chart(chart(data), width="stretch", theme="streamlit")
     with st.expander("Timeline as a table"):
         frame = timeline_frame(data)[["study", "start", "end", "days", "cite", "quote", "url"]]
-        st.dataframe(frame, hide_index=True, use_container_width=True,
+        st.dataframe(frame, hide_index=True, width="stretch",
                      column_config={"url": st.column_config.LinkColumn("Page", display_text="open")})

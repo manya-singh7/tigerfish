@@ -41,15 +41,36 @@ def load_queue(path=None):
 
 def load_reviews(path=None):
     """{flag_id: {reviewer: latest decision row}}."""
-    out = {}
     p = Path(path or REVIEWS)
     if not p.exists():
-        return out
-    for line in p.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            row = json.loads(line)
-            out.setdefault(row["flag_id"], {})[name_key(row["reviewer"])] = row
+        return {}
+    return with_rows({}, [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines()
+                          if line.strip()])
+
+
+def with_rows(reviews, rows):
+    """A copy of reviews ({flag_id: {reviewer: row}}) with these decision rows added on top
+    (a later row by the same reviewer replaces theirs). The hosted app adds the visitor's
+    session decisions this way; the committed ones are never changed."""
+    out = {fid: dict(by) for fid, by in reviews.items()}
+    for row in rows:
+        out.setdefault(row["flag_id"], {})[name_key(row["reviewer"])] = row
     return out
+
+
+def make_row(flag_id, reviewer, decision, note=""):
+    """One decision row (validated), not saved anywhere."""
+    reviewer = " ".join(str(reviewer or "").split())
+    if not reviewer:
+        raise ValueError("reviewer name is required")
+    if decision not in DECISIONS:
+        raise ValueError(f"decision must be one of {list(DECISIONS)}")
+    return {"flag_id": flag_id, "reviewer": reviewer, "decision": decision,
+            "note": note.strip(), "time": time.strftime("%Y-%m-%dT%H:%M:%S")}
+
+
+def rows_jsonl(rows):
+    return "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows)
 
 
 def name_key(name):
@@ -58,13 +79,7 @@ def name_key(name):
 
 def record(flag_id, reviewer, decision, note="", path=None):
     """Append one decision. reviewer is required (double review needs two names)."""
-    reviewer = " ".join(str(reviewer or "").split())
-    if not reviewer:
-        raise ValueError("reviewer name is required")
-    if decision not in DECISIONS:
-        raise ValueError(f"decision must be one of {list(DECISIONS)}")
-    row = {"flag_id": flag_id, "reviewer": reviewer, "decision": decision,
-           "note": note.strip(), "time": time.strftime("%Y-%m-%dT%H:%M:%S")}
+    row = make_row(flag_id, reviewer, decision, note)
     path = Path(path or REVIEWS)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as f:

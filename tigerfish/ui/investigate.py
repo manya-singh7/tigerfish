@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 import streamlit as st
 
-from tigerfish import agent, pdf_reader
+from tigerfish import agent, hosted, pdf_reader
 from tigerfish.ui import live
 from tigerfish.ui.style import esc
 
@@ -26,15 +26,19 @@ CONCLUSION_LABELS = {"strengthens": "Evidence strengthens the finding",
 
 
 def saved(report_id, finding_id):
-    """A live run from this session's cache, else the pre-recorded one, else None."""
-    p = LIVE_DIR / f"{report_id}__{finding_id}.json"
-    if p.exists():
-        return json.loads(p.read_text(encoding="utf-8"))
+    """A live run from cache/investigations (only where live runs are possible: never on the
+    hosted app, never without a key), else the pre-recorded one in results/, else None."""
+    if can_run(report_id)[0]:
+        p = LIVE_DIR / f"{report_id}__{finding_id}.json"
+        if p.exists():
+            return json.loads(p.read_text(encoding="utf-8"))
     return agent.load(report_id, finding_id)
 
 
 def can_run(report_id):
     pdf = (REPORTS.get(report_id) or (None, None))[0]
+    if hosted.is_hosted():
+        return False, "Live investigation runs only locally (it needs the source PDF)."
     if not live.available():
         return False, "Live investigation needs NEBIUS_API_KEY."
     if pdf is None or not pdf.exists():

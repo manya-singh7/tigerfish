@@ -3,13 +3,19 @@
 Replay (default, no keys): results/memo_<report>.json, results/ask_<report>.json and
 results/ultra_context_test.json. Live questions only with NEBIUS_API_KEY, at most
 ask.SESSION_LIMIT per session, with the cost estimate shown before sending.
+
+Where the page text comes from: an uploaded PDF (live mode, session_state["live_pages"]), or,
+locally only, the page cache of the saved report (cache/pages/). The hosted app never reads
+cache/; there, questions work on an uploaded PDF and count against the daily budget
+(tigerfish/hosted.py).
 """
 
+import contextlib
 import json
 import os
 from pathlib import Path
 
-from tigerfish import ask, fulltext
+from tigerfish import ask, fulltext, hosted
 from tigerfish.ui import badges
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -37,7 +43,21 @@ def context_test():
 
 
 def live_available():
-    return bool(os.getenv("NEBIUS_API_KEY"))
+    return bool(os.getenv("NEBIUS_API_KEY")) or bool(hosted.owner_key())
+
+
+def live_pages(report_id, state):
+    """(pages, None) for asking new questions about this report, or (None, why not)."""
+    up = state.get("live_pages")
+    if up and up.get("id") == report_id:
+        return up["pages"], None
+    if hosted.is_hosted():
+        return None, ("New questions about this saved report run only locally (its page text "
+                      "is not part of the hosted demo). Upload a PDF in Live mode to ask about it.")
+    pages_file = ROOT / "cache" / "pages" / fulltext.PDF_STEM / "pages.jsonl"
+    if report_id != "great_nicobar_2021_draft" or not pages_file.exists():
+        return None, "Asking new questions needs the page cache of this report (cache/pages/)."
+    return fulltext.load_pages(ROOT / "cache"), None
 
 
 def caption(text):
@@ -150,6 +170,9 @@ def render_ask(report_id):
     st.markdown("#### Ask the report")
     rec = answers(report_id)
     if not rec:
+        if (st.session_state.get("live_pages") or {}).get("id") == report_id:
+            render_live(report_id)
+            return
         st.info("Recorded questions are saved for the Great Nicobar EIA only.")
         return
     st.markdown("<div class='tf-message'>Every question sends the whole report to Nemotron Ultra. The "
@@ -172,47 +195,61 @@ def render_ask(report_id):
 def render_live(report_id):
     import streamlit as st
     from tigerfish.ui.style import esc
-    used = st.session_state.get("ask_used", 0)
+    s = st.session_state
+    used = s.get("ask_used", 0)
     if not live_available():
         caption("Asking new questions needs NEBIUS_API_KEY (live mode). The answers above are recorded.")
         return
-    pages_file = ROOT / "cache" / "pages" / fulltext.PDF_STEM / "pages.jsonl"
-    if not pages_file.exists():
-        caption("Asking new questions needs the page cache of this report (cache/pages/).")
+    pages, why_not = live_pages(report_id, s)
+    if pages is None:
+        caption(why_not)
         return
-    pending = st.session_state.pop("ask_pending", None)      # set by the Send button's callback
+    limit = hosted.MAX_ASKS_PER_SESSION if hosted.is_hosted() else ask.SESSION_LIMIT
+    pending = s.pop("ask_pending", None)      # set by the Send button's callback
     if pending:
-        pages = fulltext.load_pages(ROOT / "cache")
         with st.spinner("Ultra is reading the whole report..."):
             try:
-                a = ask.ask(pending, pages, log=lambda *_: None)
-            except fulltext.CapReached as e:
+                with hosted.paid_calls(s) if hosted.is_hosted() else contextlib.nullcontext():
+                    a = ask.ask(pending, pages, log=lambda *_: None)
+            except (fulltext.CapReached, hosted.BudgetExceeded) as e:
                 st.error(str(e))
+                a = None
+            except Exception as e:      # bad key, network
+                st.error(f"The question could not be sent ({type(e).__name__}).")
                 a = None
         if a:
             st.markdown(f"<div class='tf-card-title'>{esc(a['question'])}</div>" + answer_html(a),
                         unsafe_allow_html=True)
             caption(f"Cost: {cost_line(a['cost'])}")
-    left = ask.SESSION_LIMIT - used
-    q = st.text_input(f"Ask your own question ({left} of {ask.SESSION_LIMIT} left this session)",
+    left = limit - used
+    q = st.text_input(f"Ask your own question ({left} of {limit} left this session)",
                       max_chars=ask.MAX_QUESTION_CHARS, disabled=left <= 0, key="ask_question")
     if left <= 0:
         caption("Question limit for this session reached.")
         return
     if not q.strip():
         return
-    report = fulltext.report_text(fulltext.load_pages(ROOT / "cache"))
+    report = fulltext.report_text(pages)
     est = ask.estimate(q, report)
-    caption(f"Estimated cost: about {usd(est['expected_usd'])} with the prompt cache warm; at most "
-               f"{usd(est['worst_usd'])} if the cache is cold and the reply has to be asked again. "
-               f"Spent so far on Ultra: {usd(fulltext.spent())} of the ${fulltext.SPEND_CAP_USD:.2f} cap.")
+    room = True
+    if hosted.is_hosted() and hosted.uses_owner_budget(s):
+        room = est["worst_usd"] <= hosted.budget.remaining()
+        caption(f"Estimated cost: about {usd(est['expected_usd'])}, at most {usd(est['worst_usd'])}. "
+                f"Demo budget left today: {usd(hosted.budget.remaining())} of "
+                f"${hosted.DAILY_BUDGET_USD:.2f}."
+                + ("" if room else " Not enough left for this question; add your own Nebius key "
+                                   "in Live mode, or try tomorrow."))
+    else:
+        caption(f"Estimated cost: about {usd(est['expected_usd'])} with the prompt cache warm; at most "
+                f"{usd(est['worst_usd'])} if the cache is cold and the reply has to be asked again. "
+                f"Spent so far on Ultra: {usd(fulltext.spent())} of the ${fulltext.SPEND_CAP_USD:.2f} cap.")
 
     def send():          # runs before the next script run, so the counter is already updated
-        if st.session_state.get("ask_used", 0) < ask.SESSION_LIMIT:
+        if st.session_state.get("ask_used", 0) < limit:
             st.session_state["ask_used"] = st.session_state.get("ask_used", 0) + 1
             st.session_state["ask_pending"] = q
 
-    st.button("Send to Nemotron Ultra", type="primary", on_click=send)
+    st.button("Send to Nemotron Ultra", type="primary", on_click=send, disabled=not room)
 
 
 def render_context_note():

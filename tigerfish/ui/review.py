@@ -3,17 +3,27 @@
 Decisions go to review/reviews.jsonl (two independent decisions for double-review flags).
 A single-review decision is also saved to the card reviews (feedback/feedback.json), so the
 finding's card and the per-check precision table show it.
+
+Hosted app (tigerfish/hosted.py): the committed decisions (hand verifications in the queue,
+and review/reviews.jsonl if it is committed) are shown read-only and the precision panel uses
+only them. A visitor's decisions stay in their browser session (SESSION_ROWS), shown as
+"Your decision", and can be downloaded; nothing is written to review/.
 """
 
 import streamlit as st
 
-from tigerfish import review
+from tigerfish import hosted, review
 from tigerfish.ui import feedback
 from tigerfish.ui.cards import quote_label
 from tigerfish.ui.style import badge, esc, stat
 
 POS_KEY = "review::pos"
 NAME_KEY = "review::name"
+SESSION_ROWS = "review::session_rows"     # hosted: this visitor's decisions
+
+
+def session_rows():
+    return st.session_state.setdefault(SESSION_ROWS, [])
 
 
 def pct(x):
@@ -104,12 +114,17 @@ def render(report_id):
     if not queue or queue["report_id"] != report_id:
         st.info("No review queue for this report.")
         return
-    reviews = review.load_reviews()
+    in_session = hosted.is_hosted()
+    committed = review.load_reviews()
+    reviews = review.with_rows(committed, session_rows()) if in_session else committed
     items = queue["items"]
     st.markdown(f"Every new RED/ORANGE flag of the full audit, in order: {esc(queue['order'])}. "
                 f"{queue['double_review']} flags are judged by both reviewers independently. "
-                "Decisions are saved to review/reviews.jsonl.")
-    precision_panel(queue, reviews)
+                + ("The project's own decisions are shown read-only. Your decisions stay in this "
+                   "browser session only (download them below); they never change the saved "
+                   "review or the precision figures." if in_session
+                   else "Decisions are saved to review/reviews.jsonl."))
+    precision_panel(queue, committed)
     st.write("")
 
     st.session_state.setdefault(NAME_KEY, st.session_state.get(feedback.REVIEWER_KEY, ""))
@@ -140,7 +155,10 @@ def render(report_id):
     if decision:
         it = items[pos]
         try:
-            review.record(it["flag_id"], reviewer, decision, note or "")
+            if in_session:
+                session_rows().append(review.make_row(it["flag_id"], reviewer, decision, note or ""))
+            else:
+                review.record(it["flag_id"], reviewer, decision, note or "")
             if not it["double_review"] and it.get("finding_id"):
                 fid = it["finding_id"]
                 feedback.save(feedback.record(feedback.load(), report_id,
@@ -152,12 +170,18 @@ def render(report_id):
         except OSError as e:
             st.error(f"Could not save the decision ({e}). Reviews need a writable review/ folder.")
             return
-        reviews = review.load_reviews()
+        reviews = (review.with_rows(committed, session_rows()) if in_session
+                   else review.load_reviews())
         nxt = review.next_index(queue, reviews, reviewer, start=pos + 1)
         if nxt is not None:
             st.session_state[POS_KEY] = nxt
         st.rerun()
 
-    if review.REVIEWS.exists():
+    if in_session:
+        rows = session_rows()
+        st.download_button(f"Download your decisions (.jsonl, {len(rows)})", review.rows_jsonl(rows),
+                           file_name="tigerfish_my_reviews.jsonl", mime="application/json",
+                           disabled=not rows)
+    elif review.REVIEWS.exists():
         st.download_button("Download reviews (.jsonl)", review.REVIEWS.read_bytes(),
                            file_name="reviews.jsonl", mime="application/json")
