@@ -1,0 +1,134 @@
+{
+ "photos": {
+  "great_nicobar_2021_draft": {
+   "sp-p954-001": {
+    "species": "Panulirus interruptus",
+    "photo": {
+     "species": "Panulirus interruptus",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Spiny_lobster_%28Panulirus_interruptus%29.jpg/500px-Spiny_lobster_%28Panulirus_interruptus%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Spiny_lobster_(Panulirus_interruptus).jpg",
+     "licence": "Public domain",
+     "licence_url": "",
+     "author": "PD-USGov-DOC-NOAA",
+     "title": "File:Spiny_lobster_(Panulirus_interruptus).jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   }
+  },
+  "indira_point_table_3_16": {
+   "sp-01": {
+    "species": "Axis axis",
+    "photo": {
+     "species": "Axis axis",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Axis_axis_%28Nagarhole%2C_2010%29.jpg/500px-Axis_axis_%28Nagarhole%2C_2010%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Axis_axis_(Nagarhole,_2010).jpg",
+     "licence": "CC BY-SA 3.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "author": "Yathin S Krishnappa",
+     "title": "File:Axis_axis_(Nagarhole,_2010).jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "sp-02": {
+    "species": "Rusa unicolor",
+    "photo": {
+     "species": "Rusa unicolor",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Rusa_unicolor%2C_Rajiv_Gandhi_National_Park%2C_Karnataka%2C_India_%2824551464949%29.jpg/500px-Rusa_unicolor%2C_Rajiv_Gandhi_National_Park%2C_Karnataka%2C_India_%2824551464949%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Rusa_unicolor,_Rajiv_Gandhi_National_Park,_Karnataka,_India_(24551464949).jpg",
+     "licence": "CC BY 2.0",
+     "licence_url": "https://creativecommons.org/licenses/by/2.0",
+     "author": "Venkat Mangudi",
+     "title": "File:Rusa_unicolor,_Rajiv_Gandhi_National_Park,_Karnataka,_India_(24551464949).jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "sp-03": {
+    "species": "Felis chaus",
+    "photo": {
+     "species": "Felis chaus",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Jungle_Cat_on_tree_at_Sundarban%2C_West_Bengal%2C_India.jpg/500px-Jungle_Cat_on_tree_at_Sundarban%2C_West_Bengal%2C_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Jungle_Cat_on_tree_at_Sundarban,_West_Bengal,_India.jpg",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "author": "Soumyajit Nandy",
+     "title": "File:Jungle_Cat_on_tree_at_Sundarban,_West_Bengal,_India.jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "sp-04": {
+    "species": "Funambulus pennantii",
+    "photo": {
+     "species": "Funambulus pennantii",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Five-striped_palm_squirrel_%28Funambulus_pennantii%29.jpg/500px-Five-striped_palm_squirrel_%28Funambulus_pennantii%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Five-striped_palm_squirrel_(Funambulus_pennantii).jpg",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "author": "Charles J. Sharp",
+     "title": "File:Five-striped_palm_squirrel_(Funambulus_pennantii).jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "sp-05": {
+    "species": "Muntiacus muntjak",
+    "photo": {
+     "species": "Muntiacus muntjak",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Red_muntjac_%28Muntiacus_muntjak_malabaricus%29_male.jpg/500px-Red_muntjac_%28Muntiacus_muntjak_malabaricus%29_male.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Red_muntjac_(Muntiacus_muntjak_malabaricus)_male.jpg",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "author": "Charles J. Sharp",
+     "title": "File:Red_muntjac_(Muntiacus_muntjak_malabaricus)_male.jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "st-06": {
+    "species": "Macaca fascicularis",
+    "photo": {
+     "species": "Macaca fascicularis",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Macaca_fascicularis_looking_at_the_observer_-_front_view_smooth_green_bokeh.jpg/500px-Macaca_fascicularis_looking_at_the_observer_-_front_view_smooth_green_bokeh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:Macaca_fascicularis_looking_at_the_observer_-_front_view_smooth_green_bokeh.jpg",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "author": "Basile Morin",
+     "title": "File:Macaca_fascicularis_looking_at_the_observer_-_front_view_smooth_green_bokeh.jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   },
+   "st-07": {
+    "species": "Rattus rattus",
+    "photo": {
+     "species": "Rattus rattus",
+     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/House_Rat_David_Raju.jpg/500px-House_Rat_David_Raju.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+     "page": "https://commons.wikimedia.org/wiki/File:House_Rat_David_Raju.jpg",
+     "licence": "CC0",
+     "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+     "author": "Davidvraju",
+     "title": "File:House_Rat_David_Raju.jpg",
+     "source": "Wikimedia Commons (found with Tavily image search)"
+    },
+    "checked": []
+   }
+  }
+ },
+ "stopped": null,
+ "tavily": {
+  "credits": 8,
+  "credits_by_report": {
+   "great_nicobar_2021_draft": 1,
+   "indira_point_table_3_16": 7
+  },
+  "credits_spent_this_run": 0,
+  "cached_calls": 8,
+  "features": [
+   "include_images",
+   "include_domains"
+  ]
+ }
+}

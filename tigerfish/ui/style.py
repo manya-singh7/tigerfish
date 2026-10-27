@@ -82,6 +82,12 @@ CSS = f"""
   .tf-verified {{ border-left: 3px solid #E0B24F; background: #FFFAF0; padding: 0.45rem 0.7rem;
                   margin: 0 0 0.6rem 0; font-size: 0.92rem; color: {TEXT}; }}
   .tf-verified b {{ color: #7A4B00; }}
+  .tf-knowable {{ border-left: 3px solid {ACCENT}; background: #F2F8F8; padding: 0.45rem 0.7rem;
+                  margin: 0.6rem 0 0.2rem 0; font-size: 0.9rem; color: {TEXT}; }}
+  .tf-knowable b {{ color: {ACCENT}; }}
+  .tf-photo {{ margin: 0.7rem 0 0.2rem 0; max-width: 300px; }}
+  .tf-photo img {{ width: 100%; border-radius: 6px; display: block; }}
+  .tf-photo figcaption {{ font-size: 0.74rem; color: #5B6B73; margin-top: 0.25rem; line-height: 1.35; }}
   .tf-hero {{ font-size: 0.78rem; color: {ACCENT}; font-weight: 700; text-transform: uppercase;
               letter-spacing: 0.05em; margin-bottom: 0.3rem; }}
   .tf-hero-headline {{ font-size: 1.45rem; font-weight: 700; color: {TEXT}; line-height: 1.3;

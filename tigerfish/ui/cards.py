@@ -2,7 +2,9 @@
 
 import streamlit as st
 
-from tigerfish.ui import badges, crops, data, feedback, investigate
+from tigerfish import knowable, public_record, species_photos
+from tigerfish.ui import badges, crops, data, feedback, investigate, official
+from tigerfish.ui import public_record as record_ui
 from tigerfish.ui.style import badge, esc, stat
 
 REVIEW_OPTIONS = list(feedback.DECISIONS)
@@ -50,6 +52,27 @@ def fmt_time(seconds):
     return f"about {seconds / 60:.0f} min" if seconds >= 90 else f"about {seconds:.0f} s"
 
 
+def tavily_credits(report):
+    """(total, [(what, credits)]): Tavily credits for this report's audit plus the saved
+    web-context checks (official record, knowable at the time, public record, photos)."""
+    rid = report["id"]
+    parts = [("audit", (report.get("cost") or {}).get("tavily_credits") or 0)]
+    rec = official.load(rid)
+    if rec:
+        parts.append(("official record", rec["tavily"]["credits"]))
+    k = knowable.load(rid)
+    if k:
+        parts.append(("knowable at the time", k["tavily"]["credits"]))
+    pr = public_record.load(rid)
+    if pr:
+        parts.append(("public record", pr["tavily"].get("credits", 0)))
+    ph = species_photos.load()
+    if ph:
+        parts.append(("species photos", ph["tavily"].get("credits_by_report", {}).get(rid, 0)))
+    parts = [(w, c) for w, c in parts if c]
+    return sum(c for _, c in parts), parts
+
+
 def summary_strip(report):
     c = data.counts(report["findings"])
     cost = report.get("cost", {})
@@ -61,10 +84,11 @@ def summary_strip(report):
         pages = f"{report['pages_read']:,} of {report['pages_total']:,}"
         pages_note = report.get("pages_note", "pages audited in this run")
     usd = cost.get("nebius_usd")
-    credits = cost.get("tavily_credits", 0)
+    credits, parts = tavily_credits(report)
     cost_value = f"${usd:.2f}" if usd is not None else "-"
     base = cost.get("note") or "Nebius models"
-    cost_note = f"{base}, plus {credits} Tavily credits" if credits else base
+    cost_note = (f"{base}, plus {credits} Tavily credits ("
+                 + ", ".join(f"{w} {c}" for w, c in parts) + ")") if credits else base
     if cost.get("gbif_calls"):
         cost_note += "; GBIF is free"
     cols = st.columns(5)
@@ -104,7 +128,9 @@ def finding_card(report_id, f, report_title=""):
                     f'<div class="tf-card-title">{esc(f["title"])}</div>'
                     + badges.html(badges.finding_badges(f, badges.readers(report_id)))
                     + verification_html(f.get("verification"))
-                    + f'<div class="tf-message">{esc(f["message"])}</div>', unsafe_allow_html=True)
+                    + f'<div class="tf-message">{esc(f["message"])}</div>'
+                    + record_ui.knowable_html(report_id, f["id"])
+                    + record_ui.photo_html(report_id, f["id"]), unsafe_allow_html=True)
 
         quotes = f["quotes"]
         cols = st.columns(len(quotes)) if len(quotes) > 1 else [st.container()]

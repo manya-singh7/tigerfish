@@ -9,7 +9,8 @@ import streamlit as st
 
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
-                          official, promises, review, rti, species_map, web_evidence)
+                          official, promises, public_record, review, rti, species_map,
+                          web_evidence)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -50,9 +51,10 @@ else:
     with hero_slot:
         hero.render(report)
 
-findings_tab, review_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
-    ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web",
-     "Scanned pages", "Method & limits"])
+(findings_tab, review_tab, memo_tab, promises_tab, record_tab, web_tab, scanned_tab,
+ method_tab) = st.tabs(
+    ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Public record",
+     "Evidence from the web", "Scanned pages", "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -97,16 +99,18 @@ with findings_tab:
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
                 f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are saved on this '
                 f'computer (feedback/feedback.json).</div>', unsafe_allow_html=True)
-    lang_label = st.radio("Letter language", ["English", "Hindi", "Both"], horizontal=True,
-                          help="Hindi is machine-translated. Quotes from the report, page "
-                               "numbers and links are never translated.")
-    lang = {"English": "en", "Hindi": "hi", "Both": "both"}[lang_label]
+    lang_options = letter.language_options(report)
+    lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
+                          help="Hindi" + (" and Tamil are" if letter.offers_tamil(report) else " is")
+                               + " machine-translated (the letter says so: please review). Quotes "
+                               "from the report, page numbers and links are never translated.")
+    lang = lang_options[lang_label]
     docx_bytes, letter_error = b"", None
     if confirmed:
         try:
             docx_bytes = letter.build_letter(report, confirmed, lang)
         except letter.TranslationUnavailable:
-            letter_error = ("The Hindi letter needs the translation model (NEBIUS_API_KEY), and "
+            letter_error = ("The translated letter needs the translation model (NEBIUS_API_KEY), and "
                             "this selection has not been translated before. Choose English.")
     st.download_button(
         "Draft objection letter (.docx)",
@@ -140,6 +144,9 @@ with memo_tab:
 
 with promises_tab:
     promises.render(report["id"])
+
+with record_tab:
+    public_record.render(report["id"])
 
 with web_tab:
     web_evidence.render()

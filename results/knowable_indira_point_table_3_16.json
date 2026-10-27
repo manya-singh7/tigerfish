@@ -1,0 +1,207 @@
+{
+ "report_id": "indira_point_table_3_16",
+ "report_date": "2026-04-01",
+ "card_text": "Public sources before this report already described:",
+ "findings": [
+  {
+   "finding_id": "st-06",
+   "title": "Macaca fascicularis: IUCN category VU",
+   "point": "Macaca fascicularis (long-tailed macaque) is assessed as Endangered on the IUCN Red List.",
+   "query": "Macaca fascicularis long-tailed macaque IUCN Red List Endangered",
+   "sources": [
+    {
+     "url": "https://news.mongabay.com/2025/10/iucn-upholds-long-tailed-macaques-endangered-status-after-complaint",
+     "title": "IUCN upholds long-tailed macaques' endangered status ...",
+     "host": "news.mongabay.com",
+     "label": "open web (not an official source)",
+     "date": "2025-10-01",
+     "date_found": "URL path /2025/10/",
+     "quote": "The IUCN escalated the conservation status of the species, Macaca fascicularis, from vulnerable to endangered in 2022 after macaques poached from the wild were found to have been laundered into breeding farms in Cambodia, Laos and Vietnam supplying laboratories abroad.",
+     "why": "The quote explicitly states the IUCN escalated the species' status from vulnerable to endangered in 2022.",
+     "quote_check": "exact text of the Tavily-extracted source"
+    }
+   ],
+   "dropped": [
+    {
+     "url": "https://www.iucnredlist.org/resources/petitions",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://pubmed.ncbi.nlm.nih.gov/37667504",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "st-07",
+   "title": "Rattus rattus: WPA schedule Sch-V",
+   "point": "The Wild Life (Protection) Amendment Act, 2022 reduced the schedules to four (the vermin schedule, Schedule V, was removed).",
+   "query": "Wild Life (Protection) Amendment Act 2022 schedules reduced to four vermin",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.ijlra.com/details/wildlife-protection-and-control-of-pollution-act-2022-amendment-analysis-by-seerat-agarwal",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://www.scribd.com/document/657405020/WPA-amendments-2022-comparison",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://vidhilegalpolicy.in/blog/kill-the-notification-not-the-animal",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-01",
+   "title": "Axis axis at Indira Point",
+   "point": "Axis axis (chital) is not native to the Nicobar Islands: it is absent there, or recorded there only as introduced.",
+   "query": "Axis axis chital spotted deer Andaman Nicobar Islands introduced",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/occpapers/199/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/cas/035/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://www.wii.gov.in/uploads/topics/ar-2022-23-detail-17527452724729.pdf",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-02",
+   "title": "Cervus unicolor at Indira Point",
+   "point": "Rusa unicolor (Cervus unicolor, sambar) is not native to the Nicobar Islands: it is absent there, or recorded there only as introduced.",
+   "query": "Rusa unicolor sambar distribution Andaman Nicobar",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.wii.gov.in/uploads/topics/ar-2022-23-detail-17527452724729.pdf",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/hpg/057/index.pdf",
+     "why": "no sentence states the point"
+    },
+    {
+     "url": "https://www.fao.org/4/x8750e/x8750e03.pdf",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-03",
+   "title": "Felis chaus at Indira Point",
+   "point": "Felis chaus (jungle cat) is not native to the Nicobar Islands: it is absent there, or recorded there only as introduced.",
+   "query": "Felis chaus jungle cat distribution India Andaman Nicobar",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/spb/034/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/cas/035/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/cas/038/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-04",
+   "title": "Funambulus pennantii at Indira Point",
+   "point": "Funambulus pennantii (northern palm squirrel) is not native to the Nicobar Islands: it is absent there, or recorded there only as introduced.",
+   "query": "Funambulus pennantii palm squirrel Andaman Nicobar",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.cokesmithwildlife.com/genus-funambulus-palm-squirrel",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/occpapers/199/index.pdf",
+     "why": "no sentence states the point"
+    },
+    {
+     "url": "https://zsi.gov.in/public/uploads/documents/checklist/hindi/121_MAMMALIA_V2_2025.pdf",
+     "why": "Ultra: the quote does not state the point"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-05",
+   "title": "Muntiacus muntjak at Indira Point",
+   "point": "Muntiacus muntjak (barking deer) is not native to the Nicobar Islands: it is absent there, or recorded there only as introduced.",
+   "query": "Muntiacus muntjak barking deer distribution Andaman Nicobar",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/occpapers/199/index.pdf",
+     "why": "quote not found in the extracted text"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/occpapers/360/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/cas/035/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    }
+   ]
+  }
+ ],
+ "stopped": null,
+ "tavily": {
+  "searches": 7,
+  "extracts": 7,
+  "credits": 11,
+  "credits_spent_this_run": 0,
+  "features": [
+   "search end_date",
+   "include_domains_mode=prefer",
+   "extract"
+  ]
+ },
+ "cost": {
+  "nebius_usd_spent_this_run": 0.004
+ },
+ "method": {
+  "preferred_domains": [
+   "pib.gov.in",
+   "parivesh.nic.in",
+   "environmentclearance.nic.in",
+   "moef.gov.in",
+   "greentribunal.gov.in",
+   "sansad.in",
+   "niti.gov.in",
+   "andaman.gov.in",
+   "indiacode.nic.in",
+   "qci.org.in",
+   "egazette.gov.in",
+   "prsindia.org",
+   "gbif.org",
+   "iucnredlist.org",
+   "zsi.gov.in",
+   "bsi.gov.in",
+   "wii.gov.in",
+   "fao.org",
+   "sealifebase.se",
+   "fishbase.se",
+   "threatenedtaxa.org",
+   "currentscience.ac.in",
+   "ncbi.nlm.nih.gov",
+   "biotaxa.org",
+   "niscpr.res.in"
+  ],
+  "extract_top": 3
+ }
+}

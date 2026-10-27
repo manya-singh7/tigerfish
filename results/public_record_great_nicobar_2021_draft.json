@@ -1,0 +1,344 @@
+{
+ "report_id": "great_nicobar_2021_draft",
+ "project": "Great Nicobar Island holistic development project",
+ "report_date": "2021-12-27",
+ "timeline": [
+  {
+   "date": "2021-12-21",
+   "event": "Public notice issued inviting suggestions/comments on the grant of environmental clearance for the Holistic Development of Great Nicobar Island project.",
+   "source": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "label": "government website",
+   "quote": "Public Notice: File No. 4-11/PCC/PH2021/1038 dated 21.12.2021 Regarding: Your call for Suggestions/Views/Comments /Objections regarding the grant of Environment Clearance for Holistic Development of Greater Nicobar Island",
+   "quote_check": "exact text of the Tavily-extracted source"
+  },
+  {
+   "date": "2022-01-27",
+   "event": "Public hearing for environmental clearance was held at Community Hall, Gram Panchayat Campbell Bay, Great Nicobar.",
+   "source": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "label": "government website",
+   "quote": "Public Hearing scheduled to be held on 27th January 2022 at 11:00 AM at Community Hall, Gram Panchayat Campbell Bay, Great Nicobar Tehsil, Nicobar District,",
+   "quote_check": "exact text of the Tavily-extracted source"
+  },
+  {
+   "date": "2024-11-25",
+   "event": "Parliamentary question raised concerning the detailed scrutiny of the EIA/EMP report by an independent Expert Appraisal Committee.",
+   "source": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2076917",
+   "host": "pib.gov.in",
+   "label": "official source",
+   "quote": "A detailed scrutiny of the EIA/EMP report took place during the appraisal of the project by an independent Expert Appraisal Committee (EAC)",
+   "quote_check": "exact text of the Tavily-extracted source"
+  }
+ ],
+ "timeline_dropped": [
+  {
+   "date": "2022-05-24",
+   "event": "Expert Appraisal Committee (EAC) 297th meeting discussed the Terms of Reference for the project.",
+   "source": "https://environmentclearance.nic.in/auth/ECReport_New.aspx?pid=41797&status=found.c6d5bc",
+   "quote": "Details of Terms of Reference (ToR): the comments of EAC in its 297th meeting held on 24.05.2022 regarding holistic development of Great Nicobar Island.",
+   "why": "quote not found in the extracted source text"
+  }
+ ],
+ "research": {
+  "params_sent": {
+   "input": "Dated timeline of the environmental and forest clearance milestones of the 'Holistic Development of Great Nicobar Island' project in Andaman and Nicobar Islands (ANIIDCO; international container transshipment terminal, airport, township and power plant): Terms of Reference, draft EIA, public hearing, Expert Appraisal Committee meetings, Stage-I forest clearance, environmental and CRZ clearance, National Green Tribunal orders, and questions in Parliament. For each milestone give its date, a one-line description, the official source URL and a short verbatim quote from that source. Use only official Government of India sources.",
+   "model": "mini",
+   "citation_format": "numbered",
+   "include_domains": [
+    "parivesh.nic.in",
+    "environmentclearance.nic.in",
+    "moef.gov.in",
+    "pib.gov.in",
+    "greentribunal.gov.in",
+    "sansad.in"
+   ],
+   "output_length": "short"
+  },
+  "structured_output": true,
+  "events_returned": 4,
+  "credits": 62,
+  "sources": [
+   "https://environmentclearance.nic.in/auth/ECReport_New.aspx?pid=41797&status=found.c6d5bc",
+   "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2076917",
+   "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf"
+  ]
+ },
+ "next": [
+  {
+   "topic": "coral",
+   "finding_ids": [
+    "ct-031",
+    "ct-071"
+   ],
+   "query": "Great Nicobar Galathea Bay coral reefs",
+   "items": [
+    {
+     "title": "Great Nicobar: Official maps erase corals amid port push",
+     "url": "https://frontline.thehindu.com/environment/galathea-bay-coral-translocation-controversy/article71316495.ece",
+     "host": "frontline.thehindu.com",
+     "date": "Fri, 28 Aug 2026 18:00:00 GMT",
+     "snippet": "Official maps erase Galathea Bay corals despite scientific evidence."
+    },
+    {
+     "title": "The Hidden Toll of the $10bn Great Nicobar Development Project",
+     "url": "https://earth.org/the-great-nicobar-gamble-exploring-the-hidden-toll-of-the-10-billion-development-project",
+     "host": "earth.org",
+     "date": "Fri, 17 Apr 2026 12:00:00 GMT",
+     "snippet": "In addition to marine impacts, the EIA confirms that coral reefs in the project area will likely be damaged due to dredging. While the report proposes coral transplantation as a mitigation strategy, it fails to provide site-specific plans or evidence of feasibility at the required scale. [...] ## En"
+    },
+    {
+     "title": "The Illusion of Mitigation: Translocating Corals Around Great Nicobar Island Will Kill Them",
+     "url": "https://m.thewire.in/article/environment/great-nicobar-island-corals-translocating-illusion",
+     "host": "m.thewire.in",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "The Great Nicobar island harbours more than 400 species of corals, and each species or genus of coral is tightly controlled by depth, current flow and"
+    },
+    {
+     "title": "4 sites on Nicobar west coast identified for coral translocation, says Zoological Survey of India",
+     "url": "https://indianexpress.com/article/india/great-nicobar-coral-translocation-galathea-bay-port-project-zsi-10735874",
+     "host": "indianexpress.com",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "The Zoological Survey of India said it will maintain systematic data on “translocated colonies with GPS tags to each colony to monitor its survival.” Great"
+    },
+    {
+     "title": "Why Modi’s Great Nicobar Project is a Recipe for Disaster",
+     "url": "https://thediplomat.com/2026/06/why-modis-great-nicobar-project-is-a-recipe-for-disaster",
+     "host": "thediplomat.com",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "700 miles from the Indian mainland and scattered across the Bay of Bengal near the mouth of the Strait of Malacca lie India's Andaman and Nicobar Islands."
+    }
+   ]
+  },
+  {
+   "topic": "species",
+   "finding_ids": [
+    "rf-009",
+    "rf-010",
+    "ct-403",
+    "ct-979"
+   ],
+   "query": "Great Nicobar project biodiversity species survey",
+   "items": [
+    {
+     "title": "India’s Plans to ‘Develop’ Great Nicobar Island Threatens Its Unique Wildlife and Indigenous Peoples • The Revelator",
+     "url": "https://therevelator.org/great-nicobar-island",
+     "host": "therevelator.org",
+     "date": "Mon, 04 Nov 2024 15:00:27 GMT",
+     "snippet": "That diversity, coupled with the island’s geographic isolation and tropical wet climate, supports an assemblage of at least 1,767 known animal species and 811 plant species. Of these, many — such as the Nicobar megapode, Nicobar long-tailed macaque, Nicobar scops owl, Nicobar serpent eagle, and Nico"
+    },
+    {
+     "title": "Committees begin monitoring Great Nicobar development project",
+     "url": "https://india.mongabay.com/2025/02/with-rs-80-crore-sanctioned-committees-begin-monitoring-great-nicobar-development-project",
+     "host": "india.mongabay.com",
+     "date": "Tue, 04 Feb 2025 05:47:15 GMT",
+     "snippet": "Read more: The first official record of animal diversity of Great Nicobar Banner image: The Nicobar megapode is endemic to the archipelago, and listed as ‘Vulnerable’ by the IUCN Red List. It is one of the countless species that will likely by impacted by the controversial development of Great Nicob"
+    },
+    {
+     "title": "‘Fake claims’: Great Nicobar lighthouse project study lists species found in Africa, Amazon",
+     "url": "https://scroll.in/article/1095311/fake-claims-great-nicobar-lighthouse-project-study-lists-species-found-in-africa-amazon",
+     "host": "scroll.in",
+     "date": "Sun, 27 Sep 2026 18:00:00 GMT",
+     "snippet": "More than 90% of the species in the tables in the environmental impact assessment study for the Indira Point plan have never been reported from Great"
+    },
+    {
+     "title": "Great Nicobar: Official maps erase corals amid port push",
+     "url": "https://frontline.thehindu.com/environment/galathea-bay-coral-translocation-controversy/article71316495.ece",
+     "host": "frontline.thehindu.com",
+     "date": "Fri, 28 Aug 2026 18:00:00 GMT",
+     "snippet": "Two scientific bodies under the Ministry of Environment, Forest and Climate Change (MoEFCC)—the Kolkata-based Zoological Survey of India (ZSI) and the"
+    },
+    {
+     "title": "Coral Translocation in Great Nicobar Island, Process, Significance",
+     "url": "https://vajiramandravi.com/current-affairs/coral-translocation-in-great-nicobar-island",
+     "host": "vajiramandravi.com",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "Coral Translocation in Great Nicobar Island aims to protect coral reefs through scientific relocation. Know its process, significance, and conservation"
+    }
+   ]
+  },
+  {
+   "topic": "rainfall",
+   "finding_ids": [
+    "ct-239"
+   ],
+   "query": "Great Nicobar project EIA errors rainfall",
+   "items": [
+    {
+     "title": "Environment impact study for Great Nicobar project ...",
+     "url": "https://www.thehindu.com/sci-tech/energy-and-environment/environment-impact-study-for-great-nicobar-project-downplays-earthquake-risk/article69777674.ece",
+     "host": "thehindu.com",
+     "date": "Sun, 06 Jul 2025 00:00:00 GMT",
+     "snippet": "EIA study for Great Nicobar Infrastructure Project downplays earthquake risk despite scientific concerns, highlighting potential dangers."
+    },
+    {
+     "title": "(PDF) Great Nicobar Timeline | Available on Academia",
+     "url": "https://www.academia.edu/107434287/Great_Nicobar_Timeline",
+     "host": "academia.edu",
+     "date": "Sun, 08 Oct 2023 00:00:00 GMT",
+     "snippet": "Changes in surface temperature, rainfall, evaporation and extreme events since the beginning of the 20th century. The study of climatic pattern of Nicobar highlighted decreasing trend in rainfall and rainy days in post-monsoon season. Length of dry spell and intensity of rainfall has increased. The "
+    }
+   ]
+  },
+  {
+   "topic": "lobster",
+   "finding_ids": [
+    "sp-p954-001"
+   ],
+   "query": "Great Nicobar EIA species errors",
+   "items": [
+    {
+     "title": "‘Inaccuracies, procedural violations’ in Great Nicobar draft environment impact assessment report",
+     "url": "https://www.thehindu.com/sci-tech/energy-and-environment/inaccuracies-procedural-violations-in-great-nicobar-draft-environment-impact-assessment/article38324776.ece",
+     "host": "thehindu.com",
+     "date": "Sun, 20 Feb 2022 18:00:00 GMT",
+     "snippet": "The details of the recently released draft environment impact assessment (EIA) report for the mega development project in the Great Nicobar Island have"
+    },
+    {
+     "title": "Great Nicobar’s Flawed Restoration Plan: Why Tree-Planting and Reef Relocation Won’t Save Its Ecosystem - Frontline",
+     "url": "https://frontline.thehindu.com/environment/great-nicobar-island-andaman-ecological-development-coral-reefs-marine-ecosystems-climate-change/article69158539.ece",
+     "host": "frontline.thehindu.com",
+     "date": "Wed, 12 Feb 2025 03:35:00 GMT",
+     "snippet": "“The EIA fails to account for the broader ecological impacts, including soil erosion and the loss of unique ecosystems like giant tree fern forests.” [...] The environmental impact assessment (EIA) for the Great Nicobar project, carried out by Vimta Labs, concluded in March 2022. The environmental c"
+    }
+   ]
+  },
+  {
+   "topic": "consultant",
+   "finding_ids": [
+    "ac-01"
+   ],
+   "query": "Great Nicobar EIA consultant Vimta Labs accreditation",
+   "items": [
+    {
+     "title": "andaman nicobar pollution control committee",
+     "url": "https://andamannicobar.gov.in/admin-pannel/whatsnew/3398-Combined%20EIA%20Report.pdf",
+     "host": "andamannicobar.gov.in",
+     "date": "Sun, 15 Mar 2026 00:00:00 GMT",
+     "snippet": "from March to May 2023. The Terms of Reference (ToR) for the project explicitly permit the utilization of previously generated baseline environmental data, public hearing proceedings, and supplementary reports conducted for the project, as required for the preparation of the Environmental Impact Ass"
+    },
+    {
+     "title": "Bhagwat Swaroop Sharma",
+     "url": "https://www.adaniports.com/-/media/project/ports/portsandterminals/mundra-documents/environment-compliance-report/previous-environment-compliance-report/10-ec-compliance-report-apr22-to-sep22-msez-1840-ha-mundra.pdf",
+     "host": "adaniports.com",
+     "date": "Wed, 30 Nov 2022 00:00:00 GMT",
+     "snippet": "Terminal at Port Blair, Andaman & Nicobar Islands, India 2018 Vimta Labs, Hyderabad & SEIL Nellore 6 Hydrodynamic modeling studies for predicting the changes in flow regime, erosion / deposition due to the proposed development of marine facilities for conveyor belt at Virpur Village, Devbhoomi Dwark"
+    }
+   ]
+  },
+  {
+   "topic": "baseline",
+   "finding_ids": [
+    "pr-06"
+   ],
+   "query": "Great Nicobar EIA baseline survey season",
+   "items": [
+    {
+     "title": "‘Single-Season Surveys Supplemented with Historical Data’: Environment Minister Defends Great Nicobar Clearance",
+     "url": "https://m.thewire.in/article/environment/single-season-surveys-supplemented-with-historical-data-environment-minister-defends-great-nicobar-clearance/amp",
+     "host": "m.thewire.in",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "Last month, Congress leader Jairam Ramesh had written to the minister saying that the EIA done ahead of the Great Nicobar project was a “mockery of the EIA"
+    },
+    {
+     "title": "Jairam Ramesh demands HPC report on Great Nicobar project be made public",
+     "url": "https://www.thenewsminute.com/news/jairam-ramesh-demands-hpc-report-on-great-nicobar-project-be-made-public",
+     "host": "thenewsminute.com",
+     "date": "Sat, 30 May 2026 18:00:00 GMT",
+     "snippet": "In a letter to Union Environment Minister Bhupender Yadav, Congress leader Jairam Ramesh said the law mandates comprehensive Environmental Impact Assessment"
+    },
+    {
+     "title": "Great Nicobar Island Project: Jairam Ramesh confronts Environment Minister Bhupender Yadav again on green nod",
+     "url": "https://indianexpress.com/article/india/great-nicobar-island-project-jairam-ramesh-eia-environmental-clearance-concerns-10721656",
+     "host": "indianexpress.com",
+     "date": "Mon, 29 Jun 2026 18:00:00 GMT",
+     "snippet": "Jairam Ramesh has renewed concerns over the Great Nicobar Island Project, urging fresh environmental impact studies and more transparency."
+    },
+    {
+     "title": "Environment clearance to Great Nicobar Project given without adequate study: Jairam Ramesh",
+     "url": "https://www.thehindu.com/sci-tech/energy-and-environment/great-nicobar-project-will-destroy-unique-ecosystem-pause-revisit-venture-ramesh-to-environment-minister/article70961934.ece",
+     "host": "thehindu.com",
+     "date": "Sat, 30 May 2026 18:00:00 GMT",
+     "snippet": "Congress leader Jairam Ramesh urges Environment Minister to halt Great Nicobar project, citing ecological risks and inadequate environmental assessments."
+    },
+    {
+     "title": "Congress leader Jairam Ramesh questions Centre over environment clearances for Great Nicobar project",
+     "url": "https://www.newindianexpress.com/india/2026/May/10/congress-leader-jairam-ramesh-questions-centre-over-environment-clearances-for-great-nicobar-project",
+     "host": "newindianexpress.com",
+     "date": "Sat, 30 May 2026 18:00:00 GMT",
+     "snippet": "Ramesh alleged that the clearances were based on hurried assessments conducted over a few days and weeks in one of India's most ecologically sensitive"
+    }
+   ]
+  }
+ ],
+ "local": [
+  {
+   "language": "hi",
+   "language_name": "Hindi",
+   "query": "ग्रेट निकोबार परियोजना जन सुनवाई",
+   "items": [
+    {
+     "title": "ग्रेट निकोबार परियोजना: अक्सर पूछे जाने वाले प्रश्न (सवाल-जवाब)",
+     "url": "https://www.pib.gov.in/FaqDetails.aspx?NoteId=158418&ModuleId=4&reg=48&lang=2",
+     "host": "pib.gov.in",
+     "language": "hi",
+     "snippet": "ग्रेट निकोबार द्वीप परियोजना रणनीतिक, रक्षा और राष्ट्रीय महत्व की परियोजना है,"
+    },
+    {
+     "title": "Great Nicobar Project:ग्रेट निकोबार प्रोजेक्ट को Ngt की मंजूरी",
+     "url": "https://www.amarujala.com/india-news/ngt-clears-great-nicobar-infrastructure-project-cites-adequate-environmental-safeguards-2026-02-17",
+     "host": "amarujala.com",
+     "language": "hi",
+     "snippet": "ग्रेट निकोबार में प्रस्तावित यह परियोजना भारत की समुद्री और रणनीतिक क्षमता को"
+    },
+    {
+     "title": "ग्रेट निकोबार प्रोजेक्ट: केस में शामिल होना चाहते हैं आदिवासी ...",
+     "url": "https://hindi.indianexpress.com/india/too-late-centre-opposes-nicobar-tribals-plea-over-ancestral-forest-land-12691944",
+     "host": "hindi.indianexpress.com",
+     "language": "hi",
+     "snippet": "ग्रेट निकोबार मेगा प्रोजेक्ट के लिए 166 वर्ग किलोमीटर वन भूमि के इस्तेमाल में"
+    },
+    {
+     "title": "क्या ग्रेट निकोबार भारत का नया सिंगापुर बन सकता है?",
+     "url": "https://www.orfonline.org/hindi/research/to-view-the-great-nicobar-project-strategically-reverse-the-gaze",
+     "host": "orfonline.org",
+     "language": "hi",
+     "snippet": "ग्रेट निकोबार परियोजना केवल एक विकास कार्य नहीं, बल्कि भारत की ऊर्जा और समुद्री"
+    }
+   ]
+  },
+  {
+   "language": "ta",
+   "language_name": "Tamil",
+   "query": "கிரேட் நிக்கோபார் திட்டம் பொதுமக்கள் கருத்துக் கேட்பு",
+   "items": [
+    {
+     "title": "பெரிய நிக்கோபார் தீவு வளர்ச்சித் திட்டம்",
+     "url": "https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AE%BF%E0%AE%AF_%E0%AE%A8%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%8B%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AF%8D_%E0%AE%A4%E0%AF%80%E0%AE%B5%E0%AF%81_%E0%AE%B5%E0%AE%B3%E0%AE%B0%E0%AF%8D%E0%AE%9A%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%A4%E0%AF%8D_%E0%AE%A4%E0%AE%BF%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AE%AE%E0%AF%8D",
+     "host": "ta.wikipedia.org",
+     "language": "ta",
+     "snippet": "நிகோபார் மாவட்டத்தின் வளர்ச்சித் திட்டத்திற்கு 2022ம் ஆண்டில் இந்திய அரசு ரூபாய் ₹75,000"
+    },
+    {
+     "title": "கிரேட் நிக்கோபார் தீவு மேம்பாட்டுத் திட்டம்",
+     "url": "https://www.tnpscthervupettagam.com/ta/currentaffairs-detail/%E0%AE%95%E0%AE%BF%E0%AE%B0%E0%AF%87%E0%AE%9F%E0%AF%8D-%E0%AE%A8%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%8B%E0%AE%AA%E0%AE%BE%E0%AE%B0%E0%AF%8D-%E0%AE%A4%E0%AF%80%E0%AE%B5%E0%AF%81-%E0%AE%AE%E0%AF%87%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%BE%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%E0%AE%A4%E0%AF%8D-%E0%AE%A4%E0%AE%BF%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AE%AE%E0%AF%8D",
+     "host": "tnpscthervupettagam.com",
+     "language": "ta",
+     "snippet": "சுமார் 200-300 மக்கள் தொகையினை கொண்ட ஷோம்பென் இனத்தினர் ஒரு வேட்டையாடி வாழும்"
+    }
+   ]
+  }
+ ],
+ "stopped": null,
+ "tavily": {
+  "credits": 70,
+  "credits_spent_this_run": 0,
+  "cached_calls": 11,
+  "features": [
+   "research (structured output)",
+   "extract",
+   "news + start_date",
+   "language + filter_by_language"
+  ]
+ }
+}

@@ -1,9 +1,10 @@
 """Draft letter (.docx) from confirmed findings: neutral, factual, with page citations.
 
-Languages: "en", "hi" (Hindi) or "both" (English, then Hindi). Hindi is machine-translated
-by LIGHTNING (thinking off, cached), and only OUR text is translated: quotes from the
-report, evidence values, page numbers and links stay exactly as they are. A translated
-segment that loses or changes a number or link is kept in English instead.
+Languages: "en", "hi" (Hindi), "both" (English, then Hindi), "ta" (Tamil) or "both_ta"
+(English, then Tamil). Tamil is offered for Tamil Nadu reports (offers_tamil). Both are
+machine-translated by LIGHTNING (thinking off, cached) on the same path, and only OUR text is
+translated: quotes from the report, evidence values, page numbers and links stay exactly as
+they are. A translated segment that loses or changes a number or link is kept in English.
 """
 
 import io
@@ -22,11 +23,13 @@ from tigerfish import llm
 
 ACCENT = RGBColor(0x0F, 0x5E, 0x5E)
 DEVANAGARI_FONT = "Nirmala UI"     # ships with Windows; Mangal is the older alternative
+TAMIL_FONT = "Nirmala UI"          # covers Tamil too (Windows); Latha is the older alternative
 LATIN_FONT = "Calibri"
 MACHINE_NOTE = "Machine-translated; please review."
 TRANSLATE_CHUNK = 8                # segments per LIGHTNING call
 URL = re.compile(r"https?://\S+")
 DEVANAGARI = re.compile(r"[ऀ-ॿ]")
+TAMIL = re.compile(r"[஀-௿]")
 NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 TRANSLATE_PROMPT = """You translate English into formal, plain Hindi (Devanagari script) for \
@@ -38,6 +41,34 @@ Keep every number, page number, URL, species name and report title exactly as wr
 (use Western digits 0-9) and keep placeholders in square brackets like [Name] unchanged.
 Example: {"texts": ["Sir / Madam,", "Clarification requested: page 12"]} -> \
 {"translations": ["महोदय / महोदया,", "स्पष्टीकरण का अनुरोध: पृष्ठ 12"]}"""
+
+
+TAMIL_PROMPT = """You translate English into formal, plain Tamil (Tamil script) for a letter to a government committee.
+Input: JSON {"texts": [...]}. Output: JSON only, {"translations": [...]}, with the Tamil translation of each text, same order and same count. Write the translation itself, in Tamil script; do not copy the English and do not add numbering.
+Keep every number, page number, URL, species name and report title exactly as written (use Western digits 0-9) and keep placeholders in square brackets like [Name] unchanged.
+Example: {"texts": ["Sir / Madam,", "Clarification requested: page 12"]} -> {"translations": ["ஐயா / அம்மையீர்,", "விளக்கம் கோரப்படுகிறது: பக்கம் 12"]}"""
+
+# language code -> (prompt, script regex, font, Word language tag)
+TARGETS = {"hi": (TRANSLATE_PROMPT, DEVANAGARI, DEVANAGARI_FONT, "hi-IN"),
+           "ta": (TAMIL_PROMPT, TAMIL, TAMIL_FONT, "ta-IN")}
+TAMIL_STATES = {"tamil nadu", "puducherry"}
+
+
+def offers_tamil(report):
+    """Tamil letters are offered for reports from Tamil Nadu: the report's "state", or its
+    title / source naming the state."""
+    if str(report.get("state") or "").strip().lower() in TAMIL_STATES:
+        return True
+    text = f"{report.get('title', '')} {report.get('source', '')}".lower()
+    return any(state in text for state in TAMIL_STATES)
+
+
+def language_options(report):
+    """{label: code} for the letter-language picker."""
+    out = {"English": "en", "Hindi": "hi", "Both": "both"}
+    if offers_tamil(report):
+        out.update({"Tamil": "ta", "English + Tamil": "both_ta"})
+    return out
 
 
 class TranslationUnavailable(RuntimeError):
@@ -124,28 +155,29 @@ def keeps_numbers_and_links(src, dst):
             and set(URL.findall(src)) <= set(URL.findall(dst)))
 
 
-def is_translation(src, dst):
-    """Hindi (Devanagari) that differs from the English, keeping its numbers and links."""
-    return (bool(DEVANAGARI.search(dst)) and dst.strip() != src.strip()
+def is_translation(src, dst, lang="hi"):
+    """Text in the target script (Devanagari / Tamil) that differs from the English, keeping
+    its numbers and links."""
+    return (bool(TARGETS[lang][1].search(dst)) and dst.strip() != src.strip()
             and keeps_numbers_and_links(src, dst))
 
 
-def translate(texts):
-    """{english: hindi} via LIGHTNING (cached). Unsafe or missing translations are left out
-    (the English stays). Raises TranslationUnavailable if the model can't be reached."""
+def translate(texts, lang="hi"):
+    """{english: translation} via LIGHTNING (cached). Unsafe or missing translations are left
+    out (the English stays). Raises TranslationUnavailable if the model can't be reached."""
     out = {}
     unique = list(dict.fromkeys(t for t in texts if t.strip()))
     for start in range(0, len(unique), TRANSLATE_CHUNK):
-        _translate_chunk(unique[start:start + TRANSLATE_CHUNK], out)
+        _translate_chunk(unique[start:start + TRANSLATE_CHUNK], out, lang)
     return out
 
 
-def _translate_chunk(chunk, out):
+def _translate_chunk(chunk, out, lang="hi"):
     """Translate one chunk into `out`; if the reply is unusable, split it and try the halves
     (down to single texts), so one bad reply doesn't leave a whole chunk in English."""
     try:
         raw = claims_mod.chat_json(llm.LIGHTNING, [
-            {"role": "system", "content": TRANSLATE_PROMPT},
+            {"role": "system", "content": TARGETS[lang][0]},
             {"role": "user", "content": json.dumps({"texts": chunk}, ensure_ascii=False)}],
             max_tokens=4000)
     except Exception as e:                      # no key, network, ...
@@ -154,11 +186,11 @@ def _translate_chunk(chunk, out):
     if not isinstance(got, list) or len(got) != len(chunk):
         if len(chunk) > 1:
             half = len(chunk) // 2
-            _translate_chunk(chunk[:half], out)
-            _translate_chunk(chunk[half:], out)
+            _translate_chunk(chunk[:half], out, lang)
+            _translate_chunk(chunk[half:], out, lang)
         return
     for src, dst in zip(chunk, got):
-        if isinstance(dst, str) and is_translation(src, dst):
+        if isinstance(dst, str) and is_translation(src, dst, lang):
             out[src] = dst.strip()
 
 
@@ -177,13 +209,14 @@ def set_font(run, name):
 
 
 def add_run(par, text, bold=False, italic=False, color=None):
-    """A run with the right font: Devanagari text gets DEVANAGARI_FONT and a Hindi tag."""
+    """A run with the right font: Devanagari / Tamil text gets an Indic font and a language tag."""
     run = par.add_run(text)
-    if re.search(r"[ऀ-ॿ]", text):
-        set_font(run, DEVANAGARI_FONT)
+    target = next((t for t in TARGETS.values() if t[1].search(text)), None)
+    if target:
+        set_font(run, target[2])
         lang = OxmlElement("w:lang")
-        lang.set(qn("w:bidi"), "hi-IN")
-        lang.set(qn("w:val"), "hi-IN")
+        lang.set(qn("w:bidi"), target[3])
+        lang.set(qn("w:val"), target[3])
         run._element.get_or_add_rPr().append(lang)
     else:
         set_font(run, LATIN_FONT)
@@ -221,15 +254,17 @@ def render(doc, blks, tr=None):
 
 
 def build_letter(report, findings, language="en", addressee="committee", draft=False):
-    """Return .docx bytes. language: "en", "hi" or "both"; addressee and draft: see blocks()."""
+    """Return .docx bytes. language: "en", "hi", "both" (en + hi), "ta" or "both_ta" (en + ta);
+    addressee and draft: see blocks()."""
     doc = Document()
     doc.styles["Normal"].font.size = Pt(11)
     blks = blocks(report, findings, addressee, draft)
-    if language in ("en", "both"):
+    target = {"hi": "hi", "both": "hi", "ta": "ta", "both_ta": "ta"}.get(language)
+    if language in ("en", "both", "both_ta"):
         render(doc, blks)
-    if language in ("hi", "both"):
-        tr = translate(translatable(blks) + [MACHINE_NOTE])
-        if language == "both":
+    if target:
+        tr = translate(translatable(blks) + [MACHINE_NOTE], target)
+        if language in ("both", "both_ta"):
             doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
         add_run(doc.add_paragraph(), MACHINE_NOTE, bold=True)
         if MACHINE_NOTE in tr:
