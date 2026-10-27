@@ -219,6 +219,22 @@ def test_ultra_called_with_thinking_on(monkeypatch):
     assert seen["model"] == llm.ULTRA and seen["thinking"] is None   # model default: reasoning on
 
 
+def test_cut_off_verdict_is_retried_with_a_bigger_limit_and_ids_follow_first_n(monkeypatch):
+    limits = []
+
+    def fake_chat(model, messages, **kw):
+        limits.append(kw["max_tokens"])
+        if kw["max_tokens"] == ct.VERDICT_MAX_TOKENS:
+            return '{"same_subject": true, "same_pla'                      # cut off
+        return json.dumps({**ANSWERS, "reason": "Different areas."})
+
+    monkeypatch.setattr(llm, "chat", fake_chat)
+    monkeypatch.setattr(llm, "is_cached", lambda *a, **k: True)
+    [f] = ct.check([CAND], PAGES, use_triage=False, first_n=1800)
+    assert limits == [ct.VERDICT_MAX_TOKENS] * 2 + [ct.VERDICT_RETRY_MAX_TOKENS]
+    assert f["id"] == "ct-1800" and f["grade"] == "RED" and ct.last_run["failed"] == 0
+
+
 # ---------- step 4: evaluation ----------
 
 Q = {392: "no coral exists in the bay portion of the Galathea Bay.",
@@ -531,3 +547,16 @@ def test_statement_pairs_are_incompatible_by_construction():
     assert ct.parse_verdict({**unclear, "reason": "r"}, pair, pages)["grade"] == "ORANGE"
     assert ct.parse_verdict({**unclear, "same_place": False, "reason": "r"}, pair, pages)["grade"] == "NONE"
     assert ct.parse_verdict({**unclear, "reason": "r"}, CAND, PAGES)["grade"] == "NONE"   # numeric: model decides
+
+
+def test_statement_override_needs_same_subject_and_no_different_place():
+    v = {"explained": False, "same_scope": True, "incompatible": False}
+    grade = lambda **kw: ct.compute_grade("statement", {**v, **kw})   # noqa: E731
+    assert grade(same_subject=True, same_place=True) == "RED"           # forced incompatible
+    assert grade(same_subject=True, same_place="unclear") == "ORANGE"   # forced incompatible
+    assert grade(same_subject=True, same_place=False) == "NONE"         # places differ: as usual
+    assert grade(same_subject="unclear", same_place=True) == "NONE"     # subject not agreed
+    assert grade(same_subject=False, same_place=True) == "NONE"
+    # not forced: the model's own incompatible answer decides
+    assert ct.compute_grade("statement", {**v, "incompatible": True, "same_subject": "unclear",
+                                          "same_place": True}) == "NONE"

@@ -60,3 +60,11 @@ def test_every_contradiction_page_in_results_has_a_crop():
                     assert png, rel
                     with Image.open(io.BytesIO(png)) as c, Image.open(data.image_path(rel)) as full:
                         assert c.height < full.height / 3, rel     # zoomed, not the whole page
+
+
+def test_tall_highlights_are_capped_where_most_highlight_is():
+    img = page_with_highlight(box=(100, 100, 800, 130))                 # one line at the top
+    ImageDraw.Draw(img).rectangle((100, 700, 800, 1000), fill=(255, 240, 0))   # a tall block
+    left, top, right, bottom = crops.highlight_box(img)
+    assert bottom - top == int(1200 * crops.MAX_HEIGHT)
+    assert top <= 700 and bottom >= 1001 and top > 130            # the whole block, not the top line

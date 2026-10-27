@@ -228,6 +228,8 @@ def panel(report_id, findings):
     st.caption("Precision = confirmed / (confirmed + dismissed): the share of flags a reviewer "
                "kept. Unsure reviews are counted but left out of the ratio. Saved in "
                "feedback/feedback.json on this computer.")
+    from tigerfish.ui import review          # here: tigerfish.ui.review imports this module
+    review.queue_section(report_id)
     e1, e2 = st.columns(2)
     e1.download_button("Export reviews (.json)", data=dump(entries), mime="application/json",
                        file_name="tigerfish_feedback.json", disabled=not entries)

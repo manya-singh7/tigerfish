@@ -141,3 +141,27 @@ def test_census_figure_marked_as_reading_is_still_paired():
     cl = [claim("a", 1, 63.7, s, unit="%", ctype="quantity"),
           claim("b", 2, 95.55, s, unit="%", ctype="quantity")]
     assert len(pairs(cl, {s: key("male literacy percentage", "study area", reading=True)})) == 1
+
+
+def test_new_subjects_are_keyed_in_their_own_batches(monkeypatch):
+    """With base (an earlier run's claims) the earlier batches are sent unchanged (so they
+    come from cache) and only the new subjects go in batches of their own."""
+    monkeypatch.setattr(pairing, "KEY_BATCH", 2)
+    sent = []
+
+    def fake(model, messages, max_tokens, thinking=False):
+        lines = messages[1]["content"].splitlines()
+        sent.append(tuple(line.split(" | ")[0] for line in lines))
+        return {"items": [{"n": i, "measure": "m" + line.split("subject: ")[1].split(" |")[0]}
+                          for i, line in enumerate(lines, 1)]}
+
+    monkeypatch.setattr(pairing.claims_mod, "chat_json", fake)
+    base = [claim(f"p{i}-01", i, 10 + i, f"subject {s}") for i, s in enumerate("bdf", 1)]
+    new = [claim("p9-01", 9, 5, "subject a"), claim("p9-02", 9, 6, "subject d")]
+    pairing.subject_keys(base)
+    alone, sent[:] = list(sent), []
+    keys = pairing.subject_keys(base + new, base=base)
+    assert sent[:len(alone)] == alone                      # earlier batches unchanged
+    assert sent[len(alone):] == [("1. subject: subject a",)]   # only the new subject
+    assert set(keys) == {"subject a", "subject b", "subject d", "subject f"}
+    assert pairing.last_stats["subjects_new"] == 1

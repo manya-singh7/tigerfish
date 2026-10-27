@@ -37,6 +37,39 @@ Agent: at the start of every block, read this file and remind the user of the it
   - [ ] pr-15: ToR p.3 soil "three different levels up to a depth of 90 cm" vs p.258 "three different depths viz. 30 cm" and "up to a depth of 30 cm"; but p.870 (annexure) says "30 cm, 60 cm and 90 cm". Also p.258 says "20 locations" and "A total of 10 numbers of samples". Which is right?
   - [ ] Compare against the ToR actually granted (MoEFCC letter of 25 May 2021, cited on EIA p.44); our file is the proposed ToR.
 
+- [ ] Full-audit top 30 (review/review_queue.json, app tab "Review queue"; D = both of you judge it independently; my quick read in results/full_audit_summary.md):
+  - [ ] 1. ct-071 (D) ORANGE p.738/1085: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "the presence of 117 species of scleractinian corals" [likely real]
+  - [ ] 2. ct-056 ORANGE p.738/978: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "Coral reef exists in the proposed site for Transshipment / Port" [likely real]
+  - [ ] 3. ct-1645 (D) RED p.438/446: "916 Ha of area has been identified for development of International Ai" vs "the present site needs to reclaim land approximately 194 Ha of land in" [likely real]
+  - [ ] 4. ct-1464 (D) RED p.133/438: "The present site needs to reclaim land approx. 1.94 Ha of land in orde" vs "the present site needs to reclaim land approximately 194 Ha of land in" [likely real]
+  - [ ] 5. ct-783 RED p.725/919: "The cost of the Airport is estimated at Rs. 10,35,900 lakhs." vs "1 Airport 8,58,300" [likely real]
+  - [ ] 6. ct-1086 (D) RED p.87/1151: "The breakwaters are shore connected with a length of 3.90 km." vs "Breakwaters of 3.27 Km (2.53 km east breakwater & 0.74 km west offshor" [likely real]
+  - [ ] 7. ct-221 (D) RED p.918/972: "RESIDENTIAL 16.55 9.97" vs "RESIDENTIAL 36.66 22.07" [likely real]
+  - [ ] 8. ct-217 RED p.22/26: "Great Nicobar Biosphere Reserve 732.79" vs "Great Nicobar Biosphere reserve (885 sq.km)" [likely real]
+  - [ ] 9. ct-225 RED p.26/942: "Campbell bay National Park (426.23 sq.km)" vs "Campbell Bay National Park (520 km2 area)" [likely real]
+  - [ ] 10. ct-226 RED p.22/942: "Galathea National Park 107.10" vs "the Galathea National Park (185 km2 area)" [likely real]
+  - [ ] 11. ct-1607 RED p.17/1115: "With an area of 910.074 sq.km, the Island represents a huge, strategic" vs "The total area of the island is 973 km2" [likely real]
+  - [ ] 12. ct-1254 (D) RED p.228/942: "Great Nicobar Island marks the southernmost tip of India 7° N, about 7" vs "is only about 145 km from Sumatra Island of Indonesia" [likely real]
+  - [ ] 13. ct-1176 (D) RED p.243/249: "1.842" vs "Approximately 65.43 ha of the mangroves were affected, and 32.06 ha ar" [likely real]
+  - [ ] 14. ct-673 (D) RED p.1047/1126: "203" vs "103 nests in 2018-19" [likely real]
+  - [ ] 15. ct-239 RED p.291/337: "heavy annual rainfall of 300 to 350 Cm spreading over 9 months" vs "The annual rainfall ranges from 3000 to 3500 Cm" [likely real]
+  - [ ] 16. ct-1385 RED p.207/210: "39 Acres" vs "Planned layout has been developed in order to accommodate the plant fa" [likely real]
+  - [ ] 17. ct-200 RED p.134/459: "Out of which part will be met by the DG sets of 2 x 5 MVA each" vs "operation of 7 DG sets for continuous 8 hours per day" [likely real]
+  - [ ] 18. ct-812 RED p.45/279: "10 SW" vs "Eight surface water and Eight ground water sources covering were exami" [likely real]
+  - [ ] 19. ct-414 RED p.29/324: "Of the 25 species of mammals found on the island" vs "A total of 14 species of mammals" [likely real]
+  - [ ] 20. ct-387 RED p.29/1168: "71 species of birds" vs "97 species of birds" [likely real]
+  - [ ] 21. ct-1625 (D) RED p.445/1088: "in 16610 ha, at Great Nicobar Islands, Nicobar District" vs "14,960 Ha and Power Plant" [needs a look]
+  - [ ] 22. ct-617 (D) RED p.40/109: "4000 Peak Hour Passengers" vs "The airstrip will be developed to cater for operation of Code C type o" [possible false alarm]
+  - [ ] 23. ct-402 (D) RED p.940/944: "A total of 695 species of fauna with the endemism of 158 species" vs "The fauna consists of over 1800 species" [possible false alarm]
+  - [ ] 24. ct-209 RED p.743/770: "Two control points with two porta cabins and with 3 shifts total 6 per" vs "Ten control points with 10 porta cabins and with 3 shift, total 30 per" [possible false alarm]
+  - [ ] 25. ct-1106 RED p.1051/1053: "Estimated capacity: 15 Million TEUs per annum" vs "Estimated capacity: 14.2 Million TEUs per annum" [possible false alarm]
+  - [ ] 26. ct-240 (D) RED p.24/918: "The ICTT can be developed at a cost of Rs. 35,95,900" vs "The ICTT will be developed at a cost of Rs. 35,959 Crore." [false alarm]
+  - [ ] 27. ct-604 (D) RED p.87/965: "The east & west breakwater extends till the 20 m & 25 m contour respec" vs "The east & west breakwater extends till the 20 m & 25 m contour respec" [false alarm]
+  - [ ] 28. ct-1366 RED p.69/391: "2 2055 Final Phase 16 5,400 3,700" vs "building of 13 berths" [false alarm]
+  - [ ] 29. ct-051 (D) RED p.411/1124: "ZSI data suggest that the Galathea Bay is devoid of any coral reefs." vs "Except the Galathea Bay, coral reefs were found near the all nesting b" [false alarm]
+  - [ ] 30. cp-p1001-1 (D) RED p.1001: "ZOOPLANKTON SPECIES CB JB LB RB GB Class HEXANAUPLIA Oakley, Wolfe, Li" [false alarm]
+  - [ ] Then the rest of the queue (123, random order) as time allows; report precision on the random part. New after the top-up: ct-1815 RED p.1144/1166, deemed forest 4.39 vs 8.88 sq km (#123).
+
 ## Block B (PDF reader + Super-VL)
 - [ ] Demo: Super-VL reads the table image -> species list -> species check. This is the headline demo shot.
 
@@ -71,7 +104,10 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [x] Scope wording applied ("unclear only with a concrete, named reason"); statement pairs are incompatible by construction (compute_grade). Eval: gn-001 ORANGE, gn-003/004/005 RED, control NONE, planted 10/10, 0/5 explained
 - **Ultra verdict prompt is FROZEN (Oct 27): no further wording changes before submission** (tigerfish/contradictions.py, step 3)
 - [x] Ultra now gets the full sentence(s) around each quote: ct-105 (p.285 vs p.286) is NONE
-- [ ] Full run: `scripts/audit.py ... --scope --triage safe --run --max-cost 18` (not run yet)
+- [x] Full run (Oct 27): $15.18, 54 min, 84 Tavily credits; known issues unchanged; 152 new flags in the review queue (results/full_audit_summary.md)
+- [x] Top-up (Oct 27 16:31, $0.49, 0 Tavily): 166 salvaged claims added (+67 pairs), failed verdict retried (ct-1179 NONE); earlier ids and grades unchanged; 1 new flag (ct-1815). Final: $15.67, 153 new flags
+- [ ] 11 added pairs not judged (hit the $0.50 cap); about $0.11 to finish: same command with --max-cost 0.2
+- [x] Statement-pair rule tightened (override only if same_subject yes and same_place not no): 0 of the 19 flags change (all 19 qualify), gn-001 still ORANGE
 
 ## Write-up (Oct 29)
 - [ ] "What's next": route uncertain ORANGE flags to human experts via Toloka

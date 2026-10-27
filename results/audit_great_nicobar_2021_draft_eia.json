@@ -3,33 +3,2214 @@
   "name": "great_nicobar_2021_draft_eia",
   "pages": null,
   "triage": "safe",
+  "new_pages": "539,939,1029,1038,1097,1099,1166",
   "workers": 6,
-  "max_cost_usd": 13.5,
+  "max_cost_usd": 0.2,
   "pages_audited": 1114,
-  "claims": 10297,
-  "candidates": 1799,
+  "claims": 10463,
+  "candidates": 1866,
   "triage_answers": {
-    "yes": 1380,
-    "no": 410,
+    "yes": 1431,
+    "no": 426,
     "unsure": 9
   },
-  "verdicts": 1388,
-  "verdicts_failed": 1,
+  "verdicts": 1440,
+  "verdicts_failed": 0,
   "stopped": null,
   "copy_passages": 100,
   "copy_stopped": null,
+  "copy_passage_list": [
+    {
+      "page": 308,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-89 Scientific Name Family Remarks Piper longum Piperaceae Cultivated Piper betle Piperaceae Cultivated Piper wallichii Piperaceae Rare Piper miniatum Piperacea Rare Piper pedicellosum Piperacea Rare Piper clypeatum Piperacea Climber in forests Quisqualis indica Combretaceae Ornamental Pisonia aculeata Nyctaginaceae Thorny Pisonia Scindapsus officinalis Araceae Common Smilax aspera Smilacaceae Common smilax Smilax bracteata Smilacaceae Rare Smilax glabra Smilacaceae China root Smilax ovalifolia Smilacaceae Rare Smilax lanceaefolia Smilacaceae Rare Stictocordiatiliifolia Convolvulaceae Heavy perennial climber over trees in sea shore Strychnoswallichiana Loganiaceae Rare Tetrastigmalanceolarium Vitaceae Rare Thunbergia laurifolia Thunbergiaceae Common Thunbergia mysorensis Thunbergiaceae Common Tinospora cordifolia Menispermaceae Rare Tinospora glabra Menispermaceae Rare Tylophoracapparidifolia Asclepiadaceae Rare Trichosanthespilosa Cucurbitaceae Occasional Trichosanthestricuspidata Cucurbitaceae Occasional Tylophora indica Asclepiadaceae Common Uncaria cordata Rubiaceae Rare Uvariaandamanica Annonaceae Rare Uvaria cordata Annonaceae Rare Vigna adenantha Fabaceae Common in estuaries Vigna marina Fabaceae Common Vigna pilosa Fabaceae Common Vigna unguiculata Fabaceae Cultivated Table-3.26: List of Saplings Produced in The Forest Department in Central Nursery At M/ Nallam Camp for Public Distribution Scientific Name Local Name Family Albizia lebbeck * Siris Multipurpose Anacardium occidentale * Kaju Cashew nut Artocarpus chaplasha Taungpeinne Fruit Artocarpus heterophyllus Jack fruit Fruit Azadirachta indica* Neem Multipurpose Bambusa vulgaris * Bamboo Pulp wood & Construction material",
+      "claim_ids": [
+        "p308-01",
+        "p308-02",
+        "p308-03",
+        "p308-04",
+        "p308-05",
+        "p308-06",
+        "p308-07",
+        "p308-08",
+        "p308-09",
+        "p308-10",
+        "p308-11",
+        "p308-12",
+        "p308-13",
+        "p308-14",
+        "p308-15",
+        "p308-16",
+        "p308-17",
+        "p308-18",
+        "p308-19",
+        "p308-20",
+        "p308-21",
+        "p308-22",
+        "p308-23",
+        "p308-24",
+        "p308-25",
+        "p308-26",
+        "p308-27",
+        "p308-28",
+        "p308-29",
+        "p308-30",
+        "p308-31",
+        "p308-32",
+        "p308-33",
+        "p308-34",
+        "p308-35",
+        "p308-36",
+        "p308-37",
+        "p308-38"
+      ]
+    },
+    {
+      "page": 321,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-102 Scientific Name Family Note Amomum aculeatum Zingiberaceae Herb Amorphophallus longistylus Araceae Herb Anaxagorealuzonensis Annonaceae Shrub (medicinal) Angiopterisevecta Angiopteridaceae Fern Antidesma acuminatum Euphorbiaceae Shrub Ardisia humilis Myrsinaceae Small tree Bridelia ovata Euphorbiaceae Shrub Caesalpinia bonduc Caesalpiniaceae Shrub Calamus baratangensis Arecaceae Rattan Capparis ﬂoribunda Capparaceae Scandent woody shrub Cardiospermum helicacabum Sapindaceae Climbing herb Carica papaya Caricaceae Tree-like Catharanthus roseus Apocynaceae Herb Cayratia japonica Vitaceae Climber Cayratiatrifolia Vitaceae Climber Christellaparasitica Thelypteridaceae Parasitic maiden Fern Chromolaena odorata Asteraceae Invasive shrub Cleome rutidosperma Capparaceae Herb Clerodendruminerme Verbenaceae Shrub Clerodendrumpaniculatum Verbenaceae Shrub Clitoriaternatea Fabaceae Climber Cnestispalala Connaraceae Woody climber Commelinadiffusa Commelinaceae Herb Commelinahasskarlii Commelinaceae Herb Crinum asiaticum Amaryllidaceae Herb Cucumis callosus Cucurbitaceae Climber Cyperus compressus Cyperaceae Sedge Dactyloctniumaegyptium Poaceae Grass Daemonoropsmani Arecaceae Cane Datura metel Solanaceae Herb Derris scandens Fabaceae Climber Dinochola scandens Poaceae Bamboo Dioscorea glabra Dioscoreaceae Climber Donaxcannaeformis Marantaceae Shrub Dracaena brachyphylla Agavaceae Shrub Elatostemaintegrifolium Urticaceae Shrub Eleusine indica Poaceae Grass Eleutheranthera ruderalis Asteraceae Herb Eragrostistenella Poaceae Grass Eranthemumsuffruticosum Acanthaceae Shrub Eulophia spectabilis Orchidaceae Orchid Gloriosa superba Liliaceae Climber Glycosmis mauritiana Rutaceae Small tree Goniothalamusmeeboldii Annonaceae Shrub",
+      "claim_ids": [
+        "p321-01",
+        "p321-02",
+        "p321-03",
+        "p321-04",
+        "p321-05",
+        "p321-06",
+        "p321-07",
+        "p321-08",
+        "p321-09",
+        "p321-10",
+        "p321-11",
+        "p321-12",
+        "p321-13",
+        "p321-14",
+        "p321-15",
+        "p321-16",
+        "p321-17",
+        "p321-18",
+        "p321-19",
+        "p321-20",
+        "p321-21",
+        "p321-22",
+        "p321-23",
+        "p321-24",
+        "p321-25",
+        "p321-26",
+        "p321-27",
+        "p321-28",
+        "p321-29",
+        "p321-30",
+        "p321-31",
+        "p321-32",
+        "p321-33",
+        "p321-34",
+        "p321-35",
+        "p321-36",
+        "p321-37",
+        "p321-38",
+        "p321-39",
+        "p321-40",
+        "p321-41",
+        "p321-42",
+        "p321-43",
+        "p321-44"
+      ]
+    },
+    {
+      "page": 993,
+      "text": "56 | P a g e Trigonium formosum (Brightwell) Cleve, 1867 + - - - - Order CHAETOCEROTALES Round and Crawford Chaetoceros aequatorialis Cleve, 1873 - - + - - Chaetoceros coarctatus Lauder, 1864 - + + - + Chaetoceros decipiens Cleve, 1873 - + + + + Chaetoceros lorenzianus Grunow, 1863 - - + - + Bacteriastrum delicatulum Cleve, 1897 + - + + - Order COSCINODISCALES Round & Crawford, 1990 Coscinodiscus asteromphalus Ehrenberg, 1844 + - + - + Coscinodiscus granii Gough, 1905 + + + - + Order FRAGILARIALES Silva, 1962 Asterionella glacialis Castracane, 1886 - - + - + Asterionella bleakeleyi var. notata Grunow, 1867 - + + - + Order HEMIAULALES Round & Crawford, 1990 Hemiaulus sinensis Greville, 1865 - + - - + Hemiaulus membranaceus Cleve - - + - - Eucampia striata Stolterfoth, 1879 - + - - - Order LICMOPHORALES Round, 1990 Licmophora ehrenbergii (Kützing) Grunow, 1867 - - + - + Licmophora partita Giffen, 1973 - + - - + Order NAVICULALES Bessey, 1907 Pleurosigma angulatum (Queckett) W.Smith, 1852 - - + - + Gyrosigma acuminatum (Kützing) Rabenhorst, 1853 + - + - - Order RHIZOSOLENIALES Silva, 1962 Proboscia alata (Brightwell) Sundström, 1986 - + - - + Pseudosolenia calcar-avis (Schultze) B.G.Sundström, 1986 - + + - - Rhizosolenia indica H.Peragallo, 1892 - - - - + Order THALASSIONEMATALES Round, 1990 Thalassionema frauenfeldii (Grunow) Tempère & Peragallo, 1910 - - - + + Thalassionema nitzschioides (Grunow) Mereschkowsky, 1902 - - - + + Order THALASSIOSIRALES Glezer & Makarova, 1986 Planktoniella blanda (A.Schmidt) E.E.Syvertsen & G.R.Hasle, 1993 + - + - - Planktoniella sol (C.G.Wallich) Schütt, 1892 - - + + + Thalassiosira eccentrica (Ehrenberg) Cleve, 1904 - + + - + Order TRICERATIALES Round & Crawford, 1990 Odontella aurita (Lyngbye) C.Agardh, 1832 + - + - + Trieres mobiliensis (Bailey) Ashworth & E.C.Theriot 2013 + - - + + Triceratium favus Ehrenberg, 1839 + - - - + Phylum MYZOZOA Cavalier- Smith & Chao Infraphylum DINOFLAGELLATA Bütschli, 1885 Class DINOPHYCEAE Fritsch, 1927 Order GONYAULACALES Taylor, 1980 Ceratium gibberum var. dispar (Pouchet) Sournia 1966 - - - - + Tripos brevis (Ostenfeld & Johannes Schmidt) F.Gómez, 2013 + + + - -",
+      "claim_ids": [
+        "p993-01",
+        "p993-02",
+        "p993-03",
+        "p993-04",
+        "p993-05",
+        "p993-06",
+        "p993-07",
+        "p993-08",
+        "p993-09",
+        "p993-10",
+        "p993-11",
+        "p993-12",
+        "p993-13",
+        "p993-14",
+        "p993-15",
+        "p993-16",
+        "p993-17",
+        "p993-18",
+        "p993-19",
+        "p993-20",
+        "p993-21",
+        "p993-22",
+        "p993-23",
+        "p993-24",
+        "p993-25",
+        "p993-26",
+        "p993-27",
+        "p993-28",
+        "p993-29",
+        "p993-30"
+      ]
+    },
+    {
+      "page": 330,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-111 Scientific Name Common Name Family IUCN/WPA Hypsipetesnicobariensis Nicobar Bulbul Pycnonotidae NT /IV/ En Irena puella Asian Fairy-bluebird Irenidae LC / IV Ixobrychuscinnamomeus Cinnamon Bittern Ardeidae LC / IV Ixobrychus sinensis Yellow Bittern Ardeidae LC / IV Laniuscristatuscristatus Brown Shrike Laniidae LC / IV Laniuscristatuslucionensis philippine Shrike Laniidae LC / IV Limosalapponica Bar-tailed Godwit Scolopacidae LC / IV/ rare Locustellacerthiola Pallas's Grasshopper- Warbler Locustellidae LC / IV Locustella lanceolata Lanceolated Warbler Locustellidae LC / IV Lonchura striata White-rumped Munia Estrildidae LC / IV Loriculusvernalis Indian Lorikeet Psittaculidae LC / IV Macropygiarufipennis Nicobar Cuckoo- Dove Columbidae LC / IV Megapodius freycinetabbotti South Nicobar megapod Megapodiidae VU / I/ En Megapodius freycinetnicobariensis North Nicobar megapod Megapodiidae VU / I/ En Meropsphilippinus Blue-tailed Bee- eater Meropidae LC / IV Monticola solitarius Blue Rock-Thrush Muscicapidae LC / IV Motacilla cinerea Gray Wagtail Motacillidae LC / IV Motacilla flava Western Yellow Wagtail Motacillidae LC / IV Motacilla flava thunberghi Grey headed Yellow Wagtail Motacillidae LC / IV Muscicapalatirostris Asian Brown Flycatcher Muscicapidae NT /IV Nectarinia jugularis Car Nibar Sunbird namaste Nectariniidae LC / IV/ En Ninoxaffinis Nicobar Hawk-owl Strigidae LC / IV/ En Ninoxscutulata Hawk-owl Strigidae LC / IV Numenius arquata Eastern Curlew Scolopacidae NT / IV Numenius phaeopus Whimbrel Scolopacidae NT / IV Nycticoraxnycticorax Black-crowned Night-Heron Ardeidae LC / IV Oriolus chinensis Black-naped Oriole Oriolidae LC / IV Otus scops nicobaricus Nicobar Scops-Owl Strigidae LC / IV/ En Pelargopsis capensis Stork-billed Kingfisher Alcedinidae LC / IV Pelecanusphilippensis Spot-billed Pelican Pelecanidae NT / IV/ rare Phaethon lepturus White Tropic Bird Phaethontidae LC / IV Phaethon rubricauda Red-tailed Tropicbird Phaethontidae LC / IV/ rare Phylloscopustenellipes Pale-legged Leaf Warbler Phylloscopidae LC / IV/ rare Pitta sordida Hooded Pitta Pittidae LC / IV Pluvialisdominica Eastern Golden Plover Charadriidae LC / IV Pluvialissquatarola Black-bellied Plover Charadriidae LC / IV Porphyriopoliocephalus Gray-headed Swamphen Rallidae LC / IV",
+      "claim_ids": [
+        "p330-01",
+        "p330-02",
+        "p330-03",
+        "p330-04",
+        "p330-05",
+        "p330-06",
+        "p330-07",
+        "p330-08",
+        "p330-09",
+        "p330-10",
+        "p330-11",
+        "p330-12",
+        "p330-13",
+        "p330-14",
+        "p330-15",
+        "p330-16",
+        "p330-17",
+        "p330-18",
+        "p330-19",
+        "p330-20",
+        "p330-21",
+        "p330-22",
+        "p330-23",
+        "p330-24",
+        "p330-25",
+        "p330-26",
+        "p330-27",
+        "p330-28",
+        "p330-29",
+        "p330-30",
+        "p330-31",
+        "p330-32",
+        "p330-33",
+        "p330-34",
+        "p330-35",
+        "p330-36",
+        "p330-37"
+      ]
+    },
+    {
+      "page": 309,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-90 Scientific Name Local Name Family Bilimbi conhece Kundru katta / Cucumber Tree Fruit for pickles Bryophyllumpinnatum * Cathedral Bells Medicinal Calamus andamanensis Cane Furniture Calophyllum Inophyllum Poon Construction material Calophyllum Mucrocarpum Poon Construction material Calophyllum Soulatori Poon Construction material Canarium euphyllum White dhup Incense sticks Careya arborea Kumbh / Wild guava Medicinal and food for wild pigs Cassia fistula * Amaltas Ornamental Casuarina equisetifolia* Casuarina / Jhau Pulp wood & Construction material Citrus limonum * Lemon Lemon fruit Costusspeciosus Crepe ginger Medicinal Elaeocarpus petiolatus Rudraksh Religious Elaeocarpus tectorius Bhadraksh Sacred tree Mangifera indica* Mango Edible Fruit Manilkara littoralis Sea Mohwa Timber Manilkara zapota * Sapota Edible Fruit Mimusopsandamanensis Khaya Species for conservation Myristica fragrans Jaiphal / Nut meg Spices Nyphafruticans Nypha Soil conservation Pandanus andamanensis Bada Kewdi Fruits are cooked and eaten Pandanus tectorius Kewdi Fruits are cooked and eaten Ponamia pinnata* Karanj Biodiesel / Tree born oil Psidium guajava Guava Edible Fruit Rophaloblastaangustata Bada Kumbh Religious Samanea saman * Rain tree Multipurpose Saracaasoca* Ashoka Sacred tree Spondias pinnata* Indian Hog Plum Pickles and Vegetable Syzygiumcumini * Jamun Fruits edible Syzyiumsamrangense Rose apple Edible fruit Tamarindus indica * Tamarind Tamarind Terminalia bialata White Chuglam Timber Terminalia manii Black Chuglam Timber Terminalia procera Badam Timber",
+      "claim_ids": [
+        "p309-01",
+        "p309-02",
+        "p309-03",
+        "p309-04",
+        "p309-05",
+        "p309-06",
+        "p309-07",
+        "p309-08",
+        "p309-09",
+        "p309-10",
+        "p309-11",
+        "p309-12",
+        "p309-13",
+        "p309-14",
+        "p309-15",
+        "p309-16",
+        "p309-17",
+        "p309-18",
+        "p309-19",
+        "p309-20",
+        "p309-21",
+        "p309-22",
+        "p309-23",
+        "p309-24",
+        "p309-25",
+        "p309-26",
+        "p309-27",
+        "p309-28",
+        "p309-29",
+        "p309-30",
+        "p309-31",
+        "p309-32",
+        "p309-33",
+        "p309-34",
+        "p309-35",
+        "p309-36",
+        "p309-37",
+        "p309-38"
+      ]
+    },
+    {
+      "page": 299,
+      "text": "The List Includes Cultivated, Invasive and Introduced Plants Scientific Name Common Name Family Note Abelmoschus esculentus Okra Malvaceae Herb Abelmoschus moschatus Musk mallow Malvaceae Herb Acacia auriculiformis Australian wattle Mimosaceae Tree Acilepisdendigulensis Indian Vernonia Asteraceae Herb Acmellaciliata Spot flower Asteraceae Herb Adenantheramicrosperm a Bead Tree Mimosaceae Tree Aegle marmelos Bael Rutaceae Tree Ageratum conyzoides Goat weed Asteraceae Herb Aglaia cucullata Pacific maple Meliaceae Tree Albizia chinensis Chinese Albizia Mimosaceae Tree Albizia lebbeck Siris Mimosaceae Tree Allamanda cathartica Allmanda Apocynaceae Climber Alternanthera philoxeroides alligator weed Amaranthaceae Herb Alysicarpusmonilifer Alyce clover Fabaceae Herb Alpinia manii Snap Ginger Zingiberaceae Herb Amaranthus hybridus Amaranth Amaranthaceae Herb Amaranthus spinosus Spiny Amaranth Amaranthaceae Herb Ammaniabaccifera Blistering Ammannia Lythraceae Herb Anacardium occidentale Cashew nut Anacardiaceae Tree Anisomeles indica Indian catmint Lamiaceae Herb Annona reticulata Ramphal Annonaceae Tree Annona sqaumosa Seethaphal Annonaceae Tree Anthocephaluscadamb Cadamb Rubaceae Tree Ardisia solanacea Shoe button Ardisia Myrsinaceae Tree Areca catechu Areca nut Arecaceae Tree Argemone mexicana Mexican Poppy Papavaraceae Herb Artocarpus altilis Bread fruit Moraceae Tree Artocarpus integrifolia Jackfruit Moraceae Tree Atalantiamonophylla Wild lime tree Rutaceae Tree Axonopuscompressus Broad-leaf carpet grass Poaceae Herb Azadirachta indica Neem Meliaceae Tree Bacopa monnieri Brahmi Scrophulariaceae Herb Barringtonia asiatica Fish poison Tree Lecythidaceae Tree",
+      "claim_ids": [
+        "p299-02",
+        "p299-03",
+        "p299-04",
+        "p299-05",
+        "p299-06",
+        "p299-07",
+        "p299-08",
+        "p299-09",
+        "p299-10",
+        "p299-11",
+        "p299-12",
+        "p299-13",
+        "p299-14",
+        "p299-15",
+        "p299-16",
+        "p299-17",
+        "p299-18",
+        "p299-19",
+        "p299-20",
+        "p299-21",
+        "p299-22",
+        "p299-23",
+        "p299-24",
+        "p299-25",
+        "p299-26",
+        "p299-27",
+        "p299-28",
+        "p299-29",
+        "p299-30",
+        "p299-31",
+        "p299-32",
+        "p299-33",
+        "p299-34"
+      ]
+    },
+    {
+      "page": 317,
+      "text": "Table-3.30: List of Rare, Endemic and Endangered Plants from The Nicobar Biosphere Reserve Scientific Name Family Status Aeridesemericii Orchidaceae Rare Aglaeonemanicobaricum Araceae TC Anoectochilusnicobaricus Orchidaceae TL Artabotrysnicobarianus Annonaceae TC Calamus dilaceratos Arecaeae TC Calamus nicobaricus Arecaeae TC Calamus unifarius Arecaeae Rare Chilocarpusdenudatusvar.nicobaricus Apocynaceae TC Chisochetonnicobarianus Meliaceae Rare Clematis smilacifoliava.andamanica Ranunculaceae TC Connarusnicobaricus Connaraceae TC Coptophyllumnicobaricum Rubiaceae TC Cyathea nicobarica Cyatheaceae TC Cycleapendulina Menispermaceae Rare Cyrtandraburtii Gesneriaceae TC Cyrtandra occidentalis Gesneriaceae TL Cyrtandroemianicobarica Gesneriaceae Rare Dendrobium shomphenii Orchidaceae Rare Drypetesbhattacharyae Putranjivaceae Rare Elatostemanovarae Urticaceae TC Embeliamicrocalyx Primulaceae Rare Genianthushorei Apocynaceae Rare Ixora cuneifolia Rubiaceae TC Ixora cuneifoliavar.macrocarpa Rubiaceae TC Leea grandiflora Vitaceae Rare Macaranga nicobarica Euphorbiaceae Rare Mallotusoblongifoliusvar.rubriflorus Euphorbiaceae Rare Maniferanicobarica Anacardiaceae TC Nicobariodendronsleumeri Celastraceae TC Nothophoebenicobaricus Lauraceae TC Ophiorrhizanicobarica Rubiaceae TL Otantheranicobarensis Melastomataceae Rare Pellioniaprocridifolia Urticaceae Rare Phalaenopsis speciosa Orchidaceae Rare Phryniumpaniculatum Marantaceae TL Pomatocalpaandamanicum Orchidaceae Rare Pseudovariaprainii Lycopodiaceae TL Psychotriaplatyneura Rubiaceae Rare",
+      "claim_ids": [
+        "p317-01",
+        "p317-02",
+        "p317-03",
+        "p317-04",
+        "p317-05",
+        "p317-06",
+        "p317-07",
+        "p317-08",
+        "p317-09",
+        "p317-10",
+        "p317-11",
+        "p317-12",
+        "p317-13",
+        "p317-14",
+        "p317-15",
+        "p317-16",
+        "p317-17",
+        "p317-18",
+        "p317-19",
+        "p317-20",
+        "p317-21",
+        "p317-22",
+        "p317-23",
+        "p317-24",
+        "p317-25",
+        "p317-26",
+        "p317-27",
+        "p317-28",
+        "p317-29",
+        "p317-30",
+        "p317-31",
+        "p317-32",
+        "p317-33",
+        "p317-34",
+        "p317-35",
+        "p317-36",
+        "p317-37",
+        "p317-38"
+      ]
+    },
+    {
+      "page": 1004,
+      "text": "67 | P a g e Flaccisagitta hexaptera (d'Orbigny, 1836) + + + - + Pseudosagitta lyra (Krohn, 1853) - + + + + Pseudosagitta maxima (Conant, 1896) - + + - + Serratosagitta serratodentata (Krohn, 1853) + + + - - Zonosagitta nagae (Alvariño, 1967) + + - + - Pterosagitta draco (Krohn, 1853) + - + + + Phylum CNIDARIA Hatschek, 1888 Order ANTHOATHECATA Cornelius, 1992 Porpita porpita (Linnaeus, 1758) - - + + + Proboscidactyla stellata (Forbes, 1846) + + + - + Order SIPHONOPHORAE Eschscholtz, 1829 Chelophyes appendiculata (Eschscholtz, 1829) + + + + + Diphyes dispar Chamisso & Eysenhardt, 1821 + - + + + Sulculeolaria biloba (Sars, 1846) - + - - + Praya dubia (Quoy & Gaimard, 1833) - - - - + Order AMPHIPODA Latreille, 1816 Hyperia medusarum (Müller, 1776) - + + - + Themisto sp. - + - - + Phylum MOLLUSCA Class GASTROPODA Cuvier, 1795 Creseis acicula (Rang, 1828) + + + + + Creseis virgula (Rang, 1828) + + + + + Phylum CHORDATA Haeckel, 1874 Class APPENDICULARIA Appendicularia sicula Fol, 1874 + - + - + Oikopleura (Coecaria) fusiformis Fol, 1872 + + + - + Oikopleura (Vexillaria) dioica Fol, 1872 + - + + + Oikopleura (Vexillaria) parva Lohmann, 1896 + + - + - Class THALIACEA Van der Haeven, 1850 Dolioletta gegenbauri (Uljanin, 1884) - - + - + Dolioletta mirabilis (Korotneff, 1891) - - - - + Doliolina (Doliolina) muelleri (Krohn, 1852) - - - - + Doliolum denticulatum Quoy & Gaimard, 1834 - - - + + Cyclosalpa pinnata (Forskål, 1775) - - - + + Pegea confoederata (Forskål, 1775) - - + - + Salpa fusiformis Cuvier, 1804 - - + - + Salpa maxima Forskål, 1775 - - - + + Thalia democratica (Forskål, 1775) - - + - +",
+      "claim_ids": [
+        "p1004-01",
+        "p1004-02",
+        "p1004-03",
+        "p1004-04",
+        "p1004-05",
+        "p1004-06",
+        "p1004-07",
+        "p1004-08",
+        "p1004-09",
+        "p1004-10",
+        "p1004-11",
+        "p1004-12",
+        "p1004-13",
+        "p1004-14",
+        "p1004-15",
+        "p1004-16",
+        "p1004-17",
+        "p1004-18",
+        "p1004-19",
+        "p1004-20",
+        "p1004-21",
+        "p1004-22",
+        "p1004-23",
+        "p1004-24",
+        "p1004-25",
+        "p1004-26",
+        "p1004-27",
+        "p1004-28",
+        "p1004-29"
+      ]
+    },
+    {
+      "page": 329,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-110 Scientific Name Common Name Family IUCN/WPA Cisticola juncidis Zitting Cisticola Cisticolidae LC / IV Collocalia esculenta affinis White-bellied Swiftlet Apodidae LC / IV Collocalia fucifaga Andaman Swiftlet Apodidae LC / IV Columba livia Rock Pigeon Columbidae LC / IV/Intr Columba palumboides Andaman Wood- Pigeon Columbidae NT / I/ En Coracina nigra Nicobar pied to Cuckooshrike Campephagidae LC / IV/ En Coturnix chinensis Blue breasted Quail Phasianidae LC / IV Cucullus saturates Himalayan Cuckoo Cuculidae LC / IV Cuculuscanorus Cuckoo Cuculidae LC / IV Cuculusmicropterus Indian Cuckoo Cuculidae LC / IV Cyornisnicobaricus Nicobar Jungle- Flycatcher Muscicapidae NT /IV/ rare Dendrocygnajavanica Lesser Whistling- Duck Anatidae LC / IV Dromasardeola Crab Plover Dromadidae LC / IV Duculaaenea Nicobar Green Imperial-Pigeon Columbidae LC / IV / En Duculabicolor Pied Imperial-Pigeon Columbidae LC / IV Duculanicobarica Nicobar Imperial- Pigeon Columbidae LC / IV Egrettagarzetta Little Egret Ardeidae LC / IV Egretta intermedia Intermediate Egret Ardeidae LC / IV Egretta sacra Eastern Reef-Heron Ardeidae LC / IV Emberizaaureola Yellow-breasted Bunting Emberizidae CR / IV Eudynamysscolopaceus Asian Koel Cuculidae LC / IV Falco peregrinus peregrinator Shaheen Falcon Falconidae NE /I Falco peregrinusjaponensis Eastern Peregrine Falcon Falconidae LC / I Gallicrex cinerea Watercock Rallidae LC / IV Gallinagostenura Pin-tailed Snipe Scolopacidae LC / IV Glareolapranticola Collared Pratincole Glareolidae LC / IV Gorsachiusmelanolophus minor Malayan Night- Heron Ardeidae LC / IV Gracula religiosaandamanensis Andaman Hill Myna Sturnidae LC / IV Halcyon chloris Nicobar White- collared Kingfisher Alcedinidae LC / IV Halcyon pileata Black-capped Kingfisher Alcedinidae LC / IV Halcyon smyrnensis White-throated Kingfisher Alcedinidae LC / IV Haliaeetus leucogaster White-bellied Sea- Eagle Accipitridae LC / IV Hirundorustica Barn Swallow Hirundinidae LC / IV Hypothymisazureaidiochroa Car Nicobar Black- naped Monarch Monarchidae LC / IV Hypothymisazureanicobarica Nicobar Black- naped Monarch fly catcher I Monarchidae LC / IV/ En",
+      "claim_ids": [
+        "p329-01",
+        "p329-02",
+        "p329-03",
+        "p329-04",
+        "p329-05",
+        "p329-06",
+        "p329-07",
+        "p329-08",
+        "p329-09",
+        "p329-10",
+        "p329-11",
+        "p329-12",
+        "p329-13",
+        "p329-14",
+        "p329-15",
+        "p329-16",
+        "p329-17",
+        "p329-18",
+        "p329-19",
+        "p329-20",
+        "p329-21",
+        "p329-22",
+        "p329-23",
+        "p329-24",
+        "p329-25",
+        "p329-26",
+        "p329-27",
+        "p329-28",
+        "p329-29",
+        "p329-30",
+        "p329-31",
+        "p329-32",
+        "p329-33",
+        "p329-34"
+      ]
+    },
+    {
+      "page": 307,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-88 Scientific Name Family Remarks Connarussemidecandrus Connaraceae Rare Cosmostigmaracemosum Asclepiadaceae Rare Cryptolepis grandiflora Asclepiadaceae Rare Cryptolepis sinensis Asclepiadaceae Rare Cucumis melo Cucurbitaceae Melon Cycleapeltata Menispermaceae Indian moon seed Cycleapendulina Menispermaceae Common Davalliasolida Davalliaceae Giant Hare’s foot fern Derris scandens Fabaceae Rare Derris trifoliata Fabaceae Rare Derris elegans Fabaceae Rare Dinochloa scandens Poaceae Climbing Bamboo Dioscoreabulbifera Dioscoreaceae Air Potato – Occasional Dioscorea glabra Dioscoreaceae Occasional Dischidianummularia Asclepiadaceae String of Nickels Dregeavolubilis Asclepiadaceae Sneeze wort Erycibepaniculata Convolvulaceae Rare Flagellaria indica Flagellariaceae Common Gymnemalatifolium Asclepiadaceae Rare Gymnopetalumcochinchinense Cucurbitaceae Rare Hoya globulosa Asclepiadaceae Rare Hoya parasitica Asclepiadaceae Wax flower Hiptagebenghalensis Malpghiaceae Helicopter flower Ichnocarpus frutescens Apocynaceae Rare Illigeraappendiculata Hernandiaceae Rare Ipomoea alba Convolvulaceae Common Ipomoea nil Convolvulaceae Common Ipomoea obscura Convolvulaceae Rare Ipomoea pes-caprae Convolvulaceae Common Ipomoea pes-tigridis Convolvulaceae Common Ipomoea sepiaria Convolvulaceae Common Jasminum multiflorum Oleaceae Common Jasminum elongatum Oleaceae Occasional Korthalsialaciniosa Arecaceae Abundant Luffa cylindrica Cucurbitaceae Cultivated Lygodiumflexuosum Lygodiaceae Climbing fern Merremiaumbellata Convolvulaceae Common Mikania micrantha Asteraceae Invasive climber Momordica charantia Cucurbitaceae Cultivated Mucuna gigantea Fabaceae Common Mucuna monosperma Fabaceae Common Olax imbricata Olacaceae Common Operculinaturpethum Convolvulaceae Common Paramignyaandamanica Rutaceae Rare Parsonsiaalboflavescens Apocynaceae Spiral -vined silk pod Pothos scandens Araceae Climbing aroid",
+      "claim_ids": [
+        "p307-01",
+        "p307-02",
+        "p307-03",
+        "p307-04",
+        "p307-05",
+        "p307-06",
+        "p307-07",
+        "p307-08",
+        "p307-09",
+        "p307-10",
+        "p307-11",
+        "p307-12",
+        "p307-13",
+        "p307-14",
+        "p307-15",
+        "p307-16",
+        "p307-17",
+        "p307-18",
+        "p307-19",
+        "p307-20",
+        "p307-21",
+        "p307-22",
+        "p307-23",
+        "p307-24",
+        "p307-25",
+        "p307-26",
+        "p307-27",
+        "p307-28",
+        "p307-29",
+        "p307-30",
+        "p307-31",
+        "p307-32",
+        "p307-33",
+        "p307-34",
+        "p307-35",
+        "p307-36",
+        "p307-37",
+        "p307-38",
+        "p307-39",
+        "p307-40",
+        "p307-41",
+        "p307-42",
+        "p307-43",
+        "p307-44",
+        "p307-45",
+        "p307-46",
+        "p307-47"
+      ]
+    },
+    {
+      "page": 302,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-83 Scientific Name Common Name Family Note Ficus hispida Hairy fig Moraceae Tree Ficus pendula Weeping fig Moraceae Tree Ficus religiosa Peepal Moraceae Tree Fimbristylislittoralis Lesser Fibristylis Cyperaceae Herb Garcinia speciosa Seashore Mangosteen Clusiaceae Tree Gardenia jasminoides Cape jasmine Rubiaceae Shrub Gliricidiasepium Mexican Lilac Fabaceae Tree Glochidioncalocarpum Glochidion Phyllanthaceae Tree Glycosmis mauritiana Orange berry Rutaceae Tree Guettardaspeciosal Beach Gardenia Rubiaceae Shrub Hedychium coronarium Butterfly ginger Lily Zingiberacea Perennial herb Hedyotiscorymbosa Flat-top millegraines Rubiaceae Herb Hernandiapeltata Lantern Tree Hernandiaceae Tree Hibiscus rosa-sinenis Chinese rose Malvaceae Shrub Hibiscus tiliaceus Sea Hibiscus Malvaceae Tree Hippobroma longifolia Star Flower Companulaceae Roadside herb Hyptis capitata false ironwort or knobweed Lamiaceae Herb - Abundant Indigofera glandulosa Natal Indigo Fabaceae Herb Indigofera tinctoria Indigo plant Fabaceae Herb Indigofera zollingeriana Zollinger’s Indigo Fabaceae Herb Ipomoea carnea Bush morning glory Convolvulaceae Shrub Ipomoea pes-caprae Goat Foot vine Convolvulaceae Herb Isachnepulchella Isachne Poaceae Grass Ischaemummuticum Seashore centipede grass Poaceae Herb Ischaemumrugosum Saramolla grass Poaceae Grass Ixora singaporensis Ixora Rubiaceae Shrub Jasminum elongatum Red Kund Oleaceae Shrub Jatropha curcas Physic nut Euphorbiaceae Shrub Kyllingabrevifolia Green kyllinga Cyperaceae Sedge Lantana camara Lantana Verbenaceae Shrub Lantana sellowiana Trailing Lantana Verbenaceae Herb Lemna minor Duck weed Lemnaceae Herb Luffa acutangula Ridge guard Cucurbitaceae Herb Lygodiumcircinnatum Lygodium Lygodiaceae Herb Macaranga indica Chandada Euphorbiaceae Tree Macaranga peltata Chandada Euphorbiaceae Tree Mangifera indica Mango Anacardiaceae Tree",
+      "claim_ids": [
+        "p302-01",
+        "p302-02",
+        "p302-03",
+        "p302-05",
+        "p302-06",
+        "p302-08",
+        "p302-09",
+        "p302-11",
+        "p302-14",
+        "p302-15",
+        "p302-16",
+        "p302-17",
+        "p302-18",
+        "p302-19",
+        "p302-20",
+        "p302-21",
+        "p302-22",
+        "p302-25",
+        "p302-26",
+        "p302-27",
+        "p302-28",
+        "p302-29",
+        "p302-30",
+        "p302-31",
+        "p302-32",
+        "p302-33",
+        "p302-34",
+        "p302-35",
+        "p302-36",
+        "p302-37"
+      ]
+    },
+    {
+      "page": 852,
+      "text": "[भागII—खण् ड 3(ii)] भारत का राजपत्र : ऄसाधारण 21 AND WHEREAS, the important endemic avi-faunal species present in the area are Nicobar tiger bittern (Gorsachius melanolophus minor), Nicobar cuckoo dove (Macropygia rufipennis rufipennis), Nicobar emerald dove (Chalcophaps indica augusta), Great Nicobar crested serpent eagle (Spilornis klossi), Nicobar paradise flycatcher (Terpsiphone paradise nicobarica ), Andaman three toed kingfisher (Ceyx erithacus macrocarus), Nicobar strokbilled kingfisher (Pelargopsis capensis), Nicobar white-collared kingfisher (Halcyon chloris occipitalis), Andaman koel (Eudynamys scolopacea dolosa), Nicobar megapode (Megapodius nicobariensis), Nicobar hill myna (Gracula religiosa halibrecta), Nicobar back-naped oriole (Oriolus chinensis macrourus), Nicobar scops owl (Otus scops nicobaricus), Blyth’s nicobar parakeet (Psittacula caniceps), Nicobar redcheeked parakeet (Psittacula longicauda nicobarica), Nicobar pigeon (Caloenas nicobarica nicobarica), Nicobar green imperial pigeon (Ducula aenea nicobarica), katchal shikra (Accipiter badius obsoletus), Nicobar white eye (Zosterops palpebros anicobarica), Andaman Glossy Stare (Aplonis panayensis tytleri), Nicobar Olive backed sunbird (Necarinia jugularis klossi), Nicobar yellow backed sunbird (Aethopyga siparaja nicobarica), Andaman grey rumped swiftlet (Collocalia fuciphaga inexpectata), white bellied swiftlet (Collocalia esculenta affinis), Nicobar ground thrush (Zoothera citrine albogularis);",
+      "claim_ids": [
+        "p852-04",
+        "p852-05",
+        "p852-06",
+        "p852-07",
+        "p852-08",
+        "p852-09",
+        "p852-10",
+        "p852-11",
+        "p852-12",
+        "p852-13",
+        "p852-14",
+        "p852-15",
+        "p852-16",
+        "p852-17",
+        "p852-18",
+        "p852-19",
+        "p852-20",
+        "p852-21",
+        "p852-22",
+        "p852-23",
+        "p852-24",
+        "p852-25",
+        "p852-26",
+        "p852-27",
+        "p852-28"
+      ]
+    },
+    {
+      "page": 312,
+      "text": "Scientific Name Family Habit Status Acrostichumaureum Pteridaceae Shrub Abundant Acrostichumspeciosum Pteridaceae Shrub common Aegicerascorniculatum Myrsinaceae Tree Rare Aegiceras rotundifolia Myrsinaceae Tree Rare Avicennia marina Verbinaceae Tree Common Avicennia officinalis Verbinaceae Tree Common Bruguieragymnorhiza Rbizophoraceae Tree Common Bruguiera parviflora Rbizophoraceae Tree Common Ceriops tagal Rbizophoraceae Tree Rare Ceriopsdecandra Rhizophoraceae Tree Rare Excoecariaagallocha Eupborbiaceae Shrubby Tree Common Heritieralittoralis Sterculiaceae Tree Common Kandeliacandal Rbizophoraceae Shrub Common Lumnitzeralittorea Combretaceae Shrubby Tree Rare Lumnitzeraracemosa Combretaceae Shrubby Tree Rare Nypafruticans Arecaceae Palm Common Phoenix paludosa Arecaceae Palm Common Phoenix paludosa Arecaceae Sea Date Palm Rhizophora stylosa Rbizophoraceae Tree Rare Rhizophora apiculata Rbizophoraceae Tree Abundant Rhizophora mucronata Rbizophoraceae Tree Abundant Scyphiphorahydrophyllacea Rubiaceae Shrubby Tree common Sonneratia alba Sonneratiaceae Tree Common Sonneratiacaseolaris Sonneratiaceae Tree Common Xylocarpus granatum Meliaceae Tree Common Xylocarpusmoluccensis Meliaceae Tree Common Mangrove Associates Acanthus ilicifolius Acanthaceae Undershrub Common Acanthus volubilis Acanthaceae Undershrub Common Brownlowia lanceolata Tiliaceae Shrubby Tree Rare Cerberamanghas Apocynaceae Tree Common Clerodendruminerme Verbinaceae Shrub Common Derris trifoliata Fabaceae Climber Common Mucuna gigantean Fabaceae Climber Common Finlaysoniaobovata Asclepiadaceae Shrub Rare Sarcolobascarinatus Asclepiadaceae Scandent shrub Common Sarcolobasglobosus Asclepiadaceae Scandent shrub Common",
+      "claim_ids": [
+        "p312-01",
+        "p312-02",
+        "p312-03",
+        "p312-04",
+        "p312-05",
+        "p312-06",
+        "p312-07",
+        "p312-08",
+        "p312-09",
+        "p312-10",
+        "p312-11",
+        "p312-12",
+        "p312-13",
+        "p312-14",
+        "p312-15",
+        "p312-16",
+        "p312-17",
+        "p312-18",
+        "p312-19",
+        "p312-20",
+        "p312-21",
+        "p312-22",
+        "p312-23",
+        "p312-24",
+        "p312-25",
+        "p312-26",
+        "p312-27",
+        "p312-28",
+        "p312-29",
+        "p312-30",
+        "p312-31",
+        "p312-32",
+        "p312-33",
+        "p312-34",
+        "p312-35"
+      ]
+    },
+    {
+      "page": 304,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-85 Scientific Name Common Name Family Note Pandanus tectorius Pandanus Pandanaceae Tree Parthenium hysterophorus Carrot grass Asteraceae Herb Paspalum sumatrense Janaighaans Poaceae Herb Pavettagraciliﬂora Pavetta Rubiaceae Shrub Peltophorumpterocarpu m Copper pod Caesalpiniaceae Tree Pemphisacidula Small leaved Mangrove Lythraceae Shrub Peperomia pellucida Shiny bush Piperaceae Herb Phoenix sylvestris Wild date palm Arecaceae Tree Phyla nodiﬂora Frog fruit Verbenaceae Herb Phyllanthus amarus Carry me seed Phyllanthaceae Herb Phyllostachys aurea Poaceae Herb Pilea microphylla Gun powder plant Urticaceae Herb Piper clypeatum Long pepper Piperaceae Creeper Plectocomiaelongata Giant Rattan Palm Arecaceae Straggler Polliasecundiﬂora Three stamen Pollia Commelinaceae Herb Pongamia pinnata Karanj Fabaceae Tree Prosopis juliflora Mesquite Mimosaceae Shrub Psidium guava Guava Myrtaceae Tree Pueraria phaseoloides Tropical Kudzu Fabaceae Herb Punica granatum Pomegranate Shrub Ravenalamadagascariens is Traveller’s palm Stelitziaceae Tree Ricinus communis Castor Euphorbiaceae Herb Saccharum spontaneum Wild sugar cane Poaceae Herb Scaevola sericea Gull feed Goodeniaceae Shrub Scaevola taccada Beach cabbage Goodeniaceae Shrub Schefflera longifolia Dwarf Umbrella tree Araliaceae Tree Senna hirsuta Hairy Senna Fabaceae Shrub Sida acuta Common wire weed Malvaceae Herb Smithiasensitiva Sensitive Smithia Fabaceae Rare Solanum melongena Brinjal / egg plant Solanaceae Herb Solanum sisymbriifolium Sticky night shade Solanaceae Herb Solanum virginianum Thorny night shade Solanaceae Herb",
+      "claim_ids": [
+        "p304-01",
+        "p304-02",
+        "p304-03",
+        "p304-04",
+        "p304-05",
+        "p304-06",
+        "p304-07",
+        "p304-08",
+        "p304-09",
+        "p304-10",
+        "p304-11",
+        "p304-12",
+        "p304-13",
+        "p304-14",
+        "p304-15",
+        "p304-16",
+        "p304-17",
+        "p304-18",
+        "p304-19",
+        "p304-20",
+        "p304-21",
+        "p304-22",
+        "p304-23",
+        "p304-24",
+        "p304-25",
+        "p304-26",
+        "p304-27",
+        "p304-28"
+      ]
+    },
+    {
+      "page": 819,
+      "text": "[भागII—खण् ड 3(ii)] भारत का रािपत्र : असाधारण 21 (Chalcophaps indica augusta), Great Nicobar crested serpent eagle (Spilornis klossi), Nicobar paradise flycatcher(Terpsiphone paradise nicobarica ), Andaman three toed kingfisher (Ceyx erithacus macrocarus), Nicobar strokbilled kingfisher (Pelargopsis capensis), Nicobar white-collared kingfisher (Halcyon chloris occipitalis), Andaman koel (Eudynamys scolopacea dolosa), Nicobar megapode (Megapodius nicobariensis), Nicobar hill myna (Gracula religiosa halibrecta), Nicobar back-naped oriole (Oriolus chinensis macrourus), Nicobar scops owl (Otus scops nicobaricus), Blyth’s nicobar parakeet (Psittacula caniceps), Nicobar redcheeked parakeet (Psittacula longicauda nicobarica), Nicobar pigeon (Caloenas nicobarica nicobarica), Nicobar green imperial pigeon (Ducula aenea nicobarica), katchal shikra (Accipiter badius obsoletus), Nicobar white eye (Zosterops palpebros anicobarica), Andaman Glossy Stare (Aplonis panayensis tytleri), Nicobar Olive backed sunbird (Necarinia jugularis klossi), Nicobar yellow backed sunbird (Aethopyga siparaja nicobarica), Andaman grey rumped swiftlet (Collocalia fuciphaga inexpectata), white bellied swiftlet (Collocalia esculenta affinis), Nicobar ground thrush (Zoothera citrine albogularis);",
+      "claim_ids": [
+        "p819-03",
+        "p819-04",
+        "p819-05",
+        "p819-06",
+        "p819-07",
+        "p819-08",
+        "p819-09",
+        "p819-10",
+        "p819-11",
+        "p819-12",
+        "p819-13",
+        "p819-14",
+        "p819-15",
+        "p819-16",
+        "p819-17",
+        "p819-18",
+        "p819-19",
+        "p819-20",
+        "p819-21",
+        "p819-22",
+        "p819-23",
+        "p819-24"
+      ]
+    },
+    {
+      "page": 306,
+      "text": "Scientific Name Family Remarks Abrusprecatorius Fabaceae Common Allamanda cathartica Apocynaceae Ornamental Ampelocissusbarbata Vitaceae Rare Argyreia nervosa Convolvulaceae Elephant creeper Argyreia capitata Convolvulaceae Flower-head morning glory Argyreiawallichii Convolvulaceae Wallich’s Elephant Creeper Aristolochiatagala Aristolochiaceae Common Artabotrysspeciosus Annonaceae Rare Asparagus racemosus Liliaceae Rare Atalantiamonophylla Rutaceae Rare Bauhinia stipularis (=B.nicobarica) Caesalpiniaceae Rare Bougainvillea spectabilis Nyctaginaceae Ornamental Brideliastipularis Euphorbiaceae Climbing bridelia Byttneriagrandifolia Sterculiaceae Bitter climber Caesalpinia bonduc Caesalpiniaceae Common Caesalpinia crista Caesalpiniaceae Common Calamus unifarius Arecaceae Rare Calamus dilaceratus Arecaceae Rare Calamus nicobaricus Arecaceae Rare Calopogoniummucunoides Fabaceae Spreading climber Calycopteris floribunda Arecaceae Paper flower climber Canavalia cathartica Fabaceae Common Cardiospermum halicacabum Sapindaceae Common Cayratiatrifolia Vitaceae Abundant Cayratia japonica Vitaceae Abundant Cissampelos pareira Menispermaceae Velvet leaf Clematis smilacifolia Ranunculaceae Rare Clitoriaternatea Fabaceae Butterfly Pea Colubrina asiatica Rhamnaceae Leather leaf Combretum latifolium Combretaceae Rare Cocculus pendulus Menispermaceae Rare Combretum latifolium Combretacea Rare Combretum roxburghii Combretacea Rare",
+      "claim_ids": [
+        "p306-03",
+        "p306-04",
+        "p306-05",
+        "p306-06",
+        "p306-07",
+        "p306-08",
+        "p306-09",
+        "p306-10",
+        "p306-11",
+        "p306-12",
+        "p306-13",
+        "p306-14",
+        "p306-15",
+        "p306-16",
+        "p306-17",
+        "p306-18",
+        "p306-19",
+        "p306-20",
+        "p306-21",
+        "p306-22",
+        "p306-23",
+        "p306-24",
+        "p306-25",
+        "p306-26",
+        "p306-27",
+        "p306-28",
+        "p306-29",
+        "p306-30",
+        "p306-31",
+        "p306-32",
+        "p306-33",
+        "p306-34"
+      ]
+    },
+    {
+      "page": 999,
+      "text": "62 | P a g e Ornithocercus magnificus (Stein, 1883) - - - - + Phalacroma mitra (Schutt,1895 ) + - - - - Scrippsiella trochoidea (Stein) Loeblich III, 1976 - - + - - Oblea rotunda (Lebour) Balech ex Sournia, 1973 - - + - + Phylum FORAMINIFERA d'Orbigny, 1826 Class GLOBOTHALAMEA Pawlowski, Holzmann & Tyszka, 2013 Beella digitata (Brady, 1879) - - + + - Bolivina pseudoplicata Heron-Allen & Earland, 1930 - - - - + Cymbaloporetta bradyi (Cushman, 1915) - + - - - Cymbaloporetta plana (Cushman, 1924) + - + + - Elphidium clavatum Cushman, 1930 - - - + - Elphidium macellum (Fichtel & Moll, 1798) - - + - - Globigerina bulloides d'Orbigny, 1826 + - + + + Globoconella inflata (d'Orbigny, 1839) - - + + - Globorotalia menardii (d'Orbigny in Parker, Jones & Brady, 1865) + - + - - Hastigerina pelagica (d'Orbigny, 1839) - - + + - Heterolepa broeckhiana (Karrer, 1878) + - - - + Neorotalia calcar d'Orbigny in Deshayes, 1930 + + - + + Pseudobrizalina lobata (Brady, 1881) - - - - + Rosalina bradyi (Cushman, 1915) + - - - - Trilobatus sacculifer (Brady, 1877) - - + - - Class NODOSARIATA Mikhalevich, 1992 emend.",
+      "claim_ids": [
+        "p999-07",
+        "p999-08",
+        "p999-09",
+        "p999-10",
+        "p999-11",
+        "p999-12",
+        "p999-13",
+        "p999-14",
+        "p999-15",
+        "p999-16",
+        "p999-17",
+        "p999-18",
+        "p999-19",
+        "p999-20",
+        "p999-21",
+        "p999-22",
+        "p999-23",
+        "p999-24",
+        "p999-25"
+      ]
+    },
+    {
+      "page": 1075,
+      "text": "Dredging will be required with higher volume which is more than Galathea Bay. • The location is not fit to correlate due to isolation from the rest of the proposed developments in Great Nicobar Island. • Some portion of the designated area is falling under ICRZ Zone 1A. • Falling under Great Nicobar Biosphere Reserve and Campbell Bay National Park. • Represents 39 species of scleractinian corals (Schedule-I species under IW(P)A, 1972). • Represents 7 species of Scheduled-I holothurians. • Total benthic cover of reef habitat is 21.22-hect. including Live coral-15.66%, Other animal-1.52%, Dead Coral- 5.33%, Other algae-45.15%, and Abiotic-32.34%. • Three species of marine mammals are sighted. • Presence of saltwater crocodile (Crocodylus porosus Schneider, 1801) in adjoining Dagmar River. • Presence of mangrove patches in adjoining Dagmar River. • Presence of nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764) is predominant. • Presence of active mounds of endemic Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919) in the proposed site adjoining areas. • Presence of two troupes of only one species of non-human primates i.e. the Long-Tailed Macaque Macaca fascicularis umbrosus (Miller, 1902) in this area.",
+      "claim_ids": [
+        "p1075-01",
+        "p1075-02",
+        "p1075-03",
+        "p1075-04",
+        "p1075-05"
+      ]
+    },
+    {
+      "page": 1076,
+      "text": "Dredging will be required with higher volume. • Requirement reclamation of land to develop onshore storage facilities is comparatively high. • Some portion of the designated area is falling under ICRZ Zone 1A. • Represents 45 species of scleractinian corals (Schedule-I species under IW(P)A, 1972). • Represents 10 species of Scheduled-I holothurians. • Total benthic cover of reef habitat is 35.1254 including Live coral-14.9%, Dead Coral- 2.51%, Other animal-3.28%, Other algae-22.07%, and Abiotic-57.24%. • Three species of marine mammals are sighted. • Presence of saltwater crocodile (Crocodylus porosus Schneider, 1801) in mudflats, submerged wetlands, and mangrove creeks. • Presence of mangrove patches. • Active mounds of Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919) in the proposed project adjoining site. • Presence nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764) is predominantly. • Close to Naval facility at Indira Point. • The location is not fit to for major development due to presence of defence land in nearby places.",
+      "claim_ids": [
+        "p1076-06",
+        "p1076-07",
+        "p1076-08",
+        "p1076-10"
+      ]
+    },
+    {
+      "page": 305,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-86 Scientific Name Common Name Family Note Sophora tomentosa Necklace pod Fabaceae Shrub Spathoglottisplicata Land orchid Orchidaceae Herb Spermacoceassurgens Hispid button weed Rubiaceae Herb Sphagneticola triloba Yellow dots Asteraceae Herb Sporobolus virginicus Seashore dropseed Poaceae Herb Stachytarphetajamaicen sis Blue Porter weed Verbenaceae Herb Stictocardiatiliifolia Spotted heart Convolvulaceae Climber Streblus asper Sand paper tree Moraceae Tree Synedrellanodiflora Cinderella weed Asteraceae Herb Syzigiumsamarangense Red apple Myrtaceae Tree Syzygiumcumini Jamun Myrtacace Tree Tabernaemontana alternifolia Nag Kuda Apocynaceae Tree Tabernaemontanadivaric ata Crape Jasmine Apocynaceae Shrub Tagetuserecta Mary gold Asteraceae Herb Tamarindus indica Tamarind Caesalpiniaceae Tree Tecoma stans Yellow bells Bignoniaceae Shrub Thespesia populnea Portia tree Malvaceae Tree Tidax procumbens Coat buttons Asteraceae Herb Tithonia diversifolia Mexican sunflowe r Asteraceae Shrub Trichosanthespilosa Japanese snake gourd Cucurbitaceae Climber Trichosanthestricuspidat a Indrayan Cucurbitaceae Climber Triphasiatrifolia Lime berry Rutaceae Shrub Turneraulmifolia Yellow Alder Passifloraceae Herb Vernonia cinerea Fleabane Asteraceae Herb Vigna adendata Karalsona Fabaceae Climber Vitex trifolia Three-leaved chaste tree Verbenaceae Shrub Vitex trifoliata Three -leaved chaste tree Verbenaceae Tree Xanthium strumarium Cocklebur Asteraceae Herb Ziziphus oenoplia Jackal jujube Rhamnaceae Tree Ziziphus rugosa Wild jujube Rhamnaceae Tree",
+      "claim_ids": [
+        "p305-01",
+        "p305-02",
+        "p305-03",
+        "p305-04",
+        "p305-05",
+        "p305-06",
+        "p305-07",
+        "p305-08",
+        "p305-09",
+        "p305-10",
+        "p305-11",
+        "p305-12",
+        "p305-13",
+        "p305-14",
+        "p305-15",
+        "p305-16",
+        "p305-17",
+        "p305-18",
+        "p305-19",
+        "p305-20",
+        "p305-21",
+        "p305-22",
+        "p305-23",
+        "p305-24"
+      ]
+    },
+    {
+      "page": 320,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-101 Scientific Name Family Local Status Vernonia patula Asteraceae Common in revenue lands MONOCOTS Aeridiseemericii Orchidaceae Rare Anoectochilusnicobaricus Orchidaceae Jewel Orchid Rare Appendicula reflexa Orchidaceae Rare Burmanniachampionii Burmanniaceae Rare Carexcryptostachys Cyperaceae Common in Marshy areas Carexrefexiana Cyperaceae Rare Ceratostylis subulate Orchidaceae Rare Dendrobium pensile Orchidaceae Rare Dendrobium shompenii Orchidaceae Rare Eryrthrorchisaltissima Orchidaceae Gigantic mycoheterotrophic Homalonemagrifffithiii var ovata Araceae Rare Korthalsialaciniosa Arecaceae Widespread Mapania cuspidate var. angustifolia Cyperaceae Rare Nervilia punctata Orchidaceae Rare Phalaeonopsistetraspis Orchidaceae Rare Plocoglottisjavanica Orchidaceae Rare Podoochilusmicrophyllus Orchidaceae Rare Scirpodendronghaeri Cyperaceae Rare Spathoglottisplicata Orchidaceae Rare Tirchoglottiscirrhifera Orchidaceae Rare Vanilla andamanica Orchidaceae Rare Cbnp Is Campbell Bay National Park and Gbnp Is Galathea National Park.",
+      "claim_ids": [
+        "p320-01",
+        "p320-02",
+        "p320-03",
+        "p320-04",
+        "p320-05",
+        "p320-06",
+        "p320-07",
+        "p320-08",
+        "p320-09",
+        "p320-10",
+        "p320-11",
+        "p320-12",
+        "p320-13",
+        "p320-14",
+        "p320-15",
+        "p320-16",
+        "p320-17",
+        "p320-18",
+        "p320-19",
+        "p320-20",
+        "p320-21",
+        "p320-22",
+        "p320-23",
+        "p320-24"
+      ]
+    },
+    {
+      "page": 331,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-112 Scientific Name Common Name Family IUCN/WPA Psittaculacaniceps Nicobar Parakeet Psittaculidae NT / IV/ En Psittaculalongicauda Long-tailed Parakeet Psittaculidae VU / IV Rallusstriatus Blue breasted rail Rallidae LC / IV Rhinomyiasbrunneatanicobarica Olive Fly catcher Muscicapidae NT / IV/ En Spilornischeelamalayensis Malayan Crested Serpent-Eagle Accipitridae LC / IV Spilornischeelaminimus Nicobar Crested Serpent-Eagle Accipitridae LC / IV Spilornisklossi Nicobar Serpent- Eagle Accipitridae NT / IV /En Sterna bengalensis Lesser crested Tern Laridae LC / IV Sterna sumatrana Black-naped Tern Laridae LC / IV Sturnus erythropygius Nicobar white- headed Myna Sturnidae LC / IV Sturnus erythropygiuskatchlensis Katchal White- headed Myna Sturnidae LC / IV Sturnus sturninus DurainMyna Sturnidae LC / IV Terpsiphone paradisinicobarica Nicobar Paradise- Flycatcher Monarchidae LC / IV Treronchloropterus Andaman Green- Pigeon Columbidae NT / IV Tringahypoleucos Common Sandpiper Scolopacidae LC / IV Tringa terek Terek Sand piper Scolopacidae LC / IV Tringatotanus Common Redshank Scolopacidae LC / IV Turnixtanki Yellow-legged Buttonquail Turnicidae LC / IV Zootheracitrinaalbogularis Nicobar Ground Thrush Turdidae LC / IV Zosteropspalpebrosus Indian White-eye Zosteropidae LC / IV Intr means introduced.",
+      "claim_ids": [
+        "p331-01",
+        "p331-02",
+        "p331-03",
+        "p331-04",
+        "p331-05",
+        "p331-06",
+        "p331-07",
+        "p331-08",
+        "p331-09",
+        "p331-10",
+        "p331-11",
+        "p331-12",
+        "p331-13",
+        "p331-14",
+        "p331-15",
+        "p331-16",
+        "p331-17",
+        "p331-18",
+        "p331-19",
+        "p331-20",
+        "p331-21",
+        "p331-22",
+        "p331-23",
+        "p331-24",
+        "p331-25"
+      ]
+    },
+    {
+      "page": 328,
+      "text": "Scientific Name Common Name Family IUCN/WPA Accipiter badius Shikra Accipitridae LC / IV Accipiter butleri Nicobar Sparrowhawk Accipitridae VU / IV / En Accipiter gularis Japanese Sparrowhawk Accipitridae LC / IV Accipiter soloensis Ghoshak Accipitridae LC / IV Acrocephalusaedon Thick-billed Warbler Acrocephalidae LC / IV Aethopygasiparaja Crimson Sunbird Nectariniidae LC / IV Alcedoatthis Common Kingfisher Alcedinidae LC / IV Amaurornisphoenicurus White-breasted Waterhen Rallidae LC / IV Anas crecca Green-winged Teal Anatidae LC / IV Anousstolidus Brown Noddy Laridae LC / IV Anthuscervinus Red-throated Pipit Motacillidae LC / IV Aplonispanayensis Asian Glossy Starling Sturnidae LC / IV Ardea cinerea Gray Heron Ardeidae LC / IV Ardea intermedia Intermediate Egret Ardeidae LC / IV Ardea purpurea Purple Heron Ardeidae LC / IV Ardeolagrayii Indian Pond-Heron Ardeidae LC / IV Ardeolasrtiatus Andaman Green Heron Ardeidae LC / IV Arenaria interpres Ruddy Turnstone Scolopacidae EN / IV Bubulcus ibis Cattle Egret Ardeidae LC / IV Calidris falcinellus Broad-billed sandpiper Scolopacidae LC / IV/ rare Calidris ferruginea Curlew Sandpiper Scolopacidae LC / IV Calidris ruficollis Red-necked Stint Scolopacidae LC / IV Caloenasnicobarica Nicobar Pigeon Columbidae NT /I/ En Centropusandamanensis Andaman Coucal Cuculidae LC / IV Ceyxerithacus Black-backed Dwarf- Kingfisher Alcedinidae LC / IV Chalcitesxanthorhynchus Violet Cuckoo Cuculidae LC / IV Chalcophaps indica Nicobar Emerald Dove Columbidae LC / IV Charadrius leschenaultii Greater Sand-Plover Charadriidae LC / IV Charadrius mongolus Lesser Sand-Plover Charadriidae LC / IV Chrysococcyx maculatus Emerald cuckoo Cuculidae LC / IV Circus aeruginosus Eurasian Marsh- Harrier Accipitridae LC / IV",
+      "claim_ids": [
+        "p328-04",
+        "p328-05",
+        "p328-06",
+        "p328-07",
+        "p328-08",
+        "p328-09",
+        "p328-10",
+        "p328-11",
+        "p328-12",
+        "p328-13",
+        "p328-14",
+        "p328-15",
+        "p328-16",
+        "p328-17",
+        "p328-18",
+        "p328-19",
+        "p328-20",
+        "p328-21",
+        "p328-22",
+        "p328-23",
+        "p328-24",
+        "p328-25",
+        "p328-26",
+        "p328-27",
+        "p328-28",
+        "p328-29",
+        "p328-30",
+        "p328-31",
+        "p328-32",
+        "p328-33",
+        "p328-34"
+      ]
+    },
+    {
+      "page": 323,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-104 Scientific Name Family Note Staurogyne lanceolata Acanthaceae Herb Stenochlaena palustris Stenochlaenaceae Shrub Strobilanthesglandulosa Acanthaceae Shrub Synedrellanodiﬂora Asteraceae Herb Tetracerasarmentosa Dilleniaceae Shrub Tetrastigmaandamanica Vitaceae Shrub Thunbergia laurifolia Thunbergiaceae Climber Tropidiaangulosa Orchidaceae Ground Orchid Tropidiacurculigoides Orchidaceae Ground Orchid Vernonia cinerea Asteraceae Herb Zeuxine nervosa Orchidaceae Ground Orchid Zingiber squarrosum Zingiberaceae Herb Table-3.33: Orchid Diversity of Great Nicobar Biosphere Reserve (Gnbr) Scientific Name Locality Note Aeridesemericii GNBR Endemic & Rare Anoectochilusnicobaricus GNBR Endemic & Rare Appendicula reflexa GNBR Endemic & Rare Bulbophyllummacranthum GNBR Endemic & Common Cleisostomauraiense GNBR Rare Ceratostylissubulata GNBR Rare Corymborchisveratrifolia GNBR Rare Cymbidium bicolor GNBR Endemic & Rare Dendrobiuimshompenii GNBR Endemic & Rare Dendrobium crumenatum GNBR Common Dendrobium pensile GNBR Rare Eriabractescens GNBR Rare Flickengeria fimbriata GNBR Rare Goodyeraprocera GNBR Rare Hetaeria oblique GNBR Rare Hetaeriaoblongifolia GNBR Rare Lusiazeylanica GNBR Rare Nervilia punctata GNBR Rare Oberoniairidifolia GNBR Rare Phalaenopsis speciosa GNBR Endemic & Rare Pholidota pallida GNBR Rare Phraetiasecunda GNBR Rare Plocoglottisjavanica GNBR Rare Podochilusmicrophyllus GNBR Rare Pomatocalpawendlandorum GNBR Common Pterocerasbarkeleyii GNBR Rare Rhynchostylis retusa GNBR Rare Spathoglottisplicata Everywhere Very common Thelasispygmaea GNBR Common Thrixspermumhystrix GNBR Rare",
+      "claim_ids": [
+        "p323-01",
+        "p323-02",
+        "p323-03",
+        "p323-04",
+        "p323-05",
+        "p323-06",
+        "p323-07",
+        "p323-08",
+        "p323-09",
+        "p323-10",
+        "p323-11",
+        "p323-12",
+        "p323-13",
+        "p323-14",
+        "p323-15",
+        "p323-16",
+        "p323-17",
+        "p323-18",
+        "p323-19",
+        "p323-20",
+        "p323-21",
+        "p323-22",
+        "p323-23",
+        "p323-24",
+        "p323-25",
+        "p323-26",
+        "p323-27",
+        "p323-28",
+        "p323-29",
+        "p323-30",
+        "p323-31",
+        "p323-32",
+        "p323-33",
+        "p323-34",
+        "p323-35",
+        "p323-36",
+        "p323-37"
+      ]
+    },
+    {
+      "page": 319,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-100 Scientific Name Family Local Status Dacryodes rugosa Burseraceae Rare Dichampetalumtimoriensis Dichampetalaceae Rare Dichampetalumplatiphyllum Dichampetalaceae Rare Diospyros cauliflora Ebenaceae Rare Dysoxylumdensiflorum Meliaceae Rare Elaeocarpus macrocerus Elaeocarpaceae Cultivated in revenue lands also Ficus pendens Moraceae Common Gardenia jackii Rubiaceae Rare Gonyothalamusmalayanus Annonaceae Rare Grewia aciminata Tiliaceae Rare Gynotrochesaxillaris Rhizophoraceae Rare Helicia serrata Thymelacaceae Rare Indroucheragriffithiana Linaceae Rare Iodescirrhosa Icacinaceae Rare Kibara coriacea Monimiaceae Rare Mastixiatrichotoma var. maingayi Cornaceae Rare Memecyloncaeruleum Memecylaceae Rare Memecylongarcinioides Memecylaceae Rare Naravelia laurifolia Ranunculaceae Rare Neodissochaetacelebica Melastomataceae Rare Nephelium uncianum Sapindaceae Rare Nothophoedpanduriformis Lauraceae Rare Palaquiumsukebei Sapotaceae Rare Pangiumedule Flacourtiaceae Rare Phyllanthus gomphocarpus Phyllanthaceae Rare Piper pedicillosum Piperaceae Rare Planchonellafirma Sapotaceae Rare Polyalthialateriflora Annonaceae Rare Pseuduvaria rugosa Annonaceae Rare Pternandiacoearulescens Melastomataceae Rare Rhynchotechum parviflorum Gesneriaceae Rare Saurauiabracteosa Actinidiaceae Rare Schefflera longifolia Araliaceae Widespread but not abundant Stauranthera grandiflora Gesneriaceae Rare Stemonurussecundiflorus Icacinaceae Rare Sterculia macrophylla Sterculiaceae Rare Symplocos fasciculata Symplocaceae Rare Symplocosodoratissima Symplocaceae Rare Syzygiumflosculiferm Myrtaceae Rare Tejismaniodendronpteropodium Verbenaceae Rare Tinomisciumpetiolare Menispermaceae Rare Tournefortiatetrandra Boraginaceae Rare Triumphetta repens Tiliaceae Rare",
+      "claim_ids": [
+        "p319-01",
+        "p319-04",
+        "p319-06",
+        "p319-07",
+        "p319-08",
+        "p319-10",
+        "p319-12",
+        "p319-15",
+        "p319-16",
+        "p319-19",
+        "p319-21",
+        "p319-25",
+        "p319-26",
+        "p319-29",
+        "p319-31",
+        "p319-33",
+        "p319-34",
+        "p319-36",
+        "p319-37",
+        "p319-43",
+        "p319-44",
+        "p319-45",
+        "p319-46",
+        "p319-47",
+        "p319-48"
+      ]
+    },
+    {
+      "page": 339,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-120 Name of River Scientific name of Fish Note Oryziasmelanostigma Liza macrolepis Liza melinoptera Ambassisgymnocephalus Gazza minuta Gerres oblonga Butisgymnopomus Butisgymnopomus Bunakagyrinoides Electrisandamanensis Eleotrisfusca Ophiocaraaporos Kraemericussmithi Endemic Quisquiliuseugenius Pseudogobiopsisromeri Jubilee River Velamugilcunnesius Ambassiscommersoni Leiognathusequulus Monodactylus argenteus Fresh water fishes caught during the primary survey in December 2020 from a stream near Laxminagar.",
+      "claim_ids": [
+        "p339-01",
+        "p339-02",
+        "p339-03",
+        "p339-04",
+        "p339-05",
+        "p339-06",
+        "p339-07",
+        "p339-08",
+        "p339-09",
+        "p339-10",
+        "p339-11",
+        "p339-12",
+        "p339-13",
+        "p339-14",
+        "p339-15",
+        "p339-16",
+        "p339-17",
+        "p339-18",
+        "p339-22",
+        "p339-23"
+      ]
+    },
+    {
+      "page": 1086,
+      "text": "149 | P a g e River along with mangrove patches, predominant nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764), 3 species of marine mammals are sighted, 14 breeding pairs along with 7 active mounds of endemic Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919), and the Long-Tailed Macaque Macaca fascicularis umbrosus (Miller, 1902).",
+      "claim_ids": [
+        "p1086-01",
+        "p1086-02",
+        "p1086-03"
+      ]
+    },
+    {
+      "page": 303,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-84 Scientific Name Common Name Family Note Manihot esculentus Tapioca Euphorbiaceae Shrub Manilkara littoralis Andaman Bullet wood work Sapotaceae Tree Melastomamalabathricu m Malabar Melastome Melastomataceae Shrub Mentha spicata Common mint Lamiaceae Herb Mikania cordata Heart leaf Hemp vine Asteraceae Climber Mikania micrantha Bitter vine Asteraceae Climber Mimosa diplotricha Creeping sensitive plant Mimosaceae Herb Mimusopselengi Maulsari Sapotaceae Tree Momoridcacharantea Bitter guard Cucurbitaceae Herb Monochoria vaginalis One-leaf pond weed Pontederiaceae Herb Morindacitrifolia Indian Mulberry Rubiaceae Tree Mucuna gigantean Sea bean Fabaceae Climber Muntingiacalabura Singapore cherry Muntigiaceae Tree Muntingiacalabura Singapore Cherry Muntingiaceae Tree Murrayakoenigi Curry leaf Rutaceae Shrub Musa paradisiaca Banana Musaceae Shrub Mussaendafrondosa Dhobi tree Rubiaceae Shrub Mussaendamicrophylla Small leaf Mussaenda Rubiaceae Shrub Mussaendanicobarica Nicobar Mussaenda Rubiaceae Shrub Mussaendavillosa Mussaenda Rubiaceae Shrub Mussaendawallichii WallichMussaen da Rubiaceae Shrub Nelumbo nucifera Sacred lotus Nelumbonaceae Herb Neptunia triquetra Yellow sensitive plant Mimosaceae Herb Ochrosiaoppositifolia Twin apple Apocynaceae Tree Ocimum sanctum Tulsi / Sacred Basil Lamiaceae Herb Olax imbricata South Asian Olax Olacaceae Climber Ophiorrhizamungos Indian snake root Rubiaceae Herb Oplismenuscompositus Running mountain grass Poaceae Grass Oxalis cornuculata Wood sorrel Oxalidaceae Herb Pandanus leram Pandanus Pandanaceae Tree Pandanus odoratissimus Pandanus Pandanaceae Tree",
+      "claim_ids": [
+        "p303-01",
+        "p303-02",
+        "p303-04",
+        "p303-05",
+        "p303-06",
+        "p303-07",
+        "p303-10",
+        "p303-12",
+        "p303-15",
+        "p303-17",
+        "p303-18",
+        "p303-19",
+        "p303-21",
+        "p303-22",
+        "p303-24",
+        "p303-25",
+        "p303-28",
+        "p303-29",
+        "p303-30"
+      ]
+    },
+    {
+      "page": 313,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-94 Scientific Name Family Habit Status Pluchea indica Asteraceae Undershrub Common Dolichandronespathacea Bignoniaceae Tree Common Caesalipiniabonduc Caesalpiniaceae Climbing shrub Common Cynometrairipa Caesalpiniaceae Tree Common Intsiabijuga Caesalpiniaceae Tree Common Salacia chinensis Celastraceae Scandent shrub Common Fimbristylisferruginea Cyperaceae Herb Common Barringtonia racemosa Lecythidaceae Tree Common Hibiscus tiliaceus Malvaceae Tree Common Thespesia populnea Malvaceae Tree Common Pandanus odoratissimus Pandanaceae Tree Common Pandanus leramvar.andamanicum Pandanaceae Tree Common Brownlowiatersa Tiliaceae Shrub Rare Figure-3.38: Mangrove Plantations Developed After Tsunami Vegetation and flora of the buffer zone or the Nicobar biosphere reserve.",
+      "claim_ids": [
+        "p313-01",
+        "p313-02",
+        "p313-03",
+        "p313-04",
+        "p313-05",
+        "p313-06",
+        "p313-07",
+        "p313-08",
+        "p313-09",
+        "p313-10",
+        "p313-11",
+        "p313-12",
+        "p313-13",
+        "p313-14",
+        "p313-15",
+        "p313-16",
+        "p313-17"
+      ]
+    },
+    {
+      "page": 1031,
+      "text": "Endemic vertebrates of Great Nicobar Island Common Name Species MAMMALS Nicobar Tree Shrew Tupaia nicobarica nicobarica (Zelebor) Nicobar Crab-eating Macaque Macaca fascicularis umbrosa Miller Nicobar Wild Pig Sus scrofa nicobarica Miller BIRDS Andaman Little Green Heron Butorides striatus spodiogaster Nicobar Tiger Bittern Gorsachius melanolophusminor Katchal Shikra Accipiter badius obsoletus Nicobar Crested Serpent Eagle Spilornis cheela minimus Great Nicobar Is Crested Serpent Eagle Spilorenis minimus klossi South Nicobar Megapode Megapodius nicobarensis abbotti Amaurornis phoenicurus.",
+      "claim_ids": [
+        "p1031-13",
+        "p1031-14",
+        "p1031-15",
+        "p1031-16",
+        "p1031-17",
+        "p1031-18",
+        "p1031-19",
+        "p1031-20",
+        "p1031-21"
+      ]
+    },
+    {
+      "page": 565,
+      "text": "Some environmental demerits are also investigated for all the proposed sites and Galathea Bay stands with some important ecological and environmental issues like some portion of the designated area is falling under ICRZ Zone 1A; the presence of 117 species of scleractinian corals along with the live coral cover of 17.46%, 8 species of holothurians, saltwater crocodile (Crocodylus porosus Schneider, 1801) in adjoining Galathea River along with mangrove patches, predominant nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764), 3 species of marine mammals are sighted, 14 breeding",
+      "claim_ids": [
+        "p565-02",
+        "p565-03",
+        "p565-04",
+        "p565-05",
+        "p565-06",
+        "p565-07",
+        "p565-08"
+      ]
+    },
+    {
+      "page": 999,
+      "text": "Rigaud et al., 2015 Lagena arquata Buchner, 1940 - - - + - Seguenzaella lacunata (Burrows & Holland, 1895) + - - - - Fissurina marginata (Montagu, 1803) + - - - - Class TUBOTHALAMEA Pawlowski, Holzman & Tyszka, 2013 Miliammina fusca (Brady, 1870) - + - + - Miliolinella circularis (Bornemann, 1855) - - - + - Spiriloculina henbesti Petri, 1955 + - - - - Triloculina oblonga (Montagu, 1803) - - - - + Spirillina denticulata Brady, 1884 - - + - - Spirillina vivipara Ehrenberg, 1843 + + + + + CB: Campbell Bay, JB: Joginder Nagar, LB: Laxman Beach, RB: Rajiv Nagar Beach, GB: Galathea Bay “+” Presence “-” Absence Biomass, Abundance and Diversity of Mesozooplankton Samples The average mesozooplankton biomass in the intertidal waters of sampling stations of Great Nicobar Island is about 183.44 mg/m3.The maximum zooplankton biomass of 488.12 mg/m3 was observed in the station GB1 IT and minimum at station JB2 IT accounting about 44.49mg/m3.",
+      "claim_ids": [
+        "p999-01",
+        "p999-02",
+        "p999-03",
+        "p999-26",
+        "p999-27",
+        "p999-28",
+        "p999-29",
+        "p999-30",
+        "p999-31",
+        "p999-32",
+        "p999-33",
+        "p999-34"
+      ]
+    },
+    {
+      "page": 1013,
+      "text": "Scleractinian corals, Great Nicobar Island Acropora stoddarti Pillai and Scheer, 1976 Acropora digitifera (Dana, 1846) Acropora divaricata (Dana, 1846) Acropora gemmifera (Brook, 1892) Acropora spicifera (Dana, 1846) Acropora abrotanoides (Lamarck, 1816) Acropora austera (Dana, 1846) Acropora cerealis (Dana, 1846)",
+      "claim_ids": [
+        "p1013-01",
+        "p1013-02",
+        "p1013-03",
+        "p1013-04",
+        "p1013-05",
+        "p1013-06"
+      ]
+    },
+    {
+      "page": 1031,
+      "text": "Andaman Grey fronted Pigeon Treron pompadora chloroptera Nicobar Green Imperial Pigeon Ducula aenea nicobarica Nicobar Wood Pigeon Columba palumboides nicobarica Nicobar Cuckoo Dove Macropygia rifipennis tiwarii Nicobar Emerald Dove Chalcophaps indica augusta Nicobar Pigeon Caloenas nicobarica nicobarica Nicobar Parakeet Psittacula caniceps Nicobar Red cheeked Parakeet Psittacula longicauda nicobarica Nicobar Lesser Scops Owl Otus socps nicobaricus Nicobar Hawk Owl Ninox affinis rexpimenta Andaman Greyrumped Swiftlet Collocalia fuciphaga inexpectata White bellied Swiftlet Collocalia esculenta affinis Andaman Three-toed Kingfisher Ceyx erithacus macrocarus Nicobar Stork billed Kingfisher Halcyon capensis intermedia Nicobar White collared Kingfisher Iodiramphus chloris occipitalis Nicobar Racket-tailed Drongo Dicrurus paradiseus nicobariensis Nicobar Hill Myna Gracula religiosa halibrecta Nicobar Black napped Monarch Hypothymis azurea nicobarica Nicobar Olive backed Sunbird Nectarinia jugularis klossi",
+      "claim_ids": [
+        "p1031-22",
+        "p1031-23",
+        "p1031-24",
+        "p1031-25",
+        "p1031-26",
+        "p1031-27",
+        "p1031-28",
+        "p1031-29",
+        "p1031-30",
+        "p1031-31",
+        "p1031-32",
+        "p1031-33",
+        "p1031-34",
+        "p1031-35",
+        "p1031-36",
+        "p1031-37",
+        "p1031-38",
+        "p1031-39",
+        "p1031-40"
+      ]
+    },
+    {
+      "page": 325,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-106 Table-3.34: List of Mammals Reported from the Nicobar Biosphere Reserve Scientific Name Common Name Category IUCN /WPA Sus scrofanicobaricus Nicobar Wild Pig Pig En / NL Macaca fascicularisumbrosa Nicobar crab eating macaque Macaque En / VU / I Tupaia nicobarica Nicobar Tree shrew Rodent En / EN / NL Crociduranicobarica Nicobar spiny shrew Rodent En / CR / NL Rattus busrescans Nicobar rat Rodent En /NE / NL Rattus palmarum Palm rat Rodent En /VU / NL Rattus pulliventer Nicobar rat Rodent En /NE / NL Scotophiluskhulii Asiatic lesser house bat Bat LC/ NL Miniopterus australis pusillue Bent winged bat Bat LC/ NL Traphozoussaccolaimuscrassus Blyth’s ponch bearing Bat Bat LC/ NL Pteropusmelanotustytleri Blyth’s flying fox Bat En / VU / NL Eonycterisspelaea Down bat Bat LC / NL Hippasiderosfalvus Fulvus leaf nosed bat Bat LC / NL Rhinalophusaffinis Intermediate horse-show bat Bat LC / NL Hippasiderapternicobasulae Little Nicobar leaf-nosed bat Bat NE / NL Hippasiderapdiademonicobarensis Nicobar leaf nosed bat Bat En / LC / NL Hippasiderapater Dusty leaf-nosed bat Bat LC / NL Cynopterusbakhtiarscherzer Lesser Nicobar Short-nosed Fruit bat Bat En / NE / NL Scotophiluskuhli Lesser Yellow bat Bat NE / NL Cynopterus sphinx Short-nosed fruit leaf Bat LC / NL Pipistrellus coromandra Indian Pipistrelle Bat LC / NL Pipistrellus comortae Nicobar pipistrelle Bat En / NE / NL Pteropusfunlus Nicobar flying fox Bat En / EN / NL Miniopteruspusillus Nicobar long- fingered bat Bat En / LC / NL",
+      "claim_ids": [
+        "p325-01",
+        "p325-02",
+        "p325-03",
+        "p325-05",
+        "p325-06",
+        "p325-18",
+        "p325-19",
+        "p325-20"
+      ]
+    },
+    {
+      "page": 332,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-113 Common Name Scientific Name IUCN Number IBAs of occurrence Nicobar Scops-owl Otus alius LC 3 Nicobar Bulbul Hypsipetesnicobariensis VU 1 Nicobar Jungle-flycatcher Rhinomyiasnicobaricus LC 3 VU = Vulnerable, NT = Near Threatened; and LC = Least Concern Status of major Mammals of Nicobar Island: Crab eating Macaque (Macaca fascicularisumbrosa) The Nicobar Crab-eating Macaque, Macaca fascicularisumbrosais the only macaque that occurs at present in the Nicobar Islands.",
+      "claim_ids": [
+        "p332-01",
+        "p332-02",
+        "p332-03",
+        "p332-04",
+        "p332-05",
+        "p332-06"
+      ]
+    },
+    {
+      "page": 886,
+      "text": "Name of Village No.of House Holds Total Male Total Female Total Populati on Male Below 6 Agegrou p Female Below 6 Agegrou p Populati on Below 6 Age group SC Populati on ST Populati on Male Literate s Female Literate s Total Literate s Total Workers Main Workers Margina l Workers Non Workers Non Workers Male Non Workers Female 1 Pulomilo 5 15 5 20 2 1 3 0 20 11 3 14 0 0 0 20 15 5 2 Anul/Anula 1 3 5 8 0 1 1 0 8 2 1 3 6 6 0 2 0 2 3 Makhahu/Makachua 17 32 15 47 2 3 5 0 43 17 2 19 3 3 0 44 29 15 4 Bewai/Kuwak 1 3 1 4 0 0 0 0 4 2 0 2 4 4 0 0 0 0 5 Pulloullo/Puloulo 16 41 40 81 6 9 15 0 81 19 7 26 0 0 0 81 41 40 6 Pulobha/Pulobahan 6 21 31 52 7 7 14 0 52 9 8 17 0 0 0 52 21 31 7 Pattia (Pulopattia) 2 8 3 11 0 1 1 0 11 1 0 1 0 0 0 11 8 3 8 Pulopanja 16 42 33 75 8 8 16 0 74 19 6 25 0 0 0 75 42 33 9 Katahu 1 1 1 2 0 0 0 0 2 0 0 0 2 2 0 0 0 0 10 Afra Bay 29 72 66 138 8 11 19 0 135 45 23 68 12 6 6 126 61 65 11 Alexandera River 13 28 19 47 0 0 0 0 47 0 0 0 0 0 0 47 28 19 12 Shompen Village‐A 2 8 2 10 0 0 0 0 10 0 0 0 0 0 0 10 8 2 13 Shompen Village‐B 11 33 11 44 0 0 0 0 44 0 0 0 0 0 0 44 33 11 14 Kokeon 6 13 7 20 1 1 2 0 20 0 0 0 0 0 0 20 13 7 15 Indira Point 4 27 0 27 0 0 0 0 1 23 0 23 27 27 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 3 6 6 12 2 2 4 0 12 2 0 2 0 0 0 12 6 6 17 Sastri Nagar 6 9 6 15 1 0 1 0 0 7 6 13 10 6 4 5 2 3 18 Gandhi Nagar 13 62 7 69 1 0 1 0 0 43 4 47 64 56 8 5 2 3 19 Laxmi Nagar 13 226 4 230 2 0 2 0 0 142 3 145 222 219 3 8 8 0 20 Vijoy Nagar 12 95 5 100 0 2 2 0 0 63 2 65 95 95 0 5 0 5 21 Joginder Nagar 208 401 292 693 28 27 55 0 0 297 192 489 334 279 55 359 117 242 22 7 km Farm 37 72 69 141 12 15 27 0 87 52 43 95 49 18 31 92 32 60 23 Shompen hut 14 35 28 63 0 0 0 0 63 0 0 0 1 1 0 62 35 27 24 Govinda Nagar 194 385 291 676 34 35 69 0 1 296 201 497 305 211 94 371 136 235 25 Campbell Bay 1608 3362 2374 5736 369 323 692 0 453 2708 1644 4352 2707 2417 290 3029 1138 1891 26 Lawful 5 12 8 20 2 1 3 0 20 0 0 0 0 0 0 20 12 8 27 Trinket Bay 1 2 1 3 0 0 0 0 3 0 0 0 0 0 0 3 2 1 28 Patisang 2 5 8 13 1 1 2 0 13 2 0 2 0 0 0 13 5 8 29 Lanaya 1 2 2 4 0 0 0 0 4 2 0 2 0 0 0 4 2 2 30 Pitayo 1 4 2 6 1 1 2 0 6 2 0 2 0 0 0 6 4 2 Grand Total 2248 5025 3342 8367 487 449 936 0 1214 3764 2145 5909 3841 3350 491 4526 1800 2726 Source: Census of India 2011.",
+      "claim_ids": [
+        "p886-01",
+        "p886-02",
+        "p886-03",
+        "p886-04",
+        "p886-05",
+        "p886-06",
+        "p886-07",
+        "p886-08",
+        "p886-09",
+        "p886-10",
+        "p886-11",
+        "p886-12",
+        "p886-13",
+        "p886-14",
+        "p886-15",
+        "p886-16",
+        "p886-17",
+        "p886-18",
+        "p886-19",
+        "p886-20"
+      ]
+    },
+    {
+      "page": 1023,
+      "text": "Scleractinian corals, Great Nicobar Island Acanthastrea brevis MED&H, 1849 Micromussa regularis (Veron, 2000) Acanthastrea rotundoflora Chevalier, 1975 Ctenactis crassa (Dana, 1846) Dipsastraea truncata (Veron, 2000) Favites vasta (Klunzinger, 1879) Dipsastraea favus (Forskål, 1775) Favites halicora (Ehrenberg, 1834)",
+      "claim_ids": [
+        "p1023-01",
+        "p1023-02",
+        "p1023-03",
+        "p1023-04",
+        "p1023-05",
+        "p1023-06",
+        "p1023-07",
+        "p1023-08"
+      ]
+    },
+    {
+      "page": 160,
+      "text": "TAZ Name TAZ detail Estimated Population Estimated Employment Estimated Visitor 8 OP3_7 Coastal tourism 0 432 10047 9 OP3_8 Coastal tourism 0 96 2233 10 OP3_9 Coastal tourism 0 673 15651 11 C1_1 Commercial mixed use 18211 16128 18547 12 C1_2 Commercial mixed use 15301 13551 15584 13 C1_3 Commercial mixed use 9173 8124 9343 14 C1_4 Commercial mixed use 14894 13191 15170 15 C1_5 Commercial mixed use 8877 7862 9041 16 C2_1 Commercial Office 0 12146 13187 17 DA_1 Defence land 2200 0 0 18 DA_2 Defence land 73 0 0 19 DA_3 Defence land 874 0 0 20 DA_4 Defence land 2 0 0 21 DA_5 Defence land 1 0 0 22 DA_6 Defence land 30 0 0 23 DA_7 Defence land 3684 0 0 24 DA_8 Defence land 1799 0 0 25 DA_9 Defence land 10465 0 0 26 OP2_1 Ecotourism 0 42 977 27 OP2_2 Ecotourism 0 3 70 28 OP2_3 Ecotourism 0 12 279 29 OP2_4 Ecotourism 0 7 163 30 OP2_5 Ecotourism 0 7 163 31 OP2_6 Ecotourism 0 41 953 32 OP2_7 Ecotourism 0 94 2186 33 OP2_8 Ecotourism 0 70 1628 34 OP2_9 Ecotourism 0 11 256 35 OP2_10 Ecotourism 0 13 302 36 OP1_1 Green 0 487 11326 37 OP1_2 Green 0 160 3721 38 OP1_3 Green 0 412 9581 39 OP1_4 Green 0 13 302 40 OP1_5 Green 0 609 14163 41 OP1_6 Green 0 86 2000 42 OP1_7 Green 0 174 4047 43 OP1_8 Green 0 668 15535 44 OP1_9 Green 0 1481 34442 45 OP1_10 Green 0 190 4419 46 OP1_11 Green 0 364 8465 47 OP1_12 Green 0 1225 28488 48 OP1_13 Green 0 1192 27721 49 OP1_14 Green 0 1682 39116 50 OP1_15 Green 0 419 9744 51 OP1_16 Green 0 299 6953 52 OP1_17 Green 0 87 2023 53 OP1_18 Green 0 974 22651 54 OP1_19 Green 0 1937 45047 55 OP1_20 Green 0 824 19163 56 OP1_21 Green 0 792 18419 57 In1 Industrial 0 2275 3049",
+      "claim_ids": [
+        "p160-05",
+        "p160-06",
+        "p160-07",
+        "p160-08",
+        "p160-09"
+      ]
+    },
+    {
+      "page": 161,
+      "text": "TAZ Name TAZ detail Estimated Population Estimated Employment Estimated Visitor 58 PSP1_1 Institutional 1968 1833 3666 59 PSP1_2 Institutional 190 177 355 60 PSP1_3 Institutional 67 62 124 61 PSP1_4 Institutional 271 253 506 62 T3_1 Logistics 0 5447 0 63 R3_1 Low Density residential 650 0 65 64 R3_2 Low Density residential 742 0 74 65 R2_1 Residential 61355 0 6136 66 R2_2 Residential 6953 0 695 67 R2_3 Residential 6661 0 666 68 R2_4 Residential 4825 0 483 69 R2_5 Residential 6779 0 678 70 R2_6 Residential 5490 0 549 71 R2_7 Residential 15911 0 1591 72 R2_8 Residential 7442 0 744 73 R2_9 Residential 5693 0 569 74 R2_10 Residential 3170 0 317 75 R2_11 Residential 9663 0 966 76 R2_12 Residential 13098 0 1310 77 R2_13 Residential 4776 0 478 78 R2_14 Residential 4423 0 442 79 R2_15 Residential 4269 0 427 80 R2_16 Residential 7224 0 722 81 R2_17 Residential 6722 0 672 82 R2_18 Residential 5386 0 539 83 U2_1 Other utilities 0 1179 118 84 U2_2 Other utilities 0 242 24 85 U2_3 Other utilities 0 427.8 43 86 U2_4 Other utilities 0 241.8 24 87 U2_5 Other utilities 0 371.9997 37 88 U2_6 Other utilities 0 1216.571 122 89 U2_7 Other utilities 0 1208.399 121 90 U2_8 Other utilities 0 1196.042 120 91 T1_1 Port Boundary 0 3080 0 92 T1_2 Port Boundary 0 1973 0 93 U1_1 Power Plant 0 2948 0 94 R1_1 Residential 7213 0 721 95 R1_2 Residential 31287 0 3129 96 R1_3 Residential 16364 0 1636 97 R1_4 Residential 9069 0 907 98 R1_5 Residential 6177 0 618 99 R1_6 Residential 3653 0 365 100 R1_7 Residential 43753 0 4375 101 C3_1 Tourism & hospitality 855 4196 4308 102 C3_2 Tourism & hospitality 376 1847 1896 103 C3_3 Tourism & hospitality 2380 11681 11992 104 OP4_1 water body 0 360 8372 105 OP4_2 water body 0 119 2767 106 OP4_3 water body 0 891 20721",
+      "claim_ids": [
+        "p161-05",
+        "p161-06",
+        "p161-07",
+        "p161-08"
+      ]
+    },
+    {
+      "page": 953,
+      "text": "This reserve is home for several endemic species namely Nicobar Megapode Megapodius nicobariensis, Edible-nest Swiftlet Aerodramus fuciphagus, Nicobar Tree Shrew Tupaia nicobarica, Long-tailed Macaque Macaca fascicularis, Saltwater Crocodile Crocodylus porosus, Giant Leatherback Sea Turtle Dermochelys coriacea, Reticulated Python Python reticulates and Coconut Crab Birgus latro.",
+      "claim_ids": [
+        "p953-16"
+      ]
+    },
+    {
+      "page": 1001,
+      "text": "ZOOPLANKTON SPECIES CB JB LB RB GB Class HEXANAUPLIA Oakley, Wolfe, Lindgren & Zaharof, 2013 Subclass COPEPODA Milne Edwards, 1840 Acartia (Odontacartia) erythraea erythraea Giesbrecht, 1889 + + + + + Aetideus giesbrechti Cleve, 1904 + + + - + Canthocalanus pauper (Giesbrecht, 1888) + + + + + Cosmocalanus darwinii (Lubbock, 1860) + + + + + Undinula vulgaris (Dana, 1849) + + + + + Candacia discaudata Scott A., 1909 - + + + + Candacia pachydactyla (Dana, 1849) - + - - + Centropages calaninus (Dana, 1849) - + + - + Centropages furcatus (Dana, 1849) - + + - + Centropages gracilis (Dana, 1849) - + + - - Centropages tenuiremis Thompson I.C. & Scott A., 1903 + - + + + Eucalanus elongatus elongatus (Dana, 1848) + - - - - Pareucalanus attenuatus (Dana, 1849) + - + - - Euchaeta concinna Dana, 1849 + + + - +",
+      "claim_ids": [
+        "p1001-14",
+        "p1001-15",
+        "p1001-16",
+        "p1001-17",
+        "p1001-18",
+        "p1001-19",
+        "p1001-20",
+        "p1001-21",
+        "p1001-22",
+        "p1001-23",
+        "p1001-24",
+        "p1001-25"
+      ]
+    },
+    {
+      "page": 1075,
+      "text": "Site 3 – Anderson Bay Merits • Moderately good site in terms of distance from international sea-route (nearly 75 km away). • Adequate availability of natural breakwater to meet the need in length. • Requirement reclamation of land to develop onshore storage facilities is very less. • No active mounds of Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919) in the proposed project site. • A meagre number of leatherback turtles use Anderson Bay as a breeding ground. • No saltwater crocodile (Crocodylus porosus Schneider, 1801). • No tribal population. • No mangroves. • Suitable area for township development.",
+      "claim_ids": [
+        "p1075-06",
+        "p1075-07"
+      ]
+    },
+    {
+      "page": 1012,
+      "text": "Scleractinian corals, Great Nicobar Island Merulina ampliata (Ellis and Solander, 1786) Acropora clathrata (Brook, 1891) Acropora millepora (Ehrenberg, 1834) Acropora florida (Dana, 1846) Echinopora gemmacea Lamarck, 1816 Pocillopora grandis Dana, 1846 Lobactis scutaria (Lamarck, 1801) Dipsastraea maxima (Veron, Pichon & Wijsman-Best, 1977)",
+      "claim_ids": [
+        "p1012-01",
+        "p1012-02",
+        "p1012-03",
+        "p1012-04",
+        "p1012-05",
+        "p1012-06",
+        "p1012-07",
+        "p1012-08"
+      ]
+    },
+    {
+      "page": 1019,
+      "text": "Scleractinian corals, Great Nicobar Island Platygyra sinensis (MED&H, 1849) Polyphyllia talpina (Lamarck, 1801) Plesiastrea versipora (Lamarck, 1816) Pachyseris gemmae Nemenzo, 1955 Favites magnistellata (MED&H, 1849) Platygyra pini Chevalier, 1975 Platygyra verweyi Wijsman-Best, 1976 Pocillopora ligulata Dana, 1846",
+      "claim_ids": [
+        "p1019-01",
+        "p1019-02",
+        "p1019-03",
+        "p1019-04",
+        "p1019-05",
+        "p1019-06",
+        "p1019-07",
+        "p1019-08"
+      ]
+    },
+    {
+      "page": 1020,
+      "text": "Scleractinian corals, Great Nicobar Island Lobophyllia radians (MED&H, 1849) Lobophyllia valenciennesii (MED&H, 1849) Turbinaria mesenterina (Lamarck, 1816) Turbinaria peltata (Esper, 1794) Cycloseris costulata (Ortmann, 1889) Cycloseris cyclolites (Lamarck, 1815) Cyphastrea japonica Yabe and Sugiyama, 1932 Euphyllia glabrescens (Chamisso and Eys., 1821)",
+      "claim_ids": [
+        "p1020-01",
+        "p1020-02",
+        "p1020-03",
+        "p1020-04",
+        "p1020-05",
+        "p1020-06",
+        "p1020-07",
+        "p1020-08"
+      ]
+    },
+    {
+      "page": 163,
+      "text": "TAZ Name TAZ detail Total Trips 26 OP2_1 Ecotourism 1019 27 OP2_2 Ecotourism 73 28 OP2_3 Ecotourism 291 29 OP2_4 Ecotourism 170 30 OP2_5 Ecotourism 170 31 OP2_6 Ecotourism 994 32 OP2_7 Ecotourism 2280 33 OP2_8 Ecotourism 1698 34 OP2_9 Ecotourism 267 35 OP2_10 Ecotourism 315 36 OP1_1 Green 11813 37 OP1_2 Green 3881 38 OP1_3 Green 9993 39 OP1_4 Green 315 40 OP1_5 Green 14772 41 OP1_6 Green 2086 42 OP1_7 Green 4221 43 OP1_8 Green 16203 44 OP1_9 Green 35923 45 OP1_10 Green 4609 46 OP1_11 Green 8829 47 OP1_12 Green 29713 48 OP1_13 Green 28913 49 OP1_14 Green 40798 50 OP1_15 Green 10163 51 OP1_16 Green 7252 52 OP1_17 Green 2110 53 OP1_18 Green 23625 54 OP1_19 Green 46984 55 OP1_20 Green 19987 56 OP1_21 Green 19211 57 In1 Industrial 5324 58 PSP1_1 Institutional 7467 59 PSP1_2 Institutional 722 60 PSP1_3 Institutional 253 61 PSP1_4 Institutional 1030 62 T3_1 Logistics 8171 63 R3_1 Low Density residential 715 64 R3_2 Low Density residential 816 65 R2_1 Residential 67491 66 R2_2 Residential 7648 67 R2_3 Residential 7327 68 R2_4 Residential 5308 69 R2_5 Residential 7457 70 R2_6 Residential 6039 71 R2_7 Residential 17502 72 R2_8 Residential 8186 73 R2_9 Residential 6262 74 R2_10 Residential 3487 75 R2_11 Residential 10629 76 R2_12 Residential 14408",
+      "claim_ids": [
+        "p163-05",
+        "p163-06"
+      ]
+    },
+    {
+      "page": 826,
+      "text": "The boundary of ESZ then moves in the Northward direction upto a point 14 (7° 10' 29.435\" N&93° 40' 35.571\" E) passing through the points A11 (6° 59' 46.491\" N&93° 42' 23.926\" E), A12 (7° 1' 6.885\" N&93° 41' 22.885\" E), A13 (7° 3' 51.309\" N&93° 40' 12.472\" E), A14 (7° 4' 40.520\" N&93° 40' 14.158\" E), A15 (7° 5' 8.013\" N&93° 40' 11.421\" E), A16 (7° 6' 26.617\" N&93° 40' 33.098\" E), A17 (7° 7' 6.016\" N&93° 39' 59.120\" E), A18 (7° 7' 33.058\" N&93° 39' 56.081\" E), A19 (7° 7' 56.593\" N&93° 40' 12.999\" E), A20 (7° 8' 19.265\" N&93° 41' 2.227\" E), A21 (7° 9' 22.362\" N&93° 41' 17.342\" E), A22 (7° 9' 27.083\" N&93° 40' 55.655\" E), A23 (7° 9' 30.224\" N&93° 40' 49.687\" E) & A24 (7° 9' 45.654\" N&93° 40' 32.010\" E) at a distance varying from 200 meter (between points A16 & A17) to one kilometre from the boundary of the National Park on the Western side.",
+      "claim_ids": [
+        "p826-03"
+      ]
+    },
+    {
+      "page": 1030,
+      "text": "This reserve is home for several endemic and endangered species including Nicobar Megapode Megapodius nicobariensis, Edible-nest Swiftlet Aerodramus fuciphagus, NicobarTree Shrew Tupaia nicobarica, Long-tailed Macaque Macaca fascicularis, Saltwater Crocodile Crocodylus porosus, Giant Leatherback Sea Turtle Dermochelys coriacea, Reticulated python Pythonreticulatus and Coconut Crab Birgus latro.",
+      "claim_ids": [
+        "p1030-07"
+      ]
+    },
+    {
+      "page": 1066,
+      "text": "This reserve is home for several endemic and endangered species including Nicobar Megapode Megapodius nicobariensis, Edible-nest Swiftlet Aerodramus fuciphagus, NicobarTree Shrew Tupaia nicobarica, Long-tailed Macaque Macaca fascicularis, Saltwater Crocodile Crocodylus porosus, Giant Leatherback Sea Turtle Dermochelys coriacea, Reticulated python Pythonreticulatus and Coconut Crab Birgus latro.",
+      "claim_ids": [
+        "p1066-08"
+      ]
+    },
+    {
+      "page": 1077,
+      "text": "Dredging will be required with higher volume and may damange existing coral patches. • Some portion of the designated area is falling under ICRZ Zone 1A. • Represents 107 species of scleractinian corals (Schedule-I species under IW(P)A, 1972). • Represents 11 species of Scheduled-I holothurians. • Total benthic cover of reef habitat is 86.8344 including Dead Coral- 9.02%, Live coral-39.27%, Other animal-4.56%, Other algae-6.95%, and Abiotic-40.20%. • Two species of marine mammals are sighted. • Presence of saltwater crocodile (Crocodylus porosus Schneider, 1801) in Magar Nallah region. • Presence of mangrove patches in Magar Nallah. • Presence of several troupes of the Long-Tailed Macaque Macaca fascicularis umbrosus (Miller, 1902) in this area. • Close to Naval facility, INS BAZZ. • The location is not fit to for major development due to presence of defence land in nearby places. • Presence of mongoloid indigenous tribal population i.e.",
+      "claim_ids": [
+        "p1077-04",
+        "p1077-05",
+        "p1077-06",
+        "p1077-07",
+        "p1077-08"
+      ]
+    },
+    {
+      "page": 266,
+      "text": "Table 3.10: Average Temperature (°C) (January 2013 – December 2020) – Great Nicobar Islands Month/Year 2012 2013 2014 2015 2016 2017 2018 2019 2020 January NA 27.61 26.99 27.77 27.11 27.08 27.30 27.97 28.16 February NA 28.44 27.46 27.97 27.76 27.17 27.92 28.32 28.70 March NA 29.21 28.31 28.42 27.99 26.93 27.94 27.96 28.46 April NA 28.79 28.17 28.55 28.46 27.52 27.7 28.12 28.7 May NA 27.23 27.06 28.58 28.51 27.40 28.4 28.07 27.61 June NA 27.09 30.4 28.73 27.42 27.51 27.29 27.746 27.67 July NA 27.73 29.68 28.17 27.5 27.63 26.87 27.79 27.55 August NA 26.88 28.5 27.41 27.54 26.80 26.7 27.42 27.62 September NA 30.76 27.78 27.04 27.77 27.31 26.90 27.39 27.1 October NA 27.5 27.93 27.32 26.95 28.16 26.81 26.68 26.73 November NA 27.94 27.28 27.05 27.02 26.91 27.10 26.94 26.92 December NA 26.44 27.33 27.15 27.24 26.86 27.40 26.97 26.93 Source: INS Baaz 2] Relative Humidity The average humidity is ranging from75% to 90%.",
+      "claim_ids": [
+        "p266-07",
+        "p266-08"
+      ]
+    },
+    {
+      "page": 1015,
+      "text": "Scleractinian corals, Great Nicobar Island Acropora rudis (Rehberg, 1892) Acropora secale (Studer, 1878) Acropora solitaryensis Veron and Wallace, 1984 Acropora latistella (Brook, 1891) Acropora robusta (Dana, 1846) Acropora muricata (Linneaus, 1758) Acropora subulata (Dana, 1846) Acropora tenuis (Dana, 1846)",
+      "claim_ids": [
+        "p1015-01",
+        "p1015-02",
+        "p1015-03",
+        "p1015-04",
+        "p1015-05",
+        "p1015-06",
+        "p1015-07"
+      ]
+    },
+    {
+      "page": 1017,
+      "text": "Scleractinian corals, Great Nicobar Island Favites acuticollis (Ortmann, 1889) Favites pentagona (Esper, 1795) Lithophyllon scabra (Döderlein, 1901) Dipsastraea speciosa (Dana, 1846) Dipsastraea veroni (Moll & Best, 1984 Pleuractis granulosa (Klunzinger, 1879) Galaxea fascicularis (Linnaeus, 1767) Hydnophora microconos (Lamarck, 1816)",
+      "claim_ids": [
+        "p1017-01",
+        "p1017-02",
+        "p1017-03",
+        "p1017-04",
+        "p1017-05",
+        "p1017-06",
+        "p1017-07",
+        "p1017-08"
+      ]
+    },
+    {
+      "page": 1024,
+      "text": "Scleractinian corals, Great Nicobar Island Montipora undata Bernard, 1897 Echinophyllia glabra (Nemenzo, 1959) Porites attenuata Nemenzo 1955 Porites cylindrica Dana, 1846 Porites lobata Dana, 1846 Porites monticulosa Dana, 1846 Porites rus (Forskal, 1775) Pectinia lactuca (Pallas, 1766)",
+      "claim_ids": [
+        "p1024-01",
+        "p1024-02",
+        "p1024-03",
+        "p1024-04",
+        "p1024-05",
+        "p1024-06",
+        "p1024-07",
+        "p1024-08"
+      ]
+    },
+    {
+      "page": 1025,
+      "text": "Details of Benthic cover of reef ecosystem of Great Nicobar Island Major Division Categories Sub- Categories Laxman Beach Campbell Bay Anderson Bay Laxmi Nagar Gandhi Nagar Sastri Nagar Galathea Bay Coordinates Lat.: 7°2′35.8809′′N Long.: 93°55′5.291′′E Lat.: 7°00′11.5206′′N Long.: 93°56′57.62′′E Lat.: 6°56′23.051′′N Long.: 93°55′02.091′′E Lat.: 6°52′19.993′′N Long.: 93°54′05.4721′′E Lat.: 6°50′28.782′′N Long.: 93°54′01.053′′E Lat.: 6°48′18.1402′′N Long.: 93°53′57.4025′′E Lat.: 6°47′49.68′′N Long.: 93°52′39.2366′′E Hard Coral DEAD CORALS Dead Coral 0 1.48 0.547 0 0.588 0.275 0.2625 Dead coral with Algae 4.25 7.54 2.8556 5.54 3.214 0.125 1.4625 LIVE CORALS Acropora Branching 1.2 2.57 0 0 1.258 0.4625 0.2625 Encrusting 0 3.25 0 0 0.12 0 0 Submassive 0 0.89 0 0 0 0 0 Digitate 0.75 1.15 0 0 0.265 2.1375 1.1375 Tubular 0 0 0 0 3.54 5.65 4.9125 Non- Acropora Branching 0.45 2.65 2.14 0.65 1.333 0.45 0.525 Encrusting 3.95 3.33 2.54 2.579 1.258 4.2375 1.05 Foliose 0 1.23 0.37 0 0.98 1.9875 0.35 Massive 15.85 18.85 12.257 9.872 15.25 7.5625 7.85 Submassive 1.7 2.36 2.1404 0.35 1.57 2.1625 1.1 Mushroom 0 2.58 0.47 0 5.24 0.35 0.1 Heliopora 0.2 0.16 0 0 0 0 0 Millepora 0 0 0 0 0 0 0 Tubipora 0 0.252 0 0 0 0.5875 0.175 OTHER FAUNA",
+      "claim_ids": [
+        "p1025-01",
+        "p1025-02",
+        "p1025-03",
+        "p1025-04",
+        "p1025-05",
+        "p1025-06",
+        "p1025-07",
+        "p1025-08",
+        "p1025-09",
+        "p1025-10",
+        "p1025-11",
+        "p1025-12",
+        "p1025-13",
+        "p1025-14",
+        "p1025-15",
+        "p1025-16",
+        "p1025-17",
+        "p1025-18",
+        "p1025-19",
+        "p1025-20",
+        "p1025-21",
+        "p1025-22",
+        "p1025-23",
+        "p1025-24",
+        "p1025-25",
+        "p1025-26",
+        "p1025-27",
+        "p1025-28",
+        "p1025-29",
+        "p1025-30",
+        "p1025-31",
+        "p1025-32",
+        "p1025-33",
+        "p1025-34",
+        "p1025-35",
+        "p1025-36",
+        "p1025-37",
+        "p1025-38",
+        "p1025-39",
+        "p1025-40",
+        "p1025-41",
+        "p1025-42",
+        "p1025-43",
+        "p1025-44",
+        "p1025-45",
+        "p1025-46",
+        "p1025-47",
+        "p1025-48",
+        "p1025-49",
+        "p1025-50",
+        "p1025-51",
+        "p1025-52",
+        "p1025-53",
+        "p1025-54",
+        "p1025-55",
+        "p1025-56",
+        "p1025-57",
+        "p1025-58",
+        "p1025-59",
+        "p1025-60",
+        "p1025-61",
+        "p1025-62",
+        "p1025-63",
+        "p1025-64",
+        "p1025-65",
+        "p1025-66",
+        "p1025-67",
+        "p1025-68",
+        "p1025-69",
+        "p1025-70",
+        "p1025-71",
+        "p1025-72",
+        "p1025-73",
+        "p1025-74",
+        "p1025-75",
+        "p1025-76",
+        "p1025-77",
+        "p1025-78",
+        "p1025-79",
+        "p1025-80",
+        "p1025-81",
+        "p1025-82",
+        "p1025-83",
+        "p1025-84",
+        "p1025-85",
+        "p1025-86",
+        "p1025-87",
+        "p1025-88",
+        "p1025-89",
+        "p1025-90",
+        "p1025-91",
+        "p1025-92",
+        "p1025-93",
+        "p1025-94",
+        "p1025-95",
+        "p1025-96",
+        "p1025-97",
+        "p1025-98",
+        "p1025-99",
+        "p1025-100",
+        "p1025-101",
+        "p1025-102",
+        "p1025-103",
+        "p1025-104",
+        "p1025-105",
+        "p1025-106",
+        "p1025-107",
+        "p1025-108",
+        "p1025-109",
+        "p1025-110",
+        "p1025-111",
+        "p1025-112"
+      ]
+    },
+    {
+      "page": 311,
+      "text": "Table-3.28: List of Pteridophytes And Ferns Found in The Revenue Lands Scientific Name Family Note Acrostichumaureum Swamp Fern Pteridaceae Abundant in marshy areas Asplenium nidus Birds nest fern Aspleniaceae Epiphyte Christella dentata Soft Fern Thelypteridaceae Common Cyclosorusparasiticus Parasitic maiden fern Thelypteridaceae Isolated Dicranopteris linearis Forked Fern Gleicheniaceae Extensive Diplazium esculentum Edible fern Athyriaceae Extensive like crop Drymoglossumpiloselloides Dragon Scales Polypodiaceae Epiphyte Drynariaquercifolia Oak-leaf Fern Polypodiaceae Common epiphyte Helminthostachyszeylanica Kamraj Ophioglossaceae Terrestrial Lomagrammapteroides Drypteridacceae Epiphyte Lomagrammasumatrana Dryopteridaceae Rare Lygodiumflexuosum Climbing fern Lygodiaceae Abundant Microsorum punctatum Fishtail Fern Polypodiaceae Epiphyte Nephrolepis cordifolia Fishbone Fern Nephrolepidaceae Common terrestrial Nephrolepisexaltata Sword Fern Nephrolepidaceae Common terrestrial Sphaeropterisalbo-setacea Tree fern Cyatheaceae Abundant Orchid Flora Orchids were rare in the area outside the Nicobar biosphere reserve.",
+      "claim_ids": [
+        "p311-02",
+        "p311-03",
+        "p311-04",
+        "p311-07",
+        "p311-09",
+        "p311-10",
+        "p311-11",
+        "p311-13",
+        "p311-14",
+        "p311-15",
+        "p311-20"
+      ]
+    },
+    {
+      "page": 318,
+      "text": "Common Asplenium sublaspertifolium Aspleniaceae Rare Bolbitissinuata Bolbitidiaceae Rare Leursseniakehdingian Aspleniaceae No record Lomagrammasumatrana Bolbitidiaceae Rare GYMNOSPERMS Cycas rumphii Cycadaceae Rare in the revenue land Gnetumgnemon Gnetaceae Only from GBNP Podocarpus wallichianus Podocarpaceae Rare, broad-leaved ANGIOSPERMS Aeschynanthus volubilis Gesneriaceae Rare Alangiumjavanicum Alangiaceae Rare Anaxagoreajavanica Annonaceae Rare Antidesmatomentosum Phyllanthaceae Widespread but not abundant Archidendronellipticum Mimosaceae Rare Astronia macrophylla Melastomataceae Rare Barringtonia pendula Barringtoniaceae Rare Bauhinia stipularis Caesalpiniaceae Rare Blumeodendronkurzii Euphorbiaceae Rare Casearia grewiaefoilavar.gelonoides Flacourtiaceae Rare Connarusplanchonianus Connaraceae Rare Cypholophusmoluccanus Urticaceae Rare",
+      "claim_ids": [
+        "p318-13",
+        "p318-14",
+        "p318-15",
+        "p318-16",
+        "p318-17",
+        "p318-18",
+        "p318-19",
+        "p318-20",
+        "p318-21",
+        "p318-22",
+        "p318-23",
+        "p318-24",
+        "p318-25",
+        "p318-26",
+        "p318-27",
+        "p318-28",
+        "p318-29",
+        "p318-30",
+        "p318-31"
+      ]
+    },
+    {
+      "page": 566,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP, Township & Area development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-5 Analysis of Alternatives C5-10 pairs along with 7 active mounds of endemic Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919), and the Long-Tailed Macaque Macaca fascicularis umbrosus (Miller, 1902).",
+      "claim_ids": [
+        "p566-01"
+      ]
+    },
+    {
+      "page": 700,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-8 Project Benefits C8-5 ICTT and Logistics Area - 1,575 3,465 6,300 Industrial 180 341 1,024 1,365 Primary Sector 1,604 1,752 2,813 3,893 Indirect Employees 1,859 10,408 37,101 77,135 Tourism - 10,488 47,195 104,879 Airport 125 746 2,471 4,416 ICTT and Logistics Area - 2,625 5,775 10,500 Industrial 300 569 1,706 2,275 Primary Sector 2,673 2,920 4,688 6,488 Total Employees 3,098 17,347 61,835 128,558 it is apparent from the table that during the initial phases of the project the total number of 17,347 (2027) job will be created which refers to the operation of the project only.",
+      "claim_ids": [
+        "p700-01",
+        "p700-02",
+        "p700-03",
+        "p700-04",
+        "p700-05",
+        "p700-06",
+        "p700-07",
+        "p700-08",
+        "p700-12",
+        "p700-13",
+        "p700-14",
+        "p700-15"
+      ]
+    },
+    {
+      "page": 1021,
+      "text": "Scleractinian corals, Great Nicobar Island Echinophyllia echinoporoides Veron and Pic., 1979 Paragoniastrea russelli (Wells, 1954) Favites rotundata Veron, Pic. & Wijs.-Best, 1977 Lithophyllon repanda (Dana, 1846) Gardineroseris planulata (Dana, 1846) Goniastrea edwardsi Chevalier, 1971 Mycedium elephantotus (Pallas, 1766) Montipora crassituberculata Bernard, 1897",
+      "claim_ids": [
+        "p1021-01",
+        "p1021-02",
+        "p1021-03",
+        "p1021-04",
+        "p1021-05",
+        "p1021-06",
+        "p1021-07",
+        "p1021-08"
+      ]
+    },
+    {
+      "page": 1022,
+      "text": "Scleractinian corals, Great Nicobar Island Platygyra lamellina (Ehrenberg, 1834) Pavona venosa (Ehrenberg, 1834) Pocillopora damicornis (Linnaeus, 1758) Lobophyllia erythraea (Klunzinger, 1879) Porites lutea Milne Edwards and Haime, 1860 Seriatopora caliendrum Ehrenberg, 1834 Seriatopora hystrix Dana, 1846 Stylocoeniella armata (Ehrenberg, 1834)",
+      "claim_ids": [
+        "p1022-01",
+        "p1022-02",
+        "p1022-03",
+        "p1022-04",
+        "p1022-05",
+        "p1022-06",
+        "p1022-07",
+        "p1022-08"
+      ]
+    },
+    {
+      "page": 1032,
+      "text": "REPTILES: Nicobar Tree Shrink Dasia nicobarensis Small-eared Island Shrink Lipnia macrotympanum Nicobar Worm Lizard Dibamus nicobaricum Andaman Water Monitor Varanus salvator andamanensis Andaman Painted Bronze back Tree snake Dendralaphis picta andamanensis Nicobar Cat Snake Bioga wallachi Nicobar Bent-toed Gecko Cyrtodactylus adleri AMPHIBIANS: Polypedates insularis Limnonectes shompenorum STATUS ENDANGERED FAUNA (1) SALTWATER CROCODILE The saltwater crocodile (Crocodylus porosus Schneider, 1801) is the largest living reptile and crocodilian known to science which ruled during the Mesozoic era.",
+      "claim_ids": [
+        "p1032-05",
+        "p1032-06",
+        "p1032-07",
+        "p1032-08",
+        "p1032-09",
+        "p1032-10",
+        "p1032-11",
+        "p1032-12",
+        "p1032-13"
+      ]
+    },
+    {
+      "page": 1127,
+      "text": "Beach Profile Anderson Bay Vijay Nagar Laxmi Nagar Gandhi Nagar Shashtri Nagar Galathea Bay Pemayya Bay Alexandra Bay Casuarina Bay Length 3.5 km 2.8 km 2.4 km 2.5 km 1.2 km 4.5 km 3.0 km 3.2 km 4.2 km Avg Beach Width* 16 m 15 m 12 m 15 m 15 m 23 m 18 m 20 m 24 m Beach Slope Moderate Steep Steep Moderate Moderate Gradual Moderate Gradual Gradual Intertidal Flats width 120 m 40 m 55 m 110 m 120 m 370 m 145 m 360 m 375 m Sand grain size (2.0 mm) 0.21% 0.26% 0.28% 0.17% 0.29% 0.09% 0.12% 0.11% 0.09% Sand grain size (1.0 mm) 0.18% 0.18% 0.17% 0.18% 0.16% 1.14% 0.12% 1.14% 1.12% Sand grain size (0.5 mm) 0.21% 0.14% 0.11% 0.18% 0.18% 3.16% 0.08% 4.11% 3.18% Sand grain size (0.25 mm) 0.26% 0.21% 0.31% 0.21% 0.22% 3.47% 0.49% 3.48% 3.45% Sand grain size (0.13 mm) 0.45% 0.15% 0.25% 0.25% 0.36% 1.18% 0.15% 1.12% 1.09% Perennial Freshwater - - - - - Yes - Yes Yes Predation High (Feral dogs) High (Feral dogs) High (Feral dogs) High (Feral dogs) High (Feral dogs) High (Wild Pigs and dogs) High (Wild Pigs) High (Wild Pigs) High (Wild Pigs) * high tide line to vegetation line on 14-19 April, 2021",
+      "claim_ids": [
+        "p1127-01",
+        "p1127-02",
+        "p1127-03",
+        "p1127-04",
+        "p1127-05",
+        "p1127-06",
+        "p1127-07",
+        "p1127-08",
+        "p1127-09",
+        "p1127-10",
+        "p1127-11",
+        "p1127-12",
+        "p1127-13",
+        "p1127-14",
+        "p1127-15",
+        "p1127-16",
+        "p1127-17",
+        "p1127-18",
+        "p1127-19",
+        "p1127-20",
+        "p1127-21",
+        "p1127-22",
+        "p1127-23",
+        "p1127-24",
+        "p1127-25",
+        "p1127-26",
+        "p1127-27",
+        "p1127-28",
+        "p1127-29",
+        "p1127-30",
+        "p1127-31",
+        "p1127-32",
+        "p1127-33",
+        "p1127-34",
+        "p1127-35",
+        "p1127-36",
+        "p1127-37",
+        "p1127-38",
+        "p1127-39",
+        "p1127-40",
+        "p1127-41",
+        "p1127-42",
+        "p1127-43",
+        "p1127-44",
+        "p1127-45",
+        "p1127-46",
+        "p1127-47",
+        "p1127-48",
+        "p1127-49",
+        "p1127-50",
+        "p1127-51",
+        "p1127-52",
+        "p1127-53",
+        "p1127-54",
+        "p1127-55",
+        "p1127-56",
+        "p1127-57",
+        "p1127-58",
+        "p1127-59",
+        "p1127-60",
+        "p1127-61",
+        "p1127-62",
+        "p1127-63",
+        "p1127-64",
+        "p1127-65",
+        "p1127-66",
+        "p1127-67",
+        "p1127-68",
+        "p1127-69",
+        "p1127-70",
+        "p1127-71",
+        "p1127-72",
+        "p1127-73",
+        "p1127-74",
+        "p1127-75",
+        "p1127-76",
+        "p1127-77",
+        "p1127-78",
+        "p1127-79",
+        "p1127-80",
+        "p1127-81",
+        "p1127-82",
+        "p1127-83",
+        "p1127-84"
+      ]
+    },
+    {
+      "page": 29,
+      "text": "Of these, the well-known Crab-eating Macaque, Nicobar Tree Shrew, Dugong, Nicobar Megapode, Serpent Eagle, salt water crocodile, marine turtles and Reticulated Python are endemic and/or endangered.",
+      "claim_ids": [
+        "p29-19",
+        "p29-20",
+        "p29-21",
+        "p29-22",
+        "p29-23",
+        "p29-24",
+        "p29-25",
+        "p29-26"
+      ]
+    },
+    {
+      "page": 102,
+      "text": "Item Initial Phase (2025) Final Phase (2055) Incremental Cost 1 Project Preliminaries and Site Development 35 100 65 2 Dredging 480 1,327 847 3 Reclamation 4,764 10,005 5,241 4 Breakwaters & Shore Protection 6,318 6,543 225 5 Berths 1,740 5,680 3,940 6 Storage Areas 432 1,606 1,174 7 Equipment 2,196 6,997 4,801 8 Buildings 81 192 111 9 Roads& Pavements 31 61 31 10 External Power, Water & Telecommunication 22 43 22 11 Utilities and Others 156 468 312 12 Port Crafts and Aids to Navigation 274 799 525 13 Total 16,528 33,821 17,293 14 Contingencies @3% 496 1,015 519 15 Detailed Engineering & Project Management Services @3% 496 1,015 519 16 Cost of Land Acquisition 0 0 0 17 Grand Total Cost (Rs.",
+      "claim_ids": [
+        "p102-07",
+        "p102-10",
+        "p102-11",
+        "p102-14",
+        "p102-15",
+        "p102-17",
+        "p102-20",
+        "p102-23",
+        "p102-24",
+        "p102-25",
+        "p102-26",
+        "p102-27",
+        "p102-28",
+        "p102-29",
+        "p102-30",
+        "p102-31",
+        "p102-32",
+        "p102-35",
+        "p102-36",
+        "p102-37",
+        "p102-38",
+        "p102-39",
+        "p102-40",
+        "p102-41",
+        "p102-42",
+        "p102-43",
+        "p102-44"
+      ]
+    },
+    {
+      "page": 150,
+      "text": "TAZ Name TAZ detail 1 T2_1 Airport Boundary 2 OP3_1 Coastal tourism 3 OP3_1 Coastal tourism 4 OP3_1 Coastal tourism 5 OP3_1 Coastal tourism 6 OP3_1 Coastal tourism 7 OP3_1 Coastal tourism 8 OP3_1 Coastal tourism 9 OP3_1 Coastal tourism 10 OP3_1 Coastal tourism 11 C1_1 Commercial mixed use 12 C1_1 Commercial mixed use 13 C1_1 Commercial mixed use 14 C1_1 Commercial mixed use 15 C1_1 Commercial mixed use 16 C2_1 Commercial Office 17 DA_1 Defense land 18 DA_1 Defence land 19 DA_1 Defence land 20 DA_1 Defence land 21 DA_1 Defence land 22 DA_1 Defence land 23 DA_1 Defence land 24 DA_1 Defence land 25 DA_1 Defence land 26 OP2_1 Ecotourism 27 OP2_1 Ecotourism 28 OP2_1 Ecotourism 29 OP2_1 Ecotourism 30 OP2_1 Ecotourism 31 OP2_1 Ecotourism 32 OP2_1 Ecotourism 33 OP2_1 Ecotourism 34 OP2_1 Ecotourism 35 OP2_1 Ecotourism 36 OP1_1 Green 37 OP1_1 Green 38 OP1_1 Green 39 OP1_1 Green 40 OP1_1 Green 41 OP1_1 Green 42 OP1_1 Green 43 OP1_1 Green 44 OP1_1 Green 45 OP1_1 Green 46 OP1_1 Green 47 OP1_1 Green 48 OP1_1 Green 49 OP1_1 Green 50 OP1_1 Green 51 OP1_1 Airport Boundary 52 OP1_1 Coastal tourism 53 OP1_1 Coastal tourism",
+      "claim_ids": [
+        "p150-05",
+        "p150-06",
+        "p150-07",
+        "p150-08",
+        "p150-09"
+      ]
+    },
+    {
+      "page": 1034,
+      "text": "97 | P a g e Satwater Crocodile Crocodylus porosus Schneider, 1801 (2) LEATHERBACK TURTLE Out of the five species of turtles recorded from mainland coast of India, the leatherback turtle Dermochelys coriacea (Vandelli, 1764) is well known for its nesting in the Andaman and Nicobar Islands.",
+      "claim_ids": [
+        "p1034-01",
+        "p1034-02",
+        "p1034-03"
+      ]
+    },
+    {
+      "page": 1059,
+      "text": "Coastal and Marine Ecosystem: A total of 495 species of coastal and marine faunal communities including 107 species of scleractinian corals, 12 species of octocorals, 10 species of sponges, 7 species of sea anemones, 9 species of polyclads, 135 species of mollusks, 8 species of heterobranchs, 62 species of crabs, 17 species of shrimps, 4 species of lobsters, 21 species of echinoderms, 14 species of ascidians, 87 species of fishes, and 2 species of marine mammals are recorded from this region.",
+      "claim_ids": [
+        "p1059-01",
+        "p1059-02",
+        "p1059-03",
+        "p1059-04",
+        "p1059-05",
+        "p1059-06",
+        "p1059-07",
+        "p1059-08",
+        "p1059-09",
+        "p1059-10",
+        "p1059-11",
+        "p1059-12",
+        "p1059-13",
+        "p1059-14",
+        "p1059-15"
+      ]
+    },
+    {
+      "page": 363,
+      "text": "No village Name Full time Part time Total 1 Afra bay 22 19 41 2 Campbell Bay 117 36 153 3 Gandhi nagar 7 0 7 4 Pillomallow 14 18 32 5 Pilobha 12 3 15 6 Pulopatra 4 0 4 7 Pulo ulo 20 18 38 8 Pulopanja 15 12 27 Grand Total 211 106 317 Source: Marine fisheries Census 2010 Andaman Nicobar Islands",
+      "claim_ids": [
+        "p363-06"
+      ]
+    },
+    {
+      "page": 1014,
+      "text": "Scleractinian corals, Great Nicobar Island Acropora microphthalma (Verrill, 1859) Acropora palmerae Wells, 1954 Acropora globiceps (Dana, 1846) Acropora grandis (Brook, 1892) Acropora willisae Veron and Wallace, 1984 Acropora verweyi Veron and Wallace, 1984 Acropora microclados (Ehrenberg, 1834)",
+      "claim_ids": [
+        "p1014-01",
+        "p1014-02",
+        "p1014-03",
+        "p1014-04",
+        "p1014-05",
+        "p1014-06"
+      ]
+    },
+    {
+      "page": 1018,
+      "text": "Scleractinian corals, Great Nicobar Island Hydnophora pilosa Veron, 1985 Herpolitha limax (Esper, 1797) Leptoseris explanata Yabe and Sugiyama, 1941 Montipora caliculata (Dana, 1846) Oulophyllia crispa (Lamarck, 1816) Pavona duerdeni Vaughan, 1907 Pocillopora meandrina Dana, 1846 Platygyra ryukyuensis Yabe and Sugiyama, 1935",
+      "claim_ids": [
+        "p1018-01"
+      ]
+    },
+    {
+      "page": 1037,
+      "text": "Estimation of the nesting leatherback populations for the Andaman and Nicobar Islands Nesting Area No. of nests No. of turtles* Nicobar group of islands Great Nicobar 811 166 Little Nicobar 110** 22 Katchal 5 1 Teressa 4 1 Sub-total 930 190 Andaman group of islands Rutland 5 1 Little Andaman (West Bay) 84 17 Little Andaman (South Bay) 10 2 Sub-total 99 20 Total Nests 1029 210 *No. of turtles calculated based on the assumption that leatherback turtle lay, on average, 4.9 nests per season **165 nests were recorded during 1993-94 surveys, however, a conservative average of 110 is considered Table 16.",
+      "claim_ids": [
+        "p1037-22",
+        "p1037-23",
+        "p1037-24",
+        "p1037-29",
+        "p1037-30",
+        "p1037-39",
+        "p1037-40"
+      ]
+    },
+    {
+      "page": 1037,
+      "text": "Year wise details of Leatherback turtle nesting in Great Nicobar Island Period Leatherback Turtle Hatchling succession rate (%) No. of Nesting No. of Eggs laid No. of Hatchling 2017-18 182 14217 8361 59 2018-19 203 16986 10142 60 2019-20 483 39350 25006 63.5 2020-21 691 50160 1364-going on Not completed",
+      "claim_ids": [
+        "p1037-41",
+        "p1037-42",
+        "p1037-43",
+        "p1037-44",
+        "p1037-45",
+        "p1037-46",
+        "p1037-47",
+        "p1037-48",
+        "p1037-49",
+        "p1037-50",
+        "p1037-51",
+        "p1037-52",
+        "p1037-53",
+        "p1037-54",
+        "p1037-55"
+      ]
+    },
+    {
+      "page": 1066,
+      "text": "Out of the five species of turtles recorded from mainland coast of India, the leatherback turtle Dermochelys coriacea (Vandelli, 1764) is well known for its nesting in the Andaman and Nicobar Islands. Leatherback turtles nesting have been recorded mainly on the long and wide beaches at the mouth of the Dagmar and Alexandira rivers on the west coast and at the mouth of the Galathea River along its south eastern coast. Globally, leatherback turtle status according to IUCN is listed as Vulnerable. The Northeast Indian leatherback subpopulation nests primarily in the Andaman and Nicobar Islands of India, in some parts of Sri Lanka and to a lesser extent in Thailand. The first documentation of leatherback turtle nesting in the Great Nicobar Island was by Dr. Satish Bhaskar in 1978-79 and subsequently by other researchers including A&NB Forest Department and NGOs and institutions in the Andaman & Nicobar Islands. The leatherback nesting population in the Nicobar is one of the four colonies that exceeds 1000 individuals in the Indo-Pacific, and hence of global significance.",
+      "claim_ids": [
+        "p1066-11"
+      ]
+    },
+    {
+      "page": 7,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP, Township & Area development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at GNIs, Nicobar District TOC-2 2.10.1 Container Yard Capacity C2-36 2.10.2 Receipt and Evacuation of Cargo C2-36 2.11 Breakwaters C2-38 2.12 Approach Channel C2-41 2.13 Dredging C2-41 2.14 Reclamation C2-42 2.15 Navigational Aids C2-42 2.16 Container Terminal Equipments C2-43 2.17 Utilities and Services C2-44 2.17.1 Water Requirements C2-44 2.17.2 Power Requirements C2-45 2.17.3 Buildings C2-47 2.17.4 Communications C2-48 2.17.5 Fire Fighting Facilities C2-49 2.17.6 Bunkering Facilities C2-50 2.18 Road/Rail Corridor for ICTT Port C2-50 2.19 Onshore Infrastructure and Utilities C2-51 2.19.1 Container Yard C2-51 2.19.2 Reefer Gantries C2-51 2.19.3 Gate House C2-52 2.19.4 Terminal Fencing C2-52 2.20 Pollution Control Aspects C2-52 2.20.1 Drainage and Sewerage System C2-53 2.20.2 Solid Waste Management C2-53 2.20.3 Green Areas and Greenbelt Development C2-54 2.21 Project Cost C2-54 2.22 Project Implementation Schedule C2-55 2.0 (2B) PROJECT DESCRIPTION-AIRPORT C2-57 2.1 Need for the Project C2-57 2.2 Justification of the Project & Importance to Country C2-57 2.3 Description of the Airport Complex C2-58 2.3.1 Key Design Features of the Airport C2-59 2.4 Traffic Projection C2-62 2.4.1 Cargo Forecast C2-65 2.4.2 Airport Infrastructure C2-71 2.4.3 Airport Land Use C2-77 2.5 Project Cost and Schedule C2-80 2.6 Resource Requirement C2-82 2.6.1 Land form, Land use and Ownership C2-82 2.6.2 Water Requirement C2-84 2.6.3 Power Requirement C2-85",
+      "claim_ids": [
+        "p7-01",
+        "p7-02",
+        "p7-03",
+        "p7-04"
+      ]
+    },
+    {
+      "page": 65,
+      "text": "Table-2.8 Summary of ADCP Collected Data Tidal State Mag Dir Mag Dir Mag Dir Knots deg Knots deg Knots deg Bottom Mid Surface Spring Flood 0.09 55 0.23 135 0.15 194 Ebb 0.13 128 0.15 79 0.18 79 Neap Flood 0.1 116 0.1 210 0.12 128 Ebb 0.1 148 0.27 54 0.11 101 Spring Flood 0.15 273 0.18 290 0.14 148 Ebb 0.11 103 0.13 66 0.23 152 Neap Flood 0.09 155 0.13 91 0.22 201 Ebb 0.15 148 0.09 151 0.31 184 Spring Average Flood 0.12 164 0.21 213 0.15 171 Ebb 0.12 116 0.14 73 0.21 116 Neap Average Flood 0.10 136 0.12 151 0.17 165 Ebb 0.13 148 0.18 103 0.21 143 2.4.5 Design Criteria Container terminals play an important role in the transportation of containerized goods in global supply chains.",
+      "claim_ids": [
+        "p65-05",
+        "p65-06",
+        "p65-07",
+        "p65-08",
+        "p65-09",
+        "p65-10",
+        "p65-11",
+        "p65-12",
+        "p65-13",
+        "p65-14",
+        "p65-15",
+        "p65-16",
+        "p65-17",
+        "p65-18",
+        "p65-19",
+        "p65-20",
+        "p65-21",
+        "p65-22",
+        "p65-23",
+        "p65-24",
+        "p65-25",
+        "p65-26",
+        "p65-27",
+        "p65-28",
+        "p65-29",
+        "p65-30",
+        "p65-31",
+        "p65-32",
+        "p65-33",
+        "p65-34",
+        "p65-35",
+        "p65-36",
+        "p65-37",
+        "p65-38",
+        "p65-39",
+        "p65-40"
+      ]
+    },
+    {
+      "page": 162,
+      "text": "TAZ Name TAZ detail Total Trips 1 T2_1 Airport Boundary 16081 2 OP3_1 Coastal tourism 6598 3 OP3_2 Coastal tourism 7835 4 OP3_3 Coastal tourism 1940 5 OP3_4 Coastal tourism 6088 6 OP3_5 Coastal tourism 50040 7 OP3_6 Coastal tourism 3469 8 OP3_7 Coastal tourism 10479 9 OP3_8 Coastal tourism 2329 10 OP3_9 Coastal tourism 16324 11 C1_1 Commercial mixed use 52886 12 C1_2 Commercial mixed use 44436 13 C1_3 Commercial mixed use 26640 14 C1_4 Commercial mixed use 43255 15 C1_5 Commercial mixed use 25780 16 C2_1 Commercial Office 25333 17 DA_1 Defence land 2200 18 DA_2 Defence land 73 19 DA_3 Defence land 874 20 DA_4 Defence land 2 21 DA_5 Defence land 1 22 DA_6 Defence land 30 23 DA_7 Defence land 3684 24 DA_8 Defence land 1799 25 DA_9 Defence land 10465",
+      "claim_ids": [
+        "p162-09",
+        "p162-10",
+        "p162-11",
+        "p162-12"
+      ]
+    },
+    {
+      "page": 164,
+      "text": "TAZ Name TAZ detail Total Trips 77 R2_13 Residential 5254 78 R2_14 Residential 4865 79 R2_15 Residential 4696 80 R2_16 Residential 7946 81 R2_17 Residential 7394 82 R2_18 Residential 5925 83 U2_1 Other utilities 1297 84 U2_2 Other utilities 266 85 U2_3 Other utilities 471 86 U2_4 Other utilities 266 87 U2_5 Other utilities 409 88 U2_6 Other utilities 1339 89 U2_7 Other utilities 1329 90 U2_8 Other utilities 1316 91 T1_1 Port Boundary 4435 92 T1_2 Port Boundary 2842 93 U1_1 Power Plant 2948 94 R1_1 Residential 7934 95 R1_2 Residential 34416 96 R1_3 Residential 18000 97 R1_4 Residential 9976 98 R1_5 Residential 6795 99 R1_6 Residential 4018 100 R1_7 Residential 48128 101 C3_1 Tourism & hospitality 9359 102 C3_2 Tourism & hospitality 4119 103 C3_3 Tourism & hospitality 26053 104 OP4_1 water body 8732 105 OP4_2 water body 2886 106 OP4_3 water body 21612 Trip Distribution The decision to travel for a particular purpose is called trip generation.",
+      "claim_ids": [
+        "p164-05",
+        "p164-06",
+        "p164-07",
+        "p164-08",
+        "p164-09",
+        "p164-10",
+        "p164-11",
+        "p164-12",
+        "p164-13",
+        "p164-14",
+        "p164-15",
+        "p164-16",
+        "p164-17",
+        "p164-18",
+        "p164-19",
+        "p164-20",
+        "p164-21",
+        "p164-22",
+        "p164-23",
+        "p164-24",
+        "p164-25",
+        "p164-26",
+        "p164-27",
+        "p164-28",
+        "p164-29",
+        "p164-30",
+        "p164-31",
+        "p164-32",
+        "p164-33",
+        "p164-34"
+      ]
+    },
+    {
+      "page": 267,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-48 Month/Year 2012 2013 2014 2015 2016 2017 2018 2019 2020 June NA NA NA NA NA 84.1 84.5 83.85 86.16 July NA NA NA NA 82.3 84.41 83.88 81.04 84.96 August NA NA NA NA 82.7 85.64 84.064 83.46 85.48 September NA NA NA NA 86.68 86.25 83.1 84.66 86.4 October NA NA NA NA 87.61 80.59 82.67 85.91 88.24 November NA NA NA NA 84.78 84.7 83.91 84.86 88.08 December NA NA NA NA 82.91 84.75 80.75 82.83 84.11 Source: INS Baaz 3] Rainfall The southwest monsoon generally sets in during the last week of May.",
+      "claim_ids": [
+        "p267-01",
+        "p267-05"
+      ]
+    },
+    {
+      "page": 318,
+      "text": "Environmental Impact Assessment for International Container Transshipment Terminal (ICTT) – 14.2 Million TEU along with Greenfield International Airport (4000 Peak Hour Passengers – PHP), Township & Area Development and 450 MVA Gas and Solar based Power Plant in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-99 Scientific Name Family Status Psychotriatylophora Rubiaceae Rare Rhopaloblasteangustata Arecaceae TC Strobilanthesglandulosus Acanthaceae Rare Tarennaweberaefolia Rubiaceae Rare Terminalliaprocera Combretaceae Rare Tetrastigmaandamanica Vitaceae Rare Trichoglottisquadricornuta Orchidaceae Rare Trigonostemonvillosusvar.nicobaricus Euphorbiaceae TC The List Is Based on The Data of The Forest Department.",
+      "claim_ids": [
+        "p318-02",
+        "p318-03",
+        "p318-04",
+        "p318-05",
+        "p318-06",
+        "p318-07",
+        "p318-08",
+        "p318-09",
+        "p318-32",
+        "p318-33",
+        "p318-34",
+        "p318-35"
+      ]
+    },
+    {
+      "page": 362,
+      "text": "No Name of The Village Number of Household s Male Female Populatio n Family Size Adult s Childre n (below 5 Years) Childre n (Above 5 Years) Tota l Adult s Childre n (below 5 Years) Childre n (Above 5 Years) Tota l 1 Afra bay 31 50 9 12 71 49 9 7 65 136 4.39 2 Campbell Bay 107 153 33 67 253 158 47 55 260 513 4.79 3 Gandhi nagar 5 7 1 2 10 8 0 6 14 24 4.80 4 Pillomallo w 23 43 5 6 54 26 3 8 37 91 3.96 5 Pilobha 10 19 4 5 28 23 4 12 39 67 6.70 6 Pulopatra 4 4 3 1 8 4 2 2 8 16 4.00 7 Pulo ulo 26 40 6 12 58 31 14 7 52 110 4.23 8 Pulopanja 24 35 13 11 59 28 3 10 41 100 4.60 Grand Total 230 351 74 116 541 327 82 107 516 1057 4.6 Source: Marine fisheries Census 2010 Andaman Nicobar Islands",
+      "claim_ids": [
+        "p362-11",
+        "p362-12",
+        "p362-13"
+      ]
+    },
+    {
+      "page": 363,
+      "text": "N o village Name Male Female Primar y Higher Secondar y Above Higher Secondar y Tota l Primar y Higher Secondary Above Higher Secondar y Tota l Total Educate d 1 Afra bay 22 27 0 49 16 11 0 27 76 2 Campbell Bay 91 60 8 159 75 46 0 121 280 3 Gandhi nagar 1 7 0 8 5 5 0 10 18 4 Pillomallo w 19 10 1 30 21 1 0 22 52 5 Pilobha 10 10 0 20 9 6 0 15 35 6 Pulopatra 0 3 0 3 2 0 0 2 5 7 Pulo ulo 21 9 0 30 12 1 0 13 43 8 Pulopanja 18 11 0 29 11 10 0 21 50 Grand Total 182 137 9 328 151 80 0 231 559 Source: Marine fisheries Census 2010 Andaman Nicobar Islands Table-3.47: Active Fisherfolk in Great Nicobar Island Sr.",
+      "claim_ids": [
+        "p363-05",
+        "p363-08"
+      ]
+    },
+    {
+      "page": 376,
+      "text": "No Village Name Agricultural Commoditie s (First) Agricultural Commoditie s (Second) Agricultural Commoditie s (Third) 1 Pulomilo Nil Nil Nil 2 Anul/Anula Nil Nil Nil 3 Makhahu/Makachua Nil Nil Nil 4 Bewai/Kuwak Nil Nil Nil 5 Pulloullo/Puloulo Nil Nil Nil 6 Pulobha/Pulobahan Nil Nil Nil 7 Pattia (Pulopattia) Nil Nil Nil 8 Pulopanja Nil Nil Nil 9 Katahu Nil Nil Nil 10 Afra Bay Nil Nil Nil 11 Alexandera River Nil Nil Nil 12 Shompen Village-A Nil Nil Nil 13 Shompen Village-B Nil Nil Nil 14 Kokeon Nil Nil Nil 15 Indira Point Nil Nil Nil 16 Chingen (incl.FC at Magar Nalla Nil Nil Nil 17 Sastri Nagar Nil Nil Nil 18 Gandhi Nagar COPRA Nil Nil 19 Laxmi Nagar Nil Nil Nil 20 Vijoy Nagar COPRA Nil Nil 21 Joginder Nagar COPRA Nil Nil 22 7 km Farm Nil Nil Nil 23 Shompen hut Nil Nil Nil 24 Govinda Nagar Nil Nil Nil 25 Campbell Bay COPRA Nil Nil 26 Lawful Nil Nil Nil 27 Trinket Bay Nil Nil Nil 28 Patisang Nil Nil Nil 29 Lanaya Nil Nil Nil 30 Pitayo Nil Nil Nil Source: Census of India",
+      "claim_ids": [
+        "p376-08"
+      ]
+    },
+    {
+      "page": 860,
+      "text": "NORTH: From the point 11 (6° 58' 15.837\" N & 93° 47' 30.378\" E) the boundary then moves towards North-West direction upto the point A6 (6° 58' 27.217\" N & 93° 46' 58.873\" E) at a distance of 1.00 km from the boundary of Galathea National Park then moves towards East direction upto the point A1 (6° 59' 47.949\" N&93° 52' 37.740\" E) passing through the point A7 (6° 59' 2.745\" N & 93° 49' 40.976\" E) and point A8 (7° 0' 19.532\" N & 93° 51' 42.870\" E) maintaining an uniform distance of one kilometre from the boundary of the National Park.",
+      "claim_ids": [
+        "p860-02",
+        "p860-03"
+      ]
+    },
+    {
+      "page": 888,
+      "text": "No Village Name Primary Health Centre (Numbers) Primary Health Centre Doctors Total Strength (Numbers) Primary Heallth Sub Centre (Numbers) Primary Heallth Sub Centre Doctors Total Strength (N b ) Maternity And Child Welfare Centre (Numbers) Maternity And Child Welfare Centre Doctors Total Strength (N b ) TB Clinic (Numbers) TB Clinic Doctors Total Strength (Numbers) Hospital Allopathic (Numbers) Hospital Allopathic Doctors Total Strength (Numbers) Hospiltal Alternativ e Medicine (Numbers) Hospiltal Alternativ e Medicine Doctors Total Strength (Numbers) Dispensary (Numbers) Dispensary Doctors Total Strength (Numbers) Veterinary Hospital (Numbers) Veterinary Hospital Doctors Total Strength (Numbers) Mobile Health Clinic (Numbers) Mobile Health Clinic Doctors Total Strength (Numbers) Family Welfare Centre (Numbers) Family Welfare Centre Doctors Total Strength (Numbers) 1 Pulomilo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 Anul/Anula 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 Makhahu/Makachua 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 Bewai/Kuwak 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 Pulloullo/Puloulo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6 Pulobha/Pulobahan 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 Pattia (Pulopattia) 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 Pulopanja 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 Katahu 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 Afra Bay 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 11 Alexandera River 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 Shompen Village-A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13 Shompen Village-B 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 Kokeon 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15 Indira Point 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 Sastri Nagar 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18 Gandhi Nagar 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 19 Laxmi Nagar 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20 Vijoy Nagar 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 21 Joginder Nagar 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 22 7 km Farm 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 23 Shompen hut 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 Govinda Nagar 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 25 Campbell Bay 1 4 0 0 0 0 0 0 0 0 0 0 1 0 1 2 0 0 0 0 26 Lawful 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 27 Trinket Bay 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 28 Patisang 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 29 Lanaya 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 Pitayo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Grand Total 1 4 5 0 0 0 0 0 0 0 0 0 1 0 1 2 0 0 0 0 Source: Census of India 2011.",
+      "claim_ids": [
+        "p888-08"
+      ]
+    },
+    {
+      "page": 889,
+      "text": "No Village Name Tap Water- Treated (Status A(1)/NA(0 ) Tap Water Untreated (Status A(1)/NA(0 ) Covered Well (Status A(1)/NA(0 ) Uncovered Well (Status A(1)/NA(0 ) Hand Pump (Status A(1)/NA(0 ) Tube Wells/Bor ehole (Status A(1)/NA(0 ) Spring (Status A(1)/NA(0 ) River/Can al (Status A(1)/NA(0 ) Tank/Pon d/Lake (Status A(1)/NA(0 ) Others (Status A(1)/NA(0 ) 1 Pulomilo 0 0 0 0 0 0 0 0 0 0 2 Anul/Anula 0 0 0 0 0 0 0 0 0 0 3 Makhahu/Makachua 0 0 0 1 0 0 0 0 0 1 4 Bewai/Kuwak 0 0 0 0 0 0 0 0 0 0 5 Pulloullo/Puloulo 0 0 0 1 0 0 0 0 0 1 6 Pulobha/Pulobahan 0 0 0 0 0 0 0 0 0 0 7 Pattia (Pulopattia) 0 0 0 0 0 0 0 0 0 0 8 Pulopanja 0 0 0 1 0 0 0 0 0 1 9 Katahu 0 0 0 0 0 0 0 0 0 0 10 Afra Bay 0 0 1 0 0 0 0 0 0 0 11 Alexandera River 0 0 0 0 0 0 0 0 0 0 12 Shompen Village-A 0 0 0 0 0 0 0 0 0 0 13 Shompen Village-B 0 0 0 0 0 0 0 0 0 0 14 Kokeon 0 0 0 0 0 0 0 0 0 0 15 Indira Point 0 0 0 0 0 0 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 0 0 0 0 0 0 17 Sastri Nagar 0 1 0 1 0 0 0 0 0 0 18 Gandhi Nagar 0 1 0 1 0 0 0 0 0 0 19 Laxmi Nagar 0 0 0 1 0 0 0 0 0 1 20 Vijoy Nagar 0 1 0 1 0 0 0 0 1 0 21 Joginder Nagar 0 1 0 1 0 0 0 0 1 0 22 7 km Farm 1 0 0 1 0 0 1 0 0 0 23 Shompen hut 0 0 0 0 0 0 0 0 0 0 24 Govinda Nagar 1 0 0 1 0 0 0 0 0 0 25 Campbell Bay 1 0 0 1 0 0 0 0 1 0 26 Lawful 0 0 0 1 0 0 0 0 0 1 27 Trinket Bay 0 0 0 0 0 0 0 0 0 0 28 Patisang 0 0 0 0 0 0 0 0 0 0 29 Lanaya 0 0 0 0 0 0 0 0 0 0 30 Pitayo 0 0 0 0 0 0 0 0 0 0 Grand Total 3 4 1 12 0 0 1 0 3 5 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p889-01",
+        "p889-02",
+        "p889-03",
+        "p889-04",
+        "p889-05",
+        "p889-06",
+        "p889-07",
+        "p889-08",
+        "p889-09",
+        "p889-10"
+      ]
+    },
+    {
+      "page": 890,
+      "text": "No Village Name Post Office (Status A(1)/NA(0 ) Sub Post Office (Status A(1)/NA(0 ) Post And Telegraph Office (Status A(1)/NA(0 ) Telephone (landlines) (Status A(1)/NA(0 ) Public Call Office /Mobile (PCO) (Status A(1)/NA(0 ) Mobile Phone Coverage (Status A(1)/NA(0 ) Internet Cafes / Common Service Centre (CSC) (Status A(1)/NA(0 Private Courier Facility (Status A(1)/NA(0 ) Public Bus Service (Status A(1)/NA(0 ) Private Bus Service (Status A(1)/NA(0 ) Railway Station (Status A(1)/NA(0 ) Auto/Modi fied Autos (Status A(1)/NA(0 ) Taxi (Status A(1)/NA(0 ) Vans (Status A(1)/NA(0 ) Tractors (Status A(1)/NA(0 ) Sea/River/ Ferry Service (Status A(1)/NA(0 ) 1 Pulomilo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 Anul/Anula 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 Makhahu/Makachua 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 4 Bewai/Kuwak 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 Pulloullo/Puloulo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 6 Pulobha/Pulobahan 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 Pattia (Pulopattia) 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 Pulopanja 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 Katahu 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 Afra Bay 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 11 Alexandera River 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 Shompen Village-A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13 Shompen Village-B 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 Kokeon 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15 Indira Point 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 Sastri Nagar 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 18 Gandhi Nagar 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 19 Laxmi Nagar 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1 20 Vijoy Nagar 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1 21 Joginder Nagar 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 22 7 km Farm 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 23 Shompen hut 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 24 Govinda Nagar 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 25 Campbell Bay 1 1 1 1 1 1 0 0 1 0 0 1 0 1 1 1 26 Lawful 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 27 Trinket Bay 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 28 Patisang 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 29 Lanaya 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 Pitayo 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 Grand Total 1 2 1 4 1 3 0 0 7 0 0 2 0 1 1 9 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p890-01",
+        "p890-02",
+        "p890-03",
+        "p890-04",
+        "p890-05",
+        "p890-06",
+        "p890-07",
+        "p890-08",
+        "p890-09",
+        "p890-10",
+        "p890-11",
+        "p890-12",
+        "p890-13",
+        "p890-14",
+        "p890-15",
+        "p890-16",
+        "p890-17"
+      ]
+    },
+    {
+      "page": 891,
+      "text": "No Village Name Power Supply For Domestic Use (Status A(1)/NA(0 ) Power Supply For Agricultur e Use (Status A(1)/NA(0 ) Power Supply For Commerci al Use (Status A(1)/NA(0 ) Power Supply For All Users (Status A(1)/NA(0 ) 1 Pulomilo 0 0 0 0 2 Anul/Anula 0 0 0 0 3 Makhahu/Makachua 0 0 0 0 4 Bewai/Kuwak 0 0 0 0 5 Pulloullo/Puloulo 1 0 0 0 6 Pulobha/Pulobahan 0 0 0 0 7 Pattia (Pulopattia) 0 0 0 0 8 Pulopanja 1 0 0 0 9 Katahu 0 0 0 0 10 Afra Bay 1 0 0 0 11 Alexandera River 0 0 0 0 12 Shompen Village-A 0 0 0 0 13 Shompen Village-B 0 0 0 0 14 Kokeon 0 0 0 0 15 Indira Point 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 17 Sastri Nagar 1 0 0 0 18 Gandhi Nagar 1 0 0 0 19 Laxmi Nagar 1 0 0 0 20 Vijoy Nagar 1 0 0 0 21 Joginder Nagar 1 0 0 0 22 7 km Farm 1 0 0 0 23 Shompen hut 0 0 0 0 24 Govinda Nagar 1 1 1 1 25 Campbell Bay 1 0 1 0 26 Lawful 0 0 0 0 27 Trinket Bay 0 0 0 0 28 Patisang 0 0 0 0 29 Lanaya 0 0 0 0 30 Pitayo 0 0 0 0 Grand Total 11 1 2 1 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p891-01",
+        "p891-02",
+        "p891-03",
+        "p891-04"
+      ]
+    },
+    {
+      "page": 892,
+      "text": "No Village Name Major District Road (Status A(1)/NA(0) Other District Road (Status A(1)/NA(0) Black Topped (pucca) Road (Status A(1)/NA(0) Gravel (kuchha) Roads (Status A(1)/NA(0) All Weather Road (Status A(1)/NA(0) Navigable Waterway s (River/Can al) (Status A(1)/NA(0) Foothpath (Status A(1)/NA(0) 1 Pulomilo 0 0 0 0 0 0 0 2 Anul/Anula 0 0 0 0 0 0 0 3 Makhahu/Makachua 0 0 0 0 0 0 0 4 Bewai/Kuwak 0 0 0 0 0 0 0 5 Pulloullo/Puloulo 0 0 0 0 0 1 0 6 Pulobha/Pulobahan 0 0 0 0 0 0 0 7 Pattia (Pulopattia) 0 0 0 0 0 0 0 8 Pulopanja 0 0 0 0 0 1 0 9 Katahu 0 0 0 0 0 0 0 10 Afra Bay 0 0 0 0 1 0 1 11 Alexandera River 0 0 0 0 0 0 0 12 Shompen Village-A 0 0 0 0 0 0 0 13 Shompen Village-B 0 0 0 0 0 0 0 14 Kokeon 0 0 0 0 0 0 0 15 Indira Point 0 0 0 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 0 0 0 17 Sastri Nagar 0 0 0 0 0 0 1 18 Gandhi Nagar 0 0 0 0 0 0 1 19 Laxmi Nagar 0 0 0 0 0 0 1 20 Vijoy Nagar 0 0 0 0 0 0 1 21 Joginder Nagar 0 0 1 0 0 0 1 22 7 km Farm 0 0 0 0 0 0 1 23 Shompen hut 0 0 0 0 0 0 0 24 Govinda Nagar 0 0 1 1 1 0 1 25 Campbell Bay 0 0 1 1 0 0 1 26 Lawful 0 0 0 0 0 0 0 27 Trinket Bay 0 0 0 0 0 0 0 28 Patisang 0 0 0 0 0 0 0 29 Lanaya 0 0 0 0 0 0 0 30 Pitayo 0 0 0 0 0 1 0 Grand Total 0 0 3 2 2 3 9 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p892-01",
+        "p892-02",
+        "p892-03",
+        "p892-04",
+        "p892-05",
+        "p892-06",
+        "p892-07"
+      ]
+    },
+    {
+      "page": 893,
+      "text": "1 Pulomilo 0 0 1 0 0 0 0 0 2 Anul/Anula 0 0 1 0 0 0 0 0 3 Makhahu/Makachua 0 0 1 0 0 0 0 0 4 Bewai/Kuwak 0 0 1 0 0 0 0 0 5 Pulloullo/Puloulo 0 0 1 0 0 0 0 0 6 Pulobha/Pulobahan 0 0 1 0 0 0 0 0 7 Pattia (Pulopattia) 0 0 1 0 0 0 0 0 8 Pulopanja 0 0 1 0 0 0 0 0 9 Katahu 0 0 1 0 0 0 0 0 10 Afra Bay 0 0 0 0 0 0 0 0 11 Alexandera River 0 0 1 0 0 0 0 0 12 Shompen Village-A 0 0 1 0 0 0 0 0 13 Shompen Village-B 0 0 0 0 0 0 0 0 14 Kokeon 0 0 0 0 0 0 0 0 15 Indira Point 0 0 0 0 0 0 0 0 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 0 0 0 0 17 Sastri Nagar 0 0 1 0 0 0 1 0 18 Gandhi Nagar 0 0 1 0 0 0 1 0 19 Laxmi Nagar 0 0 1 0 0 0 1 0 20 Vijoy Nagar 0 0 1 0 0 0 1 0 21 Joginder Nagar 0 0 1 0 0 0 0 0 22 7 km Farm 0 0 1 0 0 1 0 0 23 Shompen hut 0 0 1 0 0 0 0 0 24 Govinda Nagar 0 1 0 0 1 1 1 1 25 Campbell Bay 0 1 1 0 1 1 1 1 26 Lawful 0 0 1 0 0 0 0 0 27 Trinket Bay 0 0 1 0 0 0 0 0 28 Patisang 0 0 1 0 0 0 0 0 29 Lanaya 0 0 1 0 0 0 0 0 30 Pitayo 0 0 1 0 0 0 0 0 Grand Total 0 2 24 0 2 3 6 2 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p893-01",
+        "p893-02",
+        "p893-03",
+        "p893-04",
+        "p893-05",
+        "p893-06",
+        "p893-07",
+        "p893-08",
+        "p893-09",
+        "p893-10",
+        "p893-11",
+        "p893-12"
+      ]
+    },
+    {
+      "page": 894,
+      "text": "No Village Name ATM (Status A(1)/NA(0 ) Commerci al Bank (Status A(1)/NA(0 ) Cooperati ve Bank (Status A(1)/NA(0 ) Agricultur al Credit Societies (Status A(1)/NA(0 ) Self - Help Group (SHG) (Status A(1)/NA(0 ) Agricultur al Marketing Society (Status A(1)/NA(0 ) 1 Pulomilo 0 0 0 0 1 1 2 Anul/Anula 0 0 0 0 1 1 3 Makhahu/Makachua 0 0 0 0 1 1 4 Bewai/Kuwak 0 0 0 0 1 1 5 Pulloullo/Puloulo 0 0 0 0 0 1 6 Pulobha/Pulobahan 0 0 0 0 1 1 7 Pattia (Pulopattia) 0 0 0 0 1 1 8 Pulopanja 0 0 0 0 1 1 9 Katahu 0 0 0 0 1 1 10 Afra Bay 0 0 1 0 0 0 11 Alexandera River 0 0 0 0 1 1 12 Shompen Village-A 0 0 0 0 1 1 13 Shompen Village-B 0 0 0 0 1 1 14 Kokeon 0 0 0 0 1 1 15 Indira Point 0 0 0 0 1 1 16 Chingen (incl.FC at Magar Nalla 0 0 0 0 1 1 17 Sastri Nagar 0 0 0 0 0 0 18 Gandhi Nagar 0 0 0 0 1 1 19 Laxmi Nagar 0 1 1 1 1 1 20 Vijoy Nagar 0 1 1 1 1 1 21 Joginder Nagar 0 0 0 0 0 1 22 7 km Farm 0 0 0 0 0 1 23 Shompen hut 0 0 0 0 1 1 24 Govinda Nagar 0 0 0 0 1 1 25 Campbell Bay 0 1 1 1 1 1 26 Lawful 0 0 0 0 1 1 27 Trinket Bay 0 0 0 0 1 1 28 Patisang 0 0 0 0 0 1 29 Lanaya 0 0 0 0 1 1 30 Pitayo 0 0 0 0 1 1 Grand Total 0 3 4 3 24 28 Source: Census of India 2011. * Note: 1= Available;",
+      "claim_ids": [
+        "p894-01",
+        "p894-02",
+        "p894-03",
+        "p894-04",
+        "p894-05",
+        "p894-06"
+      ]
+    },
+    {
+      "page": 1027,
+      "text": "Summary details of Benthic cover of reef ecosystem of Great Nicobar Island Parameters Laxman Beach Campbell Bay Anderson Bay Laxmi Nagar Gandhi Nagar Sastry Nagar Galathea Bay MEAN VALUE Dead Coral 4.25 9.02 3.40 5.54 3.80 0.40 1.72 4.02 Live coral 24.10 39.27 19.92 13.45 30.81 25.59 17.46 24.37 Other animal 6.45 4.56 7.59 9.48 8.00 3.89 2.48 6.06 Other algae 24.15 6.95 5.52 13.78 19.77 33.87 51.75 22.26 Abiotic 41.05 40.20 63.57 57.75 37.62 36.25 26.59 43.29 The present study indicates a total of 491.7975 hect. reef areas across the seven study areas (Fig.",
+      "claim_ids": [
+        "p1027-01",
+        "p1027-18",
+        "p1027-19",
+        "p1027-20",
+        "p1027-21",
+        "p1027-22"
+      ]
+    },
+    {
+      "page": 1027,
+      "text": "The present study also focused on the benthic cover of the reef ecosystems in seven study areas at the eastern coastal sides of Great Nicobar Island and reported 56.71% area cover with different kinds of life forms with the mean live coral cover of 24.37% while the 4.02% cover of dead corals, 34.4921 86.8344 46.0468 46.0126 58.124 103.8703 116.4173 Laxman Beach Campbell Bay Anderson Bay Laxmi Nagar Gandhi Nagar Sastri Nagar Galathea Bay",
+      "claim_ids": [
+        "p1027-15",
+        "p1027-16",
+        "p1027-17",
+        "p1027-58",
+        "p1027-59",
+        "p1027-60",
+        "p1027-61"
+      ]
+    },
+    {
+      "page": 1037,
+      "text": "The number of leatherback turtle nests laid per year in the Andaman and Nicobar Islands Location Survey Period Period 1978-79 1981 1983-84 1991-92 1993-94 Jahaji Beach, Rutland Island * * – 5 – West Bay, Little Andaman Island 70 80 84 – – Katchal Island 5 – – – – Teressa Island 4 – – – – South Bay, Little Andaman – 10 4 – – Pulo Kiyang beach, Little Nicobar – – – – 115 Dahayu beach, Little Nicobar – – – – 47 Dahayu cove, Little Nicobar – – – – 3 Great Nicobar Island (all beaches) 811 Galathea Bay, Great Nicobar – – – 158** 237 Alexandria Bay, Great Nicobar 80 55 – 343** Dagmar Bay, Great Nicobar 80 8 – 171** Renhong beach, Great Nicobar 4 – – *Nesting was observed but numbers of turtles were not recorded ** 811 nests were recorded for the entire Great Nicobar Island; an additional 139 nests were recorded along other beaches of the west coast of Great Nicobar Island. – indicates that surveys were not carried out Source: Namboothri et al.",
+      "claim_ids": [
+        "p1037-01",
+        "p1037-02",
+        "p1037-03",
+        "p1037-04",
+        "p1037-08",
+        "p1037-09",
+        "p1037-10",
+        "p1037-11",
+        "p1037-12",
+        "p1037-13",
+        "p1037-14",
+        "p1037-15",
+        "p1037-16",
+        "p1037-17",
+        "p1037-18",
+        "p1037-19",
+        "p1037-21",
+        "p1037-25",
+        "p1037-31",
+        "p1037-33",
+        "p1037-34",
+        "p1037-36",
+        "p1037-37"
+      ]
+    },
+    {
+      "page": 1134,
+      "text": "In overall, more than 85% of leatherback turtle nests were known to be predated in the Great Nicobar (Swaminathan et al, 2017) possibly by wild predators such as wild pigs and water monitor lizard especially in Casuarina Bay, Alexandria Bay, Pemayya Bay and Galathea Bay, and domestic and feral dogs in other beaches (Sivakumar, 2010b).",
+      "claim_ids": [
+        "p1134-05",
+        "p1134-06",
+        "p1134-07"
+      ]
+    },
+    {
+      "page": 61,
+      "text": "Field Marking Easting (m) Northing (m) Land Boreholes 1 LBH-1 593189.80 751505.91 2 LBH-2 592826.17 748772.05 3 LBH-3 591354.17 747418.27 4 LBH-4 590953.66 748707.42 Marine Boreholes 1 MBH-1 594661.63 752429.78 2 MBH-2 595461.55 751417.78 3 MBH-3 593776.07 749265.07 4 MBH-4 592184.87 746805.48 5 MBH-5 593874.05 746409.16 6 MBH-6 590342.89 746803.00",
+      "claim_ids": [
+        "p61-05",
+        "p61-06",
+        "p61-07",
+        "p61-08",
+        "p61-09",
+        "p61-10",
+        "p61-11",
+        "p61-12",
+        "p61-13",
+        "p61-14",
+        "p61-15",
+        "p61-16",
+        "p61-17",
+        "p61-18",
+        "p61-19",
+        "p61-20",
+        "p61-21",
+        "p61-22",
+        "p61-23",
+        "p61-24",
+        "p61-25",
+        "p61-26"
+      ]
+    },
+    {
+      "page": 131,
+      "text": "No Capital Expenditure Item Phase 1 2021-24 2021(5%) 2022(15%) 2023(20%) 2024(20%) 2025(20%) 2026(20%) 1 Site Preparation & Earthworks (Cut & Fill Works) 2563 128 384 513 513 513 513 2 Air side Pavement Works (Runway, Taxiway, Parallel taxiway, Apron) including earthwork 1330 67 200 266 266 266 266 3 Terminal Building and other building works 1484 74 223 297 297 297 297 4 City side pavement works (Internal road & car park) 550 28 83 110 110 110 110 5 ATC/ATM/CNS equipment 25 1 4 5 5 5 5 6 Utilities 893 45 134 179 179 179 179 SUB TOTAL (A) 6,845 342 1,027 1,369 1,369 1,369 1,369 7 Design & PMC @ 10 % on \" A\" 684 34 103 137 137 137 137 8 Preliminaries @ 3% On \"A\" 205 10 31 41 41 41 41 9 Insurance & Permits @1% On \"A\" 68 3 10 14 14 14 14 SUB TOTAL (B) 7,803 390 1,170 1,561 1,561 1,561 1,561 10 Contingency @ 10 % on \" B\" 780 39 117 156 156 156 156 TOTAL (C) - HARD COST 8,583 429 1,288 1,717 1,717 1,717 1,717 2.6 Resource Requirement 2.6.1 Land form, Land use and Ownership 916 Ha of area has been identified for development of International Airport, which includes 845 ha of land and 71 ha of reclaimed area.",
+      "claim_ids": [
+        "p131-05",
+        "p131-06",
+        "p131-07",
+        "p131-08",
+        "p131-09",
+        "p131-10",
+        "p131-11",
+        "p131-12",
+        "p131-13",
+        "p131-14",
+        "p131-15",
+        "p131-16",
+        "p131-17",
+        "p131-18",
+        "p131-19",
+        "p131-20"
+      ]
+    },
+    {
+      "page": 158,
+      "text": "Representative capacities for various road links by type are listed in following table: Table-2.4: Capacities of urban roads Type of Carriageway Design Service Volumes (PCU/Hr)* Ultimate Capacity (PCU/Hr) Arterial Sub Arterial Collector Arterial Sub Arterial Collector 2L-1WAY 2400 1900 1400 3429 2714 2000 2L-2WAY 1500 1200 900 2143 1714 1286 3L-1WAY 3600 2900 2200 5143 4143 3143 4L-Undivided -2W 3000 2400 1800 4286 3429 2571 4L-Divided--2W 3600 2900 ---- 5143 4143 ---- 6L-Undivided-2W 4800 3800 ---- 6857 5429 ---- 6L-Divided-2W 5400 4300 ---- 7714 6143 ---- 8L-Divided-2W 7200 ---- ---- 10286 ---- ----",
+      "claim_ids": [
+        "p158-06",
+        "p158-07",
+        "p158-08",
+        "p158-09",
+        "p158-10",
+        "p158-11",
+        "p158-12",
+        "p158-13",
+        "p158-14",
+        "p158-15",
+        "p158-16",
+        "p158-17",
+        "p158-18",
+        "p158-19",
+        "p158-20",
+        "p158-21"
+      ]
+    },
+    {
+      "page": 1003,
+      "text": "66 | P a g e Orthoconchoecia striola (Müller, G.W., 1906) + + + - - Porroecia porrecta (Claus, 1890) - + + - - Euconchoecia aculeata (Scott, 1894) - - + - - Cypridina dentata (Mueller, 1906) - + + + - Order EUPHAUSIACEA Dana, 1852 Euphausia diomedeae Ortmann, 1894 - - + - + Euphausia sibogae Hansen, 1908 - + - + + Nematoscelis gracilis Hansen, 1910 + + + - + Nematoscelis microps G.O.",
+      "claim_ids": [
+        "p1003-01",
+        "p1003-02",
+        "p1003-03",
+        "p1003-04",
+        "p1003-05",
+        "p1003-06",
+        "p1003-07"
+      ]
+    }
+  ],
   "pairing": {
-    "subjects": 4005,
-    "key_calls": 101,
+    "subjects": 4070,
+    "key_calls": 103,
     "keys_missing": 0,
-    "numeric_claims": 5887,
-    "groups": 2908,
-    "representatives": 3718,
-    "readings_without_station": 129,
+    "numeric_claims": 5968,
+    "groups": 2926,
+    "representatives": 3742,
+    "readings_without_station": 142,
     "dropped_by_cap": 910,
-    "pairs_same_key": 581,
-    "pairs_related_key": 850,
-    "pairs_part_whole": 216
+    "pairs_same_key": 586,
+    "pairs_related_key": 876,
+    "pairs_part_whole": 220,
+    "subjects_new": 65
   },
   "pairing_dropped_by_cap": [
     [
@@ -261,26 +2442,26 @@
       25
     ]
   ],
-  "cost_usd": 1.2068,
-  "wall_clock_s": 360.0,
+  "cost_usd": 0.1086,
+  "wall_clock_s": 171.7,
   "stages": {
     "claims": {
-      "seconds": 55.8,
+      "seconds": 20.3,
       "usd": 0.0
     },
     "triage + verdicts": {
-      "seconds": 255.3,
-      "usd": 1.2068
+      "seconds": 116.8,
+      "usd": 0.1086
     },
     "copy-paste": {
-      "seconds": 23.7,
+      "seconds": 4.4,
       "usd": 0.0
     }
   },
   "calls_per_model": {
     "nvidia/Nemotron-3.5-Super-VL": {
       "api_calls": 0,
-      "cache_hits": 1061,
+      "cache_hits": 1063,
       "prompt_tokens": 0,
       "completion_tokens": 0,
       "cost_usd": 0.0,
@@ -288,19 +2469,19 @@
     },
     "nvidia/Nemotron-3_5-Lightning": {
       "api_calls": 0,
-      "cache_hits": 1792,
+      "cache_hits": 1945,
       "prompt_tokens": 0,
       "completion_tokens": 0,
       "cost_usd": 0.0,
       "api_seconds": 0.0
     },
     "nvidia/Nemotron-3-Ultra-550b-a55b": {
-      "api_calls": 125,
-      "cache_hits": 1276,
-      "prompt_tokens": 413327,
-      "completion_tokens": 264481,
-      "cost_usd": 1.2068,
-      "api_seconds": 1331.038
+      "api_calls": 11,
+      "cache_hits": 1444,
+      "prompt_tokens": 40947,
+      "completion_tokens": 22559,
+      "cost_usd": 0.1086,
+      "api_seconds": 253.164
     }
   },
   "tavily": {
@@ -318,12 +2499,12 @@
     "recycled_figure": {
       "RED": 4,
       "ORANGE": 1,
-      "NONE": 8
+      "NONE": 9
     },
     "contradiction": {
-      "RED": 102,
+      "RED": 103,
       "ORANGE": 46,
-      "NONE": 1227
+      "NONE": 1277
     },
     "copy_paste": {
       "NONE": 97,
@@ -337,7 +2518,7 @@
     "ct-403": "gn-004",
     "rf-009": "gn-005"
   },
-  "new_flagged": 152,
+  "new_flagged": 153,
   "flags": [
     {
       "id": "cp-p1001-1",
@@ -1503,6 +3684,35 @@
         }
       ],
       "reason": "Statement 1 cites approximately 600 flora species from the Botanical Survey of India, while Statement 2 states 650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others. The report does not explain the difference.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-1815",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        1144,
+        1166
+      ],
+      "quotes": [
+        {
+          "page": 1166,
+          "text": "4.39 sq km is Deemed forest"
+        },
+        {
+          "page": 1144,
+          "text": "and 8.88 sq.km. of land falls under Deemed Forest, which is part of revenue land."
+        }
+      ],
+      "reason": "The two statements report different areas for Deemed forest within the same project area (4.39 sq km vs 8.88 sq km) without any stated reason for the discrepancy.",
       "part_total": false,
       "answers": {
         "same_subject": true,
@@ -4976,14 +7186,14 @@
   ],
   "triage_audit": null,
   "run_totals": {
-    "note": "Whole audit: claim extraction (Oct 27 02:39, first attempt, reused from cache), keyed run 1 (04:11, stopped before all verdicts) and the resume (14:27, --max-cost 13.5, no stop). Excludes the abandoned unkeyed triage of 67,689 pairs (02:58-03:25).",
-    "cost_usd": 15.1795,
+    "note": "Whole audit: claim extraction (Oct 27 02:39, first attempt, reused from cache), keyed run 1 (04:11, stopped before all verdicts) and the resume (14:27, --max-cost 13.5, no stop). Excludes the abandoned unkeyed triage of 67,689 pairs (02:58-03:25). Plus a top-up sitting (Oct 27 16:31, --new-pages 539,939,1029,1038,1097,1099,1166, $0.49). Plus a top-up sitting (Oct 27 22:19, --new-pages 539,939,1029,1038,1097,1099,1166, $0.11).",
+    "cost_usd": 15.7804,
     "per_model": {
       "Nemotron-3_5-Lightning": {
-        "api_calls": 1514,
-        "prompt_tokens": 2434639,
-        "completion_tokens": 323460,
-        "cost_usd": 0.2237
+        "api_calls": 1562,
+        "prompt_tokens": 2515597,
+        "completion_tokens": 328340,
+        "cost_usd": 0.2297
       },
       "Nemotron-3.5-Super-VL": {
         "api_calls": 946,
@@ -4992,15 +7202,29 @@
         "cost_usd": 1.8622
       },
       "Nemotron-3-Ultra-550b-a55b": {
-        "api_calls": 1393,
-        "prompt_tokens": 3998870,
-        "completion_tokens": 3031557,
-        "cost_usd": 13.0936
+        "api_calls": 1447,
+        "prompt_tokens": 4200900,
+        "completion_tokens": 3162518,
+        "cost_usd": 13.6885
       }
     },
-    "wall_clock_s": 3256,
+    "wall_clock_s": 3748,
     "tavily_credits": 84,
     "tavily_credits_new": 75,
-    "excluded_unkeyed_triage_usd": 0.9133
+    "excluded_unkeyed_triage_usd": 0.9133,
+    "sittings": [
+      {
+        "when": "Oct 27 16:31",
+        "cost_usd": 0.4923,
+        "wall_clock_s": 318.0,
+        "new_pages": "539,939,1029,1038,1097,1099,1166"
+      },
+      {
+        "when": "Oct 27 22:19",
+        "cost_usd": 0.1086,
+        "wall_clock_s": 171.7,
+        "new_pages": "539,939,1029,1038,1097,1099,1166"
+      }
+    ]
   }
 }

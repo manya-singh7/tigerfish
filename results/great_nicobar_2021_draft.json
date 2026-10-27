@@ -15,10 +15,10 @@
     "Terms of Reference promises (Nemotron Lightning / Ultra)"
   ],
   "cost": {
-    "nebius_usd": 1.2224,
-    "tavily_credits": 0,
+    "nebius_usd": 15.6873,
+    "tavily_credits": 84,
     "gbif_calls": 0,
-    "approx_seconds": 360.0,
+    "approx_seconds": 3576,
     "time_note": "wall clock, full audit, 6 parallel calls"
   },
   "known_issue_score": {
@@ -1232,6 +1232,37 @@
       "images": [
         "pages/great_nicobar_2021_draft_full_p0940.png",
         "pages/great_nicobar_2021_draft_full_p0029.png"
+      ]
+    },
+    {
+      "id": "ct-1815",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 1144 and 1166 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 1166,
+          "text": "4.39 sq km is Deemed forest"
+        },
+        {
+          "page": 1144,
+          "text": "and 8.88 sq.km. of land falls under Deemed Forest, which is part of revenue land."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 6 possible explanation words searched"
+        }
+      ],
+      "why": "The two statements report different areas for Deemed forest within the same project area (4.39 sq km vs 8.88 sq km) without any stated reason for the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/great_nicobar_2021_draft_full_p1166.png",
+        "pages/great_nicobar_2021_draft_full_p1144.png"
       ]
     },
     {
@@ -4967,13 +4998,13 @@
       ]
     }
   ],
-  "exported_in_s": 59.4,
+  "exported_in_s": 38.6,
   "pages_skipped": 99,
   "pages_note": "pages audited; 99 skipped: Hindi/lab sheets/forms",
   "full_run": {
     "file": "audit_great_nicobar_2021_draft_eia.json",
-    "cost_usd": 1.2068,
-    "wall_clock_s": 360.0,
+    "cost_usd": 15.6718,
+    "wall_clock_s": 3576,
     "pages_audited": 1114
   }
 }

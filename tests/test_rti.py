@@ -26,7 +26,8 @@ def gn():
 
 @pytest.fixture
 def pack(gn):
-    picked = [f for f in gn["findings"] if f["id"] in ("pr-06", "ct-003", "sp-p954-001", "ac-01")]
+    picked = [f for f in gn["findings"] if f["id"] in ("pr-06", "sp-p954-001", "ac-01")
+              or f.get("known_issue") == "gn-001"]
     with zipfile.ZipFile(io.BytesIO(rti.build_pack(gn, picked))) as z:
         return {n: z.read(n) for n in z.namelist()}, picked
 

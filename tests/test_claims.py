@@ -100,7 +100,8 @@ def test_broken_json_is_retried_once(fake):
 def test_page_skipped_after_second_failure(fake, caplog):
     chat = fake("not json", "still not json")
     out = claims.extract_claims([page(818)])
-    assert out == [] and len(chat.calls) == 2
+    # third call: the first reply again (a cache hit in real use), for salvage_claims
+    assert out == [] and len(chat.calls) == 3 and chat.calls[2] == chat.calls[0]
     assert claims.last_run["pages_skipped"] == [818]
     assert "page 818 skipped" in caplog.text
 

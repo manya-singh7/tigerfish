@@ -82,14 +82,17 @@ def no_keys(monkeypatch):
 def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
     at.text_input(key=feedback.REVIEWER_KEY).input("Asha").run()
-    key = feedback.widget_key("great_nicobar_2021_draft", "ct-003")
+    from tigerfish.ui import data
+    fid = next(f["id"] for f in data.load("great_nicobar_2021_draft")["findings"]
+               if f.get("known_issue") == "gn-001")
+    key = feedback.widget_key("great_nicobar_2021_draft", fid)
     at.button_group(key=key).set_value("Confirm").run()     # click Confirm: saved by its callback
     assert json.loads(feedback_file.read_text(encoding="utf-8"))["entries"][
-        "great_nicobar_2021_draft::ct-003"]["decision"] == "Confirm"
-    at.text_input(key=feedback.note_key("great_nicobar_2021_draft", "ct-003")).input("p.392 read").run()
+        f"great_nicobar_2021_draft::{fid}"]["decision"] == "Confirm"
+    at.text_input(key=feedback.note_key("great_nicobar_2021_draft", fid)).input("p.392 read").run()
     assert not at.exception
     saved = json.loads(feedback_file.read_text(encoding="utf-8"))["entries"]
-    e = saved["great_nicobar_2021_draft::ct-003"]
+    e = saved[f"great_nicobar_2021_draft::{fid}"]
     assert e["decision"] == "Confirm" and e["reviewer"] == "Asha" and e["note"] == "p.392 read"
     text = "\n".join(m.value for m in at.markdown)
     assert "#### Precision" in text and "100% (1 of 1)" in text

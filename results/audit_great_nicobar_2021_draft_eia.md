@@ -1,35 +1,35 @@
 # Audit run: great_nicobar_2021_draft_eia.pdf, pages all
 
-Pairing: {'subjects': 4005, 'key_calls': 101, 'keys_missing': 0, 'numeric_claims': 5887, 'groups': 2908, 'representatives': 3718, 'readings_without_station': 129, 'dropped_by_cap': 910, 'pairs_same_key': 581, 'pairs_related_key': 850, 'pairs_part_whole': 216}
+Pairing: {'subjects': 4070, 'key_calls': 103, 'keys_missing': 0, 'numeric_claims': 5968, 'groups': 2926, 'representatives': 3742, 'readings_without_station': 142, 'dropped_by_cap': 910, 'pairs_same_key': 586, 'pairs_related_key': 876, 'pairs_part_whole': 220, 'subjects_new': 65}
 
-Pages audited 1114, claims 10297, candidate pairs 1799, triage {'yes': 1380, 'no': 410, 'unsure': 9}, Ultra verdicts 1388 (failed 1), copy-paste passages 100.
+Pages audited 1114, claims 10463, candidate pairs 1866, triage {'yes': 1431, 'no': 426, 'unsure': 9}, Ultra verdicts 1440 (failed 0), copy-paste passages 100.
 
-**Cost $1.2068** (INR 101), **wall clock 6.0 min** with 6 workers. Cap $13.50. Stopped: no.
+**Cost $0.1086** (INR 9), **wall clock 2.9 min** with 6 workers. Cap $0.20. Stopped: no.
 
 | Stage | Seconds | USD |
 |---|---:|---:|
-| claims | 55.8 | 0.0000 |
-| triage + verdicts | 255.3 | 1.2068 |
-| copy-paste | 23.7 | 0.0000 |
+| claims | 20.3 | 0.0000 |
+| triage + verdicts | 116.8 | 0.1086 |
+| copy-paste | 4.4 | 0.0000 |
 
 | Model | API calls | Cache hits | Tokens in | Tokens out | USD | API seconds |
 |---|---:|---:|---:|---:|---:|---:|
-| Nemotron-3.5-Super-VL | 0 | 1061 | 0 | 0 | 0.0000 | 0 |
-| Nemotron-3_5-Lightning | 0 | 1792 | 0 | 0 | 0.0000 | 0 |
-| Nemotron-3-Ultra-550b-a55b | 125 | 1276 | 413,327 | 264,481 | 1.2068 | 1331 |
+| Nemotron-3.5-Super-VL | 0 | 1063 | 0 | 0 | 0.0000 | 0 |
+| Nemotron-3_5-Lightning | 0 | 1945 | 0 | 0 | 0.0000 | 0 |
+| Nemotron-3-Ultra-550b-a55b | 11 | 1444 | 40,947 | 22,559 | 0.1086 | 253 |
 | Tavily | 0 | 145 | | | 0 credits | |
 
 Retries: {'retries': 0, 'rate_limited': 0, 'server_errors': 0, 'connection_errors': 0}
 
 Findings by check and grade:
 
-- recycled_figure: {'RED': 4, 'ORANGE': 1, 'NONE': 8}
-- contradiction: {'RED': 102, 'ORANGE': 46, 'NONE': 1227}
+- recycled_figure: {'RED': 4, 'ORANGE': 1, 'NONE': 9}
+- contradiction: {'RED': 103, 'ORANGE': 46, 'NONE': 1277}
 - copy_paste: {'NONE': 97, 'RED': 2, 'ORANGE': 1}
 
 Known issues matched: {'ct-031': 'gn-001', 'rf-010': 'gn-003', 'ct-403': 'gn-004', 'rf-009': 'gn-005'}
 
-## All 152 new RED/ORANGE flags
+## All 153 new RED/ORANGE flags
 
 **cp-p1001-1 RED** (copy_paste, pages [1001])
 - p.1001: "ZOOPLANKTON SPECIES CB JB LB RB GB Class HEXANAUPLIA Oakley, Wolfe, Lindgren & Zaharof, 2013 Subclass COPEPODA Milne Edwards, 1840 Acartia (Odontacartia) erythraea erythraea Giesbrecht, 1889 + + + + + Aetideus giesbrechti Cleve, 1904 + + + - + Canthocalanus pauper (Giesbrecht, 1888) + + + + + Cosmocalanus darwinii (Lubbock, 1860) + + + + + Undinula vulgaris (Dana, 1849) + + + + + Candacia discaudata Scott A., 1909 - + + + + Candacia pachydactyla (Dana, 1849) - + - - + Centropages calaninus (Dana, 1849) - + + - + Centropages furcatus (Dana, 1849) - + + - + Centropages gracilis (Dana, 1849) - + + - - Centropages tenuiremis Thompson I.C. & Scott A., 1903 + - + + + Eucalanus elongatus elongatus (Dana, 1848) + - - - - Pareucalanus attenuatus (Dana, 1849) + - + - - Euchaeta concinna Dana, 1849 + + + - +"
@@ -258,6 +258,12 @@ Known issues matched: {'ct-031': 'gn-001', 'rf-010': 'gn-003', 'ct-403': 'gn-004
 - p.940: "approximately 600 species of flora reported from Great Nicobar Island" (also on pp. 1028, 1065)
 - p.29: "650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others"
 - Why: Statement 1 cites approximately 600 flora species from the Botanical Survey of India, while Statement 2 states 650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others. The report does not explain the difference.
+- Ultra's answers: {'same_subject': True, 'same_place': True, 'same_scope': True, 'incompatible': True, 'explained': False}
+
+**ct-1815 RED** (contradiction, pages [1144, 1166])
+- p.1166: "4.39 sq km is Deemed forest"
+- p.1144: "and 8.88 sq.km. of land falls under Deemed Forest, which is part of revenue land."
+- Why: The two statements report different areas for Deemed forest within the same project area (4.39 sq km vs 8.88 sq km) without any stated reason for the discrepancy.
 - Ultra's answers: {'same_subject': True, 'same_place': True, 'same_scope': True, 'incompatible': True, 'explained': False}
 
 **ct-200 RED** (contradiction, pages [134, 459])

@@ -13,9 +13,9 @@
   ],
   "cost": {
     "nebius_usd": 0.0006,
-    "tavily_credits": 3,
+    "tavily_credits": 4,
     "gbif_calls": 67,
-    "approx_seconds": 469
+    "approx_seconds": 475
   },
   "findings": [
     {
@@ -290,5 +290,5 @@
       "images": []
     }
   ],
-  "exported_in_s": 8.1
+  "exported_in_s": 16.6
 }

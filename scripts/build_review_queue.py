@@ -85,8 +85,9 @@ TOP30 = [
     ("ct-1366", "false alarm", "The 13 berths on p.391 are at Dhamra port (Odisha), cited as an example; "
                 "not this project."),
     ("ct-051", "false alarm", "Statement pair graded RED although Ultra answered incompatible=false: both "
-               "pages say Galathea Bay has no coral. compute_grade ignores 'incompatible' for "
-               "statement pairs (see summary)."),
+               "pages say Galathea Bay has no coral. compute_grade overrides 'incompatible' for "
+               "statement pairs when Ultra says same subject and the places do not differ, as "
+               "here (see summary)."),
     ("cp-p1001-1", "false alarm", "Copy-paste RED from shared taxonomic author years (Dana, 1849 ...); any "
                    "copepod checklist shares them. The site data (+/- by station) is not matched."),
 ]

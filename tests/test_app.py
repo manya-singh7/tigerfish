@@ -52,11 +52,13 @@ BANNED = ("lie", "liar", "fraud", "fake", "fabricat", "dishonest", "cheat")
 
 def test_letter_is_neutral_and_cites_pages():
     report = data.load("great_nicobar_2021_draft")
-    body = letter.build_letter(report, report["findings"][:2])
+    gn001 = [f for f in report["findings"] if f.get("known_issue") == "gn-001"]
+    body = letter.build_letter(report, gn001)
     text = "\n".join(p.text for p in Document(io.BytesIO(body)).paragraphs).lower()
     assert "page 392" in text and "page 978" in text
     assert "clarification requested" in text
-    words = set(text.replace(".", " ").replace(",", " ").split())
+    # "the port site lies within the bay" (Ultra's reason for gn-001) is about location
+    words = set(text.replace("lies within", " ").replace(".", " ").replace(",", " ").split())
     assert not any(w.startswith(b) for w in words for b in BANNED)
 
 
@@ -81,7 +83,7 @@ def test_prerecorded_investigations_replay(no_keys):
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
     assert not at.exception
     labels = [e.label for e in at.expander if e.label.startswith("Investigation:")]
-    assert len(labels) == 3                                    # ct-003, ac-01, sp-p954-001
+    assert len(labels) == 3                                    # gn-001 (recorded as ct-003), ac-01, sp-p954-001
     html = "\n".join(m.value for m in at.markdown)
     assert 'class="tf-timeline"' in html and "READ PAGE" in html and "Evidence memo" in html
     assert "Unverified reasoning (not checked)" in html and 'class="tf-ref"' in html

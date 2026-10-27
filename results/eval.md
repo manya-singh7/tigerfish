@@ -19,6 +19,9 @@ Generated 2026-10-27 03:57. Seed 42. Cost of the evaluation's own API calls (pla
 | Triage: RED/ORANGE findings it would drop | 0 (known issues, planted catches and the negative control: none) |
 | Full 1,213-page audit (estimate, with triage) | $11.32 = Rs 951 at 1 USD = 84 INR; about 358 min of API time if run one call at a time |
 | Full 1,213-page audit (estimate, without triage) | $11.24 = Rs 944; about 345 min |
+| Full 1,213-page audit (measured) | $15.67 = Rs 1,316; 60 min wall clock with 6 parallel calls; 84 Tavily credits |
+| Full audit: known issues | all found with the expected grade (gn-001 ct-031, gn-003 rf-010, gn-004 ct-403, gn-005 rf-009); negative control not flagged |
+| Full audit: new RED/ORANGE flags | 153 (review queue; precision to be measured by hand) |
 
 ## 1. Known issues (data/known_issues.json)
 
@@ -159,3 +162,17 @@ Pages: 543 text + 579 vision; 91 Hindi pages skipped.
 | With triage | 1,346 of 1,346 candidates | $11.32 | Rs 951 | 358 min |
 
 **Estimate with triage: $11.32 (Rs 951 at 1 USD = 84 INR, labelled rate), about 1,346 Ultra verdicts, about 358 minutes of API time if run one call at a time (less in parallel), and about 1,683 Tavily credits for the copy-paste check.** The triage pass rate comes from the known-issue pages (a real document). This assumes the same density of claims and contradiction candidates as the 10 audited pages, and the candidate cap raised accordingly. The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs can grow faster than the page count across a whole report, so the real number could be higher unless the cap stays.
+
+## 6. Full 1,213-page audit (measured)
+
+`scripts/audit.py` with scope and safe triage: 1,114 pages audited (99 skipped: Hindi, lab sheets, forms), 10,463 claims, 1,866 candidate pairs, triage passed 1,440 (77%), 1,429 Ultra verdicts (0 failed, 11 not judged: cost cap), 100 copy-paste passages. Whole audit: claim extraction (Oct 27 02:39, first attempt, reused from cache), keyed run 1 (04:11, stopped before all verdicts) and the resume (14:27, --max-cost 13.5, no stop). Excludes the abandoned unkeyed triage of 67,689 pairs (02:58-03:25). Plus a top-up sitting (Oct 27 16:31, --new-pages 539,939,1029,1038,1097,1099,1166, $0.49).
+
+| Model | API calls | In tok | Out tok | Cost USD | Cost INR |
+|---|---|---|---|---|---|
+| Nemotron-3_5-Lightning | 1,562 | 2,515,597 | 328,340 | $0.23 | Rs 19 |
+| Nemotron-3.5-Super-VL | 946 | 3,423,968 | 927,840 | $1.86 | Rs 156 |
+| Nemotron-3-Ultra-550b-a55b | 1,436 | 4,159,953 | 3,139,959 | $13.58 | Rs 1,141 |
+
+Ultra wrote 2,187 output tokens per verdict on average (reasoning included), $0.0095 per verdict.
+
+**Measured: $15.67 (Rs 1,316), 60 min wall clock, 84 Tavily credits.** The estimate above assumed the 10 audited pages' density; the full report had fewer candidate pairs per page after keyed pairing, but each verdict was longer. Findings by check: recycled_figure {'RED': 4, 'ORANGE': 1, 'NONE': 9}; contradiction {'RED': 103, 'ORANGE': 46, 'NONE': 1266}; copy_paste {'NONE': 97, 'RED': 2, 'ORANGE': 1}. Details and the top 30 flags: results/full_audit_summary.md.

@@ -23,7 +23,8 @@ def app(monkeypatch):
 def test_collect_covers_every_tavily_backed_check():
     rows = web_evidence.collect()
     checks = {r["check"] for r in rows}
-    assert {"Borrowed text", "Consultant accreditation", "WPA schedule", "Investigate agent"} <= checks
+    assert {"Consultant accreditation", "WPA schedule", "Investigate agent"} <= checks
+    assert {"Borrowed text", "Copied text"} & checks      # the full run has copied text only
     if HAS_RECORD:
         assert "Official record" in checks
     for r in rows:

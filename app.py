@@ -7,8 +7,9 @@ Live mode appears only when NEBIUS_API_KEY is set.
 
 import streamlit as st
 
+from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
-                          official, promises, rti, species_map, web_evidence)
+                          official, promises, review, rti, species_map, web_evidence)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -49,9 +50,9 @@ else:
     with hero_slot:
         hero.render(report)
 
-findings_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
-    ["Findings", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web", "Scanned pages",
-     "Method & limits"])
+findings_tab, review_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
+    ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web",
+     "Scanned pages", "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -65,6 +66,12 @@ with findings_tab:
     checks = f2.multiselect("Check", check_names, default=check_names)
     shown = data.filter_findings(findings, grades, checks)
     feedback.reviewer_input(report["id"], findings)
+    # Flags judged false alarms (Review queue tab, or Dismiss on a card) are hidden by default.
+    dismissed = (review_store.dismissed_finding_ids(review_store.load_queue(), review_store.load_reviews())
+                 | {f["id"] for f in cards.reviewed(report["id"], findings, "Dismiss")})
+    n_dismissed = sum(f["id"] in dismissed for f in shown)
+    if n_dismissed and not st.toggle(f"Show dismissed ({n_dismissed})", key="show_dismissed"):
+        shown = [f for f in shown if f["id"] not in dismissed]
 
     if not findings:
         st.info("No RED, ORANGE or INFO findings for this report.")
@@ -124,6 +131,9 @@ with findings_tab:
 
     st.write("")
     feedback.panel(report["id"], findings)
+
+with review_tab:
+    review.render(report["id"])
 
 with memo_tab:
     memo_ask.render(report["id"])

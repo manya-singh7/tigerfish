@@ -15,6 +15,7 @@ MARGIN_PX = 28              # above and below the highlighted lines (page images
 SIDE_MARGIN_PX = 60         # left and right, for a little more context
 MIN_PIXELS = 30             # fewer yellow pixels than this: no highlight on the page
 TEXT_COLUMN = (0.08, 0.92)  # crops span at least this share of the page width
+MAX_HEIGHT = 0.3            # crops are at most this share of the page height
 
 
 def highlight_mask(img):
@@ -26,7 +27,11 @@ def highlight_mask(img):
 
 def highlight_box(img, margin=MARGIN_PX, side=SIDE_MARGIN_PX):
     """(left, top, right, bottom) of all highlighted pixels plus margin, clipped to the image;
-    None when the page has no highlight."""
+    None when the page has no highlight.
+
+    Highlights spread down a page (a shared page image with several quotes, or a long
+    table) would give a crop as tall as the page: the crop is then capped at MAX_HEIGHT of
+    the page, placed where it covers the most highlighted pixels."""
     mask = highlight_mask(img)
     if mask.sum() < MIN_PIXELS:
         return None
@@ -35,8 +40,14 @@ def highlight_box(img, margin=MARGIN_PX, side=SIDE_MARGIN_PX):
     # At least the page's text column wide, so crops shown side by side share one scale.
     left = min(int(cols[0]) - side, int(w * TEXT_COLUMN[0]))
     right = max(int(cols[-1]) + 1 + side, int(w * TEXT_COLUMN[1]))
-    return (max(0, left), max(0, int(rows[0]) - margin), min(w, right),
-            min(h, int(rows[-1]) + 1 + margin))
+    top, bottom = max(0, int(rows[0]) - margin), min(h, int(rows[-1]) + 1 + margin)
+    cap = int(h * MAX_HEIGHT)
+    if bottom - top > cap:
+        per_row = np.concatenate([[0], np.cumsum(mask.sum(axis=1)[top:bottom])])
+        covered = per_row[cap:] - per_row[:-cap]      # highlighted pixels in each window
+        top += int(np.argmax(covered))
+        bottom = top + cap
+    return max(0, left), top, min(w, right), bottom
 
 
 def crop(path, margin=MARGIN_PX, side=SIDE_MARGIN_PX):

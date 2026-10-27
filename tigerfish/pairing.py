@@ -122,9 +122,25 @@ def key_messages(batch):
             {"role": "user", "content": "\n".join(lines)}]
 
 
-def subject_keys(claims):
+def subject_keys(claims, base=None):
     """{subject id: key} for the numeric, verified claims. One example claim per distinct
-    subject (earliest page), sorted by subject so similar subjects share a batch."""
+    subject (earliest page), sorted by subject so similar subjects share a batch.
+
+    base: the claims of an earlier run. Their subjects are keyed exactly as that run keyed
+    them (same batches, so from cache), and only subjects new in `claims` are keyed, in
+    batches of their own. Without it, a few new subjects shift every batch: all calls miss
+    the cache and the keys (and so the pairs) can change.
+    """
+    if base is not None:
+        keys = subject_keys(base)
+        stats = dict(last_stats)
+        rest = [c for c in claims if subject_id(c) not in keys]
+        more = subject_keys(rest)
+        last_stats.update(subjects=stats["subjects"] + last_stats["subjects"],
+                          key_calls=stats["key_calls"] + last_stats["key_calls"],
+                          keys_missing=stats["keys_missing"] + last_stats["keys_missing"],
+                          subjects_new=last_stats["subjects"])
+        return {**keys, **more}
     first = {}
     for c in sorted(claims, key=lambda c: (c["page"], c["id"])):
         if ct.numeric(c) and c.get("verified"):

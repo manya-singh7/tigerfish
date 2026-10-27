@@ -16,6 +16,8 @@
   order, with an optional cost cap. 429 / 5xx / connection errors are retried with
   exponential backoff + jitter (MAX_RETRIES). Cache files are written atomically, so an
   interrupted run resumes from the cache without paying for any call twice.
+- CACHE_ONLY = True: any call not in the cache raises CacheMiss instead of calling the
+  API, so a restore or dry run is guaranteed to cost $0.
 """
 
 import base64
@@ -68,6 +70,11 @@ BACKOFF_BASE_S = 2.0     # wait before retry k: random(0.5, 1) x min(BACKOFF_MAX
 BACKOFF_MAX_S = 60.0
 REQUEST_TIMEOUT_S = 600  # Ultra with reasoning can take minutes on long pages
 RESERVE_FACTOR = 2.0     # cost cap: a running call is counted as this x its estimate
+CACHE_ONLY = False       # True: a call not in the cache raises CacheMiss (never paid)
+
+
+class CacheMiss(RuntimeError):
+    """A real API call was needed while CACHE_ONLY is on."""
 
 load_dotenv(ROOT / ".env")
 _client = None
@@ -154,6 +161,8 @@ def _write_cache(path, data):
 
 def _call(model, messages, kwargs, path):
     """Real API call, timed and cached. Returns the response dict."""
+    if CACHE_ONLY:
+        raise CacheMiss(f"{model}: reply not in the cache ({path.name}); CACHE_ONLY is on")
     started = time.perf_counter()
     response = _create(model, messages, kwargs)
     data = response.model_dump()

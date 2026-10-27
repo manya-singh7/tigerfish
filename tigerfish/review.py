@@ -24,17 +24,20 @@ REVIEW_DIR = ROOT / "review"
 QUEUE = REVIEW_DIR / "review_queue.json"
 REVIEWS = REVIEW_DIR / "reviews.jsonl"
 
-DECISIONS = {"real": "Real issue", "false_alarm": "False alarm", "unsure": "Unsure"}
+DECISIONS = {"real": "Confirm (real issue)", "false_alarm": "Dismiss (false alarm)",
+             "unsure": "Unsure"}
+AS_FEEDBACK = {"real": "Confirm", "false_alarm": "Dismiss", "unsure": "Unsure"}  # card wording
 
 
-def load_queue(path=QUEUE):
-    return json.loads(Path(path).read_text(encoding="utf-8")) if Path(path).exists() else None
+def load_queue(path=None):
+    path = Path(path or QUEUE)
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
 
 
-def load_reviews(path=REVIEWS):
+def load_reviews(path=None):
     """{flag_id: {reviewer: latest decision row}}."""
     out = {}
-    p = Path(path)
+    p = Path(path or REVIEWS)
     if not p.exists():
         return out
     for line in p.read_text(encoding="utf-8").splitlines():
@@ -48,7 +51,7 @@ def name_key(name):
     return " ".join(str(name or "").split()).lower()
 
 
-def record(flag_id, reviewer, decision, note="", path=REVIEWS):
+def record(flag_id, reviewer, decision, note="", path=None):
     """Append one decision. reviewer is required (double review needs two names)."""
     reviewer = " ".join(str(reviewer or "").split())
     if not reviewer:
@@ -57,8 +60,9 @@ def record(flag_id, reviewer, decision, note="", path=REVIEWS):
         raise ValueError(f"decision must be one of {list(DECISIONS)}")
     row = {"flag_id": flag_id, "reviewer": reviewer, "decision": decision,
            "note": note.strip(), "time": time.strftime("%Y-%m-%dT%H:%M:%S")}
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with Path(path).open("a", encoding="utf-8") as f:
+    path = Path(path or REVIEWS)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row, ensure_ascii=False) + "\n")
     return row
 

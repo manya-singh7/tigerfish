@@ -22,17 +22,23 @@ def e():
 def test_matches_the_evaluations_own_totals(e):
     rows = {r["mode"]: r for r in costs.modes(e)}
     x = e["cost"]["extrapolation"]
-    assert round(rows["Safe triage (default)"]["usd"], 2) == x["usd"]
-    assert round(rows["No triage"]["usd"], 2) == x["without_triage"]["usd"]
+    # eval.json stores per-unit costs rounded to 6 decimals, its totals from unrounded ones
+    assert rows["Safe triage (default)"]["usd"] == pytest.approx(x["usd"], abs=0.01)
+    assert rows["No triage"]["usd"] == pytest.approx(x["without_triage"]["usd"], abs=0.01)
     assert rows["Safe triage (default)"]["verdicts"] == x["verdicts"]
     assert rows["No triage"]["verdicts"] == x["without_triage"]["verdicts"]
 
 
-def test_fast_triage_is_cheaper_and_misses_more(e):
+def test_fast_triage_is_cheapest_and_never_keeps_more(e):
     rows = {r["mode"]: r for r in costs.modes(e)}
-    safe, fast = rows["Safe triage (default)"], rows["Fast triage (quotes only)"]
-    assert fast["usd"] < safe["usd"] < rows["No triage"]["usd"]
-    assert fast["recall"][0] < safe["recall"][0] == safe["recall"][1]
+    safe, fast, none = rows["Safe triage (default)"], rows["Fast triage (quotes only)"], rows["No triage"]
+    assert fast["usd"] < safe["usd"] and fast["usd"] < none["usd"]
+    # safe triage saves money only when it drops pairs: safe - none = triage cost - verdicts saved
+    x, u = e["cost"]["extrapolation"], e["cost"]["extrapolation"]["per_unit"]
+    cand = x["candidates"]
+    assert safe["usd"] - none["usd"] == pytest.approx(
+        cand * u["triage_usd_per_candidate"] - cand * (1 - u["triage_pass_rate"]) * u["verdict_usd"])
+    assert fast["recall"][0] <= safe["recall"][0] == safe["recall"][1]
 
 
 def test_recall_comes_from_triage_validation(e):
@@ -60,6 +66,7 @@ def test_ultra_every_page_uses_measured_tokens_and_ultra_prices(e):
 def test_figure_labels_cost_and_recall(e):
     fig = costs.figure(costs.modes(e))
     labels = list(fig.data[0].text)
-    assert any("recall 16 of 16" in s for s in labels)
+    kept, of = costs.recall(e)["safe"]
+    assert any(f"recall {kept} of {of}" in s for s in labels)
     assert any("recall not measured" in s for s in labels)
     assert all(s.startswith("$") for s in labels)

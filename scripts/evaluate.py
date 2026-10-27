@@ -321,6 +321,69 @@ def md_table(headers, rows):
     return "\n".join(out)
 
 
+FULL_RUN = RESULTS / "audit_great_nicobar_2021_draft_eia.json"
+
+
+def full_run():
+    """The measured full audit (scripts/audit.py; run_totals cover every sitting), or None."""
+    if not FULL_RUN.exists():
+        return None
+    run = json.loads(FULL_RUN.read_text(encoding="utf-8"))
+    tot = run.get("run_totals") or {"cost_usd": run["cost_usd"], "wall_clock_s": run["wall_clock_s"],
+                                    "tavily_credits": run["tavily"]["credits"], "per_model": {}}
+    return run, tot
+
+
+def full_run_rows():
+    fr = full_run()
+    if not fr:
+        return []
+    run, tot = fr
+    known = ", ".join(f"{v} {k}" for k, v in sorted(run["known_issues_matched"].items(), key=lambda kv: kv[1]))
+    return [["Full 1,213-page audit (measured)",
+             f"${tot['cost_usd']:.2f} = Rs {ev.inr(tot['cost_usd']):,.0f}; {tot['wall_clock_s'] / 60:.0f} min "
+             f"wall clock with {run['workers']} parallel calls; {tot['tavily_credits']} Tavily credits"],
+            ["Full audit: known issues", f"all found with the expected grade ({known}); "
+                                         "negative control not flagged"],
+            ["Full audit: new RED/ORANGE flags", f"{run['new_flagged']} (review queue; precision "
+                                                 "to be measured by hand)"]]
+
+
+def full_run_md():
+    fr = full_run()
+    if not fr:
+        return []
+    run, tot = fr
+    tr = run["triage_answers"]
+    passed = tr["yes"] + tr["unsure"]
+    lines = ["## 6. Full 1,213-page audit (measured)", "",
+             f"`scripts/audit.py` with scope and safe triage: {run['pages_audited']:,} pages audited "
+             f"(99 skipped: Hindi, lab sheets, forms), {run['claims']:,} claims, "
+             f"{run['candidates']:,} candidate pairs, triage passed {passed:,} "
+             f"({passed / run['candidates']:.0%}), {run['verdicts']:,} Ultra verdicts "
+             f"({run['verdicts_failed']} failed"
+             + (f", {passed - run['verdicts'] - run['verdicts_failed']} not judged: cost cap"
+                if passed > run["verdicts"] + run["verdicts_failed"] else "")
+             + f"), {run['copy_passages']} copy-paste passages. "
+             f"{tot.get('note', '')}", ""]
+    if tot.get("per_model"):
+        lines += [md_table(["Model", "API calls", "In tok", "Out tok", "Cost USD", "Cost INR"],
+                           [[m, f"{v['api_calls']:,}", f"{v['prompt_tokens']:,}", f"{v['completion_tokens']:,}",
+                             f"${v['cost_usd']:.2f}", f"Rs {ev.inr(v['cost_usd']):,.0f}"]
+                            for m, v in tot["per_model"].items()]), ""]
+        u = tot["per_model"].get("Nemotron-3-Ultra-550b-a55b")
+        if u:
+            lines += [f"Ultra wrote {u['completion_tokens'] / u['api_calls']:,.0f} output tokens per verdict "
+                      f"on average (reasoning included), ${u['cost_usd'] / u['api_calls']:.4f} per verdict.", ""]
+    lines += [f"**Measured: ${tot['cost_usd']:.2f} (Rs {ev.inr(tot['cost_usd']):,.0f}), "
+              f"{tot['wall_clock_s'] / 60:.0f} min wall clock, {tot['tavily_credits']} Tavily credits.** "
+              "The estimate above assumed the 10 audited pages' density; the full report had fewer "
+              "candidate pairs per page after keyed pairing, but each verdict was longer. Findings by "
+              "check: " + "; ".join(f"{k} {v}" for k, v in run["findings_by_check"].items())
+              + ". Details and the top 30 flags: results/full_audit_summary.md.", ""]
+    return lines
+
+
 def write_md(res):
     k, p, s, t, c = res["known"], res["planted"], res["species"], res["table"], res["cost"]
     sc = p.get("score", {})
@@ -359,7 +422,7 @@ def write_md(res):
             ["Full 1,213-page audit (estimate, without triage)",
              f"${x['without_triage']['usd']:.2f} = Rs {x['without_triage']['inr']:,}; "
              f"about {x['without_triage']['api_minutes_sequential']} min"],
-        ]), "",
+        ] + full_run_rows()), "",
         "## 1. Known issues (data/known_issues.json)", "",
         md_table(["Issue", "Type", "Pages", "Expected", "Grade", "Result", "Status"],
                  [[r["id"], r["type"], r["pages"], "/".join(r["expected"]), r["grade"] or "-",
@@ -473,6 +536,7 @@ def write_md(res):
               f"The Ultra verdicts are most of the cost and the main uncertainty: candidate pairs "
               f"can grow faster than the page count across a whole report, so the real number "
               f"could be higher unless the cap stays.", ""]
+    lines += full_run_md()
     (RESULTS / "eval.md").write_text("\n".join(lines), encoding="utf-8")
 
 

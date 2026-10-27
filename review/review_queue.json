@@ -1,9 +1,9 @@
 {
  "report_id": "great_nicobar_2021_draft",
  "source": "audit_great_nicobar_2021_draft_eia.json",
- "created": "2026-10-27 15:04",
+ "created": "2026-10-27 16:37",
  "seed": 42,
- "total": 152,
+ "total": 153,
  "top": 30,
  "double_review": 15,
  "order": "top 30 (hand-picked, most consequential first), then the rest in a random order (seed 42)",
@@ -1100,27 +1100,27 @@
   },
   {
    "n": 32,
-   "flag_id": "ct-909",
+   "flag_id": "ct-566",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    69,
-    1056
+    530,
+    1171
    ],
    "quotes": [
     {
-     "page": 1056,
-     "text": "Master Plan caters 6.5 km approx. long berths."
+     "page": 530,
+     "text": "The proposed project site is located at the mouth of the Galathea River, which is about 39 acres of forest land which will be diverted for non forest purposes."
     },
     {
-     "page": 69,
-     "text": "total berth length of about 2.17 km in initial phase and 5.4 km in final phase"
+     "page": 1171,
+     "text": "the project is going to cause damage to dense forests in 39 Ha."
     }
    ],
-   "reason": "The master plan berth length (6.5 km) differs from the final phase berth length (5.4 km) given in the phased development table, and the report does not explain this difference.",
+   "reason": "Statement 1 reports 39 acres of forest land to be diverted, while Statement 2 reports 39 hectares of dense forest damage. Since 39 acres and 39 hectares are not equal (1 hectare ≈ 2.47 acres), the two figures cannot both be correct for the same area.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1129,11 +1129,80 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-909"
+   "finding_id": "ct-566"
   },
   {
    "n": 33,
-   "flag_id": "ct-220",
+   "flag_id": "ct-735",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    82,
+    1051
+   ],
+   "quotes": [
+    {
+     "page": 82,
+     "text": "Total berth length of about 5.4 km in Master plan phase & 1.7 km in Phase 1 for handling container vessels",
+     "also_on": [
+      84
+     ]
+    },
+    {
+     "page": 1051,
+     "text": "Master Plan caters 6.70 km approx. long berths."
+    }
+   ],
+   "reason": "The two statements give different total berth lengths for the master plan (5.4 km vs 6.70 km) without any indicated difference in scope or phase.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-735"
+  },
+  {
+   "n": 34,
+   "flag_id": "ct-321",
+   "group": "random",
+   "double_review": false,
+   "grade": "ORANGE",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    1037,
+    1047
+   ],
+   "quotes": [
+    {
+     "page": 1037,
+     "text": "203"
+    },
+    {
+     "page": 1047,
+     "text": "103 nests in 2018-19"
+    }
+   ],
+   "reason": "Statement 1 reports 203 nests for 2018-19, while Statement 2 reports 103 nests for the same year; both refer to leatherback turtle nesting on Great Nicobar Island but the figures differ without explanation in the report.",
+   "answers": {
+    "same_subject": true,
+    "same_place": "unclear",
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-321"
+  },
+  {
+   "n": 35,
+   "flag_id": "ct-232",
    "group": "random",
    "double_review": false,
    "grade": "RED",
@@ -1146,14 +1215,14 @@
    "quotes": [
     {
      "page": 972,
-     "text": "TOTAL 166.10 100.00"
+     "text": "RESIDENTIAL 16.55 9.97"
     },
     {
      "page": 918,
-     "text": "TOTAL PROJECT AREA 166.10 100.00"
+     "text": "RESIDENTIAL 36.66 22.07"
     }
    ],
-   "reason": "The two land use charts for the same GNI project show different area allocations for multiple categories (e.g., residential, commercial, industrial) despite having the same total area of 166.10 sq.km. The report pages provided do not explain the discrepancy.",
+   "reason": "The two land use charts both cover the total project area of 166.10 sq.km but report different residential area totals (16.55 vs 36.66 sq.km) and different subcategory breakdowns, with no explanation given for the discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1162,163 +1231,107 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-211"
-  },
-  {
-   "n": 34,
-   "flag_id": "ct-936",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    98,
-    156
-   ],
-   "quotes": [
-    {
-     "page": 156,
-     "text": "26m RoW"
-    },
-    {
-     "page": 98,
-     "text": "a Right of Way of 45 m with a six-lane divided carriageway configuration is the minimum requirement"
-    }
-   ],
-   "reason": "Statement 1 gives a three-level road hierarchy for all of GNI (55 m, 26 m, 18 m RoW), while Statement 2 specifies a 45 m, six-lane RoW for the ICTT port access road in Galathea Bay; the port road lies within GNI but its cross-section does not match any hierarchy category, and the report does not state that the two passages cover different extents or explain the discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-936"
-  },
-  {
-   "n": 35,
-   "flag_id": "ct-565",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    967,
-    1152
-   ],
-   "quotes": [
-    {
-     "page": 1152,
-     "text": "container yard area of 38.2 Ha in initial phase"
-    },
-    {
-     "page": 967,
-     "text": "container yard area of 42.8 Ha in phase 1"
-    }
-   ],
-   "reason": "The two statements give different area estimates for the container yard's first and final phases (38.2 vs 42.8 Ha and 144.8 vs 160 Ha). The report does not state why the figures differ.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-565"
+   "finding_id": "ct-221"
   },
   {
    "n": 36,
-   "flag_id": "ct-128",
+   "flag_id": "ct-1091",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    396,
-    1077
+    87,
+    559
    ],
    "quotes": [
     {
-     "page": 1077,
-     "text": "No record of turtles in the proposed project site."
+     "page": 87,
+     "text": "The breakwaters are shore connected with a length of 3.90 km.",
+     "also_on": [
+      561,
+      965
+     ]
     },
     {
-     "page": 396,
-     "text": "Off-shore construction activities to be halted to the possible extent especially during November to February the period in which the Nicobar Megapode, Coconut Crab and Long-Tailed Macaque of Nicobar Islands as well as Leatherback turtles nesting are reported"
+     "page": 559,
+     "text": "Two breakwaters of length 2.53 km and 0.74 km respectively provide round the year wave tranquility."
     }
    ],
-   "reason": "Statement 1 concerns the proposed project site at Campbell Bay, while Statement 2 concerns off-shore construction activities and Leatherback turtle nesting season in the Great Nicobar area; the spatial relationship between these areas is not specified.",
+   "reason": "Page 87 states two different total breakwater lengths (3.90 km and 3.27 km) without clarifying whether they refer to different extents; Statement 2 gives component lengths summing to 3.27 km, which conflicts with the 3.90 km figure if both represent the same total.",
    "answers": {
     "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": false,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-106"
-  },
-  {
-   "n": 37,
-   "flag_id": "ct-206",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    743,
-    770
-   ],
-   "quotes": [
-    {
-     "page": 743,
-     "text": "Two control points with two porta cabins and with 3 shifts total 6 person to be employed"
-    },
-    {
-     "page": 770,
-     "text": "Ten control points to be established on 24X7X365 basis to ensure that no one trespassed the Trible area."
-    }
-   ],
-   "reason": "Statement 1 specifies two control points with six personnel for the Shompen area, while Statement 2 specifies ten control points for the Trible area; the report does not clarify whether these refer to the same area or different phases.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
+    "same_place": true,
+    "same_scope": "unclear",
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-206"
+   "finding_id": "ct-1090"
+  },
+  {
+   "n": 37,
+   "flag_id": "ct-635",
+   "group": "random",
+   "double_review": false,
+   "grade": "ORANGE",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    22,
+    26
+   ],
+   "quotes": [
+    {
+     "page": 26,
+     "text": "Campbell bay National Park (426.23 sq.km)",
+     "also_on": [
+      27
+     ]
+    },
+    {
+     "page": 22,
+     "text": "Campbell National Park 391.75",
+     "also_on": [
+      920
+     ]
+    }
+   ],
+   "reason": "Page 22 lists Campbell National Park as 391.75 sq.km in a land use table, while page 26 lists Campbell bay National Park as 426.23 sq.km among protected areas. Page 22 mentions a proposal to re-notify 45.23 sq.km within Campbell Bay National Park, but does not explicitly link this to the difference between the two figures.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": "unclear",
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-635"
   },
   {
    "n": 38,
-   "flag_id": "ct-416",
+   "flag_id": "ct-883",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    29,
-    1168
+    210,
+    1165
    ],
    "quotes": [
     {
-     "page": 1168,
-     "text": "including 28 species of mammals (including 3 marine mammals)"
+     "page": 210,
+     "text": "39 Acres"
     },
     {
-     "page": 29,
-     "text": "A total of 14 species of mammals"
+     "page": 1165,
+     "text": "the site area for Power Plant is 39 hectares."
     }
    ],
-   "reason": "The two statements report different numbers of mammal, bird, and reptile species for Great Nicobar Island without any stated reason for the discrepancy.",
+   "reason": "Both statements refer to the total area of the power plant at the same location, but one gives 39 acres and the other 39 hectares, which are different numerical values for the same measurement.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1327,7 +1340,7 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-416"
+   "finding_id": "ct-883"
   },
   {
    "n": 39,
@@ -1364,27 +1377,27 @@
   },
   {
    "n": 40,
-   "flag_id": "ct-784",
+   "flag_id": "ct-404",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    24,
-    919
+    944,
+    1168
    ],
    "quotes": [
     {
-     "page": 919,
-     "text": "The cost of the Airport is estimated at Rs. 10,35,900 lakhs."
+     "page": 1168,
+     "text": "A total of 330 species of fauna are recorded from the whole GNI area"
     },
     {
-     "page": 24,
-     "text": "The cost of the project is estimated at Rs. 8,583 Crore."
+     "page": 944,
+     "text": "The fauna consists of over 1800 species"
     }
    ],
-   "reason": "Both statements give a total cost estimate for the international airport on Great Nicobar Island, but the figures differ: Rs. 10,35,900 lakhs (≈10,359 Crore) versus Rs. 8,583 Crore. The report does not explain this discrepancy.",
+   "reason": "Statement 1 reports 330 fauna species from the whole GNI area, while Statement 2 states the fauna consists of over 1800 species for the same island.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1393,58 +1406,19 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-784"
+   "finding_id": "ct-404"
   },
   {
    "n": 41,
-   "flag_id": "ct-276",
+   "flag_id": "ct-323",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    42,
-    43
-   ],
-   "quotes": [
-    {
-     "page": 43,
-     "text": "Campbell Bay (20.2 km NNE)",
-     "also_on": [
-      1163
-     ]
-    },
-    {
-     "page": 42,
-     "text": "Campbell Bay (22.5km, NNE)",
-     "also_on": [
-      1161
-     ]
-    }
-   ],
-   "reason": "Both statements give a distance from the Airport site to Campbell Bay but with different values (20.2 km vs 22.5 km).",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-276"
-  },
-  {
-   "n": 42,
-   "flag_id": "rf-013",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "recycled_figure",
-   "check_name": "Recycled figure",
-   "pages": [
     1037,
-    1126
+    1047
    ],
    "quotes": [
     {
@@ -1452,50 +1426,44 @@
      "text": "203"
     },
     {
-     "page": 1126,
-     "text": "203"
+     "page": 1047,
+     "text": "103 nests in 2018-19"
     }
    ],
-   "reason": "The figure 203 appears for both the whole Great Nicobar Island (page 1037) and the specific Galathea Bay (page 1126) in 2018‑19, with no explanation given for why the island total equals the bay count.",
+   "reason": "Statement 1 reports 203 nests for 2018-19, while Statement 2 reports 103 nests for the same year; the other years match.",
    "answers": {
-    "same_subject": false,
-    "same_place": null,
-    "same_scope": null,
-    "incompatible": null,
+    "same_subject": true,
+    "same_place": "unclear",
+    "same_scope": true,
+    "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "rf-013"
+   "finding_id": "ct-321"
   },
   {
-   "n": 43,
-   "flag_id": "ct-636",
+   "n": 42,
+   "flag_id": "ct-1230",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    22,
-    942
+    69,
+    1051
    ],
    "quotes": [
     {
-     "page": 942,
-     "text": "Campbell Bay National Park (520 km2 area)",
-     "also_on": [
-      944
-     ]
+     "page": 69,
+     "text": "total berth length of about 2.17 km in initial phase and 5.4 km in final phase"
     },
     {
-     "page": 22,
-     "text": "A&N administration proposes to re-notify 45.23 sq. km of land within Campbell bay National Park & Galathea National Park",
-     "also_on": [
-      920
-     ]
+     "page": 1051,
+     "text": "Master Plan caters 6.70 km approx. long berths."
     }
    ],
-   "reason": "Page 22 mentions a proposal to re-notify 45.23 sq. km within Campbell Bay and Galathea National Parks, which could indicate boundary changes, but the report does not explicitly state that the land use table reflects revised park boundaries.",
+   "reason": "The first statement gives ICTT project phase berth lengths (initial 2.17 km, final 5.4 km), while the second states a Master Plan for the Container Transhipment Terminal at Casuarina Bay caters 6.70 km; the report does not clarify whether the Master Plan revises or extends the ICTT project phases.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1504,10 +1472,76 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-636"
+   "finding_id": "ct-1230"
+  },
+  {
+   "n": 43,
+   "flag_id": "ct-128",
+   "group": "random",
+   "double_review": false,
+   "grade": "ORANGE",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    396,
+    1077
+   ],
+   "quotes": [
+    {
+     "page": 1077,
+     "text": "No record of turtles in the proposed project site."
+    },
+    {
+     "page": 396,
+     "text": "Off-shore construction activities to be halted to the possible extent especially during November to February the period in which the Nicobar Megapode, Coconut Crab and Long-Tailed Macaque of Nicobar Islands as well as Leatherback turtles nesting are reported"
+    }
+   ],
+   "reason": "Statement 1 concerns the proposed project site at Campbell Bay, while Statement 2 concerns off-shore construction activities and Leatherback turtle nesting season in the Great Nicobar area; the spatial relationship between these areas is not specified.",
+   "answers": {
+    "same_subject": true,
+    "same_place": "unclear",
+    "same_scope": true,
+    "incompatible": false,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-106"
   },
   {
    "n": 44,
+   "flag_id": "ct-530",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    918,
+    972
+   ],
+   "quotes": [
+    {
+     "page": 918,
+     "text": "RESIDENTIAL 36.66 22.07"
+    },
+    {
+     "page": 972,
+     "text": "RESIDENTIAL 16.55 9.97"
+    }
+   ],
+   "reason": "Both charts are for the GNI project total area (166.10 sq.km) but report different residential land use totals (36.66 vs 16.55 sq.km) and different sub‑category breakdowns, with no textual explanation for the difference in the provided pages.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-221"
+  },
+  {
+   "n": 45,
    "flag_id": "ct-1398",
    "group": "random",
    "double_review": false,
@@ -1545,44 +1579,311 @@
    "finding_id": "ct-1230"
   },
   {
-   "n": 45,
-   "flag_id": "ct-1091",
+   "n": 46,
+   "flag_id": "ct-1716",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    19,
+    228
+   ],
+   "quotes": [
+    {
+     "page": 228,
+     "text": "Great Nicobar Island marks the southernmost tip of India 7° N, about 700 km north of Sumatra"
+    },
+    {
+     "page": 19,
+     "text": "It is at an approximate distance of 144 km from the Sumatra Island of Indonesia."
+    }
+   ],
+   "reason": "The two statements give different distances from Great Nicobar Island to Sumatra (700 km vs 144 km) without any stated difference in scope or reference point.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-1716"
+  },
+  {
+   "n": 47,
+   "flag_id": "ct-258",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    964,
+    1060
+   ],
+   "quotes": [
+    {
+     "page": 964,
+     "text": "Total berth length of about 6.07 km"
+    },
+    {
+     "page": 1060,
+     "text": "Master Plan caters 6.55 km approx. long berths."
+    }
+   ],
+   "reason": "Both statements give different total berth lengths for the master plan (6.07 km vs 6.55 km) without any stated reason for the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-258"
+  },
+  {
+   "n": 48,
+   "flag_id": "ct-936",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    87,
-    559
+    98,
+    156
    ],
    "quotes": [
     {
-     "page": 87,
-     "text": "The breakwaters are shore connected with a length of 3.90 km.",
-     "also_on": [
-      561,
-      965
-     ]
+     "page": 156,
+     "text": "26m RoW"
     },
     {
-     "page": 559,
-     "text": "Two breakwaters of length 2.53 km and 0.74 km respectively provide round the year wave tranquility."
+     "page": 98,
+     "text": "a Right of Way of 45 m with a six-lane divided carriageway configuration is the minimum requirement"
     }
    ],
-   "reason": "Page 87 states two different total breakwater lengths (3.90 km and 3.27 km) without clarifying whether they refer to different extents; Statement 2 gives component lengths summing to 3.27 km, which conflicts with the 3.90 km figure if both represent the same total.",
+   "reason": "Statement 1 gives a three-level road hierarchy for all of GNI (55 m, 26 m, 18 m RoW), while Statement 2 specifies a 45 m, six-lane RoW for the ICTT port access road in Galathea Bay; the port road lies within GNI but its cross-section does not match any hierarchy category, and the report does not state that the two passages cover different extents or explain the discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
-    "same_scope": "unclear",
+    "same_place": "unclear",
+    "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-1090"
+   "finding_id": "ct-936"
   },
   {
-   "n": 46,
+   "n": 49,
+   "flag_id": "ct-708",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    918,
+    972
+   ],
+   "quotes": [
+    {
+     "page": 918,
+     "text": "RESIDENTIAL 36.66 22.07"
+    },
+    {
+     "page": 972,
+     "text": "RESIDENTIAL 16.55 9.97"
+    }
+   ],
+   "reason": "The two land use charts for the same total project area (166.10 sq.km) show different residential area totals (36.66 vs 16.55 sq.km) and subcategory breakdowns, with no explanation provided in the text for the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-221"
+  },
+  {
+   "n": 50,
+   "flag_id": "ct-744",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    385,
+    1150
+   ],
+   "quotes": [
+    {
+     "page": 385,
+     "text": "Out of the total land 228.4ha is Protected forest and 48.5ha is deemed forest land.",
+     "also_on": [
+      411,
+      412
+     ]
+    },
+    {
+     "page": 1150,
+     "text": "Forest Land:736.9 ha including deemed forest"
+    }
+   ],
+   "reason": "The two statements give different totals for forest land within the ICTT port area: one sums to 276.9 ha (protected plus deemed), the other states 736.9 ha including deemed forest.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-744"
+  },
+  {
+   "n": 51,
+   "flag_id": "ct-206",
+   "group": "random",
+   "double_review": false,
+   "grade": "ORANGE",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    743,
+    770
+   ],
+   "quotes": [
+    {
+     "page": 743,
+     "text": "Two control points with two porta cabins and with 3 shifts total 6 person to be employed"
+    },
+    {
+     "page": 770,
+     "text": "Ten control points to be established on 24X7X365 basis to ensure that no one trespassed the Trible area."
+    }
+   ],
+   "reason": "Statement 1 specifies two control points with six personnel for the Shompen area, while Statement 2 specifies ten control points for the Trible area; the report does not clarify whether these refer to the same area or different phases.",
+   "answers": {
+    "same_subject": true,
+    "same_place": "unclear",
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-206"
+  },
+  {
+   "n": 52,
+   "flag_id": "ct-219",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    22,
+    314
+   ],
+   "quotes": [
+    {
+     "page": 22,
+     "text": "Great Nicobar Biosphere Reserve 732.79"
+    },
+    {
+     "page": 314,
+     "text": "of which 885 sq. km area is protected under the Nicobar Biosphere Reserve"
+    }
+   ],
+   "reason": "Statement 1 reports the Great Nicobar Biosphere Reserve as 732.79 sq km, while Statement 2 reports the Nicobar Biosphere Reserve as 885 sq km. The report does not state that these figures refer to different extents or time periods.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-219"
+  },
+  {
+   "n": 53,
+   "flag_id": "ct-220",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    918,
+    972
+   ],
+   "quotes": [
+    {
+     "page": 972,
+     "text": "TOTAL 166.10 100.00"
+    },
+    {
+     "page": 918,
+     "text": "TOTAL PROJECT AREA 166.10 100.00"
+    }
+   ],
+   "reason": "The two land use charts for the same GNI project show different area allocations for multiple categories (e.g., residential, commercial, industrial) despite having the same total area of 166.10 sq.km. The report pages provided do not explain the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-211"
+  },
+  {
+   "n": 54,
+   "flag_id": "ct-386",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    29,
+    327
+   ],
+   "quotes": [
+    {
+     "page": 29,
+     "text": "71 species of birds",
+     "also_on": [
+      944
+     ]
+    },
+    {
+     "page": 327,
+     "text": "A total of about 90 species of birds have been reported from the Island."
+    }
+   ],
+   "reason": "The two statements give different totals for bird species reported from Great Nicobar Island (71 vs about 90) without the report explaining the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-386"
+  },
+  {
+   "n": 55,
    "flag_id": "ct-1517",
    "group": "random",
    "double_review": false,
@@ -1618,49 +1919,16 @@
    "finding_id": "ct-1517"
   },
   {
-   "n": 47,
-   "flag_id": "ct-207",
+   "n": 56,
+   "flag_id": "rf-013",
    "group": "random",
    "double_review": false,
    "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    761,
-    770
-   ],
-   "quotes": [
-    {
-     "page": 761,
-     "text": "Four control points with four porta cabins and with 3 shift, total 12 person to be employed"
-    },
-    {
-     "page": 770,
-     "text": "Ten control points to be established on 24X7X365 basis to ensure that no one trespassed the Trible area."
-    }
-   ],
-   "reason": "Both statements address control points for preventing trespass into Shompen tribal areas on Great Nicobar Island. The first states four control points (SPV 60) while the second states ten control points (SPV 150), with differing personnel numbers. The report does not provide an explanation for this discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-207"
-  },
-  {
-   "n": 48,
-   "flag_id": "ct-323",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
+   "check": "recycled_figure",
+   "check_name": "Recycled figure",
    "pages": [
     1037,
-    1047
+    1126
    ],
    "quotes": [
     {
@@ -1668,228 +1936,23 @@
      "text": "203"
     },
     {
-     "page": 1047,
-     "text": "103 nests in 2018-19"
+     "page": 1126,
+     "text": "203"
     }
    ],
-   "reason": "Statement 1 reports 203 nests for 2018-19, while Statement 2 reports 103 nests for the same year; the other years match.",
+   "reason": "The figure 203 appears for both the whole Great Nicobar Island (page 1037) and the specific Galathea Bay (page 1126) in 2018‑19, with no explanation given for why the island total equals the bay count.",
    "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": true,
+    "same_subject": false,
+    "same_place": null,
+    "same_scope": null,
+    "incompatible": null,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-321"
+   "finding_id": "rf-013"
   },
   {
-   "n": 49,
-   "flag_id": "ct-1778",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    29,
-    940
-   ],
-   "quotes": [
-    {
-     "page": 940,
-     "text": "approximately 600 species of flora reported from Great Nicobar Island",
-     "also_on": [
-      1028,
-      1065
-     ]
-    },
-    {
-     "page": 29,
-     "text": "650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others"
-    }
-   ],
-   "reason": "Statement 1 cites approximately 600 flora species from the Botanical Survey of India, while Statement 2 states 650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others. The report does not explain the difference.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-1778"
-  },
-  {
-   "n": 50,
-   "flag_id": "ct-218",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    22,
-    938
-   ],
-   "quotes": [
-    {
-     "page": 22,
-     "text": "Great Nicobar Biosphere Reserve 732.79"
-    },
-    {
-     "page": 938,
-     "text": "GNBR spread 885 km2 in two zones"
-    }
-   ],
-   "reason": "Statement 1 lists the Great Nicobar Biosphere Reserve area as 732.79 sq km in a land use table, while Statement 2 states the GNBR spreads over 885 km² in two zones. The report does not explain this discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-218"
-  },
-  {
-   "n": 51,
-   "flag_id": "ct-073",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    738,
-    1133
-   ],
-   "quotes": [
-    {
-     "page": 738,
-     "text": "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) some corals were noticed."
-    },
-    {
-     "page": 1133,
-     "text": "Except the Galathea Bay, nearby areas of all other important turtle nesting beaches have coral reefs"
-    }
-   ],
-   "reason": "Both statements address coral presence in Galathea Bay; the first reports some corals on the eastern peninsula per ZSI, while the second states no coral reefs were found in nearby areas per a rapid assessment, possibly reflecting different survey areas or definitions.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": false,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-073"
-  },
-  {
-   "n": 52,
-   "flag_id": "ct-606",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    906,
-    1165
-   ],
-   "quotes": [
-    {
-     "page": 1165,
-     "text": "916 Ha of area has been identified for development of International Airport"
-    },
-    {
-     "page": 906,
-     "text": "Total approximate lund requirement 812.36 Ha."
-    }
-   ],
-   "reason": "The two statements give different total land areas for the International Airport (916 ha vs 812.36 ha) without the report explaining the discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-606"
-  },
-  {
-   "n": 53,
-   "flag_id": "ct-258",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    964,
-    1060
-   ],
-   "quotes": [
-    {
-     "page": 964,
-     "text": "Total berth length of about 6.07 km"
-    },
-    {
-     "page": 1060,
-     "text": "Master Plan caters 6.55 km approx. long berths."
-    }
-   ],
-   "reason": "Both statements give different total berth lengths for the master plan (6.07 km vs 6.55 km) without any stated reason for the discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-258"
-  },
-  {
-   "n": 54,
-   "flag_id": "ct-735",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    82,
-    1051
-   ],
-   "quotes": [
-    {
-     "page": 82,
-     "text": "Total berth length of about 5.4 km in Master plan phase & 1.7 km in Phase 1 for handling container vessels",
-     "also_on": [
-      84
-     ]
-    },
-    {
-     "page": 1051,
-     "text": "Master Plan caters 6.70 km approx. long berths."
-    }
-   ],
-   "reason": "The two statements give different total berth lengths for the master plan (5.4 km vs 6.70 km) without any indicated difference in scope or phase.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-735"
-  },
-  {
-   "n": 55,
+   "n": 57,
    "flag_id": "ct-072",
    "group": "random",
    "double_review": false,
@@ -1922,7 +1985,7 @@
    "finding_id": "ct-072"
   },
   {
-   "n": 56,
+   "n": 58,
    "flag_id": "cp-p29-3",
    "group": "random",
    "double_review": false,
@@ -1946,34 +2009,31 @@
    "finding_id": "cp-p29-2"
   },
   {
-   "n": 57,
-   "flag_id": "ct-430",
+   "n": 59,
+   "flag_id": "ct-688",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    29,
-    1168
+    446,
+    972
    ],
    "quotes": [
     {
-     "page": 1168,
-     "text": "23 species of reptiles"
+     "page": 972,
+     "text": "Reclamation for Airport 1.94"
     },
     {
-     "page": 29,
-     "text": "26 species of reptiles",
+     "page": 446,
+     "text": "916 Ha of area has been identified for development of International Airport which includes 845 ha of land and 71 ha of reclaimed area.",
      "also_on": [
-      326,
-      944,
-      1047,
-      1053
+      1165
      ]
     }
    ],
-   "reason": "Both statements report fauna species counts for Great Nicobar Island but give different numbers for mammals (28 vs 14), birds (97 vs 71), and reptiles (23 vs 26). The report does not explain why the figures differ between the two chapters.",
+   "reason": "Statement 1 reports 'Reclamation for Airport' as 1.94 sq.km (194 ha) in a land-use chart for Great Nicobar Islands, while Statement 2 states the airport development includes 71 ha of reclaimed area. The two figures differ substantially for the same metric, and the provided pages do not state they cover different extents or explain the discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -1982,43 +2042,43 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-430"
+   "finding_id": "ct-688"
   },
   {
-   "n": 58,
-   "flag_id": "ct-321",
+   "n": 60,
+   "flag_id": "ct-175",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    1037,
-    1047
+    1077,
+    1130
    ],
    "quotes": [
     {
-     "page": 1037,
-     "text": "203"
+     "page": 1077,
+     "text": "No record of turtles in the proposed project site."
     },
     {
-     "page": 1047,
-     "text": "103 nests in 2018-19"
+     "page": 1130,
+     "text": "One of the three important nesting sites of Leatherback turtles in Great Nicobar Island."
     }
    ],
-   "reason": "Statement 1 reports 203 nests for 2018-19, while Statement 2 reports 103 nests for the same year; both refer to leatherback turtle nesting on Great Nicobar Island but the figures differ without explanation in the report.",
+   "reason": "The first statement concerns a proposed project site at Campbell Bay, while the second refers to an unnamed beach on Great Nicobar Island; they may describe different locations.",
    "answers": {
     "same_subject": true,
     "same_place": "unclear",
     "same_scope": true,
-    "incompatible": true,
+    "incompatible": false,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-321"
+   "finding_id": "ct-175"
   },
   {
-   "n": 59,
+   "n": 61,
    "flag_id": "ct-126",
    "group": "random",
    "double_review": false,
@@ -2051,28 +2111,28 @@
    "finding_id": "ct-106"
   },
   {
-   "n": 60,
-   "flag_id": "ct-534",
+   "n": 62,
+   "flag_id": "ct-909",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    918,
-    972
+    69,
+    1056
    ],
    "quotes": [
     {
-     "page": 918,
-     "text": "COMMERCIAL 6.44 3.88"
+     "page": 1056,
+     "text": "Master Plan caters 6.5 km approx. long berths."
     },
     {
-     "page": 972,
-     "text": "COMMERCIAL 9.71 5.85"
+     "page": 69,
+     "text": "total berth length of about 2.17 km in initial phase and 5.4 km in final phase"
     }
    ],
-   "reason": "Both statements present land use area charts for the GNI project with the same total project area (166.10 sq.km), but the category areas differ substantially (e.g., COMMERCIAL 6.44 vs 9.71 sq.km), and the report does not explain the discrepancy.",
+   "reason": "The master plan berth length (6.5 km) differs from the final phase berth length (5.4 km) given in the phased development table, and the report does not explain this difference.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -2081,112 +2141,109 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-534"
+   "finding_id": "ct-909"
   },
   {
-   "n": 61,
-   "flag_id": "ct-1230",
+   "n": 63,
+   "flag_id": "ct-190",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    69,
-    1051
+    1128,
+    1132
    ],
    "quotes": [
     {
-     "page": 69,
-     "text": "total berth length of about 2.17 km in initial phase and 5.4 km in final phase"
+     "page": 1132,
+     "text": "There was no old signs of turtles seen during this survey"
     },
     {
-     "page": 1051,
-     "text": "Master Plan caters 6.70 km approx. long berths."
+     "page": 1128,
+     "text": "Old signs of five nests of leatherback observed western side of Galathea"
     }
    ],
-   "reason": "The first statement gives ICTT project phase berth lengths (initial 2.17 km, final 5.4 km), while the second states a Master Plan for the Container Transhipment Terminal at Casuarina Bay caters 6.70 km; the report does not clarify whether the Master Plan revises or extends the ICTT project phases.",
+   "reason": "Statement 1 describes a survey with no old signs observed, while Statement 2 describes old signs observed at Galathea on 15-16 April 2021. The report does not state whether these are the same survey or location.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": "unclear",
-    "incompatible": true,
+    "incompatible": false,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-1230"
-  },
-  {
-   "n": 62,
-   "flag_id": "ct-708",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    918,
-    972
-   ],
-   "quotes": [
-    {
-     "page": 918,
-     "text": "RESIDENTIAL 36.66 22.07"
-    },
-    {
-     "page": 972,
-     "text": "RESIDENTIAL 16.55 9.97"
-    }
-   ],
-   "reason": "The two land use charts for the same total project area (166.10 sq.km) show different residential area totals (36.66 vs 16.55 sq.km) and subcategory breakdowns, with no explanation provided in the text for the discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-221"
-  },
-  {
-   "n": 63,
-   "flag_id": "ct-1570",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    210,
-    537
-   ],
-   "quotes": [
-    {
-     "page": 210,
-     "text": "Greenfield project :337 MVA (LNG based Fuel Power Project);",
-     "also_on": [
-      212
-     ]
-    },
-    {
-     "page": 537,
-     "text": "The proposed LNG based power plant during its operation phase involves generation of 450 MVA power through LNG fuel technology."
-    }
-   ],
-   "reason": "Statement 1 lists the LNG capacity as 337 MVA, while Statement 2 states the LNG generation as 450 MVA. The report does not indicate that these figures cover different extents or phases.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-1570"
+   "finding_id": "ct-190"
   },
   {
    "n": 64,
+   "flag_id": "ct-416",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    29,
+    1168
+   ],
+   "quotes": [
+    {
+     "page": 1168,
+     "text": "including 28 species of mammals (including 3 marine mammals)"
+    },
+    {
+     "page": 29,
+     "text": "A total of 14 species of mammals"
+    }
+   ],
+   "reason": "The two statements report different numbers of mammal, bird, and reptile species for Great Nicobar Island without any stated reason for the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-416"
+  },
+  {
+   "n": 65,
+   "flag_id": "ct-637",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    964,
+    1060
+   ],
+   "quotes": [
+    {
+     "page": 964,
+     "text": "Total berth length of about 6.07 km"
+    },
+    {
+     "page": 1060,
+     "text": "Master Plan caters 6.55 km approx. long berths."
+    }
+   ],
+   "reason": "Both statements refer to the total berth length of the master plan for the container transshipment terminal, but give different figures (6.07 km vs 6.55 km).",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-258"
+  },
+  {
+   "n": 66,
    "flag_id": "ct-176",
    "group": "random",
    "double_review": false,
@@ -2219,40 +2276,7 @@
    "finding_id": "ct-176"
   },
   {
-   "n": 65,
-   "flag_id": "ct-676",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    1037,
-    1126
-   ],
-   "quotes": [
-    {
-     "page": 1037,
-     "text": "4"
-    },
-    {
-     "page": 1126,
-     "text": "4"
-    }
-   ],
-   "reason": "Statement 1 gives total leatherback nests for Great Nicobar Island, while Statement 2 gives nest counts for individual bays within Great Nicobar. The total for 2017-18 matches Galathea Bay alone, yet Statement 2 shows Anderson Bay also had 4 nests that year, making the statements incompatible. The report notes that totals were not calculated from track surveys but does not explain this discrepancy.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-676"
-  },
-  {
-   "n": 66,
+   "n": 67,
    "flag_id": "ct-154",
    "group": "random",
    "double_review": false,
@@ -2285,7 +2309,7 @@
    "finding_id": "ct-154"
   },
   {
-   "n": 67,
+   "n": 68,
    "flag_id": "ct-639",
    "group": "random",
    "double_review": false,
@@ -2321,7 +2345,7 @@
    "finding_id": "ct-639"
   },
   {
-   "n": 68,
+   "n": 69,
    "flag_id": "ct-1473",
    "group": "random",
    "double_review": false,
@@ -2363,45 +2387,40 @@
    "finding_id": "ct-1473"
   },
   {
-   "n": 69,
-   "flag_id": "ct-804",
+   "n": 70,
+   "flag_id": "ct-288",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    207,
-    216
+    590,
+    591
    ],
    "quotes": [
     {
-     "page": 207,
-     "text": "Planned layout has been developed in order to accommodate the plant facilities within the proposed 39 Hectare of land parcel.",
-     "also_on": [
-      485,
-      581,
-      975
-     ]
+     "page": 590,
+     "text": "Marine water quality at 3 locations once in 3 months 5"
     },
     {
-     "page": 216,
-     "text": "The proposed site is located next to proposed ICTT terminal in, Great Nicobar Islands which is about 39 acres."
+     "page": 591,
+     "text": "Marine water quality at 6 locations including Galathea Bay, Pammaya Bay, Joginder nagar beach"
     }
    ],
-   "reason": "Statement 1 gives the land parcel as 39 hectares while Statement 2 gives it as 39 acres; these units differ substantially (1 hectare ≈ 2.47 acres). The report does not explain this discrepancy.",
+   "reason": "Statement 1 describes marine water quality monitoring at 3 locations near the outfall point, while Statement 2 describes monitoring at 6 locations including specific bays under a different monitoring category. The report does not state whether these are the same or different monitoring efforts, making the differing location counts potentially inconsistent.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-804"
+   "finding_id": "ct-288"
   },
   {
-   "n": 70,
+   "n": 71,
    "flag_id": "ct-1528",
    "group": "random",
    "double_review": false,
@@ -2434,74 +2453,8 @@
    "finding_id": "ct-1528"
   },
   {
-   "n": 71,
-   "flag_id": "ct-219",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    22,
-    314
-   ],
-   "quotes": [
-    {
-     "page": 22,
-     "text": "Great Nicobar Biosphere Reserve 732.79"
-    },
-    {
-     "page": 314,
-     "text": "of which 885 sq. km area is protected under the Nicobar Biosphere Reserve"
-    }
-   ],
-   "reason": "Statement 1 reports the Great Nicobar Biosphere Reserve as 732.79 sq km, while Statement 2 reports the Nicobar Biosphere Reserve as 885 sq km. The report does not state that these figures refer to different extents or time periods.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-219"
-  },
-  {
    "n": 72,
-   "flag_id": "ct-175",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    1077,
-    1130
-   ],
-   "quotes": [
-    {
-     "page": 1077,
-     "text": "No record of turtles in the proposed project site."
-    },
-    {
-     "page": 1130,
-     "text": "One of the three important nesting sites of Leatherback turtles in Great Nicobar Island."
-    }
-   ],
-   "reason": "The first statement concerns a proposed project site at Campbell Bay, while the second refers to an unnamed beach on Great Nicobar Island; they may describe different locations.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": false,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-175"
-  },
-  {
-   "n": 73,
-   "flag_id": "ct-213",
+   "flag_id": "ct-858",
    "group": "random",
    "double_review": false,
    "grade": "RED",
@@ -2513,15 +2466,15 @@
    ],
    "quotes": [
     {
-     "page": 918,
-     "text": "DEFENCE AREA 9.28 5.59"
-    },
-    {
      "page": 972,
      "text": "DEFENCE AREA 12.60 7.59"
+    },
+    {
+     "page": 918,
+     "text": "UTILITIES 1.2025 0.72"
     }
    ],
-   "reason": "Both tables present land use breakdowns for the same total project area (166.10 sq km) but report different Defence Area extents (9.28 vs 12.60 sq km) without explaining the discrepancy.",
+   "reason": "Both pages present a land use chart for GNI with the same total area but different category allocations, and the report does not state that they represent different extents or scenarios.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -2530,10 +2483,116 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-213"
+   "finding_id": "ct-858"
+  },
+  {
+   "n": 73,
+   "flag_id": "ct-1570",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    210,
+    537
+   ],
+   "quotes": [
+    {
+     "page": 210,
+     "text": "Greenfield project :337 MVA (LNG based Fuel Power Project);",
+     "also_on": [
+      212
+     ]
+    },
+    {
+     "page": 537,
+     "text": "The proposed LNG based power plant during its operation phase involves generation of 450 MVA power through LNG fuel technology."
+    }
+   ],
+   "reason": "Statement 1 lists the LNG capacity as 337 MVA, while Statement 2 states the LNG generation as 450 MVA. The report does not indicate that these figures cover different extents or phases.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-1570"
   },
   {
    "n": 74,
+   "flag_id": "ct-1778",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    29,
+    940
+   ],
+   "quotes": [
+    {
+     "page": 940,
+     "text": "approximately 600 species of flora reported from Great Nicobar Island",
+     "also_on": [
+      1028,
+      1065
+     ]
+    },
+    {
+     "page": 29,
+     "text": "650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others"
+    }
+   ],
+   "reason": "Statement 1 cites approximately 600 flora species from the Botanical Survey of India, while Statement 2 states 650 species of angiosperms, ferns, gymnosperms, bryophytes and lichens among others. The report does not explain the difference.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-1778"
+  },
+  {
+   "n": 75,
+   "flag_id": "ct-218",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    22,
+    938
+   ],
+   "quotes": [
+    {
+     "page": 22,
+     "text": "Great Nicobar Biosphere Reserve 732.79"
+    },
+    {
+     "page": 938,
+     "text": "GNBR spread 885 km2 in two zones"
+    }
+   ],
+   "reason": "Statement 1 lists the Great Nicobar Biosphere Reserve area as 732.79 sq km in a land use table, while Statement 2 states the GNBR spreads over 885 km² in two zones. The report does not explain this discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-218"
+  },
+  {
+   "n": 76,
    "flag_id": "ct-413",
    "group": "random",
    "double_review": false,
@@ -2566,7 +2625,7 @@
    "finding_id": "ct-413"
   },
   {
-   "n": 75,
+   "n": 77,
    "flag_id": "ct-1231",
    "group": "random",
    "double_review": false,
@@ -2605,28 +2664,28 @@
    "finding_id": "ct-1230"
   },
   {
-   "n": 76,
-   "flag_id": "ct-1716",
+   "n": 78,
+   "flag_id": "ct-211",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    19,
-    228
+    918,
+    972
    ],
    "quotes": [
     {
-     "page": 228,
-     "text": "Great Nicobar Island marks the southernmost tip of India 7° N, about 700 km north of Sumatra"
+     "page": 918,
+     "text": "TOTAL PROJECT AREA 166.10 100.00"
     },
     {
-     "page": 19,
-     "text": "It is at an approximate distance of 144 km from the Sumatra Island of Indonesia."
+     "page": 972,
+     "text": "TOTAL 166.10 100.00"
     }
    ],
-   "reason": "The two statements give different distances from Great Nicobar Island to Sumatra (700 km vs 144 km) without any stated difference in scope or reference point.",
+   "reason": "Both pages present a land use area chart for the GNI project with the same total area (166.10 sq.km) but different breakdowns for categories such as residential, commercial, and defence. The report does not state that the charts cover different extents or phases.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -2635,10 +2694,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-1716"
+   "finding_id": "ct-211"
   },
   {
-   "n": 77,
+   "n": 79,
    "flag_id": "ct-259",
    "group": "random",
    "double_review": false,
@@ -2676,7 +2735,7 @@
    "finding_id": "ct-259"
   },
   {
-   "n": 78,
+   "n": 80,
    "flag_id": "ct-125",
    "group": "random",
    "double_review": false,
@@ -2709,7 +2768,7 @@
    "finding_id": "ct-106"
   },
   {
-   "n": 79,
+   "n": 81,
    "flag_id": "ct-1550",
    "group": "random",
    "double_review": false,
@@ -2745,7 +2804,7 @@
    "finding_id": "ct-1550"
   },
   {
-   "n": 80,
+   "n": 82,
    "flag_id": "ct-805",
    "group": "random",
    "double_review": false,
@@ -2778,7 +2837,7 @@
    "finding_id": "ct-805"
   },
   {
-   "n": 81,
+   "n": 83,
    "flag_id": "ct-915",
    "group": "random",
    "double_review": false,
@@ -2815,28 +2874,33 @@
    "finding_id": "ct-1086"
   },
   {
-   "n": 82,
-   "flag_id": "ct-223",
+   "n": 84,
+   "flag_id": "ct-804",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    918,
-    972
+    207,
+    216
    ],
    "quotes": [
     {
-     "page": 972,
-     "text": "RESIDENTIAL 16.55 9.97"
+     "page": 207,
+     "text": "Planned layout has been developed in order to accommodate the plant facilities within the proposed 39 Hectare of land parcel.",
+     "also_on": [
+      485,
+      581,
+      975
+     ]
     },
     {
-     "page": 918,
-     "text": "RESIDENTIAL 36.66 22.07"
+     "page": 216,
+     "text": "The proposed site is located next to proposed ICTT terminal in, Great Nicobar Islands which is about 39 acres."
     }
    ],
-   "reason": "Both statements present land use breakdowns for the same total project area (166.10 sq.km) on Great Nicobar Island, but the area allocated to each category differs substantially (e.g., residential 16.55 vs 36.66 sq.km). The report does not provide a reason for the discrepancy.",
+   "reason": "Statement 1 gives the land parcel as 39 hectares while Statement 2 gives it as 39 acres; these units differ substantially (1 hectare ≈ 2.47 acres). The report does not explain this discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -2845,10 +2909,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-221"
+   "finding_id": "ct-804"
   },
   {
-   "n": 83,
+   "n": 85,
    "flag_id": "ct-055",
    "group": "random",
    "double_review": false,
@@ -2881,43 +2945,40 @@
    "finding_id": "ct-055"
   },
   {
-   "n": 84,
-   "flag_id": "ct-297",
+   "n": 86,
+   "flag_id": "ct-213",
    "group": "random",
    "double_review": false,
-   "grade": "ORANGE",
+   "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    1053,
-    1056
+    918,
+    972
    ],
    "quotes": [
     {
-     "page": 1053,
-     "text": "Estimated capacity: 14.2 Million TEUs per annum"
+     "page": 918,
+     "text": "DEFENCE AREA 9.28 5.59"
     },
     {
-     "page": 1056,
-     "text": "Estimated capacity: 15 Million TEUs per annum",
-     "also_on": [
-      1060
-     ]
+     "page": 972,
+     "text": "DEFENCE AREA 12.60 7.59"
     }
    ],
-   "reason": "The two statements give different estimated capacities (14.2 vs 15 million TEUs) for the Container Transhipment Terminal without any explanation in the report for the discrepancy.",
+   "reason": "Both tables present land use breakdowns for the same total project area (166.10 sq km) but report different Defence Area extents (9.28 vs 12.60 sq km) without explaining the discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": "unclear",
+    "same_place": true,
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-297"
+   "finding_id": "ct-213"
   },
   {
-   "n": 85,
+   "n": 87,
    "flag_id": "ct-544",
    "group": "random",
    "double_review": false,
@@ -2959,32 +3020,28 @@
    "finding_id": "ct-544"
   },
   {
-   "n": 86,
-   "flag_id": "ct-744",
+   "n": 88,
+   "flag_id": "ct-299",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    385,
-    1150
+    202,
+    517
    ],
    "quotes": [
     {
-     "page": 385,
-     "text": "Out of the total land 228.4ha is Protected forest and 48.5ha is deemed forest land.",
-     "also_on": [
-      411,
-      412
-     ]
+     "page": 202,
+     "text": "other two with the capcity of 16 MLD"
     },
     {
-     "page": 1150,
-     "text": "Forest Land:736.9 ha including deemed forest"
+     "page": 517,
+     "text": "The domestic wastewater generated from township will be treated in sewage treatment plants at three proposed locations with a total capacity of 65MLD."
     }
    ],
-   "reason": "The two statements give different totals for forest land within the ICTT port area: one sums to 276.9 ha (protected plus deemed), the other states 736.9 ha including deemed forest.",
+   "reason": "The individual capacities sum to 66 MLD (34 + 16 + 16), while the reported total capacity is 65 MLD, a discrepancy of 1 MLD.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -2993,10 +3050,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-744"
+   "finding_id": "ct-299"
   },
   {
-   "n": 87,
+   "n": 89,
    "flag_id": "ct-116",
    "group": "random",
    "double_review": false,
@@ -3029,7 +3086,7 @@
    "finding_id": "ct-116"
   },
   {
-   "n": 88,
+   "n": 90,
    "flag_id": "ct-1732",
    "group": "random",
    "double_review": false,
@@ -3062,7 +3119,7 @@
    "finding_id": "ct-1732"
   },
   {
-   "n": 89,
+   "n": 91,
    "flag_id": "rf-008",
    "group": "random",
    "double_review": false,
@@ -3095,7 +3152,7 @@
    "finding_id": "rf-008"
   },
   {
-   "n": 90,
+   "n": 92,
    "flag_id": "ct-1599",
    "group": "random",
    "double_review": false,
@@ -3128,7 +3185,7 @@
    "finding_id": "ct-1599"
   },
   {
-   "n": 91,
+   "n": 93,
    "flag_id": "ct-048",
    "group": "random",
    "double_review": false,
@@ -3161,73 +3218,40 @@
    "finding_id": "ct-048"
   },
   {
-   "n": 92,
-   "flag_id": "ct-858",
+   "n": 94,
+   "flag_id": "ct-073",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    918,
-    972
+    738,
+    1133
    ],
    "quotes": [
     {
-     "page": 972,
-     "text": "DEFENCE AREA 12.60 7.59"
+     "page": 738,
+     "text": "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) some corals were noticed."
     },
     {
-     "page": 918,
-     "text": "UTILITIES 1.2025 0.72"
+     "page": 1133,
+     "text": "Except the Galathea Bay, nearby areas of all other important turtle nesting beaches have coral reefs"
     }
    ],
-   "reason": "Both pages present a land use chart for GNI with the same total area but different category allocations, and the report does not state that they represent different extents or scenarios.",
+   "reason": "Both statements address coral presence in Galathea Bay; the first reports some corals on the eastern peninsula per ZSI, while the second states no coral reefs were found in nearby areas per a rapid assessment, possibly reflecting different survey areas or definitions.",
    "answers": {
     "same_subject": true,
     "same_place": true,
     "same_scope": true,
-    "incompatible": true,
+    "incompatible": false,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-858"
+   "finding_id": "ct-073"
   },
   {
-   "n": 93,
-   "flag_id": "ct-326",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    1037,
-    1047
-   ],
-   "quotes": [
-    {
-     "page": 1037,
-     "text": "203"
-    },
-    {
-     "page": 1047,
-     "text": "103 nests in 2018-19"
-    }
-   ],
-   "reason": "Statement 1 reports 203 nests for 2018-19 while Statement 2 reports 103 nests for the same year; both refer to leatherback turtle nesting in Great Nicobar Island.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-321"
-  },
-  {
-   "n": 94,
+   "n": 95,
    "flag_id": "ct-1253",
    "group": "random",
    "double_review": false,
@@ -3263,7 +3287,7 @@
    "finding_id": "ct-1253"
   },
   {
-   "n": 95,
+   "n": 96,
    "flag_id": "ct-1634",
    "group": "random",
    "double_review": false,
@@ -3296,7 +3320,7 @@
    "finding_id": "ct-1634"
   },
   {
-   "n": 96,
+   "n": 97,
    "flag_id": "ct-1518",
    "group": "random",
    "double_review": false,
@@ -3332,7 +3356,7 @@
    "finding_id": "ct-1518"
   },
   {
-   "n": 97,
+   "n": 98,
    "flag_id": "ct-1054",
    "group": "random",
    "double_review": false,
@@ -3368,28 +3392,28 @@
    "finding_id": "ct-1054"
   },
   {
-   "n": 98,
-   "flag_id": "ct-388",
+   "n": 99,
+   "flag_id": "ct-784",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    327,
-    1168
+    24,
+    919
    ],
    "quotes": [
     {
-     "page": 327,
-     "text": "A total of about 90 species of birds have been reported from the Island."
+     "page": 919,
+     "text": "The cost of the Airport is estimated at Rs. 10,35,900 lakhs."
     },
     {
-     "page": 1168,
-     "text": "97 species of birds"
+     "page": 24,
+     "text": "The cost of the project is estimated at Rs. 8,583 Crore."
     }
    ],
-   "reason": "The two statements give different bird species counts (about 90 vs 97) for Great Nicobar Island without explaining the discrepancy.",
+   "reason": "Both statements give a total cost estimate for the international airport on Great Nicobar Island, but the figures differ: Rs. 10,35,900 lakhs (≈10,359 Crore) versus Rs. 8,583 Crore. The report does not explain this discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -3398,10 +3422,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-388"
+   "finding_id": "ct-784"
   },
   {
-   "n": 99,
+   "n": 100,
    "flag_id": "ct-1090",
    "group": "random",
    "double_review": false,
@@ -3438,8 +3462,8 @@
    "finding_id": "ct-1090"
   },
   {
-   "n": 100,
-   "flag_id": "ct-277",
+   "n": 101,
+   "flag_id": "ct-276",
    "group": "random",
    "double_review": false,
    "grade": "RED",
@@ -3447,19 +3471,25 @@
    "check_name": "Internal contradiction",
    "pages": [
     42,
-    1161
+    43
    ],
    "quotes": [
     {
-     "page": 1161,
-     "text": "Campbell Bay (0.0km,W)"
+     "page": 43,
+     "text": "Campbell Bay (20.2 km NNE)",
+     "also_on": [
+      1163
+     ]
     },
     {
      "page": 42,
-     "text": "Campbell Bay (0.5km, W)"
+     "text": "Campbell Bay (22.5km, NNE)",
+     "also_on": [
+      1161
+     ]
     }
    ],
-   "reason": "The Executive Summary (page 1161) lists the Township's nearest town as Campbell Bay (0.0 km, W) while Chapter-1 (page 42) lists it as Campbell Bay (0.5 km, W). The nearest major settlement lists also differ, with the Executive Summary including additional settlements. The report does not provide a reason for these discrepancies.",
+   "reason": "Both statements give a distance from the Airport site to Campbell Bay but with different values (20.2 km vs 22.5 km).",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -3468,43 +3498,43 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-277"
-  },
-  {
-   "n": 101,
-   "flag_id": "ct-211",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    918,
-    972
-   ],
-   "quotes": [
-    {
-     "page": 918,
-     "text": "TOTAL PROJECT AREA 166.10 100.00"
-    },
-    {
-     "page": 972,
-     "text": "TOTAL 166.10 100.00"
-    }
-   ],
-   "reason": "Both pages present a land use area chart for the GNI project with the same total area (166.10 sq.km) but different breakdowns for categories such as residential, commercial, and defence. The report does not state that the charts cover different extents or phases.",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-211"
+   "finding_id": "ct-276"
   },
   {
    "n": 102,
+   "flag_id": "ct-208",
+   "group": "random",
+   "double_review": false,
+   "grade": "ORANGE",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    743,
+    761
+   ],
+   "quotes": [
+    {
+     "page": 743,
+     "text": "Two control points with two porta cabins and with 3 shifts total 6 person to be employed"
+    },
+    {
+     "page": 761,
+     "text": "Four control points with four porta cabins and with 3 shift, total 12 person to be employed"
+    }
+   ],
+   "reason": "Both statements describe control points and personnel to prevent trespass into the Shompen area, but one is linked to the power project site while the other does not specify a project component, making the location relationship unclear. The report does not state that the figures cover different extents, so they appear to address the same scope, yet the numbers differ (2 vs 4 control points, 6 vs 12 persons) with no explanation provided.",
+   "answers": {
+    "same_subject": true,
+    "same_place": "unclear",
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-208"
+  },
+  {
+   "n": 103,
    "flag_id": "ct-054",
    "group": "random",
    "double_review": false,
@@ -3537,7 +3567,7 @@
    "finding_id": "ct-054"
   },
   {
-   "n": 103,
+   "n": 104,
    "flag_id": "ct-1467",
    "group": "random",
    "double_review": false,
@@ -3570,7 +3600,7 @@
    "finding_id": "ct-1467"
   },
   {
-   "n": 104,
+   "n": 105,
    "flag_id": "ct-1611",
    "group": "random",
    "double_review": false,
@@ -3607,7 +3637,7 @@
    "finding_id": "ct-1611"
   },
   {
-   "n": 105,
+   "n": 106,
    "flag_id": "ct-1631",
    "group": "random",
    "double_review": false,
@@ -3644,7 +3674,7 @@
    "finding_id": "ct-1631"
   },
   {
-   "n": 106,
+   "n": 107,
    "flag_id": "ct-1071",
    "group": "random",
    "double_review": false,
@@ -3680,7 +3710,7 @@
    "finding_id": "ct-1071"
   },
   {
-   "n": 107,
+   "n": 108,
    "flag_id": "ct-1718",
    "group": "random",
    "double_review": false,
@@ -3713,7 +3743,7 @@
    "finding_id": "ct-1718"
   },
   {
-   "n": 108,
+   "n": 109,
    "flag_id": "ct-847",
    "group": "random",
    "double_review": false,
@@ -3746,7 +3776,7 @@
    "finding_id": "ct-847"
   },
   {
-   "n": 109,
+   "n": 110,
    "flag_id": "ct-910",
    "group": "random",
    "double_review": false,
@@ -3779,40 +3809,45 @@
    "finding_id": "ct-909"
   },
   {
-   "n": 110,
-   "flag_id": "ct-883",
+   "n": 111,
+   "flag_id": "ct-538",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    210,
-    1165
+    941,
+    1042
    ],
    "quotes": [
     {
-     "page": 210,
-     "text": "39 Acres"
+     "page": 941,
+     "text": "a total of 40 groups",
+     "also_on": [
+      1042,
+      1067,
+      1068
+     ]
     },
     {
-     "page": 1165,
-     "text": "the site area for Power Plant is 39 hectares."
+     "page": 1042,
+     "text": "However, in 2006 a total of 40 groups, including 814 monkeys were recorded in Great Nicobar, Little Nicobar and Katchal Islands while assessing the impact of the Tsunami (December, 2004) on the Long-Tailed Macaque of Nicobar Islands (Sivakumar, 2010)."
     }
    ],
-   "reason": "Both statements refer to the total area of the power plant at the same location, but one gives 39 acres and the other 39 hectares, which are different numerical values for the same measurement.",
+   "reason": "Statement 1 gives 40 groups for Great Nicobar, Little Nicobar and Katchal Islands combined in 2006, while Statement 2 gives 44 groups for Great Nicobar Island alone in 2006; since Great Nicobar is one of the three islands, the two figures cannot both be correct.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-883"
+   "finding_id": "ct-538"
   },
   {
-   "n": 111,
+   "n": 112,
    "flag_id": "ct-842",
    "group": "random",
    "double_review": false,
@@ -3845,7 +3880,7 @@
    "finding_id": "ct-209"
   },
   {
-   "n": 112,
+   "n": 113,
    "flag_id": "ct-1174",
    "group": "random",
    "double_review": false,
@@ -3878,7 +3913,7 @@
    "finding_id": "ct-1174"
   },
   {
-   "n": 113,
+   "n": 114,
    "flag_id": "ct-602",
    "group": "random",
    "double_review": false,
@@ -3914,7 +3949,7 @@
    "finding_id": "ct-544"
   },
   {
-   "n": 114,
+   "n": 115,
    "flag_id": "ct-1608",
    "group": "random",
    "double_review": false,
@@ -3947,7 +3982,7 @@
    "finding_id": "ct-1608"
   },
   {
-   "n": 115,
+   "n": 116,
    "flag_id": "ct-870",
    "group": "random",
    "double_review": false,
@@ -3986,7 +4021,7 @@
    "finding_id": "ct-870"
   },
   {
-   "n": 116,
+   "n": 117,
    "flag_id": "ct-1202",
    "group": "random",
    "double_review": false,
@@ -4022,7 +4057,7 @@
    "finding_id": "ct-1202"
   },
   {
-   "n": 117,
+   "n": 118,
    "flag_id": "cp-p1015-2",
    "group": "random",
    "double_review": false,
@@ -4046,7 +4081,7 @@
    "finding_id": "cp-p1015-1"
   },
   {
-   "n": 118,
+   "n": 119,
    "flag_id": "ct-968",
    "group": "random",
    "double_review": false,
@@ -4079,7 +4114,7 @@
    "finding_id": "ct-968"
   },
   {
-   "n": 119,
+   "n": 120,
    "flag_id": "ct-874",
    "group": "random",
    "double_review": false,
@@ -4115,40 +4150,40 @@
    "finding_id": "ct-874"
   },
   {
-   "n": 120,
-   "flag_id": "ct-208",
+   "n": 121,
+   "flag_id": "ct-207",
    "group": "random",
    "double_review": false,
-   "grade": "ORANGE",
+   "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    743,
-    761
+    761,
+    770
    ],
    "quotes": [
     {
-     "page": 743,
-     "text": "Two control points with two porta cabins and with 3 shifts total 6 person to be employed"
-    },
-    {
      "page": 761,
      "text": "Four control points with four porta cabins and with 3 shift, total 12 person to be employed"
+    },
+    {
+     "page": 770,
+     "text": "Ten control points to be established on 24X7X365 basis to ensure that no one trespassed the Trible area."
     }
    ],
-   "reason": "Both statements describe control points and personnel to prevent trespass into the Shompen area, but one is linked to the power project site while the other does not specify a project component, making the location relationship unclear. The report does not state that the figures cover different extents, so they appear to address the same scope, yet the numbers differ (2 vs 4 control points, 6 vs 12 persons) with no explanation provided.",
+   "reason": "Both statements address control points for preventing trespass into Shompen tribal areas on Great Nicobar Island. The first states four control points (SPV 60) while the second states ten control points (SPV 150), with differing personnel numbers. The report does not provide an explanation for this discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": "unclear",
+    "same_place": true,
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-208"
+   "finding_id": "ct-207"
   },
   {
-   "n": 121,
+   "n": 122,
    "flag_id": "ct-923",
    "group": "random",
    "double_review": false,
@@ -4184,40 +4219,40 @@
    "finding_id": "ct-277"
   },
   {
-   "n": 122,
-   "flag_id": "ct-188",
+   "n": 123,
+   "flag_id": "ct-1815",
    "group": "random",
    "double_review": false,
-   "grade": "ORANGE",
+   "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    1121,
-    1132
+    1144,
+    1166
    ],
    "quotes": [
     {
-     "page": 1132,
-     "text": "There was no record of number of nests laid in the recent past."
+     "page": 1166,
+     "text": "4.39 sq km is Deemed forest"
     },
     {
-     "page": 1121,
-     "text": "However, both Pemayya and Anderson bays were also observed with nesting other species of turtles in high numbers especially the green sea and hawksbill."
+     "page": 1144,
+     "text": "and 8.88 sq.km. of land falls under Deemed Forest, which is part of revenue land."
     }
    ],
-   "reason": "Statement 1 is from a beach-specific summary that does not name the beach, while Statement 2 refers to Anderson and Pemayya bays; the report does not explicitly link these statements or explain any discrepancy.",
+   "reason": "The two statements report different areas for Deemed forest within the same project area (4.39 sq km vs 8.88 sq km) without any stated reason for the discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": "unclear",
+    "same_place": true,
     "same_scope": true,
-    "incompatible": false,
+    "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-188"
+   "finding_id": "ct-1815"
   },
   {
-   "n": 123,
+   "n": 124,
    "flag_id": "ct-882",
    "group": "random",
    "double_review": false,
@@ -4253,8 +4288,74 @@
    "finding_id": "ct-211"
   },
   {
-   "n": 124,
-   "flag_id": "ct-635",
+   "n": 125,
+   "flag_id": "ct-606",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    906,
+    1165
+   ],
+   "quotes": [
+    {
+     "page": 1165,
+     "text": "916 Ha of area has been identified for development of International Airport"
+    },
+    {
+     "page": 906,
+     "text": "Total approximate lund requirement 812.36 Ha."
+    }
+   ],
+   "reason": "The two statements give different total land areas for the International Airport (916 ha vs 812.36 ha) without the report explaining the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-606"
+  },
+  {
+   "n": 126,
+   "flag_id": "ct-534",
+   "group": "random",
+   "double_review": false,
+   "grade": "RED",
+   "check": "contradiction",
+   "check_name": "Internal contradiction",
+   "pages": [
+    918,
+    972
+   ],
+   "quotes": [
+    {
+     "page": 918,
+     "text": "COMMERCIAL 6.44 3.88"
+    },
+    {
+     "page": 972,
+     "text": "COMMERCIAL 9.71 5.85"
+    }
+   ],
+   "reason": "Both statements present land use area charts for the GNI project with the same total project area (166.10 sq.km), but the category areas differ substantially (e.g., COMMERCIAL 6.44 vs 9.71 sq.km), and the report does not explain the discrepancy.",
+   "answers": {
+    "same_subject": true,
+    "same_place": true,
+    "same_scope": true,
+    "incompatible": true,
+    "explained": false
+   },
+   "urls": [],
+   "finding_id": "ct-534"
+  },
+  {
+   "n": 127,
+   "flag_id": "ct-636",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
@@ -4262,25 +4363,25 @@
    "check_name": "Internal contradiction",
    "pages": [
     22,
-    26
+    942
    ],
    "quotes": [
     {
-     "page": 26,
-     "text": "Campbell bay National Park (426.23 sq.km)",
+     "page": 942,
+     "text": "Campbell Bay National Park (520 km2 area)",
      "also_on": [
-      27
+      944
      ]
     },
     {
      "page": 22,
-     "text": "Campbell National Park 391.75",
+     "text": "A&N administration proposes to re-notify 45.23 sq. km of land within Campbell bay National Park & Galathea National Park",
      "also_on": [
       920
      ]
     }
    ],
-   "reason": "Page 22 lists Campbell National Park as 391.75 sq.km in a land use table, while page 26 lists Campbell bay National Park as 426.23 sq.km among protected areas. Page 22 mentions a proposal to re-notify 45.23 sq.km within Campbell Bay National Park, but does not explicitly link this to the difference between the two figures.",
+   "reason": "Page 22 mentions a proposal to re-notify 45.23 sq. km within Campbell Bay and Galathea National Parks, which could indicate boundary changes, but the report does not explicitly state that the land use table reflects revised park boundaries.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -4289,81 +4390,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-635"
+   "finding_id": "ct-636"
   },
   {
-   "n": 125,
-   "flag_id": "ct-538",
-   "group": "random",
-   "double_review": false,
-   "grade": "ORANGE",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    941,
-    1042
-   ],
-   "quotes": [
-    {
-     "page": 941,
-     "text": "a total of 40 groups",
-     "also_on": [
-      1042,
-      1067,
-      1068
-     ]
-    },
-    {
-     "page": 1042,
-     "text": "However, in 2006 a total of 40 groups, including 814 monkeys were recorded in Great Nicobar, Little Nicobar and Katchal Islands while assessing the impact of the Tsunami (December, 2004) on the Long-Tailed Macaque of Nicobar Islands (Sivakumar, 2010)."
-    }
-   ],
-   "reason": "Statement 1 gives 40 groups for Great Nicobar, Little Nicobar and Katchal Islands combined in 2006, while Statement 2 gives 44 groups for Great Nicobar Island alone in 2006; since Great Nicobar is one of the three islands, the two figures cannot both be correct.",
-   "answers": {
-    "same_subject": true,
-    "same_place": "unclear",
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-538"
-  },
-  {
-   "n": 126,
-   "flag_id": "ct-637",
-   "group": "random",
-   "double_review": false,
-   "grade": "RED",
-   "check": "contradiction",
-   "check_name": "Internal contradiction",
-   "pages": [
-    964,
-    1060
-   ],
-   "quotes": [
-    {
-     "page": 964,
-     "text": "Total berth length of about 6.07 km"
-    },
-    {
-     "page": 1060,
-     "text": "Master Plan caters 6.55 km approx. long berths."
-    }
-   ],
-   "reason": "Both statements refer to the total berth length of the master plan for the container transshipment terminal, but give different figures (6.07 km vs 6.55 km).",
-   "answers": {
-    "same_subject": true,
-    "same_place": true,
-    "same_scope": true,
-    "incompatible": true,
-    "explained": false
-   },
-   "urls": [],
-   "finding_id": "ct-258"
-  },
-  {
-   "n": 127,
+   "n": 128,
    "flag_id": "ct-1259",
    "group": "random",
    "double_review": false,
@@ -4402,40 +4432,43 @@
    "finding_id": "ct-1259"
   },
   {
-   "n": 128,
-   "flag_id": "ct-299",
+   "n": 129,
+   "flag_id": "ct-297",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    202,
-    517
+    1053,
+    1056
    ],
    "quotes": [
     {
-     "page": 202,
-     "text": "other two with the capcity of 16 MLD"
+     "page": 1053,
+     "text": "Estimated capacity: 14.2 Million TEUs per annum"
     },
     {
-     "page": 517,
-     "text": "The domestic wastewater generated from township will be treated in sewage treatment plants at three proposed locations with a total capacity of 65MLD."
+     "page": 1056,
+     "text": "Estimated capacity: 15 Million TEUs per annum",
+     "also_on": [
+      1060
+     ]
     }
    ],
-   "reason": "The individual capacities sum to 66 MLD (34 + 16 + 16), while the reported total capacity is 65 MLD, a discrepancy of 1 MLD.",
+   "reason": "The two statements give different estimated capacities (14.2 vs 15 million TEUs) for the Container Transhipment Terminal without any explanation in the report for the discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-299"
+   "finding_id": "ct-297"
   },
   {
-   "n": 129,
+   "n": 130,
    "flag_id": "ct-848",
    "group": "random",
    "double_review": false,
@@ -4468,28 +4501,28 @@
    "finding_id": "ct-848"
   },
   {
-   "n": 130,
-   "flag_id": "ct-404",
+   "n": 131,
+   "flag_id": "ct-388",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    944,
+    327,
     1168
    ],
    "quotes": [
     {
-     "page": 1168,
-     "text": "A total of 330 species of fauna are recorded from the whole GNI area"
+     "page": 327,
+     "text": "A total of about 90 species of birds have been reported from the Island."
     },
     {
-     "page": 944,
-     "text": "The fauna consists of over 1800 species"
+     "page": 1168,
+     "text": "97 species of birds"
     }
    ],
-   "reason": "Statement 1 reports 330 fauna species from the whole GNI area, while Statement 2 states the fauna consists of over 1800 species for the same island.",
+   "reason": "The two statements give different bird species counts (about 90 vs 97) for Great Nicobar Island without explaining the discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -4498,11 +4531,11 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-404"
+   "finding_id": "ct-388"
   },
   {
-   "n": 131,
-   "flag_id": "ct-232",
+   "n": 132,
+   "flag_id": "ct-223",
    "group": "random",
    "double_review": false,
    "grade": "RED",
@@ -4522,7 +4555,7 @@
      "text": "RESIDENTIAL 36.66 22.07"
     }
    ],
-   "reason": "The two land use charts both cover the total project area of 166.10 sq.km but report different residential area totals (16.55 vs 36.66 sq.km) and different subcategory breakdowns, with no explanation given for the discrepancy.",
+   "reason": "Both statements present land use breakdowns for the same total project area (166.10 sq.km) on Great Nicobar Island, but the area allocated to each category differs substantially (e.g., residential 16.55 vs 36.66 sq.km). The report does not provide a reason for the discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -4534,7 +4567,7 @@
    "finding_id": "ct-221"
   },
   {
-   "n": 132,
+   "n": 133,
    "flag_id": "ct-1279",
    "group": "random",
    "double_review": false,
@@ -4567,7 +4600,7 @@
    "finding_id": "ct-1278"
   },
   {
-   "n": 133,
+   "n": 134,
    "flag_id": "ct-127",
    "group": "random",
    "double_review": false,
@@ -4600,7 +4633,7 @@
    "finding_id": "ct-106"
   },
   {
-   "n": 134,
+   "n": 135,
    "flag_id": "ct-881",
    "group": "random",
    "double_review": false,
@@ -4636,7 +4669,7 @@
    "finding_id": "ct-881"
   },
   {
-   "n": 135,
+   "n": 136,
    "flag_id": "rf-002",
    "group": "random",
    "double_review": false,
@@ -4669,7 +4702,7 @@
    "finding_id": "rf-002"
   },
   {
-   "n": 136,
+   "n": 137,
    "flag_id": "ct-052",
    "group": "random",
    "double_review": false,
@@ -4702,76 +4735,73 @@
    "finding_id": "ct-052"
   },
   {
-   "n": 137,
-   "flag_id": "ct-190",
+   "n": 138,
+   "flag_id": "ct-188",
    "group": "random",
    "double_review": false,
    "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    1128,
+    1121,
     1132
    ],
    "quotes": [
     {
      "page": 1132,
-     "text": "There was no old signs of turtles seen during this survey"
+     "text": "There was no record of number of nests laid in the recent past."
     },
     {
-     "page": 1128,
-     "text": "Old signs of five nests of leatherback observed western side of Galathea"
+     "page": 1121,
+     "text": "However, both Pemayya and Anderson bays were also observed with nesting other species of turtles in high numbers especially the green sea and hawksbill."
     }
    ],
-   "reason": "Statement 1 describes a survey with no old signs observed, while Statement 2 describes old signs observed at Galathea on 15-16 April 2021. The report does not state whether these are the same survey or location.",
+   "reason": "Statement 1 is from a beach-specific summary that does not name the beach, while Statement 2 refers to Anderson and Pemayya bays; the report does not explicitly link these statements or explain any discrepancy.",
    "answers": {
     "same_subject": true,
     "same_place": "unclear",
-    "same_scope": "unclear",
+    "same_scope": true,
     "incompatible": false,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-190"
+   "finding_id": "ct-188"
   },
   {
-   "n": 138,
-   "flag_id": "ct-386",
+   "n": 139,
+   "flag_id": "ct-326",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    29,
-    327
+    1037,
+    1047
    ],
    "quotes": [
     {
-     "page": 29,
-     "text": "71 species of birds",
-     "also_on": [
-      944
-     ]
+     "page": 1037,
+     "text": "203"
     },
     {
-     "page": 327,
-     "text": "A total of about 90 species of birds have been reported from the Island."
+     "page": 1047,
+     "text": "103 nests in 2018-19"
     }
    ],
-   "reason": "The two statements give different totals for bird species reported from Great Nicobar Island (71 vs about 90) without the report explaining the discrepancy.",
+   "reason": "Statement 1 reports 203 nests for 2018-19 while Statement 2 reports 103 nests for the same year; both refer to leatherback turtle nesting in Great Nicobar Island.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-386"
+   "finding_id": "ct-321"
   },
   {
-   "n": 139,
+   "n": 140,
    "flag_id": "ct-106",
    "group": "random",
    "double_review": false,
@@ -4804,40 +4834,40 @@
    "finding_id": "ct-106"
   },
   {
-   "n": 140,
-   "flag_id": "ct-288",
+   "n": 141,
+   "flag_id": "ct-277",
    "group": "random",
    "double_review": false,
-   "grade": "ORANGE",
+   "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    590,
-    591
+    42,
+    1161
    ],
    "quotes": [
     {
-     "page": 590,
-     "text": "Marine water quality at 3 locations once in 3 months 5"
+     "page": 1161,
+     "text": "Campbell Bay (0.0km,W)"
     },
     {
-     "page": 591,
-     "text": "Marine water quality at 6 locations including Galathea Bay, Pammaya Bay, Joginder nagar beach"
+     "page": 42,
+     "text": "Campbell Bay (0.5km, W)"
     }
    ],
-   "reason": "Statement 1 describes marine water quality monitoring at 3 locations near the outfall point, while Statement 2 describes monitoring at 6 locations including specific bays under a different monitoring category. The report does not state whether these are the same or different monitoring efforts, making the differing location counts potentially inconsistent.",
+   "reason": "The Executive Summary (page 1161) lists the Township's nearest town as Campbell Bay (0.0 km, W) while Chapter-1 (page 42) lists it as Campbell Bay (0.5 km, W). The nearest major settlement lists also differ, with the Executive Summary including additional settlements. The report does not provide a reason for these discrepancies.",
    "answers": {
     "same_subject": true,
-    "same_place": "unclear",
+    "same_place": true,
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-288"
+   "finding_id": "ct-277"
   },
   {
-   "n": 141,
+   "n": 142,
    "flag_id": "ct-912",
    "group": "random",
    "double_review": false,
@@ -4874,28 +4904,28 @@
    "finding_id": "ct-912"
   },
   {
-   "n": 142,
-   "flag_id": "ct-566",
+   "n": 143,
+   "flag_id": "ct-565",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    530,
-    1171
+    967,
+    1152
    ],
    "quotes": [
     {
-     "page": 530,
-     "text": "The proposed project site is located at the mouth of the Galathea River, which is about 39 acres of forest land which will be diverted for non forest purposes."
+     "page": 1152,
+     "text": "container yard area of 38.2 Ha in initial phase"
     },
     {
-     "page": 1171,
-     "text": "the project is going to cause damage to dense forests in 39 Ha."
+     "page": 967,
+     "text": "container yard area of 42.8 Ha in phase 1"
     }
    ],
-   "reason": "Statement 1 reports 39 acres of forest land to be diverted, while Statement 2 reports 39 hectares of dense forest damage. Since 39 acres and 39 hectares are not equal (1 hectare ≈ 2.47 acres), the two figures cannot both be correct for the same area.",
+   "reason": "The two statements give different area estimates for the container yard's first and final phases (38.2 vs 42.8 Ha and 144.8 vs 160 Ha). The report does not state why the figures differ.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -4904,10 +4934,10 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-566"
+   "finding_id": "ct-565"
   },
   {
-   "n": 143,
+   "n": 144,
    "flag_id": "ct-1076",
    "group": "random",
    "double_review": false,
@@ -4943,7 +4973,7 @@
    "finding_id": "ct-1076"
   },
   {
-   "n": 144,
+   "n": 145,
    "flag_id": "ct-979",
    "group": "random",
    "double_review": false,
@@ -4980,7 +5010,7 @@
    "finding_id": "ct-979"
   },
   {
-   "n": 145,
+   "n": 146,
    "flag_id": "ct-1151",
    "group": "random",
    "double_review": false,
@@ -5013,7 +5043,7 @@
    "finding_id": "ct-1151"
   },
   {
-   "n": 146,
+   "n": 147,
    "flag_id": "ct-1278",
    "group": "random",
    "double_review": false,
@@ -5046,7 +5076,7 @@
    "finding_id": "ct-1278"
   },
   {
-   "n": 147,
+   "n": 148,
    "flag_id": "ct-1388",
    "group": "random",
    "double_review": false,
@@ -5079,7 +5109,7 @@
    "finding_id": "ct-1388"
   },
   {
-   "n": 148,
+   "n": 149,
    "flag_id": "ct-150",
    "group": "random",
    "double_review": false,
@@ -5112,43 +5142,40 @@
    "finding_id": "ct-150"
   },
   {
-   "n": 149,
-   "flag_id": "ct-688",
+   "n": 150,
+   "flag_id": "ct-676",
    "group": "random",
    "double_review": false,
-   "grade": "RED",
+   "grade": "ORANGE",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    446,
-    972
+    1037,
+    1126
    ],
    "quotes": [
     {
-     "page": 972,
-     "text": "Reclamation for Airport 1.94"
+     "page": 1037,
+     "text": "4"
     },
     {
-     "page": 446,
-     "text": "916 Ha of area has been identified for development of International Airport which includes 845 ha of land and 71 ha of reclaimed area.",
-     "also_on": [
-      1165
-     ]
+     "page": 1126,
+     "text": "4"
     }
    ],
-   "reason": "Statement 1 reports 'Reclamation for Airport' as 1.94 sq.km (194 ha) in a land-use chart for Great Nicobar Islands, while Statement 2 states the airport development includes 71 ha of reclaimed area. The two figures differ substantially for the same metric, and the provided pages do not state they cover different extents or explain the discrepancy.",
+   "reason": "Statement 1 gives total leatherback nests for Great Nicobar Island, while Statement 2 gives nest counts for individual bays within Great Nicobar. The total for 2017-18 matches Galathea Bay alone, yet Statement 2 shows Anderson Bay also had 4 nests that year, making the statements incompatible. The report notes that totals were not calculated from track surveys but does not explain this discrepancy.",
    "answers": {
     "same_subject": true,
-    "same_place": true,
+    "same_place": "unclear",
     "same_scope": true,
     "incompatible": true,
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-688"
+   "finding_id": "ct-676"
   },
   {
-   "n": 150,
+   "n": 151,
    "flag_id": "ct-050",
    "group": "random",
    "double_review": false,
@@ -5181,7 +5208,7 @@
    "finding_id": "ct-050"
   },
   {
-   "n": 151,
+   "n": 152,
    "flag_id": "ct-1087",
    "group": "random",
    "double_review": false,
@@ -5218,28 +5245,34 @@
    "finding_id": "ct-1087"
   },
   {
-   "n": 152,
-   "flag_id": "ct-530",
+   "n": 153,
+   "flag_id": "ct-430",
    "group": "random",
    "double_review": false,
    "grade": "RED",
    "check": "contradiction",
    "check_name": "Internal contradiction",
    "pages": [
-    918,
-    972
+    29,
+    1168
    ],
    "quotes": [
     {
-     "page": 918,
-     "text": "RESIDENTIAL 36.66 22.07"
+     "page": 1168,
+     "text": "23 species of reptiles"
     },
     {
-     "page": 972,
-     "text": "RESIDENTIAL 16.55 9.97"
+     "page": 29,
+     "text": "26 species of reptiles",
+     "also_on": [
+      326,
+      944,
+      1047,
+      1053
+     ]
     }
    ],
-   "reason": "Both charts are for the GNI project total area (166.10 sq.km) but report different residential land use totals (36.66 vs 16.55 sq.km) and different sub‑category breakdowns, with no textual explanation for the difference in the provided pages.",
+   "reason": "Both statements report fauna species counts for Great Nicobar Island but give different numbers for mammals (28 vs 14), birds (97 vs 71), and reptiles (23 vs 26). The report does not explain why the figures differ between the two chapters.",
    "answers": {
     "same_subject": true,
     "same_place": true,
@@ -5248,7 +5281,7 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-221"
+   "finding_id": "ct-430"
   }
  ]
 }

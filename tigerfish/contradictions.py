@@ -42,6 +42,7 @@ EXPLANATION_WINDOW = 600     # characters either side of a quote
 MAX_HITS = 12                # explanation hits passed to the model
 MAX_PAGE_CHARS = 8000        # each full page sent to Ultra
 VERDICT_MAX_TOKENS = 6000    # Ultra reasons first (reasoning_content), then answers
+VERDICT_RETRY_MAX_TOKENS = 16000   # one more try when the reply was cut off twice at 6000
 EST_OUTPUT_TOKENS = 2000     # for cost estimates
 NEUTRAL = "Inconsistency flagged, verify."
 GRADES = ("RED", "ORANGE", "NONE")
@@ -350,7 +351,8 @@ def recycled_figures(claims, tor_counts=()):
     return list(groups.values())
 
 
-def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=(), keyed=False):
+def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=(), keyed=False,
+                    base_claims=None):
     """All candidates (recycled first, then statements, then numeric), capped.
 
     Numeric pairs already covered by a recycled-figure group are suppressed (counted
@@ -358,11 +360,13 @@ def candidate_pairs(claims, max_candidates=MAX_CANDIDATES, tor_counts=(), keyed=
     keyed: numeric pairs by LIGHTNING subject key, repeats collapsed and capped per group
     (tigerfish/pairing.py; needed for long reports). False: every numeric claim against
     every other with a similar subject (deterministic, no LLM; small page sets and tests).
+    base_claims: an earlier run's claims, so its subject keys are reused (pairing.subject_keys).
     """
     recycled = recycled_figures(claims, tor_counts)
     if keyed:
         from tigerfish import pairing   # local: pairing imports this module
-        numeric_iter = pairing.keyed_numeric_pairs(claims, pairing.subject_keys(claims))
+        numeric_iter = pairing.keyed_numeric_pairs(
+            claims, pairing.subject_keys(claims, base=base_claims))
     else:
         numeric_iter = numeric_pairs(claims)
     kept_numeric, suppressed = [], 0
@@ -510,14 +514,17 @@ def compute_grade(kind, v):
               NONE   otherwise
     recycled: RED    clearly different subjects, not explained; ORANGE unclear; NONE otherwise
     statement pairs ("no X" vs "X exists") are incompatible by construction (statement_pairs
-    only pairs opposite claims about the same X), so the model's incompatible answer is not
-    used for them: whether the places differ is already asked in same_place.
+    only pairs opposite claims about the same X), so the model's incompatible answer is
+    overridden, but only when the model agrees it is the same subject (same_subject yes)
+    and does not say the places differ (same_place not no). Otherwise the pair is graded
+    from the model's answers like any other.
     """
     if v["explained"] is True:
         return "NONE"
     if kind == "recycled":
         return {True: "RED", "unclear": "ORANGE"}.get(v["different_subjects"], "NONE")
-    incompatible = True if kind == "statement" else v["incompatible"]
+    force = kind == "statement" and v["same_subject"] is True and v["same_place"] is not False
+    incompatible = True if force else v["incompatible"]
     if v["same_subject"] is not True or incompatible is not True:
         return "NONE"
     if v["same_place"] is True and v["same_scope"] is True:
@@ -833,7 +840,8 @@ def _triage_pass(cands, pages, batch_size):
 CHUNK = 400   # candidates triaged + judged per round (multiple of both triage batch sizes)
 
 
-def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use_triage=None):
+def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use_triage=None,
+          first_n=1):
     """Run the Ultra verdict on each candidate. Returns findings (all grades, incl. NONE).
 
     ledger: the claims, used to re-select evidence quotes (align_evidence).
@@ -842,6 +850,9 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
     Candidates go through in rounds of CHUNK (triage, then verdicts), so memory stays
     small on long reports; with pdf_stem, findings are written after every round, so an
     interrupted run keeps what it has (and resumes from the cache).
+    first_n: number of the first candidate (finding ids follow it), for candidates appended
+    to an earlier run's list. A verdict with no valid answer (reply cut off even after
+    chat_json's retry) is asked once more with VERDICT_RETRY_MAX_TOKENS.
     """
     start = llm.session_cost_usd
     findings, stopped, failed = [], None, 0
@@ -856,15 +867,17 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
     def ask(item):   # runs on the thread pool; results are used in candidate order
         _, cand = item
         hits = explanation_hits(cand, pages)
-        raw = claims_mod.chat_json(llm.ULTRA, verdict_messages(cand, pages, hits),
-                                   VERDICT_MAX_TOKENS, thinking=None)
+        messages = verdict_messages(cand, pages, hits)
+        raw = claims_mod.chat_json(llm.ULTRA, messages, VERDICT_MAX_TOKENS, thinking=None)
+        if parse_verdict(raw, cand, pages) is None:
+            raw = claims_mod.chat_json(llm.ULTRA, messages, VERDICT_RETRY_MAX_TOKENS, thinking=None)
         return hits, raw
 
     for lo in range(0, len(cands), CHUNK):
         chunk = cands[lo:lo + CHUNK]
         # Finding ids follow the position in the full candidate list, so skipping a
         # candidate (triage, failure) never renumbers the others.
-        numbered = list(enumerate(chunk, lo + 1))
+        numbered = list(enumerate(chunk, lo + first_n))
         if do_triage:
             answers = triage(chunk, pages if TRIAGE_MODE == "safe" else None)
             all_answers += answers
@@ -881,7 +894,7 @@ def check(cands, pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, ledger=(), use
             stopped = (f"cost cap ${max_cost_usd:.2f} reached "
                        f"(spent ${llm.session_cost_usd - start:.4f}); "
                        f"stopped at candidate {numbered[stop][0] if stop < len(numbered) else lo + len(chunk)} "
-                       f"of {len(cands)}; about {not_run} candidates not judged")
+                       f"of {first_n - 1 + len(cands)}; about {not_run} candidates not judged")
             log.warning(stopped)
             numbered = numbered[:stop]
         new = []

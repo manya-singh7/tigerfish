@@ -122,7 +122,7 @@ def test_memo_and_ask_badges():
 @saved
 def test_saved_coral_contradiction_badges():
     rd = badges.readers(GN)
-    f = next(f for f in data.load(GN)["findings"] if f["id"] == "ct-003")
+    f = next(f for f in data.load(GN)["findings"] if f.get("known_issue") == "gn-001")
     assert badges.finding_badges(f, rd) == [
         (badges.READ_LIGHTNING, "p.392"), (badges.READ_SUPER_VL, "p.978"),
         (badges.SCREENED_LIGHTNING, ""), (badges.JUDGED_ULTRA, "")]

@@ -6,6 +6,25 @@ Usage:
   python scripts/audit.py <pdf> --scope --run --max-cost 10   (runs the audit: costs money)
   python scripts/audit.py <pdf> --pages 250-350 --scope --triage safe --run --max-cost 1.50
                                                               (rehearsal on a page range)
+  python scripts/audit.py <pdf> --scope --run --max-cost 0.5 --new-pages 539,939 --reuse-passages
+                                                              (add claims to an earlier run)
+
+--new-pages: pages whose claims are new since the last full run (e.g. salvaged from cut-off
+replies). The earlier run's candidates are rebuilt from the other claims exactly as before
+(cached keys, triage and verdicts, same finding ids), and only the pairs the new claims add
+are appended, triaged and judged. --reuse-passages: the copy-paste check re-reads the
+passages the last run saved (cached Tavily replies only, no new credits). Both carry the
+earlier sittings' totals (run_totals) forward.
+
+Re-runs: the run report saves the --new-pages it used, and a later run of the same report
+without --new-pages reuses it (and the saved passages), so the earlier subject keys,
+pairs and finding ids are rebuilt exactly and only pairs not judged yet cost anything.
+If the claims changed and no --new-pages is known, the run stops before any model call
+(pass --new-pages, or --fresh to re-pair everything on purpose, which renumbers findings).
+--dry-run on a report that already has a run also replays the run from the cache
+(CACHE_ONLY, $0) and prints how many pairs a --run would still triage and judge.
+--cache-only: no API call at all (a reply not in the cache stops the run); with
+--max-cost 0, a --run rebuilds the last report from the cache exactly, for $0.
 
 --scope skips Hindi pages, lab-report sheets, blank forms and annexure boilerplate
 (tigerfish/scope.py) and limits the copy-paste check to the --top-passages most
@@ -84,6 +103,13 @@ def main():
     parser.add_argument("--max-cost", type=float, default=contradictions.MAX_COST_USD)
     parser.add_argument("--triage-audit", type=int, default=0, metavar="N",
                         help="also send N random triage-dropped pairs to Ultra and report grades")
+    parser.add_argument("--new-pages", help="pages with claims new since the last run, e.g. 539,939")
+    parser.add_argument("--reuse-passages", action="store_true",
+                        help="copy-paste: the last run's saved passages, cached Tavily only")
+    parser.add_argument("--fresh", action="store_true",
+                        help="ignore the last run: re-key and re-pair everything (renumbers)")
+    parser.add_argument("--cache-only", action="store_true",
+                        help="never call an API: a reply not in the cache stops the run ($0)")
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if not EVAL.exists():
@@ -123,10 +149,115 @@ def main():
     print(f"  API minutes assume one call at a time; --run uses {llm.WORKERS} parallel calls.")
 
     if args.dry_run or not args.run:
+        if load_previous(run_name(args)) and not args.fresh:
+            dry_replay(args, kept)
         if not args.run:
             print("\nDry run only. Add --run to audit (costs money).")
         return
+    if args.cache_only:
+        llm.CACHE_ONLY = True
     run_audit(args, kept, per)
+
+
+def run_name(args):
+    stem = Path(args.pdf).stem
+    return f"{stem}__p{args.pages}" if args.pages else stem
+
+
+def resolve_rerun(args, previous, n_claims):
+    """(new_pages, reuse_passages) for this run, from the flags and the last run's report.
+
+    A re-run without --new-pages reuses the --new-pages the last run used, so the earlier
+    subject keys and pairs are rebuilt exactly (re-keying all claims together shifts every
+    key batch: the cached keys miss and the pairs and finding ids change). Exits before any
+    call if the claims changed since the last run and no --new-pages is known.
+    """
+    if args.fresh or not previous:
+        return args.new_pages, args.reuse_passages
+    new_pages, auto = args.new_pages, False
+    if not new_pages:
+        sittings = (previous.get("run_totals") or {}).get("sittings", [])
+        new_pages = previous.get("new_pages") or next(
+            (s["new_pages"] for s in reversed(sittings) if s.get("new_pages")), None)
+        auto = bool(new_pages)
+        if auto:
+            print(f"Re-run of the last report: reusing its --new-pages {new_pages} and its "
+                  f"passages (pass --fresh to re-pair everything)")
+        elif previous.get("claims") != n_claims:
+            sys.exit(f"The claims changed since the last run ({previous.get('claims')} -> "
+                     f"{n_claims}) and it did not record --new-pages: re-pairing would re-key "
+                     f"every subject and renumber the findings. Pass --new-pages <pages of the "
+                     f"new claims>, or --fresh to re-pair on purpose. Stopping before any call.")
+    return new_pages, args.reuse_passages or auto
+
+
+def build_candidates(args, found, previous, new_pages_arg, tor):
+    """(old, added, cands); old and added are None without new pages."""
+    if not new_pages_arg:
+        cands = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor,
+                                               keyed=True)
+        if previous and not args.fresh and previous["candidates"] != len(cands):
+            sys.exit(f"Pairing gave {len(cands)} candidates, the last run {previous['candidates']}: "
+                     f"stopping before any verdict (pass --fresh to re-pair on purpose).")
+        return None, None, cands
+    new_pages = set(parse_pages(new_pages_arg))
+    base = [c for c in found if c["page"] not in new_pages]
+    old = contradictions.candidate_pairs(base, max_candidates=10**6, tor_counts=tor, keyed=True)
+    every = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor,
+                                           keyed=True, base_claims=base)
+    seen = {signature(c) for c in old}
+    added = [c for c in every if signature(c) not in seen]
+    print(f"Earlier claims: {len(base)} -> {len(old)} candidates (last run: "
+          f"{previous and previous['candidates']}); {len(found) - len(base)} new claims on "
+          f"pages {sorted(new_pages)} add {len(added)} candidates")
+    # the last run is the earlier run itself, or a top-up of it (old + added)
+    if previous and previous["candidates"] not in (len(old), len(old) + len(added)):
+        sys.exit("The earlier candidates were not rebuilt exactly; stopping before any call.")
+    return old, added, old + added
+
+
+def pending(lists, texts):
+    """(to triage, to judge): pairs whose triage or Ultra verdict is not cached yet, in the
+    same rounds check() uses (the triage batches depend on them). Calls no model."""
+    to_triage = to_judge = 0
+    for cands in lists:
+        for lo in range(0, len(cands), contradictions.CHUNK):
+            chunk = cands[lo:lo + contradictions.CHUNK]
+            answers = ["yes"] * len(chunk)
+            if contradictions.TRIAGE:
+                try:
+                    answers = contradictions.triage(
+                        chunk, texts if contradictions.TRIAGE_MODE == "safe" else None)
+                except llm.CacheMiss:
+                    to_triage += len(chunk)   # not triaged yet: counted as if all pass
+            to_judge += sum(1 for cand, a in zip(chunk, answers)
+                            if a != "no" and contradictions.estimate_cost([cand], texts)[1])
+    return to_triage, to_judge
+
+
+def dry_replay(args, kept):
+    """--dry-run on a report with an earlier run: rebuild its pairs from the cache ($0)."""
+    name = run_name(args)
+    contradictions.TRIAGE_MODE = args.triage
+    llm.CACHE_ONLY = True
+    print("\nReplaying the last run from the cache (CACHE_ONLY: no API call, $0):")
+    try:
+        found = claims.extract_claims(kept, max_cost_usd=0, pdf_stem=name)
+        previous = load_previous(name)
+        new_pages, _ = resolve_rerun(args, previous, len(found))
+        texts = {p["page"]: p["text"] for p in kept}
+        tor = (contradictions.tor_location_counts(promises.TOR_PDF)
+               if Path(args.pdf).name == promises.EIA_PDF.name else ())
+        old, added, cands = build_candidates(args, found, previous, new_pages, tor)
+        to_triage, to_judge = pending([cands] if old is None else [old, added], texts)
+    except llm.CacheMiss as e:
+        sys.exit(f"Not everything before the verdicts is cached, so a --run would pay for "
+                 f"keys or triage ({e}). Nothing was called.")
+    finally:
+        llm.CACHE_ONLY = False
+    print(f"Would judge {to_judge} pair(s) with Ultra ({to_triage} still to triage) out of "
+          f"{len(cands)} candidates; the rest have cached verdicts or are dropped by triage. "
+          f"Spent: ${llm.session_cost_usd:.2f}.")
 
 
 def run_audit(args, kept, per):
@@ -151,7 +282,11 @@ def run_audit(args, kept, per):
     texts = {p["page"]: p["text"] for p in kept}
     tor = (contradictions.tor_location_counts(promises.TOR_PDF)
            if Path(args.pdf).name == promises.EIA_PDF.name else ())
-    cands = contradictions.candidate_pairs(found, max_candidates=10**6, tor_counts=tor, keyed=True)
+    previous = None if args.fresh else load_previous(name)
+    args.new_pages, args.reuse_passages = resolve_rerun(args, previous, len(found))
+    old, added, cands = build_candidates(args, found, previous, args.new_pages, tor)
+    base = ([c for c in found if c["page"] not in set(parse_pages(args.new_pages))]
+            if args.new_pages else found)
     st = pairing.last_stats
     print(f"Pairing: {st.get('numeric_claims')} numeric claims -> {st.get('groups')} subject groups, "
           f"{st.get('representatives')} distinct values; {st.get('pairs_same_key')} same-key + "
@@ -171,8 +306,16 @@ def run_audit(args, kept, per):
 
     t0, c0 = time.perf_counter(), llm.session_cost_usd
     left = args.max_cost - (llm.session_cost_usd - spent0)
-    findings = contradictions.check(cands, texts, max_cost_usd=left, pdf_stem=name,
-                                    ledger=found)
+    if old is None:
+        findings = contradictions.check(cands, texts, max_cost_usd=left, pdf_stem=name,
+                                        ledger=found)
+    else:   # the earlier list first (all cached), then the added pairs, numbered after it
+        findings = contradictions.check(old, texts, max_cost_usd=left, ledger=found)
+        first = dict(contradictions.last_run)
+        left = args.max_cost - (llm.session_cost_usd - spent0)
+        findings += contradictions.check(added, texts, max_cost_usd=left, ledger=found,
+                                         first_n=len(old) + 1)
+        contradictions.last_run.update(merge_runs(first, contradictions.last_run))
     stage("triage + verdicts", t0, c0)
     if not args.pages:   # the 10-page evaluation rewrites <stem>/contradictions.jsonl; keep a copy
         contradictions.save_findings(f"{stem}/full_run", findings)
@@ -181,7 +324,19 @@ def run_audit(args, kept, per):
 
     t0, c0 = time.perf_counter(), llm.session_cost_usd
     budget = copycheck.Budget(args.top_passages * 3)
-    passages = copycheck.select_passages(found, texts, max_passages=args.top_passages)
+    if args.reuse_passages and previous and previous.get("copy_passage_list"):
+        budget = copycheck.Budget(0)   # cached replies only: a new search stops the check
+        passages = [{"page": p["page"], "text": p["text"], "claim_ids": p.get("claim_ids", []),
+                     "score": p.get("score")} for p in previous["copy_passage_list"]]
+    elif args.reuse_passages and previous:
+        # Runs before Oct 27 15:00 did not save their passages. The Oct 27 run checked the
+        # top passages by score without the Lightning filter (its reply was cut off), from
+        # the claims it had: use_llm=False on those claims reproduces the list exactly.
+        budget = copycheck.Budget(0)
+        passages = copycheck.select_passages(base if args.new_pages else found, texts,
+                                             max_passages=previous["copy_passages"], use_llm=False)
+    else:
+        passages = copycheck.select_passages(found, texts, max_passages=args.top_passages)
     copy, copy_stopped = copycheck.check_passages(passages, budget, pages=texts)
     stage("copy-paste", t0, c0)
 
@@ -189,12 +344,57 @@ def run_audit(args, kept, per):
                           copy_stopped, stages, llm.session_cost_usd - spent0,
                           time.perf_counter() - wall0)
     report["triage_audit"] = audit
+    if previous and previous.get("run_totals"):
+        report["run_totals"] = add_sitting(previous["run_totals"], report, args)
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / f"audit_{name}.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (RESULTS / f"audit_{name}.md").write_text(report_md(report), encoding="utf-8")
     print("\n" + report_md(report))
     print(f"Saved {out.relative_to(ROOT)} and .md")
+
+
+def load_previous(name):
+    path = RESULTS / f"audit_{name}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def signature(cand):
+    return cand["kind"], tuple(sorted(c["id"] for c in cand["claims"]))
+
+
+def merge_runs(a, b):
+    """last_run of two check() calls on consecutive candidate lists, as one run."""
+    out = {"verdicts": a["verdicts"] + b["verdicts"], "failed": a["failed"] + b["failed"],
+           "stopped": a["stopped"] or b["stopped"], "cost_usd": a["cost_usd"] + b["cost_usd"]}
+    if a.get("triage") is not None:
+        out["triage"] = {k: a["triage"].get(k, 0) + (b.get("triage") or {}).get(k, 0)
+                         for k in a["triage"]}
+        out["triage_answers"] = a["triage_answers"] + (b.get("triage_answers") or [])
+        out["triaged_out"] = a["triaged_out"] + (b.get("triaged_out") or [])
+    return out
+
+
+def add_sitting(totals, report, args):
+    """The earlier sittings' totals plus this one (cost, calls, tokens, wall clock, Tavily)."""
+    per = {m: dict(v) for m, v in totals["per_model"].items()}
+    for m, s in report["calls_per_model"].items():
+        row = per.setdefault(m.split("/")[-1], {"api_calls": 0, "prompt_tokens": 0,
+                                                "completion_tokens": 0, "cost_usd": 0.0})
+        for k in ("api_calls", "prompt_tokens", "completion_tokens"):
+            row[k] += s[k]
+        row["cost_usd"] = round(row["cost_usd"] + s["cost_usd"], 4)
+    when = time.strftime("%b %d %H:%M")
+    return {**totals, "per_model": per,
+            "cost_usd": round(totals["cost_usd"] + report["cost_usd"], 4),
+            "wall_clock_s": round(totals["wall_clock_s"] + report["wall_clock_s"]),
+            "tavily_credits": totals["tavily_credits"] + report["tavily"]["credits"],
+            "tavily_credits_new": totals.get("tavily_credits_new", 0) + report["tavily"]["credits"],
+            "note": totals["note"] + f" Plus a top-up sitting ({when}, --new-pages "
+                                     f"{args.new_pages}, ${report['cost_usd']:.2f}).",
+            "sittings": totals.get("sittings", []) + [{"when": when, "cost_usd": report["cost_usd"],
+                                                       "wall_clock_s": report["wall_clock_s"],
+                                                       "new_pages": args.new_pages}]}
 
 
 def triage_audit(args, cands, con_run, texts, found, spent0, seed=42):
@@ -242,6 +442,7 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
     new.sort(key=lambda f: ({"RED": 0, "ORANGE": 1}[f["grade"]], f["id"]))
     return {
         "pdf": Path(args.pdf).name, "name": name, "pages": args.pages, "triage": args.triage,
+        "new_pages": args.new_pages,
         "workers": llm.WORKERS, "max_cost_usd": args.max_cost,
         "pages_audited": len(kept), "claims": len(found), "candidates": len(cands),
         "triage_answers": con_run.get("triage"), "verdicts": con_run.get("verdicts"),
