@@ -247,6 +247,8 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         "triage_answers": con_run.get("triage"), "verdicts": con_run.get("verdicts"),
         "verdicts_failed": con_run.get("failed"), "stopped": con_run.get("stopped"),
         "copy_passages": len(copy), "copy_stopped": copy_stopped,
+        "copy_passage_list": [{"page": r["page"], "text": r["passage"],
+                               "claim_ids": r["claim_ids"]} for r in copy],
         "pairing": {k: v for k, v in pairing.last_stats.items() if k != "dropped_groups"},
         "pairing_dropped_by_cap": pairing.last_stats.get("dropped_groups", []),
         "cost_usd": round(spent, 4), "wall_clock_s": round(wall_s, 1), "stages": stages,

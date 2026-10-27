@@ -424,6 +424,10 @@ def extract_claims(pages, max_cost_usd=MAX_COST_USD, pdf_stem=None, rule_pass=Tr
             if raw is None:   # stuck repeating a row: keep the complete rows (cached reply)
                 raw = salvage_claims(llm.chat(model, messages, thinking=False,
                                               max_tokens=VISION_LONG_MAX_TOKENS, temperature=0))
+        if raw is None:   # any model: keep the complete rows of the first (cached) reply.
+            # In the full run 7 pages were lost this way, e.g. p.939 and p.1166 (Lightning).
+            raw = salvage_claims(llm.chat(model, messages, thinking=False,
+                                          max_tokens=max_tokens, temperature=0))
         return model, raw
 
     replies, stop = llm.run_parallel(ask, usable, estimate=estimate_page_cost,

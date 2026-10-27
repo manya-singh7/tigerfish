@@ -211,17 +211,34 @@ textbook descriptions that could appear in any report) are not site-specific.
 Return JSON only: {"site_specific": [numbers of the site-specific passages]}"""
 
 
+SITE_SPECIFIC_BATCH = 20       # passages per LIGHTNING call
+SITE_SPECIFIC_CHARS = 600      # of each passage: enough to tell site data from boilerplate
+
+
 def lightning_site_specific(passages):
-    """Indices (0-based) LIGHTNING calls site-specific; one batched call. None on failure."""
+    """Indices (0-based) LIGHTNING calls site-specific, asked SITE_SPECIFIC_BATCH at a time.
+
+    One call for all 200 passages of the full run (64k tokens: whole species tables) ran out
+    of reply tokens listing "1, 2, 3, ..." and the filter was skipped. A batch whose reply is
+    unusable keeps all its passages (the phrase filter still applies). None if all failed.
+    """
     if not passages:
         return set()
-    listing = "\n".join(f"{i}. {p}" for i, p in enumerate(passages, 1))
-    raw = claims_mod.chat_json(llm.LIGHTNING, [
-        {"role": "system", "content": SITE_SPECIFIC_PROMPT},
-        {"role": "user", "content": listing}], max_tokens=500)
-    if not isinstance(raw, dict) or not isinstance(raw.get("site_specific"), list):
-        return None
-    return {int(i) - 1 for i in raw["site_specific"] if str(i).isdigit()}
+    keep, failed = set(), 0
+    starts = range(0, len(passages), SITE_SPECIFIC_BATCH)
+    for start in starts:
+        batch = passages[start:start + SITE_SPECIFIC_BATCH]
+        listing = "\n".join(f"{i}. {p[:SITE_SPECIFIC_CHARS]}" for i, p in enumerate(batch, 1))
+        raw = claims_mod.chat_json(llm.LIGHTNING, [
+            {"role": "system", "content": SITE_SPECIFIC_PROMPT},
+            {"role": "user", "content": listing}], max_tokens=300)
+        if not isinstance(raw, dict) or not isinstance(raw.get("site_specific"), list):
+            failed += 1
+            keep |= set(range(start, start + len(batch)))
+            continue
+        keep |= {start + int(i) - 1 for i in raw["site_specific"]
+                 if str(i).isdigit() and 1 <= int(i) <= len(batch)}
+    return None if failed == len(starts) else keep
 
 
 def select_passages(ledger, pages, max_passages=MAX_PASSAGES, use_llm=True):
@@ -314,7 +331,11 @@ def grade_hit(passage, hit_text, ov, is_same_project, species_names=()):
     shared_nums = nums & significant_numbers(hit_text)
     low = hit_text.lower()
     shared_species = [n for n in species_names if n.lower() in passage.lower() and n.lower() in low]
-    data_match = (len(shared_nums) >= min(2, len(nums)) and nums) or len(shared_species) >= 2
+    # One shared number alone is not data: "A total of 10 species of amphibians have been
+    # reported from the ..." is a stock sentence (p.327 matched a ZSI book on Vembanad Lake).
+    data_match = (len(shared_nums) >= 2
+                  or (len(shared_nums) == 1 and len(shared_species) >= 1)
+                  or len(shared_species) >= 2)
     if data_match and ov["longest_run"] >= MIN_RUN:
         return "RED", (f"site-specific data also in the other document "
                        f"(numbers {sorted(shared_nums)}; species {shared_species})")

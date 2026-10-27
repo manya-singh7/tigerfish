@@ -82,6 +82,27 @@ def test_lightning_can_reject_and_cap_applies(monkeypatch):
     assert len(cc.select_passages(ledger, pages, max_passages=1)) == 1
 
 
+def test_site_specific_is_asked_in_small_batches(monkeypatch):
+    # 45 passages -> batches of 20, 20, 5. The middle batch's reply is broken: its passages
+    # are kept (not judged), and the other batches' answers still filter.
+    calls = []
+
+    def fake(model, messages, max_tokens, thinking=False):
+        lines = messages[1]["content"].splitlines()
+        calls.append(len(lines))
+        if len(calls) == 2:
+            return None
+        return {"site_specific": [i for i, line in enumerate(lines, 1) if "keep" in line]}
+
+    monkeypatch.setattr(cc.claims_mod, "chat_json", fake)
+    passages = [("keep " if i % 3 == 0 else "drop ") + "x" * 2000 for i in range(45)]
+    got = cc.lightning_site_specific(passages)
+    assert calls == [20, 20, 5]
+    assert got == ({i for i in range(45) if i % 3 == 0} | set(range(20, 40)))
+    monkeypatch.setattr(cc.claims_mod, "chat_json", lambda *a, **k: None)
+    assert cc.lightning_site_specific(passages) is None
+
+
 def test_broken_lightning_answer_keeps_phrase_filter(monkeypatch):
     monkeypatch.setattr(cc.claims_mod, "chat_json", lambda *a, **k: None)
     ledger, pages = ledger_and_pages()
@@ -323,3 +344,13 @@ def test_borrowed_text_only_for_generic_hits(grade, why):
 def test_citation_terms():
     assert cc.citation_terms("https://www.fhwa.dot.gov/x", "Chapter 3: Wildlife crossings") == \
         ["fhwa", "Chapter 3: Wildlife crossings"]
+
+
+def test_one_shared_number_in_a_stock_sentence_is_not_red():
+    # p.327 vs a ZSI book on Vembanad Lake (Kerala): same sentence template, same "10".
+    passage = ("A total of 10 species of amphibians have been reported from the island including "
+               "the endemic Nicobar Tree Frog")
+    other = ("AMPHIBIA A total of 10 species of amphibians have been reported from the Vembanad "
+             "Lake area. The Malabar Gliding Frog was rarely sighted.")
+    grade, _ = cc.grade_hit(passage, other, cc.overlap(passage, other), is_same_project=False)
+    assert grade in (None, "NONE", "ORANGE")

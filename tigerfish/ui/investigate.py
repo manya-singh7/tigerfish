@@ -124,7 +124,7 @@ def memo_html(memo):
 
 
 def render(report_id, finding, report_title):
-    inv = saved(report_id, finding["id"])
+    inv = saved(report_id, finding.get("investigation_id") or finding["id"])
     if inv is None:
         ok, why = can_run(report_id)
         if st.button("Investigate", key=f"inv::{report_id}::{finding['id']}", disabled=not ok,

@@ -324,6 +324,10 @@ def page_images(prefix, findings, shared):
         attach_images([f], images, relative_to=RESULTS)
 
 
+# results/investigations/ were recorded on the 10-page export, where gn-001 was ct-003; the
+# full run numbers findings differently (gn-001 is ct-031), so link them by known issue.
+RECORDED_FOR_ISSUE = {"gn-001": "ct-003"}
+
 SKIP_LABELS = {"hindi": "Hindi", "lab_report": "lab sheets", "annexure": "forms",
                "error": "unreadable"}
 
@@ -342,7 +346,15 @@ def full_run_core():
     known = {r["finding_id"]: r["id"] for r in rows if r["finding_id"]}
     ledger = [c for c in claims.load_ledger(GN_PDF.stem) if c["page"] in texts]
     budget = copycheck.Budget(max(run["tavily"]["credits"], 1))  # cached: no new credits
-    passages = copycheck.select_passages(ledger, texts, max_passages=run["copy_passages"])
+    if run.get("copy_passage_list"):     # the passages the run checked, as it saved them
+        passages = [{"page": p["page"], "text": p["text"], "claim_ids": p.get("claim_ids", []),
+                     "score": p.get("score")} for p in run["copy_passage_list"]]
+    else:
+        # Older runs did not save their passages. In the Oct 27 full run the Lightning
+        # site-specific filter failed (reply cut off), so the run checked the top passages
+        # by score without it: use_llm=False reproduces that exactly, with no new calls.
+        passages = copycheck.select_passages(ledger, texts, max_passages=run["copy_passages"],
+                                             use_llm=False)
     copy, stopped = copycheck.check_passages(passages, budget, pages=texts)
     if stopped:
         print(f"WARNING copy-paste export stopped: {stopped}")
@@ -376,6 +388,10 @@ def great_nicobar():
     findings += accreditation_findings()
     findings += promise_findings(report_id)
     findings = dedupe(findings)
+    for f in findings:   # recorded investigations keep the id they were recorded under
+        rec = RECORDED_FOR_ISSUE.get(f.get("known_issue"))
+        if rec and rec != f["id"]:
+            f["investigation_id"] = rec
     if full:   # species/ToR images are made above; the rest share one image per page
         page_images(f"{report_id}_full", [f for f in findings if not f["images"]], shared=True)
 
@@ -408,12 +424,16 @@ def great_nicobar():
         out["pages_note"] = (f"pages audited; {n_skipped} skipped: {'/'.join(kinds)}"
                              if n_skipped else "pages audited")
         # The full audit's own cost, credits and wall clock, plus the separate ToR run.
-        out["cost"] = {"nebius_usd": round(run["cost_usd"] + promises_usd, 4),
-                       "tavily_credits": run["tavily"]["credits"], "gbif_calls": gbif,
-                       "approx_seconds": run["wall_clock_s"],
+        # run_totals (when present) covers every run the audit took, not just the last one.
+        tot = run.get("run_totals") or {"cost_usd": run["cost_usd"],
+                                        "tavily_credits": run["tavily"]["credits"],
+                                        "wall_clock_s": run["wall_clock_s"]}
+        out["cost"] = {"nebius_usd": round(tot["cost_usd"] + promises_usd, 4),
+                       "tavily_credits": tot["tavily_credits"], "gbif_calls": gbif,
+                       "approx_seconds": tot["wall_clock_s"],
                        "time_note": "wall clock, full audit, 6 parallel calls"}
-        out["full_run"] = {"file": FULL_RUN.name, "cost_usd": run["cost_usd"],
-                           "wall_clock_s": run["wall_clock_s"],
+        out["full_run"] = {"file": FULL_RUN.name, "cost_usd": tot["cost_usd"],
+                           "wall_clock_s": tot["wall_clock_s"],
                            "pages_audited": run["pages_audited"]}
     return report_id, out
 
