@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 
 from tigerfish import ask, fulltext
+from tigerfish.ui import badges
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "results"
@@ -106,7 +107,8 @@ def render_memo(report_id):
             pages = ", ".join(f"p.{p}" for p in issue["pages"])
             st.markdown(f"<div class='tf-check'>{n}. {esc(CATEGORY.get(issue['category'], issue['category']))}"
                         f" · {esc(pages)}</div><div class='tf-card-title'>{esc(issue['title'])}</div>"
-                        f"<div class='tf-message'>{esc(issue['summary'])}</div>"
+                        + badges.html(badges.memo_badges(m))
+                        + f"<div class='tf-message'>{esc(issue['summary'])}</div>"
                         + "".join(citation_html(c) for c in issue["citations"])
                         + f"<div class='tf-ev'><span class='tf-ev-label'>Why it matters (Ultra's "
                           f"reasoning, not checked):</span> {esc(issue['reasoning'])}</div>"
@@ -123,13 +125,14 @@ def render_memo(report_id):
 
 def answer_html(a):
     from tigerfish.ui.style import esc
+    body = badges.html(badges.ask_badges(a))
     if not a["report_says"]:
-        body = f"<div class='tf-message'><b>{esc(ask.DOES_NOT_SAY)}</b></div>"
+        body += f"<div class='tf-message'><b>{esc(ask.DOES_NOT_SAY)}</b></div>"
         if a.get("model_answer_unverified"):
             body += (f"<div class='tf-ev-label' style='font-size:0.85rem'>Ultra's answer had no quote "
                      f"that could be found in the report, so it is not shown as an answer.</div>")
     else:
-        body = (f"<div class='tf-ev-label' style='font-size:0.8rem'>Ultra's answer (a summary; only "
+        body += (f"<div class='tf-ev-label' style='font-size:0.8rem'>Ultra's answer (a summary; only "
                 f"the quotes below are checked)</div><div class='tf-message'>{esc(a['answer'])}</div>"
                 + "".join(citation_html(c) for c in a["citations"]))
     return body + unverified_html(a["unverified_citations"])

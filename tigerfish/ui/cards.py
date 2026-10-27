@@ -2,13 +2,13 @@
 
 import streamlit as st
 
-from tigerfish.ui import crops, data, feedback, investigate
+from tigerfish.ui import badges, crops, data, feedback, investigate
 from tigerfish.ui.style import badge, esc, stat
 
 REVIEW_OPTIONS = list(feedback.DECISIONS)
 # Checks whose linked evidence was found with Tavily search / extract (every URL in their
 # evidence comes from a cached Tavily response). GBIF and report-page links are not Tavily.
-TAVILY_CHECKS = ("copy_paste", "borrowed_text", "accreditation", "legal_schedule")
+TAVILY_CHECKS = badges.TAVILY_CHECKS
 
 
 def review_key(report_id, finding_id):
@@ -84,7 +84,8 @@ def finding_card(report_id, f, report_title=""):
                  if f.get("known_issue") else "")
         st.markdown(f'{badge(f["grade"])}<span class="tf-check">{esc(f["check_name"])}</span>{known}'
                     f'<div class="tf-card-title">{esc(f["title"])}</div>'
-                    f'<div class="tf-message">{esc(f["message"])}</div>', unsafe_allow_html=True)
+                    + badges.html(badges.finding_badges(f, badges.readers(report_id)))
+                    + f'<div class="tf-message">{esc(f["message"])}</div>', unsafe_allow_html=True)
 
         quotes = f["quotes"]
         cols = st.columns(len(quotes)) if len(quotes) > 1 else [st.container()]

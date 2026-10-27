@@ -7,13 +7,16 @@ Live mode appears only when NEBIUS_API_KEY is set.
 
 import streamlit as st
 
-from tigerfish.ui import (cards, data, feedback, inspector, letter, live, memo_ask, method, official,
-                          promises, rti, species_map, web_evidence)
+from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
+                          official, promises, rti, species_map, web_evidence)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
 st.set_page_config(page_title="TigerFish", layout="wide", initial_sidebar_state="collapsed")
 st.markdown(CSS, unsafe_allow_html=True)
+
+# ---------- hero: one finding first (filled in once the report is loaded) ----------
+hero_slot = st.container()
 
 # ---------- header ----------
 st.markdown('<div class="tf-title">TigerFish</div>'
@@ -43,6 +46,8 @@ else:
         st.stop()
     report = data.load(titles[choice])
     st.caption(f"Saved results. Source: {report.get('source', '')}")
+    with hero_slot:
+        hero.render(report)
 
 findings_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
     ["Findings", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web", "Scanned pages",

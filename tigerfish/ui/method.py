@@ -8,6 +8,8 @@ import streamlit as st
 from tigerfish import claims, contradictions, copycheck, promises, species
 from tigerfish.ui import costs
 
+LIMITATIONS_URL = "https://github.com/manya-singh7/tigerfish/blob/main/docs/LIMITATIONS.md"
+
 METHOD = f"""
 #### What TigerFish checks
 
@@ -63,6 +65,10 @@ wrong, only that it does not agree with another statement or with public records
 
 #### Known limits
 
+The full list of limitations and failure cases, with evidence from our own runs, is in
+[docs/LIMITATIONS.md]({LIMITATIONS_URL}) (also shown below this section). Every flag is a lead
+for human review, not a verdict.
+
 - **GBIF sampling gaps.** Absence of GBIF records does not prove absence of a species. Areas with
   fewer than {species.MIN_EFFORT} records of the same class within {species.LOCAL_KM} km count as
   too little surveyed (GREY), unless the wider {species.REGIONAL_KM} km region is surveyed
@@ -98,6 +104,7 @@ wrong, only that it does not agree with another statement or with public records
 
 
 EVAL_FILE = Path(__file__).resolve().parents[2] / "results" / "eval.json"
+LIMITATIONS_FILE = Path(__file__).resolve().parents[2] / "docs" / "LIMITATIONS.md"
 
 
 def _table(headers, rows):
@@ -135,6 +142,22 @@ def render_evaluation():
     costs.render(e)
 
 
+def limitations_text():
+    """docs/LIMITATIONS.md without its title line, or "" if the file is missing."""
+    if not LIMITATIONS_FILE.exists():
+        return ""
+    lines = LIMITATIONS_FILE.read_text(encoding="utf-8").splitlines()
+    return "\n".join(lines[1:] if lines and lines[0].startswith("# ") else lines).strip()
+
+
+def render_limitations():
+    text = limitations_text()
+    if text:
+        with st.expander("Known limitations and failure cases (docs/LIMITATIONS.md)"):
+            st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
+
+
 def render():
     st.markdown(METHOD)
+    render_limitations()
     render_evaluation()
