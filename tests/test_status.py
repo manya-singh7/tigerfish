@@ -1,3 +1,4 @@
+import json
 """Status check (IUCN + WPA schedules) with GBIF and Tavily mocked."""
 
 import pytest
@@ -213,19 +214,23 @@ class TieredTavily:
 
     def __init__(self, primary_text, official_text):
         self.primary_text, self.official_text, self.searches = primary_text, official_text, []
+        self.modes = []
 
     def search(self, **kw):
         domains = kw.get("include_domains")
         self.searches.append(domains)
-        url = ("https://egazette.gov.in/wpa.pdf" if domains == status.PRIMARY_SEARCH_DOMAINS else
-               "https://prsindia.org/wpa" if domains else "https://blog.example/wpa")
-        return {"results": [{"url": url, "content": ""}], "usage": {"credits": 1}}
+        self.modes.append(kw.get("include_domains_mode"))
+        urls = (["https://egazette.gov.in/wpa.pdf"] if domains == status.PRIMARY_SEARCH_DOMAINS else
+                ["https://prsindia.org/wpa", "https://blog.example/wpa"]   # prefer: PRS first, web too
+                if kw.get("include_domains_mode") == "prefer" else
+                ["https://prsindia.org/wpa"] if domains else ["https://blog.example/wpa"])
+        return {"results": [{"url": u, "content": ""} for u in urls], "usage": {"credits": 1}}
 
     def extract(self, **kw):
-        url = kw["urls"][0]
-        text = (self.primary_text if "egazette" in url else
-                self.official_text if "prsindia" in url else SOURCE)
-        return {"results": [{"url": u, "raw_content": text} for u in kw["urls"]]}
+        def text(url):
+            return (self.primary_text if "egazette" in url else
+                    self.official_text if "prsindia" in url else SOURCE)
+        return {"results": [{"url": u, "raw_content": text(u)} for u in kw["urls"]]}
 
 
 @pytest.fixture
@@ -266,9 +271,11 @@ def test_prs_fallback_is_labelled_authoritative_non_government(tiered):
 
 
 def test_open_web_fallback_is_labelled(tiered):
+    """New runs: one prefer-mode search covers official sites + PRS and then the open web."""
     fake = tiered(NOTHING, NOTHING)
     cur = status.current_schedules(copycheck.Budget(10))
-    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS, status.OFFICIAL_SEARCH_DOMAINS, None]
+    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS, status.OFFICIAL_SEARCH_DOMAINS]
+    assert fake.modes == [None, "prefer"]
     assert not cur["official"] and cur["label"] == "non-official source"
     v = status.check_schedule("Rattus rattus", "Sch-V", cur)
     assert "(non-official source)" in v["evidence"] and v["grade"] == "ORANGE"
@@ -280,3 +287,17 @@ def test_not_evaluated_is_grey_not_outdated():
            "iucn_url": "https://www.iucnredlist.org/search?query=Sida%20acuta"}
     r = status.check_iucn("Sida acuta", "LC", cur)
     assert r["grade"] == "GREY" and "not evaluated" in r["evidence"]
+
+
+def test_cached_old_tier_run_replays_three_tiers(tiered, tmp_path):
+    """A run cached with the old restrict-then-open-web tiers is replayed the old way."""
+    fake = tiered(NOTHING, NOTHING)
+    old = copycheck._cache_path("search", {"query": status.WPA_QUERY, "search_depth": "basic",
+                                           "max_results": copycheck.SEARCH_RESULTS,
+                                           "exact_match": False,
+                                           "include_domains": list(status.OFFICIAL_SEARCH_DOMAINS)})
+    old.write_text(json.dumps({"data": {"results": [{"url": "https://prsindia.org/wpa", "content": ""}]}}),
+                   encoding="utf-8")
+    cur = status.current_schedules(copycheck.Budget(10))
+    assert fake.searches == [status.PRIMARY_SEARCH_DOMAINS, None]   # tier 2 came from the cache
+    assert fake.modes == [None, None] and cur["label"] == "non-official source"

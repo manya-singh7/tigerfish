@@ -1,21 +1,19 @@
 """Cuddalore as a second report: site profile, its own checks, the partial-audit label, the
 resume's cost totals, the Tamil letter and the app in replay mode (no keys)."""
 
-import io
 import json
 import sys
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
-from docx import Document
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import audit  # noqa: E402
 import export_results as ex  # noqa: E402
-from tigerfish import accreditation, llm, sites, status_pages  # noqa: E402
+from tigerfish import accreditation, sites, status_pages  # noqa: E402
 from tigerfish.ui import letter  # noqa: E402
 
 REPORT_JSON = ROOT / "results" / "cuddalore_port_2026_draft.json"
@@ -97,36 +95,16 @@ def test_omission_summary_lines_are_not_merged():
     assert not ex.same_finding(a, b) and ex.same_finding(a, a)
 
 
-# ---------- Tamil letter ----------
+# ---------- Tamil letter (one implementation: tigerfish/ui/letter.py, tested in
+# tests/test_letter_tamil.py; here only that the Cuddalore report gets it) ----------
 
-FINDINGS = [{"check_name": "Internal contradiction", "title": "Pages 239 and 433 disagree",
-             "quotes": [{"page": 239, "text": "Among the 107 plant species reported from the study area"}],
-             "why": "107 vs 187 plant species.", "evidence": [], "clear": "A correction."}]
-
-
-def fake_tamil(model, messages, **kw):
-    texts = json.loads(messages[1]["content"])["texts"]
-    assert "Tamil" in messages[0]["content"]
-    return json.dumps({"translations": ["தமிழ்: " + t for t in texts]}, ensure_ascii=False)
-
-
-def test_tamil_offered_for_tamil_nadu_only():
-    assert letter.state_language({"state": "Tamil Nadu"}) == "ta"
-    assert letter.state_language({"state": "Andaman and Nicobar Islands"}) is None
-    assert letter.parts("both") == ["en", "hi"] and letter.parts("en+ta") == ["en", "ta"]
-
-
-def test_tamil_letter_keeps_quotes_and_pages(monkeypatch):
-    monkeypatch.setattr(llm, "chat", fake_tamil)
-    body = letter.build_letter({"title": "Cuddalore", "source": "Draft"}, FINDINGS, "en+ta")
-    doc = Document(io.BytesIO(body))
-    text = "\n".join(p.text for p in doc.paragraphs)
-    assert text.index("Sir / Madam,") < text.index("தமிழ்: Sir / Madam,")
-    assert "தமிழ்: The report states (page 239):" in text
-    assert text.count("“Among the 107 plant species reported from the study area”") == 2
-    tags = {e.get("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val")
-            for e in doc.element.body.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}lang")}
-    assert "ta-IN" in tags
+@pytest.mark.skipif(not REPORT_JSON.exists(), reason="run scripts/export_results.py")
+def test_cuddalore_report_offers_tamil():
+    d = json.loads(REPORT_JSON.read_text(encoding="utf-8"))
+    assert letter.offers_tamil(d)
+    opts = letter.language_options(d)
+    assert opts["Tamil"] == "ta" and opts["English + Tamil"] == "both_ta"
+    assert not letter.offers_tamil({"title": "Great Nicobar EIA", "state": "Andaman and Nicobar Islands"})
 
 
 # ---------- exported report and the app (replay, no keys) ----------

@@ -11,7 +11,8 @@ import streamlit as st
 from tigerfish import hosted
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
-                          official, promises, review, rti, species_map, web_evidence)
+                          official, promises, public_record, review, rti, species_map,
+                          web_evidence)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -56,9 +57,10 @@ else:
     with hero_slot:
         hero.render(report)
 
-findings_tab, review_tab, memo_tab, promises_tab, web_tab, scanned_tab, method_tab = st.tabs(
-    ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Evidence from the web",
-     "Scanned pages", "Method & limits"])
+(findings_tab, review_tab, memo_tab, promises_tab, record_tab, web_tab, scanned_tab,
+ method_tab) = st.tabs(
+    ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Public record",
+     "Evidence from the web", "Scanned pages", "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -103,22 +105,17 @@ with findings_tab:
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
                 f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
                 f'{feedback.where()}.</div>', unsafe_allow_html=True)
-    lang_options = {"English": "en", "Hindi": "hi", "Both": "both"}
-    state_lang = letter.state_language(report)        # e.g. Tamil for a Tamil Nadu report
-    if state_lang:
-        name = letter.LANGUAGES[state_lang]["name"]
-        lang_options.update({name: state_lang, f"English + {name}": f"en+{state_lang}"})
+    lang_options = letter.language_options(report)
     lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
-                          help="Hindi and Tamil are machine-translated (Tamil is offered for "
-                               "reports from Tamil Nadu). Quotes from the report, page numbers "
-                               "and links are never translated. Both = English + Hindi.")
+                          help="Hindi" + (" and Tamil are" if letter.offers_tamil(report) else " is")
+                               + " machine-translated (the letter says so: please review). Quotes "
+                               "from the report, page numbers and links are never translated.")
     lang = lang_options[lang_label]
-    lang_name = " and ".join(letter.LANGUAGES[x]["name"] for x in letter.parts(lang) if x != "en")
     docx_bytes, letter_error = b"", None
     if confirmed:
         try:
             if lang != "en" and hosted.is_hosted():
-                # A translation is a paid (Lightning) call: the session's key and the daily budget
+                # Hindi/Tamil translation is a paid (Lightning) call: the session's key and the daily budget
                 if not hosted.paid_key(st.session_state):
                     raise letter.TranslationUnavailable("no key on the hosted app")
                 with hosted.paid_calls(st.session_state):
@@ -126,9 +123,8 @@ with findings_tab:
             else:
                 docx_bytes = letter.build_letter(report, confirmed, lang)
         except letter.TranslationUnavailable:
-            letter_error = (f"The {lang_name} letter needs the translation model "
-                            f"(NEBIUS_API_KEY), and this selection has not been translated "
-                            f"before. Choose English.")
+            letter_error = ("The translated letter needs the translation model (NEBIUS_API_KEY), and "
+                            "this selection has not been translated before. Choose English.")
     st.download_button(
         "Draft objection letter (.docx)",
         data=docx_bytes,
@@ -161,6 +157,9 @@ with memo_tab:
 
 with promises_tab:
     promises.render(report["id"])
+
+with record_tab:
+    public_record.render(report["id"])
 
 with web_tab:
     web_evidence.render()

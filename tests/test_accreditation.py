@@ -260,40 +260,57 @@ def test_to_date():
 # ---------- official-domain preference ----------
 
 class FakeTavily:
-    def __init__(self, official, web):
-        self.official, self.web, self.calls = official, web, []
+    """include_domains_mode="prefer": official results first, then the open web."""
 
-    def search(self, query, budget, exact=False, include_domains=None):
-        self.calls.append(include_domains)
-        pool = self.official if include_domains else self.web
+    def __init__(self, official, web):
+        self.official, self.web, self.calls, self.depths = official, web, [], []
+
+    def search(self, query, budget, exact=False, include_domains=None, include_domains_mode=None):
+        self.calls.append((include_domains, include_domains_mode))
+        if include_domains_mode == "prefer":
+            pool = self.official + self.web
+        else:
+            pool = self.official if include_domains else self.web
         return {"results": [{"url": u} for u in pool]}
 
-    def extract(self, urls, budget, max_chars=None):
+    def extract(self, urls, budget, max_chars=None, depth="basic"):
+        self.depths.append(depth)
         pages = {"https://nabet.qci.org.in/list.pdf": SOURCE, "https://blog.example/list": SOURCE,
                  "https://nabet.qci.org.in/scheme.pdf": "Scheme documents only"}
         return {u: pages.get(u, "") for u in urls}
 
 
-def use(monkeypatch, fake):
+def use(monkeypatch, fake, legacy=False):
     monkeypatch.setattr(ac.copycheck, "search", fake.search)
     monkeypatch.setattr(ac.copycheck, "extract", fake.extract)
+    monkeypatch.setattr(ac, "legacy_cached", lambda *a, **k: legacy)
 
 
-def test_official_domain_is_searched_first(monkeypatch):
+def test_official_domain_is_preferred_in_one_search(monkeypatch):
     fake = FakeTavily(official=["https://nabet.qci.org.in/scheme.pdf", "https://nabet.qci.org.in/list.pdf"],
                       web=["https://blog.example/list"])
     use(monkeypatch, fake)
     e = ac.official_entry("Vimta Labs Ltd", budget=None, certificate="NABET/EIA/1720/SA 088")
     assert e["label"] == "official source" and e["url"] == "https://nabet.qci.org.in/list.pdf"
-    assert fake.calls == [ac.OFFICIAL_DOMAINS]                # never reached the open web
+    assert fake.calls == [(ac.OFFICIAL_DOMAINS, "prefer")]     # one search, no open-web step
+    assert fake.depths == ["advanced"]                          # official PDF tables
 
 
-def test_open_web_fallback_is_labelled_non_official(monkeypatch):
+def test_open_web_result_is_labelled_non_official(monkeypatch):
     fake = FakeTavily(official=["https://nabet.qci.org.in/scheme.pdf"], web=["https://blog.example/list"])
     use(monkeypatch, fake)
     e = ac.official_entry("Vimta Labs Ltd", budget=None, certificate="NABET/EIA/1720/SA 088")
     assert e["label"] == ac.NON_OFFICIAL and e["url"] == "https://blog.example/list"
-    assert fake.calls[:2] == [ac.OFFICIAL_DOMAINS, ac.OFFICIAL_DOMAINS] and fake.calls[2] is None
+    assert all(mode == "prefer" for _, mode in fake.calls)
+
+
+def test_cached_two_step_run_is_replayed_the_old_way(monkeypatch):
+    fake = FakeTavily(official=["https://nabet.qci.org.in/scheme.pdf"], web=["https://blog.example/list"])
+    use(monkeypatch, fake, legacy=True)
+    e = ac.official_entry("Vimta Labs Ltd", budget=None, certificate="NABET/EIA/1720/SA 088")
+    assert e["label"] == ac.NON_OFFICIAL
+    assert fake.calls[:2] == [(ac.OFFICIAL_DOMAINS, None)] * 2 and fake.calls[2] == (None, None)
+    assert set(fake.depths) == {"basic"}
 
 
 def test_nothing_found_anywhere(monkeypatch):

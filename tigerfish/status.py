@@ -177,10 +177,24 @@ def schedule_count_from_text(text):
     return found
 
 
-def schedule_votes(budget, include_domains=None):
+# New runs: the official-sites tier prefers those sites (include_domains_mode="prefer") instead
+# of a separate open-web search after it. Cached runs of the old three tiers replay as they were.
+PREFER_TIERS = [("India Code / Gazette", PRIMARY_SEARCH_DOMAINS, None),
+                ("official sites and PRS preferred, then the open web", OFFICIAL_SEARCH_DOMAINS, "prefer")]
+
+
+def search_tiers(budget=None):
+    """[(name, domains, include_domains_mode)] for this run."""
+    legacy = copycheck.is_cached("search", query=WPA_QUERY, search_depth="basic",
+                                 max_results=copycheck.SEARCH_RESULTS, exact_match=False,
+                                 include_domains=list(OFFICIAL_SEARCH_DOMAINS))
+    return [(n, d, None) for n, d in SEARCH_TIERS] if legacy else PREFER_TIERS
+
+
+def schedule_votes(budget, include_domains=None, include_domains_mode=None):
     """[(count, sentence, url)] from one Tavily search (+ extract of the top hits)."""
-    results = copycheck.search(WPA_QUERY, budget, exact=False,
-                               include_domains=include_domains).get("results", [])
+    results = copycheck.search(WPA_QUERY, budget, exact=False, include_domains=include_domains,
+                               include_domains_mode=include_domains_mode).get("results", [])
     # Full text: in a Bill, the sentence saying how many schedules remain is often in the
     # Statement of Objects at the very end.
     texts = copycheck.extract([r["url"] for r in results[:WPA_SOURCES]], budget, max_chars=None)
@@ -201,14 +215,15 @@ def wpa_label(url):
 def current_schedules(budget):
     """Current number of WPA schedules from retrieved sources, with the quoted evidence.
 
-    Tiers (SEARCH_TIERS): India Code / Gazette first; then official sites and PRS; then the
-    open web, each only if the earlier tiers gave no usable sentence. The chosen source is
+    Tiers (search_tiers): India Code / Gazette first; then official sites and PRS preferred
+    with the open web after them in one search, only if the earlier tier gave no usable
+    sentence (cached runs of the old official-then-open-web tiers replay as they were). The chosen source is
     labelled by wpa_label. Returns {"count", "quote", "url", "support", "sources", "official",
     "label", "tiers"} or None; "tiers" says what each searched tier gave.
     """
     tiers = []
-    for name, domains in SEARCH_TIERS:
-        votes = schedule_votes(budget, domains)
+    for name, domains, mode in search_tiers(budget):
+        votes = schedule_votes(budget, domains, mode)
         tiers.append({"tier": name, "domains": domains, "found": bool(votes)})
         if votes:
             break

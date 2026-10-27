@@ -5,6 +5,7 @@ quote was verified; plus Tavily usage (searches, extracts, credits, share offici
 import json
 from pathlib import Path
 
+from tigerfish import knowable, public_record, species_photos
 from tigerfish.official_record import AUTHORITATIVE_LABEL, host, is_official, source_label
 from tigerfish.ui import data, official
 from tigerfish.ui.cards import TAVILY_CHECKS
@@ -18,10 +19,31 @@ HOW_VERIFIED = {   # check -> how the quote from the web source was checked
     "legal_schedule": "exact sentence from the Tavily-extracted source text",
     "investigation": "agent quote checked against the text it read with Tavily extract; unverified quotes dropped",
     "official_record": "exact sentence from the Tavily-extracted text (whitespace collapsed)",
+    "knowable": "dated before the report; quote found in the Tavily-extracted text, then confirmed by Ultra",
+    "timeline": "Tavily Research event; its quote found in the Tavily-extracted source text",
+    "photo": "licence and author read from the Commons file page (free licences only)",
 }
 CHECK_LABEL = {"copy_paste": "Copied text", "borrowed_text": "Borrowed text",
                "accreditation": "Consultant accreditation", "legal_schedule": "WPA schedule",
-               "investigation": "Investigate agent", "official_record": "Official record"}
+               "investigation": "Investigate agent", "official_record": "Official record",
+               "knowable": "Knowable at the time", "timeline": "Public record timeline",
+               "photo": "Species photo"}
+
+# Tavily features used across TigerFish, and where (shown in this tab and in the README).
+FEATURES = [
+    ("Search + extract", "every web-backed check: copied text, official record, accreditation, WPA schedule"),
+    ("exact_match", "copy-paste check: only pages containing the quoted phrase verbatim"),
+    ("include_domains", "official-only searches; Commons-only image search"),
+    ("include_domains_mode=\"prefer\"", "official and scientific sites first in one search "
+     "(knowable at the time, accreditation, WPA schedule) instead of an official search plus an open-web fallback"),
+    ("end_date / start_date", "sources published before the report (knowable at the time); news after it"),
+    ("topic=\"news\"", "what happened next, per verified finding"),
+    ("Research (structured output)", "one call for the project's clearance timeline, {date, event, source, quote}"),
+    ("include_images", "species photos from Wikimedia Commons, with licence and author"),
+    ("language + filter_by_language", "Hindi and Tamil coverage of the public hearing"),
+    ("extract_depth=\"advanced\"", "official PDF tables (NABET accreditation lists); pages basic extraction cannot read"),
+    ("project_id=\"tigerfish\"", "every request tagged, so usage is tracked per project"),
+]
 
 
 def _row(report, check, claim, title, url, quote=""):
@@ -67,6 +89,30 @@ def official_record_rows(report_id, title):
     return out
 
 
+def knowable_rows(report_id, title):
+    rows = []
+    for f in (knowable.load(report_id) or {}).get("findings", []):
+        for s in f["sources"]:
+            rows.append(_row(title, "knowable", f"{f['title']} (source dated {s['date']})",
+                             s["title"], s["url"], s["quote"]))
+    return rows
+
+
+def timeline_rows(report_id, title):
+    return [_row(title, "timeline", f"{e['date']}: {e['event']}", e["host"], e["source"], e["quote"])
+            for e in (public_record.load(report_id) or {}).get("timeline", [])]
+
+
+def photo_rows(report_id, title):
+    rows = []
+    for fid, r in (((species_photos.load() or {}).get("photos") or {}).get(report_id) or {}).items():
+        p = r.get("photo")
+        if p:
+            rows.append(_row(title, "photo", f"{p['species']} ({p['licence']}, {p['author'][:40]})",
+                             p["title"], p["page"]))
+    return rows
+
+
 def collect():
     """All Tavily-backed facts in the saved results."""
     reports = [data.load(r["id"]) for r in data.reports()]
@@ -74,7 +120,13 @@ def collect():
     rows = []
     for rep in reports:
         rows += finding_rows(rep) + official_record_rows(rep["id"], rep["title"])
+        rows += (knowable_rows(rep["id"], rep["title"]) + timeline_rows(rep["id"], rep["title"])
+                 + photo_rows(rep["id"], rep["title"]))
     return rows + investigation_rows(titles)
+
+
+SEPARATE = ("Official record", "Investigate agent", "Knowable at the time", "Public record timeline",
+            "Species photo")   # counted in their own rows, not in the audit's credits
 
 
 def stats(rows):
@@ -86,7 +138,7 @@ def stats(rows):
         credits = (rep.get("cost") or {}).get("tavily_credits") or 0
         if credits:
             names = sorted({r["check"] for r in rows if r["report"] == rep["title"]
-                            and r["check"] not in ("Official record", "Investigate agent")})
+                            and r["check"] not in SEPARATE})
             out.append({"what": f"{rep['title']}: {', '.join(names) or 'checks'}",
                         "searches": None, "extracts": None, "credits": credits})
         rec = official.load(rep["id"])
@@ -94,6 +146,14 @@ def stats(rows):
             t = rec["tavily"]
             out.append({"what": f"{rep['title']}: official record", "searches": t["searches"],
                         "extracts": t["extracts"], "credits": t["credits"]})
+        k = knowable.load(rep["id"])
+        if k:
+            out.append({"what": f"{rep['title']}: knowable at the time", "searches": k["tavily"]["searches"],
+                        "extracts": k["tavily"]["extracts"], "credits": k["tavily"]["credits"]})
+        pr = public_record.load(rep["id"])
+        if pr and pr["tavily"].get("credits"):
+            out.append({"what": f"{rep['title']}: public record (research, news, local language)",
+                        "searches": None, "extracts": None, "credits": pr["tavily"]["credits"]})
     searches = extracts = credits = 0
     for p in sorted((RESULTS / "investigations").glob("*.json")):
         inv = json.loads(p.read_text(encoding="utf-8"))
@@ -103,6 +163,10 @@ def stats(rows):
     if searches or extracts or credits:
         out.append({"what": "Investigate agent (recorded runs)", "searches": searches,
                     "extracts": extracts, "credits": credits})
+    ph = species_photos.load()
+    if ph and ph["tavily"].get("credits"):
+        out.append({"what": "Species photos (image search)", "searches": ph["tavily"]["credits"],
+                    "extracts": 0, "credits": ph["tavily"]["credits"]})
     urls = {r["url"]: r["official"] for r in rows}
     authoritative = {r["url"] for r in rows if r["label"] == AUTHORITATIVE_LABEL}
     return {"rows": out, "credits": sum(r["credits"] for r in out),
@@ -141,8 +205,11 @@ def render():
                      f"{'-' if r['extracts'] is None else r['extracts']} | {r['credits']} |")
     lines.append(f"| **Total** | | | **{s['credits']}** |")
     st.markdown("\n".join(lines))
-    st.caption("Searches and extracts are recorded for the official-record check and the "
-               "Investigate agent; for the other checks the saved results keep only their credits (-).")
+    st.caption("Searches and extracts are recorded for the official-record, knowable-at-the-time "
+               "and photo checks and the Investigate agent; for the other checks the saved results "
+               "keep only their credits (-).")
+    with st.expander("Tavily features used"):
+        st.markdown("\n".join(f"- **{name}**: {where}" for name, where in FEATURES))
     body = []
     for r in rows:
         badge = badge_html(r)

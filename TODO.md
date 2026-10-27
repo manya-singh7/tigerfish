@@ -83,6 +83,11 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Check GBIF synonym mappings by hand: Pteropus giganteus -> Pteropus vampyrus looks wrong (Indian flying fox is usually P. medius)
 - [ ] Regional-effort fallback is borderline here: 513 mammal records within 500 km vs threshold 500
 
+## Public record / knowable (added Oct 28)
+- [ ] Check by hand the 3 timeline events in the Public record tab (results/public_record_great_nicobar_2021_draft.json) against their sources (dstpcc.andamannicobar.gov.in public-hearing PDF, PIB 2076917)
+- [ ] Check the one "knowable at the time" line (st-06, Mongabay Oct 2025: Macaca fascicularis raised to Endangered in 2022): 16 other findings had no dated pre-report source, so they show nothing
+- [ ] Glance at the 8 species photos (results/species_photos.json): right species, attribution OK
+
 ## What's next / stretch
 - [x] ToR vs EIA check: compare promises in data/eias/great_nicobar_tor_2021.pdf (3-month baseline, corals to 40 m, 20 water/noise sites) with what the EIA delivered (tigerfish/promises.py, scripts/check_promises.py, "ToR promises" tab).
 

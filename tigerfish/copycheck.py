@@ -107,6 +107,7 @@ class Budget:
 
 
 _client = None
+PROJECT_ID = "tigerfish"      # tags every Tavily request (X-Project-ID) for per-project usage
 
 
 def client():
@@ -116,13 +117,18 @@ def client():
         key = os.getenv("TAVILY_API_KEY")
         if not key:
             raise RuntimeError("TAVILY_API_KEY is missing; add it to .env")
-        _client = TavilyClient(api_key=key)
+        _client = TavilyClient(api_key=key, project_id=PROJECT_ID)
     return _client
 
 
 def _cache_path(endpoint, params):
     key = json.dumps({"endpoint": endpoint, "params": params}, sort_keys=True)
     return CACHE_DIR / f"{hashlib.sha256(key.encode()).hexdigest()}.json"
+
+
+def is_cached(endpoint, **params):
+    """True if this exact Tavily call is in the cache (a replay of it is free)."""
+    return _cache_path(endpoint, params).exists()
 
 
 def tavily_call(endpoint, budget, est_credits, **params):
@@ -145,9 +151,18 @@ def tavily_call(endpoint, budget, est_credits, **params):
     return data
 
 
-def search(query, budget, exact=True, include_domains=None):
+def search(query, budget, exact=True, include_domains=None, include_domains_mode=None):
     """Tavily basic search (1 credit). include_domains restricts results to those sites
-    (then this report's own hosts need no excluding)."""
+    (then this report's own hosts need no excluding); with include_domains_mode="prefer" they
+    are ranked first but other sites can still appear (one call instead of an official search
+    followed by an open-web fallback). exact=True (exact_match) is the copy-paste phrase hunt:
+    only pages containing the quoted phrase verbatim."""
+    if include_domains and include_domains_mode:
+        return tavily_call("search", budget, 1, query=query, search_depth="basic",
+                           max_results=SEARCH_RESULTS, exact_match=exact,
+                           include_domains=list(include_domains),
+                           include_domains_mode=include_domains_mode,
+                           exclude_domains=EXCLUDE_DOMAINS)
     if include_domains:
         return tavily_call("search", budget, 1, query=query, search_depth="basic",
                            max_results=SEARCH_RESULTS, exact_match=exact,
@@ -157,15 +172,17 @@ def search(query, budget, exact=True, include_domains=None):
                        exclude_domains=EXCLUDE_DOMAINS)
 
 
-def extract(urls, budget, max_chars=MAX_HIT_CHARS):
+def extract(urls, budget, max_chars=MAX_HIT_CHARS, depth="basic"):
     """{url: text} for the URLs Tavily could extract (failed URLs cost nothing).
 
     Text is cut to max_chars (None = full text; the cache always keeps the full text).
+    depth="advanced" (2 credits per 5 URLs) reads tables in official PDFs more reliably.
     """
     if not urls:
         return {}
-    data = tavily_call("extract", budget, math.ceil(len(urls) / 5), urls=sorted(urls),
-                       extract_depth="basic")
+    per5 = 2 if depth == "advanced" else 1
+    data = tavily_call("extract", budget, per5 * math.ceil(len(urls) / 5), urls=sorted(urls),
+                       extract_depth=depth)
     return {r["url"]: (r.get("raw_content") or "")[:max_chars]
             for r in data.get("results", [])}
 

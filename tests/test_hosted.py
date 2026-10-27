@@ -171,7 +171,7 @@ def fake_response(prompt=1_000_000, completion=0):
 @pytest.fixture
 def fake_api(monkeypatch, tmp_path):
     monkeypatch.delenv("TIGERFISH_MOCK", raising=False)
-    monkeypatch.setenv("NEBIUS_API_KEY", "fake-owner-key")   # no real key needed (fake _create)
+    monkeypatch.setenv("NEBIUS_API_KEY", "test-key")      # dummy: _create is faked, nothing is sent
     monkeypatch.setattr(llm, "_client", None)
     monkeypatch.setattr(llm, "CACHE_DIR", tmp_path / "llm")
     monkeypatch.setattr(llm, "USAGE_LOG", tmp_path / "usage.jsonl")

@@ -1,5 +1,6 @@
 """Browser check of the app in hosted replay mode (no keys): hero, findings with badges and page
-images, species map, official record, letter and RTI downloads, every tab, no exceptions.
+images, species map, official record, letter and RTI downloads, letter-language gating, public record,
+knowable-at-the-time line, species photos, cost card, every tab, no exceptions.
 
 Start the app first:  set TIGERFISH_HOSTED=1 && streamlit run app.py --server.headless true --server.port 8631
 Then:  python scripts/check_hosted_ui.py http://localhost:8631 shots/   (needs requirements-dev.txt)
@@ -65,9 +66,26 @@ with sync_playwright() as p:
         d.value.save_as(str(path))
         ok(f"download {label}", path.stat().st_size > 1000, f"{path.stat().st_size} bytes")
     ok("reviews kept in session (wording)", page.get_by_text("in this browser session only").count() > 0)
+    ok("species photo with attribution", page.locator(".tf-photo img").count() > 0
+       and page.get_by_text("via Wikimedia Commons").count() > 0)
+
+    # letter language: Tamil only for Tamil Nadu reports; a translation without a key is gated
+    radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
+    ok("no Tamil option for a non-Tamil Nadu report", radio.get_by_text("Tamil").count() == 0)
+    radio.get_by_text("Hindi", exact=True).click()
+    try:
+        page.get_by_text("needs the translation model").wait_for(timeout=120_000)   # full rerun
+    except Exception:
+        pass
+    ok("Hindi letter gated without a key", page.get_by_text("needs the translation model").count() > 0
+       and page.get_by_role("button", name="Draft objection letter (.docx)").is_disabled())
+    radio.get_by_text("English", exact=True).click()
+    page.get_by_role("button", name="Draft objection letter (.docx)").and_(
+        page.locator(":enabled")).wait_for(timeout=120_000)
 
     for tab, marker, shot in (("Review queue", "Every new RED/ORANGE flag", "review"),
                               ("Reviewer's memo & Ask", "Ask the report", "memo"),
+                              ("Public record", "Clearance timeline (official sources)", "record"),
                               ("Evidence from the web", "Evidence from the web", "web"),
                               ("Scanned pages", "How TigerFish reads scanned pages", "inspector"),
                               ("Method & limits", "Evaluation", "method")):
@@ -86,7 +104,45 @@ with sync_playwright() as p:
     loaded = page.evaluate("""() => [...document.querySelectorAll('img')].filter(
         i => i.complete && i.naturalWidth > 100 && i.offsetParent !== null).length""")
     ok("inspector images", loaded > 0, f"{loaded} visible images")
+    page.get_by_role("tab", name="Method & limits").click()
+    page.wait_for_timeout(1500)
+    ok("cost card", page.get_by_text("Cost per full audit, by triage mode").count() > 0)
+    page.get_by_role("tab", name="Public record").click()
+    page.wait_for_timeout(1500)
+    ok("public record: what happened next", page.get_by_text("What happened next").count() > 0)
     no_exception(page, "all tabs")
+
+    # second report: knowable-at-the-time line and species photos on its cards
+    page.locator('[data-testid="stSelectbox"]').first.click()
+    page.get_by_role("option", name="Indira Point").click()
+    page.wait_for_timeout(1000)
+    page.get_by_role("tab", name="Findings").click()
+    page.locator(".tf-knowable").first.wait_for(timeout=120_000)
+    ok("knowable at the time line", page.locator(".tf-knowable").count() > 0)
+    ok("species photos (second report)", page.locator(".tf-photo img").count() > 1,
+       f"{page.locator('.tf-photo img').count()} photos")
+    page.screenshot(path=str(OUT / "second_report.png"))
+    no_exception(page, "second report")
+
+    # Cuddalore (Tamil Nadu): partial-audit and not-reviewed notices, Tamil letter offered
+    page.locator('[data-testid="stSelectbox"]').first.click()
+    page.get_by_role("option", name="Cuddalore").click()
+    page.get_by_text("Flags not yet human-reviewed").first.wait_for(timeout=180_000)
+    page.wait_for_timeout(2000)
+    ok("Cuddalore: audit status shown",
+       page.get_by_text("Audit partial").count() > 0 or page.get_by_text("Audit complete").count() > 0)
+    ok("Cuddalore: 'Audit partial' notice", page.get_by_text("Audit partial").count() > 0)
+    ok("Cuddalore: 'Flags not yet human-reviewed' notice",
+       page.get_by_text("Flags not yet human-reviewed").count() > 0)
+    radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
+    try:   # the letter section is far below the notices: wait for this report's full render
+        radio.get_by_text("English + Tamil", exact=True).wait_for(timeout=180_000)
+    except Exception:
+        pass
+    ok("Cuddalore: Tamil letter option", radio.get_by_text("Tamil", exact=True).count() > 0
+       and radio.get_by_text("English + Tamil", exact=True).count() > 0)
+    page.screenshot(path=str(OUT / "cuddalore.png"))
+    no_exception(page, "Cuddalore")
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
     browser.close()
 

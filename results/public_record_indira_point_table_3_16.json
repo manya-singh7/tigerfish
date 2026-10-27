@@ -1,0 +1,44 @@
+{
+ "report_id": "indira_point_table_3_16",
+ "project": "Indira Point project, Great Nicobar",
+ "report_date": "2026-04-01",
+ "timeline": [],
+ "timeline_dropped": [],
+ "research": null,
+ "next": [
+  {
+   "topic": "species",
+   "finding_ids": [
+    "sp-01",
+    "sp-02",
+    "sp-03",
+    "sp-04",
+    "sp-05",
+    "st-06",
+    "st-07"
+   ],
+   "query": "Indira Point REIA mammals species list",
+   "items": []
+  }
+ ],
+ "local": [
+  {
+   "language": "hi",
+   "language_name": "Hindi",
+   "query": "इंदिरा पॉइंट परियोजना जन सुनवाई",
+   "items": []
+  }
+ ],
+ "stopped": null,
+ "tavily": {
+  "credits": 2,
+  "credits_spent_this_run": 0,
+  "cached_calls": 13,
+  "features": [
+   "research (structured output)",
+   "extract",
+   "news + start_date",
+   "language + filter_by_language"
+  ]
+ }
+}

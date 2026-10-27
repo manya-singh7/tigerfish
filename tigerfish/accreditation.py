@@ -232,21 +232,63 @@ def queries(consultant, certificate=None):
     return list(dict.fromkeys(out))
 
 
+def _entry_from(results, texts, consultant, query, label_of):
+    for r in results:
+        text = texts.get(r["url"]) or ""
+        entry = find_entry(text, consultant)
+        sectors = parse_sectors(entry) if entry else []
+        if sectors:
+            return {"url": r["url"], "label": label_of(r["url"]), "entry": entry, "sectors": sectors,
+                    "revision": source_revision(text), "validity": validity_in(entry),
+                    "query": query}
+    return None
+
+
+def is_official_url(url):
+    h = (urlsplit(url or "").hostname or "").lower()
+    return any(h == d or h.endswith("." + d) for d in OFFICIAL_DOMAINS)
+
+
+def legacy_cached(consultant, certificate=None):
+    """True if this consultant was checked with the old two-step search (official domains,
+    then the open web) and that run is in the cache: it is replayed as it was."""
+    return copycheck.is_cached("search", query=queries(consultant, certificate)[0],
+                               search_depth="basic", max_results=copycheck.SEARCH_RESULTS,
+                               exact_match=False, include_domains=list(OFFICIAL_DOMAINS))
+
+
 def official_entry(consultant, budget, certificate=None):
-    """Search official domains (each wording), then the open web. Entry dict or None."""
+    """The consultant's entry in the official list. Entry dict or None.
+
+    One search per wording with the official QCI/NABET domains preferred
+    (include_domains_mode="prefer"), official results first; the list PDFs are read with
+    extract_depth="advanced" (sector tables). Runs cached with the old two-step search are
+    replayed with it (no new credits, same result)."""
+    if legacy_cached(consultant, certificate):
+        return _official_entry_two_step(consultant, budget, certificate)
+    label_of = lambda u: "official source" if is_official_url(u) else NON_OFFICIAL   # noqa: E731
+    for query in queries(consultant, certificate):
+        results = copycheck.search(query, budget, exact=False, include_domains=OFFICIAL_DOMAINS,
+                                   include_domains_mode="prefer").get("results", [])
+        results = sorted(results[:5], key=lambda r: not is_official_url(r["url"]))
+        texts = copycheck.extract([r["url"] for r in results], budget, max_chars=None,
+                                  depth="advanced")
+        found = _entry_from(results, texts, consultant, query, label_of)
+        if found:
+            return found
+    return None
+
+
+def _official_entry_two_step(consultant, budget, certificate=None):
+    """Old method (kept for cached replays): official domains (each wording), then the open web."""
     for domains, label in ((OFFICIAL_DOMAINS, "official source"), (None, NON_OFFICIAL)):
         for query in queries(consultant, certificate):
             results = copycheck.search(query, budget, exact=False,
                                        include_domains=domains).get("results", [])
             texts = copycheck.extract([r["url"] for r in results[:5]], budget, max_chars=None)
-            for r in results:
-                text = texts.get(r["url"]) or ""
-                entry = find_entry(text, consultant)
-                sectors = parse_sectors(entry) if entry else []
-                if sectors:
-                    return {"url": r["url"], "label": label, "entry": entry, "sectors": sectors,
-                            "revision": source_revision(text), "validity": validity_in(entry),
-                            "query": query}
+            found = _entry_from(results, texts, consultant, query, lambda u, lab=label: lab)
+            if found:
+                return found
     return None
 
 

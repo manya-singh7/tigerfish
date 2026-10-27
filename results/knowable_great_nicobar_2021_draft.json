@@ -1,0 +1,262 @@
+{
+ "report_id": "great_nicobar_2021_draft",
+ "report_date": "2021-12-27",
+ "card_text": "Public sources before this report already described:",
+ "findings": [
+  {
+   "finding_id": "ct-239",
+   "title": "Pages 291 and 337 disagree",
+   "point": "The annual rainfall of Great Nicobar Island or the Nicobar Islands, with its amount.",
+   "query": "Great Nicobar Island annual rainfall mm",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://zsi.gov.in/public/PDFVolumes/occpapers/360/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Nicobar_Islands",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "ct-403",
+   "title": "Pages 940 and 1168 disagree",
+   "point": "A count of the animal species (fauna) of Great Nicobar Island or the Great Nicobar Biosphere Reserve.",
+   "query": "Great Nicobar Biosphere Reserve fauna number of animal species",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Great_Nicobar_Biosphere_Reserve",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://india.mongabay.com/2017/12/the-first-official-record-of-animal-diversity-of-the-great-nicobar",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://www.researchgate.net/publication/323726530_FAUNAL_DIVERSITY_OF_THE_GREAT_NICOBAR_BIOSPHERE_RESERVE",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "rf-009",
+   "title": "Same figure for different places, pages 818, 851",
+   "point": "A count of the plant species of Campbell Bay National Park or of Galathea National Park.",
+   "query": "Campbell Bay National Park Galathea National Park flora species",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Great_Nicobar_Biosphere_Reserve",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://zsi.gov.in/PDFVolumes/records/112/02/index.pdf",
+     "why": "Ultra: the quote does not state the point"
+    }
+   ]
+  },
+  {
+   "finding_id": "rf-010",
+   "title": "Same figure for different places, pages 818, 851, 1168",
+   "point": "A count of the animal species of Campbell Bay National Park or of Galathea National Park.",
+   "query": "Campbell Bay National Park Galathea National Park fauna species",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.india-tours.com/wildlife/campbell-bay-national-park",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://india.mongabay.com/2021/03/great-nicobars-protected-areas-to-get-near-zero-eco-sensitive-zones-for-holistic-development",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://roundglasssustain.com/habitats/galathea",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "sp-p954-001",
+   "title": "Panulirus interruptus at Campbell Bay (p.954)",
+   "point": "Panulirus interruptus (California spiny lobster) is found in the eastern Pacific (California and Mexico).",
+   "query": "Panulirus interruptus California spiny lobster distribution",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://caseagrant.ucsd.edu/seafood-profiles/california-spiny-lobster",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://marinespecies.wildlife.ca.gov/california-spiny-lobster/the-species",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/panulirus-interruptus",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "ac-01",
+   "title": "Vimta Labs Ltd: accreditation scope",
+   "point": "Vimta Labs' NABET accreditation as an EIA consultant, with its sectors or categories.",
+   "query": "Vimta Labs NABET accredited EIA consultant organization sectors category",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.vedantalimited.com/SiteAssets/Images/ESIA.pdf",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://www.adb.org/sites/default/files/project-documents//47928-014-eia.pdf",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://in.linkedin.com/company/bhagavathi-ana-labs-ltd",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "ct-031",
+   "title": "Inconsistent about coral at the port site",
+   "point": "Coral reefs are present in Galathea Bay, Great Nicobar Island.",
+   "query": "Galathea Bay Great Nicobar coral reef",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://roundglasssustain.com/habitats/galathea",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Nicobar_Islands",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "ct-071",
+   "title": "Inconsistent about coral in and around Galathea Bay",
+   "point": "Coral reefs are present in Galathea Bay, Great Nicobar Island.",
+   "query": "Galathea Bay Great Nicobar coral reef",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://roundglasssustain.com/habitats/galathea",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Nicobar_Islands",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "ct-979",
+   "title": "Pages 851 and 940 disagree",
+   "point": "A count of the plant species (flora) of Great Nicobar Island or the Great Nicobar Biosphere Reserve.",
+   "query": "Great Nicobar Biosphere Reserve flora number of plant species",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Great_Nicobar_Biosphere_Reserve",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://www.slideshare.net/slideshow/biodiversity-of-nicobar-islands/42690432",
+     "why": "publish date not found"
+    }
+   ]
+  },
+  {
+   "finding_id": "pr-06",
+   "title": "Terrestrial ecology: 3 months in the proposed Terms of Reference",
+   "point": "EIA baseline data, including ecology, is to be collected over one season or three months.",
+   "query": "EIA baseline data collection one season three months ecology MoEF",
+   "sources": [],
+   "dropped": [
+    {
+     "url": "https://www.nccr.gov.in/sites/default/files/EIA.PDF",
+     "why": "Ultra: the quote does not state the point"
+    },
+    {
+     "url": "https://forestsclearance.nic.in/writereaddata/Addinfo/0_0_101126121712141AttunliToR.pdf",
+     "why": "publish date not found"
+    },
+    {
+     "url": "https://nmcg.nic.in/writereaddata/fileupload/27_FinalEnvironmentImpactAssessment%20Patna_RFD.pdf",
+     "why": "Ultra: the quote does not state the point"
+    }
+   ]
+  }
+ ],
+ "stopped": null,
+ "tavily": {
+  "searches": 10,
+  "extracts": 10,
+  "credits": 14,
+  "credits_spent_this_run": 0,
+  "features": [
+   "search end_date",
+   "include_domains_mode=prefer",
+   "extract"
+  ]
+ },
+ "cost": {
+  "nebius_usd_spent_this_run": 0.0
+ },
+ "method": {
+  "preferred_domains": [
+   "pib.gov.in",
+   "parivesh.nic.in",
+   "environmentclearance.nic.in",
+   "moef.gov.in",
+   "greentribunal.gov.in",
+   "sansad.in",
+   "niti.gov.in",
+   "andaman.gov.in",
+   "indiacode.nic.in",
+   "qci.org.in",
+   "egazette.gov.in",
+   "prsindia.org",
+   "gbif.org",
+   "iucnredlist.org",
+   "zsi.gov.in",
+   "bsi.gov.in",
+   "wii.gov.in",
+   "fao.org",
+   "sealifebase.se",
+   "fishbase.se",
+   "threatenedtaxa.org",
+   "currentscience.ac.in",
+   "ncbi.nlm.nih.gov",
+   "biotaxa.org",
+   "niscpr.res.in"
+  ],
+  "extract_top": 3
+ }
+}
