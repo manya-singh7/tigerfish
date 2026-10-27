@@ -298,6 +298,31 @@ def test_evaluate_needs_matching_quotes_not_just_pages():
     assert not row["found"] and row["ok"]
 
 
+def test_evaluate_skips_other_checks_and_pages_not_audited():
+    issues = ISSUES + [{"id": "gn-009", "type": "species_range", "pages": [954], "quotes": [],
+                        "expected_grade": "RED", "finding_id": "sp-1"}]
+    rows = ct.evaluate([f("ct-1", "contradiction", [392, 978], "ORANGE")], issues,
+                       pages={392, 978, 234, 1141})
+    assert [r["id"] for r in rows] == ["gn-001", "gn-neg-001"]   # gn-003 pages not audited
+
+
+def test_evaluate_other_checks_by_app_finding_id():
+    issues = [{"id": "gn-009", "type": "species_range", "pages": [954], "expected_grade": "RED",
+               "finding_id": "sp-1"},
+              {"id": "gn-011", "type": "tor_promise", "pages": [292], "expected_grade": "ORANGE",
+               "finding_id": "pr-06"},
+              {"id": "gn-010", "type": "accreditation", "pages": [18], "expected_grade": "ORANGE",
+               "finding_id": "ac-01"}]
+    app = [{"id": "sp-1", "check": "species_range", "grade": "RED"},
+           {"id": "pr-06", "check": "promise", "grade": "INFO"},
+           {"id": "ac-01", "check": "contradiction", "grade": "ORANGE"}]   # wrong check
+    by = {r["id"]: r for r in ct.evaluate_other_checks(app, issues + ISSUES)}
+    assert set(by) == {"gn-009", "gn-011", "gn-010"}
+    assert by["gn-009"]["ok"] and by["gn-009"]["finding_id"] == "sp-1"
+    assert not by["gn-011"]["ok"] and by["gn-011"]["grade"] == "INFO"
+    assert not by["gn-010"]["found"]
+
+
 def test_quotes_match():
     assert ct.quotes_match("no coral exists in the bay portion", Q[392])
     assert not ct.quotes_match("It is approximately 163 km by sea from Sumatra", Q[234])

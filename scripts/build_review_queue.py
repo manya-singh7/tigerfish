@@ -120,15 +120,20 @@ def main():
     assert len(DOUBLE) == 15 and set(DOUBLE) <= set(top_ids), "bad DOUBLE"
     rest = sorted(set(flags) - set(top_ids))
     random.Random(SEED).shuffle(rest)
+    by_app_id = {f["id"]: f for f in findings}
     items = []
     for n, fid in enumerate(top_ids + rest, 1):
         f = flags[fid]
         check = "copy_paste" if f["type"] == "copy_paste" else f["type"]
+        app_id = app_finding_id(f, findings)
         items.append({"n": n, "flag_id": fid, "group": "top30" if fid in top_ids else "random",
                       "double_review": fid in DOUBLE, "grade": f["grade"], "check": check,
                       "check_name": CHECK_NAMES[check], "pages": f["pages"], "quotes": f["quotes"],
                       "reason": f["reason"], "answers": f.get("answers") or {},
-                      "urls": f.get("urls") or [], "finding_id": app_finding_id(f, findings)})
+                      "urls": f.get("urls") or [], "finding_id": app_id})
+        verified = review.verified_entry(by_app_id.get(app_id))
+        if verified:     # checked by hand (data/known_issues.json): already reviewed
+            items[-1]["verified"] = verified
     queue = {"report_id": "great_nicobar_2021_draft", "source": AUDIT.name,
              "created": time.strftime("%Y-%m-%d %H:%M"), "seed": SEED, "total": len(items),
              "top": len(top_ids), "double_review": len(DOUBLE),
@@ -138,6 +143,8 @@ def main():
     review.REVIEW_DIR.mkdir(exist_ok=True)
     review.QUEUE.write_text(json.dumps(queue, ensure_ascii=False, indent=1), encoding="utf-8")
     missing = [it["flag_id"] for it in items if not it["finding_id"]]
+    done = [it["flag_id"] for it in items if it.get("verified")]
+    print(f"Already reviewed (human-verified): {', '.join(done) or 'none'}")
     print(f"Wrote {review.QUEUE.relative_to(ROOT)}: {len(items)} flags, {len(DOUBLE)} double review; "
           f"not in the app export: {missing or 'none'}")
 

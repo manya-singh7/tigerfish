@@ -2,7 +2,9 @@
 
 Usage: python scripts/evaluate.py [--max-cost 0.30] [--dry-run]
 
-1. Known cases (data/known_issues.json, from cache): scored issues + negative control.
+1. Known cases (data/known_issues.json, from cache): scored issues + negative controls, on
+   the 10 known-issue pages and (1b) on the full audit with every check (from the app export),
+   with the hand verification of each issue.
 2. Planted contradictions: 10 restated claims with a different value + 5 "explained"
    differences, inserted into other real pages (in memory, seeded). Claim extraction and
    the contradiction check run on the modified pages only.
@@ -28,7 +30,7 @@ import check_copypaste  # noqa: E402
 import demo_table  # noqa: E402
 from export_results import gaps_by_dir  # noqa: E402
 from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm  # noqa: E402
-from tigerfish import pdf_reader, species, status, trace  # noqa: E402
+from tigerfish import pdf_reader, review, species, status, trace  # noqa: E402
 
 MAX_COST_USD = 0.30
 SEED = 42
@@ -322,6 +324,61 @@ def md_table(headers, rows):
 
 
 FULL_RUN = RESULTS / "audit_great_nicobar_2021_draft_eia.json"
+EXPORT = RESULTS / "great_nicobar_2021_draft.json"
+KNOWN_ISSUES = ROOT / "data" / "known_issues.json"
+OUTCOMES = {"confirmed": "confirmed", "confirmed_with_nuance": "confirmed, with nuance",
+            "explained": "explained (negative control)"}
+
+
+def full_known():
+    """Known issues scored on the full audit with every check (rows saved by
+    scripts/export_results.py), joined with their hand verification. None without an export."""
+    if not EXPORT.exists():
+        return None
+    rows = json.loads(EXPORT.read_text(encoding="utf-8")).get("known_issues")
+    if not rows:
+        return None
+    issues = {i["id"]: i for i in json.loads(KNOWN_ISSUES.read_text(encoding="utf-8"))["issues"]}
+    for r in rows:
+        r["issue"] = issues.get(r["id"], {})
+    scored = [r for r in rows if r["scored"]]
+    return {"rows": rows, "passed": sum(r["ok"] for r in scored), "scored": len(scored),
+            "verified": sum(bool(r["issue"].get("verified_by")) for r in rows)}
+
+
+def queue_status():
+    """Review queue so far: hand-verified flags count as reviewed (Confirm)."""
+    q = review.load_queue()
+    if not q:
+        return None
+    p = review.precision(q, review.load_reviews())
+    p["verified"] = [i["flag_id"] for i in q["items"] if i.get("verified")]
+    return p
+
+
+def full_known_md():
+    fk = full_known()
+    if not fk:
+        return []
+    lines = ["### 1b. Known issues on the full audit (all checks)", "",
+             f"Every known issue scored against the full 1,213-page audit as exported for the app "
+             f"(contradictions and recycled figures by matching quotes; species, accreditation and "
+             f"ToR issues by their finding id). **{fk['passed']}/{fk['scored']} pass.** All "
+             f"{fk['verified']} issues were verified by hand against the PDF "
+             f"(verified_by, verified_on, verification_note in data/known_issues.json).", "",
+             md_table(["Issue", "Type", "Expected", "Grade", "Finding", "Result", "Hand check"],
+                      [[r["id"], r["type"], "/".join(r["expected"]), r["grade"] or "-",
+                        r["finding_id"] or "-",
+                        ("PASS" if r["ok"] else "FAIL") + ("" if r["scored"] else " (unscored)"),
+                        OUTCOMES.get(r["issue"].get("verification_outcome"), "-")
+                        + (f", {r['issue']['verified_by']} {r['issue']['verified_on']}"
+                           if r["issue"].get("verified_by") else "")]
+                       for r in fk["rows"]]), "",
+             "Hand-check notes:", ""]
+    lines += [f"- **{r['id']}**: {r['issue'].get('verification_note')}" for r in fk["rows"]
+              if r["issue"].get("verification_note")]
+    lines.append("")
+    return lines
 
 
 def full_run():
@@ -339,14 +396,27 @@ def full_run_rows():
     if not fr:
         return []
     run, tot = fr
-    known = ", ".join(f"{v} {k}" for k, v in sorted(run["known_issues_matched"].items(), key=lambda kv: kv[1]))
+    fk = full_known()
+    qs = queue_status()
+    if fk:
+        known = (f"{fk['passed']}/{fk['scored']} pass with every check (" + ", ".join(
+            f"{r['id']} {r['finding_id']}" for r in fk["rows"] if r["finding_id"])
+            + "); both negative controls not flagged; all verified by hand")
+    else:
+        known = ("all found with the expected grade (" + ", ".join(
+            f"{v} {k}" for k, v in sorted(run["known_issues_matched"].items(), key=lambda kv: kv[1]))
+            + "); negative control not flagged")
+    flags = f"{run['new_flagged']} (review queue"
+    if qs and qs["verified"]:
+        flags += (f"; {len(qs['verified'])} already reviewed as human-verified known issues "
+                  f"({', '.join(qs['verified'])}); reviewed so far {qs['reviewed']} of "
+                  f"{qs['total']}, {qs['real']} real of {qs['judged']} judged")
+    flags += "; precision on the rest to be measured by hand)"
     return [["Full 1,213-page audit (measured)",
              f"${tot['cost_usd']:.2f} = Rs {ev.inr(tot['cost_usd']):,.0f}; {tot['wall_clock_s'] / 60:.0f} min "
              f"wall clock with {run['workers']} parallel calls; {tot['tavily_credits']} Tavily credits"],
-            ["Full audit: known issues", f"all found with the expected grade ({known}); "
-                                         "negative control not flagged"],
-            ["Full audit: new RED/ORANGE flags", f"{run['new_flagged']} (review queue; precision "
-                                                 "to be measured by hand)"]]
+            ["Full audit: known issues", known],
+            ["Full audit: new RED/ORANGE flags", flags]]
 
 
 def full_run_md():
@@ -398,9 +468,10 @@ def write_md(res):
         f"${res['eval_cost_usd']:.4f} (the rest came from cache; cap ${res['max_cost_usd']:.2f}).", "",
         "## Summary", "",
         md_table(["Test", "Result"], [
-            ["Known issues (scored)", f"{k['passed']}/{k['scored']} pass"],
-            ["Negative control (1045 vs 910 sq km)",
-             "not flagged" if all(r["ok"] for r in k["rows"] if r["id"] == "gn-neg-001") else "FLAGGED"],
+            ["Known issues, 10 known-issue pages (scored)", f"{k['passed']}/{k['scored']} pass"],
+            ["Negative controls (1045 vs 910 sq km; coral 1-2 vs 4 ha)",
+             ", ".join(f"{r['id']} " + ("not flagged" if r["ok"] else "FLAGGED")
+                       for r in k["rows"] if r["expected"] == ["NONE"])],
             ["Planted contradictions caught", f"{sc.get('planted_caught')}/{sc.get('planted_total')}"],
             ["Explained differences wrongly flagged",
              f"{sc.get('explained_wrongly_flagged')}/{sc.get('explained_total')}"],
@@ -424,6 +495,9 @@ def write_md(res):
              f"about {x['without_triage']['api_minutes_sequential']} min"],
         ] + full_run_rows()), "",
         "## 1. Known issues (data/known_issues.json)", "",
+        "On the 10 known-issue pages (pp." + ", ".join(map(str, KNOWN_PAGES)) + "), contradiction "
+        "check only. Issues on other pages or found by other checks are scored on the full audit "
+        "(1b).", "",
         md_table(["Issue", "Type", "Pages", "Expected", "Grade", "Result", "Status"],
                  [[r["id"], r["type"], r["pages"], "/".join(r["expected"]), r["grade"] or "-",
                    ("PASS" if r["ok"] else "FAIL") + ("" if r["scored"] else " (unscored)"),
@@ -431,6 +505,7 @@ def write_md(res):
         f"Negative-control pair sent to Ultra directly: "
         f"{', '.join(c['grade'] for c in k['control'])}. "
         + (k["control"][0]["reason"] if k["control"] else ""), "",
+    ] + full_known_md() + [
         "## 2. Planted contradictions", "",
         f"{sc.get('planted_total')} real numeric claims were restated on other real pages with "
         f"a value x0.5 or x1.5, and {sc.get('explained_total')} with an explicit "

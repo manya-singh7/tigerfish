@@ -16,29 +16,30 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [ ] Run `git status` and make sure no PDFs, .env, cache or logs are staged
 
 ## Manual verification (you + teammate, by hand, not AI)
-- [ ] gn-001: read all of p.392 (scope of "bay portion" vs "eastern flank") and p.978 (which form is it?)
+- [x] Hand check recorded (Oct 27, Manya Singh): 12 known issues in data/known_issues.json, 12/12 pass on the full audit (eval.md 1b); "Human-verified" badge + reviewed wording on 10 app cards; ct-071 / ct-979 / ct-239 count as reviewed in the queue. New ids: gn-006 (ct-071), gn-007 (ct-979), gn-008 (ct-239), gn-009 (sp-p954-001), gn-010 (ac-01), gn-011 (pr-06, id chosen by Claude: rename if you prefer)
+- [x] gn-001: p.392 and p.978 read: confirmed with nuance (ORANGE), "inconsistent about coral at the port site"
 - [ ] gn-001: ZSI coral pages p.937-1079 (search 116 / hectare / reef / Galathea)
-- [ ] gn-002: p.444 vs p.751: is restoring more than you lose normal practice? If yes, delete gn-002
-- [ ] gn-003: confirm p.818 / 851 / 1168 breakdowns really are identical
-- [ ] Add verified_by, verified_on, verification_note to each entry
-- [ ] rf-001 / gn-005: compare the flora figures on p.818 (Campbell Bay NP) vs p.851 (Galathea NP): 648 species, 422 genera, 142 families, 48 endemic, 85 rare on both. If confirmed, change status to verified.
+- [x] gn-002: explained (p.751: the 4 ha covers the whole project); kept as a second negative control (status explained), not deleted
+- [x] gn-003: p.818 / 851 / 1168 breakdowns identical: confirmed
+- [x] Add verified_by, verified_on, verification_note to each entry
+- [x] rf-001 / gn-005: confirmed (attribution: the duplication is in the Gazette ESZ notifications); now scored (status removed)
 - [ ] ct-005: p.444 (total reclaimed land 194 ha) vs p.751 (71 ha for the airport): likely part-vs-total; Ultra now grades NONE. Confirm the 71 ha is a component of the 194 ha.
 - [ ] Table 3.16 status: Macaca fascicularis listed VU in the report, IUCN now EN (GBIF https://www.gbif.org/species/2436603). Confirm on the IUCN Red List and note the assessment year.
 - [ ] Table 3.16 taxonomy: Pteropus giganteus. GBIF (and GBIF's IUCN data) map it to P. vampyrus (EN); the Indian flying fox is usually P. medius (LC). Decide which name the report means before using any status for it.
-- [ ] gn-002 (under_review): p.751, whose budget is the 4 ha of coral restoration? Ultra says it covers the entire project (Port, Power plant, Township), not just the airport. If so, delete gn-002.
+- [x] gn-002: the 4 ha of coral restoration covers the entire project (p.751 Table 10.3): explained, now a negative control
 
-- [ ] Species table p.954: Panulirus interruptus, RED at Campbell Bay: GBIF 0 within 100 km, 0 within 500 km, 0 in the A&N Islands, 0 within 3,000 km, 294,577 worldwide. Is it really recorded at Great Nicobar?
+- [x] (gn-009, confirmed: likely misidentification) Species table p.954: Panulirus interruptus, RED at Campbell Bay: GBIF 0 within 100 km, 0 within 500 km, 0 in the A&N Islands, 0 within 3,000 km, 294,577 worldwide. Is it really recorded at Great Nicobar?
 - [ ] Species tables, flora (not in the app): Musa sabuana p.310, Phalaenopsis speciosa p.317, Phalaenopsis speciosa p.1030: each has only 1 GBIF record worldwide; likely data gaps (Phalaenopsis speciosa is native to the islands). Check against the Flora of Andaman & Nicobar.
 
 - [ ] ToR promises (ORANGE, check by hand against data/eias/great_nicobar_tor_2021.pdf and the draft EIA):
-  - [ ] pr-06: ToR p.1 baseline "3 months" (flora & fauna listed) vs p.292 "Quick primary survey" 14-22 Dec 2020 (9 days) + turtle survey 12-18 Feb 2021. Does any other page show a longer ecology survey?
+  - [x] (gn-011, confirmed; say "proposed ToR": flora/fauna was a rapid reconnaissance 14-22 Dec 2020, air/water/soil did run 3 months) pr-06: ToR p.1 baseline "3 months" (flora & fauna listed) vs p.292 "Quick primary survey" 14-22 Dec 2020 (9 days) + turtle survey 12-18 Feb 2021. Does any other page show a longer ecology survey?
   - [ ] pr-08: ToR p.2 corals "up to a depth of about 40 m" vs p.987 transects "deeper reef-16-30m". Check the ZSI coral pages for any dive deeper than 30 m.
   - [ ] pr-13: ToR p.3 water "20 locations" vs p.279 "sixteen locations" (8 surface + 8 ground water). Check Table 3.18 / Figure 3.34.
   - [ ] pr-15: ToR p.3 soil "three different levels up to a depth of 90 cm" vs p.258 "three different depths viz. 30 cm" and "up to a depth of 30 cm"; but p.870 (annexure) says "30 cm, 60 cm and 90 cm". Also p.258 says "20 locations" and "A total of 10 numbers of samples". Which is right?
   - [ ] Compare against the ToR actually granted (MoEFCC letter of 25 May 2021, cited on EIA p.44); our file is the proposed ToR.
 
 - [ ] Full-audit top 30 (review/review_queue.json, app tab "Review queue"; D = both of you judge it independently; my quick read in results/full_audit_summary.md):
-  - [ ] 1. ct-071 (D) ORANGE p.738/1085: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "the presence of 117 species of scleractinian corals" [likely real]
+  - [x] (verified by hand: gn-006) 1. ct-071 (D) ORANGE p.738/1085: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "the presence of 117 species of scleractinian corals" [likely real]
   - [ ] 2. ct-056 ORANGE p.738/978: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "Coral reef exists in the proposed site for Transshipment / Port" [likely real]
   - [ ] 3. ct-1645 (D) RED p.438/446: "916 Ha of area has been identified for development of International Ai" vs "the present site needs to reclaim land approximately 194 Ha of land in" [likely real]
   - [ ] 4. ct-1464 (D) RED p.133/438: "The present site needs to reclaim land approx. 1.94 Ha of land in orde" vs "the present site needs to reclaim land approximately 194 Ha of land in" [likely real]
@@ -52,7 +53,7 @@ Agent: at the start of every block, read this file and remind the user of the it
   - [ ] 12. ct-1254 (D) RED p.228/942: "Great Nicobar Island marks the southernmost tip of India 7° N, about 7" vs "is only about 145 km from Sumatra Island of Indonesia" [likely real]
   - [ ] 13. ct-1176 (D) RED p.243/249: "1.842" vs "Approximately 65.43 ha of the mangroves were affected, and 32.06 ha ar" [likely real]
   - [ ] 14. ct-673 (D) RED p.1047/1126: "203" vs "103 nests in 2018-19" [likely real]
-  - [ ] 15. ct-239 RED p.291/337: "heavy annual rainfall of 300 to 350 Cm spreading over 9 months" vs "The annual rainfall ranges from 3000 to 3500 Cm" [likely real]
+  - [x] (verified by hand: gn-008) 15. ct-239 RED p.291/337: "heavy annual rainfall of 300 to 350 Cm spreading over 9 months" vs "The annual rainfall ranges from 3000 to 3500 Cm" [likely real]
   - [ ] 16. ct-1385 RED p.207/210: "39 Acres" vs "Planned layout has been developed in order to accommodate the plant fa" [likely real]
   - [ ] 17. ct-200 RED p.134/459: "Out of which part will be met by the DG sets of 2 x 5 MVA each" vs "operation of 7 DG sets for continuous 8 hours per day" [likely real]
   - [ ] 18. ct-812 RED p.45/279: "10 SW" vs "Eight surface water and Eight ground water sources covering were exami" [likely real]
@@ -99,14 +100,17 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [x] gn-001 counts as caught if graded RED or ORANGE
 - [x] Parallel calls (6 workers, retries, resumable) + rehearsal on p.250-350: $0.80, 7.2 min (results/audit_great_nicobar_2021_draft_eia__p250-350.md, results/full_run_estimate.md)
 - [x] False-alarm fixes (structured Ultra verdicts, statement subject X, recycled >25 / ToR counts, copy-paste boilerplate, Super-VL long retry + salvage, number words): rehearsal now 2 flags
-- [ ] Rainfall p.291 "3000 to 3500 Cm" vs p.337 "300 to 350 Cm": confirm by hand (looks real; probably mm vs cm)
+- [x] Rainfall p.291 "3000 to 3500 Cm" vs p.337 "300 to 350 Cm": confirmed by hand (gn-008, low severity, likely unit slip)
 - [x] gn-001 wording fix applied ("differences of place belong in same_place"): gn-001 now ORANGE
 - [x] Scope wording applied ("unclear only with a concrete, named reason"); statement pairs are incompatible by construction (compute_grade). Eval: gn-001 ORANGE, gn-003/004/005 RED, control NONE, planted 10/10, 0/5 explained
 - **Ultra verdict prompt is FROZEN (Oct 27): no further wording changes before submission** (tigerfish/contradictions.py, step 3)
 - [x] Ultra now gets the full sentence(s) around each quote: ct-105 (p.285 vs p.286) is NONE
 - [x] Full run (Oct 27): $15.18, 54 min, 84 Tavily credits; known issues unchanged; 152 new flags in the review queue (results/full_audit_summary.md)
 - [x] Top-up (Oct 27 16:31, $0.49, 0 Tavily): 166 salvaged claims added (+67 pairs), failed verdict retried (ct-1179 NONE); earlier ids and grades unchanged; 1 new flag (ct-1815). Final: $15.67, 153 new flags
-- [ ] 11 added pairs not judged (hit the $0.50 cap); about $0.11 to finish: same command with --max-cost 0.2
+- [x] 11 added pairs judged (Oct 27 22:19, $0.11, all NONE). Final: $15.78, 62 min, 1,866 pairs, 0 not judged
+- [x] Second estimate in scripts/audit.py now prices only pairs that would reach Ultra (cached triage "no" skipped; untriaged pairs at the pass rate)
+- [x] Evaluation re-run from cache ($0): 7/7 on the 10 known-issue pages, 12/12 on the full audit with every check, both negative controls not flagged
+- [ ] Run the full test suite yourself: `.venv\Scripts\python.exe -m pytest -q` (only the touched test files were run)
 - [x] Statement-pair rule tightened (override only if same_subject yes and same_place not no): 0 of the 19 flags change (all 19 qualify), gn-001 still ORANGE
 
 ## Write-up (Oct 29)

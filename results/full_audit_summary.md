@@ -1,6 +1,8 @@
 # Full audit: Great Nicobar draft EIA (1,213 pages)
 
-Run of Oct 27, 2026 (`scripts/audit.py ... --scope --triage safe --run`), plus a top-up sitting at 16:31 that added the 166 salvaged claims and retried the one failed verdict. **$15.67 (Rs 1,316 at 1 USD = 84 INR), 60 min wall clock, 84 Tavily credits.** 1,114 of 1,213 pages audited; 99 skipped (79 Hindi, 15 lab sheets, 5 forms). 157 RED/ORANGE findings: the 4 known issues plus 153 new flags, all in the review queue (review/review_queue.json). Nothing here is verified by hand yet.
+Run of Oct 27, 2026 (`scripts/audit.py ... --scope --triage safe --run`), plus two top-up sittings: 16:31 added the 166 salvaged claims and retried the one failed verdict; 22:19 judged the last 11 pairs. **$15.78 (Rs 1,326 at 1 USD = 84 INR), 62 min wall clock, 84 Tavily credits. All 1,866 candidate pairs are done: every pair that passed triage has an Ultra verdict (0 not judged, 0 failed).** 1,114 of 1,213 pages audited; 99 skipped (79 Hindi, 15 lab sheets, 5 forms). 157 RED/ORANGE findings: the 4 known issues at run time plus 153 new flags, all in the review queue (review/review_queue.json).
+
+**Verified by hand (Oct 27, Manya Singh; data/known_issues.json, eval.md section 1b):** 12 known issues, all as the tool graded them. Three of the 153 queue flags are among them and count as reviewed (Confirm): ct-071 (gn-006), ct-979 (gn-007), ct-239 (gn-008). The rest of the queue is not verified yet. The app shows a "Human-verified" badge and the reviewed wording on these 10 cards (the two negative controls have no card).
 
 ## The run
 
@@ -10,21 +12,21 @@ Run of Oct 27, 2026 (`scripts/audit.py ... --scope --triage safe --run`), plus a
 | Candidate pairs | 1,866 (keyed pairing; 1,799 + 67 from the salvaged claims) |
 | Triage (Lightning) | yes 1,431 / unsure 9 / no 426 |
 | Triage pass rate | **77%** (1,440 of 1,866 went to Ultra) |
-| Ultra verdicts | 1,429 (0 failed; 11 added pairs not judged, cost cap) |
+| Ultra verdicts | 1,440 (0 failed, 0 not judged: every pair that passed triage) |
 | Copy-paste passages checked | 100 |
 
 Triage pass rate: 77% here (77% in the first 1,799 pairs too) vs 33% in the 100-page rehearsal (p.250-350). The rehearsal had only 9 candidate pairs (3 yes), so its rate says little. Keyed pairing only pairs claims that already share a subject key, so most pairs are plausible contradictions and Lightning passes them. Triage saved 426 Ultra calls (about $4.05; 410 in the main run).
 
 ## Cost per model (all sittings)
 
-The audit took four sittings, all from the same cache: claim extraction (02:39, first attempt), keyed run 1 (04:11, stopped before all verdicts; its log was overwritten), the resume with `--max-cost 13.5` (14:27, no stop) and the top-up with `--max-cost 0.5 --new-pages ... --reuse-passages` (16:31, stopped at the cap). Source: logs/usage.jsonl and the run report's run_totals.
+The audit took five sittings, all from the same cache: claim extraction (02:39, first attempt), keyed run 1 (04:11, stopped before all verdicts; its log was overwritten), the resume with `--max-cost 13.5` (14:27, no stop), the top-up with `--max-cost 0.5 --new-pages ... --reuse-passages` (16:31, stopped at the cap) and a second top-up with `--max-cost 0.2` (22:19, the last 11 pairs, no stop). Source: logs/usage.jsonl and the run report's run_totals.
 
 | Model | API calls | Tokens in | Tokens out | USD | INR |
 |---|---:|---:|---:|---:|---:|
 | Nemotron Super-VL (vision pages) | 946 | 3,423,968 | 927,840 | $1.86 | Rs 156 |
 | Nemotron Lightning (text pages, keys, triage) | 1,562 | 2,515,597 | 328,340 | $0.23 | Rs 19 |
-| Nemotron Ultra (verdicts) | 1,436 | 4,159,953 | 3,139,959 | $13.58 | Rs 1,141 |
-| **Total** | 3,944 | | | **$15.67** | **Rs 1,316** |
+| Nemotron Ultra (verdicts) | 1,447 | 4,200,900 | 3,162,518 | $13.69 | Rs 1,150 |
+| **Total** | 3,955 | | | **$15.78** | **Rs 1,326** |
 
 | Sitting | USD | Wall clock |
 |---|---:|---:|
@@ -32,24 +34,33 @@ The audit took four sittings, all from the same cache: claim extraction (02:39, 
 | Keyed run 1 (04:11-04:44, stopped) | $12.01 | 33.0 min |
 | Resume (14:27-14:33) | $1.21 | 6.0 min |
 | Top-up: salvaged claims + failed verdict (16:31-16:36) | $0.49 | 5.3 min |
-| **Total** | **$15.67** | **59.6 min** |
+| Top-up 2: the last 11 pairs (22:19-22:22) | $0.11 | 2.9 min |
+| **Total** | **$15.78** | **62.5 min** |
 
-- Estimate before the run: $16.31 (scoped, safe triage). Actual: $15.67 with the top-up ($15.18 without).
-- Not counted: the abandoned unkeyed triage of 67,689 pairs (02:58-03:25), $0.91. All spend on the full audit: $16.58.
+- Estimate before the run: $16.31 (scoped, safe triage). Actual: $15.78 with both top-ups ($15.18 without).
+- Not counted: the abandoned unkeyed triage of 67,689 pairs (02:58-03:25), $0.91. All spend on the full audit: $16.69.
 - Tavily: 84 credits in the 145 responses used (100 searches, 45 extracts); 75 newly spent in this run, the rest reused from the rehearsal.
-- Average Ultra output: **2,176 tokens per verdict** in the main run (3,031,557 over 1,393 calls, reasoning included; 2,187 with the top-up). The 10-page evaluation measured about 1,100 (planted test about 2,000). So a verdict cost $0.0094 against $0.0070 in the estimate. Far fewer verdicts (1,389 vs 2,217) kept the total under the estimate.
+- Average Ultra output: **2,176 tokens per verdict** in the main run (3,031,557 over 1,393 calls, reasoning included; 2,186 with both top-ups). The 10-page evaluation measured about 1,100 (planted test about 2,000). So a verdict cost $0.0094 against $0.0070 in the estimate. Far fewer verdicts (1,389 vs 2,217) kept the total under the estimate.
 - Retries in the resume: none, no rate limits or server errors (run 1's log was overwritten, so its retries are not known).
 
-## Known issues on the full run (no change)
+## Known issues on the full run (12/12 pass, all verified by hand)
 
-| Issue | Expected | Full run | Finding |
-|---|---|---|---|
-| gn-001 coral, p.392 vs p.978 | RED/ORANGE | ORANGE, pass | ct-031 |
-| gn-003 recycled flora figures, p.818/851/1168 | RED | RED, pass | rf-010 |
-| gn-004 fauna counts, p.1168 vs p.940 | RED | RED, pass | ct-403 |
-| gn-005 recycled figures, p.818 vs p.851 (unscored) | RED | RED | rf-009 |
-| gn-neg-001 island area 1045 vs 910 sq km | not flagged | not flagged, pass | (no pair) |
-| gn-002 (under review, unscored) | ORANGE | not found | - |
+Scored in eval.md section 1b. gn-006 to gn-011 were added on Oct 27 after the hand check; gn-002 is now a negative control (status explained).
+
+| Issue | Expected | Full run | Finding | Hand check |
+|---|---|---|---|---|
+| gn-001 coral at the port site, p.392 vs p.978 | ORANGE (RED ok) | ORANGE, pass | ct-031 | confirmed, with nuance |
+| gn-002 coral loss 1-2 ha vs 4 ha restoration, p.444/751 | not flagged | not flagged, pass | (no pair) | explained: the 4 ha is for the whole project (p.751) |
+| gn-003 recycled fauna figures, p.818/851/1168 | RED | RED, pass | rf-010 | confirmed |
+| gn-004 fauna counts, p.1168 vs p.940 | RED | RED, pass | ct-403 | confirmed |
+| gn-005 recycled flora figures, p.818 vs p.851 | RED | RED, pass | rf-009 | confirmed; duplication is in the Gazette notifications |
+| gn-006 coral in and around Galathea Bay, p.738 vs p.1085 | ORANGE (RED ok) | ORANGE, pass | ct-071 | confirmed, with nuance |
+| gn-007 park flora > island flora, p.851 vs p.940 | ORANGE (RED ok) | ORANGE, pass | ct-979 | confirmed, with nuance |
+| gn-008 rainfall, p.291 vs p.337 | RED (ORANGE ok) | RED, pass | ct-239 | confirmed, low severity (unit slip) |
+| gn-009 Panulirus interruptus, p.954 | RED | RED, pass | sp-p954-001 | confirmed, likely misidentification |
+| gn-010 accreditation scope, p.18 | ORANGE | ORANGE, pass | ac-01 | confirmed |
+| gn-011 flora/fauna survey vs proposed ToR, pp.292-293 | ORANGE | ORANGE, pass | pr-06 | confirmed |
+| gn-neg-001 island area 1045 vs 910 sq km | not flagged | not flagged, pass | (no pair) | explained by the tsunami |
 
 Four other flags touch p.234 (the control's page), none about the 1045/910 area: ct-1718 and ct-1528 (distance to Sumatra), ct-1732 (tsunami subsidence), ct-1608 (973 km2 vs 1045/910).
 
@@ -57,10 +68,10 @@ Four other flags touch p.234 (the control's page), none about the 1045/910 area:
 
 | Check | RED | ORANGE | NONE | New RED/ORANGE (queue) |
 |---|---:|---:|---:|---:|
-| Internal contradiction | 103 | 46 | 1266 | 147 (102 RED, 45 ORANGE) |
+| Internal contradiction | 103 | 46 | 1277 | 147 (102 RED, 45 ORANGE) |
 | Recycled figure | 4 | 1 | 9 | 3 (2 RED, 1 ORANGE) |
 | Copied text | 2 | 1 | 97 | 3 (2 RED, 1 ORANGE) |
-| **Total** | 109 | 48 | 1372 | 153 |
+| **Total** | 109 | 48 | 1383 | 153 |
 
 App export (results/great_nicobar_2021_draft.json): 146 findings after duplicates are merged (same pages, matching quotes), with the other checks added. Consultant accreditation 0/1/0; Copied text 2/1/0; Internal contradiction 92/35/0; Not mentioned 0/1/0; Recycled figure 4/1/0; Species out of range 1/0/0; ToR promise 0/4/4 (RED/ORANGE/INFO). Summary strip: "1,114 of 1,213 pages audited; 99 skipped: Hindi/lab sheets/forms".
 
@@ -83,7 +94,8 @@ App export (results/great_nicobar_2021_draft.json): 146 findings after duplicate
 `scripts/audit.py ... --scope --triage safe --run --max-cost 0.5 --new-pages 539,939,1029,1038,1097,1099,1166 --reuse-passages`
 
 - **Same ids, same grades.** The earlier 1,799 candidates are rebuilt from the earlier 10,297 claims exactly (subject keys, triage and verdicts all from cache), so all 1,388 earlier verdicts and all 152 earlier flags keep their ids and grades. Keying the 65 new subjects in their own batches avoids shifting every key batch (a cache-only dry run without this showed about 1,130 uncached Ultra verdicts, about $10).
-- The 166 salvaged claims add 67 pairs (ids 1800 onward): triage passed 51, Ultra judged 40 before the $0.50 cap; **11 added pairs are not judged**. Of the 40 judged, 32 involve p.939 (phytoplankton figures) and 8 p.1166 (executive summary); 39 are NONE.
+- The 166 salvaged claims add 67 pairs (ids 1800 onward): triage passed 51, Ultra judged 40 before the $0.50 cap. Of the 40 judged, 32 involve p.939 (phytoplankton figures) and 8 p.1166 (executive summary); 39 are NONE.
+- **Second top-up (Oct 27 22:19, $0.11, 0 Tavily, 2.9 min):** the same command with `--max-cost 0.2` judged the last 11 pairs: all 11 NONE, no new flag, earlier ids and grades unchanged. 0 pairs left without a verdict.
 - **One new flag: ct-1815 RED** (p.1144 vs p.1166): deemed forest 4.39 sq km vs 8.88 sq km of the project area. Placed in the random part of the queue (#123).
 - Copy-paste: the same 100 passages as the run (rebuilt from the earlier claims, top 100 by score without the Lightning filter, as the export does), all 145 Tavily replies from cache: still 2 RED, 1 ORANGE. The report now saves the passage list.
 - Known issues and the negative control: unchanged (gn-001 ct-031 ORANGE, gn-003 rf-010, gn-004 ct-403, gn-005 rf-009 RED; gn-neg-001 not flagged).
@@ -98,7 +110,7 @@ Review order in the queue; **D** = double review (both reviewers judge independe
 
 | # | Flag | Grade | Pages | Quotes | Quick read | Why |
 |---:|---|---|---|---|---|---|
-| 1 | ct-071 **D** | ORANGE | 738, 1085 | p.738: "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) ..."<br>p.1085: "the presence of 117 species of scleractinian corals" | **likely real** | p.1085 lists 117 scleractinian coral species and 17.46% live coral cover in Galathea Bay; p.738 says, citing ZSI, that coral does not exist in the Galathea Bay area. |
+| 1 | ct-071 **D** (verified: gn-006) | ORANGE | 738, 1085 | p.738: "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) ..."<br>p.1085: "the presence of 117 species of scleractinian corals" | **likely real** | p.1085 lists 117 scleractinian coral species and 17.46% live coral cover in Galathea Bay; p.738 says, citing ZSI, that coral does not exist in the Galathea Bay area. |
 | 2 | ct-056 | ORANGE | 738, 978 | p.738: "As per the ZSI report, coral do not exist in the Galathea Bay area, however, on the eastern peninsula part (Outside the construction area) ..."<br>p.978: "Coral reef exists in the proposed site for Transshipment / Port" | **likely real** | Same coral question as gn-001: p.978 (EIA form) says coral reef exists in the port site; p.738 says no coral in the Galathea Bay area. |
 | 3 | ct-1645 **D** | RED | 438, 446 | p.446: "916 Ha of area has been identified for development of International Airport which includes 845 ha of land and 71 ha of reclaimed area."<br>p.438: "the present site needs to reclaim land approximately 194 Ha of land in order to establish an operational airport." | **likely real** | Airport reclamation: 71 ha (p.446) vs 194 ha (p.438, and p.444 'the airport ... total reclaimed land will be 194 ha'). Both tie the figure to the airport, so part-of-total (TODO ct-005) looks less likely. |
 | 4 | ct-1464 **D** | RED | 133, 438 | p.133: "The present site needs to reclaim land approx. 1.94 Ha of land in order to establish an operational airport."<br>p.438: "the present site needs to reclaim land approximately 194 Ha of land in order to establish an operational airport." | **likely real** | Same sentence on p.133 and p.438, but '1.94 Ha' vs '194 Ha': a decimal or unit slip on p.133 (p.972 has 1.94 sq km = 194 ha). |
@@ -112,7 +124,7 @@ Review order in the queue; **D** = double review (both reviewers judge independe
 | 12 | ct-1254 **D** | RED | 228, 942 | p.228: "Great Nicobar Island marks the southernmost tip of India 7° N, about 700 km north of Sumatra"<br>p.942: "is only about 145 km from Sumatra Island of Indonesia" | **likely real** | p.228 says Great Nicobar is about 700 km north of Sumatra; pp.19, 942 say 144-145 km. 700 km is wrong (p.942 also says '60 N', another slip). |
 | 13 | ct-1176 **D** | RED | 243, 249 | p.243: "1.842"<br>p.249: "Approximately 65.43 ha of the mangroves were affected, and 32.06 ha are submerged and degraded during 26th December 2004 tsunami." | **likely real** | Mangroves 1.842 sq km (184 ha) for the whole island (p.243 table) vs 3,337 ha 'in the study area' (p.249); p.249 also says 0.01% of forest area. |
 | 14 | ct-673 **D** | RED | 1047, 1126 | p.1126: "203"<br>p.1047: "103 nests in 2018-19" | **likely real** | Leatherback nests 2018-19: 203 in the tables (pp.1037, 1126) vs '103 nests in 2018-19' in the text (p.1047). Probably a typo. |
-| 15 | ct-239 | RED | 291, 337 | p.337: "heavy annual rainfall of 300 to 350 Cm spreading over 9 months"<br>p.291: "The annual rainfall ranges from 3000 to 3500 Cm" | **likely real** | Rainfall 3000-3500 cm (p.291) vs 300-350 cm (p.337): unit error, likely mm (already in TODO). |
+| 15 | ct-239 (verified: gn-008) | RED | 291, 337 | p.337: "heavy annual rainfall of 300 to 350 Cm spreading over 9 months"<br>p.291: "The annual rainfall ranges from 3000 to 3500 Cm" | **likely real** | Rainfall 3000-3500 cm (p.291) vs 300-350 cm (p.337): unit error, likely mm (already in TODO). |
 | 16 | ct-1385 | RED | 207, 210 | p.210: "39 Acres"<br>p.207: "Planned layout has been developed in order to accommodate the plant facilities within the proposed 39 Hectare of land parcel." | **likely real** | Power plant land 39 hectares (pp.207, 485, 581, 975) vs 39 acres (p.210). |
 | 17 | ct-200 | RED | 134, 459 | p.134: "Out of which part will be met by the DG sets of 2 x 5 MVA each"<br>p.459: "operation of 7 DG sets for continuous 8 hours per day" | **likely real** | Airport power: DG sets of 2 x 5 MVA (p.134) vs the air-quality model run with 7 DG sets (p.459, airport chapter). |
 | 18 | ct-812 | RED | 45, 279 | p.45: "10 SW"<br>p.279: "Eight surface water and Eight ground water sources covering were examined for physio-chemical, heavy metals and bacteriological parameters" | **likely real** | Water sampling: 10 SW + 10 GW planned (p.45) vs 8 + 8 examined (p.279). Same as ToR promise pr-13. |
@@ -133,4 +145,4 @@ Tally: 20 likely real, 1 needs a look, 4 possible false alarm, 5 false alarm. Th
 
 ## Review queue
 
-review/review_queue.json lists all 153 new RED/ORANGE flags: the top 30 above, then the other 123 in a random order (seed 42; rebuilt after the top-up, so the random order differs from the 152-flag queue). 15 of the top 30 are marked double review. The app's Review queue tab walks the queue in order ("Flag n of 153"). A reviewer name is required. For double-review flags, the other reviewer's decision stays hidden until you have decided. Decisions are saved to review/reviews.jsonl. The Precision panel shows precision on everything reviewed so far, precision on the random part alone, and agreement on the double-review flags (with Cohen's kappa). Flags judged false alarms are hidden from the Findings view unless "Show dismissed" is on. My quick reads are not in the queue, so reviewers judge without them.
+review/review_queue.json lists all 153 new RED/ORANGE flags: the top 30 above, then the other 123 in a random order (seed 42; rebuilt after the top-up, so the random order differs from the 152-flag queue). 15 of the top 30 are marked double review. The app's Review queue tab walks the queue in order ("Flag n of 153"). A reviewer name is required. For double-review flags, the other reviewer's decision stays hidden until you have decided. Decisions are saved to review/reviews.jsonl. The Precision panel shows precision on everything reviewed so far, precision on the random part alone, and agreement on the double-review flags (with Cohen's kappa). Flags judged false alarms are hidden from the Findings view unless "Show dismissed" is on. My quick reads are not in the queue, so reviewers judge without them. Flags verified by hand (ct-071, ct-979, ct-239) are marked in the queue as already reviewed (Confirm, by Manya Singh, 2026-10-27): they count toward precision, need no further decision, and the tab opens on the first flag that still needs one. For a double-review flag (ct-071) the hand check is the verdict unless the second reviewer disagrees (then it is disputed).

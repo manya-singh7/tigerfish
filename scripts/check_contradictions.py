@@ -44,8 +44,10 @@ def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     pages = {p["page"]: p["text"] for p in pdf_reader.read_pdf(pdf) if p["page"] in pages_wanted}
     cands = ct.candidate_pairs(ledger, tor_counts=tor_counts_for(pdf), keyed=True)
     known = known_issues_for(pdf)
+    # direct_control: the control's own pair is sent to Ultra (pairing does not form it);
+    # other negative controls (gn-002) pass by not being flagged.
     controls = [ct.control_candidate(i) for i in known
-                if i["expected_grade"] == "NONE" and set(i["pages"]) <= set(pages)]
+                if i.get("direct_control") and set(i["pages"]) <= set(pages)]
     est, uncached = ct.estimate_cost(cands + controls, pages)
     out = {"ledger": len(ledger), "candidates": cands, "controls": controls,
            "estimate": est, "uncached": uncached, "findings": [], "control_findings": [],
@@ -61,7 +63,7 @@ def run(pdf, pages_wanted, max_cost=ct.MAX_COST_USD, dry_run=False):
     # The negative control is a deliberate test of Ultra's explanation-reading: never triaged.
     out["control_findings"] = (ct.check(controls, pages, max_cost_usd=left, use_triage=False)
                                if controls else [])
-    out["evaluation"] = ct.evaluate(out["findings"], known) if known else []
+    out["evaluation"] = ct.evaluate(out["findings"], known, pages=pages) if known else []
     out["cost"] = llm.session_cost_usd - start
     return out
 

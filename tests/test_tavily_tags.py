@@ -21,6 +21,18 @@ def test_tag_only_on_linked_evidence_of_tavily_checks():
     assert "Found via Tavily" not in cards.evidence_html(gbif, "species_range")
     eia = [{"label": "Report page", "value": "EIA p.292", "url": "https://example.org/eia.pdf#page=292"}]
     assert "Found via Tavily" not in cards.evidence_html(eia, "promise")
+    by_hand = [{"label": "Certificate", "value": "33 B", "url": "https://x/c.pdf", "manual": True}]
+    assert "Found via Tavily" not in cards.evidence_html(by_hand, "accreditation")
+
+
+def test_verification_box_shows_who_outcome_wording_and_note():
+    html = cards.verification_html({"by": "Manya Singh", "on": "2026-10-27",
+                                    "outcome": "confirmed_with_nuance", "note": "p.978 <form>",
+                                    "wording": "inconsistent about coral at the port site"})
+    assert "Human-verified" in html and "Manya Singh, 2026-10-27" in html
+    assert "Confirmed, with nuance" in html and "inconsistent about coral at the port site" in html
+    assert "&lt;form&gt;" in html                          # escaped
+    assert cards.verification_html(None) == ""
 
 
 def test_memo_web_evidence_is_tagged_but_page_evidence_is_not():
@@ -35,7 +47,7 @@ def test_memo_web_evidence_is_tagged_but_page_evidence_is_not():
 def test_every_tavily_source_in_saved_results_gets_a_tag():
     for r in data.reports():
         for f in data.load(r["id"])["findings"]:
-            linked = [e for e in f["evidence"] if e.get("url")]
+            linked = [e for e in f["evidence"] if e.get("url") and not e.get("manual")]
             html = cards.evidence_html(f["evidence"], f["check"])
             want = len(linked) if f["check"] in cards.TAVILY_CHECKS else 0
             assert html.count("Found via Tavily") == want, f["id"]

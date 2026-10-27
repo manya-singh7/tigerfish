@@ -1,7 +1,7 @@
 {
  "report_id": "great_nicobar_2021_draft",
  "source": "audit_great_nicobar_2021_draft_eia.json",
- "created": "2026-10-27 16:37",
+ "created": "2026-10-27 23:01",
  "seed": 42,
  "total": 153,
  "top": 30,
@@ -39,7 +39,15 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-071"
+   "finding_id": "ct-071",
+   "verified": {
+    "by": "Manya Singh",
+    "on": "2026-10-27",
+    "decision": "real",
+    "outcome": "confirmed_with_nuance",
+    "note": "p.1085 lists \"presence of 117 species of scleractinian corals along with the live coral cover of 17.46%\" among issues \"Galathea Bay stands with\" (the sentence ends \"in adjoining Galathea\"); p.738: \"coral do not exist in the Galathea Bay area\".",
+    "known_issue": "gn-006"
+   }
   },
   {
    "n": 2,
@@ -542,7 +550,15 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-239"
+   "finding_id": "ct-239",
+   "verified": {
+    "by": "Manya Singh",
+    "on": "2026-10-27",
+    "decision": "real",
+    "outcome": "confirmed",
+    "note": "Low severity, likely a unit slip: p.291 \"3000 to 3500 Cm\" vs p.337 \"300 to 350 Cm\".",
+    "known_issue": "gn-008"
+   }
   },
   {
    "n": 16,
@@ -5007,7 +5023,15 @@
     "explained": false
    },
    "urls": [],
-   "finding_id": "ct-979"
+   "finding_id": "ct-979",
+   "verified": {
+    "by": "Manya Singh",
+    "on": "2026-10-27",
+    "decision": "real",
+    "outcome": "confirmed_with_nuance",
+    "note": "p.851 \"About 648\" vs p.940 BSI \"approximately 600\"; different sources, approximate, not reconciled.",
+    "known_issue": "gn-007"
+   }
   },
   {
    "n": 146,

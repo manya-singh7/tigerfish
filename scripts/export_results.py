@@ -328,6 +328,37 @@ def page_images(prefix, findings, shared):
 # full run numbers findings differently (gn-001 is ct-031), so link them by known issue.
 RECORDED_FOR_ISSUE = {"gn-001": "ct-003"}
 
+def apply_verification(findings, issues, rows):
+    """Mark the findings a person verified by hand (data/known_issues.json): the known issue,
+    who verified it and when, the note, and the reviewed wording (title and summary) for the
+    card. Supporting sources added by hand go into the evidence, marked manual (not Tavily).
+    Returns the ids of the verified findings."""
+    by_row = {r["id"]: r for r in rows}
+    by_id = {f["id"]: f for f in findings}
+    done = []
+    for issue in issues:
+        if not issue.get("verified_by"):
+            continue
+        fid = (by_row.get(issue["id"]) or {}).get("finding_id")
+        f = by_id.get(fid) or next((g for g in findings if g.get("known_issue") == issue["id"]), None)
+        if not f:       # negative controls and explained issues have no card
+            continue
+        f["known_issue"] = issue["id"]
+        f["verification"] = {"by": issue["verified_by"], "on": issue["verified_on"],
+                             "outcome": issue.get("verification_outcome", "confirmed"),
+                             "note": issue["verification_note"],
+                             "wording": issue.get("verified_wording")}
+        if issue.get("verified_title"):
+            f["title"] = issue["verified_title"]
+        for src in issue.get("external_sources", []):
+            if src.get("supporting_only") and not any(e.get("url") == src.get("url")
+                                                      for e in f["evidence"]):
+                f["evidence"].append({"label": f"Supporting, added by hand: {src['what']}",
+                                      "value": src["text"], "url": src.get("url"), "manual": True})
+        done.append(f["id"])
+    return done
+
+
 SKIP_LABELS = {"hindi": "Hindi", "lab_report": "lab sheets", "annexure": "forms",
                "error": "unreadable"}
 
@@ -388,6 +419,10 @@ def great_nicobar():
     findings += accreditation_findings()
     findings += promise_findings(report_id)
     findings = dedupe(findings)
+    issues = check_contradictions.known_issues_for(GN_PDF)
+    rows = rows + ct.evaluate_other_checks(findings, issues)
+    verified = apply_verification(findings, issues, rows)
+    print(f"Human-verified findings: {', '.join(verified)}")
     for f in findings:   # recorded investigations keep the id they were recorded under
         rec = RECORDED_FOR_ISSUE.get(f.get("known_issue"))
         if rec and rec != f["id"]:
@@ -413,6 +448,8 @@ def great_nicobar():
         "cost": {"nebius_usd": round(usd + promises_usd, 4), "tavily_credits": credits,
                  "gbif_calls": gbif, "approx_seconds": seconds},
         "known_issue_score": dict(zip(("passed", "scored"), ct.score(rows))),
+        "known_issues": [{k: r[k] for k in ("id", "type", "expected", "grade", "finding_id",
+                                            "ok", "scored", "status")} for r in rows],
         "findings": findings, "exported_in_s": round(time.time() - started, 1),
     }
     if full:
@@ -431,7 +468,9 @@ def great_nicobar():
         out["cost"] = {"nebius_usd": round(tot["cost_usd"] + promises_usd, 4),
                        "tavily_credits": tot["tavily_credits"], "gbif_calls": gbif,
                        "approx_seconds": tot["wall_clock_s"],
-                       "time_note": "wall clock, full audit, 6 parallel calls"}
+                       "time_note": "wall clock, full audit, 6 parallel calls",
+                       "note": (f"Nebius models: full audit ${tot['cost_usd']:.2f} + ToR check "
+                                f"${promises_usd:.2f}")}
         out["full_run"] = {"file": FULL_RUN.name, "cost_usd": tot["cost_usd"],
                            "wall_clock_s": tot["wall_clock_s"],
                            "pages_audited": run["pages_audited"]}

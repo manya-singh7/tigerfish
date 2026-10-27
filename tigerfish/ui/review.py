@@ -51,9 +51,11 @@ def queue_section(report_id):
 
 
 def item_card(item, reviews, reviewer):
-    by = reviews.get(item["flag_id"], {})
+    by = review.decisions(item, reviews)
+    verified = item.get("verified")
     with st.container(border=True):
-        tag = " · double review: judge on your own" if item["double_review"] else ""
+        tag = " · double review: judge on your own" if item["double_review"] and not verified else ""
+        tag += " · human-verified" if verified else ""
         st.markdown(f'{badge(item["grade"])}<span class="tf-check">{esc(item["check_name"])} · '
                     f'{esc(item["flag_id"])}{esc(tag)}</span>'
                     f'<div class="tf-card-title">Pages {esc(", ".join(map(str, item["pages"])))}</div>',
@@ -70,11 +72,18 @@ def item_card(item, reviews, reviewer):
             st.caption("Ultra's answers: " + ", ".join(f"{k} = {v}" for k, v in item["answers"].items()))
         for u in item.get("urls") or []:
             st.caption(f"Match: {u}")
-        st.caption("Check the quotes against the PDF pages before deciding.")
+        if verified:
+            st.success(f"Already reviewed: {review.DECISIONS[verified['decision']]}, by "
+                       f"{verified['by']} ({verified['on']}), checked by hand against the PDF"
+                       + (f" as known issue {verified['known_issue']}" if verified.get("known_issue") else "")
+                       + ". It counts toward precision; no further decision is needed.")
+        else:
+            st.caption("Check the quotes against the PDF pages before deciding.")
 
         mine = by.get(review.name_key(reviewer))
         others = [r for k, r in by.items() if k != review.name_key(reviewer)]
-        if others and (not item["double_review"] or mine):   # double review: hidden until you decide
+        # double review: hidden until you decide (a hand verification is shown: it is final)
+        if others and (not item["double_review"] or mine or verified):
             st.caption("Other decisions: " + "; ".join(
                 f"{r['reviewer']}: {review.DECISIONS[r['decision']]}" + (f" ({r['note']})" if r["note"] else "")
                 for r in others))
@@ -108,7 +117,8 @@ def render(report_id):
     if not reviewer:
         st.caption("Enter your name to record decisions.")
     if POS_KEY not in st.session_state:
-        st.session_state[POS_KEY] = (review.next_index(queue, reviews, reviewer) or 0) if reviewer else 0
+        # open on the first flag still needing a decision (human-verified ones are done)
+        st.session_state[POS_KEY] = review.next_index(queue, reviews, reviewer) or 0
     pos = st.session_state[POS_KEY]
 
     left = sum(review.needs(it, reviews, reviewer) for it in items) if reviewer else None

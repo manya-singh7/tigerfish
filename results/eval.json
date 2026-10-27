@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27 03:57",
+  "generated": "2026-10-27 23:07",
   "seed": 42,
   "max_cost_usd": 0.3,
   "known": {
@@ -24,20 +24,20 @@
       },
       {
         "id": "gn-002",
-        "type": "mismatch",
+        "type": "negative_control",
         "pages": [
           444,
           751
         ],
         "expected": [
-          "ORANGE"
+          "NONE"
         ],
         "found": false,
         "grade": null,
         "finding_id": null,
-        "ok": false,
-        "status": "under_review",
-        "scored": false
+        "ok": true,
+        "status": "explained",
+        "scored": true
       },
       {
         "id": "gn-003",
@@ -105,12 +105,30 @@
         "grade": "RED",
         "finding_id": "rf-001",
         "ok": true,
-        "status": "candidate_new_finding",
-        "scored": false
+        "status": null,
+        "scored": true
+      },
+      {
+        "id": "gn-007",
+        "type": "contradiction",
+        "pages": [
+          851,
+          940
+        ],
+        "expected": [
+          "RED",
+          "ORANGE"
+        ],
+        "found": true,
+        "grade": "ORANGE",
+        "finding_id": "ct-006",
+        "ok": true,
+        "status": null,
+        "scored": true
       }
     ],
-    "passed": 4,
-    "scored": 4,
+    "passed": 7,
+    "scored": 7,
     "control": [
       {
         "pages": [
@@ -495,10 +513,10 @@
         "sentence": "As per the field survey, the figure for odonate species recorded from GNI was revised from 24 species to 36 species after the 2021 survey."
       }
     ],
-    "estimate_usd": 0.106,
+    "estimate_usd": 0.0,
     "estimate_extract_usd": 0.0,
-    "estimate_verdicts_usd": 0.106,
-    "uncached_verdicts": 12,
+    "estimate_verdicts_usd": 0.0,
+    "uncached_verdicts": 0,
     "spent_before_verdicts": 0.0,
     "triage_validation": {
       "candidates": 23,
@@ -1085,7 +1103,7 @@
     },
     "rule_claims": 6,
     "stopped": null,
-    "cost_usd": 0.1427,
+    "cost_usd": 0.0,
     "usage": [
       {
         "stage": "Planted test: claim extraction",
@@ -1371,13 +1389,13 @@
       },
       {
         "stage": "Copy-paste check (Lightning)",
-        "calls": 1,
-        "in_tokens": 1632,
-        "out_tokens": 70,
-        "total_tokens": 1702,
-        "seconds": 131.8,
-        "time_measured": false,
-        "cost_usd": 0.00011
+        "calls": 2,
+        "in_tokens": 1737,
+        "out_tokens": 79,
+        "total_tokens": 1816,
+        "seconds": 3.4,
+        "time_measured": true,
+        "cost_usd": 0.00012
       },
       {
         "stage": "Table reading (Super-VL) + GBIF",
@@ -1392,7 +1410,7 @@
     ],
     "tavily_credits": {
       "copy_paste": 15,
-      "status": 2
+      "status": 4
     },
     "gbif_calls": 55,
     "extrapolation": {
@@ -1431,5 +1449,5 @@
       "formula": "cost = text_pages x cost_per_text_page + vision_pages x cost_per_vision_page + candidates x triage_cost_per_candidate + candidates x triage_pass_rate x cost_per_verdict, where candidates = candidates_per_page x pages"
     }
   },
-  "eval_cost_usd": 0.1648
+  "eval_cost_usd": 0.0
 }

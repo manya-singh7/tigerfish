@@ -15,16 +15,167 @@
     "Terms of Reference promises (Nemotron Lightning / Ultra)"
   ],
   "cost": {
-    "nebius_usd": 15.6873,
+    "nebius_usd": 15.7959,
     "tavily_credits": 84,
     "gbif_calls": 0,
-    "approx_seconds": 3576,
-    "time_note": "wall clock, full audit, 6 parallel calls"
+    "approx_seconds": 3748,
+    "time_note": "wall clock, full audit, 6 parallel calls",
+    "note": "Nebius models: full audit $15.78 + ToR check $0.02"
   },
   "known_issue_score": {
-    "passed": 4,
-    "scored": 4
+    "passed": 12,
+    "scored": 12
   },
+  "known_issues": [
+    {
+      "id": "gn-001",
+      "type": "contradiction",
+      "expected": [
+        "RED",
+        "ORANGE"
+      ],
+      "grade": "ORANGE",
+      "finding_id": "ct-031",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-002",
+      "type": "negative_control",
+      "expected": [
+        "NONE"
+      ],
+      "grade": null,
+      "finding_id": null,
+      "ok": true,
+      "scored": true,
+      "status": "explained"
+    },
+    {
+      "id": "gn-003",
+      "type": "recycled_figure",
+      "expected": [
+        "RED"
+      ],
+      "grade": "RED",
+      "finding_id": "rf-010",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-004",
+      "type": "contradiction",
+      "expected": [
+        "RED"
+      ],
+      "grade": "RED",
+      "finding_id": "ct-403",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-neg-001",
+      "type": "negative_control",
+      "expected": [
+        "NONE"
+      ],
+      "grade": null,
+      "finding_id": null,
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-005",
+      "type": "recycled_figure",
+      "expected": [
+        "RED"
+      ],
+      "grade": "RED",
+      "finding_id": "rf-009",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-006",
+      "type": "contradiction",
+      "expected": [
+        "RED",
+        "ORANGE"
+      ],
+      "grade": "ORANGE",
+      "finding_id": "ct-071",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-007",
+      "type": "contradiction",
+      "expected": [
+        "RED",
+        "ORANGE"
+      ],
+      "grade": "ORANGE",
+      "finding_id": "ct-979",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-008",
+      "type": "contradiction",
+      "expected": [
+        "RED",
+        "ORANGE"
+      ],
+      "grade": "RED",
+      "finding_id": "ct-239",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-009",
+      "type": "species_range",
+      "expected": [
+        "RED"
+      ],
+      "grade": "RED",
+      "finding_id": "sp-p954-001",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-010",
+      "type": "accreditation",
+      "expected": [
+        "ORANGE"
+      ],
+      "grade": "ORANGE",
+      "finding_id": "ac-01",
+      "ok": true,
+      "scored": true,
+      "status": null
+    },
+    {
+      "id": "gn-011",
+      "type": "tor_promise",
+      "expected": [
+        "ORANGE"
+      ],
+      "grade": "ORANGE",
+      "finding_id": "pr-06",
+      "ok": true,
+      "scored": true,
+      "status": null
+    }
+  ],
   "findings": [
     {
       "id": "ct-051",
@@ -1655,11 +1806,18 @@
       ],
       "why": "The two statements give different numerical ranges for annual rainfall (300–350 cm vs 3000–3500 cm) for the same island, with no explanation in the report for the discrepancy.",
       "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
-      "known_issue": null,
+      "known_issue": "gn-008",
       "images": [
         "pages/great_nicobar_2021_draft_full_p0337.png",
         "pages/great_nicobar_2021_draft_full_p0291.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "Low severity, likely a unit slip: p.291 \"3000 to 3500 Cm\" vs p.337 \"300 to 350 Cm\".",
+        "wording": "Annual rainfall is given as 3000-3500 cm (p.291) and 300-350 cm (p.337). Low severity: likely a unit slip."
+      }
     },
     {
       "id": "ct-240",
@@ -2028,7 +2186,14 @@
       "images": [
         "pages/great_nicobar_2021_draft_full_p1168.png",
         "pages/great_nicobar_2021_draft_full_p0940.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "p.1168 (330 species, whole GNI area) vs p.940 ZSI: \"695 species of fauna with the endemism of 158 species\".",
+        "wording": null
+      }
     },
     {
       "id": "ct-404",
@@ -3235,7 +3400,14 @@
       "images": [
         "pages/great_nicobar_2021_draft_full_p0818.png",
         "pages/great_nicobar_2021_draft_full_p0851.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed_with_nuance",
+        "note": "pp.818/851 are Gazette ESZ notifications reproduced in the EIA; identical 648/422/142/48/85 for both parks; the duplication originates in the official notifications.",
+        "wording": "Identical flora figures (648 species, 422 genera, 142 families, 48 endemic, 85 rare) for Campbell Bay NP and Galathea NP. Attribution: pp.818 and 851 are Gazette eco-sensitive-zone notifications reproduced in the EIA, so the duplication originates in the official notifications, not in the EIA's own text."
+      }
     },
     {
       "id": "rf-010",
@@ -3275,7 +3447,14 @@
         "pages/great_nicobar_2021_draft_full_p0818.png",
         "pages/great_nicobar_2021_draft_full_p0851.png",
         "pages/great_nicobar_2021_draft_full_p1168.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "pp.818/851 (Gazette ESZ notifications) give the identical 330-species breakdown; p.1168 (Executive Summary, the EIA's own text) applies it to \"the whole GNI area\".",
+        "wording": null
+      }
     },
     {
       "id": "rf-013",
@@ -3342,10 +3521,17 @@
       ],
       "why": "0 GBIF records of Panulirus interruptus within 3,000 km; its 294,577 records worldwide are mostly from United States of America, Mexico, Canada. Local survey effort is low (150 Malacostraca records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
       "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
-      "known_issue": null,
+      "known_issue": "gn-009",
       "images": [
         "pages/great_nicobar_2021_draft_species_p0954.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "p.954: \"rock lobsters (Panulirus interruptus) also being landed in considerable quantity\"; GBIF has 0 records within 3,000 km. Likely misidentification.",
+        "wording": "p.954 reports Panulirus interruptus landed in considerable quantity; GBIF has 0 records of it within 3,000 km. Likely a misidentification."
+      }
     },
     {
       "id": "ac-01",
@@ -3391,23 +3577,36 @@
         {
           "label": "Validity",
           "value": "the source states no validity date; the source (AC meeting 061/2021, October 26, 2021) predates the report date (December 2021), so status at the report date could differ"
+        },
+        {
+          "label": "Supporting, added by hand: Vimta NABET certificate NABET/EIA/2326/RA 0301 (2023-26); dated after the report, supporting only",
+          "value": "sector 33 Cat. B, sector 39 Cat. B",
+          "url": "https://vimta.com/wp-content/uploads/NABET-Certificate-2023-2026.pdf",
+          "manual": true
         }
       ],
       "why": "International Container Transshipment Terminal: accredited for Category B only; project is Category A; Township & Area Development: accredited for Category B only; project is Category A",
       "clear": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
-      "known_issue": null,
+      "known_issue": "gn-010",
       "images": [
         "pages/great_nicobar_2021_draft_full_p0044.png",
         "pages/great_nicobar_2021_draft_full_p0018.png",
         "pages/great_nicobar_2021_draft_full_p0005.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "EIA p.18: category A, ICTT 7(e), township 8(b). NABET minutes 061/2021 (26 Oct 2021, citing RA AC 15 Jun 2021): 33(B), 39(B). Supporting evidence: Vimta NABET certificate NABET/EIA/2326/RA 0301 (2023-26): sector 33 Cat. B, sector 39 Cat. B (dated after the report; supporting only).",
+        "wording": null
+      }
     },
     {
       "id": "ct-031",
       "check": "contradiction",
       "check_name": "Internal contradiction",
       "grade": "ORANGE",
-      "title": "Pages 392 and 978 disagree",
+      "title": "Inconsistent about coral at the port site",
       "message": "Inconsistency flagged, verify.",
       "quotes": [
         {
@@ -3432,6 +3631,13 @@
         "pages/great_nicobar_2021_draft_full_p0392.png",
         "pages/great_nicobar_2021_draft_full_p0978.png"
       ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed_with_nuance",
+        "note": "p.978 (Form 1 screening): \"Coral reef exists in the proposed site for Transshipment / Port\"; p.392 and p.738: corals outside the construction area; p.392 plans translocation \"if affected\".",
+        "wording": "The report is inconsistent about coral at the port site: the Form 1 screening (p.978) says coral reef exists in the proposed port site, while pp.392 and 738 place the corals outside the construction area and plan translocation only \"if affected\" (p.392)."
+      },
       "investigation_id": "ct-003"
     },
     {
@@ -3563,7 +3769,7 @@
       "check": "contradiction",
       "check_name": "Internal contradiction",
       "grade": "ORANGE",
-      "title": "Pages 738 and 1085 disagree",
+      "title": "Inconsistent about coral in and around Galathea Bay",
       "message": "Inconsistency flagged, verify.",
       "quotes": [
         {
@@ -3583,11 +3789,18 @@
       ],
       "why": "Statement 1 cites the ZSI report stating coral do not exist in the Galathea Bay area but notes some corals on the eastern peninsula outside the construction area. Statement 2 reports 117 species of scleractinian corals with 17.46% live coral cover in Galathea Bay as an environmental issue. The report does not explain the discrepancy.",
       "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
-      "known_issue": null,
+      "known_issue": "gn-006",
       "images": [
         "pages/great_nicobar_2021_draft_full_p0738.png",
         "pages/great_nicobar_2021_draft_full_p1085.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed_with_nuance",
+        "note": "p.1085 lists \"presence of 117 species of scleractinian corals along with the live coral cover of 17.46%\" among issues \"Galathea Bay stands with\" (the sentence ends \"in adjoining Galathea\"); p.738: \"coral do not exist in the Galathea Bay area\".",
+        "wording": "The report is inconsistent about coral in and around Galathea Bay: p.1085 lists 117 scleractinian coral species and 17.46% live coral cover among the issues Galathea Bay \"stands with\" (the sentence ends \"in adjoining Galathea\"), while p.738 says coral does not exist in the Galathea Bay area."
+      }
     },
     {
       "id": "ct-1054",
@@ -4522,11 +4735,18 @@
       ],
       "why": "The statements refer to flora species counts for Galathea National Park (648) and Great Nicobar Island (600). Since Galathea National Park is located within Great Nicobar Island, the island's flora count should be at least as high as the park's, making the figures incompatible.",
       "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
-      "known_issue": null,
+      "known_issue": "gn-007",
       "images": [
         "pages/great_nicobar_2021_draft_full_p0851.png",
         "pages/great_nicobar_2021_draft_full_p0940.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed_with_nuance",
+        "note": "p.851 \"About 648\" vs p.940 BSI \"approximately 600\"; different sources, approximate, not reconciled.",
+        "wording": "The flora given for one park (about 648 species, p.851) exceeds the BSI figure for the whole island (approximately 600, p.940). Different sources and both approximate, but the report does not reconcile them."
+      }
     },
     {
       "id": "cp-p29-2",
@@ -4606,7 +4826,7 @@
       "check": "promise",
       "check_name": "ToR promise",
       "grade": "ORANGE",
-      "title": "Terrestrial ecology: 3 months in the Terms of Reference",
+      "title": "Terrestrial ecology: 3 months in the proposed Terms of Reference",
       "message": "The ToR commits to collect terrestrial ecology baseline data for 3 months (ToR p.1); the report describes quick primary survey over nine days in December 2020 and seven days in February 2021 (EIA p.292). Verify.",
       "quotes": [
         {
@@ -4640,10 +4860,17 @@
       ],
       "why": "The report describes only a quick primary survey spanning nine days in December 2020 and a separate seven-day turtle survey in February 2021, not three months of baseline data collection.",
       "clear": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
-      "known_issue": null,
+      "known_issue": "gn-011",
       "images": [
         "pages/great_nicobar_2021_draft_pr-06_p0292.png"
-      ]
+      ],
+      "verification": {
+        "by": "Manya Singh",
+        "on": "2026-10-27",
+        "outcome": "confirmed",
+        "note": "pp.292-293: \"rapid reconnaissance type of survey\" 14-22 Dec 2020 (road corridor 15-21 Dec, 7 days), \"not intensive except in non-forest residential areas\". Proposed ToR p.1: \"base line data to be collected for 3 months to represent a season\". The air/water/soil baseline did run 3 months.",
+        "wording": "The proposed ToR (p.1) asks for baseline data \"for 3 months to represent a season\"; the flora/fauna survey was a \"rapid reconnaissance type of survey\" of 14-22 Dec 2020 (road corridor 15-21 Dec, 7 days), \"not intensive except in non-forest residential areas\" (pp.292-293). The air, water and soil baseline did run 3 months."
+      }
     },
     {
       "id": "pr-08",
@@ -4998,13 +5225,13 @@
       ]
     }
   ],
-  "exported_in_s": 38.6,
+  "exported_in_s": 23.0,
   "pages_skipped": 99,
   "pages_note": "pages audited; 99 skipped: Hindi/lab sheets/forms",
   "full_run": {
     "file": "audit_great_nicobar_2021_draft_eia.json",
-    "cost_usd": 15.6718,
-    "wall_clock_s": 3576,
+    "cost_usd": 15.7804,
+    "wall_clock_s": 3748,
     "pages_audited": 1114
   }
 }

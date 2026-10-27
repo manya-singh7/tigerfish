@@ -16,7 +16,23 @@ def review_key(report_id, finding_id):
 
 
 def from_tavily(check, e):
-    return check in TAVILY_CHECKS and bool(e.get("url"))
+    return check in TAVILY_CHECKS and bool(e.get("url")) and not e.get("manual")
+
+
+OUTCOME_LABELS = {"confirmed": "Confirmed", "confirmed_with_nuance": "Confirmed, with nuance",
+                  "explained": "Explained"}
+
+
+def verification_html(v):
+    """The hand check of a finding: who, when, outcome, the reviewed wording and the note."""
+    if not v:
+        return ""
+    head = (f'<b>Human-verified</b> by {esc(v["by"])}, {esc(v["on"])} · '
+            f'{esc(OUTCOME_LABELS.get(v.get("outcome"), "Confirmed"))}')
+    wording = f'<div style="margin-top:0.25rem">{esc(v["wording"])}</div>' if v.get("wording") else ""
+    note = (f'<div style="margin-top:0.25rem"><b>Checked</b> &nbsp;{esc(v["note"])}</div>'
+            if v.get("note") else "")
+    return f'<div class="tf-verified">{head}{wording}{note}</div>'
 
 
 def tavily_tag(url):
@@ -47,7 +63,8 @@ def summary_strip(report):
     usd = cost.get("nebius_usd")
     credits = cost.get("tavily_credits", 0)
     cost_value = f"${usd:.2f}" if usd is not None else "-"
-    cost_note = (f"Nebius models, plus {credits} Tavily credits" if credits else "Nebius models")
+    base = cost.get("note") or "Nebius models"
+    cost_note = f"{base}, plus {credits} Tavily credits" if credits else base
     if cost.get("gbif_calls"):
         cost_note += "; GBIF is free"
     cols = st.columns(5)
@@ -86,6 +103,7 @@ def finding_card(report_id, f, report_title=""):
         st.markdown(f'{badge(f["grade"])}<span class="tf-check">{esc(f["check_name"])}</span>{known}'
                     f'<div class="tf-card-title">{esc(f["title"])}</div>'
                     + badges.html(badges.finding_badges(f, badges.readers(report_id)))
+                    + verification_html(f.get("verification"))
                     + f'<div class="tf-message">{esc(f["message"])}</div>', unsafe_allow_html=True)
 
         quotes = f["quotes"]

@@ -35,6 +35,33 @@ def test_contradiction_shows_reader_per_page_then_triage_then_ultra():
                  (badges.SCREENED_LIGHTNING, ""), (badges.JUDGED_ULTRA, "")]
 
 
+def test_human_verified_badge_last_and_manual_sources_not_tavily():
+    f = {"check": "accreditation", "quotes": [{"page": 18, "text": "q"}],
+         "evidence": [{"label": "Certificate", "value": "33 B", "url": "https://x/c.pdf", "manual": True}],
+         "verification": {"by": "Manya Singh", "on": "2026-10-27"}}
+    got = badges.finding_badges(f)
+    assert got[-1] == (badges.HUMAN_VERIFIED, "Manya Singh, 2026-10-27")
+    assert badges.TAVILY not in [label for label, _ in got]     # the only link was added by hand
+    unverified = badges.finding_badges({**f, "verification": None})
+    assert badges.HUMAN_VERIFIED not in [label for label, _ in unverified]
+
+
+@saved
+def test_saved_human_verified_findings():
+    """The findings checked by hand (data/known_issues.json) carry the badge and the wording."""
+    found = {f["known_issue"]: f for f in data.load(GN)["findings"] if f.get("verification")}
+    assert set(found) == {"gn-001", "gn-003", "gn-004", "gn-005", "gn-006", "gn-007", "gn-008",
+                          "gn-009", "gn-010", "gn-011"}
+    assert found["gn-001"]["title"] == "Inconsistent about coral at the port site"
+    assert "in and around Galathea Bay" in found["gn-006"]["title"]
+    assert "proposed Terms of Reference" in found["gn-011"]["title"]
+    assert found["gn-011"]["id"] == "pr-06" and found["gn-010"]["id"] == "ac-01"
+    assert any(e.get("manual") and "NABET-Certificate-2023-2026" in e["url"]
+               for e in found["gn-010"]["evidence"])
+    for f in found.values():
+        assert f["verification"]["by"] == "Manya Singh" and f["verification"]["note"]
+
+
 def test_pages_are_grouped_and_sorted():
     b = badges.finding_badges(finding("recycled_figure", [851, 818], [ULTRA]), RD)
     assert b[0] == (badges.READ_LIGHTNING, "pp.818, 851")
@@ -88,7 +115,7 @@ def test_html_is_plain_text_escaped_and_has_hover_text():
 
 def test_every_label_has_a_style_and_ascii_text():
     for label, (kind, tip) in badges.INFO.items():
-        assert kind in ("nemotron", "tavily", "gbif") and tip
+        assert kind in ("nemotron", "tavily", "gbif", "human") and tip
         assert label.isascii() and tip.isascii()
 
 
@@ -125,7 +152,8 @@ def test_saved_coral_contradiction_badges():
     f = next(f for f in data.load(GN)["findings"] if f.get("known_issue") == "gn-001")
     assert badges.finding_badges(f, rd) == [
         (badges.READ_LIGHTNING, "p.392"), (badges.READ_SUPER_VL, "p.978"),
-        (badges.SCREENED_LIGHTNING, ""), (badges.JUDGED_ULTRA, "")]
+        (badges.SCREENED_LIGHTNING, ""), (badges.JUDGED_ULTRA, ""),
+        (badges.HUMAN_VERIFIED, "Manya Singh, 2026-10-27")]
 
 
 @saved

@@ -46,7 +46,9 @@ def test_every_issue_has_verification_fields():
         assert all(field in issue for field in VERIFY_FIELDS), issue["id"]
 
 
-STATUSES = {None, "under_review", "candidate_new_finding"}
+STATUSES = {None, "under_review", "candidate_new_finding", "explained"}
+OUTCOMES = {"confirmed", "confirmed_with_nuance", "explained"}
+OTHER_CHECKS = {"species_range", "accreditation", "tor_promise"}
 
 
 def test_statuses_are_valid_and_ids_unique():
@@ -55,9 +57,32 @@ def test_statuses_are_valid_and_ids_unique():
     for issue in ISSUES["issues"]:
         assert issue.get("status") in STATUSES, issue["id"]
     by_id = {i["id"]: i for i in ISSUES["issues"]}
-    assert by_id["gn-002"]["status"] == "under_review"
-    assert by_id["gn-005"]["status"] == "candidate_new_finding"
-    assert by_id["gn-005"]["verified_by"] is None
+    assert by_id["gn-002"]["status"] == "explained"
+    assert by_id["gn-002"]["expected_grade"] == "NONE"     # second negative control
+    assert by_id["gn-005"].get("status") is None            # confirmed by hand: scored
+
+
+def test_manual_verification_is_recorded():
+    """Every issue was checked by hand on 2026-10-27; explained issues are negative controls."""
+    for issue in ISSUES["issues"]:
+        assert issue["verified_by"] == "Manya Singh", issue["id"]
+        assert issue["verified_on"] == "2026-10-27", issue["id"]
+        assert issue["verification_note"], issue["id"]
+        assert issue["verification_outcome"] in OUTCOMES, issue["id"]
+        if issue["verification_outcome"] == "explained":
+            assert issue["expected_grade"] == "NONE", issue["id"]
+        if issue["verification_outcome"] == "confirmed_with_nuance":
+            assert issue.get("verified_wording"), issue["id"]
+
+
+def test_other_checks_name_their_app_finding():
+    by_id = {i["id"]: i for i in ISSUES["issues"]}
+    for issue in ISSUES["issues"]:
+        assert (issue["type"] in OTHER_CHECKS) == bool(issue.get("finding_id")), issue["id"]
+    assert by_id["gn-009"]["finding_id"] == "sp-p954-001"
+    assert by_id["gn-010"]["finding_id"] == "ac-01"
+    assert by_id["gn-011"]["finding_id"] == "pr-06"
+    assert "proposed" in by_id["gn-011"]["verified_title"]
 
 
 def test_grade_ok_uses_acceptable_grades():

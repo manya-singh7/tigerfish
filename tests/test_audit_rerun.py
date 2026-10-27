@@ -46,3 +46,24 @@ def test_cache_only_raises_instead_of_calling(monkeypatch, tmp_path):
     monkeypatch.setattr(llm, "_create", lambda *a, **k: pytest.fail("API called"))
     with pytest.raises(llm.CacheMiss):
         llm._call("m", [], {}, tmp_path / "x.json")
+
+
+def test_second_estimate_skips_pairs_triage_dropped(monkeypatch):
+    """Only pairs that would reach Ultra are priced: a cached triage "no" costs nothing,
+    pairs not triaged yet count at the pass rate, and no model is called."""
+    from tigerfish import contradictions
+    cands = [{"id": i} for i in range(4)]
+    monkeypatch.setattr(contradictions, "TRIAGE", True)
+    monkeypatch.setattr(contradictions, "CHUNK", 2)
+    monkeypatch.setattr(contradictions, "estimate_cost", lambda cs, texts: (1.0, 1))
+
+    def fake_triage(chunk, pages=None):
+        assert llm.CACHE_ONLY
+        if chunk[0]["id"] == 0:
+            return ["yes", "no"]          # cached: one passes, one dropped
+        raise llm.CacheMiss("not triaged")  # second chunk not cached yet
+    monkeypatch.setattr(contradictions, "triage", fake_triage)
+    to_triage, to_judge, usd = audit.pending([cands], {}, rate=0.5)
+    assert (to_triage, to_judge) == (2, 3)
+    assert usd == pytest.approx(1.0 + 2 * 0.5)
+    assert llm.CACHE_ONLY is False

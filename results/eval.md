@@ -1,13 +1,13 @@
 # TigerFish evaluation
 
-Generated 2026-10-27 03:57. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1925; new spend in this run: $0.1648 (the rest came from cache; cap $0.30).
+Generated 2026-10-27 23:07. Seed 42. Cost of the evaluation's own API calls (planted test, from their token usage): $0.1925; new spend in this run: $0.0000 (the rest came from cache; cap $0.30).
 
 ## Summary
 
 | Test | Result |
 |---|---|
-| Known issues (scored) | 4/4 pass |
-| Negative control (1045 vs 910 sq km) | not flagged |
+| Known issues, 10 known-issue pages (scored) | 7/7 pass |
+| Negative controls (1045 vs 910 sq km; coral 1-2 vs 4 ha) | gn-002 not flagged, gn-neg-001 not flagged |
 | Planted contradictions caught | 10/10 |
 | Explained differences wrongly flagged | 0/5 |
 | Other new flags on modified pages | 0 |
@@ -19,22 +19,59 @@ Generated 2026-10-27 03:57. Seed 42. Cost of the evaluation's own API calls (pla
 | Triage: RED/ORANGE findings it would drop | 0 (known issues, planted catches and the negative control: none) |
 | Full 1,213-page audit (estimate, with triage) | $11.32 = Rs 951 at 1 USD = 84 INR; about 358 min of API time if run one call at a time |
 | Full 1,213-page audit (estimate, without triage) | $11.24 = Rs 944; about 345 min |
-| Full 1,213-page audit (measured) | $15.67 = Rs 1,316; 60 min wall clock with 6 parallel calls; 84 Tavily credits |
-| Full audit: known issues | all found with the expected grade (gn-001 ct-031, gn-003 rf-010, gn-004 ct-403, gn-005 rf-009); negative control not flagged |
-| Full audit: new RED/ORANGE flags | 153 (review queue; precision to be measured by hand) |
+| Full 1,213-page audit (measured) | $15.78 = Rs 1,326; 62 min wall clock with 6 parallel calls; 84 Tavily credits |
+| Full audit: known issues | 12/12 pass with every check (gn-001 ct-031, gn-003 rf-010, gn-004 ct-403, gn-005 rf-009, gn-006 ct-071, gn-007 ct-979, gn-008 ct-239, gn-009 sp-p954-001, gn-010 ac-01, gn-011 pr-06); both negative controls not flagged; all verified by hand |
+| Full audit: new RED/ORANGE flags | 153 (review queue; 3 already reviewed as human-verified known issues (ct-071, ct-239, ct-979); reviewed so far 3 of 153, 3 real of 3 judged; precision on the rest to be measured by hand) |
 
 ## 1. Known issues (data/known_issues.json)
+
+On the 10 known-issue pages (pp.234, 392, 444, 751, 818, 851, 940, 978, 1141, 1168), contradiction check only. Issues on other pages or found by other checks are scored on the full audit (1b).
 
 | Issue | Type | Pages | Expected | Grade | Result | Status |
 |---|---|---|---|---|---|---|
 | gn-001 | contradiction | [392, 978] | RED/ORANGE | ORANGE | PASS |  |
-| gn-002 | mismatch | [444, 751] | ORANGE | - | FAIL (unscored) | under_review |
+| gn-002 | negative_control | [444, 751] | NONE | - | PASS | explained |
 | gn-003 | recycled_figure | [818, 851, 1168] | RED | RED | PASS |  |
 | gn-004 | contradiction | [1168, 940] | RED | RED | PASS |  |
 | gn-neg-001 | negative_control | [234, 1141] | NONE | - | PASS |  |
-| gn-005 | recycled_figure | [818, 851] | RED | RED | PASS (unscored) | candidate_new_finding |
+| gn-005 | recycled_figure | [818, 851] | RED | RED | PASS |  |
+| gn-007 | contradiction | [851, 940] | RED/ORANGE | ORANGE | PASS |  |
 
 Negative-control pair sent to Ultra directly: NONE. Both statements refer to the area of Great Nicobar Island (GNI), noting a reduction from 1045 sq km to 910 sq km. The report explains this difference as resulting from land submergence caused by the 2004 tsunami.
+
+### 1b. Known issues on the full audit (all checks)
+
+Every known issue scored against the full 1,213-page audit as exported for the app (contradictions and recycled figures by matching quotes; species, accreditation and ToR issues by their finding id). **12/12 pass.** All 12 issues were verified by hand against the PDF (verified_by, verified_on, verification_note in data/known_issues.json).
+
+| Issue | Type | Expected | Grade | Finding | Result | Hand check |
+|---|---|---|---|---|---|---|
+| gn-001 | contradiction | RED/ORANGE | ORANGE | ct-031 | PASS | confirmed, with nuance, Manya Singh 2026-10-27 |
+| gn-002 | negative_control | NONE | - | - | PASS | explained (negative control), Manya Singh 2026-10-27 |
+| gn-003 | recycled_figure | RED | RED | rf-010 | PASS | confirmed, Manya Singh 2026-10-27 |
+| gn-004 | contradiction | RED | RED | ct-403 | PASS | confirmed, Manya Singh 2026-10-27 |
+| gn-neg-001 | negative_control | NONE | - | - | PASS | explained (negative control), Manya Singh 2026-10-27 |
+| gn-005 | recycled_figure | RED | RED | rf-009 | PASS | confirmed, with nuance, Manya Singh 2026-10-27 |
+| gn-006 | contradiction | RED/ORANGE | ORANGE | ct-071 | PASS | confirmed, with nuance, Manya Singh 2026-10-27 |
+| gn-007 | contradiction | RED/ORANGE | ORANGE | ct-979 | PASS | confirmed, with nuance, Manya Singh 2026-10-27 |
+| gn-008 | contradiction | RED/ORANGE | RED | ct-239 | PASS | confirmed, Manya Singh 2026-10-27 |
+| gn-009 | species_range | RED | RED | sp-p954-001 | PASS | confirmed, Manya Singh 2026-10-27 |
+| gn-010 | accreditation | ORANGE | ORANGE | ac-01 | PASS | confirmed, Manya Singh 2026-10-27 |
+| gn-011 | tor_promise | ORANGE | ORANGE | pr-06 | PASS | confirmed, Manya Singh 2026-10-27 |
+
+Hand-check notes:
+
+- **gn-001**: p.978 (Form 1 screening): "Coral reef exists in the proposed site for Transshipment / Port"; p.392 and p.738: corals outside the construction area; p.392 plans translocation "if affected".
+- **gn-002**: p.751 Table 10.3 says the ~4 ha restoration "involves restoration for the entire project including Port, Power plant and Township", so 1-2 ha (port) vs 4 ha (whole project) is not a contradiction. TigerFish correctly grades it NONE; scored as a second negative control.
+- **gn-003**: pp.818/851 (Gazette ESZ notifications) give the identical 330-species breakdown; p.1168 (Executive Summary, the EIA's own text) applies it to "the whole GNI area".
+- **gn-004**: p.1168 (330 species, whole GNI area) vs p.940 ZSI: "695 species of fauna with the endemism of 158 species".
+- **gn-neg-001**: Confirmed: explained by the 2004 tsunami (1045 -> 910 sq km), as p.234 says.
+- **gn-005**: pp.818/851 are Gazette ESZ notifications reproduced in the EIA; identical 648/422/142/48/85 for both parks; the duplication originates in the official notifications.
+- **gn-006**: p.1085 lists "presence of 117 species of scleractinian corals along with the live coral cover of 17.46%" among issues "Galathea Bay stands with" (the sentence ends "in adjoining Galathea"); p.738: "coral do not exist in the Galathea Bay area".
+- **gn-007**: p.851 "About 648" vs p.940 BSI "approximately 600"; different sources, approximate, not reconciled.
+- **gn-008**: Low severity, likely a unit slip: p.291 "3000 to 3500 Cm" vs p.337 "300 to 350 Cm".
+- **gn-009**: p.954: "rock lobsters (Panulirus interruptus) also being landed in considerable quantity"; GBIF has 0 records within 3,000 km. Likely misidentification.
+- **gn-010**: EIA p.18: category A, ICTT 7(e), township 8(b). NABET minutes 061/2021 (26 Oct 2021, citing RA AC 15 Jun 2021): 33(B), 39(B). Supporting evidence: Vimta NABET certificate NABET/EIA/2326/RA 0301 (2023-26): sector 33 Cat. B, sector 39 Cat. B (dated after the report; supporting only).
+- **gn-011**: pp.292-293: "rapid reconnaissance type of survey" 14-22 Dec 2020 (road corridor 15-21 Dec, 7 days), "not intensive except in non-forest residential areas". Proposed ToR p.1: "base line data to be collected for 3 months to represent a season". The air/water/soil baseline did run 3 months.
 
 ## 2. Planted contradictions
 
@@ -124,14 +161,14 @@ Per check, for the 10 known-issue pages and Table 3.16 (table layout from the Ne
 | Claim extraction, text pages (8) | 8 | 11,832 | 7,710 | 19,542 | ~48s | $0.0026 | Rs 0.22 |
 | Claim extraction, vision pages (2) | 3 | 10,842 | 2,625 | 13,467 | ~30s | $0.0056 | Rs 0.47 |
 | Contradiction check (Ultra verdicts) | 21 | 60,218 | 22,978 | 83,196 | 111s | $0.1050 | Rs 8.82 |
-| Copy-paste check (Lightning) | 1 | 1,632 | 70 | 1,702 | ~132s | $0.0001 | Rs 0.01 |
+| Copy-paste check (Lightning) | 2 | 1,737 | 79 | 1,816 | 3s | $0.0001 | Rs 0.01 |
 | Table reading (Super-VL) + GBIF | 1 | 799 | 401 | 1,200 | ~0s | $0.0006 | Rs 0.05 |
 | Planted test: claim extraction | 15 | 13,688 | 2,571 | 16,259 | 13s | $0.0014 | Rs 0.12 |
 | Planted test: triage (Lightning) | 15 | 22,144 | 643 | 22,787 | 13s | $0.0015 | Rs 0.12 |
 | Planted test: fast triage, quotes only (Lightning) | 3 | 2,494 | 294 | 2,788 | 4s | $0.0002 | Rs 0.02 |
 | Planted test: Ultra verdicts | 21 | 65,486 | 41,294 | 106,780 | 158s | $0.1894 | Rs 15.91 |
 
-Tavily credits: copy-paste check 15, status check 2. GBIF calls (free): 55.
+Tavily credits: copy-paste check 15, status check 4. GBIF calls (free): 55.
 
 ### Full 1,213-page audit (estimate)
 
@@ -165,14 +202,14 @@ Pages: 543 text + 579 vision; 91 Hindi pages skipped.
 
 ## 6. Full 1,213-page audit (measured)
 
-`scripts/audit.py` with scope and safe triage: 1,114 pages audited (99 skipped: Hindi, lab sheets, forms), 10,463 claims, 1,866 candidate pairs, triage passed 1,440 (77%), 1,429 Ultra verdicts (0 failed, 11 not judged: cost cap), 100 copy-paste passages. Whole audit: claim extraction (Oct 27 02:39, first attempt, reused from cache), keyed run 1 (04:11, stopped before all verdicts) and the resume (14:27, --max-cost 13.5, no stop). Excludes the abandoned unkeyed triage of 67,689 pairs (02:58-03:25). Plus a top-up sitting (Oct 27 16:31, --new-pages 539,939,1029,1038,1097,1099,1166, $0.49).
+`scripts/audit.py` with scope and safe triage: 1,114 pages audited (99 skipped: Hindi, lab sheets, forms), 10,463 claims, 1,866 candidate pairs, triage passed 1,440 (77%), 1,440 Ultra verdicts (0 failed), 100 copy-paste passages. Whole audit: claim extraction (Oct 27 02:39, first attempt, reused from cache), keyed run 1 (04:11, stopped before all verdicts) and the resume (14:27, --max-cost 13.5, no stop). Excludes the abandoned unkeyed triage of 67,689 pairs (02:58-03:25). Plus a top-up sitting (Oct 27 16:31, --new-pages 539,939,1029,1038,1097,1099,1166, $0.49). Plus a top-up sitting (Oct 27 22:19, --new-pages 539,939,1029,1038,1097,1099,1166, $0.11).
 
 | Model | API calls | In tok | Out tok | Cost USD | Cost INR |
 |---|---|---|---|---|---|
 | Nemotron-3_5-Lightning | 1,562 | 2,515,597 | 328,340 | $0.23 | Rs 19 |
 | Nemotron-3.5-Super-VL | 946 | 3,423,968 | 927,840 | $1.86 | Rs 156 |
-| Nemotron-3-Ultra-550b-a55b | 1,436 | 4,159,953 | 3,139,959 | $13.58 | Rs 1,141 |
+| Nemotron-3-Ultra-550b-a55b | 1,447 | 4,200,900 | 3,162,518 | $13.69 | Rs 1,150 |
 
-Ultra wrote 2,187 output tokens per verdict on average (reasoning included), $0.0095 per verdict.
+Ultra wrote 2,186 output tokens per verdict on average (reasoning included), $0.0095 per verdict.
 
-**Measured: $15.67 (Rs 1,316), 60 min wall clock, 84 Tavily credits.** The estimate above assumed the 10 audited pages' density; the full report had fewer candidate pairs per page after keyed pairing, but each verdict was longer. Findings by check: recycled_figure {'RED': 4, 'ORANGE': 1, 'NONE': 9}; contradiction {'RED': 103, 'ORANGE': 46, 'NONE': 1266}; copy_paste {'NONE': 97, 'RED': 2, 'ORANGE': 1}. Details and the top 30 flags: results/full_audit_summary.md.
+**Measured: $15.78 (Rs 1,326), 62 min wall clock, 84 Tavily credits.** The estimate above assumed the 10 audited pages' density; the full report had fewer candidate pairs per page after keyed pairing, but each verdict was longer. Findings by check: recycled_figure {'RED': 4, 'ORANGE': 1, 'NONE': 9}; contradiction {'RED': 103, 'ORANGE': 46, 'NONE': 1277}; copy_paste {'NONE': 97, 'RED': 2, 'ORANGE': 1}. Details and the top 30 flags: results/full_audit_summary.md.

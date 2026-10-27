@@ -216,23 +216,35 @@ def build_candidates(args, found, previous, new_pages_arg, tor):
     return old, added, old + added
 
 
-def pending(lists, texts):
-    """(to triage, to judge): pairs whose triage or Ultra verdict is not cached yet, in the
-    same rounds check() uses (the triage batches depend on them). Calls no model."""
+def pending(lists, texts, rate=1.0):
+    """(to triage, to judge, Ultra USD): pairs whose triage or Ultra verdict is not cached
+    yet, in the same rounds check() uses (the triage batches depend on them). Pairs that a
+    cached triage drops are not counted; pairs not triaged yet count at the pass rate.
+    Calls no model (CACHE_ONLY is on while it runs)."""
     to_triage = to_judge = 0
-    for cands in lists:
-        for lo in range(0, len(cands), contradictions.CHUNK):
-            chunk = cands[lo:lo + contradictions.CHUNK]
-            answers = ["yes"] * len(chunk)
-            if contradictions.TRIAGE:
-                try:
-                    answers = contradictions.triage(
-                        chunk, texts if contradictions.TRIAGE_MODE == "safe" else None)
-                except llm.CacheMiss:
-                    to_triage += len(chunk)   # not triaged yet: counted as if all pass
-            to_judge += sum(1 for cand, a in zip(chunk, answers)
-                            if a != "no" and contradictions.estimate_cost([cand], texts)[1])
-    return to_triage, to_judge
+    usd = 0.0
+    was, llm.CACHE_ONLY = llm.CACHE_ONLY, True
+    try:
+        for cands in lists:
+            for lo in range(0, len(cands), contradictions.CHUNK):
+                chunk = cands[lo:lo + contradictions.CHUNK]
+                answers, weight = ["yes"] * len(chunk), 1.0
+                if contradictions.TRIAGE:
+                    try:
+                        answers = contradictions.triage(
+                            chunk, texts if contradictions.TRIAGE_MODE == "safe" else None)
+                    except llm.CacheMiss:
+                        to_triage += len(chunk)   # not triaged yet: counted at the pass rate
+                        weight = rate
+                for cand, a in zip(chunk, answers):
+                    if a == "no":
+                        continue
+                    cost, uncached = contradictions.estimate_cost([cand], texts)
+                    to_judge += uncached
+                    usd += cost * weight
+    finally:
+        llm.CACHE_ONLY = was
+    return to_triage, to_judge, usd
 
 
 def dry_replay(args, kept):
@@ -249,7 +261,7 @@ def dry_replay(args, kept):
         tor = (contradictions.tor_location_counts(promises.TOR_PDF)
                if Path(args.pdf).name == promises.EIA_PDF.name else ())
         old, added, cands = build_candidates(args, found, previous, new_pages, tor)
-        to_triage, to_judge = pending([cands] if old is None else [old, added], texts)
+        to_triage, to_judge, _ = pending([cands] if old is None else [old, added], texts)
     except llm.CacheMiss as e:
         sys.exit(f"Not everything before the verdicts is cached, so a --run would pay for "
                  f"keys or triage ({e}). Nothing was called.")
@@ -292,15 +304,17 @@ def run_audit(args, kept, per):
           f"{st.get('representatives')} distinct values; {st.get('pairs_same_key')} same-key + "
           f"{st.get('pairs_part_whole')} part>whole pairs; {st.get('dropped_by_cap')} dropped by the "
           f"per-group cap; {st.get('readings_without_station')} readings without a station not paired")
-    ultra_all, uncached = contradictions.estimate_cost(cands, texts)
     rate = per.get("triage_pass_rate" + ("_fast" if args.triage == "fast" else ""),
                    per["triage_pass_rate"])
+    # only pairs that would reach Ultra: cached triage "no" is skipped, untriaged at the rate
+    to_triage, to_judge, ultra_usd = pending([cands] if old is None else [old, added],
+                                             texts, rate)
     spent = llm.session_cost_usd - spent0
-    print(f"\nMeasured: {len(found)} claims, {len(cands)} candidate pairs "
-          f"({uncached} without a cached verdict). Second estimate: Ultra verdicts about "
-          f"${ultra_all * rate:.2f} (triage pass rate {rate:.2f}); spent so far ${spent:.2f}; "
-          f"cap ${args.max_cost:.2f}.")
-    if spent + ultra_all * rate > args.max_cost:
+    print(f"\nMeasured: {len(found)} claims, {len(cands)} candidate pairs; {to_judge} would "
+          f"reach Ultra without a cached verdict ({to_triage} still to triage, counted at the "
+          f"pass rate {rate:.2f}). Second estimate: Ultra verdicts about ${ultra_usd:.2f}; "
+          f"spent so far ${spent:.2f}; cap ${args.max_cost:.2f}.")
+    if spent + ultra_usd > args.max_cost:
         print("  The cap will stop the Ultra verdicts partway (candidate order: recycled, "
               "statements, numeric).")
 

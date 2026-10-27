@@ -8,6 +8,8 @@ Worked out from saved data only (no model calls):
 - "Screened by Lightning": the Lightning triage (contradictions) or first pass (ToR promises).
 - "Judged by Ultra": the finding's evidence says Nemotron Ultra checked it.
 - "Found via Tavily" / "GBIF records": the check's evidence came from Tavily or GBIF.
+- "Human-verified": a person checked the finding against the PDF by hand
+  (data/known_issues.json, carried into the export as the finding's "verification").
 """
 
 import json
@@ -25,6 +27,7 @@ JUDGED_ULTRA = "Judged by Ultra"
 ANSWERED_ULTRA = "Answered by Ultra"
 TAVILY = "Found via Tavily"
 GBIF = "GBIF records"
+HUMAN_VERIFIED = "Human-verified"
 
 # label: (style kind, hover text)
 INFO = {
@@ -36,6 +39,7 @@ INFO = {
                                  "quotes are checked."),
     TAVILY: ("tavily", "The linked source was found with Tavily web search."),
     GBIF: ("gbif", "Occurrence records or IUCN status from GBIF (gbif.org)."),
+    HUMAN_VERIFIED: ("human", "A person checked this finding against the report pages by hand."),
 }
 MODEL_READERS = {"super_vl": READ_SUPER_VL, "lightning": READ_LIGHTNING}
 
@@ -93,10 +97,14 @@ def finding_badges(f, rd=None):
         out.append((SCREENED_LIGHTNING, ""))
     if any("Nemotron Ultra" in str(e.get("value", "")) for e in f.get("evidence", [])):
         out.append((JUDGED_ULTRA, ""))
-    if check in TAVILY_CHECKS and any(e.get("url") for e in f.get("evidence", [])):
+    if check in TAVILY_CHECKS and any(e.get("url") and not e.get("manual")
+                                      for e in f.get("evidence", [])):
         out.append((TAVILY, ""))
     if check in GBIF_CHECKS:
         out.append((GBIF, ""))
+    v = f.get("verification")
+    if v:
+        out.append((HUMAN_VERIFIED, f"{v['by']}, {v['on']}"))
     return out
 
 

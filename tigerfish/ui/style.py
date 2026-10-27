@@ -78,6 +78,10 @@ CSS = f"""
   .tf-model-nemotron {{ color: {ACCENT}; background: #EAF2F2; border-color: #C7DEDE; }}
   .tf-model-tavily {{ color: #5A3E99; background: #EFEAFB; border-color: #D9CFF5; }}
   .tf-model-gbif {{ color: #3B6B2A; background: #EDF5E8; border-color: #CFE3C4; }}
+  .tf-model-human {{ color: #7A4B00; background: #FFF4DE; border-color: #F0D9A8; }}
+  .tf-verified {{ border-left: 3px solid #E0B24F; background: #FFFAF0; padding: 0.45rem 0.7rem;
+                  margin: 0 0 0.6rem 0; font-size: 0.92rem; color: {TEXT}; }}
+  .tf-verified b {{ color: #7A4B00; }}
   .tf-hero {{ font-size: 0.78rem; color: {ACCENT}; font-weight: 700; text-transform: uppercase;
               letter-spacing: 0.05em; margin-bottom: 0.3rem; }}
   .tf-hero-headline {{ font-size: 1.45rem; font-weight: 700; color: {TEXT}; line-height: 1.3;

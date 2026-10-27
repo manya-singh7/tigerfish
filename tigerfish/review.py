@@ -13,6 +13,11 @@ A flag's verdict:
                  have decided
 Precision = real / (real + false alarm) over flags with a verdict; "unsure" and disputed
 flags are left out (and counted).
+
+A queue item with "verified" was checked by hand against the PDF (data/known_issues.json): it
+counts as that person's decision ("real", i.e. Confirm) and needs no further review. For a
+double-review flag the hand check is the verdict, unless another reviewer disagrees
+("disputed"). A later decision by the same person in reviews.jsonl replaces it.
 """
 
 import json
@@ -67,21 +72,44 @@ def record(flag_id, reviewer, decision, note="", path=None):
     return row
 
 
+def verified_entry(finding):
+    """The queue's "verified" record for an app finding checked by hand, or None. Explained
+    issues are not findings, so only confirmed ones count (as "real")."""
+    v = (finding or {}).get("verification")
+    if not v or v.get("outcome") == "explained":
+        return None
+    return {"by": v["by"], "on": v["on"], "decision": "real", "outcome": v.get("outcome"),
+            "note": v.get("note") or "", "known_issue": finding.get("known_issue")}
+
+
+def decisions(item, reviews):
+    """{reviewer key: decision row} for one item, with a hand verification as a row."""
+    by = dict(reviews.get(item["flag_id"], {}))
+    v = item.get("verified")
+    if v and name_key(v["by"]) not in by:
+        by[name_key(v["by"])] = {"flag_id": item["flag_id"], "reviewer": v["by"],
+                                 "decision": v["decision"], "note": v.get("note", ""),
+                                 "time": f"{v['on']}T00:00:00", "verified": True}
+    return by
+
+
 def verdict(item, reviews):
     """"real" | "false_alarm" | "unsure" | "disputed" | "waiting" | None (not reviewed)."""
-    by = reviews.get(item["flag_id"], {})
+    by = decisions(item, reviews)
     if not by:
         return None
     if not item.get("double_review"):
         return max(by.values(), key=lambda r: r["time"])["decision"]
     if len(by) < 2:
-        return "waiting"
+        return next(iter(by.values()))["decision"] if item.get("verified") else "waiting"
     decided = {r["decision"] for r in by.values()}
     return decided.pop() if len(decided) == 1 else "disputed"
 
 
 def needs(item, reviews, reviewer):
-    """Does this item still need a decision from this reviewer?"""
+    """Does this item still need a decision from this reviewer? (Not once verified by hand.)"""
+    if item.get("verified"):
+        return False
     by = reviews.get(item["flag_id"], {})
     if item.get("double_review"):
         return name_key(reviewer) not in by
@@ -117,7 +145,7 @@ def agreement(queue, reviews):
     chance agreement is 1)."""
     pairs = []
     for it in queue["items"]:
-        by = reviews.get(it["flag_id"], {})
+        by = decisions(it, reviews)
         if it.get("double_review") and len(by) >= 2:
             a, b = sorted(by.values(), key=lambda r: r["time"])[:2]
             pairs.append((a["decision"], b["decision"]))

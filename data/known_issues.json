@@ -1,95 +1,360 @@
 {
   "document": "data/eias/great_nicobar_2021_draft_eia.pdf",
-  "notes": "Hand-verified findings used as an evaluation set. Pages are 1-based physical PDF pages. Quotes are exact substrings of the page text after collapsing whitespace (\" \".join(text.split())). Issues with expected_grade NONE are negative controls and must NOT be flagged. Issues with status under_review or candidate_new_finding are reported but not scored.",
+  "notes": "Hand-verified findings used as an evaluation set. Pages are 1-based physical PDF pages. Quotes are exact substrings of the page text after collapsing whitespace (\" \".join(text.split())). Issues with expected_grade NONE are negative controls and must NOT be flagged. Issues with status under_review or candidate_new_finding are reported but not scored. Status explained: a negative control confirmed by hand (scored). Issues with a finding_id (species_range, accreditation, tor_promise) are scored against that finding in the app export (results/great_nicobar_2021_draft.json), not by the contradiction check. verification_outcome is confirmed, confirmed_with_nuance or explained; verified_wording and verified_title are the wording shown on the app card. direct_control: the negative control's own quotes are also sent to Ultra as a pair (the 10-page evaluation).",
   "issues": [
     {
       "id": "gn-001",
       "type": "contradiction",
-      "summary": "Presence of coral at the port site is stated both ways.",
-      "pages": [392, 978],
-      "quotes": [
-        {"page": 392, "text": "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay."},
-        {"page": 978, "text": "Are any coral reefs in the area? Yes Coral reef exists in the proposed site for Transshipment / Port"}
+      "summary": "The report is inconsistent about coral at the port site.",
+      "pages": [
+        392,
+        978
       ],
-      "expected_grade": "RED",
-      "acceptable_grades": ["RED", "ORANGE"],
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "quotes": [
+        {
+          "page": 392,
+          "text": "As per the ZSI report, no coral exists in the bay portion of the Galathea Bay."
+        },
+        {
+          "page": 978,
+          "text": "Are any coral reefs in the area? Yes Coral reef exists in the proposed site for Transshipment / Port"
+        }
+      ],
+      "expected_grade": "ORANGE",
+      "acceptable_grades": [
+        "RED",
+        "ORANGE"
+      ],
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed_with_nuance",
+      "verification_note": "p.978 (Form 1 screening): \"Coral reef exists in the proposed site for Transshipment / Port\"; p.392 and p.738: corals outside the construction area; p.392 plans translocation \"if affected\".",
+      "verified_wording": "The report is inconsistent about coral at the port site: the Form 1 screening (p.978) says coral reef exists in the proposed port site, while pp.392 and 738 place the corals outside the construction area and plan translocation only \"if affected\" (p.392).",
+      "verified_title": "Inconsistent about coral at the port site"
     },
     {
       "id": "gn-002",
-      "type": "mismatch",
-      "summary": "Maximum coral loss (1-2 ha) is smaller than the coral restoration budgeted (4 ha).",
-      "pages": [444, 751],
-      "quotes": [
-        {"page": 444, "text": "However, even if there is any loss of corals during construction, it would not exceed 1-2 ha at the maximum."},
-        {"page": 751, "text": "Approximately 4ha of Coral restoration has been considered."}
+      "type": "negative_control",
+      "summary": "Coral loss of 1-2 ha (port) vs about 4 ha of restoration (whole project) is explained on p.751. Must NOT be flagged (second negative control).",
+      "pages": [
+        444,
+        751
       ],
-      "expected_grade": "ORANGE",
-      "status": "under_review",
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "quotes": [
+        {
+          "page": 444,
+          "text": "However, even if there is any loss of corals during construction, it would not exceed 1-2 ha at the maximum."
+        },
+        {
+          "page": 751,
+          "text": "Approximately 4ha of Coral restoration has been considered."
+        },
+        {
+          "page": 751,
+          "text": "involves restoration for the entire project including Port, Power plant and Township"
+        }
+      ],
+      "expected_grade": "NONE",
+      "status": "explained",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "explained",
+      "verification_note": "p.751 Table 10.3 says the ~4 ha restoration \"involves restoration for the entire project including Port, Power plant and Township\", so 1-2 ha (port) vs 4 ha (whole project) is not a contradiction. TigerFish correctly grades it NONE; scored as a second negative control."
     },
     {
       "id": "gn-003",
       "type": "recycled_figure",
       "summary": "The same fauna count (330 species, same breakdown) is given for Campbell Bay NP, Galathea NP and the whole island.",
-      "pages": [818, 851, 1168],
+      "pages": [
+        818,
+        851,
+        1168
+      ],
       "quotes": [
-        {"page": 818, "text": "a total of 330 species of fauna are recorded from the Campbell Bay National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"},
-        {"page": 851, "text": "a total of 330 species of fauna are recorded from the Galathea National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"},
-        {"page": 1168, "text": "A total of 330 species of fauna are recorded from the whole GNI area including 28 species of mammals (including 3 marine mammals), 97 species of birds"}
+        {
+          "page": 818,
+          "text": "a total of 330 species of fauna are recorded from the Campbell Bay National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"
+        },
+        {
+          "page": 851,
+          "text": "a total of 330 species of fauna are recorded from the Galathea National Park including 28 species of mammals (including 3 marine mammals), 97 species of birds"
+        },
+        {
+          "page": 1168,
+          "text": "A total of 330 species of fauna are recorded from the whole GNI area including 28 species of mammals (including 3 marine mammals), 97 species of birds"
+        }
       ],
       "expected_grade": "RED",
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "pp.818/851 (Gazette ESZ notifications) give the identical 330-species breakdown; p.1168 (Executive Summary, the EIA's own text) applies it to \"the whole GNI area\"."
     },
     {
       "id": "gn-004",
       "type": "contradiction",
       "summary": "Fauna count for the whole island is 330 species in the executive summary but 695 species in the ZSI study summary.",
-      "pages": [1168, 940],
+      "pages": [
+        1168,
+        940
+      ],
       "quotes": [
-        {"page": 1168, "text": "A total of 330 species of fauna are recorded from the whole GNI area"},
-        {"page": 940, "text": "A total of 695 species of fauna with the endemism of 158 species, which is equivalent to 22.73% have been reported from Great Nicobar Island."}
+        {
+          "page": 1168,
+          "text": "A total of 330 species of fauna are recorded from the whole GNI area"
+        },
+        {
+          "page": 940,
+          "text": "A total of 695 species of fauna with the endemism of 158 species, which is equivalent to 22.73% have been reported from Great Nicobar Island."
+        }
       ],
       "expected_grade": "RED",
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "p.1168 (330 species, whole GNI area) vs p.940 ZSI: \"695 species of fauna with the endemism of 158 species\"."
     },
     {
       "id": "gn-neg-001",
       "type": "negative_control",
       "summary": "Island area 1045 vs 910 sq km is explained in the text (pre- vs post-2004 tsunami). Must NOT be flagged.",
-      "pages": [234, 1141],
+      "pages": [
+        234,
+        1141
+      ],
       "quotes": [
-        {"page": 234, "text": "Before Tusnami the GNI had total area of 1045 sq km which reduced to 910 sqkm after the Tsunami due to the submergence of part of the island."},
-        {"page": 1141, "text": "The GNI, with an area of 910 sq.km (original notified area of 1045 Sq.km.)"}
+        {
+          "page": 234,
+          "text": "Before Tusnami the GNI had total area of 1045 sq km which reduced to 910 sqkm after the Tsunami due to the submergence of part of the island."
+        },
+        {
+          "page": 1141,
+          "text": "The GNI, with an area of 910 sq.km (original notified area of 1045 Sq.km.)"
+        }
       ],
       "expected_grade": "NONE",
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "direct_control": true,
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "explained",
+      "verification_note": "Confirmed: explained by the 2004 tsunami (1045 -> 910 sq km), as p.234 says."
     },
     {
       "id": "gn-005",
       "type": "recycled_figure",
       "summary": "Identical flora figures (648 species, 422 genera, 142 families, 48 endemic, 85 rare) given for Campbell Bay NP and Galathea NP.",
-      "pages": [818, 851],
+      "pages": [
+        818,
+        851
+      ],
       "quotes": [
-        {"page": 818, "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."},
-        {"page": 851, "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."}
+        {
+          "page": 818,
+          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."
+        },
+        {
+          "page": 851,
+          "text": "About 648 species of flora have been reported from the area belonging to 422 genera and 142 families, out of which 48 species of endemic flora and 85 species of non-endemic flora are rare and endangered."
+        }
       ],
       "expected_grade": "RED",
-      "status": "candidate_new_finding",
       "source_finding": "rf-001 (contradiction check, Block C)",
-      "verified_by": null,
-      "verified_on": null,
-      "verification_note": null
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed_with_nuance",
+      "verification_note": "pp.818/851 are Gazette ESZ notifications reproduced in the EIA; identical 648/422/142/48/85 for both parks; the duplication originates in the official notifications.",
+      "verified_wording": "Identical flora figures (648 species, 422 genera, 142 families, 48 endemic, 85 rare) for Campbell Bay NP and Galathea NP. Attribution: pp.818 and 851 are Gazette eco-sensitive-zone notifications reproduced in the EIA, so the duplication originates in the official notifications, not in the EIA's own text."
+    },
+    {
+      "id": "gn-006",
+      "type": "contradiction",
+      "summary": "Coral in and around Galathea Bay: p.1085 lists 117 scleractinian coral species and 17.46% live coral cover; p.738 says coral does not exist in the Galathea Bay area.",
+      "pages": [
+        738,
+        1085
+      ],
+      "quotes": [
+        {
+          "page": 738,
+          "text": "As per the ZSI report, coral do not exist in the Galathea Bay area"
+        },
+        {
+          "page": 1085,
+          "text": "the presence of 117 species of scleractinian corals along with the live coral cover of 17.46%"
+        }
+      ],
+      "expected_grade": "ORANGE",
+      "acceptable_grades": [
+        "RED",
+        "ORANGE"
+      ],
+      "source_finding": "ct-071",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed_with_nuance",
+      "verification_note": "p.1085 lists \"presence of 117 species of scleractinian corals along with the live coral cover of 17.46%\" among issues \"Galathea Bay stands with\" (the sentence ends \"in adjoining Galathea\"); p.738: \"coral do not exist in the Galathea Bay area\".",
+      "verified_wording": "The report is inconsistent about coral in and around Galathea Bay: p.1085 lists 117 scleractinian coral species and 17.46% live coral cover among the issues Galathea Bay \"stands with\" (the sentence ends \"in adjoining Galathea\"), while p.738 says coral does not exist in the Galathea Bay area.",
+      "verified_title": "Inconsistent about coral in and around Galathea Bay"
+    },
+    {
+      "id": "gn-007",
+      "type": "contradiction",
+      "summary": "Flora of one park (about 648 species, p.851) is larger than the flora of the whole island (approximately 600, p.940).",
+      "pages": [
+        851,
+        940
+      ],
+      "quotes": [
+        {
+          "page": 851,
+          "text": "About 648 species of flora have been reported from the area"
+        },
+        {
+          "page": 940,
+          "text": "approximately 600 species of flora reported from Great Nicobar Island"
+        }
+      ],
+      "expected_grade": "ORANGE",
+      "acceptable_grades": [
+        "RED",
+        "ORANGE"
+      ],
+      "source_finding": "ct-979",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed_with_nuance",
+      "verification_note": "p.851 \"About 648\" vs p.940 BSI \"approximately 600\"; different sources, approximate, not reconciled.",
+      "verified_wording": "The flora given for one park (about 648 species, p.851) exceeds the BSI figure for the whole island (approximately 600, p.940). Different sources and both approximate, but the report does not reconcile them."
+    },
+    {
+      "id": "gn-008",
+      "type": "contradiction",
+      "summary": "Annual rainfall 3000 to 3500 cm (p.291) vs 300 to 350 cm (p.337): low severity, likely a unit slip.",
+      "pages": [
+        291,
+        337
+      ],
+      "quotes": [
+        {
+          "page": 291,
+          "text": "The annual rainfall ranges from 3000 to 3500 Cm"
+        },
+        {
+          "page": 337,
+          "text": "heavy annual rainfall of 300 to 350 Cm spreading over 9 months"
+        }
+      ],
+      "expected_grade": "RED",
+      "acceptable_grades": [
+        "RED",
+        "ORANGE"
+      ],
+      "severity": "low",
+      "source_finding": "ct-239",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "Low severity, likely a unit slip: p.291 \"3000 to 3500 Cm\" vs p.337 \"300 to 350 Cm\".",
+      "verified_wording": "Annual rainfall is given as 3000-3500 cm (p.291) and 300-350 cm (p.337). Low severity: likely a unit slip."
+    },
+    {
+      "id": "gn-009",
+      "type": "species_range",
+      "summary": "Panulirus interruptus (an eastern Pacific spiny lobster) reported as landed in considerable quantity; GBIF has 0 records within 3,000 km. Likely misidentification.",
+      "pages": [
+        954
+      ],
+      "quotes": [
+        {
+          "page": 954,
+          "text": "rock lobsters (Panulirus interruptus) also being landed in considerable quantity"
+        }
+      ],
+      "expected_grade": "RED",
+      "finding_id": "sp-p954-001",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "p.954: \"rock lobsters (Panulirus interruptus) also being landed in considerable quantity\"; GBIF has 0 records within 3,000 km. Likely misidentification.",
+      "verified_wording": "p.954 reports Panulirus interruptus landed in considerable quantity; GBIF has 0 records of it within 3,000 km. Likely a misidentification."
+    },
+    {
+      "id": "gn-010",
+      "type": "accreditation",
+      "summary": "The consultant (Vimta Labs) was accredited for sectors 33 (ports) and 39 (townships) at Category B only; the project is Category A.",
+      "pages": [
+        18
+      ],
+      "quotes": [
+        {
+          "page": 18,
+          "text": "An International Container Transhipment Terminal (ICTT), Category 7(E)"
+        },
+        {
+          "page": 18,
+          "text": "Township and Area Development under Category 8(b)"
+        },
+        {
+          "page": 18,
+          "text": "Holistic Development of GNI project at Andaman & Nicobar Islands falls under category ‘A’"
+        }
+      ],
+      "external_sources": [
+        {
+          "what": "NABET Accreditation Committee minutes, meeting 061/2021 (26 Oct 2021, citing the RA AC of 15 Jun 2021)",
+          "text": "33(B), 39(B)",
+          "url": "https://eiameeting.qci.org.in/Environment/meetings/MOM-Supple%28Website%20upload%29-%20dt%20Oct%2026%2C%202021_15.11.2021.pdf"
+        },
+        {
+          "what": "Vimta NABET certificate NABET/EIA/2326/RA 0301 (2023-26); dated after the report, supporting only",
+          "text": "sector 33 Cat. B, sector 39 Cat. B",
+          "url": "https://vimta.com/wp-content/uploads/NABET-Certificate-2023-2026.pdf",
+          "supporting_only": true
+        }
+      ],
+      "expected_grade": "ORANGE",
+      "finding_id": "ac-01",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "EIA p.18: category A, ICTT 7(e), township 8(b). NABET minutes 061/2021 (26 Oct 2021, citing RA AC 15 Jun 2021): 33(B), 39(B). Supporting evidence: Vimta NABET certificate NABET/EIA/2326/RA 0301 (2023-26): sector 33 Cat. B, sector 39 Cat. B (dated after the report; supporting only)."
+    },
+    {
+      "id": "gn-011",
+      "type": "tor_promise",
+      "summary": "The proposed ToR asks for 3 months of baseline data; the flora/fauna baseline was a rapid reconnaissance survey of 14-22 Dec 2020.",
+      "pages": [
+        292,
+        293
+      ],
+      "quotes": [
+        {
+          "page": 292,
+          "text": "during December 2020 (14 to 22 December 2020)"
+        },
+        {
+          "page": 293,
+          "text": "covering all accessible areas for seven days from 15th through 21st December 2020"
+        },
+        {
+          "page": 293,
+          "text": "It is a rapid reconnaissance type of survey and it was not intensive except in non-forest residential areas."
+        }
+      ],
+      "external_sources": [
+        {
+          "what": "Proposed ToR (data/eias/great_nicobar_tor_2021.pdf) p.1",
+          "text": "The base line data to be collected for 3 months to represent a season."
+        }
+      ],
+      "expected_grade": "ORANGE",
+      "finding_id": "pr-06",
+      "verified_by": "Manya Singh",
+      "verified_on": "2026-10-27",
+      "verification_outcome": "confirmed",
+      "verification_note": "pp.292-293: \"rapid reconnaissance type of survey\" 14-22 Dec 2020 (road corridor 15-21 Dec, 7 days), \"not intensive except in non-forest residential areas\". Proposed ToR p.1: \"base line data to be collected for 3 months to represent a season\". The air/water/soil baseline did run 3 months.",
+      "verified_wording": "The proposed ToR (p.1) asks for baseline data \"for 3 months to represent a season\"; the flora/fauna survey was a \"rapid reconnaissance type of survey\" of 14-22 Dec 2020 (road corridor 15-21 Dec, 7 days), \"not intensive except in non-forest residential areas\" (pp.292-293). The air, water and soil baseline did run 3 months.",
+      "verified_title": "Terrestrial ecology: 3 months in the proposed Terms of Reference"
     }
   ]
 }

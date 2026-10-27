@@ -50,6 +50,10 @@ GRADES = ("RED", "ORANGE", "NONE")
 TOTAL_WORDS = re.compile(r"\b(total|overall|entire|whole|in all|altogether|combined|aggregate)\b",
                          re.IGNORECASE)
 NOT_SCORED = {"under_review", "candidate_new_finding"}   # known issues printed, not scored
+# Known issues found by other checks (known-issue type -> app check). They are scored on the
+# app export by evaluate_other_checks(), not by the contradiction check.
+OTHER_CHECKS = {"species_range": "species_range", "accreditation": "accreditation",
+                "tor_promise": "promise"}
 
 EXPLANATION_WORDS = ["before", "after", "earlier", "original", "originally", "revised",
                      "proposed", "existing", "phase", "tsunami", "reduced", "increased",
@@ -984,27 +988,52 @@ def match_issue(issue, findings):
     return best
 
 
-def evaluate(findings, known_issues):
+def evaluate(findings, known_issues, pages=None):
     """Per known issue: found?, grade, ok?. Negative controls pass when not flagged.
 
-    Issues whose status is in NOT_SCORED (under_review, candidate_new_finding) are
-    reported with scored=False and left out of score().
+    Only issues of this check (contradictions, recycled figures, negative controls) are
+    evaluated; with pages, only those whose pages were all audited. Issues whose status is in
+    NOT_SCORED (under_review, candidate_new_finding) are reported with scored=False and left
+    out of score().
     """
     rows = []
     for issue in known_issues:
+        if issue["type"] in OTHER_CHECKS:
+            continue
+        if pages is not None and not set(issue["pages"]) <= set(pages):
+            continue
         f = match_issue(issue, findings)
         grade = f["grade"] if f else "NONE"
-        flagged = grade in ("RED", "ORANGE")
-        if issue["expected_grade"] == "NONE":
-            ok = not flagged
-        else:
-            ok = f is not None and grade_ok(issue, grade)
-        rows.append({"id": issue["id"], "type": issue["type"], "pages": issue["pages"],
-                     "expected": issue.get("acceptable_grades", [issue["expected_grade"]]),
-                     "found": f is not None, "grade": grade if f else None,
-                     "finding_id": f["id"] if f else None, "ok": ok,
-                     "status": issue.get("status"),
-                     "scored": issue.get("status") not in NOT_SCORED})
+        rows.append(issue_row(issue, f, grade))
+    return rows
+
+
+def issue_row(issue, f, grade):
+    flagged = grade in ("RED", "ORANGE")
+    if issue["expected_grade"] == "NONE":
+        ok = not flagged
+    else:
+        ok = f is not None and grade_ok(issue, grade)
+    return {"id": issue["id"], "type": issue["type"], "pages": issue["pages"],
+            "expected": issue.get("acceptable_grades", [issue["expected_grade"]]),
+            "found": f is not None, "grade": grade if f else None,
+            "finding_id": f["id"] if f else None, "ok": ok,
+            "status": issue.get("status"),
+            "scored": issue.get("status") not in NOT_SCORED}
+
+
+def evaluate_other_checks(app_findings, known_issues):
+    """Rows (same shape as evaluate()) for known issues found by other checks: species range,
+    accreditation, ToR promises. Each names its finding in the app export (finding_id)."""
+    by_id = {f["id"]: f for f in app_findings}
+    rows = []
+    for issue in known_issues:
+        if issue["type"] not in OTHER_CHECKS:
+            continue
+        f = by_id.get(issue.get("finding_id"))
+        if f and f.get("check") != OTHER_CHECKS[issue["type"]]:
+            f = None
+        rows.append(issue_row(issue, f, f["grade"] if f else "NONE"))
     return rows
 
 
