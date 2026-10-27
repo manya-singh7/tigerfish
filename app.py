@@ -2,11 +2,13 @@
 
 Run:  streamlit run app.py
 Replay mode (default) shows saved results from results/ and needs no API keys.
-Live mode appears only when NEBIUS_API_KEY is set.
+Live mode appears only when NEBIUS_API_KEY is set. On the hosted app (tigerfish/hosted.py)
+everything shown comes from committed files, and paid model calls are capped.
 """
 
 import streamlit as st
 
+from tigerfish import hosted
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
                           official, promises, public_record, review, rti, species_map,
@@ -34,6 +36,8 @@ pick_col, mode_col = st.columns([3, 1])
 live_mode = False
 if live.available():
     live_mode = mode_col.toggle("Live mode", help="Upload a PDF and run the models (costs money).")
+elif hosted.is_hosted():
+    st.info(live.replay_only_note())
 if not live_mode:
     choice = pick_col.selectbox("Report", list(titles), label_visibility="collapsed")
 
@@ -97,8 +101,8 @@ with findings_tab:
     dismissed = cards.reviewed(report["id"], findings, "Dismiss")
     unsure = cards.reviewed(report["id"], findings, "Unsure")
     st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
-                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are saved on this '
-                f'computer (feedback/feedback.json).</div>', unsafe_allow_html=True)
+                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
+                f'{feedback.where()}.</div>', unsafe_allow_html=True)
     lang_options = letter.language_options(report)
     lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
                           help="Hindi" + (" and Tamil are" if letter.offers_tamil(report) else " is")
@@ -108,7 +112,14 @@ with findings_tab:
     docx_bytes, letter_error = b"", None
     if confirmed:
         try:
-            docx_bytes = letter.build_letter(report, confirmed, lang)
+            if lang != "en" and hosted.is_hosted():
+                # Hindi/Tamil translation is a paid (Lightning) call: the session's key and the daily budget
+                if not hosted.paid_key(st.session_state):
+                    raise letter.TranslationUnavailable("no key on the hosted app")
+                with hosted.paid_calls(st.session_state):
+                    docx_bytes = letter.build_letter(report, confirmed, lang)
+            else:
+                docx_bytes = letter.build_letter(report, confirmed, lang)
         except letter.TranslationUnavailable:
             letter_error = ("The translated letter needs the translation model (NEBIUS_API_KEY), and "
                             "this selection has not been translated before. Choose English.")

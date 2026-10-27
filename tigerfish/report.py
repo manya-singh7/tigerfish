@@ -12,6 +12,7 @@ CHECK_NAMES = {
     "borrowed_text": "Borrowed text", "omission": "Not mentioned",
     "accreditation": "Consultant accreditation",
     "promise": "ToR promise",
+    "number_pair": "Number pair (not judged)",
 }
 CLEAR = {
     "contradiction": "A statement in the report that the two passages cover different areas, "
@@ -27,6 +28,7 @@ CLEAR = {
     "omission": "The report's species list or impact assessment covering this species, or a reason it was not assessed.",
     "accreditation": "The consultant's NABET certificate or official list entry valid at the report date, covering each project sector at the project's category.",
     "promise": "Text in the report showing the commitment was carried out as the Terms of Reference describe, or the approved change to the Terms of Reference.",
+    "number_pair": "A statement that the two figures cover different areas, dates or scopes, or a correction of one of them.",
 }
 GRADE_ORDER = {"RED": 0, "ORANGE": 1, "INFO": 2}
 

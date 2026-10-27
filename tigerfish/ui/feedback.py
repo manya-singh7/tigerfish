@@ -8,6 +8,9 @@ File format (version 1):
       "decision", "reviewer", "note", "updated"}}}
 "updated" is an ISO timestamp (UTC); on import, the newer entry for a finding wins.
 Set TIGERFISH_FEEDBACK to use another file (tests do).
+
+Hosted app (tigerfish/hosted.py): nothing is read from or written to feedback/; the reviews
+live in the visitor's browser session (st.session_state), with the same export / import.
 """
 
 import json
@@ -21,8 +24,28 @@ DECISIONS = ("Confirm", "Dismiss", "Unsure")
 VERSION = 1
 
 
+SESSION_KEY = "feedback::entries"
+
+
 def path():
     return Path(os.getenv("TIGERFISH_FEEDBACK") or DEFAULT_FILE)
+
+
+def in_session():
+    """True on the hosted app: reviews stay in the browser session, not in a file."""
+    from tigerfish import hosted
+    return hosted.is_hosted()
+
+
+def where():
+    """Where reviews are kept, for help texts."""
+    return ("in this browser session only (export them to keep them)" if in_session()
+            else "in feedback/feedback.json on this computer")
+
+
+def _session():
+    import streamlit as st
+    return st.session_state.setdefault(SESSION_KEY, {})
 
 
 def key(report_id, finding_id):
@@ -37,6 +60,8 @@ def now():
 
 def load(file=None):
     """{key: entry}. A missing or unreadable file is an empty store."""
+    if file is None and in_session():
+        return dict(_session())
     file = Path(file or path())
     if not file.exists():
         return {}
@@ -47,6 +72,11 @@ def load(file=None):
 
 
 def save(entries, file=None):
+    if file is None and in_session():
+        store = _session()
+        store.clear()
+        store.update(entries)
+        return
     file = Path(file or path())
     file.parent.mkdir(parents=True, exist_ok=True)
     tmp = file.with_suffix(".tmp")
@@ -182,7 +212,7 @@ def reviewer_input(report_id, findings):
     import streamlit as st
     _seed(report_id, findings)
     st.text_input("Reviewer name", key=REVIEWER_KEY, placeholder="Your name",
-                  help="Saved with each review in feedback/feedback.json on this computer.")
+                  help=f"Saved with each review, {where()}.")
 
 
 def review_widgets(report_id, finding):
@@ -226,8 +256,8 @@ def panel(report_id, findings):
     else:
         st.caption("No reviews saved yet.")
     st.caption("Precision = confirmed / (confirmed + dismissed): the share of flags a reviewer "
-               "kept. Unsure reviews are counted but left out of the ratio. Saved in "
-               "feedback/feedback.json on this computer.")
+               f"kept. Unsure reviews are counted but left out of the ratio. Reviews are kept "
+               f"{where()}.")
     from tigerfish.ui import review          # here: tigerfish.ui.review imports this module
     review.queue_section(report_id)
     e1, e2 = st.columns(2)
