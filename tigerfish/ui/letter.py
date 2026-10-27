@@ -50,19 +50,45 @@ def where(q):
     return f"page {q['page']}" if q.get("page") else q.get("where", "the report")
 
 
-def blocks(report, findings):
+DRAFT_NOTE = ("DRAFT, please review. Check every point against the report, fill in the "
+              "[placeholders] and remove this line before sending.")
+ADDRESSEES = ("committee", "public_consultation")
+
+
+def blocks(report, findings, addressee="committee", draft=False):
     """The letter as blocks. kind: text (ours, translatable), quote / data (never translated),
-    heading / subject (ours, translatable, styled), break."""
-    out = [("data", date.today().strftime("%d %B %Y")),
-           ("text", "To,\nThe Member Secretary\nExpert Appraisal Committee\n"
-                    "Ministry of Environment, Forest and Climate Change\n[address]"),
-           ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
-           ("text", "Sir / Madam,"),
-           ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "
-                    f"below are statements in the report that appear inconsistent with each other "
-                    f"or with public records. Each point cites the page and the exact text. I "
-                    f"request that the project proponent and the consultant verify these points "
-                    f"and clarify or correct them before the report is relied upon.")]
+    heading / subject (ours, translatable, styled), break.
+    addressee: "committee" (the Expert Appraisal Committee) or "public_consultation" (written
+    comments in the public consultation under the EIA Notification, 2006)."""
+    if addressee not in ADDRESSEES:
+        raise ValueError(f"addressee must be one of {ADDRESSEES}")
+    out = [("subject", DRAFT_NOTE)] if draft else []
+    out.append(("data", date.today().strftime("%d %B %Y")))
+    if addressee == "public_consultation":
+        out += [("text", "To,\nThe Member Secretary\n[State Pollution Control Board / Union Territory "
+                         "Pollution Control Committee conducting the public hearing]\n[address]"),
+                ("subject", f"Subject: Written comments in the public consultation on "
+                            f"{report['title']}, under the EIA Notification, 2006"),
+                ("text", "Sir / Madam,"),
+                ("text", f"I submit these written comments in the public consultation (Stage 3) "
+                         f"under the Environment Impact Assessment Notification, 2006 (S.O. 1533(E), "
+                         f"14 September 2006), on {report['title']} ({report.get('source', '')}). "
+                         f"The points below are statements in the draft report that appear "
+                         f"inconsistent with each other or with public records. Each point cites "
+                         f"the page and the exact text. I request that these comments be placed on "
+                         f"record with the responses received in the public consultation, and that "
+                         f"the project proponent and the consultant verify these points and clarify "
+                         f"or correct them in the final report.")]
+    else:
+        out += [("text", "To,\nThe Member Secretary\nExpert Appraisal Committee\n"
+                         "Ministry of Environment, Forest and Climate Change\n[address]"),
+                ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
+                ("text", "Sir / Madam,"),
+                ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "
+                         f"below are statements in the report that appear inconsistent with each other "
+                         f"or with public records. Each point cites the page and the exact text. I "
+                         f"request that the project proponent and the consultant verify these points "
+                         f"and clarify or correct them before the report is relied upon.")]
     for i, f in enumerate(findings, 1):
         out.append(("heading", f"{i}. {f['check_name']}: {f['title']}"))
         for q in f["quotes"]:
@@ -194,11 +220,11 @@ def render(doc, blks, tr=None):
             add_run(doc.add_paragraph(), t(b[1]))
 
 
-def build_letter(report, findings, language="en"):
-    """Return .docx bytes. language: "en", "hi" or "both"."""
+def build_letter(report, findings, language="en", addressee="committee", draft=False):
+    """Return .docx bytes. language: "en", "hi" or "both"; addressee and draft: see blocks()."""
     doc = Document()
     doc.styles["Normal"].font.size = Pt(11)
-    blks = blocks(report, findings)
+    blks = blocks(report, findings, addressee, draft)
     if language in ("en", "both"):
         render(doc, blks)
     if language in ("hi", "both"):

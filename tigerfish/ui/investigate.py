@@ -99,6 +99,9 @@ def memo_html(memo):
             where = esc(f"Page {e['page']}")
         else:
             where = f'<a href="{esc(e["url"])}" target="_blank">{esc(urlsplit(e["url"]).netloc)}</a>'
+            # web sources in a memo come from the agent's web_search / read_url tools (Tavily)
+            where += (f' <a class="tf-tavily" href="{esc(e["url"])}" target="_blank" '
+                      f'title="This source was found with Tavily web search">Found via Tavily</a>')
         out.append(f'<div class="tf-quote-label"><span class="tf-ref">{esc(e.get("id", ""))}</span>{where}</div>'
                    f'<div class="tf-quote">{esc(e["quote"])}</div>'
                    f'<div class="tf-memo-note">{esc(e["note"])}</div>')

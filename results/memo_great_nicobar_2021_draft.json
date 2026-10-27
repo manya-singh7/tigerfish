@@ -1,0 +1,797 @@
+{
+  "report_id": "great_nicobar_2021_draft",
+  "created": "2026-10-27",
+  "issues": [
+    {
+      "title": "Inconsistent forest land diversion figures across chapters",
+      "category": "contradiction",
+      "summary": "The report states different percentages and areas for forest land diversion. Page 28 indicates 15.02% of forest land to be diverted and 166.1 sq.km designated for development. Page 1145 states diversion of 130.75 sq.km of forest land. These figures need reconciliation to verify the actual forest loss.",
+      "reasoning": "The discrepancy between 15.02% and 130.75 sq.km (which is about 14.4% of 910 sq.km) and the development area of 166.1 sq.km vs. 130.75 sq.km forest diversion suggests inconsistent land-use accounting. A reviewer must verify which figures are correct and ensure the environmental clearance reflects the actual forest loss.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 28,
+          "quote": "15.02% of Forest Land to be diverted. Figure-1.4: Forest Area Proposed to be diverted",
+          "verified": true
+        },
+        {
+          "page": 28,
+          "quote": "81.74% of the Island Area comes under national parks, Great Nicobar Biosphere reserve and Forest including tribal conservation areas. And only 166.1 sq.km. of area has be designated for Development purpose.",
+          "verified": true
+        },
+        {
+          "page": 1145,
+          "quote": "The holistic development of GNI requires diversion of 130.75 sq. km of forest land.",
+          "verified": true
+        },
+        {
+          "page": 1145,
+          "quote": "None of the national parks, Biosphere reserve area falls within the project boundary.",
+          "verified": true
+        }
+      ],
+      "unverified_citations": [],
+      "pages": [
+        28,
+        1145
+      ]
+    },
+    {
+      "title": "Tribal reserve de-notification vs. re-notification of national park land",
+      "category": "contradiction",
+      "summary": "The report states that 84.10 sq.km of tribal reserve requires de-notification (pages 28, 1145), but also proposes re-notifying 45.23 sq.km within Campbell Bay and Galathea National Parks plus 31.73 sq.km outside the project area, resulting in only 7.11 sq.km effective de-notification (page 1145). This appears contradictory: de-notifying tribal land while re-notifying national park land.",
+      "reasoning": "The net de-notification of only 7.11 sq.km while 84.10 sq.km of tribal reserve is affected raises questions about the actual land status change and compliance with tribal rights regulations. The reviewer should verify the legal process and whether the re-notification of national park land compensates for tribal reserve loss.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 29,
+          "quote": "84.10 sq. km land falls under Tribal reserved area... An area of 11.032 sq. km of tribal reserve also falls within revenue villages and is required to be de-notified otherwise also",
+          "cited_page": 28,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 1145,
+          "quote": "84.10 sq. km of project area falls under tribal reserve and de-notification is under process. Out of this, an area of 11.032 sq. km of tribal reserve also falls within the revenue villages and required to be de-notified otherwise also",
+          "verified": false,
+          "found_on": [
+            22
+          ]
+        },
+        {
+          "page": 1145,
+          "quote": "A & N Administration proposes to re-notify 45.23 sq. km of land within Campbell bay National Park & Galathea National Park and 31.73 sq. km land outside the project area. Therefore, affectively an area of 7.11 sq. km will be De-notified.",
+          "verified": false
+        }
+      ],
+      "pages": [
+        29
+      ]
+    },
+    {
+      "title": "Leatherback turtle nesting at Casuarina Bay conflicts with port site selection rationale",
+      "category": "contradiction",
+      "summary": "The report states the port was moved to the eastern flank of Galathea Bay to avoid leatherback nesting on the western flank (page 391). However, Casuarina Bay is identified as one of the three most important leatherback nesting sites with historical nests up to 866 in 2000-01 and recent signs of seven nests in April 2021 (page 1125). The port's proximity to Casuarina Bay and potential impacts on this nesting site are not assessed.",
+      "reasoning": "The port relocation rationale focuses only on Galathea Bay's western flank, but Casuarina Bay (nearby) is a major nesting site. The impact assessment must evaluate whether port construction, lighting, dredging, and vessel traffic affect Casuarina Bay nesting. The reviewer should verify if the EIA addresses this cross-site impact.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 390,
+          "quote": "The port design was initially given by WAPCOS where the port was located on the western flank of the Galathea Bay. AECOM, due to nesting of leather back turtles in the western side of the bay moved the port to the eastern flank where leatherback nesting is not known.",
+          "cited_page": 391,
+          "verified": true
+        },
+        {
+          "page": 1128,
+          "quote": "One of the three important nesting sites of Leatherback turtles in Great Nicobar Island.",
+          "cited_page": 1125,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 1125,
+          "quote": "Old signs of seven nests of leatherback observed on 18th April, 2021.",
+          "verified": false,
+          "found_on": [
+            1129
+          ]
+        },
+        {
+          "page": 1125,
+          "quote": "Maximum number of nests laid in 2000-01 (N=866), which was the highest number of nests reported from any beaches of Andaman and Nicobar islands for leatherbacks but this beach was not regularly monitored.",
+          "verified": false
+        }
+      ],
+      "pages": [
+        390,
+        1128
+      ]
+    },
+    {
+      "title": "Baseline marine ecology studies do not cover all impact assessment needs for sediment transport and coral impacts",
+      "category": "baseline_gap",
+      "summary": "The marine ecological study by ZSI (page 340) covers the west coast from Campbell Bay to Indira Point and Galathea River mouth. However, the sediment transport modeling (page 403) and coral translocation mitigation (page 392) require baseline data on coral distribution, benthic communities, and hydrodynamics across the entire port area, including the eastern flank and dredge disposal site at 600m depth. The ZSI study may not cover these zones.",
+      "reasoning": "The impact chapters rely on hydrodynamic and sediment transport models that need baseline coral and benthic data for the entire affected area, including the eastern flank and offshore disposal site. The reviewer should verify if the ZSI study provides sufficient spatial coverage for these assessments.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 402,
+          "quote": "4.4 Marine Environment -Sediment Transport ... The aim of this study is to assess the effect on sediment transport due to the proposed port.",
+          "cited_page": 403,
+          "verified": true
+        },
+        {
+          "page": 403,
+          "quote": "The hydrodynamic model was undertaken as described above. The model suggests sedimentation due to the construction of the port berths and the break water.",
+          "cited_page": 404,
+          "verified": true
+        },
+        {
+          "page": 392,
+          "quote": "Translocation of corals As per the ZSI report, no coral exists in the bay portion of the Galathea Bay. However, some coral were found on the eastern flank near the peninsular part.",
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 340,
+          "quote": "Marine ecological study by Zoological Survey of India (ZSI) ... The study area comprises of the west coast of Great Nicobar Island from Campbell Bay to the Indira point and Galathea River mouth in the southern part.",
+          "verified": false
+        }
+      ],
+      "pages": [
+        392,
+        402,
+        403
+      ]
+    },
+    {
+      "title": "Air quality modeling for airport operations not validated with baseline monitoring data",
+      "category": "missing_assessment",
+      "summary": "The airport air quality impact assessment uses CALPUFF modeling (page 449) but baseline ambient air quality monitoring was conducted at only six locations during winter season (page 272). The model predicts incremental concentrations for SO2, NOx, CO, PM10, etc., but there is no comparison of model predictions with observed baseline data at the same locations or validation of the model for the island's coastal meteorology.",
+      "reasoning": "Without model validation against baseline data, the predicted incremental concentrations may not be reliable. The reviewer should verify if the CALPUFF model was calibrated with site-specific meteorological data and if the baseline monitoring network is adequate for the predicted impact zone.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 449,
+          "quote": "Air Pollution Modeling As the proposed project site is in coastal environment, air dispersion modeling studies were conducted using CALPUFF model.",
+          "verified": true
+        },
+        {
+          "page": 270,
+          "quote": "Ambient Air Quality Monitoring (AAQM) stations were set up at Six locations with due consideration to the above-mentioned points.",
+          "cited_page": 272,
+          "verified": true
+        },
+        {
+          "page": 271,
+          "quote": "The baseline data of air environment was generated for the following parameters: ...",
+          "cited_page": 272,
+          "verified": true
+        },
+        {
+          "page": 450,
+          "quote": "The modelling tool has been executed to assess the predicted incremental concentrations of the air quality attributes considered 3 LTOs (for two scenarios – wide bodied aircrafts and narrow bodied).",
+          "cited_page": 449,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [],
+      "pages": [
+        270,
+        271,
+        449,
+        450
+      ]
+    },
+    {
+      "title": "Water supply sustainability not assured given post-tsunami groundwater salinity",
+      "category": "unsupported_claim",
+      "summary": "The report claims water demand will be met through integrated water supply network and desalination (pages 1165-1166). However, baseline studies show post-tsunami groundwater salinity remains high (3500-4000 µS/cm) and brackishness persists (page 239). The proposed surface water reservoirs depend on rainfall runoff, but the report does not demonstrate that the water sources can sustainably meet the combined demand of 0.4-1.7 MLD (ICTT), 1 MLD (airport), 42 MLD (township), and 1.5 MLD (power plant) under saline intrusion conditions.",
+      "reasoning": "The water balance diagram and source sustainability are critical for a water-scarce island. The reviewer must verify the water balance calculations, the feasibility of surface water harvesting given the topography, and the capacity of desalination to meet the deficit, especially during dry months.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 238,
+          "quote": "The mega earthquake (M=9.3) and the tsunami on 26.12.04 have made significant impact on the fresh water resources especially groundwater of Nicobar Islands.",
+          "cited_page": 239,
+          "verified": true
+        },
+        {
+          "page": 238,
+          "quote": "The study conducted by CGWB has revealed that the qualitative changes, i.e. the ground water salinity, are not fully obliterated and the brackishness still persist at places.",
+          "cited_page": 239,
+          "verified": true
+        },
+        {
+          "page": 1164,
+          "quote": "Water requirement: About 1 MLD of water would be required for the proposed airport project. The total requirement of water during operational phase will be met from the overall supply by Town planning.",
+          "cited_page": 1165,
+          "verified": true
+        },
+        {
+          "page": 1165,
+          "quote": "The water source for the supply of raw water for the water treatment plant shall be from surface run off collected in the proposed Reservoir. The raw water hall be suitable for potable purpose after clarification, filtration and disinfection.",
+          "cited_page": 1166,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [],
+      "pages": [
+        238,
+        1164,
+        1165
+      ]
+    },
+    {
+      "title": "Solid waste management capacity not matched to projected generation across components",
+      "category": "missing_assessment",
+      "summary": "The airport generates 1,690 kg/day (page 140), the township 200 MT/day (page 1149), and the power plant adds biomedical and industrial waste. The integrated solid waste facility is referenced to Chapter 2C (page 140) but its capacity, technology (bio-methanation, incineration, landfill), and phasing are not clearly linked to the cumulative waste stream from all four components. The mitigation measures do not specify how the facility handles the combined load.",
+      "reasoning": "The EIA must demonstrate that the waste management infrastructure can handle the aggregate waste from port, airport, township, and power plant. The reviewer should verify the facility's design capacity, phasing schedule, and compliance with Solid Waste Management Rules 2016 for the combined waste streams.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 1148,
+          "quote": "The total volume of municipal solid waste is estimated at about 200 metric tonnes (MT) per day. Biomedical waste and industrial waste are projected at 2.5-3.0 and 7-8 MT/day, respectively.",
+          "cited_page": 1149,
+          "verified": true
+        },
+        {
+          "page": 139,
+          "quote": "Waste will be transferred to the integrated solid waste facility (refer Chapter-2C (2.7.4), township) for treatment and disposal;",
+          "cited_page": 140,
+          "verified": true
+        },
+        {
+          "page": 1148,
+          "quote": "An Integrated Waste Management system has been planned in the township area where the wastes with be transported, treated and disposed. A bio-methanation plant, an incinerator and a land fill for the rejects have been envisaged in the project.",
+          "cited_page": 1149,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 140,
+          "quote": "Solid waste generation from the airport till the year 2052 (Ultimate phase) is given in Table-2.16. ... Total 1690 kg/day.",
+          "verified": false
+        }
+      ],
+      "pages": [
+        139,
+        1148
+      ]
+    },
+    {
+      "title": "Noise monitoring plan does not cover all ecologically sensitive areas",
+      "category": "baseline_gap",
+      "summary": "The noise monitoring schedule (page 590) proposes monitoring at gas engine house, desalination plant, compressors, and habitations. However, baseline noise data (page 268) shows predominant wind directions and calm conditions, and the AAQM stations (page 272) exclude the southern portion after Shastri Nagar and Indira Point due to inaccessibility. The leatherback nesting beaches at Galathea Bay and Casuarina Bay are in these excluded zones, yet noise impacts on turtles are a key concern (page 393).",
+      "reasoning": "Noise from construction and operation could disturb leatherback turtles and other wildlife on nesting beaches. The monitoring plan must include these sensitive receptors. The reviewer should verify if the reviewer should verify if the noise monitoring network is expanded to cover Galathea Bay, Casuarina Bay, and other nesting sites.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 592,
+          "quote": "Noise levels in the work zone environment such as gas engine house, desalination plant and compressors area shall be monitored. The frequency shall be once in Six months in the work zone. Similarly, ambient noise levels near habitations shall also be monitored once in a year.",
+          "cited_page": 590,
+          "verified": true
+        },
+        {
+          "page": 269,
+          "quote": "The predominant winds are blowing from E (9.6%) followed by ESE (9.3%) direction and direction followed by NE (8.3%). The calm conditions were observed to be 42.8%.",
+          "cited_page": 268,
+          "verified": true
+        },
+        {
+          "page": 270,
+          "quote": "It is to be noted that there are no receptors in southern portion after Shastri Nagar area. The Indira point area is not accessible through road and it's a defence controlled land where entry is restricted.",
+          "cited_page": 272,
+          "verified": true
+        },
+        {
+          "page": 392,
+          "quote": "Land based construction activities Roads are an integral part of the transport system for the proposed developmental projects. However, before initiating project planning for wildlife habitat connectivity, the first step in avoiding impacts from road construction on wildlife populations and their habitats is to consider alignment that can prevent conflicts, particular for the species like Nicobar Megapode, Coconut Crab and Long-Tailed Macaque of Nicobar Island.",
+          "cited_page": 393,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [],
+      "pages": [
+        269,
+        270,
+        392,
+        592
+      ]
+    },
+    {
+      "title": "Tribal community impact assessment and rehabilitation plan insufficiently detailed",
+      "category": "missing_assessment",
+      "summary": "The report describes Shompen and Nicobarese tribes (page 345) and notes their vulnerability to disease and habitat loss. However, the socio-economic impact chapter (4.3.10, page 1145) does not contain a dedicated assessment of impacts on these tribes from the township, port, airport, and power plant. The rehabilitation plan mentions only two Shompen families relocated (page 345), but the project affects 84.10 sq.km of tribal reserve. The mitigation measures for tribal rights under the Andaman & Nicobar (Protection of Aboriginal Tribes) Regulation, 1956 are not detailed.",
+      "reasoning": "The project's footprint overlaps significantly with tribal reserve land. The EIA must include a specific Social Impact Assessment (SIA) and Rehabilitation & Resettlement (R&R) plan for the affected tribal communities, as required by the RFCTLAR&R Act 2013. The reviewer should verify that the SIA study is conducted and its findings incorporated into the EMP.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 1143,
+          "quote": "The development area does not include any area within the biosphere or the national parks.",
+          "cited_page": 1145,
+          "verified": true
+        },
+        {
+          "page": 29,
+          "quote": "84.10 sq. km land falls under Tribal reserved area... An area of 11.032 sq. km of tribal reserve also falls within revenue villages and is required to be de-notified otherwise also",
+          "cited_page": 28,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 345,
+          "quote": "The Shompens are a designated Scheduled Tribe in India. ... The Shompens living on the western side of the island call themselves Kalay, and those on the eastern side Keyet...",
+          "verified": false
+        },
+        {
+          "page": 345,
+          "quote": "In 2001, the population was estimated at approximately 300. Shompen Village-A and Shompen Village-B are home to most Shompens. However, by the time of 2011 census, only 10 and 44 people were left in these villages respectively.",
+          "verified": false
+        }
+      ],
+      "pages": [
+        29,
+        1143
+      ]
+    },
+    {
+      "title": "Coral translocation mitigation not supported by baseline coral distribution data for eastern flank",
+      "category": "unsupported_claim",
+      "summary": "The report states that corals on the eastern flank of Galathea Bay may be translocated if affected (page 392). However, the ZSI report (page 392) says no coral exists in the bay portion, but some coral were found on the eastern flank near the peninsular part. The baseline coral survey (page 340) focused on seven study areas, but the eastern flank of Galathea Bay may not have been quantitatively assessed. The mitigation measure assumes translocation is feasible without confirming the extent, species, and suitable recipient sites.",
+      "reasoning": "The mitigation measure for coral translocation is generic and not site-specific. The reviewer should verify if a detailed coral mapping of the eastern flank and dredge channel alignment has been done, and if the translocation plan identifies recipient sites with similar environmental conditions and has been approved by the Forest Department and ZSI.",
+      "wording_flags": [],
+      "citations": [
+        {
+          "page": 392,
+          "quote": "Translocation of corals As per the ZSI report, no coral exists in the bay portion of the Galathea Bay. However, some coral were found on the eastern flank near the peninsular part. These patches of coral are not in the port construction area. However, coral colonies, if affected, due to the construction of the project at the proposed transhipment areas and dredging channels, to be translocated in suitable place where the similar environment as well as topographic features prevails in the Great Nicobar Island.",
+          "verified": true
+        },
+        {
+          "page": 391,
+          "quote": "Dredging of immediate offshore bottoms as well as shallow estuarine habitats Reef restoration and coral relocation due to coastal development and/or dredging, are among the most common reasons for transplantation.",
+          "cited_page": 392,
+          "verified": true
+        },
+        {
+          "page": 391,
+          "quote": "Successful coral reef restoration has previously been accomplished by ZSI in Gulf of Kachchh and the transplanted corals had >90% survival and effectively transformed into a functional coral reef.",
+          "cited_page": 393,
+          "verified": true
+        }
+      ],
+      "unverified_citations": [
+        {
+          "page": 340,
+          "quote": "Since the list of Trees, Palms, Canes, shrubs and perennial climbers found in the Nicobar Biosphere Reserve runs into several pages and since the data is already documented by the Botanical Survey of India, ENVIS, Rain Forest Research Institute and other organizations including the ANI department of Environment and Forests, Team had chosen to present a list of rare, endemic and threatened plants in Table-3.30.",
+          "verified": false,
+          "found_on": [
+            316
+          ]
+        }
+      ],
+      "pages": [
+        391,
+        392
+      ]
+    }
+  ],
+  "unverified_reasoning": [],
+  "stats": {
+    "issues_returned": 10,
+    "issues_verified": 10,
+    "moved_to_unverified": 0,
+    "citations": 39,
+    "citations_verified": 30,
+    "page_corrected": 23
+  },
+  "raw_reply": {
+    "issues": [
+      {
+        "title": "Inconsistent forest land diversion figures across chapters",
+        "category": "contradiction",
+        "summary": "The report states different percentages and areas for forest land diversion. Page 28 indicates 15.02% of forest land to be diverted and 166.1 sq.km designated for development. Page 1145 states diversion of 130.75 sq.km of forest land. These figures need reconciliation to verify the actual forest loss.",
+        "citations": [
+          {
+            "page": 28,
+            "quote": "15.02% of Forest Land to be diverted. Figure-1.4: Forest Area Proposed to be diverted"
+          },
+          {
+            "page": 28,
+            "quote": "81.74% of the Island Area comes under national parks, Great Nicobar Biosphere reserve and Forest including tribal conservation areas. And only 166.1 sq.km. of area has be designated for Development purpose."
+          },
+          {
+            "page": 1145,
+            "quote": "The holistic development of GNI requires diversion of 130.75 sq. km of forest land."
+          },
+          {
+            "page": 1145,
+            "quote": "None of the national parks, Biosphere reserve area falls within the project boundary."
+          }
+        ],
+        "reasoning": "The discrepancy between 15.02% and 130.75 sq.km (which is about 14.4% of 910 sq.km) and the development area of 166.1 sq.km vs. 130.75 sq.km forest diversion suggests inconsistent land-use accounting. A reviewer must verify which figures are correct and ensure the environmental clearance reflects the actual forest loss."
+      },
+      {
+        "title": "Tribal reserve de-notification vs. re-notification of national park land",
+        "category": "contradiction",
+        "summary": "The report states that 84.10 sq.km of tribal reserve requires de-notification (pages 28, 1145), but also proposes re-notifying 45.23 sq.km within Campbell Bay and Galathea National Parks plus 31.73 sq.km outside the project area, resulting in only 7.11 sq.km effective de-notification (page 1145). This appears contradictory: de-notifying tribal land while re-notifying national park land.",
+        "citations": [
+          {
+            "page": 28,
+            "quote": "84.10 sq. km land falls under Tribal reserved area... An area of 11.032 sq. km of tribal reserve also falls within revenue villages and is required to be de-notified otherwise also"
+          },
+          {
+            "page": 1145,
+            "quote": "84.10 sq. km of project area falls under tribal reserve and de-notification is under process. Out of this, an area of 11.032 sq. km of tribal reserve also falls within the revenue villages and required to be de-notified otherwise also"
+          },
+          {
+            "page": 1145,
+            "quote": "A & N Administration proposes to re-notify 45.23 sq. km of land within Campbell bay National Park & Galathea National Park and 31.73 sq. km land outside the project area. Therefore, affectively an area of 7.11 sq. km will be De-notified."
+          }
+        ],
+        "reasoning": "The net de-notification of only 7.11 sq.km while 84.10 sq.km of tribal reserve is affected raises questions about the actual land status change and compliance with tribal rights regulations. The reviewer should verify the legal process and whether the re-notification of national park land compensates for tribal reserve loss."
+      },
+      {
+        "title": "Leatherback turtle nesting at Casuarina Bay conflicts with port site selection rationale",
+        "category": "contradiction",
+        "summary": "The report states the port was moved to the eastern flank of Galathea Bay to avoid leatherback nesting on the western flank (page 391). However, Casuarina Bay is identified as one of the three most important leatherback nesting sites with historical nests up to 866 in 2000-01 and recent signs of seven nests in April 2021 (page 1125). The port's proximity to Casuarina Bay and potential impacts on this nesting site are not assessed.",
+        "citations": [
+          {
+            "page": 391,
+            "quote": "The port design was initially given by WAPCOS where the port was located on the western flank of the Galathea Bay. AECOM, due to nesting of leather back turtles in the western side of the bay moved the port to the eastern flank where leatherback nesting is not known."
+          },
+          {
+            "page": 1125,
+            "quote": "One of the three important nesting sites of Leatherback turtles in Great Nicobar Island."
+          },
+          {
+            "page": 1125,
+            "quote": "Old signs of seven nests of leatherback observed on 18th April, 2021."
+          },
+          {
+            "page": 1125,
+            "quote": "Maximum number of nests laid in 2000-01 (N=866), which was the highest number of nests reported from any beaches of Andaman and Nicobar islands for leatherbacks but this beach was not regularly monitored."
+          }
+        ],
+        "reasoning": "The port relocation rationale focuses only on Galathea Bay's western flank, but Casuarina Bay (nearby) is a major nesting site. The impact assessment must evaluate whether port construction, lighting, dredging, and vessel traffic affect Casuarina Bay nesting. The reviewer should verify if the EIA addresses this cross-site impact."
+      },
+      {
+        "title": "Baseline marine ecology studies do not cover all impact assessment needs for sediment transport and coral impacts",
+        "category": "baseline_gap",
+        "summary": "The marine ecological study by ZSI (page 340) covers the west coast from Campbell Bay to Indira Point and Galathea River mouth. However, the sediment transport modeling (page 403) and coral translocation mitigation (page 392) require baseline data on coral distribution, benthic communities, and hydrodynamics across the entire port area, including the eastern flank and dredge disposal site at 600m depth. The ZSI study may not cover these zones.",
+        "citations": [
+          {
+            "page": 340,
+            "quote": "Marine ecological study by Zoological Survey of India (ZSI) ... The study area comprises of the west coast of Great Nicobar Island from Campbell Bay to the Indira point and Galathea River mouth in the southern part."
+          },
+          {
+            "page": 403,
+            "quote": "4.4 Marine Environment -Sediment Transport ... The aim of this study is to assess the effect on sediment transport due to the proposed port."
+          },
+          {
+            "page": 404,
+            "quote": "The hydrodynamic model was undertaken as described above. The model suggests sedimentation due to the construction of the port berths and the break water."
+          },
+          {
+            "page": 392,
+            "quote": "Translocation of corals As per the ZSI report, no coral exists in the bay portion of the Galathea Bay. However, some coral were found on the eastern flank near the peninsular part."
+          }
+        ],
+        "reasoning": "The impact chapters rely on hydrodynamic and sediment transport models that need baseline coral and benthic data for the entire affected area, including the eastern flank and offshore disposal site. The reviewer should verify if the ZSI study provides sufficient spatial coverage for these assessments."
+      },
+      {
+        "title": "Air quality modeling for airport operations not validated with baseline monitoring data",
+        "category": "missing_assessment",
+        "summary": "The airport air quality impact assessment uses CALPUFF modeling (page 449) but baseline ambient air quality monitoring was conducted at only six locations during winter season (page 272). The model predicts incremental concentrations for SO2, NOx, CO, PM10, etc., but there is no comparison of model predictions with observed baseline data at the same locations or validation of the model for the island's coastal meteorology.",
+        "citations": [
+          {
+            "page": 449,
+            "quote": "Air Pollution Modeling As the proposed project site is in coastal environment, air dispersion modeling studies were conducted using CALPUFF model."
+          },
+          {
+            "page": 272,
+            "quote": "Ambient Air Quality Monitoring (AAQM) stations were set up at Six locations with due consideration to the above-mentioned points."
+          },
+          {
+            "page": 272,
+            "quote": "The baseline data of air environment was generated for the following parameters: ..."
+          },
+          {
+            "page": 449,
+            "quote": "The modelling tool has been executed to assess the predicted incremental concentrations of the air quality attributes considered 3 LTOs (for two scenarios – wide bodied aircrafts and narrow bodied)."
+          }
+        ],
+        "reasoning": "Without model validation against baseline data, the predicted incremental concentrations may not be reliable. The reviewer should verify if the CALPUFF model was calibrated with site-specific meteorological data and if the baseline monitoring network is adequate for the predicted impact zone."
+      },
+      {
+        "title": "Water supply sustainability not assured given post-tsunami groundwater salinity",
+        "category": "unsupported_claim",
+        "summary": "The report claims water demand will be met through integrated water supply network and desalination (pages 1165-1166). However, baseline studies show post-tsunami groundwater salinity remains high (3500-4000 µS/cm) and brackishness persists (page 239). The proposed surface water reservoirs depend on rainfall runoff, but the report does not demonstrate that the water sources can sustainably meet the combined demand of 0.4-1.7 MLD (ICTT), 1 MLD (airport), 42 MLD (township), and 1.5 MLD (power plant) under saline intrusion conditions.",
+        "citations": [
+          {
+            "page": 239,
+            "quote": "The mega earthquake (M=9.3) and the tsunami on 26.12.04 have made significant impact on the fresh water resources especially groundwater of Nicobar Islands."
+          },
+          {
+            "page": 239,
+            "quote": "The study conducted by CGWB has revealed that the qualitative changes, i.e. the ground water salinity, are not fully obliterated and the brackishness still persist at places."
+          },
+          {
+            "page": 1165,
+            "quote": "Water requirement: About 1 MLD of water would be required for the proposed airport project. The total requirement of water during operational phase will be met from the overall supply by Town planning."
+          },
+          {
+            "page": 1166,
+            "quote": "The water source for the supply of raw water for the water treatment plant shall be from surface run off collected in the proposed Reservoir. The raw water hall be suitable for potable purpose after clarification, filtration and disinfection."
+          }
+        ],
+        "reasoning": "The water balance diagram and source sustainability are critical for a water-scarce island. The reviewer must verify the water balance calculations, the feasibility of surface water harvesting given the topography, and the capacity of desalination to meet the deficit, especially during dry months."
+      },
+      {
+        "title": "Solid waste management capacity not matched to projected generation across components",
+        "category": "missing_assessment",
+        "summary": "The airport generates 1,690 kg/day (page 140), the township 200 MT/day (page 1149), and the power plant adds biomedical and industrial waste. The integrated solid waste facility is referenced to Chapter 2C (page 140) but its capacity, technology (bio-methanation, incineration, landfill), and phasing are not clearly linked to the cumulative waste stream from all four components. The mitigation measures do not specify how the facility handles the combined load.",
+        "citations": [
+          {
+            "page": 140,
+            "quote": "Solid waste generation from the airport till the year 2052 (Ultimate phase) is given in Table-2.16. ... Total 1690 kg/day."
+          },
+          {
+            "page": 1149,
+            "quote": "The total volume of municipal solid waste is estimated at about 200 metric tonnes (MT) per day. Biomedical waste and industrial waste are projected at 2.5-3.0 and 7-8 MT/day, respectively."
+          },
+          {
+            "page": 140,
+            "quote": "Waste will be transferred to the integrated solid waste facility (refer Chapter-2C (2.7.4), township) for treatment and disposal;"
+          },
+          {
+            "page": 1149,
+            "quote": "An Integrated Waste Management system has been planned in the township area where the wastes with be transported, treated and disposed. A bio-methanation plant, an incinerator and a land fill for the rejects have been envisaged in the project."
+          }
+        ],
+        "reasoning": "The EIA must demonstrate that the waste management infrastructure can handle the aggregate waste from port, airport, township, and power plant. The reviewer should verify the facility's design capacity, phasing schedule, and compliance with Solid Waste Management Rules 2016 for the combined waste streams."
+      },
+      {
+        "title": "Noise monitoring plan does not cover all ecologically sensitive areas",
+        "category": "baseline_gap",
+        "summary": "The noise monitoring schedule (page 590) proposes monitoring at gas engine house, desalination plant, compressors, and habitations. However, baseline noise data (page 268) shows predominant wind directions and calm conditions, and the AAQM stations (page 272) exclude the southern portion after Shastri Nagar and Indira Point due to inaccessibility. The leatherback nesting beaches at Galathea Bay and Casuarina Bay are in these excluded zones, yet noise impacts on turtles are a key concern (page 393).",
+        "citations": [
+          {
+            "page": 590,
+            "quote": "Noise levels in the work zone environment such as gas engine house, desalination plant and compressors area shall be monitored. The frequency shall be once in Six months in the work zone. Similarly, ambient noise levels near habitations shall also be monitored once in a year."
+          },
+          {
+            "page": 268,
+            "quote": "The predominant winds are blowing from E (9.6%) followed by ESE (9.3%) direction and direction followed by NE (8.3%). The calm conditions were observed to be 42.8%."
+          },
+          {
+            "page": 272,
+            "quote": "It is to be noted that there are no receptors in southern portion after Shastri Nagar area. The Indira point area is not accessible through road and it's a defence controlled land where entry is restricted."
+          },
+          {
+            "page": 393,
+            "quote": "Land based construction activities Roads are an integral part of the transport system for the proposed developmental projects. However, before initiating project planning for wildlife habitat connectivity, the first step in avoiding impacts from road construction on wildlife populations and their habitats is to consider alignment that can prevent conflicts, particular for the species like Nicobar Megapode, Coconut Crab and Long-Tailed Macaque of Nicobar Island."
+          }
+        ],
+        "reasoning": "Noise from construction and operation could disturb leatherback turtles and other wildlife on nesting beaches. The monitoring plan must include these sensitive receptors. The reviewer should verify if the reviewer should verify if the noise monitoring network is expanded to cover Galathea Bay, Casuarina Bay, and other nesting sites."
+      },
+      {
+        "title": "Tribal community impact assessment and rehabilitation plan insufficiently detailed",
+        "category": "missing_assessment",
+        "summary": "The report describes Shompen and Nicobarese tribes (page 345) and notes their vulnerability to disease and habitat loss. However, the socio-economic impact chapter (4.3.10, page 1145) does not contain a dedicated assessment of impacts on these tribes from the township, port, airport, and power plant. The rehabilitation plan mentions only two Shompen families relocated (page 345), but the project affects 84.10 sq.km of tribal reserve. The mitigation measures for tribal rights under the Andaman & Nicobar (Protection of Aboriginal Tribes) Regulation, 1956 are not detailed.",
+        "citations": [
+          {
+            "page": 345,
+            "quote": "The Shompens are a designated Scheduled Tribe in India. ... The Shompens living on the western side of the island call themselves Kalay, and those on the eastern side Keyet..."
+          },
+          {
+            "page": 345,
+            "quote": "In 2001, the population was estimated at approximately 300. Shompen Village-A and Shompen Village-B are home to most Shompens. However, by the time of 2011 census, only 10 and 44 people were left in these villages respectively."
+          },
+          {
+            "page": 1145,
+            "quote": "The development area does not include any area within the biosphere or the national parks."
+          },
+          {
+            "page": 28,
+            "quote": "84.10 sq. km land falls under Tribal reserved area... An area of 11.032 sq. km of tribal reserve also falls within revenue villages and is required to be de-notified otherwise also"
+          }
+        ],
+        "reasoning": "The project's footprint overlaps significantly with tribal reserve land. The EIA must include a specific Social Impact Assessment (SIA) and Rehabilitation & Resettlement (R&R) plan for the affected tribal communities, as required by the RFCTLAR&R Act 2013. The reviewer should verify that the SIA study is conducted and its findings incorporated into the EMP."
+      },
+      {
+        "title": "Coral translocation mitigation not supported by baseline coral distribution data for eastern flank",
+        "category": "unsupported_claim",
+        "summary": "The report states that corals on the eastern flank of Galathea Bay may be translocated if affected (page 392). However, the ZSI report (page 392) says no coral exists in the bay portion, but some coral were found on the eastern flank near the peninsular part. The baseline coral survey (page 340) focused on seven study areas, but the eastern flank of Galathea Bay may not have been quantitatively assessed. The mitigation measure assumes translocation is feasible without confirming the extent, species, and suitable recipient sites.",
+        "citations": [
+          {
+            "page": 392,
+            "quote": "Translocation of corals As per the ZSI report, no coral exists in the bay portion of the Galathea Bay. However, some coral were found on the eastern flank near the peninsular part. These patches of coral are not in the port construction area. However, coral colonies, if affected, due to the construction of the project at the proposed transhipment areas and dredging channels, to be translocated in suitable place where the similar environment as well as topographic features prevails in the Great Nicobar Island."
+          },
+          {
+            "page": 340,
+            "quote": "Since the list of Trees, Palms, Canes, shrubs and perennial climbers found in the Nicobar Biosphere Reserve runs into several pages and since the data is already documented by the Botanical Survey of India, ENVIS, Rain Forest Research Institute and other organizations including the ANI department of Environment and Forests, Team had chosen to present a list of rare, endemic and threatened plants in Table-3.30."
+          },
+          {
+            "page": 392,
+            "quote": "Dredging of immediate offshore bottoms as well as shallow estuarine habitats Reef restoration and coral relocation due to coastal development and/or dredging, are among the most common reasons for transplantation."
+          },
+          {
+            "page": 393,
+            "quote": "Successful coral reef restoration has previously been accomplished by ZSI in Gulf of Kachchh and the transplanted corals had >90% survival and effectively transformed into a functional coral reef."
+          }
+        ],
+        "reasoning": "The mitigation measure for coral translocation is generic and not site-specific. The reviewer should verify if a detailed coral mapping of the eastern flank and dredge channel alignment has been done, and if the translocation plan identifies recipient sites with similar environmental conditions and has been approved by the Forest Department and ZSI."
+      }
+    ]
+  },
+  "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
+  "pages_included": 1071,
+  "first_page": 5,
+  "last_page": 1173,
+  "skipped": {
+    "no text layer (scanned or photographed page)": [
+      1,
+      2,
+      3,
+      4,
+      15,
+      16,
+      48,
+      105,
+      141,
+      205,
+      219,
+      380,
+      435,
+      487,
+      527,
+      556,
+      585,
+      593,
+      695,
+      708,
+      727,
+      772,
+      780,
+      798,
+      831,
+      846,
+      865,
+      866,
+      867,
+      873,
+      874,
+      875,
+      876,
+      877,
+      878,
+      885,
+      895,
+      896,
+      897,
+      898,
+      899,
+      900,
+      901,
+      902,
+      903,
+      904,
+      905,
+      907,
+      908,
+      909,
+      910,
+      911,
+      912,
+      913,
+      914,
+      915,
+      916,
+      935,
+      947,
+      957,
+      976,
+      977,
+      995,
+      1109,
+      1139
+    ],
+    "Hindi page": [
+      799,
+      800,
+      801,
+      802,
+      803,
+      804,
+      805,
+      806,
+      807,
+      808,
+      809,
+      810,
+      811,
+      812,
+      813,
+      814,
+      815,
+      816,
+      817,
+      827,
+      832,
+      833,
+      834,
+      835,
+      836,
+      837,
+      838,
+      839,
+      840,
+      841,
+      842,
+      843,
+      844,
+      845,
+      848,
+      850,
+      862,
+      1174,
+      1175,
+      1176,
+      1177,
+      1178,
+      1179,
+      1180,
+      1181,
+      1182,
+      1183,
+      1184,
+      1185,
+      1186,
+      1187,
+      1188,
+      1189,
+      1190,
+      1191,
+      1192,
+      1193,
+      1194,
+      1195,
+      1196,
+      1197,
+      1198,
+      1199,
+      1200,
+      1201,
+      1202,
+      1203,
+      1204,
+      1205,
+      1206,
+      1207,
+      1208,
+      1209,
+      1210,
+      1211,
+      1212,
+      1213
+    ]
+  },
+  "cost": {
+    "prompt_tokens": 545574,
+    "cached_tokens": 539648,
+    "uncached_tokens": 5926,
+    "completion_tokens": 8227,
+    "cost_usd": 0.095365,
+    "cost_if_uncached_usd": 0.570255,
+    "saving_usd": 0.47489,
+    "replayed_from_local_cache": true
+  },
+  "latency_s": 78.904,
+  "finish_reason": "stop"
+}

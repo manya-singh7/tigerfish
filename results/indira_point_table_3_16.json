@@ -9,11 +9,11 @@
     "Table reading (Nemotron Super-VL)",
     "Species range (GBIF)",
     "IUCN status (GBIF / IUCN Red List)",
-    "WPA schedule (Tavily, official sources)"
+    "WPA schedule (Tavily: India Code / Gazette first, then official sites and PRS)"
   ],
   "cost": {
     "nebius_usd": 0.0006,
-    "tavily_credits": 2,
+    "tavily_credits": 3,
     "gbif_calls": 67,
     "approx_seconds": 470
   },
@@ -275,12 +275,16 @@
           "value": "4 schedules"
         },
         {
-          "label": "Source (official source)",
+          "label": "Source (authoritative, non-government)",
           "value": "The Bill reduces the total number of schedules to four by: (i) reducing the number of schedules for specially protected animals to two (one for greater protection level), (ii) removes the schedule for vermin species, and (iii) inserts a new schedule for specimens listed in the Appendices under CITES (scheduled specimens).",
           "url": "https://prsindia.org/billtrack/the-wild-life-protection-amendment-bill-2021"
+        },
+        {
+          "label": "India Code / Gazette",
+          "value": "Searched first (Tavily, restricted to indiacode.nic.in, egazette.gov.in); the results read do not state the number of schedules, so the next tier was used."
         }
       ],
-      "why": "Report lists Schedule Sch-V; https://prsindia.org/billtrack/the-wild-life-protection-amendment-bill-2021 says: \"The Bill reduces the total number of schedules to four by: (i) reducing the number of schedules for specially protected animals to two (one for greater protection level), (ii) removes the schedule for vermin species, and (iii) inserts a new schedule for specimens listed in the Appendices under CITES (scheduled specimens).\"",
+      "why": "Report lists Schedule Sch-V; https://prsindia.org/billtrack/the-wild-life-protection-amendment-bill-2021 (authoritative, non-government) says: \"The Bill reduces the total number of schedules to four by: (i) reducing the number of schedules for specially protected animals to two (one for greater protection level), (ii) removes the schedule for vermin species, and (iii) inserts a new schedule for specimens listed in the Appendices under CITES (scheduled specimens).\"",
       "clear": "The species' schedule under the Wild Life (Protection) Act as amended in 2022.",
       "known_issue": null,
       "images": []
