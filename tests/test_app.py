@@ -7,7 +7,8 @@ from pathlib import Path
 
 import pytest
 from docx import Document
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import data, letter
 
@@ -23,7 +24,7 @@ def no_keys(monkeypatch):
 
 
 def test_app_runs_without_api_keys(no_keys):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     assert not at.exception
     assert not at.toggle                                  # no live mode without a key
     assert any("Sees clearly in murky waters." in m.value for m in at.markdown)
@@ -31,7 +32,7 @@ def test_app_runs_without_api_keys(no_keys):
 
 @pytest.mark.parametrize("report", [r["title"] for r in data.reports()])
 def test_each_saved_report_renders(no_keys, report):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     at.selectbox[0].select(report).run()
     assert not at.exception
     assert any("What would clear this" in m.value for m in at.markdown)
@@ -73,14 +74,14 @@ def test_every_finding_has_card_fields():
 
 @pytest.mark.skipif(not (ROOT / "results" / "eval.json").exists(), reason="no results/eval.json")
 def test_method_tab_shows_evaluation(no_keys):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     text = "\n".join(m.value for m in at.markdown)
     assert "#### Evaluation" in text and "Planted contradictions" in text
     assert "1 USD = 84 INR" in text
 
 
 def test_prerecorded_investigations_replay(no_keys):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     assert not at.exception
     labels = [e.label for e in at.expander if e.label.startswith("Investigation:")]
     assert len(labels) == 3                                    # gn-001 (recorded as ct-003), ac-01, sp-p954-001

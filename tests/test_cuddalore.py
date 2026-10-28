@@ -128,11 +128,11 @@ def test_exported_report_is_labelled_and_neutral():
 
 @needs_export
 def test_app_shows_cuddalore_notices_and_tamil(monkeypatch):
-    from streamlit.testing.v1 import AppTest
+    from apptest import open_app
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
     title = json.loads(REPORT_JSON.read_text(encoding="utf-8"))["title"]
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=90).run()
+    at = open_app(timeout=90)
     at.selectbox[0].select(title).run()
     assert not at.exception
     warnings = [w.value for w in at.warning]

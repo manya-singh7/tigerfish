@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import official, web_evidence
 
@@ -17,7 +18,7 @@ pytestmark = pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), 
 def app(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    return AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    return open_app(timeout=60)
 
 
 def test_collect_covers_every_tavily_backed_check():

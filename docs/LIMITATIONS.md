@@ -164,6 +164,9 @@ official. The finding records that the official tier gave nothing.
 
 ## 11. Other known limits
 
+- **Cuddalore subject grouping.** Cuddalore's subject-grouping step was run with wording that
+  named Great Nicobar Island; this was fixed for later reports. Its claims, verdicts and flags
+  were not affected by the wording, only how numbers were grouped into pairs.
 - **Coverage of the replay.** The saved Great Nicobar results count 47 of 1,213 pages as read:
   the contradiction and copy-paste checks ran on 10 pages with known issues, and the
   species check on 40 species-table pages (3 overlap). The ToR, accreditation and omission

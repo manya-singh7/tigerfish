@@ -3,7 +3,8 @@
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish import knowable, public_record, species_photos
 from tigerfish.ui import cards, data
@@ -56,7 +57,7 @@ def test_saved_photos_are_free_and_credited():
 def test_public_record_tab_renders(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     assert not at.exception
     labels = [t.label for t in at.tabs]
     assert "Public record" in labels

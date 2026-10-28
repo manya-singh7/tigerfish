@@ -1,14 +1,27 @@
-"""Browser check of the app in hosted replay mode (no keys): hero, findings with badges and page
-images, species map, official record, letter and RTI downloads, letter-language gating, public record,
-knowable-at-the-time line, species photos, cost card, every tab, no exceptions.
+"""Browser check of the app in hosted mode (no keys): the report library (live totals, filters,
+search, a quick check in the lighter view, back link), the no-key upload (detected facts, free
+checks, which checks need a key, the three levels); then the report opened from the library:
+hero, findings with badges and page images, species map, official record, letter and RTI
+downloads, letter-language gating, public record, knowable-at-the-time line, species photos,
+cost card, every tab, the back link, no exceptions.
 
-Start the app first:  set TIGERFISH_HOSTED=1 && streamlit run app.py --server.headless true --server.port 8631
+Start the app first, with no keys and the sample quick checks from tests/fixtures:
+  set TIGERFISH_HOSTED=1 && set NEBIUS_API_KEY= && set TAVILY_API_KEY= &&
+  set TIGERFISH_BATCH_DIR=tests/fixtures/library/batch &&
+  streamlit run app.py --server.headless true --server.port 8631
 Then:  python scripts/check_hosted_ui.py http://localhost:8631 shots/   (needs requirements-dev.txt)
 """
+import os
 import sys
 from pathlib import Path
 
+import pymupdf
 from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+os.environ.setdefault("TIGERFISH_BATCH_DIR", "tests/fixtures/library/batch")   # as the app was started
+from tigerfish import library  # noqa: E402
 
 URL, OUT = sys.argv[1], Path(sys.argv[2])
 OUT.mkdir(parents=True, exist_ok=True)
@@ -18,6 +31,14 @@ results, errors = [], []
 def ok(name, cond, detail=""):
     results.append((name, bool(cond), detail))
     print(("PASS " if cond else "FAIL ") + name + (f"  ({detail})" if detail else ""), flush=True)
+
+
+def idle(page, timeout=120_000):
+    """Wait until Streamlit has finished rerunning (stale elements are gone)."""
+    page.wait_for_timeout(800)
+    page.wait_for_function("""() => !document.querySelector('[data-testid="stStatusWidget"]')
+        && document.querySelectorAll('[data-stale="true"]').length === 0""", timeout=timeout)
+    page.wait_for_timeout(500)
 
 
 def no_exception(page, where):
@@ -30,11 +51,81 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={"width": 1400, "height": 1000}, accept_downloads=True)
     page.on("pageerror", lambda e: errors.append(str(e)))
     page.goto(URL, timeout=120_000)
+
+    # ---------- the library (home screen) ----------
+    page.wait_for_selector(".tf-lib-total", timeout=180_000)
+    page.wait_for_timeout(1500)
+    items = library.entries()
+    expected = library.totals_line(library.totals(items))
+    shown = page.locator(".tf-lib-total").inner_text().strip()
+    ok("library: totals computed from results/", shown == expected, shown)
+
+    def opens():
+        idle(page)
+        return page.locator(".tf-lib-title:visible").count()
+
+    ok("library: one row per report", opens() == len(items), f"{opens()} rows, {len(items)} reports")
+    ok("library: upload button and note",
+       page.get_by_role("button", name="Upload your own EIA").count() == 1
+       and page.get_by_text("Saved audits are full runs").count() > 0)
+    page.get_by_text("Has RED flags").click()
+    page.wait_for_timeout(2500)
+    n_red = sum(e["grades"]["RED"] > 0 for e in items)
+    ok("library: 'Has RED flags' filter", opens() == n_red, f"{opens()} shown, {n_red} expected")
+    page.get_by_text("Has RED flags").click()
+    page.wait_for_timeout(2000)
+    search = page.get_by_label("Search by project name")
+    search.fill("Cuddalore")
+    search.press("Enter")
+    page.wait_for_timeout(2500)
+    ok("library: search by project name", opens() == 1, f"{opens()} shown")
+    search.fill("")
+    search.press("Enter")
+    page.wait_for_timeout(2500)
+    page.screenshot(path=str(OUT / "library.png"))
+    no_exception(page, "library")
+
+    # ---------- upload a new EIA with no key ----------
+    pdf = OUT / "visitor_upload.pdf"
+    doc = pymupdf.open()
+    for text in ("India: Sample Harbour Expansion Project\nDraft EIA Report\nMay 2026\n"
+                 "Prepared by Sample Enviro Consultants Pvt. Ltd. for the Port Trust.",
+                 "The harbour is in Tamil Nadu. Tamil Nadu has a long coast.",
+                 "The site is located at latitude 11°42'22\" N, longitude 79°46'30\" E.",
+                 "The total reclaimed area is 45 ha at the harbour site.",
+                 "The total reclaimed area is 62 ha at the harbour site."):
+        doc.new_page().insert_textbox(pymupdf.Rect(40, 40, 560, 800), text, fontsize=11)
+    doc.save(pdf)
+    page.get_by_role("button", name="Upload your own EIA").click()
+    page.get_by_text("Quick check (free, whole report)").first.wait_for(timeout=60_000)
+    idle(page)
+    ok("upload: three levels shown", page.get_by_text("Deep audit (chosen pages, live)").count() > 0
+       and page.get_by_text("Full audit (your own key or run locally").count() > 0)
+    ok("upload: no-key note", page.get_by_text("No key: the free checks run").count() > 0)
+    page.locator('[data-testid="stFileUploaderDropzoneInput"]').set_input_files(str(pdf))
+    page.get_by_text("Deep audit: choose the pages").wait_for(timeout=240_000)
+    page.get_by_text("No key: only the quick check ran").wait_for(timeout=240_000)
+    idle(page, 300_000)
+    ok("upload: state detected with its page", page.get_by_text("Detected: Tamil Nadu (page 2)").count() > 0)
+    ok("upload: site detected", page.get_by_text("Detected: 11.7061").count() > 0)
+    ok("upload: free checks ran", page.get_by_text("Number pairs: the same subject").count() > 0
+       and page.locator("td", has_text="ran").count() >= 3)
+    ok("upload: model checks need a key", page.get_by_text("needs a Nebius key").count() > 0)
+    ok("upload: local-only checks listed", page.locator("td", has_text="run locally").count() >= 4)
+    page.screenshot(path=str(OUT / "upload_no_key.png"), full_page=True)
+    no_exception(page, "upload without a key")
+    page.get_by_role("button", name="Back to library").click()
+    page.wait_for_selector(".tf-lib-total", timeout=60_000)
+    ok("back link: upload -> library", page.locator(".tf-lib-total").count() == 1)
+
+    # ---------- open the Great Nicobar report from the library ----------
+    idle(page)
+    page.locator('[data-testid="stButton"] button', has_text="Open").first.click()
     page.wait_for_selector(".tf-hero", timeout=180_000)
     page.get_by_text("Does it match the official record?").wait_for(timeout=180_000)  # full render
     page.wait_for_timeout(3000)
     ok("hero card", page.locator(".tf-hero-headline").count() > 0)
-    ok("replay-only note", page.get_by_text("runs in replay mode").count() > 0)
+    ok("back link on the report", page.get_by_role("button", name="Back to library").count() == 1)
     ok("no live toggle without a key", page.locator('[data-testid="stToggle"]').count() == 0
        or page.get_by_text("Live mode").count() == 0)
     ok("finding badges", page.locator(".tf-model").count() > 0, f"{page.locator('.tf-model').count()} badges")
@@ -131,7 +222,6 @@ with sync_playwright() as p:
     page.wait_for_timeout(2000)
     ok("Cuddalore: audit status shown",
        page.get_by_text("Audit partial").count() > 0 or page.get_by_text("Audit complete").count() > 0)
-    ok("Cuddalore: 'Audit partial' notice", page.get_by_text("Audit partial").count() > 0)
     ok("Cuddalore: 'Flags not yet human-reviewed' notice",
        page.get_by_text("Flags not yet human-reviewed").count() > 0)
     radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
@@ -143,6 +233,27 @@ with sync_playwright() as p:
        and radio.get_by_text("English + Tamil", exact=True).count() > 0)
     page.screenshot(path=str(OUT / "cuddalore.png"))
     no_exception(page, "Cuddalore")
+    page.get_by_role("button", name="Back to library").click()
+    page.wait_for_selector(".tf-lib-total", timeout=60_000)
+    ok("back link: report -> library", page.locator(".tf-lib-total").count() == 1
+       and page.locator('[data-testid="stTab"]').count() == 0)
+    # ---------- a quick check opens in the lighter view ----------
+    quick = [e for e in items if e["audit_type"] == library.QUICK]
+    if quick:
+        page.locator('[data-testid="stMultiSelect"]').filter(has_text="Audit type").click()
+        page.get_by_role("option", name=library.QUICK).click()
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(2500)
+        ok("library: audit type filter", opens() == len(quick), f"{opens()} shown")
+        page.locator('[data-testid="stButton"] button', has_text="Open").first.click()
+        page.get_by_text(library.QUICK_NOTICE).wait_for(timeout=60_000)
+        ok("quick check: lighter view with its notice", page.get_by_text("Checks that ran").count() > 0
+           and page.locator('[data-testid="stTab"]').count() == 0)
+        page.screenshot(path=str(OUT / "quick_check.png"))
+        no_exception(page, "quick check")
+        page.get_by_role("button", name="Back to library").click()
+        page.wait_for_selector(".tf-lib-total", timeout=60_000)
+        ok("back link: quick check -> library", page.locator(".tf-lib-total").count() == 1)
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
     browser.close()
 

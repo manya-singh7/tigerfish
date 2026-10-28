@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish import ask, fulltext, llm, memo
 from tigerfish.ui import memo_ask
@@ -251,7 +252,7 @@ def test_saved_answers_cover_the_six_questions_with_costs():
 def app(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    return AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    return open_app(timeout=60)
 
 
 @saved
@@ -280,7 +281,7 @@ def test_live_box_shows_estimate_and_stops_after_three(monkeypatch, tmp_path):
         "unverified_citations": [], "cost": {"prompt_tokens": 1, "cached_tokens": 0, "completion_tokens": 1,
                                              "cost_usd": 0.0, "cost_if_uncached_usd": 0.0, "saving_usd": 0.0}})
     monkeypatch.setenv("NEBIUS_API_KEY", "test-key")
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     for n in range(3):
         box = next(t for t in at.text_input if "Ask your own question" in t.label)
         box.set_value(f"Question {n}?").run()

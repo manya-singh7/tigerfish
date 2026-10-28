@@ -8,7 +8,8 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish import free_checks, hosted, llm, review
 from tigerfish.ui import data, memo_ask
@@ -58,10 +59,13 @@ def test_hosted_replay_opens_no_gitignored_files(hosted_no_key):
     OPENED["paths"].clear()
     OPENED["on"] = True
     try:
-        at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=90).run()
+        home = open_app(report=None, timeout=90)                # the library, no key
+        assert not home.exception
+        assert any("Saved audits are full runs" in c.value for c in home.caption)
+        at = open_app(timeout=90)
         assert not at.exception
         assert not at.toggle                                   # no live mode without a key
-        assert any("replay mode" in i.value for i in at.info)  # the clear note
+        assert any(b.label == "← Back to library" for b in at.button)
         for title in [r["title"] for r in data.reports()]:
             at.selectbox[0].select(title).run()
             assert not at.exception
@@ -82,7 +86,7 @@ def test_hosted_review_decisions_stay_in_session(hosted_no_key, monkeypatch, tmp
     monkeypatch.setenv("TIGERFISH_FEEDBACK", str(tmp_path / "feedback.json"))
 
     queue = review.load_queue()
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=90).run()
+    at = open_app(timeout=90)
     at.text_input(key="review::name").input("Visitor").run()
     pos = at.session_state["review::pos"]
     flag = queue["items"][pos]["flag_id"]

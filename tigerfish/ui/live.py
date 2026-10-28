@@ -122,6 +122,24 @@ def key_field():
                f"\\${MAX_COST_USD:.2f} of model calls per upload.")
 
 
+def key_field_any():
+    """The own-key field everywhere (tigerfish/ui/upload.py). Hosted: with the caps
+    (key_field). Locally: says which key the model checks will use."""
+    if hosted.is_hosted() and hosted.owner_key():
+        key_field()
+        return
+    st.text_input("Your own Nebius key (optional)", key=hosted.BYOK_KEY, type="password",
+                  help="Used for this browser session only: never saved, logged or shared.")
+    if hosted.visitor_key(st.session_state):
+        st.caption("Model checks will use your key.")
+    elif hosted.owner_key():
+        st.caption("Model checks will use the key in .env (NEBIUS_API_KEY).")
+    else:
+        st.caption("No key: the free checks run; the model checks need a key."
+                   + (f" Limit: {hosted.MAX_UPLOADS_PER_SESSION} uploads per session "
+                      f"({hosted.uploads_left(st.session_state)} left)." if hosted.is_hosted() else ""))
+
+
 def render():
     """Upload, free checks, estimate, paid checks. Returns a report dict, else None."""
     s = st.session_state

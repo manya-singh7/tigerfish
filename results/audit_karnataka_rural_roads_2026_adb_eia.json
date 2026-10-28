@@ -1,0 +1,1658 @@
+{
+  "pdf": "karnataka_rural_roads_2026_adb_eia.pdf",
+  "name": "karnataka_rural_roads_2026_adb_eia",
+  "pages": null,
+  "triage": "safe",
+  "new_pages": null,
+  "workers": 6,
+  "max_cost_usd": 5.0,
+  "pages_audited": 364,
+  "claims": 4359,
+  "candidates": 404,
+  "triage_answers": {
+    "yes": 248,
+    "no": 151,
+    "unsure": 5
+  },
+  "verdicts": 253,
+  "verdicts_failed": 0,
+  "stopped": null,
+  "copy_passages": 100,
+  "copy_stopped": null,
+  "copy_passage_list": [
+    {
+      "page": 200,
+      "text": "It supports diverse fauna such as Tiger, Leopard, dhole, Asiatic Elephant, Gaur, and endangered species like the Lion-tailed macaque and Nilgiri marten [Martes gwatkinsii; VU (v.2025)],",
+      "claim_ids": [
+        "p200-06",
+        "p200-07"
+      ]
+    },
+    {
+      "page": 162,
+      "text": "Mango / Aam Anacardiace ae Tree DD Plante d 380 Manilkara hexandra (Roxb.) Dubard Ceylon Iron Wood Sapotaceae Tree LC 381 Manilkara zapota (L.) P.Royen Chikoo / Sapodilla Sapotaceae Tree LC Plante d 382 Markhamia lutea (Benth.) K.Schum.",
+      "claim_ids": [
+        "p162-05",
+        "p162-06",
+        "p162-07"
+      ]
+    },
+    {
+      "page": 167,
+      "text": "Cinderella Weed Asteraceae Herb - 506 Syzygium caryophyllatum (L.) Alston Pretty-Leaved Plum Myrtaceae Tree VU 507 Syzygium cumini (L.) Skeels Jamun Myrtaceae Tree LC 508 Syzygium salicifolium (Wight) J.Graham Willow-leaved syzygium Myrtaceae Tree LC 509 Tabernaemontana alternifolia L.",
+      "claim_ids": [
+        "p167-23",
+        "p167-24",
+        "p167-25",
+        "p167-26",
+        "p167-49"
+      ]
+    },
+    {
+      "page": 201,
+      "text": "It provides habitat for diverse fauna including Tiger, Asiatic elephant, Gaur, Sambar, and endangered species like Lion-tailed macaque, Nilgiri marten, and Malabar civet, along with reptiles such as King cobra and Indian rock python.",
+      "claim_ids": [
+        "p201-08",
+        "p201-11"
+      ]
+    },
+    {
+      "page": 202,
+      "text": "The fauna includes: Tiger, Asiatic elephant, Leopard, Gaur, Chital, Sambar, Wild boar with 330+ species of birds.",
+      "claim_ids": [
+        "p202-05",
+        "p202-11",
+        "p202-12",
+        "p202-13",
+        "p202-14",
+        "p202-15",
+        "p202-16",
+        "p202-17"
+      ]
+    },
+    {
+      "page": 145,
+      "text": "White thorn acacia Fabaceae Tree LC 14 Acacia suma (Roxb.) Buch.-Ham. ex Voigt Suma / Gum acacia Fabaceae Tree - 15 Acampe praemorsa (Roxb.) Blatt. & McCann Clipped Acampe Orchidaceae Herb - 16 Acanthospermum hispidum DC.",
+      "claim_ids": [
+        "p145-14",
+        "p145-15",
+        "p145-16"
+      ]
+    },
+    {
+      "page": 147,
+      "text": "Mauritius grass Poaceae Gras s - 58 Aponogeton natans (L.) Engl. & K.Krause Floating Lace Plant Aponogetona ceae Herb LC 59 Aporosa cardiosperma (Gaertn.) Merr Aporosa Phyllanthace ae Tree VU 60 Araucaria columnaris (G.Forst.) Hook.",
+      "claim_ids": [
+        "p147-10",
+        "p147-11",
+        "p147-12"
+      ]
+    },
+    {
+      "page": 151,
+      "text": "Fishtail palm Arecaceae Palm LC 134 Cascabela thevetia (L.) Lippold Yellow oleander Apocynaceae Shru b LC Plante d 135 Casearia graveolens Dalzell Chilla Salicaceae Tree - 136 Cassia absus L.",
+      "claim_ids": [
+        "p151-03",
+        "p151-04",
+        "p151-05"
+      ]
+    },
+    {
+      "page": 158,
+      "text": "Helicopter tree Hernandiace ae Tree LC 307 Haldina cordifolia (Roxb.) Ridsdale Haldina / Kadam Rubiaceae Tree LC 308 Helicanthes elastica (Desr.) Danser Rubbery Mango Mistletoe Loranthacea e Shru b - 309 Heliconia sp.",
+      "claim_ids": [
+        "p158-20",
+        "p158-21",
+        "p158-22"
+      ]
+    },
+    {
+      "page": 159,
+      "text": "Hopea Dipterocarpa ceae Tree VU 324 Hydnocarpus pentandrus (Buch.-Ham.) Oken Jangli Almond Achariaceae Tree VU 325 Hydrilla verticillata (L.f.) Royle Water Thyme Hydrocharita ceae Herb LC 326 Hygrophila schullii (Buch.-Ham.) M.R.Almeida & S.",
+      "claim_ids": [
+        "p159-14",
+        "p159-15"
+      ]
+    },
+    {
+      "page": 161,
+      "text": "Mahua Sapotaceae Tree - 373 Madhuca longifolia var. longifolia South Indian Mahua Sapotaceae Tree LC 374 Magnolia champaca (L.) Baill. ex Pierre Champa Magnoliacea e Tree LC Plante d 375 Mallotus nudiflorus (L.) Kulju & Welzen False White Teak Euphorbiace ae Tree LC",
+      "claim_ids": [
+        "p161-21",
+        "p161-22",
+        "p161-23"
+      ]
+    },
+    {
+      "page": 164,
+      "text": "Tall Reed Poaceae Gras s LC 433 Phyla nodiflora (L.) Greene Frog Fruit Verbenaceae Herb LC 434 Phyllanthus acidus (L.) Skeels Star gooseberry Phyllanthace ae Tree - 435 Phyllanthus emblica L.",
+      "claim_ids": [
+        "p164-14",
+        "p164-15",
+        "p164-16"
+      ]
+    },
+    {
+      "page": 165,
+      "text": "Red Frangipani Annonaceae Tree LC Plante d 444 Pogostemon benghalensis (Burm.f.) Kuntze Bengal Shrub-Mint Lamiaceae Herb - 445 Polyalthia longifolia (Sonn.) Thwaites False ashoka Annonaceae Tree LC Plante d 446 Polygonum plebeium R.Br.",
+      "claim_ids": [
+        "p165-05",
+        "p165-06",
+        "p165-07"
+      ]
+    },
+    {
+      "page": 165,
+      "text": "Bija / Indian kino tree Fabaceae Tree NT 455 Pterospermum acerifolium (L.) Willd Kanak Champa Malvaceae Tree LC Plante d 456 Pterospermum diversifolium Blume Pterospermum Malvaceae Tree LC 457 Pueraria tuberosa (Willd.) DC.",
+      "claim_ids": [
+        "p165-16",
+        "p165-17",
+        "p165-18",
+        "p165-23"
+      ]
+    },
+    {
+      "page": 166,
+      "text": "Sapium Euphorbiace ae Tree - 472 Saraca asoca (Roxb.) W.J.de Wilde Ashoka Fabaceae Tree NT Plante d 473 Schleichera oleosa (Lour.) Oken Kusum Sapindaceae Tree LC 474 Scleria levis Retz.",
+      "claim_ids": [
+        "p166-11",
+        "p166-12",
+        "p166-13"
+      ]
+    },
+    {
+      "page": 167,
+      "text": "African tulip tree Bignoniaceae Tree LC Plante d 493 Spondias pinnata (L.f.) Kurz Wild mango / Ambada Anacardiace ae Tree LC 494 Stachytarpheta jamaicensis (L.) Vahl Blue porterweed Verbenaceae Herb LC 495 Stephania hernandifolia (Willd.) Walp.",
+      "claim_ids": [
+        "p167-10",
+        "p167-11",
+        "p167-12"
+      ]
+    },
+    {
+      "page": 168,
+      "text": "Asna / Indian laurel Combretacea e Tree LC 520 Terminalia paniculata Roth Kindal / Maruthu Combretacea e Tree LC 521 Themeda quadrivalvis (L.) Kuntze Grader Grass Poaceae Gras s - 522 Theobroma cacao L.",
+      "claim_ids": [
+        "p168-11",
+        "p168-12",
+        "p168-13"
+      ]
+    },
+    {
+      "page": 168,
+      "text": "Cocoa Malvaceae Tree - Plante d 523 Thespesia lampas (Cav.) Dalzell Wild Cotton Malvaceae Shru b LC 524 Thespesia populnea (L.) Sol. ex Corrêa Indian Tulip Tree Malvaceae Tree LC Plante d 525 Thuja orientalis L.",
+      "claim_ids": [
+        "p168-14",
+        "p168-15",
+        "p168-16"
+      ]
+    },
+    {
+      "page": 198,
+      "text": "The sanctuary supports rich biodiversity with around 42 species of mammals, including Tiger, Leopard, Dhole, Sloth bear, Asiatic Elephant, Gaur, Sambar, Mouse Deer [Moschiola indica;",
+      "claim_ids": [
+        "p198-05"
+      ]
+    },
+    {
+      "page": 205,
+      "text": "It supports diverse fauna including Tiger, Leopard, Dhole, Striped hyena, Sloth bear, Elephant, Gaur, Sambar, Chital and Four-horned antelope, along with aquatic species like smooth-coated otter, marsh crocodile and the endangered Deccan mahseer fish.",
+      "claim_ids": [
+        "p205-09",
+        "p205-16",
+        "p205-21"
+      ]
+    },
+    {
+      "page": 202,
+      "text": "The sanctuary provides habitat for important fauna including Tiger, Leopard, Wild dog, Asiatic elephant, Gaur, Sambar, Lion-tailed macaque, and notable birds like hornbills. It also forms a crucial corridor connecting Nagarahole NP, Talacauvery WLS (Karnataka) and Wayanad & Aralam WLS (Kerala), and is part of the Mysore Elephant Reserve.",
+      "claim_ids": [
+        "p202-10"
+      ]
+    },
+    {
+      "page": 203,
+      "text": "The park supports a very high faunal diversity, including a dense population of Tigers and Asian elephants, along with large herbivores such as Chital, Sambar, Gaur and Wild boar, and more than 250 species of birds.",
+      "claim_ids": [
+        "p203-06"
+      ]
+    },
+    {
+      "page": 205,
+      "text": "It supports diverse fauna including Asiatic elephant, Tiger, Leopard, Sloth bear, Gaur, Sambar, Spotted deer, and Wild boar, along with various bird and reptile species.",
+      "claim_ids": [
+        "p205-20"
+      ]
+    },
+    {
+      "page": 152,
+      "text": "Coffee Rubiaceae Shru b EN Plante d 171 Coffea liberica W.Bull Liberian Coffee Rubiaceae Tree LC Plante d 172 Coffea robusta L.Linden Robusta Coffee Rubiaceae Tree LC Plante d",
+      "claim_ids": [
+        "p152-20",
+        "p152-21",
+        "p152-23"
+      ]
+    },
+    {
+      "page": 153,
+      "text": "Indian Squirrel Tail Lamiaceae Shru b LC 176 Colocasia esculenta (L.) Schott Taro / Arbi Araceae Herb LC 177 Combretum coccineum (Sonn.) Lam.",
+      "claim_ids": [
+        "p153-04",
+        "p153-05"
+      ]
+    },
+    {
+      "page": 154,
+      "text": "Cymbidium orchid Orchidaceae Herb - 202 Cymbopogon citratus (DC.) Stapf Lemon grass Poaceae Gras s - 203 Cymbopogon coloratus (Hook.f.) Stapf Cymbopogon Poaceae Gras s - 204 Cyperus alternifolius L.",
+      "claim_ids": [
+        "p154-07",
+        "p154-08",
+        "p154-09"
+      ]
+    },
+    {
+      "page": 154,
+      "text": "Orange Wild Rhea Urticaceae Shru b LC 218 Delonix elata (L.) Gamble White Gulmohar Fabaceae Tree LC Plante d 219 Delonix regia (Bojer ex Hook.) Raf.",
+      "claim_ids": [
+        "p154-23",
+        "p154-24"
+      ]
+    },
+    {
+      "page": 155,
+      "text": "Jewel Vine Fabaceae Clim ber LC 227 Dichanthium annulatum (Forssk.) Stapf Sheda Grass Poaceae Gras s - 228 Dichrostachys cinerea (L.) Wight & Arn.",
+      "claim_ids": [
+        "p155-07",
+        "p155-08",
+        "p155-22",
+        "p155-23",
+        "p155-24"
+      ]
+    },
+    {
+      "page": 155,
+      "text": "Diospyros Ebenaceae Tree - 236 Diploclisia glaucescens (Blume) Diels Glaucous Diploclisia Menispermac eae Lian a - 237 Diplocyclos palmatus (L.) C.Jeffrey Lollipop Climber Cucurbitacea e Clim ber - 238 Dracaena terniflora Roxb.",
+      "claim_ids": [
+        "p155-16",
+        "p155-17",
+        "p155-18"
+      ]
+    },
+    {
+      "page": 156,
+      "text": "Ceylon Olive Elaeocarpac eae Tree LC 248 Eleocharis atropurpurea (Retz.) J.Presl & C.Presl Purple Spike-Rush Cyperaceae Herb LC 249 Elephantopus scaber L.",
+      "claim_ids": [
+        "p156-07",
+        "p156-08"
+      ]
+    },
+    {
+      "page": 157,
+      "text": "Devil's backbone Euphorbiace ae Shru b LC Plante d 267 Euphorbia umbellata (Pax) Bruyns African Milk Bush Euphorbiace ae Shru b - Plante d 268 Evolvulus alsinoides (L.) L.",
+      "claim_ids": [
+        "p157-05",
+        "p157-06"
+      ]
+    },
+    {
+      "page": 157,
+      "text": "Rubber fig Moraceae Tree LC Plante d 277 Ficus exasperata Vahl Sandpaper fig Moraceae Tree LC 278 Ficus heterophylla L.f.",
+      "claim_ids": [
+        "p157-15",
+        "p157-16"
+      ]
+    },
+    {
+      "page": 160,
+      "text": "Clustered Morning Glory Convolvulace ae Clim ber - 336 Isachne globosa (Thunb.) Kuntze Swamp Millet Poaceae Gras s LC 337 Ixora brachiata Roxb.",
+      "claim_ids": [
+        "p160-05",
+        "p160-06"
+      ]
+    },
+    {
+      "page": 161,
+      "text": "Lion's Ear Lamiaceae Herb - 358 Leucaena leucocephala (Lam.) de Wit Subabul Fabaceae Tree - 359 Leucas aspera (Willd.) Link Thumbai Lamiaceae Herb - 360 Leucas biflora (Vahl) Sm.",
+      "claim_ids": [
+        "p161-06",
+        "p161-07",
+        "p161-08"
+      ]
+    },
+    {
+      "page": 163,
+      "text": "Blue Water Lily Nymphaeace ae Herb LC 409 Nymphoides indica (L.) Kuntze Water Snowflake Menyanthace ae Herb LC 410 Oberonia sp.",
+      "claim_ids": [
+        "p163-11",
+        "p163-12"
+      ]
+    },
+    {
+      "page": 164,
+      "text": "Pavetta Rubiaceae Shru b LC 425 Peltophorum pterocarpum (DC.) Backer ex K.Heyne Copper pod / Yellow flame tree Fabaceae Tree LC Plante d 426 Pennisetum pedicellatum Trin.",
+      "claim_ids": [
+        "p164-06",
+        "p164-07"
+      ]
+    },
+    {
+      "page": 164,
+      "text": "Avocado Lauraceae Tree LC Plante d 429 Persicaria glabra (Willd.) M.Gómez Denseflower Knotweed Polygonacea e Herb LC 430 Phoenix sylvestris (L.) Roxb.",
+      "claim_ids": [
+        "p164-10",
+        "p164-11"
+      ]
+    },
+    {
+      "page": 166,
+      "text": "Castor / Arandi Euphorbiace ae Shru b LC 463 Roystonea regia (Kunth) O.F.Cook Royal Palm Arecaceae Tree LC Plante d 464 Rubia cordifolia L.",
+      "claim_ids": [
+        "p166-02",
+        "p166-03"
+      ]
+    },
+    {
+      "page": 166,
+      "text": "Avaram / Tarwar Fabaceae Shru b LC 479 Senna siamea (Lam.) H.S.Irwin & Barneby Kassod tree Fabaceae Tree LC Plante d 480 Senna sophera (L.) Roxb.",
+      "claim_ids": [
+        "p166-18",
+        "p166-19"
+      ]
+    },
+    {
+      "page": 167,
+      "text": "Ceylon Smilax Smilacaceae Clim ber - 488 Solanum erianthum D.Don Big Eggplant Solanaceae Shru b LC 489 Solanum indicum L.",
+      "claim_ids": [
+        "p167-05",
+        "p167-06",
+        "p167-31",
+        "p167-32",
+        "p167-34",
+        "p167-35",
+        "p167-36",
+        "p167-37",
+        "p167-39",
+        "p167-40",
+        "p167-41",
+        "p167-43",
+        "p167-45",
+        "p167-50",
+        "p167-51",
+        "p167-52"
+      ]
+    },
+    {
+      "page": 167,
+      "text": "Toothbrush tree Moraceae Tree LC 501 Strobilanthes callosa Nees Karvy Acanthaceae Shru b - 502 Strychnos nux-vomica L.",
+      "claim_ids": [
+        "p167-18",
+        "p167-19"
+      ]
+    },
+    {
+      "page": 168,
+      "text": "Tamarind / Imli Fabaceae Tree LC Plante d 512 Tecoma stans (L.) Juss. ex Kunth Yellow Bells Bignoniaceae Shru b LC Plante d 513 Tectona grandis L.f.",
+      "claim_ids": [
+        "p168-03",
+        "p168-04"
+      ]
+    },
+    {
+      "page": 169,
+      "text": "Indian Climbing Nettle Euphorbiace ae Clim ber - 532 Trema orientalis (L.) Blume Charcoal tree Cannabacea e Tree LC 533 Tridax procumbens L.",
+      "claim_ids": [
+        "p169-04",
+        "p169-05"
+      ]
+    },
+    {
+      "page": 170,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 551 Wodyetia bifurcata A.K.Irvine Foxtail palm Arecaceae Palm CD 552 Woodfordia fruticosa (L.) Kurz Fire Flame Bush Lythraceae Shru b LC 553 Wrightia tinctoria (Roxb.) R.",
+      "claim_ids": [
+        "p170-01",
+        "p170-02"
+      ]
+    },
+    {
+      "page": 191,
+      "text": "Wrinkled frog Nyctibatrachus karnatakaensis Endangered NA Source: The Reptiles Database, Frogs of India Website, stakeholder consultations, literature review Note: LC- Least Concern, NT- Near Threatened, VU- Vulnerable, EN- Endangered, CR- Critically Endangered, NA- Not assessed/listed, DD- Data Deficient 387.",
+      "claim_ids": [
+        "p191-21"
+      ]
+    },
+    {
+      "page": 17,
+      "text": "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts.",
+      "claim_ids": [
+        "p17-01",
+        "p17-02",
+        "p17-03",
+        "p17-04"
+      ]
+    },
+    {
+      "page": 48,
+      "text": "ECoP provisions are integrated into the Environment Management Plan (EMP) (Chapter 9) of this EIA as Embedded Mitigation Measures (EDM) and are detailed in Chapter 3 (Description 11 World Bank EHS General Guidelines: https://documents1.worldbank.org/curated/en/157871484635724258/pdf/112110-WP-Final-General-EHS- Guidelines.pdf (accessed on 21 July 2026)",
+      "claim_ids": [
+        "p48-02"
+      ]
+    },
+    {
+      "page": 69,
+      "text": "These facilities will be established and managed in accordance with the requirements of the Asian Development Bank under the ADB Safeguard Policy Statement and the Workers’ Accommodation: Processes and Standards, as well as national regulations including the Building and Other Construction Workers (BoCW) Central Rules (Rules 33–36 related to drinking water, sanitation, washing facilities, and worker accommodation). • Rest shelters for workers 18 Moorum is a locally available reddish gravelly soil used as a filling and sub-base material in road construction due to its good compaction and drainage properties.",
+      "claim_ids": [
+        "p69-05"
+      ]
+    },
+    {
+      "page": 115,
+      "text": "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity.",
+      "claim_ids": [
+        "p115-01",
+        "p115-02",
+        "p115-03",
+        "p115-04",
+        "p115-05",
+        "p115-06",
+        "p115-07",
+        "p115-08",
+        "p115-09"
+      ]
+    },
+    {
+      "page": 122,
+      "text": "102 Table IV-10 Project Roads Located in Talukas with High Flood Vulnerability (6–8 Flood Events, 2005–2020) in Karnataka SN District High Flood- Prone Taluka No. of Project Roads Road IDs 1 Kalaburagi Chincholi 8 686, 1494, 1505, 3693, 4374, 5464, 5490, 5494 2 Yadgir Shorapur 7 2486, 2502, 3512, 4767, 4992, 5000, 5002 3 Raichur Devadurga 4 2442, 3099, 3307, 5264 4 Raichur Lingsugur 5 2431, 2599, 2662, 3397, 4496 5 Raichur Manvi 13 88, 1207, 2431, 2529, 2669, 3190, 3343, 3824, 3825, 3894, 3910, 3913, 4924 6 Raichur Sindhanur 7 2699, 3129, 3343, 3794, 4483, 5151, 5265 7 Uttara Kannada Karwar 4 358, 5358, 5359, 5394 8 Uttara Kannada Ankola 5 422, 1206, 2124, 2250, 2251 9 Uttara Kannada Kumta 5 917, 1952, 2452, 2690, 2726 10 Uttara Kannada Honnavar 10 1139, 1386, 2229, 2711, 2759, 2994, 5369, 5437, 5439, 5440 11 Uttara Kannada Siddapur 3 337, 555, 1647 12 Uttara Kannada Bhatkal 5 1435, 5364, 5392, 5436, 5441 13 Udupi Kundapura 14 174, 547, 556, 1371, 1541, 1549, 1551, 1552, 1741, 2552, 3578, 3581, 4409, 4983 14 Udupi Udupi 19 309, 519, 1231, 1314, 1315, 1323, 1330, 2314, 2554, 2555, 2860, 2861, 3730, 3731, 4312, 4760, 4784, 4883, 4884 15 Udupi Karkala 15 329, 354, 501, 535, 1057, 1306, 1893, 1960, 2253, 2892, 2893, 2910, 3424, 3488, 4872 16 Dakshina Kannada Mangaluru 16 15, 25, 29, 354, 501, 1054, 1057, 1059, 1211, 1392, 1843, 3000, 3885, 4427, 4438, 4867 17 Dakshina Kannada Bantwal 13 25, 29, 255, 259, 290, 295, 1052, 1612, 2202, 2718, 3000, 3885, 4438 18 Dakshina Kannada Beltangadi 5 1040, 1041, 1043, 1046, 1052 19 Dakshina Kannada Puttur 9 806, 827, 837, 1368, 1643, 2202, 3152, 3189, 4420 20 Dakshina Kannada Sulya 4 345, 581, 807, 822 21 Hassan Sakleshpur 1 4190 22 Kodagu Virajpet 4 3148, 3884, 4003, 4042 Source: Karnataka State Natural Disaster Monitoring Centre (KSNDMC), Government of Karnataka 6.",
+      "claim_ids": [
+        "p122-01",
+        "p122-02",
+        "p122-03",
+        "p122-04",
+        "p122-05",
+        "p122-06",
+        "p122-07",
+        "p122-08",
+        "p122-09",
+        "p122-10",
+        "p122-11",
+        "p122-12",
+        "p122-13",
+        "p122-14",
+        "p122-15",
+        "p122-16",
+        "p122-17",
+        "p122-18",
+        "p122-19",
+        "p122-20",
+        "p122-21",
+        "p122-22"
+      ]
+    },
+    {
+      "page": 133,
+      "text": "Table IV-14: Summary of Groundwater Quality Monitoring Results and Comparison with BIS and WHO Guideline Values Parameter Minimum Maximum Average Standard (BIS permissible) WHO pH 4.7 8.6 7.27 6.5-8.5 Colour <1 (BDL) 12 7.43 15 Odour Qualitative — — agreeable Turbidity (NTU) <1 5.8 5 5 0.2 Total Dissolved Solids (mg/L) 70 2460 456.252 2000 1000* Total Hardness (CaCO₃) (mg/L) 20 633 195.08 600 Calcium (mg/L) 4 633 77.59 200 Magnesium (mg/L) 0.7 100 28.14 100 Alkalinity (mg/L) BDL <1 449 136.81 600",
+      "claim_ids": [
+        "p133-23",
+        "p133-24",
+        "p133-25",
+        "p133-26",
+        "p133-27",
+        "p133-28",
+        "p133-29",
+        "p133-30",
+        "p133-31",
+        "p133-32",
+        "p133-33",
+        "p133-34",
+        "p133-35",
+        "p133-36",
+        "p133-37"
+      ]
+    },
+    {
+      "page": 146,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 23 Aegle marmelos (L.) Corrêa Bael Rutaceae Tree NT Plante d 24 Aerides sp.",
+      "claim_ids": [
+        "p146-01",
+        "p146-02",
+        "p146-27"
+      ]
+    },
+    {
+      "page": 146,
+      "text": "Indian Tree of Heaven Simaroubace ae Tree DD 30 Alangium salviifolium (L.f.) Wangerin Sage Leaved Alangium Cornaceae Tree LC 31 Albizia amara (Roxb.) B.",
+      "claim_ids": [
+        "p146-08",
+        "p146-30"
+      ]
+    },
+    {
+      "page": 146,
+      "text": "Dragon Stalk Yam Araceae Herb - 46 Ampelocissus latifolia (Roxb.) Planch., Wild grape Vitaceae Clim ber - 47 Anacardium occidentale L.",
+      "claim_ids": [
+        "p146-24",
+        "p146-25"
+      ]
+    },
+    {
+      "page": 148,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 69 Artocarpus altilis (Parkinson ex F.A.Zorn) Fosberg Breadfruit Moraceae Tree DD 70 Artocarpus heterophyllus Lam.",
+      "claim_ids": [
+        "p148-01",
+        "p148-02",
+        "p148-23",
+        "p148-28"
+      ]
+    },
+    {
+      "page": 148,
+      "text": "Ceylon Purplenut Lauraceae Tree NT 87 Bidens biternata (Lour.) Merr. & Sherff Yellow Flowered Blackjack Asteraceae Herb - 88 Biophytum sensitivum (L.) DC.",
+      "claim_ids": [
+        "p148-19",
+        "p148-20",
+        "p148-40"
+      ]
+    },
+    {
+      "page": 148,
+      "text": "Tropical Little Tree Plant Oxalidaceae Herb - 89 Blainvillea acmella (L.) Philipson Para Cress Flower Asteraceae Herb - 90 Blumea eriantha DC.",
+      "claim_ids": [
+        "p148-21",
+        "p148-22"
+      ]
+    },
+    {
+      "page": 150,
+      "text": "Spreading Canscora Gentianacea e Herb - 123 Canthium coromandelicum (Burm.f.) Alston Coromandel Boxwood Rubiaceae Shru b - 124 Capparis divaricata Lam.",
+      "claim_ids": [
+        "p150-12",
+        "p150-13"
+      ]
+    },
+    {
+      "page": 150,
+      "text": "Balloon vine Sapindaceae Clim ber LC 128 Carex filicina Nees Carex Cyperaceae Herb LC 129 Careya arborea Roxb.",
+      "claim_ids": [
+        "p150-17",
+        "p150-18"
+      ]
+    },
+    {
+      "page": 152,
+      "text": "Reddish-Yellow Beardgrass Poaceae Gras s - 156 Chrysopogon zizanioides (L.) Roberty Khas Poaceae Herb - 157 Chukrasia tabularis A.Juss.",
+      "claim_ids": [
+        "p152-05",
+        "p152-06"
+      ]
+    },
+    {
+      "page": 152,
+      "text": "Indian Bay Leaf Lauraceae Tree LC 159 Cinnamomum verum J.Presl Cinnamon Lauraceae Tree VU 160 Cissampelos pareira L.",
+      "claim_ids": [
+        "p152-08",
+        "p152-09"
+      ]
+    },
+    {
+      "page": 153,
+      "text": "Varuna Capparaceae Tree LC 190 Crotalaria calycina Schrank Silky-Haired Rattlepod Fabaceae Herb - 191 Crotalaria heyneana Wight & Arn.",
+      "claim_ids": [
+        "p153-18",
+        "p153-19"
+      ]
+    },
+    {
+      "page": 153,
+      "text": "Blue-Flowered Rattlepod Fabaceae Shru b - 192 Crotalaria pallida Aiton Smooth crotalaria Fabaceae Herb - 193 Crotalaria pallida Aiton Smooth Rattlepod Fabaceae Herb - 194 Crotalaria retusa L.",
+      "claim_ids": [
+        "p153-20",
+        "p153-21"
+      ]
+    },
+    {
+      "page": 154,
+      "text": "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L.",
+      "claim_ids": [
+        "p154-02",
+        "p154-03"
+      ]
+    },
+    {
+      "page": 154,
+      "text": "Amar Bel Convolvulace ae Clim ber LC 200 Cyclea peltata (Lam.) Hook.f. & Thomson Padathaali Menispermac eae Clim ber - 201 Cymbidium sp.",
+      "claim_ids": [
+        "p154-05",
+        "p154-06"
+      ]
+    },
+    {
+      "page": 155,
+      "text": "Green Lipped Dendrobium Orchidaceae Herb - 224 Dendrocalamus strictus (Roxb.) Nees Male bamboo Poaceae Gras s - 225 Dendrophthoe falcata (L.f.) Ettingsh.",
+      "claim_ids": [
+        "p155-04",
+        "p155-05"
+      ]
+    },
+    {
+      "page": 155,
+      "text": "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb.",
+      "claim_ids": [
+        "p155-11",
+        "p155-12"
+      ]
+    },
+    {
+      "page": 156,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 242 Ecbolium viride (Forssk.) Alston Green Shrimp Plant Acanthaceae Herb - 243 Echinochloa sp.",
+      "claim_ids": [
+        "p156-01",
+        "p156-02"
+      ]
+    },
+    {
+      "page": 156,
+      "text": "Indian Crowfoot Grass Poaceae Gras s LC 251 Embelia tsjeriam-cottam (Roem. & Schult.) A.DC., Malabar Embelia Primulaceae Shru b - 252 Emilia sonchifolia (L.) DC.",
+      "claim_ids": [
+        "p156-10",
+        "p156-11"
+      ]
+    },
+    {
+      "page": 156,
+      "text": "Eucalyptus / Safeda Myrtaceae Tree - Plante d 261 Euphorbia caducifolia Haines Leafless euphorbia Euphorbiace ae Shru b - 262 Euphorbia heterophylla L.",
+      "claim_ids": [
+        "p156-20",
+        "p156-21"
+      ]
+    },
+    {
+      "page": 157,
+      "text": "Peepal Moraceae Tree LC 283 Ficus virens Aiton White fig / Pilkhan Moraceae Tree LC 284 Fimbristylis cymosa R.Br.",
+      "claim_ids": [
+        "p157-21",
+        "p157-22"
+      ]
+    },
+    {
+      "page": 158,
+      "text": "Malabar tamarind Clusiaceae Tree LC 291 Garcinia indica (Thouars) Choisy Kokum Clusiaceae Tree VU 292 Garuga pinnata Roxb.",
+      "claim_ids": [
+        "p158-04",
+        "p158-05",
+        "p158-24"
+      ]
+    },
+    {
+      "page": 158,
+      "text": "Grewia Malvaceae Shru b LC 302 Grewia hirsuta Vahl Nagbala Crossberry Malvaceae Tree LC 303 Grewia serrulata DC.",
+      "claim_ids": [
+        "p158-15",
+        "p158-16"
+      ]
+    },
+    {
+      "page": 160,
+      "text": "Water Morning Glory Convolvulace ae Herb LC 333 Ipomoea cairica (L.) Sweet Railway Creeper Convolvulace ae Clim ber LC 334 Ipomoea carnea Jacq.",
+      "claim_ids": [
+        "p160-02",
+        "p160-03"
+      ]
+    },
+    {
+      "page": 162,
+      "text": "Kamala tree Euphorbiace ae Tree LC 377 Mallotus tetracoccus (Roxb.) Kurz Rusty Kamala Euphorbiace ae Tree - 378 Mammea suriga (Buch.-Ham. ex Roxb.) Kosterm.",
+      "claim_ids": [
+        "p162-02",
+        "p162-03"
+      ]
+    },
+    {
+      "page": 162,
+      "text": "Ironwood / Memecylon Melastomata ceae Tree LC 387 Meyna laxiflora Robyns Muyna Rubiaceae Shru b - 388 Microstachys chamaelea (L.) Mull.Arg.",
+      "claim_ids": [
+        "p162-12",
+        "p162-13"
+      ]
+    },
+    {
+      "page": 162,
+      "text": "Woolly Miliusa Annonaceae Tree LC 390 Millettia pinnata (L.) Panigrahi Karanj / Pongamia Fabaceae Tree - 391 Millingtonia hortensis L. f.",
+      "claim_ids": [
+        "p162-15",
+        "p162-16"
+      ]
+    },
+    {
+      "page": 163,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 399 Mucuna monosperma Wight Negro Bean Fabaceae Clim ber - 400 Muntingia calabura L.",
+      "claim_ids": [
+        "p163-01",
+        "p163-02",
+        "p163-22",
+        "p163-25",
+        "p163-28",
+        "p163-29",
+        "p163-33",
+        "p163-35",
+        "p163-36",
+        "p163-39",
+        "p163-40",
+        "p163-41",
+        "p163-42"
+      ]
+    },
+    {
+      "page": 165,
+      "text": "Climbing aroid Araceae Clim ber - 450 Premna mollissima Roth Dusky Fire-Brand Teak Lamiaceae Tree LC 451 Prosopis juliflora (Sw.) DC.",
+      "claim_ids": [
+        "p165-11",
+        "p165-12"
+      ]
+    },
+    {
+      "page": 166,
+      "text": "Sandalwood / Chandan Santalaceae Tree VU Plante d 470 Sapindus laurifolius Vahl Soap nut / Reetha Sapindaceae Tree - 471 Sapium insigne (Royle) Benth. ex Hook.f.",
+      "claim_ids": [
+        "p166-09",
+        "p166-10"
+      ]
+    },
+    {
+      "page": 167,
+      "text": "Botanical Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 484 Shorea roxburghii G.Don Taloora Lac Tree Dipterocarpa ceae Tree DD 485 Sida acuta Burm.f.",
+      "claim_ids": [
+        "p167-01",
+        "p167-02",
+        "p167-27"
+      ]
+    },
+    {
+      "page": 168,
+      "text": "Morpankhi Cupressacea e Shru b NT Plante d 526 Thunbergia alata Bojer ex Sims Black-Eyed Susan Vine Acanthaceae Clim ber - Plante d 527 Thunbergia grandiflora (Roxb. ex Rottl.) Roxb.",
+      "claim_ids": [
+        "p168-17",
+        "p168-18"
+      ]
+    },
+    {
+      "page": 169,
+      "text": "Caesarweed Malvaceae Shru b LC 539 Vanda tessellata (Roxb.) Hook. ex G.Don Checkered Vanda Orchidaceae Herb LC 540 Vanda testacea (Lindl.) Rchb.f.",
+      "claim_ids": [
+        "p169-11",
+        "p169-12"
+      ]
+    },
+    {
+      "page": 196,
+      "text": "It is an important habitat for Blackbuck (flagship species) and Indian grey wolf, along with other fauna such as Golden jackal, Indian fox [Vulpes bengalensis;",
+      "claim_ids": [
+        "p196-08"
+      ]
+    },
+    {
+      "page": 200,
+      "text": "Asiatic elephant, Gaur, Sloth bear, Malabar Civet [Viverra civettina; CR (v.2025-2)], along with Malabar Giant Squirrel, Pangolin, and several endemic birds like hornbills.",
+      "claim_ids": [
+        "p200-05"
+      ]
+    },
+    {
+      "page": 201,
+      "text": "It is an important habitat for fauna such as Indian grey wolf (flagship species), Leopard, Sloth Bear, Hyena, Golden jackal, and Wild boar, along with several small mammals.",
+      "claim_ids": [
+        "p201-13"
+      ]
+    },
+    {
+      "page": 23,
+      "text": "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones.",
+      "claim_ids": [
+        "p23-03",
+        "p23-04",
+        "p23-05"
+      ]
+    },
+    {
+      "page": 25,
+      "text": "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population.",
+      "claim_ids": [
+        "p25-01"
+      ]
+    },
+    {
+      "page": 53,
+      "text": "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14.",
+      "claim_ids": [
+        "p53-03",
+        "p53-04",
+        "p53-05"
+      ]
+    },
+    {
+      "page": 57,
+      "text": "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required.",
+      "claim_ids": [
+        "p57-02"
+      ]
+    },
+    {
+      "page": 59,
+      "text": "Table III-3 Distribution of road with respect to RoW Right of Way in meters Existing RoW Proposed RoW No. of Roads Percentage distribution No. of Roads Percentage distribution less than 5 meters 0 0% 0 0% 5-8 meters 348 26.07% 611 45.63% Up to 10 meters 574 43% 339 25.32% Up to 13 meters 413 30.94% 485 28.75% Total 1335 100% 1335 100% Source: KRRDA Spreadsheet of RoW data.",
+      "claim_ids": [
+        "p59-02",
+        "p59-03",
+        "p59-04",
+        "p59-05",
+        "p59-06"
+      ]
+    },
+    {
+      "page": 59,
+      "text": "39 Terrain classification Cross slope Rolling 10-25% 1 in 10 to 1 in 4 Mountainous 25-60% 1 in 4 to 1 in 1.67 Steep Greater than 60% More than 1 in 1.67 2.",
+      "claim_ids": [
+        "p59-16",
+        "p59-17",
+        "p59-18"
+      ]
+    },
+    {
+      "page": 60,
+      "text": "Table III-5 Road width and Carriageway Carriageway Road width in meters Plain and Rolling Mountainous and steep Desired Minimum 3.75 meter 7.5m 6.0m 4.8m 5.5 meter 9.0m 7.5m 7.0m 5.",
+      "claim_ids": [
+        "p60-06",
+        "p60-07"
+      ]
+    },
+    {
+      "page": 63,
+      "text": "43 Table III-7 Estimated Length of Drains Item Length (in km)* Length of Road 5178 Length of Lined Drain 359.046 Length of Unlined Drain 7,268.774 Total length of Drain 7,627.820 Note: These figures are based on data received from the DPR consultants.",
+      "claim_ids": [
+        "p63-01",
+        "p63-02",
+        "p63-03",
+        "p63-04"
+      ]
+    },
+    {
+      "page": 66,
+      "text": "46 Table III-8 Estimated quantity of earthwork Item Quantity in Cubic meter Total length of 1335 number of roads 5136 Average earth work cubic meter per km 815 Total earth work cubic meter 41,85,048 4.",
+      "claim_ids": [
+        "p66-01",
+        "p66-02",
+        "p66-03"
+      ]
+    },
+    {
+      "page": 71,
+      "text": "The average resource requirement for the proposed road improvement works is estimated to include approximately 2,843 m³ of aggregate, about 209 m³ of sand, and around 157 m³ of cement per road.",
+      "claim_ids": [
+        "p71-03",
+        "p71-04",
+        "p71-05"
+      ]
+    },
+    {
+      "page": 71,
+      "text": "The bitumen requirement is anticipated to be approximately 85.5 tonnes per road for prime coat, tack coat and seal coat, and about 42.2 tonnes per road for OGPC/MSS, resulting in an estimated combined bitumen requirement of around 127.6 tonnes per road.",
+      "claim_ids": [
+        "p71-06",
+        "p71-07",
+        "p71-08"
+      ]
+    },
+    {
+      "page": 73,
+      "text": "Table III-11 Construction Waste Management Waste type Quantity Source Destination Waste Management/ Disposal Scarified Bituminous Material from road surface 144,984 cubic meter Scarification of Bituminous Road disposal at designated landfill Resycling and disposal Excavated mater ials 1449840 cubic meter of earth (after 50% used for filling) Excavation disposal to inert construction landfill or, if contaminated, disposal Filling and grading of the low-lying areas within RoW. material will be used for grassing and turfing.",
+      "claim_ids": [
+        "p73-03",
+        "p73-04"
+      ]
+    },
+    {
+      "page": 91,
+      "text": "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal.",
+      "claim_ids": [
+        "p91-02",
+        "p91-03"
+      ]
+    },
+    {
+      "page": 93,
+      "text": "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara.",
+      "claim_ids": [
+        "p93-03"
+      ]
+    }
+  ],
+  "pairing": {
+    "subjects": 1640,
+    "key_calls": 41,
+    "keys_missing": 0,
+    "numeric_claims": 1697,
+    "groups": 1108,
+    "representatives": 1357,
+    "readings_without_station": 172,
+    "dropped_by_cap": 993,
+    "pairs_same_key": 140,
+    "pairs_related_key": 222,
+    "pairs_part_whole": 39
+  },
+  "pairing_dropped_by_cap": [
+    [
+      "number of compliant road | project roads  ~  number of road | project roads",
+      5
+    ],
+    [
+      "number of final list of road | project roads  ~  number of road | project roads",
+      2
+    ],
+    [
+      "number of road | project roads",
+      63
+    ],
+    [
+      "number of road | project roads  ~  number of road adjusted | project roads",
+      3
+    ],
+    [
+      "number of road | project roads  ~  number of road stretche | project roads",
+      5
+    ],
+    [
+      "sanaba maski biddinni total st population | project roads  ~  total st population | karnataka",
+      6
+    ],
+    [
+      "sanaba maski biddinni total st population | project roads  ~  total st population | project roads",
+      2
+    ],
+    [
+      "sangapur mallinamadu total st population | project roads  ~  total st population | karnataka",
+      5
+    ],
+    [
+      "sangapur mallinamadu total st population | project roads  ~  total st population | project roads",
+      2
+    ],
+    [
+      "total st population | karnataka",
+      297
+    ],
+    [
+      "total st population | karnataka  ~  total st population | project roads",
+      110
+    ],
+    [
+      "total st population | karnataka  ~  veerapur mullur total st population | project roads",
+      3
+    ],
+    [
+      "total st population | project roads",
+      56
+    ],
+    [
+      "total st population | project roads  ~  veerapur mullur total st population | project roads",
+      2
+    ],
+    [
+      "anganwadi distance from road | project roads",
+      89
+    ],
+    [
+      "anganwadi distance from road | project roads  ~  distance from road | project roads",
+      23
+    ],
+    [
+      "distance to anganwadi | project roads",
+      9
+    ],
+    [
+      "distance to primary health centre | project roads",
+      18
+    ],
+    [
+      "length of road | project roads  ~  road length | project roads",
+      8
+    ],
+    [
+      "project road length | project roads  ~  road length | project roads",
+      8
+    ],
+    [
+      "road length | project roads",
+      124
+    ],
+    [
+      "road length | project roads  ~  sanbal maski road to budinni road length | project roads",
+      7
+    ],
+    [
+      "road length | project roads  ~  sangapur to mallinamadu road length | project roads",
+      8
+    ],
+    [
+      "road length | project roads  ~  sanklapura to chiratagundu koracharahatti road length | project roads",
+      7
+    ],
+    [
+      "road length | project roads  ~  veerapur to mullur road length | project roads",
+      7
+    ],
+    [
+      "anganwadi distance from road | project roads",
+      6
+    ],
+    [
+      "of st in total population | karnataka",
+      75
+    ],
+    [
+      "number of road | project roads",
+      43
+    ]
+  ],
+  "cost_usd": 2.404,
+  "wall_clock_s": 3988.9,
+  "stages": {
+    "claims": {
+      "seconds": 50.9,
+      "usd": 0.0056
+    },
+    "triage + verdicts": {
+      "seconds": 3062.0,
+      "usd": 2.3725
+    },
+    "copy-paste": {
+      "seconds": 408.4,
+      "usd": 0.0016
+    }
+  },
+  "calls_per_model": {
+    "nvidia/Nemotron-3_5-Lightning": {
+      "api_calls": 313,
+      "cache_hits": 130,
+      "prompt_tokens": 649706,
+      "completion_tokens": 82094,
+      "cost_usd": 0.0587,
+      "api_seconds": 17064.611
+    },
+    "nvidia/Nemotron-3.5-Super-VL": {
+      "api_calls": 2,
+      "cache_hits": 450,
+      "prompt_tokens": 9065,
+      "completion_tokens": 3210,
+      "cost_usd": 0.0056,
+      "api_seconds": 31.4
+    },
+    "nvidia/Nemotron-3-Ultra-550b-a55b": {
+      "api_calls": 253,
+      "cache_hits": 0,
+      "prompt_tokens": 829770,
+      "completion_tokens": 503325,
+      "cost_usd": 2.3397,
+      "api_seconds": 2357.064
+    }
+  },
+  "tavily": {
+    "calls": 154,
+    "cached": 8,
+    "credits": 128
+  },
+  "retries": {
+    "retries": 4,
+    "rate_limited": 0,
+    "server_errors": 0,
+    "connection_errors": 4
+  },
+  "findings_by_check": {
+    "recycled_figure": {
+      "RED": 0,
+      "ORANGE": 0,
+      "NONE": 2
+    },
+    "contradiction": {
+      "RED": 11,
+      "ORANGE": 0,
+      "NONE": 240
+    },
+    "copy_paste": {
+      "NONE": 90,
+      "RED": 10
+    }
+  },
+  "known_issues_matched": {},
+  "new_flagged": 21,
+  "flags": [
+    {
+      "id": "cp-p115-2",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        115
+      ],
+      "quotes": [
+        {
+          "page": 115,
+          "text": "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [12.0, 15.0, 17.0, 18.0, 24.0, 38.0, 44.0, 60.0, 95.0, 109.0, 117.0, 118.0, 120.0, 125.0, 131.0, 136.0, 141.0, 144.0, 4446.0, 4758.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p154-3",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        154
+      ],
+      "quotes": [
+        {
+          "page": 154,
+          "text": "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [197.0, 198.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p155-4",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        155
+      ],
+      "quotes": [
+        {
+          "page": 155,
+          "text": "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [231.0, 232.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p17-1",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        17
+      ],
+      "quotes": [
+        {
+          "page": 17,
+          "text": "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [326.0, 370.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p23-5",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        23
+      ],
+      "quotes": [
+        {
+          "page": 23,
+          "text": "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p25-6",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        25
+      ],
+      "quotes": [
+        {
+          "page": 25,
+          "text": "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [5.05, 2011.0, 61095297.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p53-7",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        53
+      ],
+      "quotes": [
+        {
+          "page": 53,
+          "text": "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p57-8",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        57
+      ],
+      "quotes": [
+        {
+          "page": 57,
+          "text": "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [1.02, 4817.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p91-9",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        91
+      ],
+      "quotes": [
+        {
+          "page": 91,
+          "text": "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [14.0, 1319.0, 2025.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "cp-p93-10",
+      "grade": "RED",
+      "type": "copy_paste",
+      "pages": [
+        93
+      ],
+      "quotes": [
+        {
+          "page": 93,
+          "text": "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara."
+        }
+      ],
+      "reason": "site-specific data also in the other document (numbers [11.0, 19.0, 2025.0]; species [])",
+      "part_total": null,
+      "answers": {},
+      "urls": [
+        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+      ]
+    },
+    {
+      "id": "ct-007",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        11,
+        317
+      ],
+      "quotes": [
+        {
+          "page": 11,
+          "text": "requires forest clearance for diversion of 0.748 ha under the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980",
+          "also_on": [
+            12
+          ]
+        },
+        {
+          "page": 317,
+          "text": "Forest Clearance – Scrutiny of the forest clearance proposal for road ID 4817 involving 1.02 hectares of forest land diversion, recommendation to state government for the clearance, providing stage-1 clearance and provide report on compliance with the conditions to the State Government/ MoEFCC, Implementation Monitoring and Reporting, to assist in the process of providing stage-2 forest clearance."
+        }
+      ],
+      "reason": "Page 11 states 0.748 ha of forest land diversion for Road ID 4817, while page 317 states 1.02 hectares for the same road. The report does not explain the discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-019",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        136,
+        286
+      ],
+      "quotes": [
+        {
+          "page": 136,
+          "text": "Out of the 1335 project roads, 547 roads are reported to have surface water body within 500m."
+        },
+        {
+          "page": 286,
+          "text": "Approximately 500 roads not only has surface water bodies within 2 km of the roads, streams or canals also crosses a number of project roads."
+        }
+      ],
+      "reason": "The first statement reports 547 roads with surface water bodies within 500 m, while the second states approximately 500 roads have surface water bodies within 2 km; since the 500 m buffer is a subset of the 2 km buffer, the latter number should be at least 547, making the two figures incompatible.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-020",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        51,
+        271
+      ],
+      "quotes": [
+        {
+          "page": 271,
+          "text": "The requirement of 0.748 hectares of additional forest land for one project road (4817) has been indicated in the data shared by KRRDA."
+        },
+        {
+          "page": 51,
+          "text": "one road will require additional forest land amounting to ~1.02 hectares"
+        }
+      ],
+      "reason": "Both statements cite KRRDA data for additional forest land needed for project road 4817 but report different hectare figures (0.748 vs ~1.02) with no explanation in the provided text for the discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-056",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        51,
+        59
+      ],
+      "quotes": [
+        {
+          "page": 51,
+          "text": "one road will require additional forest land amounting to ~1.02 hectares"
+        },
+        {
+          "page": 59,
+          "text": "except for one road (4817) which requires ~0.748 ha of forest land",
+          "also_on": [
+            206
+          ]
+        }
+      ],
+      "reason": "The two statements give different figures (~1.02 ha vs ~0.748 ha) for the additional forest land required for road 4817, and the report does not explain the discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-094",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        14,
+        23
+      ],
+      "quotes": [
+        {
+          "page": 23,
+          "text": "305 roads are located outside protected areas and eco-sensitive zones but fall within EAAAs identified as critical habitat"
+        },
+        {
+          "page": 14,
+          "text": "The remaining 420 roads are within EAAAs determined to be critical habitats but outside legally designated protected areas, forest lands, or eco-sensitive zones"
+        }
+      ],
+      "reason": "The two statements give different counts (305 vs 420) for the same residual category of roads within EAAAs but outside protected areas, forest lands, and eco-sensitive zones. Page 14 notes that 171 roads fall into multiple categories, which may affect the calculation, but the report does not explicitly reconcile the two figures.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-102",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        57,
+        357
+      ],
+      "quotes": [
+        {
+          "page": 357,
+          "text": "0.748 ha of forest land"
+        },
+        {
+          "page": 57,
+          "text": "except road ID 4817, where 1.02 hectares of forest land will be required."
+        }
+      ],
+      "reason": "Both statements refer to forest land for Road ID 4817, but report different areas (0.748 ha diversion vs 1.02 ha required) without any explanation in the provided pages.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-264",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        263,
+        329
+      ],
+      "quotes": [
+        {
+          "page": 329,
+          "text": "50",
+          "also_on": [
+            263
+          ]
+        },
+        {
+          "page": 263,
+          "text": "Noise Pollution (Regulation and Control) Rules, 2000 limits applicable to Silence Zones (50 dB(A) day; 40 dB(A) night)."
+        }
+      ],
+      "reason": "Both statements give a nighttime noise limit for Silence Zones but cite different values (50 dB(A) vs 40 dB(A)) without reconciling them.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-265",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        263,
+        329
+      ],
+      "quotes": [
+        {
+          "page": 329,
+          "text": "50",
+          "also_on": [
+            263
+          ]
+        },
+        {
+          "page": 263,
+          "text": "Noise Pollution (Regulation and Control) Rules, 2000 limits applicable to Silence Zones (50 dB(A) day; 40 dB(A) night)."
+        }
+      ],
+      "reason": "Both statements refer to Silence Zone noise limits under India's Noise Pollution (Regulation and Control) Rules, 2000, but give different nighttime values (50 dB(A) vs 40 dB(A)). The report does not explain this discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-283",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        263,
+        329
+      ],
+      "quotes": [
+        {
+          "page": 329,
+          "text": "50"
+        },
+        {
+          "page": 263,
+          "text": "Noise Pollution (Regulation and Control) Rules, 2000 limits applicable to Silence Zones (50 dB(A) day; 40 dB(A) night)."
+        }
+      ],
+      "reason": "Both statements give the daytime Silence Zone limit as 50 dB(A), but the national standards table (page 329) lists the night limit as 50 dB(A) while the assessment text (page 263) cites the Rules as 40 dB(A) night, a direct numerical conflict.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-284",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        263,
+        329
+      ],
+      "quotes": [
+        {
+          "page": 329,
+          "text": "50"
+        },
+        {
+          "page": 263,
+          "text": "Noise Pollution (Regulation and Control) Rules, 2000 limits applicable to Silence Zones (50 dB(A) day; 40 dB(A) night)."
+        }
+      ],
+      "reason": "Both statements give noise limits for Silence Zones under Indian national standards, but the night limit differs (50 dB vs 40 dB) with no explanation in the report for the discrepancy.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-354",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        71,
+        253
+      ],
+      "quotes": [
+        {
+          "page": 71,
+          "text": "Borrow materials such as soil, gravel, moorum, or laterite required for embankment, subgrade, and shoulders will be procured from approved borrow areas generally located within 2 km to 10 km of the Project alignment."
+        },
+        {
+          "page": 253,
+          "text": "with borrow areas to be sourced within 200 m of the alignment wherever suitable material is available"
+        }
+      ],
+      "reason": "The first statement says borrow areas are generally 2-10 km from the alignment, while the second says they should be sourced within 200 m wherever suitable material is available, without clarifying how these two ranges relate.",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    }
+  ],
+  "triage_audit": null
+}

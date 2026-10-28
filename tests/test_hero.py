@@ -4,7 +4,8 @@ import re
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import data, hero
 
@@ -21,7 +22,7 @@ def no_keys(monkeypatch):
 
 
 def app():
-    return AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    return open_app(timeout=60)
 
 
 def test_configured_finding_exists_in_saved_results():

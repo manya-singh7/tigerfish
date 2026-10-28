@@ -5,7 +5,8 @@ import json
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import feedback
 
@@ -80,7 +81,7 @@ def no_keys(monkeypatch):
 
 @pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), reason="no results/")
 def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     at.text_input(key=feedback.REVIEWER_KEY).input("Asha").run()
     from tigerfish.ui import data
     fid = next(f["id"] for f in data.load("great_nicobar_2021_draft")["findings"]
@@ -98,6 +99,6 @@ def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
     assert "#### Precision" in text and "100% (1 of 1)" in text
 
     # a fresh session reads the decision back from the file
-    at2 = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at2 = open_app(timeout=60)
     assert at2.session_state[key] == "Confirm"
     assert at2.text_input(key=feedback.REVIEWER_KEY).value == "Asha"

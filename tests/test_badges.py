@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import badges, data, memo_ask
 
@@ -175,7 +176,7 @@ def test_page_readers_file_matches_inspector_pages():
 def test_app_shows_badges_on_cards_memo_and_answers(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     for label in (badges.READ_LIGHTNING, badges.READ_SUPER_VL, badges.SCREENED_LIGHTNING,
