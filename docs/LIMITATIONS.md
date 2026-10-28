@@ -85,6 +85,18 @@ ToR asks for 3 months of baseline data; the EIA describes surveys on 14-22 Decem
 12-18 February 2021, p.292) is a strong lead only if the granted ToR kept the 3-month
 requirement. TODO.md lists the comparison with the granted ToR as manual work.
 
+**Granted ToR, found by the paper trail.** The MoEFCC letter granting the ToR (F.No.
+10/17/2021-IA.III, 25 May 2021, proposal IA/AN/NCP/201159/2021, 18 pages) was found on
+environmentclearance.nic.in and checked the same way (`results/great_nicobar_2021_draft_promises_granted.json`).
+It states few measurable study conditions: the check found 2 (one complete non-monsoon season of
+site-specific meteorological and air-quality data; at least one monitoring station upwind and one
+downwind), both INFO (not confirmed from the report text searched). Its numbered conditions are
+split into separate items and its running page header is removed before the check; quotes stay
+verbatim from the letter. The letter's text has no "3 months" / "three months"; it grants
+specific conditions "in addition to all standard ToR conditions applicable for such projects",
+which are not in the letter and were not checked. So pr-06 rests on the proposed ToR only. Read
+the granted letter (and the standard ToR it refers to) by hand before using pr-06.
+
 Other limits of this check: "3 months" for a list of attributes is read as applying to each;
 studies without stated dates have no bar on the timeline; regex can miss numbers in tables
 split across pages.

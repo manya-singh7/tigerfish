@@ -69,18 +69,44 @@ def chart(data):
     return alt.layer(*layers).properties(height=36 * len(order) + 30)
 
 
+def load_granted(report_id):
+    path = RESULTS / f"{report_id}_promises_granted.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def promises_table(data):
+    st.dataframe(pd.DataFrame(table_rows(data)), hide_index=True, width="stretch",
+                 column_config={"Link": st.column_config.LinkColumn("Open page", display_text="open")})
+
+
 def render(report_id):
-    data = load(report_id)
-    if not data:
+    from tigerfish.ui import paper_trail as trail_ui
+    data, granted = load(report_id), load_granted(report_id)
+    if not data and not granted:
         st.info("No Terms of Reference check for this report. Run: python scripts/check_promises.py")
         return
     st.markdown("#### Did the EIA do what its Terms of Reference promised?")
-    st.caption(f"Measurable commitments in the ToR ({data['tor']}), compared with what the report "
-               "itself says it did. ORANGE: the report's own text shows less than promised "
-               "(confirmed by a second reading). INFO: not found, or not confirmed. Each is a "
-               "question for the reviewer, not a conclusion.")
-    st.dataframe(pd.DataFrame(table_rows(data)), hide_index=True, width="stretch",
-                 column_config={"Link": st.column_config.LinkColumn("Open page", display_text="open")})
+    st.caption("Measurable commitments in the ToR, compared with what the report itself says it "
+               "did. ORANGE: the report's own text shows less than promised (confirmed by a second "
+               "reading). INFO: not found, or not confirmed. Each is a question for the reviewer, "
+               "not a conclusion.")
+    if granted:
+        st.markdown(f"##### Granted ToR (MoEFCC letter dated {granted['tor_date'] or 'not stated'})")
+        st.markdown(f'<div class="tf-line">Uses the <b>granted</b> Terms of Reference found on an '
+                    f'official site by the paper trail: <a href="{granted["tor_url"]}" target="_blank">'
+                    f'{granted["tor_url"].split("/")[2]}</a> ({granted["tor_pages"]} pages). '
+                    f'{len(granted["promises"])} measurable commitments found in it.</div>',
+                    unsafe_allow_html=True)
+        promises_table(granted)
+    if data:
+        st.markdown(f"##### Proposed ToR ({data['tor']})")
+        st.caption("Uses the proposed Terms of Reference. The granted ToR may differ.")
+        line = trail_ui.granted_tor_line(report_id)
+        if line:
+            st.markdown(f'<div class="tf-line tf-unusable">{line}</div>', unsafe_allow_html=True)
+        promises_table(data)
+    if not data:
+        return
 
     st.markdown("#### Survey timeline")
     st.caption("Each bar is a field study's dates as the report states them; the shaded band is "

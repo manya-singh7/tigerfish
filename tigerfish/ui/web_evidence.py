@@ -5,7 +5,7 @@ quote was verified; plus Tavily usage (searches, extracts, credits, share offici
 import json
 from pathlib import Path
 
-from tigerfish import knowable, public_record, species_photos
+from tigerfish import knowable, paper_trail, public_record, species_photos
 from tigerfish.official_record import AUTHORITATIVE_LABEL, host, is_official, source_label
 from tigerfish.ui import data, official
 from tigerfish.ui.cards import TAVILY_CHECKS
@@ -22,12 +22,13 @@ HOW_VERIFIED = {   # check -> how the quote from the web source was checked
     "knowable": "dated before the report; quote found in the Tavily-extracted text, then confirmed by Ultra",
     "timeline": "Tavily Research event; its quote found in the Tavily-extracted source text",
     "photo": "licence and author read from the Commons file page (free licences only)",
+    "paper_trail": "the text names the project or its proposal number; quote found in the Tavily-extracted text",
 }
 CHECK_LABEL = {"copy_paste": "Copied text", "borrowed_text": "Borrowed text",
                "accreditation": "Consultant accreditation", "legal_schedule": "WPA schedule",
                "investigation": "Investigate agent", "official_record": "Official record",
                "knowable": "Knowable at the time", "timeline": "Public record timeline",
-               "photo": "Species photo"}
+               "photo": "Species photo", "paper_trail": "Paper trail"}
 
 # Tavily features used across TigerFish, and where (shown in this tab and in the README).
 FEATURES = [
@@ -42,6 +43,9 @@ FEATURES = [
     ("include_images", "species photos from Wikimedia Commons, with licence and author"),
     ("language + filter_by_language", "Hindi and Tamil coverage of the public hearing"),
     ("extract_depth=\"advanced\"", "official PDF tables (NABET accreditation lists); pages basic extraction cannot read"),
+    ("map + instructions", "paper trail: official sites mapped for the project's documents and the "
+     "state board's contact pages"),
+    ("crawl + instructions", "paper trail: official sites crawled with the same instructions"),
     ("project_id=\"tigerfish\"", "every request tagged, so usage is tracked per project"),
 ]
 
@@ -113,6 +117,12 @@ def photo_rows(report_id, title):
     return rows
 
 
+def paper_trail_rows(report_id, title):
+    return [_row(title, "paper_trail", f"{d['type']}" + (f" ({d['date']})" if d.get("date") else ""),
+                 d["title"], d["url"], d["quote"])
+            for d in (paper_trail.load(report_id) or {}).get("documents", [])]
+
+
 def collect():
     """All Tavily-backed facts in the saved results."""
     reports = [data.load(r["id"]) for r in data.reports()]
@@ -121,12 +131,12 @@ def collect():
     for rep in reports:
         rows += finding_rows(rep) + official_record_rows(rep["id"], rep["title"])
         rows += (knowable_rows(rep["id"], rep["title"]) + timeline_rows(rep["id"], rep["title"])
-                 + photo_rows(rep["id"], rep["title"]))
+                 + photo_rows(rep["id"], rep["title"]) + paper_trail_rows(rep["id"], rep["title"]))
     return rows + investigation_rows(titles)
 
 
 SEPARATE = ("Official record", "Investigate agent", "Knowable at the time", "Public record timeline",
-            "Species photo")   # counted in their own rows, not in the audit's credits
+            "Species photo", "Paper trail")   # counted in their own rows, not in the audit's credits
 
 
 def stats(rows):
@@ -150,6 +160,13 @@ def stats(rows):
         if k:
             out.append({"what": f"{rep['title']}: knowable at the time", "searches": k["tavily"]["searches"],
                         "extracts": k["tavily"]["extracts"], "credits": k["tavily"]["credits"]})
+        pt = paper_trail.load(rep["id"])
+        if pt:
+            steps = pt["steps"]
+            out.append({"what": f"{rep['title']}: paper trail (map, crawl, search, extract)",
+                        "searches": sum(1 for x in steps if x["tool"] == "search"),
+                        "extracts": sum(1 for x in steps if x["tool"].startswith("extract")),
+                        "credits": pt["tavily"]["credits"]})
         pr = public_record.load(rep["id"])
         if pr and pr["tavily"].get("credits"):
             out.append({"what": f"{rep['title']}: public record (research, news, local language)",
@@ -208,6 +225,8 @@ def render():
     st.caption("Searches and extracts are recorded for the official-record, knowable-at-the-time "
                "and photo checks and the Investigate agent; for the other checks the saved results "
                "keep only their credits (-).")
+    from tigerfish.ui import efficiency
+    efficiency.render_tab()
     with st.expander("Tavily features used"):
         st.markdown("\n".join(f"- **{name}**: {where}" for name, where in FEATURES))
     body = []

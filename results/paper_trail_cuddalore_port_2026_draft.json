@@ -1,0 +1,731 @@
+{
+ "report_id": "cuddalore_port_2026_draft",
+ "searched_on": "2026-10-28",
+ "identity": {
+  "name": "Expansion of Cuddalore Port (Mahathi Cuddalore Port and Maritime Pvt Ltd)",
+  "search_name": "Cuddalore Port expansion Mahathi",
+  "name_groups": [
+   [
+    "cuddalore port"
+   ],
+   [
+    "expansion",
+    "mahathi",
+    "mcpmpl"
+   ]
+  ],
+  "proposals": [
+   "IA/TN/INFRA1/564208/2026",
+   "IA/TN/INFRA1/553077/2025"
+  ],
+  "state": "Tamil Nadu",
+  "facts": [
+   {
+    "fact": "proposal",
+    "value": "IA/TN/INFRA1/564208/2026",
+    "page": 490,
+    "quote": "Sir/Madam, This is in reference to your application for Grant of Terms of Reference under the provision of the EIA Notification 2006-regarding in respect of project Expansion of Cuddalore Port, Tamil Nadu submitted to Ministry vide proposal number IA/TN/INFRA1/564208/2026 dated ."
+   },
+   {
+    "fact": "proposal",
+    "value": "IA/TN/INFRA1/553077/2025",
+    "page": 486,
+    "quote": "Sir/Madam, This is in reference to your application submitted to MoEF&CC vide proposal number IA/TN/INFRA1/553077/2025 dated 20/11/2025 for grant of transfer of Environmental and CRZ Clearance (EC) to the project under the provision of para 11 of the EIA Notification 2006 and CRZ Notification, 2011 as amended thereof."
+   },
+   {
+    "fact": "state",
+    "value": "Tamil Nadu",
+    "page": 1,
+    "quote": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu"
+   }
+  ],
+  "unchecked": [],
+  "note": "",
+  "framework": "india_eia",
+  "number_label": "proposal number",
+  "sites": null,
+  "official_extra": [],
+  "borrower": null
+ },
+ "sites": [
+  "parivesh.nic.in",
+  "environmentclearance.nic.in",
+  "moef.gov.in",
+  "tnpcb.gov.in"
+ ],
+ "steps": [
+  {
+   "tool": "map",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "moef.gov.in",
+   "results": 1,
+   "kept": 1,
+   "credits": 1
+  },
+  {
+   "tool": "crawl",
+   "site": "moef.gov.in",
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "map",
+   "site": "tnpcb.gov.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "tnpcb.gov.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "\"IA/TN/INFRA1/564208/2026\"",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "\"IA/TN/INFRA1/553077/2025\"",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi terms of reference letter",
+   "results": 6,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi expert appraisal committee minutes",
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi public hearing notice",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi public hearing proceedings minutes",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi environmental clearance letter",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Cuddalore Port expansion Mahathi compliance report environmental clearance conditions",
+   "results": 7,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 4,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 2,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 4,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 2,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 2,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 3,
+   "results": 2,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "tnpcb.gov.in",
+   "purpose": "contact pages",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "Member Secretary contact address email",
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 4,
+   "results": 4,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Impact Assessment Division Ministry of Environment Forest and Climate Change Indira Paryavaran Bhawan address",
+   "results": 2,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 2,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 2,
+   "results": 2,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Impact Assessment Division Ministry of Environment Forest and Climate Change member secretary email contact",
+   "results": 2,
+   "credits": 1
+  }
+ ],
+ "documents": [
+  {
+   "url": "https://dgma.gov.in/download/1790683803_6abbaa9b5e74c_final-minutes-nsb-meeting-chennai-23-24072026-merged-1.pdf",
+   "host": "dgma.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "minutes of the 34th meeting of national shipping board",
+   "type": "Other official page",
+   "date": "2026-07-23",
+   "date_quote": "HELD ON 23RD JULY 2026",
+   "match": "project name",
+   "quote": "• The Operation, Maintenance & Marketing of Brownfield Port at Cuddalore has been awarded to Mahathi Cuddalore Port & Maritime Pvt Ltd.",
+   "chars": 445271,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf",
+   "host": "tnpcb.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "title": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+   "type": "Executive summary for the public hearing",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu Submitted by QCI-NABET Accredited EIA Consultant QCI-NABET Accredited EIA Consultant NABET/EIA/23-26/SA 0236",
+   "chars": 36751,
+   "granted_tor": false
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/TOR/13_May_2017_1813019709JTKMBOWPrefeasibility.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "title": "cuddalore port",
+   "type": "Other official page",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "P PR RE E--F FE EA AS SI IB BI IL LI IT TY Y R RE EP PO OR RT T CUDDALORE PORT Capacity Expansion Project TAMILNADU MARITIME BOARD Government of Tamilnadu Centre for Environment, Health & Safety Annamalai University CONTENT Chapter No.",
+   "chars": 64866,
+   "granted_tor": false
+  }
+ ],
+ "dropped": [
+  {
+   "url": "https://moef.gov.in/projects",
+   "host": "moef.gov.in",
+   "found_via": "map",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/orders",
+   "host": "moef.gov.in",
+   "found_via": "crawl",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/orders-notifications-archive-2025",
+   "host": "moef.gov.in",
+   "found_via": "crawl",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/orders-and-notification-2",
+   "host": "moef.gov.in",
+   "found_via": "crawl",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/orders-and-notification",
+   "host": "moef.gov.in",
+   "found_via": "crawl",
+   "via_detail": "moef.gov.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://parivesh.nic.in/certificates/Adani_Power_Ltd./2/89241871/V_1_IA_CG_THE_490693_2024_89241876_-signed.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngSenthil121124.pdf",
+   "host": "tnpcb.gov.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/utildoc/99448656_1725363631377.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Agenda/_25112022Z7ICQXCH.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Agenda/160720198HQGV7I2Agenda7thEACMeetingheldduringJuly30-31,2019.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngChemplastPVC151124.pdf",
+   "host": "tnpcb.gov.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/03102018GZ4F7X6534thEACFinalMinutes.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/utildoc/109741927_1729606445532.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/utildoc/132212386_1752674368616.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/certificates/JSW_THERMAL_ENERGY_LIMITED/5/126846141/V_1_IA_WB_THE_537470_2025_126846142_-signed.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/certificates/IDEAL_ENERGY_PROJECTS_LIMITED/5/130754479/V_1_IA_MH_THE_542684_2025_130754480_-signed.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/certificates/Adani_Power_Limited/5/115100076/V_1_IA_OR_THE_515150_2025_115100097_-signed.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://parivesh.nic.in/certificates/Adani_Power_Limited/5/137876502/V_1_IA_CG_THE_554780_2025_137876503_-signed.pdf",
+   "host": "parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://pci.nic.in/pdf/01.095.pdf",
+   "host": "pci.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Part-1QuestionAnswers/257/2772022/20220727.pdf",
+   "host": "cms.rajyasabha.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://gstchennai.gov.in/images/pdf/cco-estt/Distribution%20Final%20Order.pdf",
+   "host": "gstchennai.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://cms.rajyasabha.nic.in/UploadedFiles/Debates/OfficialDebatesDatewise/Floor/248/F12.02.2019.pdf",
+   "host": "cms.rajyasabha.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_02032021.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://ndma.gov.in/sites/default/files/PDF/DDMP/Pudducherry/Karaikal.pdf",
+   "host": "ndma.gov.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://stationeryprinting.tn.gov.in/gazette/2026/38_VI_4_2026.pdf",
+   "host": "stationeryprinting.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://stationeryprinting.tn.gov.in/gazette/2024/29_VI_1A_Sup_2024.pdf",
+   "host": "stationeryprinting.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://ibm.gov.in/writereaddata/files/17546388096895a9d9c5490Report_8_8_2025_10_37_09_AM.pdf",
+   "host": "ibm.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_20072026.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.tnpsc.gov.in/Document/BulletinEnglish/e%20bulletin%20No.DTD024%20%20DT%2025092023.pdf",
+   "host": "tnpsc.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://ibm.gov.in/writereaddata/files/1752039596686e00ac56264Report_7_9_2025_9_52_49_AM.pdf",
+   "host": "ibm.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://ibm.gov.in/writereaddata/files/174591944868109dd8cee74Report_4_29_2025_1_50_08_PM.pdf",
+   "host": "ibm.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_07092021.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_08012025.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_21012022.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_23112023.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://www.ehs.ap.gov.in/EmpanelmentsAP/opthmlgyApplication.do?actionVal=NEWOPTHOMOLOGYBASICINFO",
+   "host": "ehs.ap.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_18062021.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_01092023.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_16042025.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Environmental clearance letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.mhc.tn.gov.in/judis/clists/clists-madras/causelists/pdf/cause_10112021.pdf",
+   "host": "mhc.tn.gov.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "no readable text (JavaScript-only page or scan)"
+  }
+ ],
+ "drop_counts": {
+  "does not name the project or its proposal number": 33,
+  "no readable text (JavaScript-only page or scan)": 7
+ },
+ "unusable": [
+  {
+   "site": "parivesh.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "parivesh.nic.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "tnpcb.gov.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "tnpcb.gov.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "tnpcb.gov.in",
+   "tool": "map",
+   "error": ""
+  }
+ ],
+ "granted_tor": {
+  "found": false,
+  "applicable": true
+ },
+ "contacts": {
+  "hearing": {
+   "found": true,
+   "role": "hearing",
+   "to": "The Member Secretary\nTamil Nadu Pollution Control Board",
+   "body": "Tamil Nadu Pollution Control Board",
+   "address": "Tamil Nadu Pollution Control Board, 76, Mount Salai, Guindy, Chennai - 600 032",
+   "email": "",
+   "source": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngRamaraj231225.pdf",
+   "host": "tnpcb.gov.in",
+   "quote": "Member Secretary, Tamil Nadu Pollution Control Board, 76, Mount Salai, Guindy, Chennai - 600 032",
+   "email_source": "",
+   "note": "Check the address before sending."
+  },
+  "clearance": {
+   "found": true,
+   "role": "clearance",
+   "to": "The Member Secretary\nExpert Appraisal Committee\nImpact Assessment Division\nMinistry of Environment, Forest and Climate Change",
+   "body": "Ministry of Environment, Forest and Climate Change, Impact Assessment Division",
+   "address": "Ministry of Environment, Forest and Climate Change, Government of India, Room No. V-304, 3rd Floor, Vayu Wing, Indira Paryavaran Bhawan Aliganj, Jor Bagh Road, New Delhi - 110 003",
+   "email": "",
+   "source": "https://cpc.parivesh.nic.in",
+   "host": "cpc.parivesh.nic.in",
+   "quote": "Impact Assessment Division, Ministry of Environment, Forest and Climate Change, Government of India, Room No. V-304, 3rd Floor, Vayu Wing, Indira Paryavaran Bhawan Aliganj, Jor Bagh Road, New Delhi - 110 003",
+   "email_source": "",
+   "email_quote": "",
+   "note": "Check the address before sending. (Address from a MoEFCC page, not from a letter of this project.)"
+  }
+ },
+ "stopped": null,
+ "tavily": {
+  "credits": 26,
+  "credits_spent_this_run": 0,
+  "cached_calls": 34,
+  "features": [
+   "map + instructions",
+   "crawl + instructions",
+   "search include_domains",
+   "extract basic / advanced"
+  ]
+ },
+ "efficiency": {
+  "features": {
+   "crawl": {
+    "calls": 4,
+    "returned": 2881,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "extract": {
+    "calls": 10,
+    "returned": 20829829,
+    "sent to model": 0,
+    "shown as evidence": 656,
+    "used": 656,
+    "share": 3.1493297424573195e-05
+   },
+   "extract (advanced)": {
+    "calls": 4,
+    "returned": 6666285,
+    "sent to model": 0,
+    "shown as evidence": 207,
+    "used": 207,
+    "share": 3.105177771427414e-05
+   },
+   "map": {
+    "calls": 5,
+    "returned": 28,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "search: official domains": {
+    "calls": 11,
+    "returned": 71425,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "total": {
+   "calls": 34,
+   "returned": 27570448,
+   "sent to model": 0,
+   "shown as evidence": 863,
+   "used": 863,
+   "share": 3.130163136993639e-05
+  }
+ }
+}

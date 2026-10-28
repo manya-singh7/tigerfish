@@ -2,8 +2,8 @@
 
 import streamlit as st
 
-from tigerfish import knowable, public_record, species_photos
-from tigerfish.ui import badges, crops, data, feedback, investigate, official
+from tigerfish import knowable, paper_trail, public_record, species_photos
+from tigerfish.ui import badges, crops, data, efficiency, feedback, investigate, official
 from tigerfish.ui import public_record as record_ui
 from tigerfish.ui.style import badge, esc, stat
 
@@ -69,6 +69,9 @@ def tavily_credits(report):
     ph = species_photos.load()
     if ph:
         parts.append(("species photos", ph["tavily"].get("credits_by_report", {}).get(rid, 0)))
+    trail = paper_trail.load(rid)
+    if trail:
+        parts.append(("paper trail", trail["tavily"].get("credits", 0)))
     parts = [(w, c) for w, c in parts if c]
     return sum(c for _, c in parts), parts
 
@@ -91,6 +94,9 @@ def summary_strip(report):
                  + ", ".join(f"{w} {c}" for w, c in parts) + ")") if credits else base
     if cost.get("gbif_calls"):
         cost_note += "; GBIF is free"
+    eff = efficiency.report_total(report["id"])
+    if eff:
+        cost_note += f". {efficiency.line(eff)} ({efficiency.NOT_MEASURED_NOTE.lower()})"
     cols = st.columns(5)
     cols[0].markdown(stat("Pages read", pages, pages_note), unsafe_allow_html=True)
     cols[1].markdown(stat("Findings", str(sum(c.values())),
