@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "status": "not_run",
+  "reports_processed": 0,
+  "reports_requested": 90,
+  "per_check_counts": {},
+  "per_state_counts": {},
+  "flag_counts": {
+    "RED": 0,
+    "ORANGE": 0,
+    "INFO": 0
+  },
+  "tavily": {
+    "cap": 400,
+    "calls": 0,
+    "cached": 0,
+    "credits": 0,
+    "by_endpoint": {
+      "map": {"calls": 0, "cached": 0, "credits": 0},
+      "crawl": {"calls": 0, "cached": 0, "credits": 0},
+      "search": {"calls": 0, "cached": 0, "credits": 0},
+      "extract": {"calls": 0, "cached": 0, "credits": 0}
+    }
+  },
+  "flags": [],
+  "neutral_note": "No corpus run is committed. Run scripts/build_corpus.py with the Tavily credential set."
+}

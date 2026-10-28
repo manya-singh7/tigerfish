@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "documents": [],
+  "downloaded": 0,
+  "notes": "Local PDF paths are intentionally omitted. Run scripts/build_corpus.py to populate this index."
+}

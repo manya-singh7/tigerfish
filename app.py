@@ -12,7 +12,7 @@ from tigerfish import hosted
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
                           official, promises, public_record, review, rti, species_map,
-                          web_evidence)
+                          web_evidence, batch as batch_ui)
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -58,9 +58,10 @@ else:
         hero.render(report)
 
 (findings_tab, review_tab, memo_tab, promises_tab, record_tab, web_tab, scanned_tab,
- method_tab) = st.tabs(
+ batch_tab, method_tab) = st.tabs(
     ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Public record",
-     "Evidence from the web", "Scanned pages", "Method & limits"])
+     "Evidence from the web", "Scanned pages", f"Batch: {batch_ui.report_count()} reports",
+     "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -169,6 +170,9 @@ with web_tab:
 
 with scanned_tab:
     inspector.render(report["id"])
+
+with batch_tab:
+    batch_ui.render()
 
 with method_tab:
     method.render()
