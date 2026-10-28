@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 320" width="990" height="320" role="img" aria-label="TigerFish">
+  <title>TigerFish</title>
+  <svg x="24" y="24" width="272" height="272" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="tf-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F4C57"/>
+      <stop offset="1" stop-color="#082A33"/>
+    </linearGradient>
+    <linearGradient id="tf-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5FD4C6"/>
+      <stop offset="1" stop-color="#1FA39A"/>
+    </linearGradient>
+    <clipPath id="tf-body-clip">
+      <path d="M402 256 C352 156 222 150 162 256 C222 362 352 356 402 256 Z"/>
+    </clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#tf-water)"
+        stroke="#1FA39A" stroke-opacity="0.55" stroke-width="6"/>
+  <!-- light rays from the surface -->
+  <path d="M150 8 L210 8 L120 504 L80 504 Z" fill="#E6F7F4" opacity="0.05"/>
+  <path d="M290 8 L320 8 L250 504 L225 504 Z" fill="#E6F7F4" opacity="0.04"/>
+  <g transform="translate(256 258) scale(1.12) translate(-272 -250)">
+    <!-- tail -->
+    <path d="M176 256 L92 176 Q118 256 92 336 Z" fill="#5FD4C6"
+          stroke="#082A33" stroke-width="10" stroke-linejoin="round"/>
+    <!-- dorsal and belly fins -->
+    <path d="M250 175 Q282 128 330 150 Q300 160 292 182 Z" fill="#5FD4C6"
+          stroke="#082A33" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M262 334 Q284 368 318 360 Q300 348 298 330 Z" fill="#5FD4C6"
+          stroke="#082A33" stroke-width="8" stroke-linejoin="round"/>
+    <!-- body -->
+    <path d="M402 256 C352 156 222 150 162 256 C222 362 352 356 402 256 Z"
+          fill="url(#tf-body)"/>
+    <!-- tiger stripes, clipped to the body -->
+    <g clip-path="url(#tf-body-clip)" fill="none" stroke="#082A33"
+       stroke-width="15" stroke-linecap="round">
+      <path d="M208 190 Q194 256 208 322"/>
+      <path d="M248 172 Q232 256 248 340"/>
+      <path d="M288 174 Q274 230 282 262"/>
+    </g>
+    <path d="M402 256 C352 156 222 150 162 256 C222 362 352 356 402 256 Z"
+          fill="none" stroke="#082A33" stroke-width="10" stroke-linejoin="round"/>
+    <!-- magnifier handle -->
+    <path d="M326 262 L296 296" stroke="#082A33" stroke-width="16" stroke-linecap="round"/>
+    <!-- lens eye -->
+    <circle cx="346" cy="238" r="31" fill="#E6F7F4" stroke="#082A33" stroke-width="11"/>
+    <circle cx="353" cy="238" r="10" fill="#082A33"/>
+    <path d="M330 224 A20 20 0 0 1 344 216" fill="none" stroke="#F2B544"
+          stroke-width="6" stroke-linecap="round"/>
+    <!-- bubbles -->
+    <circle cx="430" cy="196" r="10" fill="none" stroke="#5FD4C6" stroke-width="6"/>
+    <circle cx="452" cy="160" r="6" fill="none" stroke="#5FD4C6" stroke-width="5"/>
+  </g>
+  </svg>
+  <text x="330" y="190" font-family="'Segoe UI', Inter, 'Helvetica Neue', Arial, sans-serif" font-size="150" font-weight="700"
+        letter-spacing="-3"><tspan fill="#0F4C57">Tiger</tspan><tspan fill="#1FA39A">Fish</tspan></text>
+  <text x="336" y="252" font-family="'Segoe UI', Inter, 'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="500"
+        fill="#3E6670" letter-spacing="1">sees clearly in murky waters</text>
+</svg>
