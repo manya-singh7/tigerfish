@@ -1,8 +1,9 @@
 """Home screen: the report library (every report under results/), live totals, filters,
 and the "Upload your own EIA" button. Navigation lives in the URL:
   (none)            the library
-  ?report=<id>      a report (full audit: the usual tabs; quick check: the lighter view)
-  ?view=upload      upload a new EIA
+  ?report=<id>      a report (tigerfish/ui/report_view.py: sections side by side; a quick
+                    check gets only its own sections)
+  ?view=upload      upload a new EIA (app.py sends it on to the Upload page)
 """
 
 from pathlib import Path
@@ -61,7 +62,10 @@ def back():
 
 
 def back_link():
-    st.button("← Back to library", key="tf::back", on_click=back, type="tertiary")
+    if st.button("← Back to library", key="tf::back", type="tertiary"):
+        from tigerfish.ui import pages
+        back()
+        st.switch_page(pages.PAGES["library"])
 
 
 def switcher(report_id):
@@ -158,31 +162,3 @@ def render():
     for e in shown[(page - 1) * PAGE_SIZE: page * PAGE_SIZE]:
         row(e)
 
-
-# ---------- a quick check (lighter view) ----------
-
-def render_quick(report):
-    """Only the checks that ran, what did not run and why, and the findings."""
-    from tigerfish.ui import cards
-    st.markdown(f"### {esc(report.get('project') or report['title'])}")
-    st.warning(library.QUICK_NOTICE)
-    bits = [report.get("state"), report.get("sector"), report.get("year"),
-            f"{report.get('pages_read', 0):,} of {report.get('pages_total', 0):,} pages read"]
-    st.caption(" · ".join(str(b) for b in bits if b))
-    ran = [c for c in report.get("checks_run", []) if c.get("status") == "ran"]
-    not_run = [c for c in report.get("checks_run", []) if c.get("status") != "ran"]
-    st.markdown("**Checks that ran** (free: no model calls)")
-    for c in ran:
-        n = c.get("count")
-        st.markdown(f"- {esc(c['name'])}" + (f": {n} finding{'s' if n != 1 else ''}" if n is not None else ""))
-    if not_run:
-        st.markdown("**Not run for this report**")
-        for c in not_run:
-            st.markdown(f"- {esc(c['name'])}: {esc(c.get('reason') or 'not available')}")
-    st.caption("Not run in a quick check: the model checks (internal contradictions, recycled "
-               "figures, scanned pages), copied text, consultant accreditation, ToR promises.")
-    findings = report.get("findings") or []
-    if not findings:
-        st.info("No RED, ORANGE or INFO findings from the checks that ran.")
-    for f in findings:
-        cards.finding_card(report["id"], f, report.get("title", ""))

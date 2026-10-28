@@ -1,10 +1,24 @@
+# Theme from assets/theme_proposal.toml (logo palette; contrast ratios listed there, all WCAG
+# AA). The viewer's light/dark setting picks [theme.light] or [theme.dark].
 [theme]
-base = "light"
+font = "sans-serif"
+baseRadius = "medium"
+
+[theme.light]
 primaryColor = "#0F5E5E"
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F4F7F7"
-textColor = "#1C2B33"
-font = "sans serif"
+secondaryBackgroundColor = "#EEF6F4"
+textColor = "#12303A"
+linkColor = "#0F5E5E"
+borderColor = "#B9D9D4"
+
+[theme.dark]
+primaryColor = "#1B827A"
+backgroundColor = "#0B1D22"
+secondaryBackgroundColor = "#11292F"
+textColor = "#E6F4F1"
+linkColor = "#5FD4C6"
+borderColor = "#2A4A52"
 
 [client]
 toolbarMode = "minimal"

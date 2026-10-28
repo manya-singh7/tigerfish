@@ -59,7 +59,7 @@ def test_public_record_tab_renders(monkeypatch):
     monkeypatch.setenv("TAVILY_API_KEY", "")
     at = open_app(timeout=60)
     assert not at.exception
-    labels = [t.label for t in at.tabs]
+    labels = [t.label.split(" (")[0] for t in at.tabs]       # labels carry counts
     assert "Public record" in labels
     tab = at.tabs[labels.index("Public record")]
     text = " ".join(m.value for m in tab.markdown)

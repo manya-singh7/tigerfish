@@ -3,8 +3,12 @@
 Everything here comes from `scripts/build_brand.py`. Change the palette or shapes
 there and run `python scripts/build_brand.py` instead of editing the SVGs by hand.
 You need `pip install resvg-py` (cairosvg needs a Cairo DLL that Windows doesn't
-have). The script also writes PNG previews to `docs/screenshots/brand/`. None of
-these files are wired into the app yet.
+have). The script also writes PNG previews to `docs/screenshots/brand/`.
+
+**Wired into the app:** `favicon-64.png` is the page icon and `logo.svg` / `logo_dark.svg`
+(with `logo_icon.svg`) the top-bar logo (`app.py`); the lockup heads the Home page and
+`how_it_works.svg` the How it works page (`tigerfish/ui/pages.py`); the theme is in
+`.streamlit/config.toml`. Screenshots of every page: `docs/screenshots/ui/`.
 
 **`logo_icon.svg`**: the square icon. It's an original design: a tiger-striped fish
 whose eye is a magnifying lens ("sees clearly in murky waters"), with bubbles and
@@ -38,10 +42,10 @@ runs it.
 **`theme_proposal.toml`**: a proposed Streamlit theme with separate `[theme.light]`
 and `[theme.dark]` sections in the logo palette. The contrast ratios for each pair
 are listed in the file's comments, and all of them pass WCAG AA. I checked every key
-against Streamlit 1.66.1's config options. `.streamlit/config.toml` is unchanged.
-To adopt the theme, replace its `[theme]` block with this file's sections.
+against Streamlit 1.66.1's config options. `.streamlit/config.toml` now carries the same
+sections; change both together.
 
-## Wiring in later (Streamlit 1.66.1)
+## How it is wired in (Streamlit 1.66.1)
 
 ```python
 import streamlit as st

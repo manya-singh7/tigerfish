@@ -102,7 +102,7 @@ def summary_strip(report):
     cols[1].markdown(stat("Findings", str(sum(c.values())),
                           f"{c['RED']} red, {c['ORANGE']} orange, {c['INFO']} info"),
                      unsafe_allow_html=True)
-    cols[2].markdown(stat("Checks run", str(len(report["checks"])), "see Method & limits"),
+    cols[2].markdown(stat("Checks run", str(len(report["checks"])), "see How it works"),
                      unsafe_allow_html=True)
     cols[3].markdown(stat("Cost", cost_value, cost_note), unsafe_allow_html=True)
     cols[4].markdown(stat("Time", fmt_time(cost.get("approx_seconds")),

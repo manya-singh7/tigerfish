@@ -1,5 +1,6 @@
-"""Start the app in Streamlit's AppTest. The home screen is the report library; a report
-opens with ?report=<id> (the default here: Great Nicobar, the report most tests check)."""
+"""Start the app in Streamlit's AppTest. The app opens on Home; page="library" opens the report
+library; a report opens with ?report=<id> (the default here: Great Nicobar, the report most tests
+check), which the app sends on to the Library page."""
 
 from pathlib import Path
 
@@ -13,11 +14,24 @@ GN = "great_nicobar_2021_draft"
 MIN_TIMEOUT = 180
 
 
-def open_app(report=GN, timeout=60, view=None):
-    """report=None and view=None: the library. view="upload": the upload screen."""
+def open_app(report=GN, timeout=60, view=None, page=None):
+    """report=None and view=None: Home (or page="library" etc., by its url_path).
+    view="upload": the upload screen."""
     at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=max(timeout, MIN_TIMEOUT))
     if report:
         at.query_params["report"] = report
     elif view:
         at.query_params["view"] = view
+    at.run()
+    if page:
+        return switch_to(at, page)
+    return at
+
+
+def switch_to(at, url_path):
+    """Open a page of the top menu. AppTest.switch_page only takes page files, and the app's
+    pages are functions (tigerfish/ui/pages.py), so pick the registered page by its url_path."""
+    hashes = [h for h, info in at._registered_pages.items() if info.get("url_pathname") == url_path]
+    assert hashes, f"no page {url_path!r}"
+    at._page_hash = hashes[0]
     return at.run()

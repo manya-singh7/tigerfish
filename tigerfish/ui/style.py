@@ -15,7 +15,7 @@ BADGE = {  # grade: (text colour, background)
 
 CSS = f"""
 <style>
-  .block-container {{ max-width: 1100px; padding-top: 2.2rem; padding-bottom: 4rem; }}
+  .block-container {{ max-width: 1320px; padding-top: 2.2rem; padding-bottom: 4rem; }}
   h1, h2, h3, h4 {{ color: {TEXT}; letter-spacing: -0.01em; }}
   .tf-title {{ font-size: 2.4rem; font-weight: 750; color: {TEXT}; line-height: 1.1; }}
   .tf-tagline {{ font-size: 1.05rem; color: {ACCENT}; margin: 0.1rem 0 0.4rem 0; }}
@@ -127,3 +127,39 @@ def stat(label, value, note=""):
     note_html = f'<div class="tf-stat-note">{esc(note)}</div>' if note else ""
     return (f'<div class="tf-stat"><div class="tf-stat-label">{esc(label)}</div>'
             f'<div class="tf-stat-value">{esc(value)}</div>{note_html}</div>')
+
+
+# Dark theme (.streamlit/config.toml [theme.dark]): the cards above use light colours; these
+# override them when the viewer's theme is dark. Palette from assets/theme_proposal.toml.
+DARK_CSS = """
+<style>
+  h1, h2, h3, h4, .tf-title, .tf-card-title, .tf-message, .tf-ev, .tf-step-body,
+  .tf-stat-value {{ color: #E6F4F1; }}
+  .tf-tagline, .tf-quote-label, .tf-line b {{ color: #5FD4C6; }}
+  .tf-lede, .tf-stat-label, .tf-stat-note, .tf-check, .tf-ev-label, .tf-review, .tf-step-why,
+  .tf-step-meta, .tf-lib-meta {{ color: #A9C4C0; }}
+  .tf-stat {{ background: #11292F; border-color: #2A4A52; }}
+  .tf-quote {{ background: #11292F; color: #E6F4F1; border-left-color: #5FD4C6; }}
+  .tf-timeline {{ border-left-color: #2A4A52; }}
+  .tf-lib-full {{ color: #5FD4C6; background: #11292F; }}
+  .tf-tool {{ color: #5FD4C6; border-color: #5FD4C6; }}
+  .tf-hero, .tf-knowable b {{ color: #5FD4C6; }}
+  .tf-hero-headline, .tf-adb {{ color: #E6F4F1; }}
+  .tf-hero-note, .tf-photo figcaption, .tf-unverified, .tf-unverified .tf-memo-sub {{ color: #A9C4C0; }}
+  .tf-verified {{ background: #2A2416; color: #E6F4F1; }}
+  .tf-verified b {{ color: #F2B544; }}
+  .tf-knowable {{ background: #11292F; color: #E6F4F1; border-left-color: #5FD4C6; }}
+  .tf-adb {{ background: #11292F; }}
+  .tf-doc {{ border-bottom-color: #2A4A52; }}
+</style>
+""".format()
+
+
+def theme_css():
+    """Extra CSS for the dark theme ("" in the light theme)."""
+    import streamlit as st
+    try:
+        dark = st.context.theme.type == "dark"
+    except Exception:      # no browser context (tests)
+        dark = False
+    return DARK_CSS if dark else ""

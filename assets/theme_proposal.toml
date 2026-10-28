@@ -1,6 +1,5 @@
-# TigerFish theme PROPOSAL. Not active: .streamlit/config.toml is unchanged.
-# To adopt it, copy these sections into .streamlit/config.toml, replacing its
-# current [theme] block. [theme.light] / [theme.dark] need Streamlit >= 1.46
+# TigerFish theme. Adopted: .streamlit/config.toml carries these sections.
+# Change both files together. [theme.light] / [theme.dark] need Streamlit >= 1.46
 # (requirements.txt pins 1.66.1). The user's light/dark setting picks a section.
 #
 # Palette comes from the logo (scripts/build_brand.py):

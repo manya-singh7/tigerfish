@@ -68,8 +68,9 @@ def test_hero_is_the_first_thing_on_the_page(no_keys):
     assert "TigerFish found this in the" in values[first]
     assert hero.HERO_HEADLINE.split(";")[0] in values[first]
     assert "Judged by Ultra" in values[first]                     # model badges on the hero
-    title = next(i for i, v in enumerate(values) if 'class="tf-title"' in v)
-    assert first < title
+    strip = next(i for i, v in enumerate(values) if 'class="tf-stat"' in v)   # headline numbers
+    assert first < strip
+    assert at.tabs[0].label == "Overview"                         # the hero opens the Overview
     assert at.button(key="hero_see_all").label == "See all findings"
 
 

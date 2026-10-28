@@ -44,10 +44,12 @@ access to it.
    - Click **Save**.
 6. Click **Deploy**. The first build installs `requirements.txt` and takes a few minutes.
    Follow it under **Manage app** (bottom right of the app) → logs.
-7. Check the page: the hero card, Findings with badges and highlighted page images, the
-   Review queue, Reviewer's memo & Ask, Key facts vs the official record, the species map,
-   Scanned pages, Method & limits, and the letter / RTI downloads after you mark a finding
-   **Confirm**.
+7. Check the pages in the top menu (Home, Library, Upload, How it works, Limitations). Open
+   Great Nicobar from the library and check its sections: Overview (hero card, top flags),
+   Contradictions (badges, highlighted page images), Species & nature (map), Public record
+   (key facts vs the official record), Ask & investigate (memo), Quality (review queue),
+   Cost & models (scanned pages), and Take action: the letter / RTI downloads after you mark
+   a finding **Confirm**.
 
 To change secrets later: open the app's **⋮** menu (or **Manage app**) → **Settings** →
 **Secrets**, then save. The app restarts. To update the code, push to `main`; the app
