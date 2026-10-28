@@ -52,6 +52,8 @@ else:
         st.stop()
     report = data.load(titles[choice])
     st.caption(f"Saved results. Source: {report.get('source', '')}")
+    for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
+        st.warning(notice)
     with hero_slot:
         hero.render(report)
 
@@ -105,7 +107,8 @@ with findings_tab:
                 f'{feedback.where()}.</div>', unsafe_allow_html=True)
     lang_options = letter.language_options(report)
     lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
-                          help="Hindi" + (" and Tamil are" if letter.offers_tamil(report) else " is")
+                          help=" and ".join(["Hindi"] + letter.regional_languages(report))
+                               + (" are" if letter.regional_languages(report) else " is")
                                + " machine-translated (the letter says so: please review). Quotes "
                                "from the report, page numbers and links are never translated.")
     lang = lang_options[lang_label]
@@ -113,13 +116,15 @@ with findings_tab:
     if confirmed:
         try:
             if lang != "en" and hosted.is_hosted():
-                # Hindi/Tamil translation is a paid (Lightning) call: the session's key and the daily budget
+                # Hindi/Tamil/Kannada translation is a paid (Lightning) call: the session's key and the daily budget
                 if not hosted.paid_key(st.session_state):
                     raise letter.TranslationUnavailable("no key on the hosted app")
                 with hosted.paid_calls(st.session_state):
-                    docx_bytes = letter.build_letter(report, confirmed, lang)
+                    docx_bytes = letter.build_letter(report, confirmed, lang,
+                                                     addressee=report.get("letter_addressee", "committee"))
             else:
-                docx_bytes = letter.build_letter(report, confirmed, lang)
+                docx_bytes = letter.build_letter(report, confirmed, lang,
+                                                 addressee=report.get("letter_addressee", "committee"))
         except letter.TranslationUnavailable:
             letter_error = ("The translated letter needs the translation model (NEBIUS_API_KEY), and "
                             "this selection has not been translated before. Choose English.")

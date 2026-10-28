@@ -151,6 +151,26 @@ with sync_playwright() as p:
         "No official document naming this project was found").count() > 0
        and page.locator(".tf-doc").filter(visible=True).count() == 0)
     no_exception(page, "second report")
+
+    # Cuddalore (Tamil Nadu): partial-audit and not-reviewed notices, Tamil letter offered
+    page.locator('[data-testid="stSelectbox"]').first.click()
+    page.get_by_role("option", name="Cuddalore").click()
+    page.get_by_text("Flags not yet human-reviewed").first.wait_for(timeout=180_000)
+    page.wait_for_timeout(2000)
+    ok("Cuddalore: audit status shown",
+       page.get_by_text("Audit partial").count() > 0 or page.get_by_text("Audit complete").count() > 0)
+    ok("Cuddalore: 'Audit partial' notice", page.get_by_text("Audit partial").count() > 0)
+    ok("Cuddalore: 'Flags not yet human-reviewed' notice",
+       page.get_by_text("Flags not yet human-reviewed").count() > 0)
+    radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
+    try:   # the letter section is far below the notices: wait for this report's full render
+        radio.get_by_text("English + Tamil", exact=True).wait_for(timeout=180_000)
+    except Exception:
+        pass
+    ok("Cuddalore: Tamil letter option", radio.get_by_text("Tamil", exact=True).count() > 0
+       and radio.get_by_text("English + Tamil", exact=True).count() > 0)
+    page.screenshot(path=str(OUT / "cuddalore.png"))
+    no_exception(page, "Cuddalore")
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
     browser.close()
 

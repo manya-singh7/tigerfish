@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from tigerfish import claims, llm, pdf_reader, species_pages as sp  # noqa: E402
+from tigerfish import claims, llm, pdf_reader, sites, species_pages as sp  # noqa: E402
 
 OUT_DIR = ROOT / "cache" / "findings"
 
@@ -49,7 +49,13 @@ def main():
     if args.dry_run:
         return
 
-    out = sp.check_pages(pages, max_vision=args.max_vision, use_vision=not args.no_vision)
+    prof = sites.profile(Path(args.pdf).stem)
+    if prof:
+        print(f"Site profile: {prof['site_label']} {prof['site']}; archipelago rule: "
+              f"{prof['archipelago_gadm'] or 'off'}; statewide-list rule: "
+              f"{prof.get('region_gadm') or 'off'}; mobile-taxa rule: on")
+    out = sp.check_pages(pages, max_vision=args.max_vision, use_vision=not args.no_vision,
+                         profile=prof)
     rows = out["rows"]
     print(f"\n{'page':>5} {'name as printed':34} {'GBIF name':30} {'grade':6} "
           f"{'local':>6} {'500 km':>7} {'far':>6}  location")

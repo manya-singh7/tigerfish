@@ -281,6 +281,14 @@ def test_open_web_fallback_is_labelled(tiered):
     assert "(non-official source)" in v["evidence"] and v["grade"] == "ORANGE"
 
 
+def test_not_evaluated_is_grey_not_outdated():
+    cur = {"code": "NE", "category": "NOT_EVALUATED", "gbif_key": 1, "accepted": "Sida acuta",
+           "name_note": None, "url": "https://www.gbif.org/species/1",
+           "iucn_url": "https://www.iucnredlist.org/search?query=Sida%20acuta"}
+    r = status.check_iucn("Sida acuta", "LC", cur)
+    assert r["grade"] == "GREY" and "not evaluated" in r["evidence"]
+
+
 def test_cached_old_tier_run_replays_three_tiers(tiered, tmp_path):
     """A run cached with the old restrict-then-open-web tiers is replayed the old way."""
     fake = tiered(NOTHING, NOTHING)

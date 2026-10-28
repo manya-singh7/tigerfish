@@ -5,18 +5,18 @@
   "triage": "safe",
   "new_pages": null,
   "workers": 6,
-  "max_cost_usd": 10.0,
+  "max_cost_usd": 4.0,
   "pages_audited": 768,
   "claims": 7019,
   "candidates": 1589,
   "triage_answers": {
-    "yes": 685,
-    "no": 514,
+    "yes": 931,
+    "no": 657,
     "unsure": 1
   },
-  "verdicts": 594,
+  "verdicts": 932,
   "verdicts_failed": 0,
-  "stopped": "cost cap $7.41 reached (spent $7.4056); stopped at candidate 1077 of 1589; about 481 candidates not judged",
+  "stopped": null,
   "copy_passages": 50,
   "copy_stopped": null,
   "copy_passage_list": [
@@ -1120,58 +1120,58 @@
       20
     ]
   ],
-  "cost_usd": 10.0006,
-  "wall_clock_s": 3900.8,
+  "cost_usd": 3.3379,
+  "wall_clock_s": 499.0,
   "stages": {
     "claims": {
-      "seconds": 2573.7,
-      "usd": 2.5238
+      "seconds": 10.6,
+      "usd": 0.0
     },
     "triage + verdicts": {
-      "seconds": 895.2,
-      "usd": 7.4056
+      "seconds": 481.6,
+      "usd": 3.3379
     },
     "copy-paste": {
-      "seconds": 115.8,
-      "usd": 0.0014
+      "seconds": 0.9,
+      "usd": 0.0
     }
   },
   "calls_per_model": {
     "nvidia/Nemotron-3.5-Super-VL": {
-      "api_calls": 871,
-      "cache_hits": 5,
-      "prompt_tokens": 4153494,
-      "completion_tokens": 1366412,
-      "cost_usd": 2.4758,
-      "api_seconds": 14421.115
+      "api_calls": 0,
+      "cache_hits": 876,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cost_usd": 0.0,
+      "api_seconds": 0.0
     },
     "nvidia/Nemotron-3_5-Lightning": {
-      "api_calls": 1179,
-      "cache_hits": 3,
-      "prompt_tokens": 3067023,
-      "completion_tokens": 336311,
-      "cost_usd": 0.2647,
-      "api_seconds": 3074.706
+      "api_calls": 245,
+      "cache_hits": 1927,
+      "prompt_tokens": 488226,
+      "completion_tokens": 10829,
+      "cost_usd": 0.0319,
+      "api_seconds": 157.682
     },
     "nvidia/Nemotron-3-Ultra-550b-a55b": {
-      "api_calls": 594,
-      "cache_hits": 2,
-      "prompt_tokens": 3942737,
-      "completion_tokens": 1105777,
-      "cost_usd": 7.2601,
-      "api_seconds": 4461.031
+      "api_calls": 339,
+      "cache_hits": 596,
+      "prompt_tokens": 973149,
+      "completion_tokens": 777632,
+      "cost_usd": 3.306,
+      "api_seconds": 2638.581
     }
   },
   "tavily": {
-    "calls": 53,
-    "cached": 10,
-    "credits": 47
+    "calls": 0,
+    "cached": 63,
+    "credits": 0
   },
   "retries": {
-    "retries": 10,
-    "rate_limited": 4,
+    "retries": 0,
+    "rate_limited": 0,
     "server_errors": 0,
-    "connection_errors": 6
+    "connection_errors": 0
   },
   "findings_by_check": {
     "recycled_figure": {
@@ -1180,9 +1180,9 @@
       "NONE": 5
     },
     "contradiction": {
-      "RED": 11,
+      "RED": 12,
       "ORANGE": 2,
-      "NONE": 576
+      "NONE": 913
     },
     "copy_paste": {
       "NONE": 46,
@@ -1190,7 +1190,7 @@
     }
   },
   "known_issues_matched": {},
-  "new_flagged": 17,
+  "new_flagged": 18,
   "flags": [
     {
       "id": "cp-p103-4",
@@ -1294,6 +1294,39 @@
         }
       ],
       "reason": "Page 40 shows an approved capacity of 25 KLD for the Effluent Treatment Plant, while page 453 shows no approved capacity (dash) for the same item; the remarks also differ (\"New proposal\" vs \"No change\").",
+      "part_total": false,
+      "answers": {
+        "same_subject": true,
+        "same_place": true,
+        "same_scope": true,
+        "incompatible": true,
+        "explained": false
+      },
+      "urls": null
+    },
+    {
+      "id": "ct-1234",
+      "grade": "RED",
+      "type": "contradiction",
+      "pages": [
+        40,
+        453
+      ],
+      "quotes": [
+        {
+          "page": 40,
+          "text": "25",
+          "also_on": [
+            74,
+            492
+          ]
+        },
+        {
+          "page": 453,
+          "text": "Effluent Treatment Plant KLD - 25 25 No change"
+        }
+      ],
+      "reason": "Both tables list the same three infrastructure items with identical Power and Sewage Treatment Plant figures, but the Effluent Treatment Plant row shows an Approved value of 25 KLD on page 40 and a dash on page 453, with conflicting remarks 'New proposal' versus 'No change'.",
       "part_total": false,
       "answers": {
         "same_subject": true,
@@ -1702,5 +1735,40 @@
       "urls": null
     }
   ],
-  "triage_audit": null
+  "triage_audit": null,
+  "run_totals": {
+    "note": "First sitting: $10.00, stopped: cost cap $7.41 reached (spent $7.4056); stopped at candidate 1077 of 1589; about 481 candidates not judged. Plus a resume sitting (Oct 28 04:54, $3.34).",
+    "cost_usd": 13.3385,
+    "wall_clock_s": 4400,
+    "tavily_credits": 47,
+    "tavily_credits_new": 47,
+    "per_model": {
+      "Nemotron-3.5-Super-VL": {
+        "api_calls": 871,
+        "prompt_tokens": 4153494,
+        "completion_tokens": 1366412,
+        "cost_usd": 2.4758
+      },
+      "Nemotron-3_5-Lightning": {
+        "api_calls": 1424,
+        "prompt_tokens": 3555249,
+        "completion_tokens": 347140,
+        "cost_usd": 0.2966
+      },
+      "Nemotron-3-Ultra-550b-a55b": {
+        "api_calls": 933,
+        "prompt_tokens": 4915886,
+        "completion_tokens": 1883409,
+        "cost_usd": 10.5661
+      }
+    },
+    "sittings": [
+      {
+        "when": "Oct 28 04:54",
+        "cost_usd": 3.3379,
+        "wall_clock_s": 499.0,
+        "new_pages": null
+      }
+    ]
+  }
 }

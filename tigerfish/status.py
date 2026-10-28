@@ -93,6 +93,13 @@ def check_iucn(name, report_value, current):
     if reported == current["code"]:
         return {**out, "grade": "NONE",
                 "evidence": f"Report says {reported}; GBIF/IUCN says {current['code']}."}
+    if current["code"] == "NE":
+        # Never assessed by IUCN: the report's category can't be confirmed, but nothing is
+        # "outdated" either. Not a finding; listed for a check by hand.
+        return {**out, "grade": "GREY",
+                "evidence": (f"Report says {reported}; GBIF lists {current['accepted']} as not "
+                             f"evaluated (NE) on the IUCN Red List, so the report's category "
+                             f"could not be confirmed. Check by hand: {current['iucn_url']}")}
     if note:
         # The name only matched via a synonym, typo fix or species-level fallback: the
         # difference may come from taxonomy (a split or lump), not an outdated status.

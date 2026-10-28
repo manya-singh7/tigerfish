@@ -15,21 +15,41 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from tigerfish import claims, omissions as om, pdf_reader  # noqa: E402
+from tigerfish import claims, omissions as om, pdf_reader, sites  # noqa: E402
 
 DEFAULT_PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 MUST_BE_MENTIONED = ["Dermochelys coriacea"]      # sanity check for the Great Nicobar report
 
 
+def write_not_applicable(pdf, name, reason):
+    """Save {"not_applicable": reason} as the check's result (no GBIF call) and say so."""
+    path = ROOT / "cache" / "findings" / pdf.stem / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"not_applicable": reason, "grade": "NOT_APPLICABLE"},
+                               ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{sites.NOT_APPLICABLE.capitalize()}: {reason}")
+    print(f"No calls made. Saved {path}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", nargs="?", default=str(DEFAULT_PDF))
-    parser.add_argument("--lat", type=float, default=om.SITE[0])
-    parser.add_argument("--lon", type=float, default=om.SITE[1])
+    parser.add_argument("--lat", type=float, help="default: the report's site (tigerfish/sites.py)")
+    parser.add_argument("--lon", type=float)
     args = parser.parse_args()
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     pdf = Path(args.pdf)
+    prof = sites.profile(pdf.stem)
+    reason = sites.not_applicable(pdf.stem, "omission")
+    if reason:          # e.g. a statewide road network: no single site to search around
+        write_not_applicable(pdf, "omissions.json", reason)
+        return
+    default = prof["site"] if prof else om.SITE
+    if args.lat is None or args.lon is None:
+        if not prof:
+            print(f"No site profile for {pdf.stem}: using {default}. Pass --lat/--lon.")
+        args.lat, args.lon = default
     pages = pdf_reader.read_pdf(pdf)
     out = om.check(pages, claims.load_ledger(pdf.stem), args.lat, args.lon)
     rows = out["rows"]

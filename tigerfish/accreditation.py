@@ -151,6 +151,34 @@ def component_key(component):
     return low.strip()
 
 
+CERTIFICATE = re.compile(r"NABET/EIA/[\w\-]+/[A-Z]{2,4}\s?\d{3,4}")
+
+
+def certificate_numbers(pages):
+    """Distinct NABET certificate numbers stated in the report's text, in page order:
+    [{number, page, quote, also_on}]. Spacing and hyphens are ignored when comparing
+    ("23-26" = "2326"), so only numbers that really differ count as distinct."""
+    found = {}
+    for p in pages:
+        text = claims_mod.normalize(p.get("text") or "")
+        if DEVANAGARI.search(text):
+            continue
+        for m in CERTIFICATE.finditer(text):
+            key = re.sub(r"[^A-Z0-9]", "", m.group(0).upper())
+            if key in found:
+                if p["page"] != found[key]["page"] and p["page"] not in found[key]["also_on"]:
+                    found[key]["also_on"].append(p["page"])
+                continue
+            start = max(text.rfind(". ", 0, m.start()) + 2, m.start() - 100, 0)
+            if start > 0 and text[start - 1] != " ":      # start on a whole word
+                start = text.find(" ", start) + 1
+            end = text.find(".", m.end())
+            end = min(end + 1 if end != -1 else len(text), m.end() + 80)
+            found[key] = {"number": m.group(0), "page": p["page"],
+                          "quote": text[start:end].strip(), "also_on": []}
+    return list(found.values())
+
+
 # ---------- 2. official entry ----------
 
 def find_entry(text, consultant):

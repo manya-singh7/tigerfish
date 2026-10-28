@@ -1,7 +1,8 @@
 """Draft letter (.docx) from confirmed findings: neutral, factual, with page citations.
 
 Languages: "en", "hi" (Hindi), "both" (English, then Hindi), "ta" (Tamil) or "both_ta"
-(English, then Tamil). Tamil is offered for Tamil Nadu reports (offers_tamil). Both are
+(English, then Tamil), "kn" (Kannada) or "both_kn" (English, then Kannada). Tamil is offered
+for Tamil Nadu reports (offers_tamil), Kannada for Karnataka reports (offers_kannada). All are
 machine-translated by LIGHTNING (thinking off, cached) on the same path, and only OUR text is
 translated: quotes from the report, evidence values, page numbers and links stay exactly as
 they are. A translated segment that loses or changes a number or link is kept in English.
@@ -25,12 +26,14 @@ from tigerfish import llm
 ACCENT = RGBColor(0x0F, 0x5E, 0x5E)
 DEVANAGARI_FONT = "Nirmala UI"     # ships with Windows; Mangal is the older alternative
 TAMIL_FONT = "Nirmala UI"          # covers Tamil too (Windows); Latha is the older alternative
+KANNADA_FONT = "Nirmala UI"        # covers Kannada too (all 90 glyphs of U+0C80-0CFF); Tunga is older
 LATIN_FONT = "Calibri"
 MACHINE_NOTE = "Machine-translated; please review."
 TRANSLATE_CHUNK = 8                # segments per LIGHTNING call
 URL = re.compile(r"https?://\S+")
 DEVANAGARI = re.compile(r"[ऀ-ॿ]")
 TAMIL = re.compile(r"[஀-௿]")
+KANNADA = re.compile(r"[ಀ-೿]")
 NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 TRANSLATE_PROMPT = """You translate English into formal, plain Hindi (Devanagari script) for \
@@ -49,10 +52,17 @@ Input: JSON {"texts": [...]}. Output: JSON only, {"translations": [...]}, with t
 Keep every number, page number, URL, species name and report title exactly as written (use Western digits 0-9) and keep placeholders in square brackets like [Name] unchanged.
 Example: {"texts": ["Sir / Madam,", "Clarification requested: page 12"]} -> {"translations": ["ஐயா / அம்மையீர்,", "விளக்கம் கோரப்படுகிறது: பக்கம் 12"]}"""
 
+KANNADA_PROMPT = """You translate English into formal, plain Kannada (Kannada script) for a letter to a government committee.
+Input: JSON {"texts": [...]}. Output: JSON only, {"translations": [...]}, with the Kannada translation of each text, same order and same count. Write the translation itself, in Kannada script; do not copy the English and do not add numbering.
+Keep every number, page number, URL, species name and report title exactly as written (use Western digits 0-9) and keep placeholders in square brackets like [Name] unchanged.
+Example: {"texts": ["Sir / Madam,", "Clarification requested: page 12"]} -> {"translations": ["ಮಾನ್ಯರೇ,", "ಸ್ಪಷ್ಟೀಕರಣ ಕೋರಲಾಗಿದೆ: ಪುಟ 12"]}"""
+
 # language code -> (prompt, script regex, font, Word language tag)
 TARGETS = {"hi": (TRANSLATE_PROMPT, DEVANAGARI, DEVANAGARI_FONT, "hi-IN"),
-           "ta": (TAMIL_PROMPT, TAMIL, TAMIL_FONT, "ta-IN")}
+           "ta": (TAMIL_PROMPT, TAMIL, TAMIL_FONT, "ta-IN"),
+           "kn": (KANNADA_PROMPT, KANNADA, KANNADA_FONT, "kn-IN")}
 TAMIL_STATES = {"tamil nadu", "puducherry"}
+KANNADA_STATES = {"karnataka"}
 
 
 def offers_tamil(report):
@@ -64,11 +74,24 @@ def offers_tamil(report):
     return any(state in text for state in TAMIL_STATES)
 
 
+def offers_kannada(report):
+    """Kannada letters are offered for reports from Karnataka (the report's "state")."""
+    return str(report.get("state") or "").strip().lower() in KANNADA_STATES
+
+
+def regional_languages(report):
+    """Names of the regional languages offered for this report (for the picker's help text)."""
+    return [name for name, offered in (("Tamil", offers_tamil(report)),
+                                       ("Kannada", offers_kannada(report))) if offered]
+
+
 def language_options(report):
     """{label: code} for the letter-language picker."""
     out = {"English": "en", "Hindi": "hi", "Both": "both"}
     if offers_tamil(report):
         out.update({"Tamil": "ta", "English + Tamil": "both_ta"})
+    if offers_kannada(report):
+        out.update({"Kannada": "kn", "English + Kannada": "both_kn"})
     return out
 
 
@@ -84,19 +107,33 @@ def where(q):
 
 DRAFT_NOTE = ("DRAFT, please review. Check every point against the report, fill in the "
               "[placeholders] and remove this line before sending.")
-ADDRESSEES = ("committee", "public_consultation")
+ADDRESSEES = ("committee", "public_consultation", "lender")
 
 
 def blocks(report, findings, addressee="committee", draft=False):
     """The letter as blocks. kind: text (ours, translatable), quote / data (never translated),
     heading / subject (ours, translatable, styled), break.
     addressee: "committee" (the Expert Appraisal Committee) or "public_consultation" (written
-    comments in the public consultation under the EIA Notification, 2006)."""
+    comments in the public consultation under the EIA Notification, 2006) or "lender" (a
+    report prepared for a development bank, e.g. ADB: to the borrower's agency, copied to the
+    bank; report["letter_to"] names them)."""
     if addressee not in ADDRESSEES:
         raise ValueError(f"addressee must be one of {ADDRESSEES}")
     out = [("subject", DRAFT_NOTE)] if draft else []
     out.append(("data", date.today().strftime("%d %B %Y")))
-    if addressee == "public_consultation":
+    if addressee == "lender":
+        out += [("text", "To,\n" + report.get("letter_to", "[the agency that prepared the report]\n"
+                                                            "[the financing institution]")
+                         + "\n[address]"),
+                ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
+                ("text", "Sir / Madam,"),
+                ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "
+                         f"below are statements in the report that appear inconsistent with each other "
+                         f"or with public records. Each point cites the page and the exact text. I "
+                         f"request that the agency that prepared the report and the financing "
+                         f"institution verify these points and clarify or correct them before the "
+                         f"report is finalised and relied upon.")]
+    elif addressee == "public_consultation":
         out += [*authority.to_blocks(report, "hearing", "To,\nThe Member Secretary\n[State Pollution "
                                      "Control Board / Union Territory Pollution Control Committee "
                                      "conducting the public hearing]\n[address]"),
@@ -158,7 +195,7 @@ def keeps_numbers_and_links(src, dst):
 
 
 def is_translation(src, dst, lang="hi"):
-    """Text in the target script (Devanagari / Tamil) that differs from the English, keeping
+    """Text in the target script (Devanagari / Tamil / Kannada) that differs from the English, keeping
     its numbers and links."""
     return (bool(TARGETS[lang][1].search(dst)) and dst.strip() != src.strip()
             and keeps_numbers_and_links(src, dst))
@@ -211,7 +248,8 @@ def set_font(run, name):
 
 
 def add_run(par, text, bold=False, italic=False, color=None):
-    """A run with the right font: Devanagari / Tamil text gets an Indic font and a language tag."""
+    """A run with the right font: Devanagari / Tamil / Kannada text gets an Indic font and a
+    language tag."""
     run = par.add_run(text)
     target = next((t for t in TARGETS.values() if t[1].search(text)), None)
     if target:
@@ -256,17 +294,18 @@ def render(doc, blks, tr=None):
 
 
 def build_letter(report, findings, language="en", addressee="committee", draft=False):
-    """Return .docx bytes. language: "en", "hi", "both" (en + hi), "ta" or "both_ta" (en + ta);
-    addressee and draft: see blocks()."""
+    """Return .docx bytes. language: "en", "hi", "both" (en + hi), "ta" or "both_ta" (en + ta),
+    "kn" or "both_kn" (en + kn); addressee and draft: see blocks()."""
     doc = Document()
     doc.styles["Normal"].font.size = Pt(11)
     blks = blocks(report, findings, addressee, draft)
-    target = {"hi": "hi", "both": "hi", "ta": "ta", "both_ta": "ta"}.get(language)
-    if language in ("en", "both", "both_ta"):
+    target = {"hi": "hi", "both": "hi", "ta": "ta", "both_ta": "ta",
+              "kn": "kn", "both_kn": "kn"}.get(language)
+    if language in ("en", "both", "both_ta", "both_kn"):
         render(doc, blks)
     if target:
         tr = translate(translatable(blks) + [MACHINE_NOTE], target)
-        if language in ("both", "both_ta"):
+        if language in ("both", "both_ta", "both_kn"):
             doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
         add_run(doc.add_paragraph(), MACHINE_NOTE, bold=True)
         if MACHINE_NOTE in tr:

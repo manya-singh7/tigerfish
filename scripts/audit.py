@@ -53,7 +53,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, promises, scope  # noqa: E402
-from tigerfish import pairing  # noqa: E402
+from tigerfish import pairing, sites  # noqa: E402
 from check_contradictions import known_issues_for  # noqa: E402
 from extract_claims import parse_pages  # noqa: E402
 
@@ -115,6 +115,8 @@ def main():
     if not EVAL.exists():
         sys.exit("results/eval.json is missing: run scripts/evaluate.py first (unit costs).")
     per = json.loads(EVAL.read_text(encoding="utf-8"))["cost"]["extrapolation"]["per_unit"]
+    prof = sites.profile(Path(args.pdf).stem)
+    pairing.use_profile(prof)   # the report's own places for subject keys (default: Great Nicobar)
 
     pages = pdf_reader.read_pdf(args.pdf)
     if args.pages:
@@ -147,6 +149,10 @@ def main():
     print(f"  copy-paste: top {args.top_passages} passages, about {est['tavily_credits']} Tavily "
           f"credits (free plan: {TAVILY_FREE_CREDITS}/month)")
     print(f"  API minutes assume one call at a time; --run uses {llm.WORKERS} parallel calls.")
+    if prof and prof.get("pairing"):
+        print(f"  Subject keys use this report's own places: {', '.join(pairing.PLACES)}")
+    for check, reason in ((prof or {}).get("not_applicable") or {}).items():
+        print(f"  {check}: {sites.NOT_APPLICABLE} ({reason})")
 
     if args.dry_run or not args.run:
         if load_previous(run_name(args)) and not args.fresh:
@@ -261,15 +267,36 @@ def dry_replay(args, kept):
         tor = (contradictions.tor_location_counts(promises.TOR_PDF)
                if Path(args.pdf).name == promises.EIA_PDF.name else ())
         old, added, cands = build_candidates(args, found, previous, new_pages, tor)
-        to_triage, to_judge, _ = pending([cands] if old is None else [old, added], texts)
+        lists = [cands] if old is None else [old, added]
+        to_triage, to_judge, usd_all = pending(lists, texts)
+        rate = measured_pass_rate(previous)
+        _, _, usd_rate = pending(lists, texts, rate) if rate is not None else (0, 0, None)
     except llm.CacheMiss as e:
         sys.exit(f"Not everything before the verdicts is cached, so a --run would pay for "
                  f"keys or triage ({e}). Nothing was called.")
     finally:
         llm.CACHE_ONLY = False
+    triage_usd = to_triage * per_unit()["triage_usd_per_candidate"]
     print(f"Would judge {to_judge} pair(s) with Ultra ({to_triage} still to triage) out of "
           f"{len(cands)} candidates; the rest have cached verdicts or are dropped by triage. "
           f"Spent: ${llm.session_cost_usd:.2f}.")
+    print(f"Estimated cost of a --run (Ultra priced from each pair's prompt size, "
+          f"{contradictions.EST_OUTPUT_TOKENS} output tokens each; triage ${triage_usd:.2f}):")
+    print(f"  upper bound (every untriaged pair passes triage): ${usd_all + triage_usd:.2f}")
+    if usd_rate is not None:
+        print(f"  at this report's measured triage pass rate {rate:.2f}: "
+              f"${usd_rate + triage_usd:.2f}")
+
+
+def per_unit():
+    return json.loads(EVAL.read_text(encoding="utf-8"))["cost"]["extrapolation"]["per_unit"]
+
+
+def measured_pass_rate(previous):
+    """Share of triaged pairs not dropped ("yes" or "unsure") in the last run, or None."""
+    t = (previous or {}).get("triage_answers") or {}
+    total = sum(t.values())
+    return (total - t.get("no", 0)) / total if total else None
 
 
 def run_audit(args, kept, per):
@@ -358,8 +385,9 @@ def run_audit(args, kept, per):
                           copy_stopped, stages, llm.session_cost_usd - spent0,
                           time.perf_counter() - wall0)
     report["triage_audit"] = audit
-    if previous and previous.get("run_totals"):
-        report["run_totals"] = add_sitting(previous["run_totals"], report, args)
+    if previous:   # a resume: carry the earlier sittings' cost forward
+        report["run_totals"] = add_sitting(previous.get("run_totals") or first_totals(previous),
+                                           report, args)
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / f"audit_{name}.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -389,6 +417,19 @@ def merge_runs(a, b):
     return out
 
 
+def first_totals(previous):
+    """run_totals for a report whose only sitting so far is `previous` (no totals saved)."""
+    return {"note": f"First sitting: ${previous['cost_usd']:.2f}, "
+                    f"stopped: {previous.get('stopped') or 'no'}.",
+            "cost_usd": previous["cost_usd"], "wall_clock_s": round(previous["wall_clock_s"]),
+            "tavily_credits": previous["tavily"]["credits"],
+            "tavily_credits_new": previous["tavily"]["credits"],
+            "per_model": {m.split("/")[-1]: {k: s[k] for k in ("api_calls", "prompt_tokens",
+                                                               "completion_tokens", "cost_usd")}
+                          for m, s in previous["calls_per_model"].items()},
+            "sittings": []}
+
+
 def add_sitting(totals, report, args):
     """The earlier sittings' totals plus this one (cost, calls, tokens, wall clock, Tavily)."""
     per = {m: dict(v) for m, v in totals["per_model"].items()}
@@ -404,8 +445,10 @@ def add_sitting(totals, report, args):
             "wall_clock_s": round(totals["wall_clock_s"] + report["wall_clock_s"]),
             "tavily_credits": totals["tavily_credits"] + report["tavily"]["credits"],
             "tavily_credits_new": totals.get("tavily_credits_new", 0) + report["tavily"]["credits"],
-            "note": totals["note"] + f" Plus a top-up sitting ({when}, --new-pages "
-                                     f"{args.new_pages}, ${report['cost_usd']:.2f}).",
+            "note": totals["note"] + (f" Plus a top-up sitting ({when}, --new-pages "
+                                      f"{args.new_pages}, ${report['cost_usd']:.2f})."
+                                      if args.new_pages else
+                                      f" Plus a resume sitting ({when}, ${report['cost_usd']:.2f})."),
             "sittings": totals.get("sittings", []) + [{"when": when, "cost_usd": report["cost_usd"],
                                                        "wall_clock_s": report["wall_clock_s"],
                                                        "new_pages": args.new_pages}]}

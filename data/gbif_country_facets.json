@@ -34,6 +34,45 @@
   "species": "Panulirus interruptus",
   "total": 294907
  },
+ "2426805": {
+  "countries": [
+   [
+    "CH",
+    219436
+   ],
+   [
+    "NL",
+    150077
+   ],
+   [
+    "GB",
+    123330
+   ],
+   [
+    "FR",
+    108359
+   ],
+   [
+    "AT",
+    48894
+   ],
+   [
+    "DE",
+    44071
+   ],
+   [
+    "DK",
+    25998
+   ],
+   [
+    "SE",
+    21821
+   ]
+  ],
+  "fetched": "2026-10-28",
+  "species": "Rana temporaria",
+  "total": 829157
+ },
  "2435066": {
   "countries": [
    [
@@ -190,6 +229,45 @@
   "species": "Muntiacus muntjak",
   "total": 9125
  },
+ "5960063": {
+  "countries": [
+   [
+    "IN",
+    560
+   ],
+   [
+    "CO",
+    508
+   ],
+   [
+    "KE",
+    310
+   ],
+   [
+    "GH",
+    293
+   ],
+   [
+    "CM",
+    271
+   ],
+   [
+    "PK",
+    230
+   ],
+   [
+    "PH",
+    193
+   ],
+   [
+    "MM",
+    170
+   ]
+  ],
+  "fetched": "2026-10-28",
+  "species": "Hemidactylus brookii",
+  "total": 4881
+ },
  "7261386": {
   "countries": [
    [
@@ -228,5 +306,44 @@
   "fetched": "2026-10-27",
   "species": "Rusa unicolor",
   "total": 69144
+ },
+ "7898948": {
+  "countries": [
+   [
+    "ID",
+    161
+   ],
+   [
+    "SG",
+    157
+   ],
+   [
+    "MY",
+    54
+   ],
+   [
+    "TH",
+    49
+   ],
+   [
+    "IN",
+    35
+   ],
+   [
+    "LK",
+    17
+   ],
+   [
+    "MM",
+    8
+   ],
+   [
+    "VN",
+    4
+   ]
+  ],
+  "fetched": "2026-10-28",
+  "species": "Ahaetulla mycterizans",
+  "total": 581
  }
 }
