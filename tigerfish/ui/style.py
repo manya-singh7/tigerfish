@@ -108,6 +108,7 @@ CSS = f"""
              padding: 0.05rem 0.5rem; margin-top: 0.3rem; color: #3D4A8A; background: #E8EBF7; }}
   .tf-doc {{ border-bottom: 1px solid {BORDER}; padding: 0.55rem 0; font-size: 0.9rem; }}
   .tf-unusable {{ color: #8A4B08; }}
+  .tf-adb {{ color: {TEXT}; background: #F4F7F7; border-radius: 6px; padding: 0.5rem 0.7rem; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

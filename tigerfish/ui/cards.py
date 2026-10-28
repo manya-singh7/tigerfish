@@ -96,7 +96,7 @@ def summary_strip(report):
         cost_note += "; GBIF is free"
     eff = efficiency.report_total(report["id"])
     if eff:
-        cost_note += f". {efficiency.line(eff)}"
+        cost_note += f". {efficiency.line(eff)} ({efficiency.NOT_MEASURED_NOTE.lower()})"
     cols = st.columns(5)
     cols[0].markdown(stat("Pages read", pages, pages_note), unsafe_allow_html=True)
     cols[1].markdown(stat("Findings", str(sum(c.values())),

@@ -122,9 +122,9 @@ def blocks(report, findings, addressee="committee", draft=False):
     out = [("subject", DRAFT_NOTE)] if draft else []
     out.append(("data", date.today().strftime("%d %B %Y")))
     if addressee == "lender":
-        out += [("text", "To,\n" + report.get("letter_to", "[the agency that prepared the report]\n"
-                                                            "[the financing institution]")
-                         + "\n[address]"),
+        out += [*authority.lender_letter_blocks(report, "To,\n" + report.get(
+                    "letter_to", "[the agency that prepared the report]\n[the financing institution]")
+                    + "\n[address]"),
                 ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
                 ("text", "Sir / Madam,"),
                 ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "

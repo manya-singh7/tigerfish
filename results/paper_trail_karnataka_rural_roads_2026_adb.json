@@ -1,0 +1,718 @@
+{
+ "report_id": "karnataka_rural_roads_2026_adb",
+ "searched_on": "2026-10-28",
+ "identity": {
+  "name": "Karnataka Rural Roads Improvement Project (ADB 59160-001)",
+  "search_name": "Karnataka Rural Roads Improvement Project",
+  "name_groups": [
+   [
+    "karnataka rural road"
+   ],
+   [
+    "improvement project",
+    "krrip",
+    "59160"
+   ]
+  ],
+  "proposals": [
+   "59160-001"
+  ],
+  "state": "Karnataka",
+  "facts": [
+   {
+    "fact": "proposal",
+    "value": "59160-001",
+    "page": 1,
+    "quote": "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160-001)"
+   },
+   {
+    "fact": "state",
+    "value": "Karnataka",
+    "page": 1,
+    "quote": "India: Karnataka Rural Roads Improvement Project"
+   },
+   {
+    "fact": "name",
+    "value": "Karnataka Rural Roads Improvement Project",
+    "page": 1,
+    "quote": "India: Karnataka Rural Roads Improvement Project"
+   },
+   {
+    "fact": "prepared_by",
+    "value": "Karnataka Rural Roads Development Agency",
+    "page": 1,
+    "quote": "Prepared by Karnataka Rural Roads Development Agency, Government of Karnataka for the Asian Development Bank"
+   }
+  ],
+  "unchecked": [],
+  "note": "The report was prepared by KRRDA, Government of Karnataka, for the Asian Development Bank (p.1) under ADB's Safeguard Policy Statement, 2009 (p.11). Rural roads need no environmental clearance under the EIA Notification, 2006 (p.11, p.357), so there is no Indian Terms of Reference, clearance letter or public hearing for this project; its consultations follow ADB's rules (p.17). Its official documents are ADB disclosures and Karnataka government pages.",
+  "framework": "adb",
+  "number_label": "project number",
+  "sites": [
+   "adb.org",
+   "krrda.karnataka.gov.in",
+   "rdpr.karnataka.gov.in"
+  ],
+  "official_extra": [
+   "adb.org"
+  ],
+  "borrower": {
+   "body": "Karnataka Rural Roads Development Agency (KRRDA), Government of Karnataka",
+   "sites": [
+    "krrda.karnataka.gov.in",
+    "rdpr.karnataka.gov.in"
+   ],
+   "roles": [
+    "Chief Operating Officer",
+    "Project Director",
+    "Chief Executive Officer",
+    "Managing Director"
+   ]
+  }
+ },
+ "sites": [
+  "adb.org",
+  "krrda.karnataka.gov.in",
+  "rdpr.karnataka.gov.in"
+ ],
+ "steps": [
+  {
+   "tool": "map",
+   "site": "adb.org",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "adb.org",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "krrda.karnataka.gov.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0,
+   "error": "BadRequestError"
+  },
+  {
+   "tool": "crawl",
+   "site": "krrda.karnataka.gov.in",
+   "results": 0,
+   "credits": 0,
+   "error": "BadRequestError"
+  },
+  {
+   "tool": "map",
+   "site": "rdpr.karnataka.gov.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "rdpr.karnataka.gov.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "\"59160-001\"",
+   "results": 7,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project ADB project",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project environmental impact assessment",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project initial environmental examination",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project report and recommendation of the President",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project loan agreement",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project environmental monitoring report",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Improvement Project public consultation grievance redress mechanism",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 2,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 1,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 5,
+   "credits": 2
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 2,
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 2,
+   "results": 2,
+   "credits": 1
+  },
+  {
+   "tool": "map",
+   "site": "krrda.karnataka.gov.in",
+   "purpose": "contact pages",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "rdpr.karnataka.gov.in",
+   "purpose": "contact pages",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "Karnataka Rural Roads Development Agency (KRRDA), Government of Karnataka contact address email Chief Operating Officer Project Director",
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 4,
+   "results": 4,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Accountability Mechanism complaint receiving officer contact address",
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 3,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 2,
+   "results": 2,
+   "credits": 1
+  }
+ ],
+ "documents": [
+  {
+   "url": "https://www.adb.org/projects/59160-001/main",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "59160-001: Karnataka Rural Roads Improvement Project",
+   "type": "ADB project page",
+   "date": null,
+   "date_quote": null,
+   "match": "project number",
+   "quote": "59160-001 Status: Proposed * Overview * Project Data Sheet * Documents * Tenders A $365 million loan is proposed for Karnataka's road sector to construct and improve approximately 5,000 km of rural roads.",
+   "chars": 23456,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+   "type": "Environmental impact assessment (ADB disclosure)",
+   "date": null,
+   "date_quote": null,
+   "match": "project number",
+   "quote": "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160-001) Environmental Impact Assessment PUBLIC July 2026 India: Karnataka Rural Roads Improvement Project Part 1 of 4 – Main Report Prepared by Karnataka Rural Roads Development Agency, Government of Karnataka for the Asian Development Bank.",
+   "chars": 861614,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en_2.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Karnataka Rural Roads Improvement Project Part 4 of 4",
+   "type": "Environmental impact assessment (ADB disclosure)",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160 -001) # Environmental Impact Assessment PUBLIC July 2026 # India: Karnataka Rural Roads Improvement Project #",
+   "chars": 730497,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en_0.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Karnataka Rural Roads Improvement Project Part 2 of 4",
+   "type": "Environmental impact assessment (ADB disclosure)",
+   "date": null,
+   "date_quote": null,
+   "match": "project number",
+   "quote": "59160-001: IND - Karnataka Rural Roads Improvement Project Transport 3/11 ▪ Protected Area Yes There is one UNESCO World heritage site (natural) in the Karnataka",
+   "chars": 1356986,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/projects/documents/ind-59160-001-eia",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental impact assessment (ADB disclosure)",
+   "title": "Karnataka Rural Roads Improvement Project: Draft ...",
+   "type": "Environmental impact assessment (ADB disclosure)",
+   "date": null,
+   "date_quote": null,
+   "match": "project number",
+   "quote": "This document dated July 2026 is provided for the ADB project 59160-001 in India.",
+   "chars": 7131,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en_1.pdf",
+   "host": "adb.org",
+   "found_via": "link",
+   "via_detail": "adb.org",
+   "title": "Karnataka Rural Roads Improvement Project: Draft Environmental Impact Assessment",
+   "type": "Environmental impact assessment (ADB disclosure)",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160 -001) # Environmental Impact Assessment PUBLIC July 2026 # India: Karnataka Rural Roads Improvement Project # Part 3 of 4 – Appendix 22 Prepared by Karnataka Rural Roads Development Agency, Government of Karnataka for the Asian Development Bank.",
+   "chars": 536413,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/projects/documents/ind-59160-001-ipp",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Karnataka Rural Roads Improvement Project: Draft ...",
+   "type": "Social safeguards plan",
+   "date": null,
+   "date_quote": null,
+   "match": "project number",
+   "quote": "This document dated August 2026 is provided for the ADB project 59160-001 in India.",
+   "chars": 7060,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-ipp-1173856-en.pdf",
+   "host": "adb.org",
+   "found_via": "link",
+   "via_detail": "adb.org",
+   "title": "Karnataka Rural Roads Improvement Project: Draft Indigenous Peoples Plan",
+   "type": "Social safeguards plan",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Indigenous Peoples Plan (Draft) PUBLIC August 2026 # India: Karnataka Rural Roads Improvement Project Prepared by the Karnataka Rural Roads Development Agency, Government of Karnataka for the Asian Development Bank.",
+   "chars": 273737,
+   "granted_tor": false
+  }
+ ],
+ "dropped": [
+  {
+   "url": "https://www.adb.org/status/proposed?page=21",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/where-we-work/india/projects-results",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/linked-documents/42513-013-ind-sprss.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "ADB project page",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/vi/subjects/roads-and-highways?page=609",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "ADB project page",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/projects/42513-014/main",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "ADB project page",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/vi/subjects/roads-and-highways?page=331",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "ADB project page",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/news/adb-provides-346-million-upgrade-state-highways-karnataka-india",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "ADB project page",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/zh/taxonomy/term/330/feed?page=76",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental impact assessment (ADB disclosure)",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/publication/27956/assessing-transport-energy.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental impact assessment (ADB disclosure)",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/linked-documents/42513-013-ind-ieeab-01.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Initial environmental examination",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/subjects/roads-and-highways?page=250",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Initial environmental examination",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/ru/subjects/environmental-assessment?page=101",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Initial environmental examination",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/42513/42513-013-emr-en_3.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Initial environmental examination",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/projects/42513-013/main",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Report and recommendation of the President",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/42513/42513-014-smr-en_11.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Report and recommendation of the President",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/evaluation-document/35103/files/27132-ind-pper-0.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Report and recommendation of the President",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://kmea.karnataka.gov.in/storage/pdf-files/Reports%20and%20other%20docs/ToR%20NABARD%20Roads.pdf",
+   "host": "kmea.karnataka.gov.in",
+   "found_via": "search",
+   "via_detail": "Report and recommendation of the President",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1544558",
+   "host": "pib.gov.in",
+   "found_via": "search",
+   "via_detail": "Loan / project agreement",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/42513/42513-014-emr-en_6.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental monitoring report",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/vi/subjects/roads-and-highways?page=217",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental monitoring report",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/zh/subjects/roads-and-highways?page=485",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Environmental monitoring report",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/project-documents/42513/42513-014-smr-en_9.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Consultation and grievance redress",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://www.adb.org/sites/default/files/linked-documents/42513-014-rpab-05.pdf",
+   "host": "adb.org",
+   "found_via": "search",
+   "via_detail": "Consultation and grievance redress",
+   "why": "does not name the project or its project number"
+  },
+  {
+   "url": "https://cdnbbsr.s3waas.gov.in/s3e6c2dc3dee4a51dcec3a876aa2339a78/uploads/2026/10/202610071014831714.pdf",
+   "host": "cdnbbsr.s3waas.gov.in",
+   "found_via": "search",
+   "via_detail": "Consultation and grievance redress",
+   "why": "does not name the project or its project number"
+  }
+ ],
+ "drop_counts": {
+  "does not name the project or its project number": 24
+ },
+ "unusable": [
+  {
+   "site": "adb.org",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "adb.org",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "krrda.karnataka.gov.in",
+   "tool": "map",
+   "error": "BadRequestError"
+  },
+  {
+   "site": "krrda.karnataka.gov.in",
+   "tool": "crawl",
+   "error": "BadRequestError"
+  },
+  {
+   "site": "rdpr.karnataka.gov.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "rdpr.karnataka.gov.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "krrda.karnataka.gov.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "rdpr.karnataka.gov.in",
+   "tool": "map",
+   "error": ""
+  }
+ ],
+ "granted_tor": {
+  "found": false,
+  "applicable": false
+ },
+ "contacts": {
+  "borrower": {
+   "found": false,
+   "why": "no contact of the Chief Operating Officer, Project Director, Chief Executive Officer, Managing Director found on krrda.karnataka.gov.in, rdpr.karnataka.gov.in (pages read: 4)"
+  },
+  "lender": {
+   "found": true,
+   "role": "lender",
+   "to": "The Responsible ADB Officer\nTransport Sector Office (SD1-TRA)\nAsian Development Bank",
+   "body": "Asian Development Bank, Transport Sector Office (SD1-TRA)",
+   "address": "6 ADB Avenue, Mandaluyong City 1550, Metro Manila, Philippines",
+   "email": "",
+   "source": "https://www.adb.org/projects/59160-001/main",
+   "host": "adb.org",
+   "quote": "Responsible ADB Officer Leung, Wilson Responsible ADB Department Sectors Department 1 Responsible ADB Division Transport Sector Office (SD1-TRA) … Headquarters 6 ADB Avenue, Mandaluyong City 1550, Metro Manila, Philippines",
+   "note": "Check the address before sending. No email is printed on the project page (ADB links to a web form)."
+  },
+  "accountability": {
+   "found": true,
+   "role": "accountability",
+   "to": "The Complaint Receiving Officer\nAccountability Mechanism\nAsian Development Bank",
+   "body": "Asian Development Bank, Accountability Mechanism (Complaint Receiving Officer)",
+   "address": "6 ADB Avenue, Mandaluyong City 1550 Metro Manila, Philippines",
+   "email": "",
+   "source": "https://www.adb.org/who-we-are/accountability-mechanism/how-file-complaint",
+   "host": "adb.org",
+   "quote": "Complaint Receiving Officer Accountability Mechanism Asian Development Bank 6 ADB Avenue, Mandaluyong City 1550 Metro Manila, Philippines",
+   "note": "Check the address before sending. No email is printed on the page (ADB links to a web form)."
+  }
+ },
+ "stopped": null,
+ "tavily": {
+  "credits": 26,
+  "credits_spent_this_run": 2,
+  "cached_calls": 29,
+  "features": [
+   "map + instructions",
+   "crawl + instructions",
+   "search include_domains",
+   "extract basic / advanced"
+  ]
+ },
+ "efficiency": {
+  "features": {
+   "crawl": {
+    "calls": 2,
+    "returned": 0,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": null
+   },
+   "extract": {
+    "calls": 9,
+    "returned": 1750204,
+    "sent to model": 0,
+    "shown as evidence": 783,
+    "used": 783,
+    "share": 0.00044737642012016883
+   },
+   "extract (advanced)": {
+    "calls": 7,
+    "returned": 5625671,
+    "sent to model": 0,
+    "shown as evidence": 1030,
+    "used": 1030,
+    "share": 0.0001830892705954543
+   },
+   "map": {
+    "calls": 3,
+    "returned": 0,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": null
+   },
+   "search: official domains": {
+    "calls": 10,
+    "returned": 41395,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "total": {
+   "calls": 31,
+   "returned": 7417270,
+   "sent to model": 0,
+   "shown as evidence": 1813,
+   "used": 1813,
+   "share": 0.00024442955426996727
+  }
+ }
+}

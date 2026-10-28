@@ -11,6 +11,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 URL, OUT = sys.argv[1], Path(sys.argv[2])
+ROOT_RESULTS = Path(__file__).resolve().parent.parent / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 results, errors = [], []
 
@@ -159,7 +160,10 @@ with sync_playwright() as p:
     page.wait_for_timeout(2000)
     ok("Cuddalore: audit status shown",
        page.get_by_text("Audit partial").count() > 0 or page.get_by_text("Audit complete").count() > 0)
-    ok("Cuddalore: 'Audit partial' notice", page.get_by_text("Audit partial").count() > 0)
+    # the notice follows the saved audit (partial while it ran; "Audit complete" since 4aa7aab)
+    status = "complete" if "Audit complete" in (ROOT_RESULTS / "cuddalore_port_2026_draft.json").read_text(
+        encoding="utf-8") else "partial"
+    ok(f"Cuddalore: 'Audit {status}' notice", page.get_by_text(f"Audit {status}").count() > 0)
     ok("Cuddalore: 'Flags not yet human-reviewed' notice",
        page.get_by_text("Flags not yet human-reviewed").count() > 0)
     radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
@@ -170,6 +174,14 @@ with sync_playwright() as p:
     ok("Cuddalore: Tamil letter option", radio.get_by_text("Tamil", exact=True).count() > 0
        and radio.get_by_text("English + Tamil", exact=True).count() > 0)
     page.screenshot(path=str(OUT / "cuddalore.png"))
+    # Cuddalore paper trail: documents found, Tamil Nadu board as the hearing contact
+    page.get_by_role("tab", name="Public record").click()
+    page.wait_for_timeout(2500)
+    docs = page.locator(".tf-doc").filter(visible=True)
+    ok("Cuddalore: documents found", page.get_by_text("Documents found").count() > 0 and docs.count() > 0,
+       f"{docs.count()} documents")
+    ok("Cuddalore: TNPCB hearing contact", page.get_by_text("Tamil Nadu Pollution Control Board").count() > 0)
+    ok("Cuddalore: no ADB wording", page.locator(".tf-adb").filter(visible=True).count() == 0)
     no_exception(page, "Cuddalore")
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
     browser.close()

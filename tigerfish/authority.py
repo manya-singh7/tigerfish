@@ -30,12 +30,29 @@ CONTACT_URL = re.compile(r"contact|directory|telephone|officer|who.?s.?who|about
 MOEF_BLOCK = re.compile(r"Ministry of Environment,? Forest and Climate Change\s*\(?\s*Impact Assessment "
                         r"Division\s*\)?[^|]{0,160}?\b\d{3}\s?\d{3}\b", re.I)
 CHECK = "Check the address before sending."
+WELL_FORMED = re.compile(r"[\w.+-]+@[A-Za-z0-9][\w-]*(?:\.[\w-]+)*\.[A-Za-z]{2,}")
 
 
-def _row_contact(text, role="Member Secretary"):
-    """(quote, address, email) from the table row or text block that names the role."""
+def well_formed(match):
+    """The email as printed, if it is well formed; "" for none or a garbled one (e.g. an OCR
+    "memsec@-tnpcb.gov.in"): a garbled email is never repaired, that would be a guess.
+    Obfuscated forms ("name[at]nic[dot]in") are kept as printed."""
+    if not match:
+        return ""
+    e = " ".join(match.group(0).split())
+    if "@" not in e:
+        return e
+    return e if WELL_FORMED.fullmatch(e) else ""
+
+
+BOARD_NAMED = re.compile(r"[Pp]ollution [Cc]ontrol|\b[A-Z]{1,4}PC[CB]\b")
+
+
+def _row_contact(text, role="Member Secretary", must=None):
+    """(quote, address, email) from the first table row or text block that names the role
+    (and, with `must`, also matches it: e.g. names the board, not another body)."""
     for line in text.split("\n"):
-        if role.lower() in line.lower() and "|" in line:
+        if role.lower() in line.lower() and "|" in line and (not must or must.search(line)):
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             # the address: the longest cell that is not the role, an email or a person's name
             options = [c for c in cells if "," in c and role.lower() not in c.lower()
@@ -43,16 +60,18 @@ def _row_contact(text, role="Member Secretary"):
             address = max(options, key=len, default="")
             email = EMAIL.search(line)
             quote = " ".join(line.strip().strip("|").split())      # the row as published
-            return quote, address, email.group(0) if email else ""
+            return quote, address, well_formed(email)
     flat = " ".join(text.split())
-    i = flat.lower().find(role.lower())
-    if i < 0:
-        return None, "", ""
-    block = flat[i:i + 300]
-    pin = PIN.search(block)
-    quote = block[:pin.end()] if pin else block[:200]
-    email = EMAIL.search(flat[i:i + 400])
-    return quote.strip(), quote[len(role):].strip(" ,:-"), email.group(0) if email else ""
+    for m in re.finditer(re.escape(role), flat, re.I):
+        i = m.start()
+        block = flat[i:i + 300]
+        pin = PIN.search(block)
+        quote = block[:pin.end()] if pin else block[:200]
+        if must and not must.search(quote):
+            continue
+        email = EMAIL.search(flat[i:i + 400])
+        return quote.strip(), quote[len(role):].strip(" ,:-"), well_formed(email)
+    return None, "", ""
 
 
 def board_name(texts, state):
@@ -80,6 +99,8 @@ def hearing_contact(run, ident):
         for site in sites:
             urls += [u for u in run.map_contacts(site) if CONTACT_URL.search(u)]
         urls = urls[:6]
+    if not urls:            # map sees nothing (JavaScript site): one search on the board's site
+        urls = run.search_urls("Member Secretary contact address email", sites, "authority contact")[:4]
     if urls:
         run.extract_urls(urls)
     texts = {u: knowable.plain_text(run.raw.get(paper_trail.canonical(u), "")) for u in urls}
@@ -87,7 +108,7 @@ def hearing_contact(run, ident):
     name = (board_name(texts.values(), ident["state"])          # only the board's own pages
             or board_name(own, ident["state"]) or f"Pollution control board / committee, {ident['state']}")
     for url, text in texts.items():
-        quote, address, email = _row_contact(text)
+        quote, address, email = _row_contact(text, must=BOARD_NAMED)
         if not quote:
             continue
         exact = knowable.verified_quote(quote, text)
@@ -126,25 +147,149 @@ def clearance_contact(run, ident, docs):
                 "body": "Ministry of Environment, Forest and Climate Change, Impact Assessment Division",
                 "address": address, "email": email, "source": d["url"], "host": d["host"],
                 "quote": exact, "email_source": email_src, "email_quote": email_quote, "note": CHECK}
-    return {"found": False, "why": "no MoEFCC letter of this project with an address block was found"}
+    url, exact = clearance_from_moef_page(run)      # no letter of this project: MoEFCC's own page
+    if exact:
+        address = re.sub(r"^.*?(?:Division|Wing)\s*\)?\s*,?\s*", "", exact)
+        email, email_src, email_quote = find_ia_email(run)
+        return {"found": True, "role": "clearance",
+                "to": "The Member Secretary\nExpert Appraisal Committee\nImpact Assessment Division\n"
+                      "Ministry of Environment, Forest and Climate Change",
+                "body": "Ministry of Environment, Forest and Climate Change, Impact Assessment Division",
+                "address": address, "email": email, "source": url, "host": host(url), "quote": exact,
+                "email_source": email_src, "email_quote": email_quote,
+                "note": CHECK + " (Address from a MoEFCC page, not from a letter of this project.)"}
+    return {"found": False, "why": "no MoEFCC letter of this project with an address block, and no "
+                                   "MoEFCC page with the Impact Assessment Division's address, was found"}
+
+
+# ---------- an ADB-financed project: the borrower's agency and the bank ----------
+
+ADB_OFFICER = re.compile(r"Responsible ADB Officer\s+(.{3,60}?)\s+Responsible ADB Department\s+(.{3,80}?)"
+                         r"\s+Responsible ADB Division\s+(.{3,80}?)(?=\s*Executing Agenc|\s*#|$)")
+ADB_HQ = re.compile(r"Headquarters\s+(.{10,120}?Philippines)")
+AM_BLOCK = re.compile(r"Complaint Receiving Officer\W+Accountability Mechanism\W+Asian Development Bank"
+                      r"\W+(.{10,120}?Philippines)")
+
+
+def _adb_text(run, url):
+    return paper_trail.plain(run.raw.get(paper_trail.canonical(url), ""))
+
+
+def lender_contact(run, ident, docs):
+    """The project's contact as listed on its ADB project page (role and division; ADB's
+    headquarters address from the same page). An email only if printed in the page text."""
+    pages = [d["url"] for d in docs if d["type"] == "ADB project page"]
+    for url in pages:
+        text = _adb_text(run, url)
+        m, hq = ADB_OFFICER.search(text), ADB_HQ.search(text)
+        if not m:
+            continue
+        exact = knowable.verified_quote(m.group(0), text)
+        hq_exact = knowable.verified_quote(hq.group(0), text) if hq else None
+        if not exact:
+            continue
+        tavily_usage.used_text(exact, "shown as evidence")
+        division = " ".join(m.group(3).split())
+        return {"found": True, "role": "lender",
+                "to": f"The Responsible ADB Officer\n{division}\nAsian Development Bank",
+                "body": f"Asian Development Bank, {division}",
+                "address": hq.group(1) if hq_exact else "", "email": "", "source": url,
+                "host": host(url), "quote": exact + (f" … {hq_exact}" if hq_exact else ""),
+                "note": CHECK + " No email is printed on the project page (ADB links to a web form)."}
+    return {"found": False, "why": "no ADB project page listing the project's contact was found"}
+
+
+def accountability_contact(run):
+    """ADB's Accountability Mechanism (Complaint Receiving Officer), from ADB's own page."""
+    urls = run.search_urls("Accountability Mechanism complaint receiving officer contact address",
+                           ["adb.org"], "authority contact")[:3]
+    run.extract_urls(urls)
+    for url in urls:
+        text = _adb_text(run, url)
+        m = AM_BLOCK.search(text)
+        exact = knowable.verified_quote(m.group(0), text) if m else None
+        if not exact:
+            continue
+        tavily_usage.used_text(exact, "shown as evidence")
+        email = EMAIL.search(text[m.start():m.end() + 200])
+        return {"found": True, "role": "accountability",
+                "to": "The Complaint Receiving Officer\nAccountability Mechanism\nAsian Development Bank",
+                "body": "Asian Development Bank, Accountability Mechanism (Complaint Receiving Officer)",
+                "address": m.group(1), "email": well_formed(email), "source": url,
+                "host": host(url), "quote": exact,
+                "note": CHECK + ("" if email else " No email is printed on the page (ADB links to a web form).")}
+    return {"found": False, "why": "no ADB page with the Accountability Mechanism's address was found"}
+
+
+def borrower_contact(run, ident):
+    """The executing agency named in the report (KRRDA), from its own government site."""
+    b = ident.get("borrower") or {}
+    sites = b.get("sites") or []
+    urls = [u for s in sites for u in run.map_urls.get(s, []) if CONTACT_URL.search(u)][:6]
+    if not urls:
+        for s in sites:
+            urls += [u for u in run.map_contacts(s, paper_trail.AGENCY_CONTACT_INSTRUCTIONS)
+                     if CONTACT_URL.search(u)]
+        urls = urls[:6]
+    if not urls and sites:  # map sees nothing: one search on the agency's own sites
+        urls = run.search_urls(f"{b.get('body', '')} contact address email "
+                               f"{' '.join((b.get('roles') or [])[:2])}", sites, "authority contact")[:4]
+    run.extract_urls(urls)
+    for url in urls:
+        text = knowable.plain_text(run.raw.get(paper_trail.canonical(url), ""))
+        for role in b.get("roles") or []:
+            quote, address, email = _row_contact(text, role)
+            exact = knowable.verified_quote(quote, text) if quote else None
+            if not exact:
+                continue
+            tavily_usage.used_text(exact, "shown as evidence")
+            return {"found": True, "role": "borrower", "to": f"The {role}\n{b['body']}",
+                    "body": b["body"], "address": address, "email": email, "source": url,
+                    "host": host(url), "quote": exact, "note": CHECK}
+    return {"found": False, "why": f"no contact of the {', '.join(b.get('roles') or ['agency'])} found on "
+                                   f"{', '.join(sites)} (pages read: {len(urls)})"}
+
+
+MOEF_SITES = ["moef.gov.in", "parivesh.nic.in", "environmentclearance.nic.in"]
+IA_ADDRESS = re.compile(r"Impact Assessment (?:Division|Wing)[^|]{0,200}?\b110\s?003\b", re.I)
+
+
+def clearance_from_moef_page(run):
+    """The IA Division's address from an official MoEFCC page (not a letter of this project):
+    used when no MoEFCC letter of the project was found."""
+    urls = run.search_urls("Impact Assessment Division Ministry of Environment Forest and Climate "
+                           "Change Indira Paryavaran Bhawan address", MOEF_SITES, "authority contact")[:3]
+    run.extract_urls(urls)
+    for u in urls:
+        text = paper_trail.plain(run.raw.get(paper_trail.canonical(u), ""))
+        m = MOEF_BLOCK.search(text) or IA_ADDRESS.search(text)
+        exact = knowable.verified_quote(m.group(0), text) if m else None
+        if exact:
+            tavily_usage.used_text(exact, "shown as evidence")
+            return u, exact
+    return None, None
 
 
 def find_ia_email(run):
     """(email, url, quote) from an official MoEFCC page that prints an email in the same
     sentence as "Impact Assessment" or "Member Secretary"; ("", "", "") if none."""
     try:
-        run.search("Impact Assessment Division Ministry of Environment Forest and Climate Change "
-                   "member secretary email contact", "authority contact")
+        urls = run.search_urls("Impact Assessment Division Ministry of Environment Forest and Climate "
+                               "Change member secretary email contact", MOEF_SITES, "authority contact")[:3]
     except Exception:       # noqa: BLE001 (credit cap: leave the email out)
         return "", "", ""
-    urls = [v["url"] for v in run.found.values() if v["detail"] == "authority contact"
-            and host(v["url"]).endswith(("moef.gov.in", "parivesh.nic.in", "environmentclearance.nic.in"))][:3]
     run.extract_urls(urls)
     for u in urls:
         text = paper_trail.plain(run.raw.get(paper_trail.canonical(u), ""))
+        # only a page about this project (e.g. the EAC meeting that considered it), and only the
+        # email printed right after "Member Secretary" / the division, with no other email between
+        if not paper_trail.names_project(text, run.ident)[0]:
+            continue
         for m in EMAIL.finditer(text):
-            window = text[max(0, m.start() - 200):m.end() + 50]
-            if re.search(r"impact assessment|member secretary", window, re.I):
+            before = text[max(0, m.start() - 80):m.start()]
+            if EMAIL.search(before.split("Member Secretary")[-1].split("Impact Assessment")[-1]):
+                continue
+            if re.search(r"(?:member secretary|impact assessment division)\W[^@]{0,60}$", before, re.I):
                 quote = paper_trail.sentence_around(text, m.start(), m.end() - m.start(), 260)
                 exact = knowable.verified_quote(quote, text)
                 if exact:
@@ -154,6 +299,9 @@ def find_ia_email(run):
 
 
 def find(run, ident, docs):
+    if paper_trail.is_adb(ident):     # no public hearing / clearance under the EIA Notification
+        return {"borrower": borrower_contact(run, ident), "lender": lender_contact(run, ident, docs),
+                "accountability": accountability_contact(run)}
     return {"hearing": hearing_contact(run, ident), "clearance": clearance_contact(run, ident, docs)}
 
 
@@ -188,6 +336,18 @@ def to_blocks(report, role, default):
     if data:
         out.append(("data", data))
     out.append(("text", f"(Address as published on {c['host']}. {CHECK})"))
+    return out
+
+
+def lender_letter_blocks(report, default):
+    """Addressee for a report prepared for a development bank: the borrower's agency (as
+    found), copied to the bank's project contact (as found); else `default`."""
+    out = to_blocks(report, "borrower", default)
+    c = contact((report or {}).get("id", ""), "lender")
+    if c:
+        out.append(("text", "Copy: " + c["to"].replace("\n", ", ")))
+        if c.get("address"):
+            out.append(("data", c["address"]))
     return out
 
 

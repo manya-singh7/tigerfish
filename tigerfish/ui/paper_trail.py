@@ -50,9 +50,30 @@ def documents_html(docs):
     return "".join(out)
 
 
+ROLE_LABELS = {
+    "hearing": "Public hearing (state pollution control board / committee)",
+    "clearance": "Environmental clearance (MoEFCC, Expert Appraisal Committee)",
+    "borrower": "Executing agency (the borrower's agency that prepared the report)",
+    "lender": "Asian Development Bank (the project's listed contact)",
+    "accountability": "Asian Development Bank Accountability Mechanism (complaints)",
+}
+ADB_NOTE = ("This project is financed by the Asian Development Bank and assessed under ADB's "
+            "Safeguard Policy Statement (2009). The Indian clearance steps (Terms of Reference, "
+            "environmental clearance, public hearing under the EIA Notification, 2006) do not apply "
+            "to it; its consultations follow ADB's rules. Its official documents are ADB disclosures "
+            "and Karnataka government pages, searched below.")
+
+
+def is_adb(trail):
+    return ((trail or {}).get("identity") or {}).get("framework") == "adb"
+
+
+def roles_for(trail):
+    return ("borrower", "lender", "accountability") if is_adb(trail) else ("hearing", "clearance")
+
+
 def contact_md(role, c):
-    label = {"hearing": "Public hearing (state pollution control board / committee)",
-             "clearance": "Environmental clearance (MoEFCC, Expert Appraisal Committee)"}[role]
+    label = ROLE_LABELS[role]
     if not c or not c.get("found"):
         return f"- **{label}**: not found ({esc((c or {}).get('why', 'not searched'))}). The letter keeps its [placeholders]."
     email = f"; email {esc(c['email'])}" if c.get("email") else "; no email published on the pages read"
@@ -76,9 +97,12 @@ def render(report_id, rec=None):
     if not trail:
         st.caption("No paper-trail search saved for this report (run: python scripts/check_paper_trail.py).")
         return
+    if is_adb(trail):
+        st.markdown(f'<div class="tf-line tf-adb">{esc(ADB_NOTE)}</div>', unsafe_allow_html=True)
+    number = trail["identity"].get("number_label", "proposal number")
     st.caption(f"Searched {trail['searched_on']} on official sites only: {', '.join(trail['sites'])}, "
                "plus any .gov.in / .nic.in page Tavily found. A document is kept only if its text "
-               "names the project or its proposal number; the quote shows where.")
+               f"names the project or its {number}; the quote shows where.")
     with st.expander("Who the project is, from the report's own text"):
         st.markdown(identity_md(trail["identity"]))
         if trail["identity"].get("note"):
@@ -101,22 +125,26 @@ def render(report_id, rec=None):
             st.markdown("\n".join(f"- [{esc(d['host'])}]({d['url']}): {esc(d['why'])}"
                                   for d in trail["dropped"][:60]))
     gt = trail.get("granted_tor") or {}
-    st.caption("Granted Terms of Reference: " + (f"found ({gt['date'] or 'date not stated'}); the ToR "
-               "promises tab checks the report against it." if gt.get("found") else
-               f"not found on official sites (searched: {', '.join(trail['sites'])}, {trail['searched_on']})."))
+    if gt.get("applicable") is not False:          # not shown for an ADB project (no ToR applies)
+        st.caption("Granted Terms of Reference: " + (
+            f"found ({gt['date'] or 'date not stated'}); the ToR promises tab checks the report "
+            "against it." if gt.get("found") else
+            f"not found on official sites (searched: {', '.join(trail['sites'])}, {trail['searched_on']})."))
 
     st.markdown("##### Who to write to")
     st.markdown("\n".join(contact_md(role, (trail.get("contacts") or {}).get(role))
-                          for role in ("hearing", "clearance")))
+                          for role in roles_for(trail)))
     t = trail["tavily"]
     st.caption(f"Tavily: map and crawl with instructions, official-domain search, extract. "
                f"{t['credits']} credits (as Tavily reported per response).")
 
 
 def granted_tor_line(report_id):
-    """The "granted ToR not found" line for the ToR promises tab ("" when found or not searched)."""
+    """The "granted ToR not found" line for the ToR promises tab ("" when found, not searched,
+    or not applicable: an ADB project has no Indian ToR)."""
     trail = paper_trail.load(report_id)
-    if not trail or (trail.get("granted_tor") or {}).get("found"):
+    gt = (trail or {}).get("granted_tor") or {}
+    if not trail or gt.get("found") or gt.get("applicable") is False:
         return ""
     return (f"Granted ToR not found on official sites (searched: {', '.join(trail['sites'])}, "
             f"{trail['searched_on']})")

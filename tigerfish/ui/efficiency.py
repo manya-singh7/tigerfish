@@ -14,6 +14,10 @@ EXPLAIN = ("Characters of web content in every Tavily response (titles, snippets
            "during its own run.")
 
 
+# The audit's own Tavily calls ran before this logging existed (results/tavily_usage.json lists them)
+NOT_MEASURED_NOTE = "Copy-paste, accreditation and WPA calls: not measured"
+
+
 def load():
     return json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else None
 
@@ -64,7 +68,7 @@ def render_card():
     if not data:
         return
     st.markdown(f'<div class="tf-message tf-efficiency"><b>Context efficiency:</b> '
-                f'{line(data["overall"]["total"])}.</div>', unsafe_allow_html=True)
+                f'{line(data["overall"]["total"])}. {NOT_MEASURED_NOTE}.</div>', unsafe_allow_html=True)
     with st.expander("Per Tavily feature"):
         st.markdown(table_md(data))
         st.caption(EXPLAIN)

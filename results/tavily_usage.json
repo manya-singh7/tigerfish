@@ -3,32 +3,32 @@
  "overall": {
   "features": {
    "crawl": {
-    "calls": 7,
-    "returned": 16651,
+    "calls": 11,
+    "returned": 19532,
     "sent to model": 0,
     "shown as evidence": 0,
     "used": 0,
     "share": 0.0
    },
    "extract": {
-    "calls": 43,
-    "returned": 28892524,
+    "calls": 53,
+    "returned": 49722353,
     "sent to model": 118397,
-    "shown as evidence": 7107,
-    "used": 125504,
-    "share": 0.004343822644224506
+    "shown as evidence": 7763,
+    "used": 126160,
+    "share": 0.002537289415889067
    },
    "extract (advanced)": {
-    "calls": 6,
-    "returned": 2364131,
+    "calls": 10,
+    "returned": 9030416,
     "sent to model": 1342,
-    "shown as evidence": 523,
-    "used": 1865,
-    "share": 0.0007888733746141817
+    "shown as evidence": 730,
+    "used": 2072,
+    "share": 0.0002294467940347377
    },
    "map": {
-    "calls": 8,
-    "returned": 1225,
+    "calls": 13,
+    "returned": 1253,
     "sent to model": 0,
     "shown as evidence": 0,
     "used": 0,
@@ -83,21 +83,21 @@
     "share": 0.06752122095515734
    },
    "search: official domains": {
-    "calls": 21,
-    "returned": 170629,
+    "calls": 32,
+    "returned": 242054,
     "sent to model": 0,
     "shown as evidence": 60,
     "used": 60,
-    "share": 0.00035164010807072654
+    "share": 0.0002478785725499269
    }
   },
   "total": {
-   "calls": 124,
-   "returned": 31622433,
+   "calls": 158,
+   "returned": 59192881,
    "sent to model": 119739,
-   "shown as evidence": 10652,
-   "used": 130391,
-   "share": 0.004123370266924117
+   "shown as evidence": 11515,
+   "used": 131254,
+   "share": 0.0022173950276216494
   }
  },
  "checks": {
@@ -343,6 +343,58 @@
     "shown as evidence": 3064,
     "used": 4406,
     "share": 0.0005817764277818182
+   }
+  },
+  "Paper trail / cuddalore_port_2026_draft": {
+   "features": {
+    "crawl": {
+     "calls": 4,
+     "returned": 2881,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "extract": {
+     "calls": 10,
+     "returned": 20829829,
+     "sent to model": 0,
+     "shown as evidence": 656,
+     "used": 656,
+     "share": 3.1493297424573195e-05
+    },
+    "extract (advanced)": {
+     "calls": 4,
+     "returned": 6666285,
+     "sent to model": 0,
+     "shown as evidence": 207,
+     "used": 207,
+     "share": 3.105177771427414e-05
+    },
+    "map": {
+     "calls": 5,
+     "returned": 28,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "search: official domains": {
+     "calls": 11,
+     "returned": 71425,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 34,
+    "returned": 27570448,
+    "sent to model": 0,
+    "shown as evidence": 863,
+    "used": 863,
+    "share": 3.130163136993639e-05
    }
   },
   "Paper trail / indira_point_table_3_16": {

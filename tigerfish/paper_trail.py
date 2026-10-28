@@ -62,8 +62,14 @@ HEAD_CHARS = 3000           # start of a document: where its type and date are r
 
 DOC_TYPES = ["ToR letter", "EAC/SEAC minutes", "EAC/SEAC agenda", "Public hearing notice",
              "Public hearing proceedings", "Environmental clearance letter", "Compliance report",
-             "Parliament reply", "Press release", "Application (Form 1 / Form 2)", "EIA report", "Pre-feasibility report",
-             "Proposal status page", "Other official page"]
+             "Parliament reply", "Press release", "Application (Form 1 / Form 2)", "EIA report",
+             "Pre-feasibility report", "Proposal status page", "Other official page",
+             "Executive summary for the public hearing",
+             # ADB-financed projects (adb_doc_type)
+             "ADB project page", "Report and recommendation of the President",
+             "Initial environmental examination", "Environmental monitoring report",
+             "Environmental impact assessment (ADB disclosure)", "Social safeguards plan",
+             "Loan / project agreement", "Concept paper", "Consultation and grievance redress"]
 SEARCH_TYPES = {   # document type -> words added to the project's name in a search
     "ToR letter": "terms of reference letter",
     "EAC/SEAC minutes": "expert appraisal committee minutes",
@@ -122,12 +128,57 @@ PROFILES = {
              "quote": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu"},
         ],
     },
+    # An Asian Development Bank project, not an Indian EIA clearance (tigerfish/sites.py on main):
+    # its documents are ADB disclosures and Karnataka government pages; no ToR, no EC, no
+    # public hearing under the EIA Notification, 2006.
+    "karnataka_rural_roads_2026_adb": {
+        "framework": "adb",
+        "pages": "karnataka_rural_roads_2026_adb_eia",
+        "name": "Karnataka Rural Roads Improvement Project (ADB 59160-001)",
+        "search_name": "Karnataka Rural Roads Improvement Project",
+        "name_groups": [["karnataka rural road"], ["improvement project", "krrip", "59160"]],
+        "number_label": "project number",
+        "sites": ["adb.org", "krrda.karnataka.gov.in", "rdpr.karnataka.gov.in"],
+        "official_extra": ["adb.org"],
+        "facts": [
+            {"fact": "proposal", "value": "59160-001", "page": 1,
+             "quote": "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160-001)"},
+            {"fact": "state", "value": "Karnataka", "page": 1,
+             "quote": "India: Karnataka Rural Roads Improvement Project"},
+            {"fact": "name", "value": "Karnataka Rural Roads Improvement Project", "page": 1,
+             "quote": "India: Karnataka Rural Roads Improvement Project"},
+            {"fact": "prepared_by", "value": "Karnataka Rural Roads Development Agency", "page": 1,
+             "quote": "Prepared by Karnataka Rural Roads Development Agency, Government of Karnataka "
+                      "for the Asian Development Bank"},
+        ],
+        "borrower": {"body": "Karnataka Rural Roads Development Agency (KRRDA), Government of Karnataka",
+                     "sites": ["krrda.karnataka.gov.in", "rdpr.karnataka.gov.in"],
+                     "roles": ["Chief Operating Officer", "Project Director", "Chief Executive Officer",
+                               "Managing Director"]},
+        "note": ("The report was prepared by KRRDA, Government of Karnataka, for the Asian Development "
+                 "Bank (p.1) under ADB's Safeguard Policy Statement, 2009 (p.11). Rural roads need no "
+                 "environmental clearance under the EIA Notification, 2006 (p.11, p.357), so there is no "
+                 "Indian Terms of Reference, clearance letter or public hearing for this project; its "
+                 "consultations follow ADB's rules (p.17). Its official documents are ADB disclosures "
+                 "and Karnataka government pages."),
+    },
+}
+
+# ADB projects: document types searched for (with the project's name), instead of SEARCH_TYPES
+ADB_SEARCH_TYPES = {
+    "ADB project page": "ADB project",
+    "Environmental impact assessment (ADB disclosure)": "environmental impact assessment",
+    "Initial environmental examination": "initial environmental examination",
+    "Report and recommendation of the President": "report and recommendation of the President",
+    "Loan / project agreement": "loan agreement",
+    "Environmental monitoring report": "environmental monitoring report",
+    "Consultation and grievance redress": "public consultation grievance redress mechanism",
 }
 
 
-def load_pages(stem):
-    """{page: text} from cache/pages/<stem>/pages.jsonl, or {} if it is not here."""
-    path = PAGES_DIR / stem / "pages.jsonl" if stem else None
+def load_pages(stem, pages_dir=None):
+    """{page: text} from <pages_dir or cache/pages>/<stem>/pages.jsonl, or {} if it is not there."""
+    path = Path(pages_dir or PAGES_DIR) / stem / "pages.jsonl" if stem else None
     if not path or not path.exists():
         return {}
     with path.open(encoding="utf-8") as f:
@@ -158,16 +209,32 @@ def identity(report_id, report=None, pages=None):
     state = next((f["value"] for f in facts if f["fact"] == "state"), None)
     return {"name": prof["name"], "search_name": prof["search_name"], "name_groups": prof["name_groups"],
             "proposals": proposals, "state": state, "facts": facts, "unchecked": unchecked,
-            "note": prof.get("note", "")}
+            "note": prof.get("note", ""), "framework": prof.get("framework", "india_eia"),
+            "number_label": prof.get("number_label", "proposal number"),
+            "sites": prof.get("sites"), "official_extra": prof.get("official_extra", []),
+            "borrower": prof.get("borrower")}
+
+
+def is_adb(ident):
+    return (ident or {}).get("framework") == "adb"
 
 
 def sites_for(ident):
+    if ident.get("sites"):                 # a project with its own official sites (ADB)
+        return list(ident["sites"])
     return CENTRAL_SITES + STATE_SITES.get(ident["state"] or "", [])
 
 
-def is_official(url):
+def search_types(ident):
+    return ADB_SEARCH_TYPES if is_adb(ident) else SEARCH_TYPES
+
+
+def is_official(url, extra=()):
+    """Government of India / state sites (.gov.in, .nic.in), Parliament, and the extra domains
+    a report's own profile names (e.g. adb.org for an ADB-financed project)."""
     h = host(url)
-    return h.endswith(OFFICIAL_SUFFIXES) or any(h == d or h.endswith("." + d) for d in OFFICIAL_EXTRA)
+    return h.endswith(OFFICIAL_SUFFIXES) or any(h == d or h.endswith("." + d)
+                                                for d in OFFICIAL_EXTRA + list(extra))
 
 
 def canonical(url):
@@ -214,12 +281,12 @@ def sentence_around(text, start, length, limit=QUOTE_CHARS, widen=True):
 
 def names_project(text, ident):
     """(how, quote) if the text names the project, else (None, None). how: "proposal number"
-    or "project name". The quote is copied from the text."""
+    (an ADB project: "project number") or "project name". The quote is copied from the text."""
     for p in ident["proposals"]:
         for form in (p, p.replace("/", "%2F")):
             i = text.find(form)
             if i >= 0:
-                return "proposal number", sentence_around(text, i, len(form))
+                return ident.get("number_label", "proposal number"), sentence_around(text, i, len(form))
     low = text.lower()
     groups = ident["name_groups"]
     for m in re.finditer(re.escape(groups[0][0]), low):
@@ -278,10 +345,17 @@ def doc_type(url, title, text):
         return "Parliament reply"
     if h.endswith("pib.gov.in"):
         return "Press release"
+    if h == "adb.org" or h.endswith(".adb.org") or "asian development bank" in head:
+        adb = adb_doc_type(url, head, top)
+        if adb:
+            return adb
     if re.search(r"\bform[- ]?(?:1|2|i)\b|application for prior environmental clearance", top):
         return "Application (Form 1 / Form 2)"
     if "proposal no" in head and re.search(r"proposal (?:name|details)", head):
         return "Proposal status page"
+    if re.search(r"exe(?:cutive)?[ _-]?sum", head) and "public hearing" in f"{unquote(url)} {head}" \
+            or re.search(r"/ph/[^/]*exe(?:cutive)?[ _-]?sum", unquote(url).lower()):
+        return "Executive summary for the public hearing"
     if "pre-feasibility report" in top or "prefeasibility report" in top:
         return "Pre-feasibility report"
     if re.search(r"eia[ _-]?(?:report|uncompressed|emp)\b|environmental impact assessment report",
@@ -304,6 +378,46 @@ def doc_type(url, title, text):
     if re.search(r"compliance report|six[- ]monthly|half[- ]yearly compliance", head):
         return "Compliance report"
     return "Other official page"
+
+
+ADB_TYPES = [   # (pattern in the opening text, type), first match wins
+    (r"report and recommendation of the president", "Report and recommendation of the President"),
+    (r"initial environmental examination", "Initial environmental examination"),
+    (r"environmental (?:and social )?monitoring report|safeguards? monitoring report",
+     "Environmental monitoring report"),
+    (r"environmental impact assessment", "Environmental impact assessment (ADB disclosure)"),
+    (r"resettlement plan|indigenous peoples plan|land acquisition", "Social safeguards plan"),
+    (r"loan agreement|project agreement", "Loan / project agreement"),
+    (r"concept paper", "Concept paper"),
+    (r"grievance redress|accountability mechanism", "Consultation and grievance redress"),
+]
+
+
+ADB_SUFFIX = {"eia": "Environmental impact assessment (ADB disclosure)",
+              "iee": "Initial environmental examination",
+              "rrp": "Report and recommendation of the President",
+              "emr": "Environmental monitoring report", "smr": "Environmental monitoring report",
+              "ipp": "Social safeguards plan", "rp": "Social safeguards plan",
+              "lar": "Social safeguards plan", "cp": "Concept paper", "la": "Loan / project agreement",
+              "pa": "Loan / project agreement"}
+
+
+def adb_doc_type(url, head, top):
+    """Type of an ADB disclosure / project page, or None."""
+    if re.search(r"adb\.org/projects/[\d-]+/main", url.lower()):
+        return "ADB project page"
+    # ADB names its disclosures by suffix: .../projects/documents/ind-59160-001-eia, ...-ipp.pdf
+    m = re.search(r"adb\.org/.*?\d{5}-\d{3}-([a-z]+)\b", url.lower())
+    if m and m.group(1) in ADB_SUFFIX:
+        return ADB_SUFFIX[m.group(1)]
+    for pattern, kind in ADB_TYPES:
+        if re.search(pattern, top):
+            return kind
+    if re.search(r"adb\.org/projects/(?:documents/)?", url.lower()):
+        for pattern, kind in ADB_TYPES:
+            if re.search(pattern, head):
+                return kind
+    return None
 
 
 GRANTED = re.compile(r"(?:prescribed|granted|accorded|issued)\b[^.]{0,80}\b(?:TOR|Terms of Reference)"
@@ -346,6 +460,12 @@ def split_pages(text):
 # ---------- Tavily steps ----------
 
 def instructions(ident):
+    if is_adb(ident):
+        return (f"Find official documents about {ident['name']} (ADB project "
+                f"{', '.join(ident['proposals']) or 'number not stated'}): the ADB project page and "
+                f"its disclosed documents (environmental impact assessment, initial environmental "
+                f"examination, report and recommendation of the President, loan agreement, "
+                f"monitoring reports), and the implementing agency's pages. Skip unrelated projects.")
     pid = f" (proposal {', '.join(ident['proposals'])})" if ident["proposals"] else ""
     return (f"Find official documents about {ident['name']}{pid}: the terms of reference letter, "
             f"expert appraisal committee meeting minutes, public hearing notice and proceedings, "
@@ -354,18 +474,21 @@ def instructions(ident):
 
 CONTACT_INSTRUCTIONS = ("Contact pages of this pollution control board / committee: contact us, "
                         "telephone directory, officers, with postal address and email")
+AGENCY_CONTACT_INSTRUCTIONS = ("Contact pages of this government agency: contact us, officers, "
+                               "who's who, with postal address and email")
 
 DOC_URL = re.compile(r"\.pdf\b|download|writereaddata|filename=|\.docx?\b|minutes|notice|hearing|"
                      r"proceeding|clearance|tor", re.I)
 LINK = re.compile(r"\[([^\]]*)\]\((https?://[^)\s]+)(?:\s+\"([^\"]*)\")?\)")
 
 
-def doc_links(raw):
+def doc_links(raw, extra=()):
     """[(url, anchor text)] of document-like links in extracted markdown."""
     out = []
     for m in LINK.finditer(raw or ""):
         url, label = m.group(2), (m.group(3) or m.group(1) or "").strip()
-        if is_official(url) and re.search(r"\.pdf\b|download|writereaddata|filename=|\.docx?\b", url, re.I):
+        if is_official(url, extra) and re.search(r"\.pdf\b|download|writereaddata|filename=|\.docx?\b",
+                                                 url, re.I):
             out.append((url, label))
     return list(dict.fromkeys(out))
 
@@ -401,6 +524,9 @@ class Run:
         self.credits += c
         return data, c
 
+    def ok(self, url):
+        return is_official(url, self.ident.get("official_extra") or ())
+
     def add(self, url, via, detail="", title=""):
         key = canonical(url)
         if key not in self.found:
@@ -409,7 +535,7 @@ class Run:
     def map_site(self, site):
         data, c = self.call("map", 2 * -(-MAP_LIMIT // 10), url=f"https://{site}", max_depth=2,
                             limit=MAP_LIMIT, instructions=instructions(self.ident))
-        urls = [u for u in data.get("results") or [] if isinstance(u, str) and is_official(u)]
+        urls = [u for u in data.get("results") or [] if isinstance(u, str) and self.ok(u)]
         self.map_urls[site] = urls
         ranked = sorted(urls, key=lambda u: not DOC_URL.search(u))[:MAX_FROM_MAP]
         for u in ranked:
@@ -423,7 +549,7 @@ class Run:
                             instructions=instructions(self.ident), extract_depth="basic")
         n = 0
         for r in data.get("results") or []:
-            if isinstance(r, dict) and r.get("url") and is_official(r["url"]):
+            if isinstance(r, dict) and r.get("url") and self.ok(r["url"]):
                 self.add(r["url"], "crawl", site)
                 if r.get("raw_content"):
                     self.raw.setdefault(canonical(r["url"]), r["raw_content"])
@@ -432,23 +558,34 @@ class Run:
                            **({"error": data["error"]} if data.get("error") else {})})
 
     def search(self, query, label):
-        domains = sites_for(self.ident) + ["gov.in", "nic.in"] + OFFICIAL_EXTRA
+        domains = list(dict.fromkeys(sites_for(self.ident) + ["gov.in", "nic.in"] + OFFICIAL_EXTRA
+                                     + list(self.ident.get("official_extra") or [])))
         data, c = self.call("search", 1, query=query, search_depth="basic", max_results=SEARCH_RESULTS,
                             include_domains=domains)
         n = 0
         for r in data.get("results") or []:
-            if is_official(r.get("url")):
+            if self.ok(r.get("url")):
                 self.add(r["url"], "search", label, r.get("title") or "")
                 n += 1
         self.steps.append({"tool": "search", "query": query, "results": n, "credits": c})
 
-    def map_contacts(self, site):
-        """Tavily map of a board's site for its contact pages (for tigerfish.authority)."""
+    def map_contacts(self, site, how=CONTACT_INSTRUCTIONS):
+        """Tavily map of a board's / agency's site for its contact pages (tigerfish.authority)."""
         data, c = self.call("map", 2 * -(-MAP_LIMIT // 10), url=f"https://{site}", max_depth=2,
-                            limit=MAP_LIMIT, instructions=CONTACT_INSTRUCTIONS)
-        urls = [u for u in data.get("results") or [] if isinstance(u, str) and is_official(u)]
+                            limit=MAP_LIMIT, instructions=how)
+        urls = [u for u in data.get("results") or [] if isinstance(u, str) and self.ok(u)]
         self.steps.append({"tool": "map", "site": site, "purpose": "contact pages",
                            "results": len(urls), "credits": c})
+        return urls
+
+    def search_urls(self, query, domains, label):
+        """[url] of an official-only search restricted to `domains` (contacts, ADB pages)."""
+        data, c = self.call("search", 1, query=query, search_depth="basic", max_results=5,
+                            include_domains=list(domains))
+        urls = [r["url"] for r in data.get("results") or [] if self.ok(r.get("url"))]
+        for u in urls:
+            self.add(u, "search", label)
+        self.steps.append({"tool": "search", "query": query, "results": len(urls), "credits": c})
         return urls
 
     def extract_all(self):
@@ -461,8 +598,22 @@ class Run:
             pending = [u for u in todo if not self.raw.get(canonical(u))]
             for i in range(0, len(pending), 5):
                 chunk = sorted(pending[i:i + 5])
-                data, c = self.call("extract", (1 if depth == "basic" else 2), urls=chunk,
-                                    extract_depth=depth)
+                try:
+                    data, c = self.call("extract", (1 if depth == "basic" else 2), urls=chunk,
+                                        extract_depth=depth)
+                except copycheck.CreditCapReached:
+                    raise
+                except Exception:       # noqa: BLE001 (timeout: once more with a longer wait)
+                    try:
+                        data, c = self.call("extract", (1 if depth == "basic" else 2), urls=chunk,
+                                            extract_depth=depth, timeout=90)
+                    except copycheck.CreditCapReached:
+                        raise
+                    except Exception as e:      # noqa: BLE001 (logged; these URLs stay unread)
+                        self.errors.append(f"extract {len(chunk)} URLs: {type(e).__name__}")
+                        self.steps.append({"tool": f"extract ({depth})", "urls": len(chunk),
+                                           "results": 0, "credits": 0, "error": type(e).__name__})
+                        continue
                 got = 0
                 for r in data.get("results") or []:
                     if r.get("raw_content"):
@@ -478,7 +629,7 @@ def classify(found, raw, ident):
     for key, f in found.items():
         url = f["url"]
         base = {"url": url, "host": host(url), "found_via": f["via"], "via_detail": f["detail"]}
-        if not is_official(url):
+        if not is_official(url, ident.get("official_extra") or ()):
             dropped.append({**base, "why": "not an official site"})
             continue
         text = plain(raw.get(key, ""))
@@ -487,7 +638,8 @@ def classify(found, raw, ident):
             continue
         how, quote = names_project(text, ident)
         if not how:
-            dropped.append({**base, "why": "does not name the project or its proposal number"})
+            dropped.append({**base, "why": f"does not name the project or its "
+                                           f"{ident.get('number_label', 'proposal number')}"})
             continue
         exact = knowable.verified_quote(quote, text)
         if not exact:
@@ -538,7 +690,7 @@ def run(report_id, report=None, budget=None, pages=None, say=print):
             say(f"  crawl {site}: {r.steps[-1]['results']} pages ({r.steps[-1]['credits']} credits)")
         for p in ident["proposals"]:
             r.search(f'"{p}"', "proposal number")
-        for kind, words in SEARCH_TYPES.items():
+        for kind, words in search_types(ident).items():
             r.search(f"{ident['search_name']} {words}", kind)
         say(f"  searches: {sum(s['results'] for s in r.steps if s['tool'] == 'search')} official results")
         r.extract_all()
@@ -548,7 +700,7 @@ def run(report_id, report=None, budget=None, pages=None, say=print):
             text = plain(r.raw.get(key, ""))
             if not text or not names_project(text, ident)[0]:
                 continue
-            for url, label in doc_links(r.raw.get(key, "")):
+            for url, label in doc_links(r.raw.get(key, ""), ident.get("official_extra") or ()):
                 if followed >= MAX_LINKS or canonical(url) in r.found:
                     continue
                 r.add(url, "link", host(f["url"]), label)
@@ -579,7 +731,8 @@ def run(report_id, report=None, budget=None, pages=None, say=print):
            "drop_counts": count_by(dropped, "why"),
            "unusable": unusable,
            "granted_tor": ({"found": True, "url": tor["url"], "date": tor["date"], "quote": tor["quote"],
-                            "title": tor["title"]} if tor else {"found": False}),
+                            "title": tor["title"]} if tor else
+                           {"found": False, "applicable": not is_adb(ident)}),
            "contacts": contacts,
            "stopped": stopped,
            "tavily": {"credits": r.credits, "credits_spent_this_run": budget.used - start_used,

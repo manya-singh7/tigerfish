@@ -277,3 +277,118 @@ def test_granted_tor_line_when_not_found(monkeypatch, tmp_path):
         {"granted_tor": {"found": False}, "sites": ["parivesh.nic.in"], "searched_on": "2026-10-28"}))
     assert trail_ui.granted_tor_line("x") == ("Granted ToR not found on official sites "
                                              "(searched: parivesh.nic.in, 2026-10-28)")
+
+
+# ---------- Cuddalore, Karnataka (ADB) ----------
+
+KA = "karnataka_rural_roads_2026_adb"
+KA_PAGES = {1: "Annex 2 to Karnataka Rural Roads Improvement Project (RRP IND 59160-001) Environmental "
+               "Impact Assessment PUBLIC July 2026 India: Karnataka Rural Roads Improvement Project Part 1 "
+               "of 4 Main Report Prepared by Karnataka Rural Roads Development Agency, Government of "
+               "Karnataka for the Asian Development Bank."}
+
+
+def test_adb_identity_and_sites_come_from_its_own_profile():
+    i = pt.identity(KA, pages=KA_PAGES)
+    assert i["framework"] == "adb" and i["proposals"] == ["59160-001"] and i["state"] == "Karnataka"
+    assert not i["unchecked"] and pt.sites_for(i) == ["adb.org", "krrda.karnataka.gov.in", "rdpr.karnataka.gov.in"]
+    assert pt.search_types(i) is pt.ADB_SEARCH_TYPES
+    assert not set(pt.CENTRAL_SITES) & set(pt.sites_for(i))          # no MoEFCC portals for an ADB project
+
+
+def test_adb_org_is_official_only_for_the_adb_report():
+    assert pt.is_official("https://www.adb.org/projects/59160-001/main", ["adb.org"])
+    assert not pt.is_official("https://www.adb.org/projects/59160-001/main")
+
+
+def test_adb_document_types():
+    t = pt.doc_type
+    assert t("https://www.adb.org/projects/59160-001/main", "", "Contact Responsible ADB Officer") == "ADB project page"
+    assert t("https://www.adb.org/projects/documents/ind-59160-001-eia", "", "accountability mechanism") == \
+        "Environmental impact assessment (ADB disclosure)"
+    assert t("https://www.adb.org/sites/default/files/project-documents/59160/59160-001-ipp-1173856-en.pdf", "",
+             "x") == "Social safeguards plan"
+
+
+def test_adb_number_match_is_labelled_project_number():
+    i = pt.identity(KA, pages=KA_PAGES)
+    how, q = pt.names_project("Karnataka Rural Roads Improvement Project (RRP IND 59160-001) annex", i)
+    assert how == "project number" and "59160-001" in q
+
+
+def test_adb_contacts_read_only_printed_text():
+    page = ("### Contact Responsible ADB Officer Leung, Wilson Responsible ADB Department Sectors Department 1 "
+            "Responsible ADB Division Transport Sector Office (SD1-TRA)Executing Agencies Karnataka Rural Road "
+            "Development Agency ### Timetable ... Headquarters 6 ADB Avenue, Mandaluyong City 1550, Metro Manila, "
+            "Philippines")
+    m = authority.ADB_OFFICER.search(pt.plain(page))
+    assert m and m.group(3).strip() == "Transport Sector Office (SD1-TRA)"
+    assert authority.ADB_HQ.search(pt.plain(page)).group(1).endswith("Philippines")
+    am = ("## Contact **Complaint Receiving Officer** Accountability Mechanism Asian Development Bank 6 ADB Avenue, "
+          "Mandaluyong City 1550 Metro Manila, Philippines [E-mail](https://www.adb.org/contact?target=x)")
+    m = authority.AM_BLOCK.search(pt.plain(am))
+    assert m and "@" not in pt.plain(am)                              # the web-form link is not an email
+
+
+def test_garbled_or_missing_emails_are_never_repaired():
+    w = lambda s: authority.well_formed(authority.EMAIL.search(s))   # noqa: E731
+    assert w("memsec@-tnpcb.gov.in") == "" and w("cmantnseiaa @vahoo.com") == ""
+    assert w("dstpcc-andamans@and.nic.in") == "dstpcc-andamans@and.nic.in"
+    assert w("ms[at]tnpcb[dot]gov[dot]in") == "ms[at]tnpcb[dot]gov[dot]in"
+
+
+def test_hearing_contact_must_name_the_board():
+    text = ("Member Secretary, State Level Environment Impact Assessment Authority (SEIAA), 3rd Floor, "
+            "Panagal Building, Chennai 600 015. ... Member Secretary, Tamil Nadu Pollution Control Board, "
+            "76, Mount Salai, Guindy, Chennai - 600 032")
+    quote, address, _ = authority._row_contact(text, must=authority.BOARD_NAMED)
+    assert "Tamil Nadu Pollution Control Board" in quote and "SEIAA" not in quote
+
+
+def test_ia_email_only_on_a_page_about_this_project(monkeypatch):
+    page = ("14 Thirupathi Kamera Member dirsnt.hq1@gmail.com 15 Shri Sundar Ramanathan Member Secretary "
+            "r.sundar@nic.in EAC meeting")
+
+    class R:
+        ident = {"proposals": ["IA/TN/INFRA1/564208/2026"], "name_groups": [["cuddalore port"], ["expansion"]]}
+        raw = {pt.canonical("https://environmentclearance.nic.in/a.pdf"): page}
+
+        def search_urls(self, *a):
+            return ["https://environmentclearance.nic.in/a.pdf"]
+
+        def extract_urls(self, urls):
+            pass
+    assert authority.find_ia_email(R()) == ("", "", "")             # the page does not name the project
+    R.raw = {pt.canonical("https://environmentclearance.nic.in/a.pdf"):
+             page + ". Expansion of Cuddalore Port, proposal IA/TN/INFRA1/564208/2026 considered."}
+    email, _, _ = authority.find_ia_email(R())
+    assert email == "r.sundar@nic.in"                                # never the member before it
+
+
+def test_adb_wording_and_no_tor_line(monkeypatch, tmp_path):
+    monkeypatch.setattr(pt, "RESULTS", tmp_path)
+    (tmp_path / f"paper_trail_{KA}.json").write_text(json.dumps(
+        {"identity": {"framework": "adb"}, "granted_tor": {"found": False, "applicable": False},
+         "sites": ["adb.org"], "searched_on": "2026-10-28"}))
+    assert trail_ui.granted_tor_line(KA) == ""
+    assert trail_ui.roles_for(pt.load(KA)) == ("borrower", "lender", "accountability")
+    note = trail_ui.ADB_NOTE.lower()
+    assert "do not apply" in note and not any(w in note for w in ("missing", "lack", "absent", "failed"))
+
+
+def test_lender_letter_uses_contacts_or_keeps_placeholders(monkeypatch, tmp_path):
+    monkeypatch.setattr(pt, "RESULTS", tmp_path)
+    report = {"id": KA, "title": "Karnataka", "source": "s", "letter_to": "KRRDA\nCopy: ADB"}
+    blocks = letter.blocks(report, [], "lender")
+    assert "[address]" in blocks[1][1]                              # nothing saved: placeholder kept
+    (tmp_path / f"paper_trail_{KA}.json").write_text(json.dumps({"contacts": {
+        "borrower": {"found": False},
+        "lender": {"found": True, "to": "The Responsible ADB Officer\nSD1-TRA\nAsian Development Bank",
+                   "address": "6 ADB Avenue, Mandaluyong City 1550, Metro Manila, Philippines", "host": "adb.org"}}}))
+    text = " ".join(str(b[1]) for b in letter.blocks(report, [], "lender")[:5])
+    assert "[address]" in text and "Copy: The Responsible ADB Officer" in text and "Mandaluyong" in text
+
+
+def test_cost_card_notes_unmeasured_audit_calls():
+    assert "not measured" in efficiency.NOT_MEASURED_NOTE
+    assert all(w in efficiency.NOT_MEASURED_NOTE for w in ("Copy-paste", "accreditation", "WPA"))
