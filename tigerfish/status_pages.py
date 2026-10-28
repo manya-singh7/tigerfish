@@ -18,7 +18,8 @@ from tigerfish import copycheck, status
 from tigerfish.species_pages import candidate_names
 
 SERIAL = re.compile(r"^\d{1,3}\.?$")
-HEADER_START = re.compile(r"^(?:S\.?\s?No|Sl\.?\s?No)\b", re.IGNORECASE)
+# "SN" heads the Karnataka ADB report's fauna tables (pp.172-193)
+HEADER_START = re.compile(r"^(?:S\.?\s?No|Sl\.?\s?No|SN)\b", re.IGNORECASE)
 FAMILY_CELL = re.compile(r"[A-Z][a-z]+(?:idae|aceae)$")
 HEADER_SPAN = 14         # header lines looked at after "S.No"
 NAME_CELLS = 3           # the scientific name is in the row's first cells (it may wrap)
@@ -40,7 +41,8 @@ def _header(lines, i):
     while end < len(lines) and end < i + HEADER_SPAN and not SERIAL.match(lines[end]):
         end += 1
     head = " ".join(lines[i:end])
-    return True, bool(re.search(r"\bI?WPA\b|Schedule", head)), end
+    # IWPA / WPA, or WPAA / WLPAA (Wild Life (Protection) Act, as amended: Karnataka report)
+    return True, bool(re.search(r"\bI?WL?PAA?\b|Schedule", head)), end
 
 
 def _row(cells, has_wpa):

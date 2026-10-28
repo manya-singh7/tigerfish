@@ -72,7 +72,53 @@ thing get the same key. For each numbered item return:
 Return JSON only: {{"items": [{{"n": 1, "measure": "...", "place": "...", "reading": false, \
 "station": ""}}, ...]}}"""
 
+# Reports with their own "pairing" settings (tigerfish/sites.py) get this wording instead, so
+# nothing about Great Nicobar reaches them. Great Nicobar and Cuddalore (run before this
+# existed) keep KEY_PROMPT above unchanged, so their cached keys and finding ids still hold.
+PROFILE_KEY_PROMPT = """You normalise the subjects of numbers taken from one Environmental \
+Impact Assessment report ({project}), so that numbers about the same thing get the same key. \
+For each numbered item return:
+- measure: what is measured or counted, 2-6 plain lowercase words, WITHOUT the place, e.g.
+  "fauna species count", "bird species count", "endemic bird species count", "road length",
+  "number of roads", "number of bridges", "forest land area", "trees to be felled",
+  "pm10 concentration". A distance names what it is measured to, e.g. "distance to wildlife
+  sanctuary boundary". Same thing -> same words. Different groups or parts (birds vs fauna,
+  endemic vs all, one component vs the total) -> different words.
+- place: the place the number is about, lowercase. Use these exact forms when they apply:
+  {places} ({place_note}). Otherwise a short name, or "" if no place is given.
+- reading: true if the number is ONE measurement from a monitoring or lab results table
+  (ambient air, water, noise, soil, sediment or marine sampling at a station, sample point
+  or location), false otherwise. Census, demographic, design and summary figures are not
+  readings.
+- station: for a reading, the station, sample or location code or name (e.g. "AAQ1",
+  "SW3"); "" otherwise.
+Return JSON only: {{"items": [{{"n": 1, "measure": "...", "place": "...", "reading": false, \
+"station": ""}}, ...]}}"""
+
+# The place that blank / project-site figures collapse into (a cell label, and a key of INSIDE)
+MERGED_PLACE = "great nicobar island"
+_GN = {"PLACES": PLACES, "INSIDE": INSIDE, "KEY_PROMPT": KEY_PROMPT,
+       "SAME_PLACE": None, "MERGED_PLACE": MERGED_PLACE}
+
 last_stats = {}
+
+
+def use_profile(profile):
+    """Pairing settings for one report: its profile's "pairing" entry (tigerfish/sites.py),
+    or the Great Nicobar defaults when it has none (Great Nicobar, Cuddalore)."""
+    global PLACES, INSIDE, KEY_PROMPT, SAME_PLACE, MERGED_PLACE
+    cfg = (profile or {}).get("pairing")
+    if not cfg:
+        PLACES, INSIDE, KEY_PROMPT = _GN["PLACES"], _GN["INSIDE"], _GN["KEY_PROMPT"]
+        SAME_PLACE, MERGED_PLACE = _GN["SAME_PLACE"], _GN["MERGED_PLACE"]
+        return
+    PLACES = list(cfg["places"])
+    INSIDE = {k: set(v) for k, v in cfg.get("inside", {}).items()}
+    SAME_PLACE = set(cfg["same_place"])
+    MERGED_PLACE = cfg["merged_place"]
+    KEY_PROMPT = PROFILE_KEY_PROMPT.format(
+        project=cfg["project"], places=", ".join(f'"{p}"' for p in PLACES),
+        place_note=cfg["place_note"])
 
 
 def norm(text):
@@ -182,6 +228,7 @@ GENERIC = set("""count number area length distance species specie capacity value
     percentage total height depth width population requirement""".split())
 # Places the model cannot tell apart reliably for project figures: compatible with each other.
 SAME_PLACE = {"", "project site", "great nicobar island"}
+_GN["SAME_PLACE"] = SAME_PLACE
 
 
 # Environmental monitoring parameters: a claim is a station reading only if the model says so
@@ -207,9 +254,9 @@ def cell_of(claim, key):
     bucket = ("reading" if reading else "value", ct.unit_key(claim["unit"])[0], ct.kind(claim))
     if reading:
         return (bucket, key["measure"], key["station"]) if key["station"] else None
-    # Blank, "project site" and the island are one place for pairing, so their repeats
-    # collapse together and share one cap.
-    place = "great nicobar island" if key["place"] in SAME_PLACE else key["place"]
+    # Blank, "project site" and the island (or the profile's SAME_PLACE) are one place for
+    # pairing, so their repeats collapse together and share one cap.
+    place = MERGED_PLACE if key["place"] in SAME_PLACE else key["place"]
     return (bucket, key["measure"], place)
 
 

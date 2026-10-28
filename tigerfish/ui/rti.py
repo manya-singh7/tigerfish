@@ -160,10 +160,17 @@ def build_rti(report, findings):
 def build_pack(report, findings):
     """.zip bytes: README, public consultation comments (.docx), RTI applications (.docx)."""
     buf = io.BytesIO()
+    hearing_na = (report.get("not_applicable") or {}).get("public_consultation")
     with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
-        z.writestr("README.txt", README)
-        z.writestr("1_public_consultation_comments.docx",
-                   letter.build_letter(report, findings, "en", addressee="public_consultation",
-                                       draft=True))
+        if hearing_na:   # e.g. no EIA Notification public hearing: only the RTI drafts
+            z.writestr("README.txt", README.replace(
+                README[README.index("1_public"):README.index("2_RTI")],
+                f"1_public_consultation_comments.docx: not applicable to this report.\n"
+                f"   {hearing_na}\n\n"))
+        else:
+            z.writestr("README.txt", README)
+            z.writestr("1_public_consultation_comments.docx",
+                       letter.build_letter(report, findings, "en", addressee="public_consultation",
+                                           draft=True))
         z.writestr("2_RTI_applications.docx", build_rti(report, findings))
     return buf.getvalue()

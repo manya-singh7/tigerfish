@@ -21,6 +21,16 @@ DEFAULT_PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 MUST_BE_MENTIONED = ["Dermochelys coriacea"]      # sanity check for the Great Nicobar report
 
 
+def write_not_applicable(pdf, name, reason):
+    """Save {"not_applicable": reason} as the check's result (no GBIF call) and say so."""
+    path = ROOT / "cache" / "findings" / pdf.stem / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"not_applicable": reason, "grade": "NOT_APPLICABLE"},
+                               ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{sites.NOT_APPLICABLE.capitalize()}: {reason}")
+    print(f"No calls made. Saved {path}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("pdf", nargs="?", default=str(DEFAULT_PDF))
@@ -31,6 +41,10 @@ def main():
 
     pdf = Path(args.pdf)
     prof = sites.profile(pdf.stem)
+    reason = sites.not_applicable(pdf.stem, "omission")
+    if reason:          # e.g. a statewide road network: no single site to search around
+        write_not_applicable(pdf, "omissions.json", reason)
+        return
     default = prof["site"] if prof else om.SITE
     if args.lat is None or args.lon is None:
         if not prof:

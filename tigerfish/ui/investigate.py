@@ -19,6 +19,8 @@ REPORTS = {  # report id -> (source PDF or None, project site)
     "indira_point_table_3_16": (None, (6.75, 93.83)),
     # site from the report's own coordinates (tigerfish/sites.py); no live investigations yet
     "cuddalore_port_2026_draft": (None, (11.7062, 79.7751)),
+    # statewide road network: midpoint of the state's extent given on report p.23 (sites.py)
+    "karnataka_rural_roads_2026_adb": (None, (15.0, 76.25)),
 }
 TOOL_LABELS = {"search_report": "SEARCH REPORT", "read_page": "READ PAGE", "check_species": "GBIF CHECK",
                "web_search": "WEB SEARCH", "read_url": "READ URL", "finish": "MEMO", None: "NO ACTION"}

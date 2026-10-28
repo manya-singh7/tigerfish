@@ -53,7 +53,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from tigerfish import claims, contradictions, copycheck, evaluation as ev, llm, pdf_reader, promises, scope  # noqa: E402
-from tigerfish import pairing  # noqa: E402
+from tigerfish import pairing, sites  # noqa: E402
 from check_contradictions import known_issues_for  # noqa: E402
 from extract_claims import parse_pages  # noqa: E402
 
@@ -115,6 +115,8 @@ def main():
     if not EVAL.exists():
         sys.exit("results/eval.json is missing: run scripts/evaluate.py first (unit costs).")
     per = json.loads(EVAL.read_text(encoding="utf-8"))["cost"]["extrapolation"]["per_unit"]
+    prof = sites.profile(Path(args.pdf).stem)
+    pairing.use_profile(prof)   # the report's own places for subject keys (default: Great Nicobar)
 
     pages = pdf_reader.read_pdf(args.pdf)
     if args.pages:
@@ -147,6 +149,10 @@ def main():
     print(f"  copy-paste: top {args.top_passages} passages, about {est['tavily_credits']} Tavily "
           f"credits (free plan: {TAVILY_FREE_CREDITS}/month)")
     print(f"  API minutes assume one call at a time; --run uses {llm.WORKERS} parallel calls.")
+    if prof and prof.get("pairing"):
+        print(f"  Subject keys use this report's own places: {', '.join(pairing.PLACES)}")
+    for check, reason in ((prof or {}).get("not_applicable") or {}).items():
+        print(f"  {check}: {sites.NOT_APPLICABLE} ({reason})")
 
     if args.dry_run or not args.run:
         if load_previous(run_name(args)) and not args.fresh:

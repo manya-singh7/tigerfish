@@ -146,6 +146,9 @@ def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS, pro
     where = ({"sites": profile["sites"], "centre": profile["centre"],
               "centre_label": profile["centre_label"]} if profile else {})
     gadm = profile["archipelago_gadm"] if profile else species.ANDAMAN_NICOBAR_GADM
+    # statewide species lists (e.g. Karnataka): records anywhere in the state clear a flag
+    region = ({"region_gadm": profile["region_gadm"], "region_label": profile.get("region_label")}
+              if profile and profile.get("region_gadm") else {})
     texts = {p["page"]: p.get("text", "") for p in pages}
     by = {p["page"]: p for p in pages}
     table_pages = species_table_pages(pages)
@@ -163,7 +166,7 @@ def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS, pro
     for page_no in sorted(table_pages + vision_pages):
         lat, lon, site, _ = locations[page_no]
         jobs += [(name, lat, lon) for name in names_by_page[page_no]]
-    results = _parallel(lambda job: species.check_species(*job, archipelago_gadm=gadm), jobs,
+    results = _parallel(lambda job: species.check_species(*job, archipelago_gadm=gadm, **region), jobs,
                         workers)
 
     rows, seen = [], set()
@@ -181,9 +184,10 @@ def check_pages(pages, max_vision=10, use_vision=True, workers=GBIF_WORKERS, pro
                          "far": r["far_count"], "global": r["global_count"],
                          "class": r["class_name"], "evidence": r["evidence"],
                          "archipelago": r.get("archipelago_count"),
+                         **({"region": r.get("region_count")} if region else {}),
                          "lookup_failed": r.get("lookup_failed", False),
                          "mobile_region": r.get("mobile_region", False),
                          "links": r["gbif_links"], "location": site, "lat": lat, "lon": lon,
                          "reason": reason, "via": via})
     return {"table_pages": table_pages, "vision_pages": vision_pages, "rows": rows,
-            "archipelago_rule": gadm}
+            "archipelago_rule": gadm, **({"region_rule": region["region_gadm"]} if region else {})}

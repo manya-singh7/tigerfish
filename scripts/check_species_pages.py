@@ -52,7 +52,8 @@ def main():
     prof = sites.profile(Path(args.pdf).stem)
     if prof:
         print(f"Site profile: {prof['site_label']} {prof['site']}; archipelago rule: "
-              f"{prof['archipelago_gadm'] or 'off'}")
+              f"{prof['archipelago_gadm'] or 'off'}; statewide-list rule: "
+              f"{prof.get('region_gadm') or 'off'}; mobile-taxa rule: on")
     out = sp.check_pages(pages, max_vision=args.max_vision, use_vision=not args.no_vision,
                          profile=prof)
     rows = out["rows"]

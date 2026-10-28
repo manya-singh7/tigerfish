@@ -2,6 +2,7 @@
 
 Usage: python scripts/export_results.py                  (every report)
        python scripts/export_results.py --only cuddalore  (one report; the others are kept)
+       python scripts/export_results.py --only karnataka  (after its audit has run)
 
 Runs each report's pipeline from cache (no new API calls are expected; any that are
 needed stay under the usual caps) and writes:
@@ -147,6 +148,8 @@ def omission_findings(pdf=GN_PDF, site_label="Galathea Bay"):
     if not path.exists():
         return []
     data = json.loads(path.read_text(encoding="utf-8"))
+    if data.get("not_applicable"):
+        return []
     n_pages, n_empty = data["pages_searched"], len(data["pages_without_text"])
     out = []
     for i, r in enumerate([r for r in data["rows"] if r["grade"]], 1):
@@ -175,7 +178,7 @@ def accreditation_findings(pdf=GN_PDF):
     if not path.exists():
         return []
     a = json.loads(path.read_text(encoding="utf-8"))
-    if a["grade"] in ("GREY", "NONE") or not a.get("entry"):
+    if a.get("not_applicable") or a["grade"] in ("GREY", "NONE") or not a.get("entry"):
         return []
     d, e = a["details"], a["entry"]
     quotes = [{"page": d[f]["page"], "text": d[f]["quote"]}
@@ -712,6 +715,99 @@ def cuddalore():
     return report_id, out
 
 
+# ---------- Karnataka Rural Roads Improvement Project (ADB EIA, July 2026) ----------
+
+KA_PDF = ROOT / "data" / "eias" / "karnataka_rural_roads_2026_adb_eia.pdf"
+CHECK_NAMES = {"omission": "Threatened species not mentioned (GBIF)",
+               "accreditation": "Consultant accreditation (NABET, official list)",
+               "promise": "Terms of Reference vs report",
+               "public_consultation": "Public hearing comments (EIA Notification, 2006)"}
+
+
+def not_applicable_notices(prof):
+    """One notice per check that does not fit the report (tigerfish/sites.py), with why."""
+    return [f"{CHECK_NAMES.get(k, k)}: {sites.NOT_APPLICABLE}. {why}"
+            for k, why in (prof.get("not_applicable") or {}).items()]
+
+
+def karnataka():
+    """None until scripts/audit.py has run on the report (the other reports still export)."""
+    report_id = "karnataka_rural_roads_2026_adb"
+    prof = sites.profile(KA_PDF.stem)
+    if not (RESULTS / f"audit_{KA_PDF.stem}.json").exists():
+        print(f"{report_id}: skipped, no audit run yet (scripts/audit.py {KA_PDF.name} ...)")
+        return None
+    trace.reset()
+    started = time.time()
+    for old in PAGES_OUT.glob(f"{report_id}_*.png"):
+        old.unlink()
+    full = full_run_core(KA_PDF)
+    if not full:
+        sys.exit(f"No full-run findings for {KA_PDF.name}: run scripts/audit.py first.")
+    findings, _, extra = full
+    run, kept, skipped = extra["run"], extra["kept"], extra["skipped"]
+    all_pages = pdf_reader.read_pdf(KA_PDF)
+    findings += species_table_findings(report_id, KA_PDF)
+    findings += status_table_findings(report_id, KA_PDF)
+    na = prof.get("not_applicable") or {}
+    if "omission" not in na:
+        findings += omission_findings(KA_PDF, prof["site_label"])
+    if "accreditation" not in na:
+        findings += accreditation_findings(KA_PDF) + certificate_findings(all_pages)
+    findings = dedupe(findings)
+    page_images(f"{report_id}_full", [f for f in findings if not f["images"]], shared=True,
+                pdf=KA_PDF)
+
+    audit = audit_status(run)
+    pages_read = kept | species_pages_read(KA_PDF)
+    n_total = len(all_pages)
+    n_skipped = n_total - len(pages_read)
+    kinds = [SKIP_LABELS.get(k, k) for k, v in sorted(skipped.items(), key=lambda kv: -len(kv[1]))
+             if set(v) - pages_read]
+    tot = run.get("run_totals") or {"cost_usd": run["cost_usd"],
+                                    "tavily_credits": run["tavily"]["credits"],
+                                    "wall_clock_s": run["wall_clock_s"]}
+    _, _, gbif, _ = run_cost(trace.used)
+    notices = [audit["label"] + ("" if audit["complete"]
+                                 else "; the pairs not yet judged may hold more flags."),
+               "Flags not yet human-reviewed: each one is flagged for checking; verify it "
+               "against the report before relying on it."] + not_applicable_notices(prof)
+    checks = ["Claim extraction (Nemotron Lightning / Super-VL)",
+              "Internal contradictions and recycled figures (Nemotron Ultra)",
+              "Copied text (Tavily)",
+              "Species tables in the report (GBIF)",
+              "IUCN status and WPA schedules in the report's tables (GBIF, Tavily)"]
+    out = {
+        "id": report_id, "title": "Karnataka Rural Roads Improvement Project EIA (ADB, July 2026)",
+        "source": "Environmental Impact Assessment, Part 1 of 4 (Main Report), prepared by the "
+                  "Karnataka Rural Roads Development Agency, Government of Karnataka, for the "
+                  "Asian Development Bank, July 2026",
+        "state": prof["state"],
+        "site": {"lat": prof["site"][0], "lon": prof["site"][1], "label": prof["site_label"],
+                 "source": prof["site_source"]},
+        "letter_addressee": prof.get("letter_addressee", "committee"),
+        "letter_to": prof.get("letter_to"),
+        "not_applicable": {k: f"{sites.NOT_APPLICABLE}: {why}" for k, why in na.items()},
+        "audit_status": audit, "human_reviewed": False, "notices": notices,
+        "pages_read": len(pages_read), "pages_total": n_total, "pages_skipped": n_skipped,
+        "pages_note": (f"pages audited; {n_skipped} skipped: {'/'.join(kinds)}"
+                       if n_skipped else "pages audited"),
+        "checks": checks,
+        "cost": {"nebius_usd": round(tot["cost_usd"], 4),
+                 "tavily_credits": tot["tavily_credits"], "gbif_calls": gbif,
+                 "approx_seconds": tot["wall_clock_s"],
+                 "time_note": "wall clock, full audit, 6 parallel calls",
+                 "note": (f"Nebius models: full audit ${tot['cost_usd']:.2f} "
+                          f"({audit['label'][0].lower() + audit['label'][1:]}); Tavily: audit "
+                          f"{tot['tavily_credits']} credits")},
+        "full_run": {"file": f"audit_{KA_PDF.stem}.json", "cost_usd": tot["cost_usd"],
+                     "wall_clock_s": tot["wall_clock_s"], "pages_audited": run["pages_audited"]},
+        "known_issues": [],
+        "findings": findings, "exported_in_s": round(time.time() - started, 1),
+    }
+    return report_id, out
+
+
 def no_secrets_in(folder):
     keys = [v for k, v in os.environ.items() if k.endswith("_API_KEY") and v and len(v) > 12]
     for p in folder.rglob("*.json"):
@@ -722,6 +818,7 @@ def no_secrets_in(folder):
 # --only name -> (builder, report id); this order is the report picker's order
 BUILDERS = {"great_nicobar": (great_nicobar, "great_nicobar_2021_draft"),
             "cuddalore": (cuddalore, "cuddalore_port_2026_draft"),
+            "karnataka": (karnataka, "karnataka_rural_roads_2026_adb"),
             "indira_point": (indira_point_table, "indira_point_table_3_16")}
 
 
@@ -741,7 +838,12 @@ def main():
             if rid in earlier:            # not rebuilt this time: keep its earlier entry
                 index.append(earlier[rid])
             continue
-        report_id, data = build()
+        built = build()
+        if built is None:                 # not ready yet (e.g. no audit run): keep any earlier entry
+            if rid in earlier:
+                index.append(earlier[rid])
+            continue
+        report_id, data = built
         (RESULTS / f"{report_id}.json").write_text(
             json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         grades = {g: sum(f["grade"] == g for f in data["findings"]) for g in ("RED", "ORANGE", "INFO")}

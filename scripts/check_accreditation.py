@@ -15,8 +15,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
 
-from tigerfish import accreditation as ac, llm, pdf_reader  # noqa: E402
+from tigerfish import accreditation as ac, llm, pdf_reader, sites  # noqa: E402
+from check_omissions import write_not_applicable  # noqa: E402
 
 DEFAULT_PDF = ROOT / "data" / "eias" / "great_nicobar_2021_draft_eia.pdf"
 
@@ -29,6 +31,10 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     pdf = Path(args.pdf)
+    reason = sites.not_applicable(pdf.stem, "accreditation")
+    if reason:          # e.g. no Indian EIA consultant: NABET does not apply (no Lightning, no Tavily)
+        write_not_applicable(pdf, "accreditation.json", reason)
+        return
     out = ac.check(pdf_reader.read_pdf(pdf), max_credits=args.max_credits)
     print(f"Pages read for consultant details: {out['pages_searched']}\n")
     print("Extracted from the report (quotes verified on the page):")
