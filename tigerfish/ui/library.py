@@ -98,9 +98,12 @@ def meta_line(e):
 def row(e):
     with st.container(border=True):
         left, right = st.columns([5, 1])
-        kind = "tf-lib-quick" if e["audit_type"] == library.QUICK else "tf-lib-full"
+        kind = {library.QUICK: "tf-lib-quick", library.TABLE: "tf-lib-table"}.get(e["audit_type"],
+                                                                               "tf-lib-full")
         reviewed = (f'<div class="tf-lib-meta">human-reviewed: {e["reviewed"][0]} of '
                     f'{e["reviewed"][1]} flags</div>' if e.get("reviewed") else "")
+        if e["audit_type"] == library.TABLE:
+            reviewed = f'<div class="tf-lib-meta">{esc(library.TABLE_NOTE)}</div>' + reviewed
         left.markdown(
             f'<div class="tf-lib-title">{esc(e["project"])}</div>'
             f'<div class="tf-lib-meta"><span class="tf-lib-type {kind}">{esc(e["audit_type"])}</span> '
@@ -120,6 +123,7 @@ CSS = """<style>
   border-radius: 4px; margin-right: 0.3rem; }
 .tf-lib-full { color: #1F5F5F; background: #EAF2F2; }
 .tf-lib-quick { color: #6B5200; background: #FFF4DE; }
+.tf-lib-table { color: #4A4A6A; background: #EEEEF6; }
 </style>"""
 
 
@@ -129,8 +133,10 @@ def render():
     t = library.totals(items)
     st.markdown(f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
                 unsafe_allow_html=True)
+    table = (f", {t['table']} single-table check{'s' if t['table'] != 1 else ''}"
+             if t.get("table") else "")
     st.caption(f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
-               f"check{'s' if t['quick'] != 1 else ''}. Totals are computed from the saved results. "
+               f"check{'s' if t['quick'] != 1 else ''}{table}. Totals are computed from the saved results. "
                "A flag is a lead to verify against the report, not a verdict.")
     up, note = st.columns([1, 3])
     up.button("Upload your own EIA", key="tf::upload", type="primary", on_click=open_upload,
@@ -143,20 +149,23 @@ def render():
     states = c1.multiselect("State", library.options(items, "state"), key="lib::state")
     sectors = c2.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
     years = c3.multiselect("Year", library.options(items, "year"), key="lib::year")
-    types = c4.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
+    types = c4.multiselect("Audit type", [library.FULL, library.QUICK, library.TABLE], key="lib::type")
     c5.write("")
     red = c5.checkbox("Has RED flags", key="lib::red")
     shown = library.filter_entries(items, query, states, sectors, years, types, red)
     st.caption(f"Showing {len(shown)} of {len(items)} reports.")
     if not shown:
         st.info("No reports match these filters.")
-        return
     pages = max(1, -(-len(shown) // PAGE_SIZE))
     page = 1
     if pages > 1:
         page = st.number_input(f"Page (of {pages})", 1, pages, 1, key="lib::page")
     for e in shown[(page - 1) * PAGE_SIZE: page * PAGE_SIZE]:
         row(e)
+
+    st.write("")
+    from tigerfish.ui import quality      # across all reports, from the saved review files
+    quality.library_section()
 
 
 # ---------- a quick check (lighter view) ----------

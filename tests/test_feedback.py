@@ -70,7 +70,9 @@ def test_precision_per_check_ignores_unsure():
     only_gn = {r["check"]: r for r in feedback.precision(e, "gn")}
     assert only_gn["Species out of range"]["precision"] is None
     table = feedback.precision_table(feedback.precision(e))
-    assert "50% (1 of 2)" in table and "100% (1 of 1)" in table
+    # fewer than 20 judged: no percentage (tigerfish/quality.py)
+    assert "2 reviewed so far: too few to estimate precision" in table
+    assert "1 reviewed so far: too few to estimate precision" in table and "%" not in table
 
 
 @pytest.fixture
@@ -96,7 +98,8 @@ def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
     e = saved[f"great_nicobar_2021_draft::{fid}"]
     assert e["decision"] == "Confirm" and e["reviewer"] == "Asha" and e["note"] == "p.392 read"
     text = "\n".join(m.value for m in at.markdown)
-    assert "#### Precision" in text and "100% (1 of 1)" in text
+    assert "#### Precision" in text and "**Team reviews (saved)**" in text
+    assert "1 reviewed so far: too few to estimate precision" in text
 
     # a fresh session reads the decision back from the file
     at2 = open_app(timeout=60)

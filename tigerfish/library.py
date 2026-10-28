@@ -1,9 +1,11 @@
 """The report library (home screen): every report under results/, with live totals.
 
-Two kinds of report:
+Three kinds of report:
   Full audit   results/<id>.json, listed in results/index.json (scripts/export_results.py).
                Library details (project, state, sector, year, consultant) come from
                results/library.json, because the export rewrites index.json.
+  Single-table check  the same, for a report of which only one table was available
+               ("unit": "table"), e.g. Indira Point's Table 3.16.
   Quick check  results/batch/<id>.json, listed in results/batch/index.json: free checks
                only, one small JSON per report (format in docs/REPORT_FORMAT.md).
 
@@ -19,8 +21,10 @@ from tigerfish.report import sort_findings
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
 FORMAT = "tigerfish-report/1"
-FULL, QUICK = "Full audit", "Quick check"
-AUDIT_TYPES = {"full": FULL, "quick": QUICK}
+FULL, QUICK, TABLE = "Full audit", "Quick check", "Single-table check"
+AUDIT_TYPES = {"full": FULL, "quick": QUICK, "table": TABLE}
+TABLE_NOTE = ("Only one table of this report was available, so only the checks that read a "
+              "species table ran on it (species range and IUCN status vs GBIF).")
 GRADES = ("RED", "ORANGE", "INFO")
 REVIEWED = {"real", "false_alarm", "unsure", "disputed"}
 QUICK_NOTICE = "Quick check: free checks only; full audit not run."
@@ -58,7 +62,11 @@ def review_counts(findings, queue=None, reviews=None):
     verdicts = {}
     if queue:
         from tigerfish import review
-        verdicts = {i["flag_id"]: review.verdict(i, reviews or {}) for i in queue.get("items", [])}
+        for i in queue.get("items", []):
+            v = review.verdict(i, reviews or {})
+            verdicts[i["flag_id"]] = v
+            if i.get("finding_id") and v in REVIEWED:      # a flag of a merged finding
+                verdicts[i["finding_id"]] = v
     done = sum(1 for f in flagged if f.get("verification") or verdicts.get(f["id"]) in REVIEWED)
     if not done and not queue:
         return None
@@ -67,14 +75,15 @@ def review_counts(findings, queue=None, reviews=None):
 
 def _entry(report, meta, kind, path, queue=None, reviews=None):
     findings = report.get("findings") or []
-    audit = report.get("audit_type") or ("quick" if kind == "batch" else "full")
+    unit = report.get("unit", "page")
+    audit = report.get("audit_type") or ("quick" if kind == "batch" else
+                                         "table" if unit == "table" else "full")
     hr = report.get("human_reviewed")
     if isinstance(hr, dict) and "reviewed" in hr:
         reviewed = (int(hr["reviewed"]), int(hr.get("of", 0)))
     else:
         reviewed = review_counts(findings, queue, reviews)
     get = lambda k: report.get(k) if report.get(k) not in (None, "") else meta.get(k)
-    unit = report.get("unit", "page")
     return {
         "id": report["id"], "title": report.get("title") or report["id"],
         "project": get("project") or report.get("title") or report["id"],
@@ -83,6 +92,7 @@ def _entry(report, meta, kind, path, queue=None, reviews=None):
         "pages": int(report.get("pages_read") or 0), "pages_total": int(report.get("pages_total") or 0),
         "unit": unit, "audit_type": AUDIT_TYPES.get(audit, FULL), "grades": counts(findings),
         "reviewed": reviewed, "kind": kind, "path": str(path),
+        "full_run": report.get("full_run") or None,
     }
 
 
@@ -91,16 +101,21 @@ def entries(results=None, queue=None, reviews=None):
     (results/batch/index.json). queue/reviews: the human review queue (tigerfish/review.py)."""
     results = Path(results or RESULTS)
     meta = _read(results / "library.json") or {}
-    if queue is None and results == RESULTS:
+    per_report = queue is None and results == RESULTS     # each report's own queue and reviews
+    if per_report:
         from tigerfish import review
-        queue, reviews = review.load_queue(), review.load_reviews()
     out = []
     for item in _read(results / "index.json") or []:
         path = results / item["file"]
         report = _read(path)
-        if report:
+        if not report:
+            continue
+        if per_report:
+            q, r = review.queue_for(report), review.load_reviews(report_id=report["id"])
+        else:
             q = queue if queue and queue.get("report_id") == report["id"] else None
-            out.append(_entry(report, meta.get(report["id"], {}), "saved", path, q, reviews))
+            r = reviews
+        out.append(_entry(report, meta.get(report["id"], {}), "saved", path, q, r))
     bdir = batch_dir(None if results == RESULTS else results)
     index = _read(bdir / "index.json") or {}
     for item in index.get("reports", []) if isinstance(index, dict) else []:
@@ -119,13 +134,50 @@ def totals(items):
             "orange": sum(e["grades"]["ORANGE"] for e in items),
             "info": sum(e["grades"]["INFO"] for e in items),
             "full": sum(e["audit_type"] == FULL for e in items),
-            "quick": sum(e["audit_type"] == QUICK for e in items)}
+            "quick": sum(e["audit_type"] == QUICK for e in items),
+            "table": sum(e["audit_type"] == TABLE for e in items)}
 
 
 def totals_line(t):
     eia = "EIA" if t["reports"] == 1 else "EIAs"
     return (f"{t['reports']:,} {eia} checked, {t['pages']:,} pages read, {t['flags']:,} flags "
             f"({t['red']:,} RED, {t['orange']:,} ORANGE) and {t['info']:,} INFO leads")
+
+
+def _about_pages(n):
+    """~360, ~1,200: two significant figures."""
+    if n < 100:
+        return f"~{n}"
+    step = 10 ** (len(str(n)) - 2)
+    return f"~{round(n / step) * step:,}"
+
+
+def _usd(x):
+    return f"${x:.0f}" if x >= 10 else f"${x:.2f}"
+
+
+def full_runs(items):
+    """[(report length in pages, Nebius USD)] of the saved full runs, shortest first."""
+    out = []
+    for e in items:
+        run = e.get("full_run") or {}
+        if run.get("cost_usd") and e.get("pages_total"):
+            out.append((e["pages_total"], float(run["cost_usd"])))
+    return sorted(out)
+
+
+def price_line(items, dollar="$"):
+    """"Full audit: about $2.40 for ~370 pages to $16 for ~1,200 pages (measured)", from the
+    saved full runs (None if there are none). dollar: "\\$" for Streamlit markdown."""
+    runs = full_runs(items)
+    if not runs:
+        return None
+    usd = lambda x: _usd(x).replace("$", dollar)
+    (n0, c0), (n1, c1) = runs[0], runs[-1]
+    if len(runs) == 1:
+        return f"Full audit: about {usd(c0)} for {_about_pages(n0)} pages (measured, 1 run)"
+    return (f"Full audit: about {usd(c0)} for {_about_pages(n0)} pages to {usd(c1)} for "
+            f"{_about_pages(n1)} pages (measured, {len(runs)} runs)")
 
 
 def options(items, key):

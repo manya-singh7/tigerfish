@@ -35,7 +35,6 @@ from tigerfish.ui.style import esc
 S = "upload::"          # session-state prefix
 NOT_DETECTED = "not detected"
 MAX_FREE_PAGES = 2000   # the free checks read at most this many pages of one upload
-FULL_AUDIT_RANGE = "about $4-13 per report"
 DEFAULT_PICK = "Pages with the most figures and species names (default)"
 RANGE_PICK = "Type a page range"
 NOTE = UPLOAD_NOTE
@@ -73,8 +72,10 @@ def levels(n_pages, chosen_usd=None):
     est = (f" This report: about \\${rates[0] * n_pages:.0f}-{rates[1] * n_pages:.0f} "
            f"({n_pages:,} pages at the cost per page of our saved full runs)."
            if rates and n_pages else "")
-    c.markdown(f"**Full audit (your own key or run locally, {FULL_AUDIT_RANGE.replace('$', chr(92) + '$')})**"
-               f"  \nEvery page, every check, about an hour.{est} Run `scripts/audit.py` locally "
+    price = library.price_line(library.entries(), dollar="\\$")   # from the saved full runs
+    c.markdown("**Full audit (your own key or run locally)**"
+               + (f"  \n{price}." if price else "")
+               + f"  \nEvery page, every check, about an hour.{est} Run `scripts/audit.py` locally "
                "with your own keys.")
 
 

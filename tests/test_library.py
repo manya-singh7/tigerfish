@@ -56,7 +56,7 @@ def test_entries_totals_and_filters(tmp_path):
     assert r1["reviewed"] == (1, 2)                     # hand-verified 1 of 2 RED/ORANGE
     t = library.totals(items)
     assert t == {"reports": 3, "pages": 10 + 212 + 90, "flags": 2 + 1 + 1, "red": 2,
-                 "orange": 2, "info": 1 + 2 + 1, "full": 1, "quick": 2}
+                 "orange": 2, "info": 1 + 2 + 1, "full": 1, "quick": 2, "table": 0}
     assert library.totals_line(t).startswith("3 EIAs checked, 312 pages read, 4 flags")
     f = library.filter_entries
     assert [e["id"] for e in f(items, has_red=True)] == ["r1", "sample_quick_mine_odisha_2025"]

@@ -86,7 +86,15 @@ with sync_playwright() as p:
     search.fill("")
     search.press("Enter")
     page.wait_for_timeout(2500)
-    page.screenshot(path=str(OUT / "library.png"))
+    # quality across all reports, from the saved review files; Indira Point is not a full audit
+    ok("library: Quality section", page.get_by_role("heading", name="Quality").count() > 0
+       and page.get_by_text("RED/ORANGE flags,").count() > 0)
+    table_rows = [e for e in items if e["audit_type"] == library.TABLE]
+    ok("library: single-table check labelled", not table_rows or (
+        page.locator(".tf-lib-table").count() == len(table_rows)
+        and page.get_by_text(library.TABLE_NOTE).count() == len(table_rows)))
+    ok("library: no 'No reviews saved yet'", page.get_by_text("No reviews saved yet").count() == 0)
+    page.screenshot(path=str(OUT / "library.png"), full_page=True)
     no_exception(page, "library")
 
     # ---------- upload a new EIA with no key ----------
@@ -106,6 +114,9 @@ with sync_playwright() as p:
     ok("upload: three levels shown", page.get_by_text("Deep audit (chosen pages, live)").count() > 0
        and page.get_by_text("Full audit (your own key or run locally").count() > 0)
     ok("upload: no-key note", page.get_by_text("No key: the free checks run").count() > 0)
+    price = library.price_line(items)
+    ok("upload: full-audit price measured from saved runs", price and page.get_by_text(
+        price.split(" (measured")[0]).count() > 0 and page.get_by_text("$4-13").count() == 0, price)
     page.locator('[data-testid="stFileUploaderDropzoneInput"]').set_input_files(str(pdf))
     page.get_by_text("Deep audit: choose the pages").wait_for(timeout=240_000)
     page.get_by_text("No key: only the quick check ran").wait_for(timeout=240_000)
@@ -178,7 +189,7 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Draft objection letter (.docx)").and_(
         page.locator(":enabled")).wait_for(timeout=120_000)
 
-    for tab, marker, shot in (("Review queue", "Every new RED/ORANGE flag", "review"),
+    for tab, marker, shot in (("Review queue", "Review queue: Great Nicobar", "review"),
                               ("Reviewer's memo & Ask", "Ask the report", "memo"),
                               ("Public record", "Timeline (official sources)", "record"),
                               ("Evidence from the web", "Evidence from the web", "web"),
@@ -191,6 +202,13 @@ with sync_playwright() as p:
     page.get_by_role("tab", name="Review queue").click()
     page.wait_for_timeout(1500)
     ok("review queue: committed decisions read-only", page.get_by_text("shown read-only").count() > 0)
+    ok("review queue: too few judged, no percentage", page.get_by_text("Too few judged").count() > 0
+       or page.get_by_text("% (").count() > 0)
+    page.get_by_role("tab", name="Findings").click()
+    page.wait_for_timeout(1500)
+    ok("findings: team reviews apart from yours", page.get_by_text("Team reviews (saved)").count() > 0
+       and page.get_by_text("Your reviews (this browser session)").count() > 0
+       and page.get_by_text("No reviews saved yet").count() == 0)
     page.get_by_role("tab", name="Reviewer's memo & Ask").click()
     page.wait_for_timeout(1000)
     ok("memo: reviewer's memo", page.get_by_text("Reviewer's memo").count() > 0)
@@ -274,7 +292,34 @@ with sync_playwright() as p:
        f"{docs.count()} documents")
     ok("Cuddalore: TNPCB hearing contact", page.get_by_text("Tamil Nadu Pollution Control Board").count() > 0)
     ok("Cuddalore: no ADB wording", page.locator(".tf-adb").filter(visible=True).count() == 0)
+    page.get_by_role("tab", name="Review queue").click()
+    page.wait_for_timeout(2000)
+    ok("Cuddalore: its own review queue", page.get_by_text("Review queue: Cuddalore").count() > 0)
     no_exception(page, "Cuddalore")
+
+    # Karnataka (ADB): full audit with its own site, not-applicable checks, Kannada letter
+    ka = library.find(items, "karnataka_rural_roads_2026_adb")
+    if ka:
+        page.locator('[data-testid="stSelectbox"]').first.click()
+        page.get_by_role("option", name="Karnataka").click()
+        page.get_by_text("not applicable").first.wait_for(timeout=180_000)
+        page.wait_for_timeout(2000)
+        ok("Karnataka: not-applicable reasons", page.get_by_text("No single project site").count() > 0)
+        radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
+        try:
+            radio.get_by_text("English + Kannada", exact=True).wait_for(timeout=180_000)
+        except Exception:
+            pass
+        ok("Karnataka: Kannada letter option", radio.get_by_text("Kannada", exact=True).count() > 0)
+        page.get_by_role("tab", name="Review queue").click()
+        page.wait_for_timeout(2000)
+        ok("Karnataka: its own review queue", page.get_by_text("Review queue: Karnataka").count() > 0)
+        page.get_by_role("tab", name="Public record").click()
+        page.wait_for_timeout(2500)
+        ok("Karnataka: paper trail", page.get_by_text("Timeline (official sources)").count() > 0
+           or page.get_by_text("Documents found").count() > 0)
+        page.screenshot(path=str(OUT / "karnataka.png"))
+        no_exception(page, "Karnataka")
     page.get_by_role("button", name="Back to library").click()
     page.wait_for_selector(".tf-lib-total", timeout=60_000)
     ok("back link: report -> library", page.locator(".tf-lib-total").count() == 1

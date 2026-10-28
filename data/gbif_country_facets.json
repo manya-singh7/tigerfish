@@ -1,9 +1,24 @@
 {
+ "10665719": {
+  "countries": [
+   [
+    "IN",
+    16
+   ],
+   [
+    "BD",
+    7
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Bungarus walli",
+  "total": 25
+ },
  "2221647": {
   "countries": [
    [
     "US",
-    293868
+    293867
    ],
    [
     "MX",
@@ -30,9 +45,24 @@
     1
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Panulirus interruptus",
   "total": 294907
+ },
+ "2341877": {
+  "countries": [
+   [
+    "AU",
+    4717
+   ],
+   [
+    "ID",
+    2
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Tandanus tandanus",
+  "total": 4747
  },
  "2426805": {
   "countries": [
@@ -69,7 +99,7 @@
     21821
    ]
   ],
-  "fetched": "2026-10-28",
+  "fetched": "2026-10-29",
   "species": "Rana temporaria",
   "total": 829157
  },
@@ -77,7 +107,7 @@
   "countries": [
    [
     "IL",
-    2635
+    2660
    ],
    [
     "IN",
@@ -108,15 +138,15 @@
     31
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Felis chaus",
-  "total": 4051
+  "total": 4077
  },
  "2437243": {
   "countries": [
    [
     "IN",
-    4775
+    4776
    ],
    [
     "PK",
@@ -124,11 +154,11 @@
    ],
    [
     "AE",
-    196
+    195
    ],
    [
     "NP",
-    183
+    184
    ],
    [
     "BD",
@@ -147,9 +177,9 @@
     20
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Funambulus pennantii",
-  "total": 5677
+  "total": 5678
  },
  "2440934": {
   "countries": [
@@ -159,7 +189,7 @@
    ],
    [
     "LK",
-    1486
+    1485
    ],
    [
     "US",
@@ -186,9 +216,9 @@
     71
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Axis axis",
-  "total": 8773
+  "total": 8772
  },
  "2440943": {
   "countries": [
@@ -198,7 +228,7 @@
    ],
    [
     "ID",
-    2006
+    2007
    ],
    [
     "IN",
@@ -206,7 +236,7 @@
    ],
    [
     "TH",
-    747
+    746
    ],
    [
     "NP",
@@ -222,12 +252,196 @@
    ],
    [
     "MY",
-    139
+    141
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Muntiacus muntjak",
-  "total": 9125
+  "total": 9127
+ },
+ "2448723": {
+  "countries": [
+   [
+    "IN",
+    40
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Melanophidium punctatum",
+  "total": 41
+ },
+ "2448739": {
+  "countries": [
+   [
+    "IN",
+    18
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Uropeltis rubromaculata",
+  "total": 18
+ },
+ "2448780": {
+  "countries": [
+   [
+    "IN",
+    38
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Uropeltis liura",
+  "total": 39
+ },
+ "2455464": {
+  "countries": [
+   [
+    "IN",
+    14
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Xylophis stenorhynchus",
+  "total": 14
+ },
+ "2457717": {
+  "countries": [
+   [
+    "IN",
+    52
+   ],
+   [
+    "SG",
+    28
+   ],
+   [
+    "TH",
+    19
+   ],
+   [
+    "MM",
+    15
+   ],
+   [
+    "BD",
+    7
+   ],
+   [
+    "PH",
+    6
+   ],
+   [
+    "LK",
+    5
+   ],
+   [
+    "MY",
+    3
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Gerarda prevostiana",
+  "total": 156
+ },
+ "5220487": {
+  "countries": [
+   [
+    "IN",
+    55
+   ],
+   [
+    "PK",
+    35
+   ],
+   [
+    "TH",
+    9
+   ],
+   [
+    "MY",
+    2
+   ],
+   [
+    "NP",
+    2
+   ],
+   [
+    "ID",
+    1
+   ],
+   [
+    "ZZ",
+    1
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Chitra indica",
+  "total": 147
+ },
+ "5224321": {
+  "countries": [
+   [
+    "TH",
+    460
+   ],
+   [
+    "VN",
+    188
+   ],
+   [
+    "ID",
+    184
+   ],
+   [
+    "CN",
+    144
+   ],
+   [
+    "HK",
+    126
+   ],
+   [
+    "IN",
+    109
+   ],
+   [
+    "MY",
+    65
+   ],
+   [
+    "MM",
+    51
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Coelognathus radiatus",
+  "total": 1579
+ },
+ "5959466": {
+  "countries": [
+   [
+    "PK",
+    62
+   ],
+   [
+    "IN",
+    26
+   ],
+   [
+    "AF",
+    1
+   ],
+   [
+    "TH",
+    1
+   ],
+   [
+    "ZA",
+    1
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Psammophis leithii",
+  "total": 95
  },
  "5960063": {
   "countries": [
@@ -264,9 +478,24 @@
     170
    ]
   ],
-  "fetched": "2026-10-28",
+  "fetched": "2026-10-29",
   "species": "Hemidactylus brookii",
   "total": 4881
+ },
+ "5960921": {
+  "countries": [
+   [
+    "IN",
+    38
+   ],
+   [
+    "ID",
+    2
+   ]
+  ],
+  "fetched": "2026-10-29",
+  "species": "Trimeresurus macrolepis",
+  "total": 40
  },
  "7261386": {
   "countries": [
@@ -276,7 +505,7 @@
    ],
    [
     "TW",
-    27469
+    27470
    ],
    [
     "IN",
@@ -296,16 +525,16 @@
    ],
    [
     "MY",
-    436
+    437
    ],
    [
     "NP",
     418
    ]
   ],
-  "fetched": "2026-10-27",
+  "fetched": "2026-10-29",
   "species": "Rusa unicolor",
-  "total": 69144
+  "total": 69146
  },
  "7898948": {
   "countries": [
@@ -342,7 +571,7 @@
     4
    ]
   ],
-  "fetched": "2026-10-28",
+  "fetched": "2026-10-29",
   "species": "Ahaetulla mycterizans",
   "total": 581
  }

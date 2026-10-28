@@ -76,7 +76,8 @@ with findings_tab:
     shown = data.filter_findings(findings, grades, checks)
     feedback.reviewer_input(report["id"], findings)
     # Flags judged false alarms (Review queue tab, or Dismiss on a card) are hidden by default.
-    dismissed = (review_store.dismissed_finding_ids(review_store.load_queue(), review_store.load_reviews())
+    dismissed = (review_store.dismissed_finding_ids(review_store.queue_for(report),
+                                                    review_store.load_reviews(report_id=report["id"]))
                  | {f["id"] for f in cards.reviewed(report["id"], findings, "Dismiss")})
     n_dismissed = sum(f["id"] in dismissed for f in shown)
     if n_dismissed and not st.toggle(f"Show dismissed ({n_dismissed})", key="show_dismissed"):
@@ -151,10 +152,10 @@ with findings_tab:
         st.caption(letter_error)
 
     st.write("")
-    feedback.panel(report["id"], findings)
+    feedback.panel(report["id"], findings, report)
 
 with review_tab:
-    review.render(report["id"])
+    review.render(report["id"], report)
 
 with memo_tab:
     memo_ask.render(report["id"])

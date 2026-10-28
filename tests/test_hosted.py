@@ -85,7 +85,8 @@ def test_hosted_review_decisions_stay_in_session(hosted_no_key, monkeypatch, tmp
     monkeypatch.setattr(review, "REVIEWS", committed)
     monkeypatch.setenv("TIGERFISH_FEEDBACK", str(tmp_path / "feedback.json"))
 
-    queue = review.load_queue()
+    from tigerfish.ui import data
+    queue = review.queue_for(data.load(review.load_queue()["report_id"]))
     at = open_app(timeout=90)
     at.text_input(key="review::name").input("Visitor").run()
     pos = at.session_state["review::pos"]
