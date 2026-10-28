@@ -104,6 +104,10 @@ CSS = f"""
   .tf-off {{ color: {ACCENT}; background: #E3F0F0; }}
   .tf-open {{ color: #8A4B08; background: #FDF0D9; }}
   .tf-auth {{ color: #3D4A8A; background: #E8EBF7; }}
+  .tf-via {{ display: inline-block; font-size: 0.7rem; font-weight: 650; border-radius: 999px;
+             padding: 0.05rem 0.5rem; margin-top: 0.3rem; color: #3D4A8A; background: #E8EBF7; }}
+  .tf-doc {{ border-bottom: 1px solid {BORDER}; padding: 0.55rem 0; font-size: 0.9rem; }}
+  .tf-unusable {{ color: #8A4B08; }}
   a {{ color: {ACCENT}; }}
 </style>
 """

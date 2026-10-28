@@ -1,0 +1,917 @@
+{
+ "report_id": "great_nicobar_2021_draft",
+ "searched_on": "2026-10-28",
+ "identity": {
+  "name": "Great Nicobar Island holistic development (ICTT, airport, township, power plant)",
+  "search_name": "Great Nicobar ANIIDCO International Container Transshipment Terminal",
+  "name_groups": [
+   [
+    "great nicobar"
+   ],
+   [
+    "transshipment terminal",
+    "transhipment terminal",
+    "ictt",
+    "aniidco",
+    "greenfield international airport",
+    "holistic development"
+   ]
+  ],
+  "proposals": [
+   "IA/AN/NCP/201159/2021"
+  ],
+  "state": "Andaman and Nicobar Islands",
+  "facts": [
+   {
+    "fact": "proposal",
+    "value": "IA/AN/NCP/201159/2021",
+    "page": 45,
+    "quote": "the recommended TOR for the proposal no: IA/AN/NCP/201159/2021"
+   },
+   {
+    "fact": "tor_letter",
+    "value": "F.No.10/17/2021-IA.III dated 25th May 2021",
+    "page": 44,
+    "quote": "The EIA report is prepared based on the TOR conditions issued by MoEF&CC vide F.No.10/17/2021-IA.III dated 25th May 2021"
+   },
+   {
+    "fact": "state",
+    "value": "Andaman and Nicobar Islands",
+    "page": 49,
+    "quote": "propose Holistic Development of Great Nicobar Island in Andaman and Nicobar Islands"
+   },
+   {
+    "fact": "name",
+    "value": "Holistic Development of Great Nicobar Island",
+    "page": 49,
+    "quote": "propose Holistic Development of Great Nicobar Island in Andaman and Nicobar Islands"
+   }
+  ],
+  "unchecked": [],
+  "note": ""
+ },
+ "sites": [
+  "parivesh.nic.in",
+  "environmentclearance.nic.in",
+  "moef.gov.in",
+  "dstpcc.andamannicobar.gov.in"
+ ],
+ "steps": [
+  {
+   "tool": "map",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "moef.gov.in",
+   "results": 2,
+   "kept": 2,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "moef.gov.in",
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "dstpcc.andamannicobar.gov.in",
+   "results": 11,
+   "kept": 11,
+   "credits": 2
+  },
+  {
+   "tool": "crawl",
+   "site": "dstpcc.andamannicobar.gov.in",
+   "results": 11,
+   "credits": 4
+  },
+  {
+   "tool": "search",
+   "query": "\"IA/AN/NCP/201159/2021\"",
+   "results": 4,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal terms of reference letter",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal expert appraisal committee minutes",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal public hearing notice",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal public hearing proceedings minutes",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal environmental clearance letter",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Great Nicobar ANIIDCO International Container Transshipment Terminal compliance report environmental clearance conditions",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 4,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 3,
+   "results": 3,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 1,
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 1,
+   "credits": 0
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 1,
+   "credits": 1
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 5,
+   "results": 0,
+   "credits": 2
+  },
+  {
+   "tool": "extract (advanced)",
+   "urls": 1,
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "dstpcc.andamannicobar.gov.in",
+   "purpose": "contact pages",
+   "results": 3,
+   "credits": 0
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 2,
+   "results": 2,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "Impact Assessment Division Ministry of Environment Forest and Climate Change member secretary email contact",
+   "results": 8,
+   "credits": 1
+  }
+ ],
+ "documents": [
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAZTSC4UWd6JEtBDH4gPwlKNliwAFiXISfIqoKU81laEl&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzUI4D0y0DyH4SbeEYqwvEmbw63j4fms9Murl/YnHqFqoQ==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "title": "Copy of Previous TOR letter",
+   "type": "ToR letter",
+   "date": "2021-05-25",
+   "date_quote": "Dated: 25 th May, 2021",
+   "match": "proposal number",
+   "quote": "Proposal No. IA/AN/NCP/201159/2021 Page 1 of 18 File No. 10/17/2021-IA.III [Proposal No. IA/AN/NCP/201159/2021] Government of India Ministry of Environment, Forest and",
+   "chars": 56811,
+   "granted_tor": true
+  },
+  {
+   "url": "https://shipmin.gov.in/sites/default/files/RevisedEOI-atGalathea.pdf",
+   "host": "shipmin.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "EXPRESSION OF INTEREST (EOI)",
+   "type": "Other official page",
+   "date": "2023-03-07",
+   "date_quote": "date: 7th March, 2023",
+   "match": "project name",
+   "quote": "Expression of Interest for Development of Phase 1 of International Container Transshipment Port at Great Nicobar Nicobar, India Syama Prasad Mookerjee Port, Kolkata 7 1.1.5 SMPK in association with ANIIDCO proposes to develop the port preferably via Landlord mode",
+   "chars": 28810,
+   "granted_tor": false
+  },
+  {
+   "url": "http://andssw1.and.nic.in/socialwelfare/pdf/Draft%20SIA%20Report.pdf",
+   "host": "andssw1.and.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "Draft Final Report on - Andaman and Nicobar Islands",
+   "type": "Other official page",
+   "date": "2024-05-23",
+   "date_quote": "Date: 23-05-2024",
+   "match": "project name",
+   "quote": "1 Draft Report on SIA Study for Greenfield International Airport – Great Nicobar Draft Final Report on Social Impact Assessment Study for Greenfield International Airport – Great Nicobar Submitted to Directorate of Social Welfare,",
+   "chars": 166049,
+   "granted_tor": false
+  },
+  {
+   "url": "https://environmentclearance.nic.in/auth/ECReport_New.aspx?pid=41797&status=found.c6d5bc",
+   "host": "environmentclearance.nic.in",
+   "found_via": "research",
+   "via_detail": "Public record timeline",
+   "title": "Form-2 APPLICATION FOR PRIOR ENVIRONMENTAL CLEARANCE S. No. Item Details 1.Whether it is a violation case and applicatio",
+   "type": "Application (Form 1 / Form 2)",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Submission of response for the comments of EAC in its 297th meeting held on 24.05.2022 regarding holistic development of Great Nicobar Island | 19 Aug 2022 | | 4.",
+   "chars": 32827,
+   "granted_tor": false
+  },
+  {
+   "url": "https://environmentclearance.nic.in/auth/FORM_A_PDF.aspx?cat_id=IA%2FAN%2FNCP%2F201159%2F2021",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Report Part 1",
+   "type": "Application (Form 1 / Form 2)",
+   "date": null,
+   "date_quote": null,
+   "match": "proposal number",
+   "quote": "Brief summary of projectAnnexure-Brief summary of project Proposal Number IA/AN/NCP/201159/2021 Project Cost 75000 cr 2.S.",
+   "chars": 42663,
+   "granted_tor": false
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/144-EIA%20uncompressed.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "title": "COMPREHENSIVE ENVIRONMENTAL IMPACT ASSESSMENT REPORT FOR HOLISTIC DEVELOPMENT OF GREAT NICOBAR ISLAND IN ANDAMAN AND NIC",
+   "type": "EIA report",
+   "date": null,
+   "date_quote": null,
+   "match": "proposal number",
+   "quote": "Parks, Leather Complexes 7(c); Ports, harbours, break waters, dredging 7(e) and National Highways 7(f) the recommended TOR for the proposal no: IA/AN/NCP/201159/2021 given in Annexure-I.",
+   "chars": 2242127,
+   "granted_tor": false
+  },
+  {
+   "url": "https://shipmin.gov.in/sites/default/files/Annual%20Report%202023-24_English.pdf",
+   "host": "shipmin.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "Final Annual Report 2023-24.cdr",
+   "type": "Other official page",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "3.27 The ICTP at Galathea Bay, Great Nicobar Island, is part of a holistic development initiative by NITI Ayog, focusing on four projects including the ICTP, Greeneld Airport, Township and Power Plant.",
+   "chars": 313891,
+   "granted_tor": false
+  },
+  {
+   "url": "https://shipmin.gov.in/sites/default/files/Annual%20Report%202024-25%20-%20English.pdf",
+   "host": "shipmin.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "Annual Report 2024-25",
+   "type": "Other official page",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Port Island Development IniƟaƟves in Lakshadweep and Andaman and Nicobar Islands 27 International Container Transhipment Port (ICTP) at Galathea Bay, Great Nicobar Island 3.31 The ICTP at Galathea Bay, Great Nicobar Island, is part of a holistic development initiative by NITI Ayog, focusing on four projects",
+   "chars": 357598,
+   "granted_tor": false
+  },
+  {
+   "url": "https://dt.andamannicobar.gov.in/epaper/10282025.pdf",
+   "host": "dt.andamannicobar.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "title": "Hon'ble - The Daily Telegrams :: Andaman & Nicobar Islands",
+   "type": "Other official page",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "The holistic development of Great Nicobar Island is also expected to significantly boost tourism and infrastructure growth in the region.",
+   "chars": 48042,
+   "granted_tor": false
+  },
+  {
+   "url": "https://apwd.and.nic.in/Admin/Uploads/1144.pdf",
+   "host": "apwd.and.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "title": "Draft Master Plan For Great Nicobar Island (GNI) Development ...",
+   "type": "Other official page",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "The strategic positioning near to the international shipping route and available natural deep draft port with natural Water Depth of 20-30 meters presents opportunity for setting up of an International Container Transshipment Terminal (ICTT) at Great Nicobar.",
+   "chars": 354326,
+   "granted_tor": false
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "title": "DownloadPfdFile.aspx",
+   "type": "Pre-feasibility report",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Holistic Development of Great Nicobar Islands Pre-Feasibility Report _ ## _ 1 # Holistic Development of Great Nicobar Island at Andaman & Nicobar Islands # Pre-Feasibility Report March 2021",
+   "chars": 249934,
+   "granted_tor": false
+  },
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257174&reg=48&lang=2",
+   "host": "pib.gov.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "title": "Press Release Page | Press Information Bureau",
+   "type": "Press release",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "In this context, the International Container Transhipment Port (ICTP) at Galathea Bay is being developed as part of the Holistic Development of Great Nicobar Island under the Island Development programme.",
+   "chars": 35964,
+   "granted_tor": false
+  },
+  {
+   "url": "https://environmentclearance.nic.in/onlinesearchnewrk.aspx?autoid=47845&proposal_no=IA%2FAN%2FNCP%2F201159%2F2021&typep=TOR",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "title": "Welcome to PARIVESH",
+   "type": "Proposal status page",
+   "date": null,
+   "date_quote": null,
+   "match": "proposal number",
+   "quote": "Proposal No:IA/AN/NCP/201159/2021 File No:10/17/2021-IA.III Proposal Name:Holistic Development of Great Nicobar Island in Andaman and Nicobar Islands.",
+   "chars": 2281,
+   "granted_tor": false
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "research",
+   "via_detail": "Public record timeline",
+   "title": "Transshipment Terminal (14.2 Million TEU), Greenfield International Airport, 450 MVA Gas and Solar Power Plant, Township",
+   "type": "Public hearing proceedings",
+   "date": null,
+   "date_quote": null,
+   "match": "project name",
+   "quote": "Transshipment Terminal (14.2 Million TEU), Greenfield International Airport, 450 MVA Gas and Solar Power Plant, Township and Area development) Project title: Holistic development of Great Nicobar Island in Andaman and Nicobar Islands Planning body: National Institution for Transforming India (NITI) Aayog, Govt.",
+   "chars": 2367,
+   "granted_tor": false
+  }
+ ],
+ "dropped": [
+  {
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2076917",
+   "host": "pib.gov.in",
+   "found_via": "research",
+   "via_detail": "Public record timeline",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/storage/tender/1790854764.pdf",
+   "host": "moef.gov.in",
+   "found_via": "map",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/storage/tender/1790854816.pdf",
+   "host": "moef.gov.in",
+   "found_via": "map",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://moef.gov.in/projects",
+   "host": "moef.gov.in",
+   "found_via": "crawl",
+   "via_detail": "moef.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/143-Public%20Notice.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/155-Minutes%20of%20the%20meeting.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/180-CRZ%20_Clearance.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/182-Notice.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/182-Press%20Note%20Website.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/183-PN-2-2.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/184-Public%20Notice-5.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/185-public_notice_compressed.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/189-Public_Notice.pdf",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "found_via": "map",
+   "via_detail": "dstpcc.andamannicobar.gov.in",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Agenda/060420217P9XKTFD260Revised-AgendaEAC_Infra-1_.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=mfeaYaYbdxRbeR8PGLUyc7J+8t4RpQX492Z3f%2FqqNBogwhR2ZOGZ3hCyXZtsY2hMn2Iuhed4AXaJIsGXtissieuv%2FIw8SrX96YYyLOIbjUY7K9Cs2EfDizl5pw1jA4oV&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzXmG8GlihX6H9UP1HygCn3p%2F41fTQPSrCxchmj8kKGKfA%3D%3D",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "proposal number",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/03102018GZ4F7X6534thEACFinalMinutes.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/1307202279355686FinalMoM92ndEAC(Infra-2).pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/3005202287160351FinalMOM88EACMeeting.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/2609202272521854FinalMoMof95thEAC.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/FormB/agenda/21072020JAGVFYCZDraft_445_F.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/FormB/agenda/060420219J4SRUV6Minutes_497.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/FormB/agenda/06112020PMS1ZTIEMinutes-462.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://cpc.parivesh.nic.in/writereaddata/ENV/EnvironmentalClearance-General/5.pdf",
+   "host": "cpc.parivesh.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Public%20Hearing/02082016CQ4QJ1QNAnnexure-documentofPublicHearing.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Public%20Hearing/16112017PR3M0QVHAnnexurePublicHearing.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://eparlib.sansad.in/bitstream/123456789/3009231/1/18_Public_Undertakings_18.pdf",
+   "host": "eparlib.sansad.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Public%20Hearing/31072014B0QFVDFQPublicHearingdocuments.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/0_0_21_Apr_2023_1819374931Complianceto304thEACmeeting_Finaldoc_compressed.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Public hearing proceedings",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/TOR/01_Nov_2018_1459056737NAXSZ4DPREFR.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/modification/previousTOR/20122018858Z1ZPVForm-1-RevalidationofEC-SindhudurgAirport.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/0_0_01_Apr_2020_1136216801ShubhlaxmiFinalBinder.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/FormB/agenda/3009202338493705654thSEIAAMinutes.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/TOR/01_Nov_2018_145905633ABNL0QYIDraftTOR.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/07_Mar_2018_1229027179YMPNOAKAI10.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAYsFMA2kdX0PygcXIhI8Kx3z9T6LL8wAisXtb8TRDWuWWbgoiv9OfV/cfVcdmZSE2oi0P7R0JFcvlvQTUCzd8nBn8kbKNyXWP4Y9N9XyUPPXntSfCFzfrZ3YLWlqYCvUbg==&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXmG8GlihX6H9UP1HygCn3p/41fTQPSrCxchmj8kKGKfA==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYU4j4hrVgU1mp+RWU/0k9Av5jCdGfbXLsIXqiWUPmI5sakMYb3mKbnrdwAvwPaOi/g==&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62ENmUY5KDC08HB1haqKJXKAK5VWGpc3hZkilpwgu/l6g=",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/images/download.PNG",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYZA/zOqx8nrC7Gf3cE4AsmXmEXXN6MZDg+K1/0ODECO+pPm/9kchT2OSbiAnGxTCEUPJBJerLBzedjr1yMuRhPg=&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzU58BnhvJgYCZmnh7L8vuUpAjRlPQFm4dqIX0YXm9oQdIXvs4CpAbUBzBFrV7e1RFE=",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYeqXAnhHD9Z4KiV4LHlcov9kRS9yBgviP3ynQ/BuTutr3aNrnqKoBH52PRl/U7QmeQDWJJSvlBuLC90lm0PLqAc=&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzU58BnhvJgYCZmnh7L8vuUpAjRlPQFm4dqIX0YXm9oQdIXvs4CpAbUBzBFrV7e1RFE=",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYZhrlgnvckVmgRDZTdk6x4u3r+6Tp9lvsjbGi5chcC0DVfJzCQ1nnLWp0MrUoCLhjc7j4CDthXMP7SWUm/OcVLI=&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62ENmUY5KDC08HB1haqKJXKAK5VWGpc3hZkilpwgu/l6g=",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYR8qjDjvMn4Yl0JhZeUF0xHxkN2z4nKU9jrM8gZj61vB/kbEepgmOUdlR85g1VGuzfEFebGq7sWHwoYtm9jfkp0=&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62I6BUeakiRSZ1RDw3zRMLfQ==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYWaYWVQ1XJFfQmXWyZ3y66V5oLeGtVD60mr6b/kB+qcBmTecnF+v1zC+mkVAiGEKZd5z/EJdDMxauzZt8C/BzJY=&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62I6BUeakiRSZ1RDw3zRMLfQ==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYXur3ADhHBdfauPgdoEucemADIq9fRBA2wD24kRQyZ01HwxGVIp+rY8TOMa5shLGnA==&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62I6BUeakiRSZ1RDw3zRMLfQ==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYVV2FpIDoUCRtODvIF5+/o5lhi0WvwbmKwRUEngMHlPs&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62ddD3VwimJSiMgzy0qCkbEJAfcVqn2Bcp1Hh2XG0PCrM=",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=bXNR5UHvvgAITRPHoNixYQhMu4dEmiiVdB+LTCby7px2hbVwF26ZXyEFtGEyNS7N&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzXNvGkdT0PfxJ9apij6yL62I6BUeakiRSZ1RDw3zRMLfQ==",
+   "host": "environmentclearance.nic.in",
+   "found_via": "link",
+   "via_detail": "environmentclearance.nic.in",
+   "why": "no readable text (JavaScript-only page or scan)"
+  }
+ ],
+ "drop_counts": {
+  "does not name the project or its proposal number": 31,
+  "no readable text (JavaScript-only page or scan)": 14
+ },
+ "unusable": [
+  {
+   "site": "parivesh.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "parivesh.nic.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "crawl",
+   "error": ""
+  }
+ ],
+ "granted_tor": {
+  "found": true,
+  "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAZTSC4UWd6JEtBDH4gPwlKNliwAFiXISfIqoKU81laEl&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzUI4D0y0DyH4SbeEYqwvEmbw63j4fms9Murl/YnHqFqoQ==",
+  "date": "2021-05-25",
+  "quote": "Proposal No. IA/AN/NCP/201159/2021 Page 1 of 18 File No. 10/17/2021-IA.III [Proposal No. IA/AN/NCP/201159/2021] Government of India Ministry of Environment, Forest and",
+  "title": "Copy of Previous TOR letter"
+ },
+ "contacts": {
+  "hearing": {
+   "found": true,
+   "role": "hearing",
+   "to": "The Member Secretary\nAndaman & Nicobar Pollution Control Committee",
+   "body": "Andaman & Nicobar Pollution Control Committee",
+   "address": "Department of Science and Technology, Andaman and Nicobar Administration, Dollygunj, Sri Vijay Puram.",
+   "email": "dstpcc-andamans@and.nic.in",
+   "source": "https://dstpcc.andamannicobar.gov.in/telephonedirectory.php",
+   "host": "dstpcc.andamannicobar.gov.in",
+   "quote": "2 | Shri Rakesh Das, DANICS | Director Sc. and Tech cum Member Secretary ANPCC | Department of Science and Technology, Andaman and Nicobar Administration, Dollygunj, Sri Vijay Puram. | dstpcc-andamans@and.nic.in | 03192-250370 | 03192-250370 | Andaman and Nicobar Administration",
+   "email_source": "https://dstpcc.andamannicobar.gov.in/telephonedirectory.php",
+   "note": "Check the address before sending."
+  },
+  "clearance": {
+   "found": true,
+   "role": "clearance",
+   "to": "The Member Secretary\nExpert Appraisal Committee\nImpact Assessment Division\nMinistry of Environment, Forest and Climate Change",
+   "body": "Ministry of Environment, Forest and Climate Change, Impact Assessment Division",
+   "address": "Indira Paryavaran Bhawan, Jor Bagh Road, Aliganj New Delhi - 110 003",
+   "email": "",
+   "source": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAZTSC4UWd6JEtBDH4gPwlKNliwAFiXISfIqoKU81laEl&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzUI4D0y0DyH4SbeEYqwvEmbw63j4fms9Murl/YnHqFqoQ==",
+   "host": "environmentclearance.nic.in",
+   "quote": "Ministry of Environment, Forest and Climate Change (Impact Assessment Division) Indira Paryavaran Bhawan, Jor Bagh Road, Aliganj New Delhi - 110 003",
+   "email_source": "",
+   "email_quote": "",
+   "note": "Check the address before sending."
+  }
+ },
+ "stopped": null,
+ "tavily": {
+  "credits": 27,
+  "credits_spent_this_run": 0,
+  "cached_calls": 35,
+  "features": [
+   "map + instructions",
+   "crawl + instructions",
+   "search include_domains",
+   "extract basic / advanced"
+  ]
+ },
+ "efficiency": {
+  "features": {
+   "crawl": {
+    "calls": 4,
+    "returned": 16651,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "extract": {
+    "calls": 13,
+    "returned": 5153510,
+    "sent to model": 0,
+    "shown as evidence": 2541,
+    "used": 2541,
+    "share": 0.0004930620101639466
+   },
+   "extract (advanced)": {
+    "calls": 5,
+    "returned": 2320504,
+    "sent to model": 1342,
+    "shown as evidence": 523,
+    "used": 1865,
+    "share": 0.0008037047124245422
+   },
+   "map": {
+    "calls": 5,
+    "returned": 1225,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "search: official domains": {
+    "calls": 8,
+    "returned": 81466,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "total": {
+   "calls": 35,
+   "returned": 7573356,
+   "sent to model": 1342,
+   "shown as evidence": 3064,
+   "used": 4406,
+   "share": 0.0005817764277818182
+  }
+ }
+}

@@ -24,7 +24,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from tigerfish import claims as claims_mod
-from tigerfish import copycheck, knowable
+from tigerfish import copycheck, knowable, tavily_usage
 from tigerfish.official_record import _on, host, source_label
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -120,7 +120,9 @@ def research(query, budget, poll_s=RESEARCH_POLL_S, timeout_s=RESEARCH_TIMEOUT_S
         path = copycheck._cache_path("research", params)
         if path.exists():
             budget.cached += 1
-            return json.loads(path.read_text(encoding="utf-8"))["data"], params
+            data = json.loads(path.read_text(encoding="utf-8"))["data"]
+            tavily_usage.returned("research", params, data)
+            return data, params
         budget.check(RESEARCH_RESERVE)
         try:
             task = copycheck.client().research(**params)
@@ -137,6 +139,7 @@ def research(query, budget, poll_s=RESEARCH_POLL_S, timeout_s=RESEARCH_TIMEOUT_S
             data = copycheck.client().get_research(rid, include_usage=True)
         credits = (data.get("usage") or {}).get("credits")
         budget.add(credits if isinstance(credits, (int, float)) else RESEARCH_RESERVE)
+        tavily_usage.returned("research", params, data)
         if data.get("status") != "completed":
             raise RuntimeError(f"research task {rid} did not complete: {data.get('status')}")
         copycheck.CACHE_DIR.mkdir(parents=True, exist_ok=True)

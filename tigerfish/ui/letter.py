@@ -18,6 +18,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Pt, RGBColor
 
+from tigerfish import authority
 from tigerfish import claims as claims_mod
 from tigerfish import llm
 
@@ -96,8 +97,9 @@ def blocks(report, findings, addressee="committee", draft=False):
     out = [("subject", DRAFT_NOTE)] if draft else []
     out.append(("data", date.today().strftime("%d %B %Y")))
     if addressee == "public_consultation":
-        out += [("text", "To,\nThe Member Secretary\n[State Pollution Control Board / Union Territory "
-                         "Pollution Control Committee conducting the public hearing]\n[address]"),
+        out += [*authority.to_blocks(report, "hearing", "To,\nThe Member Secretary\n[State Pollution "
+                                     "Control Board / Union Territory Pollution Control Committee "
+                                     "conducting the public hearing]\n[address]"),
                 ("subject", f"Subject: Written comments in the public consultation on "
                             f"{report['title']}, under the EIA Notification, 2006"),
                 ("text", "Sir / Madam,"),
@@ -111,8 +113,8 @@ def blocks(report, findings, addressee="committee", draft=False):
                          f"the project proponent and the consultant verify these points and clarify "
                          f"or correct them in the final report.")]
     else:
-        out += [("text", "To,\nThe Member Secretary\nExpert Appraisal Committee\n"
-                         "Ministry of Environment, Forest and Climate Change\n[address]"),
+        out += [*authority.to_blocks(report, "clearance", "To,\nThe Member Secretary\nExpert Appraisal "
+                                     "Committee\nMinistry of Environment, Forest and Climate Change\n[address]"),
                 ("subject", f"Subject: Observations on {report['title']}, request for clarification"),
                 ("text", "Sir / Madam,"),
                 ("text", f"I have reviewed {report['title']} ({report.get('source', '')}). The points "

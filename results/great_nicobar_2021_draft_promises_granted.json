@@ -1,0 +1,317 @@
+{
+ "report": "great_nicobar_2021_draft",
+ "tor_kind": "granted",
+ "tor": "granted ToR, Copy of Previous TOR letter",
+ "tor_url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAZTSC4UWd6JEtBDH4gPwlKNliwAFiXISfIqoKU81laEl&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z/pgnoBhDlYdZCxzUI4D0y0DyH4SbeEYqwvEmbw63j4fms9Murl/YnHqFqoQ==",
+ "tor_date": "2021-05-25",
+ "tor_pages": 18,
+ "eia_url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf",
+ "promises": [
+  {
+   "id": "P01",
+   "measure": "One complete season site",
+   "kind": "locations",
+   "value": 1,
+   "quote": "xxxvii) One complete season site specific meteorological and AAQ data (except monsoon season) as per latest MoEFCC Notification shall be collected and the dates of monitoring shall be recorded.",
+   "page": 15,
+   "topic": "air",
+   "commitment": "collect one complete season site specific meteorological and AAQ data (except monsoon season)",
+   "verdict": "not found",
+   "verdict_by": "ultra",
+   "rule_verdict": "met",
+   "found_value": 1,
+   "evidence_how": "lightning",
+   "n_candidates": 2,
+   "search_pages": [
+    270,
+    587,
+    589,
+    590,
+    931,
+    279,
+    45,
+    869,
+    258,
+    554,
+    868,
+    591,
+    273,
+    271,
+    526
+   ],
+   "eia_page": 270,
+   "eia_quote": "Ambient Air Quality Monitoring (AAQM) stations were set up at Six locations",
+   "report_describes": "six AAQ monitoring stations described",
+   "first_pass": "not met",
+   "ultra": "not found",
+   "reason": "The provided text does not state the monitoring season, duration, or dates, so it cannot be determined whether one complete non-monsoon season of site-specific meteorological and AAQ data was collected.",
+   "supporting_quote": null,
+   "supporting_page": null,
+   "grade": "INFO",
+   "message": "The ToR commits to collect one complete season site specific meteorological and AAQ data (except monsoon season) (ToR p.15); the report text searched does not show how this was done. Verify."
+  },
+  {
+   "id": "P02",
+   "measure": "one monitoring station",
+   "kind": "locations",
+   "value": 1,
+   "quote": "There should be at least one monitoring station each in the upwind and in the pre-dominant downwind direction at a location where maximum ground level concentration is likely to occur.",
+   "page": 15,
+   "topic": "other",
+   "commitment": "at least one monitoring station each in the upwind and in the pre-dominant downwind direction at a location where maximum ground level concentration is likely to occur",
+   "verdict": "not found",
+   "verdict_by": "lightning",
+   "rule_verdict": "not found",
+   "found_value": null,
+   "evidence_how": "lightning: none",
+   "n_candidates": 12,
+   "search_pages": [
+    987,
+    1062,
+    279,
+    996,
+    270,
+    258,
+    590,
+    990,
+    280,
+    587,
+    589,
+    999,
+    871,
+    1063,
+    1119
+   ],
+   "eia_page": 987,
+   "eia_quote": "enthos in the study area are estimated during low tide by quadrate method. In order to study the meio-benthos, sediment samples were collected by plastic core and sieved through 63µ mesh.",
+   "report_describes": "No mention of upwind or downwind monitoring stations for ground level concentration",
+   "first_pass": "not found",
+   "ultra": null,
+   "reason": null,
+   "supporting_quote": null,
+   "supporting_page": null,
+   "grade": "INFO",
+   "message": "The ToR commits to at least one monitoring station each in the upwind and in the pre-dominant downwind direction at a location where maximum ground level concentration is likely to occur (ToR p.15); the report text searched does not show how this was done. Verify."
+  }
+ ],
+ "window": {
+  "start": "2020-12-01",
+  "end": "2021-02-28",
+  "days": 90,
+  "page": 44,
+  "pages": [
+   44,
+   220,
+   1166
+  ],
+  "quote": "Baseline environmental monitoring has been carried out in winter season (1st December 2020 to 28th February 2021) of the study area of 10 km radius as part of the EIA studies conducted for integrated development project.",
+  "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=44",
+  "label": "Stated baseline window (90 days; ToR: 3 months)"
+ },
+ "timeline": [
+  {
+   "study": "Air quality",
+   "start": "2020-12-01",
+   "end": "2021-02-28",
+   "days": 90,
+   "months": 3.0,
+   "page": 274,
+   "pages": [
+    274,
+    276,
+    277
+   ],
+   "quote": "3.6.2.1Observations of Primary Data Study period (December 2020 to February 2021) Particulate Matter (PM10): The minimum and maximum concentrations for PM10 were recorded as 10.5µg/m3 and 22.6µg/m3 respectively.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=274",
+   "whole_month": false
+  },
+  {
+   "study": "Meteorology",
+   "start": "2020-12-01",
+   "end": "2021-02-28",
+   "days": 90,
+   "months": 3.0,
+   "page": 268,
+   "pages": [
+    268
+   ],
+   "quote": "in 16610 ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-49 3.5.2.2 Observations on Primary Data –December 2020 to February 2021 A continuous weather monitoring station was installed on top of Fisheries office at Campbell Bay.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=268",
+   "whole_month": false
+  },
+  {
+   "study": "Noise",
+   "start": "2020-12-01",
+   "end": "2021-02-28",
+   "days": 90,
+   "months": 3.0,
+   "page": 287,
+   "pages": [
+    287
+   ],
+   "quote": "The noise monitoring has been conducted for determination of noise levels at 20 locations in the study area for winter season (1st December 2020 to 28th February 2021).",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=287",
+   "whole_month": false
+  },
+  {
+   "study": "Socio-economic survey",
+   "start": "2020-12-01",
+   "end": "2020-12-31",
+   "days": 31,
+   "months": 1.0,
+   "page": 345,
+   "pages": [
+    345
+   ],
+   "quote": "Primary social survey was conducted along with Tribal welfare Department officials in Greater Nicobar Islands in December 2020.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=345",
+   "whole_month": true
+  },
+  {
+   "study": "Soil",
+   "start": "2020-12-01",
+   "end": "2021-02-28",
+   "days": 90,
+   "months": 3.0,
+   "page": 261,
+   "pages": [
+    261,
+    262
+   ],
+   "quote": "at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment C3-42 Table-3.7: Soil Analysis Results during study period (December 2020 to February 2021) Sr. No. Location UOM S1 S2 S3 S4 S5 S6 S7 S8 S9 S10 1 pH -- 7.52 7.49 7.2 7.35 7.57 7.83 7.32 7.18 7.56 7.7 2 Conductivity µs/cm 83.2 42",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=261",
+   "whole_month": false
+  },
+  {
+   "study": "Surface & ground water",
+   "start": "2020-12-01",
+   "end": "2021-02-28",
+   "days": 90,
+   "months": 3.0,
+   "page": 282,
+   "pages": [
+    282,
+    283
+   ],
+   "quote": "ha, at Great Nicobar Islands, Nicobar District Chapter-3 Desription of Environment \\ C3-63 Table-3.19: Surface Water Quality- Study Period (December 2020 – February 2021) Sr. No. Parameters Unit Study Period (December 2020 – February 2021) SW1 SW2 SW3 SW4 SW5 SW6 SW7 SW8 1 pH - 6.76 6.75 6.38 7.28 7.27 7.24",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=282",
+   "whole_month": false
+  },
+  {
+   "study": "Flora & fauna (ecology)",
+   "start": "2020-12-14",
+   "end": "2020-12-22",
+   "days": 9,
+   "months": 0.3,
+   "page": 292,
+   "pages": [
+    292
+   ],
+   "quote": "Area Expert (FAE) in Ecology & Biodiversity and Soil Conservation (Category A) of the Vimta Labs Ltd., Hyderabad during December 2020 (14 to 22 December 2020).",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=292",
+   "whole_month": false
+  },
+  {
+   "study": "Noise",
+   "start": "2021-01-01",
+   "end": "2021-02-28",
+   "days": 59,
+   "months": 1.9,
+   "page": 290,
+   "pages": [
+    290
+   ],
+   "quote": "of Environment C3-71 3.8.3 Presentation of Results The statistical analysis is done for measured noise levels at twenty locations during January 2021 and February 2021 of the study period.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=290",
+   "whole_month": false
+  },
+  {
+   "study": "Marine sampling (ZSI)",
+   "start": "2021-02-01",
+   "end": "2021-03-31",
+   "days": 59,
+   "months": 1.9,
+   "page": 1062,
+   "pages": [
+    1062
+   ],
+   "quote": "The baseline study was conducted during February-March 2021.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=1062",
+   "whole_month": false
+  },
+  {
+   "study": "Turtles",
+   "start": "2021-02-12",
+   "end": "2021-02-18",
+   "days": 7,
+   "months": 0.2,
+   "page": 292,
+   "pages": [
+    292
+   ],
+   "quote": "Primary survey of Leatherback Turtles was done by Mr. Ravinder of Vimta Labs during 12 to 18 February 2021.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=292",
+   "whole_month": false
+  },
+  {
+   "study": "Bathymetry & oceanography",
+   "start": "2021-03-05",
+   "end": "2021-03-29",
+   "days": 25,
+   "months": 0.8,
+   "page": 57,
+   "pages": [
+    57
+   ],
+   "quote": "The survey was conducted from 5th March 2021 to 29th March 2021.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=57",
+   "whole_month": false
+  },
+  {
+   "study": "Turtles",
+   "start": "2021-04-14",
+   "end": "2021-04-19",
+   "days": 6,
+   "months": 0.2,
+   "page": 1118,
+   "pages": [
+    1118,
+    1127
+   ],
+   "quote": "This survey was carried out from 14th to 19th April, 2021 to understand the current status of beaches with respect to sea turtles nesting in the Great Nicobar Island.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=1118",
+   "whole_month": false
+  },
+  {
+   "study": "Turtles",
+   "start": "2021-04-15",
+   "end": "2021-04-16",
+   "days": 2,
+   "months": 0.1,
+   "page": 1119,
+   "pages": [
+    1119,
+    1128
+   ],
+   "quote": "Night survey: On 15th and 16th April, 2021, the entire Galathea Bay beach was surveyed for sea turtle nestings.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=1119",
+   "whole_month": false
+  },
+  {
+   "study": "Bathymetry & oceanography",
+   "start": "2021-05-01",
+   "end": "2021-05-31",
+   "days": 31,
+   "months": 1.0,
+   "page": 62,
+   "pages": [
+    62
+   ],
+   "quote": "COMACOE carried out the oceanographic measurements and investigations in May 2021.",
+   "url": "https://www.eqmagpro.com/wp-content/uploads/2021/12/143-Combined-EIA-1-15_compressed.pdf#page=62",
+   "whole_month": true
+  }
+ ],
+ "nebius_usd_spent_this_run": 0.0,
+ "ultra_calls": 1
+}

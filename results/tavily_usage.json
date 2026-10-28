@@ -1,0 +1,396 @@
+{
+ "measured_on": "2026-10-28",
+ "overall": {
+  "features": {
+   "crawl": {
+    "calls": 7,
+    "returned": 16651,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "extract": {
+    "calls": 43,
+    "returned": 28892524,
+    "sent to model": 118397,
+    "shown as evidence": 7107,
+    "used": 125504,
+    "share": 0.004343822644224506
+   },
+   "extract (advanced)": {
+    "calls": 6,
+    "returned": 2364131,
+    "sent to model": 1342,
+    "shown as evidence": 523,
+    "used": 1865,
+    "share": 0.0007888733746141817
+   },
+   "map": {
+    "calls": 8,
+    "returned": 1225,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "research": {
+    "calls": 1,
+    "returned": 1840,
+    "sent to model": 0,
+    "shown as evidence": 783,
+    "used": 783,
+    "share": 0.4255434782608696
+   },
+   "search": {
+    "calls": 3,
+    "returned": 17950,
+    "sent to model": 0,
+    "shown as evidence": 280,
+    "used": 280,
+    "share": 0.015598885793871866
+   },
+   "search: date filter": {
+    "calls": 17,
+    "returned": 98540,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "search: images": {
+    "calls": 8,
+    "returned": 22196,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "search: language filter": {
+    "calls": 3,
+    "returned": 13421,
+    "sent to model": 0,
+    "shown as evidence": 324,
+    "used": 324,
+    "share": 0.024141271142239774
+   },
+   "search: news": {
+    "calls": 7,
+    "returned": 23326,
+    "sent to model": 0,
+    "shown as evidence": 1575,
+    "used": 1575,
+    "share": 0.06752122095515734
+   },
+   "search: official domains": {
+    "calls": 21,
+    "returned": 170629,
+    "sent to model": 0,
+    "shown as evidence": 60,
+    "used": 60,
+    "share": 0.00035164010807072654
+   }
+  },
+  "total": {
+   "calls": 124,
+   "returned": 31622433,
+   "sent to model": 119739,
+   "shown as evidence": 10652,
+   "used": 130391,
+   "share": 0.004123370266924117
+  }
+ },
+ "checks": {
+  "Public record / great_nicobar_2021_draft": {
+   "features": {
+    "extract": {
+     "calls": 1,
+     "returned": 441155,
+     "sent to model": 0,
+     "shown as evidence": 420,
+     "used": 420,
+     "share": 0.0009520463329215355
+    },
+    "extract (advanced)": {
+     "calls": 1,
+     "returned": 43627,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "research": {
+     "calls": 1,
+     "returned": 1840,
+     "sent to model": 0,
+     "shown as evidence": 783,
+     "used": 783,
+     "share": 0.4255434782608696
+    },
+    "search: language filter": {
+     "calls": 2,
+     "returned": 1293,
+     "sent to model": 0,
+     "shown as evidence": 324,
+     "used": 324,
+     "share": 0.2505800464037123
+    },
+    "search: news": {
+     "calls": 6,
+     "returned": 18485,
+     "sent to model": 0,
+     "shown as evidence": 1575,
+     "used": 1575,
+     "share": 0.08520421963754396
+    }
+   },
+   "total": {
+    "calls": 11,
+    "returned": 506400,
+    "sent to model": 0,
+    "shown as evidence": 3102,
+    "used": 3102,
+    "share": 0.006125592417061611
+   }
+  },
+  "Knowable at the time / great_nicobar_2021_draft": {
+   "features": {
+    "extract": {
+     "calls": 10,
+     "returned": 4225240,
+     "sent to model": 41542,
+     "shown as evidence": 0,
+     "used": 41542,
+     "share": 0.009831867538885364
+    },
+    "search: date filter": {
+     "calls": 10,
+     "returned": 55829,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 20,
+    "returned": 4281069,
+    "sent to model": 41542,
+    "shown as evidence": 0,
+    "used": 41542,
+    "share": 0.00970365112078315
+   }
+  },
+  "Public record / indira_point_table_3_16": {
+   "features": {
+    "search: language filter": {
+     "calls": 1,
+     "returned": 12128,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "search: news": {
+     "calls": 1,
+     "returned": 4841,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 2,
+    "returned": 16969,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "Knowable at the time / indira_point_table_3_16": {
+   "features": {
+    "extract": {
+     "calls": 7,
+     "returned": 5628356,
+     "sent to model": 76855,
+     "shown as evidence": 269,
+     "used": 77124,
+     "share": 0.013702757963426621
+    },
+    "search: date filter": {
+     "calls": 7,
+     "returned": 42711,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 14,
+    "returned": 5671067,
+    "sent to model": 76855,
+    "shown as evidence": 269,
+    "used": 77124,
+    "share": 0.013599557190913103
+   }
+  },
+  "Species photos / all reports": {
+   "features": {
+    "search: images": {
+     "calls": 8,
+     "returned": 22196,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 8,
+    "returned": 22196,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "Official record / great_nicobar_2021_draft": {
+   "features": {
+    "extract": {
+     "calls": 9,
+     "returned": 6388934,
+     "sent to model": 0,
+     "shown as evidence": 3877,
+     "used": 3877,
+     "share": 0.000606830497857702
+    },
+    "search": {
+     "calls": 3,
+     "returned": 17950,
+     "sent to model": 0,
+     "shown as evidence": 280,
+     "used": 280,
+     "share": 0.015598885793871866
+    },
+    "search: official domains": {
+     "calls": 7,
+     "returned": 41141,
+     "sent to model": 0,
+     "shown as evidence": 60,
+     "used": 60,
+     "share": 0.001458399163851146
+    }
+   },
+   "total": {
+    "calls": 19,
+    "returned": 6448025,
+    "sent to model": 0,
+    "shown as evidence": 4217,
+    "used": 4217,
+    "share": 0.0006539987050298347
+   }
+  },
+  "Paper trail / great_nicobar_2021_draft": {
+   "features": {
+    "crawl": {
+     "calls": 4,
+     "returned": 16651,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "extract": {
+     "calls": 13,
+     "returned": 5153510,
+     "sent to model": 0,
+     "shown as evidence": 2541,
+     "used": 2541,
+     "share": 0.0004930620101639466
+    },
+    "extract (advanced)": {
+     "calls": 5,
+     "returned": 2320504,
+     "sent to model": 1342,
+     "shown as evidence": 523,
+     "used": 1865,
+     "share": 0.0008037047124245422
+    },
+    "map": {
+     "calls": 5,
+     "returned": 1225,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "search: official domains": {
+     "calls": 8,
+     "returned": 81466,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 35,
+    "returned": 7573356,
+    "sent to model": 1342,
+    "shown as evidence": 3064,
+    "used": 4406,
+    "share": 0.0005817764277818182
+   }
+  },
+  "Paper trail / indira_point_table_3_16": {
+   "features": {
+    "crawl": {
+     "calls": 3,
+     "returned": 0,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": null
+    },
+    "extract": {
+     "calls": 3,
+     "returned": 7055329,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    },
+    "map": {
+     "calls": 3,
+     "returned": 0,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": null
+    },
+    "search: official domains": {
+     "calls": 6,
+     "returned": 48022,
+     "sent to model": 0,
+     "shown as evidence": 0,
+     "used": 0,
+     "share": 0.0
+    }
+   },
+   "total": {
+    "calls": 15,
+    "returned": 7103351,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  }
+ },
+ "not_measured": {
+  "Copy-paste, accreditation and WPA schedule checks (full audit)": "their Tavily calls ran inside the full audit before this logging existed; re-run the audit to measure them"
+ }
+}

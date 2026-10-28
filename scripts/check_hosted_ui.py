@@ -85,7 +85,7 @@ with sync_playwright() as p:
 
     for tab, marker, shot in (("Review queue", "Every new RED/ORANGE flag", "review"),
                               ("Reviewer's memo & Ask", "Ask the report", "memo"),
-                              ("Public record", "Clearance timeline (official sources)", "record"),
+                              ("Public record", "Timeline (official sources)", "record"),
                               ("Evidence from the web", "Evidence from the web", "web"),
                               ("Scanned pages", "How TigerFish reads scanned pages", "inspector"),
                               ("Method & limits", "Evaluation", "method")):
@@ -107,9 +107,32 @@ with sync_playwright() as p:
     page.get_by_role("tab", name="Method & limits").click()
     page.wait_for_timeout(1500)
     ok("cost card", page.get_by_text("Cost per full audit, by triage mode").count() > 0)
+    eff = page.locator(".tf-efficiency")
+    ok("efficiency line on the cost card", eff.filter(has_text="Context efficiency").count() > 0
+       and eff.filter(has_text="Tavily returned").count() > 0)
     page.get_by_role("tab", name="Public record").click()
     page.wait_for_timeout(1500)
     ok("public record: what happened next", page.get_by_text("What happened next").count() > 0)
+    # merged paper trail: one timeline, documents found with their Tavily tag, contacts
+    rows = page.locator("table.tf-timeline tr").count()
+    ok("public record: one timeline", page.get_by_text("Timeline (official sources)").count() == 1
+       and page.get_by_role("heading", name="Clearance timeline (official sources)").count() == 0
+       and rows > 1, f"{rows - 1} events")
+    ok("public record: documents found", page.get_by_text("Documents found").count() > 0
+       and page.locator(".tf-doc").count() > 0, f"{page.locator('.tf-doc').count()} documents")
+    ok("public record: found-via tags", page.locator(".tf-doc .tf-via").filter(
+        has_text="Found via Tavily").count() == page.locator(".tf-doc").count())
+    ok("public record: who to write to", page.get_by_text("Who to write to").count() > 0
+       and page.get_by_text("Check the address before sending.").count() > 0)
+    ok("public record: no duplicate tab", page.get_by_role("tab", name="Paper trail").count() == 0)
+    page.get_by_role("tab", name="Evidence from the web").click()
+    page.wait_for_timeout(1500)
+    ok("efficiency line in the web tab", page.locator(".tf-efficiency").filter(
+        has_text="Tavily returned").count() > 0 and page.get_by_text("Context efficiency").count() > 0)
+    page.get_by_role("tab", name="ToR promises").click()
+    page.wait_for_timeout(1500)
+    ok("ToR promises: granted and proposed labelled", page.get_by_text("Granted ToR (MoEFCC letter").count() > 0
+       and page.get_by_text("Proposed ToR (").count() > 0)
     no_exception(page, "all tabs")
 
     # second report: knowable-at-the-time line and species photos on its cards
@@ -122,6 +145,11 @@ with sync_playwright() as p:
     ok("species photos (second report)", page.locator(".tf-photo img").count() > 1,
        f"{page.locator('.tf-photo img').count()} photos")
     page.screenshot(path=str(OUT / "second_report.png"))
+    page.get_by_role("tab", name="Public record").click()
+    page.wait_for_timeout(2000)
+    ok("second report: no document guessed", page.get_by_text(
+        "No official document naming this project was found").count() > 0
+       and page.locator(".tf-doc").filter(visible=True).count() == 0)
     no_exception(page, "second report")
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
     browser.close()

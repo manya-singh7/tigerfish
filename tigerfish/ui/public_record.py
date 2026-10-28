@@ -1,6 +1,7 @@
 """"Public record" tab, from saved results only (replay; no keys):
-- the project's clearance timeline (Tavily Research, each event's quote verified against the
-  Tavily-extracted source text; unverified events are not shown),
+- one timeline: Tavily Research events (each quote verified against the Tavily-extracted
+  source text) plus the paper trail's dated official documents; "Documents found" and the
+  authorities to write to (tigerfish/ui/paper_trail.py),
 - "What happened next": later news per verified finding (links, for context),
 - local-language coverage of the public hearing (Hindi / Tamil links).
 Also the "knowable at the time" lines and species photos shown on finding cards."""
@@ -51,26 +52,17 @@ def _links(items, with_date=False):
 
 def render(report_id):
     import streamlit as st
+    from tigerfish.ui import paper_trail as trail_ui
     rec = record.load(report_id)
     st.markdown("#### Public record")
+    if rec:
+        st.caption(f"{rec['project']}. Report dated {rec['report_date']}.")
+    # one timeline (research events + dated official documents), documents found, contacts
+    trail_ui.render(report_id, rec or {})
     if not rec:
-        st.info("No public-record results saved for this report "
+        st.info("No public-record news results saved for this report "
                 "(run: python scripts/check_public_record.py).")
         return
-    st.caption(f"{rec['project']}. Report dated {rec['report_date']}.")
-
-    st.markdown("##### Clearance timeline (official sources)")
-    if rec["timeline"]:
-        body = "".join(
-            f"<tr><td style='white-space:nowrap'>{esc(e['date'])}</td><td>{esc(e['event'])}"
-            f"<div class='tf-quote' style='margin-top:0.3rem'>“{esc(e['quote'])}”</div></td>"
-            f"<td><a href='{esc(e['source'])}' target='_blank'>{esc(e['host'])}</a>"
-            f"<div class='tf-ev-label' style='font-size:0.78rem'>{esc(e['label'])}</div></td></tr>"
-            for e in rec["timeline"])
-        st.markdown("<table class='tf-table'><tr><th>Date</th><th>Event and quote</th><th>Source</th></tr>"
-                    + body + "</table>", unsafe_allow_html=True)
-    else:
-        st.caption("No timeline event could be verified against its source.")
     r = rec.get("research") or {}
     if r:
         st.caption(f"One Tavily Research call (structured output; {r.get('credits') or '?'} credits) "

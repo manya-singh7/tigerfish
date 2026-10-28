@@ -1,0 +1,341 @@
+{
+ "report_id": "indira_point_table_3_16",
+ "searched_on": "2026-10-28",
+ "identity": {
+  "name": "Indira Point REIA (WAPCOS)",
+  "search_name": "Indira Point WAPCOS rapid environmental impact assessment",
+  "name_groups": [
+   [
+    "indira point"
+   ],
+   [
+    "wapcos",
+    "reia"
+   ]
+  ],
+  "proposals": [],
+  "state": null,
+  "facts": [
+   {
+    "fact": "name",
+    "value": "WAPCOS Indira Point REIA",
+    "page": null,
+    "quote": "Table 3.16 of the WAPCOS Indira Point REIA (Apr 2026)"
+   }
+  ],
+  "unchecked": [],
+  "note": "Only Table 3.16 and its published caption are available for this report: they give no proposal number and no state, so the search uses the project name only and no state pollution control board site."
+ },
+ "sites": [
+  "parivesh.nic.in",
+  "environmentclearance.nic.in",
+  "moef.gov.in"
+ ],
+ "steps": [
+  {
+   "tool": "map",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "parivesh.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "environmentclearance.nic.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "map",
+   "site": "moef.gov.in",
+   "results": 0,
+   "kept": 0,
+   "credits": 0
+  },
+  {
+   "tool": "crawl",
+   "site": "moef.gov.in",
+   "results": 0,
+   "credits": 0
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment terms of reference letter",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment expert appraisal committee minutes",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment public hearing notice",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment public hearing proceedings minutes",
+   "results": 8,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment environmental clearance letter",
+   "results": 0,
+   "credits": 1
+  },
+  {
+   "tool": "search",
+   "query": "Indira Point WAPCOS rapid environmental impact assessment compliance report environmental clearance conditions",
+   "results": 1,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  },
+  {
+   "tool": "extract (basic)",
+   "urls": 5,
+   "results": 5,
+   "credits": 1
+  }
+ ],
+ "documents": [],
+ "dropped": [
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/0_0_20_May_2022_1613159101LowerOrr-AdditionalDetails_compressed.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/3011202346157352Final_MoM_1st__EAC-17-18-10-23.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/DownloadPfdFile.aspx?FileName=fg7xmKEWwhaZLSqjiF3GAQwWBxq9FYi8xjemfmi+L+fUHEb6BwvC1ZLRYXfJF5feDznQxwlGivy8CUTMhfdvQxoChC4%2FDG7U5+hHDYQvCqU%3D&FilePath=93ZZBm8LWEXfg+HAlQix2fE2t8z%2FpgnoBhDlYdZCxzWF1OLE6RXe5MiAhSH8vdQ1",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/additionalfile/27032018XOEBCKFPEIA.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Online/EDS/0_0_18_May_2024_1304301931ADSReply.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/24032021WR4D6TJR256thMoMEAC(Infra1)-FinalApproved.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/45th%20EAC%20MoM.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/2103202340054026Final_MOM_43rd_EAC_River_07_03_23.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "ToR letter",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/150220199JQHTP1T38thEACFinalMinutes.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.jalshakti-dowr.gov.in/static/uploads/2024/05/2023022050-1.pdf",
+   "host": "jalshakti-dowr.gov.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://environmentclearance.nic.in/writereaddata/Form-1A/Minutes/1802202251334754FINAL_MOM_53_EAC.pdf",
+   "host": "environmentclearance.nic.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.jalshakti-dowr.gov.in/static/uploads/2024/05/2023022074.pdf",
+   "host": "jalshakti-dowr.gov.in",
+   "found_via": "search",
+   "via_detail": "EAC/SEAC minutes",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://tgpcb.cgg.gov.in/Uploads/PcbDocumentAllUploads/SitaRamaLiftIrrigationProject(Phase-I)-DraftEIAReport(Vol-I).pdf",
+   "host": "tgpcb.cgg.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://www.jalshakti-dowr.gov.in/static/uploads/2026/02/71facba772426d78db2d39f8c0c2a34b.pdf",
+   "host": "jalshakti-dowr.gov.in",
+   "found_via": "search",
+   "via_detail": "Public hearing notice",
+   "why": "does not name the project or its proposal number"
+  },
+  {
+   "url": "https://delhihighcourt.nic.in/files/2026-10/cause-list/combined_cause_list_27.10.2026.pdf",
+   "host": "delhihighcourt.nic.in",
+   "found_via": "search",
+   "via_detail": "Compliance report",
+   "why": "does not name the project or its proposal number"
+  }
+ ],
+ "drop_counts": {
+  "does not name the project or its proposal number": 15
+ },
+ "unusable": [
+  {
+   "site": "parivesh.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "parivesh.nic.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "environmentclearance.nic.in",
+   "tool": "crawl",
+   "error": ""
+  },
+  {
+   "site": "moef.gov.in",
+   "tool": "map",
+   "error": ""
+  },
+  {
+   "site": "moef.gov.in",
+   "tool": "crawl",
+   "error": ""
+  }
+ ],
+ "granted_tor": {
+  "found": false
+ },
+ "contacts": {
+  "hearing": {
+   "found": false,
+   "why": "the report's own text names no state, so no state board site was searched"
+  },
+  "clearance": {
+   "found": false,
+   "why": "the report's own text gives no proposal number, so the appraising authority is not known"
+  }
+ },
+ "stopped": null,
+ "tavily": {
+  "credits": 9,
+  "credits_spent_this_run": 0,
+  "cached_calls": 50,
+  "features": [
+   "map + instructions",
+   "crawl + instructions",
+   "search include_domains",
+   "extract basic / advanced"
+  ]
+ },
+ "efficiency": {
+  "features": {
+   "crawl": {
+    "calls": 3,
+    "returned": 0,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": null
+   },
+   "extract": {
+    "calls": 3,
+    "returned": 7055329,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   },
+   "map": {
+    "calls": 3,
+    "returned": 0,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": null
+   },
+   "search: official domains": {
+    "calls": 6,
+    "returned": 48022,
+    "sent to model": 0,
+    "shown as evidence": 0,
+    "used": 0,
+    "share": 0.0
+   }
+  },
+  "total": {
+   "calls": 15,
+   "returned": 7103351,
+   "sent to model": 0,
+   "shown as evidence": 0,
+   "used": 0,
+   "share": 0.0
+  }
+ }
+}

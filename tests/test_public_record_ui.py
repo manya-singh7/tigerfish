@@ -62,5 +62,6 @@ def test_public_record_tab_renders(monkeypatch):
     assert "Public record" in labels
     tab = at.tabs[labels.index("Public record")]
     text = " ".join(m.value for m in tab.markdown)
-    assert "Clearance timeline" in text and "What happened next" in text
+    assert "Timeline (official sources)" in text and "What happened next" in text
+    assert "Clearance timeline" not in text                   # one merged timeline, not two
     assert "Local-language coverage" in text
