@@ -2,34 +2,34 @@
 
 Pairing: {'subjects': 4380, 'key_calls': 110, 'keys_missing': 4, 'numeric_claims': 5138, 'groups': 2130, 'representatives': 3032, 'readings_without_station': 401, 'dropped_by_cap': 22242, 'pairs_same_key': 366, 'pairs_related_key': 1210, 'pairs_part_whole': 0}
 
-Pages audited 768, claims 7019, candidate pairs 1589, triage {'yes': 685, 'no': 514, 'unsure': 1}, Ultra verdicts 594 (failed 0), copy-paste passages 50.
+Pages audited 768, claims 7019, candidate pairs 1589, triage {'yes': 931, 'no': 657, 'unsure': 1}, Ultra verdicts 932 (failed 0), copy-paste passages 50.
 
-**Cost $10.0006** (INR 840), **wall clock 65.0 min** with 6 workers. Cap $10.00. Stopped: cost cap $7.41 reached (spent $7.4056); stopped at candidate 1077 of 1589; about 481 candidates not judged.
+**Cost $3.3379** (INR 280), **wall clock 8.3 min** with 6 workers. Cap $4.00. Stopped: no.
 
 | Stage | Seconds | USD |
 |---|---:|---:|
-| claims | 2573.7 | 2.5238 |
-| triage + verdicts | 895.2 | 7.4056 |
-| copy-paste | 115.8 | 0.0014 |
+| claims | 10.6 | 0.0000 |
+| triage + verdicts | 481.6 | 3.3379 |
+| copy-paste | 0.9 | 0.0000 |
 
 | Model | API calls | Cache hits | Tokens in | Tokens out | USD | API seconds |
 |---|---:|---:|---:|---:|---:|---:|
-| Nemotron-3.5-Super-VL | 871 | 5 | 4,153,494 | 1,366,412 | 2.4758 | 14421 |
-| Nemotron-3_5-Lightning | 1179 | 3 | 3,067,023 | 336,311 | 0.2647 | 3075 |
-| Nemotron-3-Ultra-550b-a55b | 594 | 2 | 3,942,737 | 1,105,777 | 7.2601 | 4461 |
-| Tavily | 53 | 10 | | | 47 credits | |
+| Nemotron-3.5-Super-VL | 0 | 876 | 0 | 0 | 0.0000 | 0 |
+| Nemotron-3_5-Lightning | 245 | 1927 | 488,226 | 10,829 | 0.0319 | 158 |
+| Nemotron-3-Ultra-550b-a55b | 339 | 596 | 973,149 | 777,632 | 3.3060 | 2639 |
+| Tavily | 0 | 63 | | | 0 credits | |
 
-Retries: {'retries': 10, 'rate_limited': 4, 'server_errors': 0, 'connection_errors': 6}
+Retries: {'retries': 0, 'rate_limited': 0, 'server_errors': 0, 'connection_errors': 0}
 
 Findings by check and grade:
 
 - recycled_figure: {'RED': 0, 'ORANGE': 0, 'NONE': 5}
-- contradiction: {'RED': 11, 'ORANGE': 2, 'NONE': 576}
+- contradiction: {'RED': 12, 'ORANGE': 2, 'NONE': 913}
 - copy_paste: {'NONE': 46, 'RED': 4}
 
 Known issues matched: none
 
-## All 17 new RED/ORANGE flags
+## All 18 new RED/ORANGE flags
 
 **cp-p103-4 RED** (copy_paste, pages [103])
 - p.103: "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51"
@@ -55,6 +55,12 @@ Known issues matched: none
 - p.40: "25" (also on pp. 74)
 - p.453: "Effluent Treatment Plant KLD - 25 25 No change"
 - Why: Page 40 shows an approved capacity of 25 KLD for the Effluent Treatment Plant, while page 453 shows no approved capacity (dash) for the same item; the remarks also differ ("New proposal" vs "No change").
+- Ultra's answers: {'same_subject': True, 'same_place': True, 'same_scope': True, 'incompatible': True, 'explained': False}
+
+**ct-1234 RED** (contradiction, pages [40, 453])
+- p.40: "25" (also on pp. 74, 492)
+- p.453: "Effluent Treatment Plant KLD - 25 25 No change"
+- Why: Both tables list the same three infrastructure items with identical Power and Sewage Treatment Plant figures, but the Effluent Treatment Plant row shows an Approved value of 25 KLD on page 40 and a dash on page 453, with conflicting remarks 'New proposal' versus 'No change'.
 - Ultra's answers: {'same_subject': True, 'same_place': True, 'same_scope': True, 'incompatible': True, 'explained': False}
 
 **ct-354 RED** (contradiction, pages [57, 499])

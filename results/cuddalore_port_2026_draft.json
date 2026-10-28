@@ -10,14 +10,14 @@
     "source": "report p.491: latitude 11°42'22.43\" N, longitude 79°46'30.52\" E (also p.33, p.35)"
   },
   "audit_status": {
-    "complete": false,
-    "judged": 1077,
+    "complete": true,
+    "judged": 1589,
     "candidates": 1589,
-    "label": "Audit partial: 1,077 of 1,589 candidate pairs judged"
+    "label": "Audit complete: all 1,589 candidate pairs judged"
   },
   "human_reviewed": false,
   "notices": [
-    "Audit partial: 1,077 of 1,589 candidate pairs judged; the pairs not yet judged may hold more flags.",
+    "Audit complete: all 1,589 candidate pairs judged",
     "Flags not yet human-reviewed: each one is flagged for checking; verify it against the report before relying on it."
   ],
   "pages_read": 768,
@@ -34,17 +34,17 @@
     "Consultant accreditation (NABET, official list)"
   ],
   "cost": {
-    "nebius_usd": 10.0006,
+    "nebius_usd": 13.3385,
     "tavily_credits": 54,
     "gbif_calls": 0,
-    "approx_seconds": 3900.8,
+    "approx_seconds": 4400,
     "time_note": "wall clock, full audit, 6 parallel calls",
-    "note": "Nebius models: full audit $10.00 (audit partial: 1,077 of 1,589 candidate pairs judged); Tavily: audit 47 + accreditation 7 credits"
+    "note": "Nebius models: full audit $13.34 (audit complete: all 1,589 candidate pairs judged); Tavily: audit 47 + accreditation 7 credits"
   },
   "full_run": {
     "file": "audit_cuddalore_port_2026_draft_eia.json",
-    "cost_usd": 10.0006,
-    "wall_clock_s": 3900.8,
+    "cost_usd": 13.3385,
+    "wall_clock_s": 4400,
     "pages_audited": 768
   },
   "known_issues": [],
@@ -2237,5 +2237,5 @@
       "images": []
     }
   ],
-  "exported_in_s": 20.5
+  "exported_in_s": 16.3
 }
