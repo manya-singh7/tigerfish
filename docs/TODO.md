@@ -28,7 +28,8 @@ for scope and `docs/FEATURES.md` for current UI entry points.
   GBIF or Tavily calls; preserve unrelated checks and discovery costs. No baseline INFO leads remain.
 - [x] Expose batch check results, uncertainty and observations on report pages and a reachable summary.
 - [x] Complete offline suite: 1,003 passed, 1 skipped, 7 live tests deselected. Browser:
-  624/624 design checks, plus batch summary/report smoke checks at 1440px light and 390px dark.
+  663/663 design checks (including the Batch screening tab), plus batch summary/report smoke
+  checks at 1440px light and 390px dark. Repeated successfully after merging updated main.
   Every regenerated baseline quotation was matched to its original hash-verified source;
   unrelated checks, standard findings and costs were compared with the pre-refresh artifacts.
 - [ ] Improve batch project-title extraction and verify parsed report dates used by the
