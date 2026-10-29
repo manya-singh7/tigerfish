@@ -23,11 +23,13 @@ import re
 import streamlit as st
 
 from tigerfish import hosted, library
+from tigerfish import batch_results
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, inspector, letter, memo_ask, method,
                           official, promises, public_record, review, rti, slip, species_map,
                           web_evidence)
 from tigerfish.ui import investigate
+from tigerfish.ui import batch as batch_ui
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import badge, esc, mono
 
@@ -48,7 +50,8 @@ SECTION_CHECKS = {
 OTHER_SECTION = CONTRA
 TOP_FLAGS = 3
 PAGE_SIZE = 10
-QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES)
+SCREENING = "Batch screening"
+QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES, SCREENING)
 QUICK_HIDDEN_WHY = ("a quick check runs the free checks only; the model, web, review and cost "
                     "sections need a full audit")
 
@@ -134,7 +137,11 @@ def plan(report, quick=False):
             hidden[CONTRA] = "the number-pair check did not run for this report"
         if not (n[SPECIES] or names & set(SECTION_CHECKS[SPECIES])):
             hidden[SPECIES] = "the species checks did not run for this report"
-        shown = [(OVERVIEW, None)] + [(s, n[s]) for s in QUICK_SECTIONS[1:] if s not in hidden]
+        shown = [(OVERVIEW, None)] + [
+            (s, n[s]) for s in (CONTRA, SPECIES) if s not in hidden
+        ]
+        if batch_results.checks(report):
+            shown.append((SCREENING, len(batch_results.checks(report))))
         hidden.update({s: QUICK_HIDDEN_WHY for s in ORDER if s not in QUICK_SECTIONS})
         return shown, [(s, hidden[s]) for s in ORDER if s in hidden]
 
@@ -191,6 +198,7 @@ def hidden_line(hidden):
 
 
 # ---------- section layout: main column and side panel ----------
+
 
 def _dismissed(report_id, findings):
     return (review_store.dismissed_finding_ids(review_store.load_queue(), review_store.load_reviews())
@@ -295,6 +303,7 @@ def finding_list(report, findings, key, empty, map_species=False, section=None):
 
 # ---------- the sections ----------
 
+
 def totals_sentence(report):
     findings = report.get("findings") or []
     c = data.counts(findings)
@@ -361,8 +370,15 @@ def library_quick_overview(report):
             st.markdown("**Not run for this report**")
             for c in not_run:
                 st.markdown(f"- {esc(c['name'])}: {esc(c.get('reason') or 'not available')}")
-        st.caption("Not run in a quick check: the model checks (internal contradictions, recycled "
-                   "figures, scanned pages), copied text, consultant accreditation, ToR promises.")
+        if batch_results.checks(report):
+            st.caption(
+                batch_results.summary_line(batch_results.summary(report))
+                + " Open Batch screening for certificate dates, baseline periods, species rows and source evidence."
+            )
+        st.caption(
+            "Not run in a quick check: model checks (internal contradictions, recycled "
+            "figures, scanned pages), copied text, official NABET verification and ToR promises."
+        )
 
 
 def take_action(report):
@@ -471,6 +487,7 @@ def _panel(key, draw, *args):
 
 # ---------- the report page ----------
 
+
 def render(report, quick=False):
     """Draw one report. quick=True: a quick check (library.load), free checks only."""
     st.markdown(CSS, unsafe_allow_html=True)
@@ -481,7 +498,7 @@ def render(report, quick=False):
                        else f"Source: {report.get('source', '')}")
             for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
                 st.warning(notice)
-        feedback._seed(rid, report.get("findings") or [])   # before any review widget is drawn
+        feedback._seed(rid, report.get("findings") or [])  # before any review widget is drawn
     shown, hidden = plan(report, quick)
     by = split(report.get("findings") or [])
     # A container keyed by the report: switching reports draws fresh widgets, instead of the
@@ -501,6 +518,9 @@ def render(report, quick=False):
             finding_list(report, by[SPECIES], "species",
                          "No species, status or omission findings for this report.",
                          map_species=True, section=SPECIES)
+    if SCREENING in tabs:
+        with tabs[SCREENING], st.container(key=f"tf-panel-screening-{rid}"):
+            batch_ui.render_report(report)
     if COPIED in tabs:
         with tabs[COPIED]:
             main = finding_list(report, by[COPIED], "copied", "No copied or borrowed text was flagged.",

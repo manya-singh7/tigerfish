@@ -47,6 +47,8 @@ visible. Its steps, separated by ` · `, are followed from Home in order:
 | Context efficiency | Report, Cost & models tab | report=great_nicobar_2021_draft · tab=Cost & models · text=Context efficiency |
 | Super-VL scanned-page inspector | Report, Cost & models tab | report=great_nicobar_2021_draft · tab=Cost & models · text=How TigerFish reads scanned pages |
 | Report library with live totals | Home (below the opening row) and Library | css=.tf-lib-total |
+| Batch check summary and report links | Library, Batch screening results expander | text=Batch screening results |
+| Batch certificate, baseline and species evidence | Quick report, Batch screening tab | report=3a84436e0e972dbf · tab=Batch screening · text=Certificate-date screen |
 | Library search | Library side panel | text=Search by project name |
 | Library filters: State, Sector, Year, Audit type | Library side panel | text=Audit type |
 | Filter: Has RED flags | Library side panel | text=Has RED flags |

@@ -2,7 +2,7 @@
 
 ## Constraints worth preserving
 
-- Read `docs/PROJECT_BRIEF.md` and the relevant block in `docs/TODO.md` before work; surface its outstanding reminders. Use Python **3.12** (`.python-version`, `pyproject.toml`), despite the older 3.11 brief.
+- Read `docs/PROJECT_BRIEF.md` and the relevant block in `docs/TODO.md` before work; surface its outstanding reminders. Use Python **3.12** (`.python-version`, `pyproject.toml`).
 - All model calls go through `tigerfish/llm.py`: Nebius Token Factory, NVIDIA Nemotron models. It loads the root `.env`; web-backed audit scripts also need `TAVILY_API_KEY`.
 - Findings are neutral leads for human review: keep page numbers, exact quotes, evidence and grades. GREY means insufficient evidence, not a finding. PDF citations use **1-based physical pages**, not printed labels.
 - `docs/TODO.md` freezes the Ultra verdict prompt in `tigerfish/contradictions.py`; preserve that evaluation baseline unless the task explicitly changes it. Grades are computed from structured answers, not the model's proposed grade.

@@ -7,7 +7,8 @@ Agent: at the start of every block, read this file and remind the user of the it
 Saved JSON and code take precedence over the historical run notes below. The library has
 3 full-report audits, 1 published-table check and 25 Maharashtra executive-summary checks:
 2,802 PDF pages plus one table, 234 RED/ORANGE cards and 23 standard INFO leads. Three
-additional batch baseline INFO leads have known extraction errors. See `docs/LIMITATIONS.md`
+earlier batch baseline INFO leads have been removed by source-hash-verified regeneration;
+baseline screening now has 8 identified periods and 17 undetermined results. See `docs/LIMITATIONS.md`
 for scope and `docs/FEATURES.md` for current UI entry points.
 
 - [x] Python 3.12 + uv lockfile and dev dependency group.
@@ -17,14 +18,21 @@ for scope and `docs/FEATURES.md` for current UI entry points.
   discovery/check scripts. Quick checks are not full three-model audits.
 - [x] Own-document copy matches excluded and inspectable: 10 Karnataka and 3 Cuddalore RED cards removed.
 - [x] Human review/feedback, regional-language letters, RTI pack and review imports exist.
-- [x] Offline suite run: 976 passed, 1 failed, 1 skipped, 7 deselected. Failure: reset-filter
+- [x] Before this branch, offline suite run: 976 passed, 1 failed, 1 skipped, 7 deselected. Failure: reset-filter
   test expects all cards despite the library's initial 10-card pagination.
-- [ ] Specify and test pagination: 10 initially, ordered Show more without duplicates,
+- [x] Specify and test pagination: 10 initially, ordered Show more without duplicates,
   reset clears filters and restores the initial page, all matching reports remain reachable.
-- [ ] Fix batch baseline extraction: shared-year ranges, report-number exclusion, study vs
+- [x] Fix batch baseline extraction: shared-year ranges, report-number exclusion, study vs
   administrative/traffic context, calendar-aware durations and conflicting evidence.
-- [ ] Regenerate baseline results from source documents without rerunning unrelated checks.
-- [ ] Expose batch check results, uncertainty and observations on report pages and a reachable summary.
+- [x] Regenerate all 25 baseline results from original SHA256-matching PDFs without model,
+  GBIF or Tavily calls; preserve unrelated checks and discovery costs. No baseline INFO leads remain.
+- [x] Expose batch check results, uncertainty and observations on report pages and a reachable summary.
+- [x] Complete offline suite: 1,003 passed, 1 skipped, 7 live tests deselected. Browser:
+  624/624 design checks, plus batch summary/report smoke checks at 1440px light and 390px dark.
+  Every regenerated baseline quotation was matched to its original hash-verified source;
+  unrelated checks, standard findings and costs were compared with the pre-refresh artifacts.
+- [ ] Improve batch project-title extraction and verify parsed report dates used by the
+  certificate-date screen; baseline-only regeneration intentionally leaves those unchanged.
 - [ ] Recheck copied-text leads for taxonomy years, legitimate secondary data and attribution.
 - [ ] Verify and rehearse a short three-NVIDIA-model demo with real pages and labelled replays.
 - [ ] Confirm public deployment, record video/screenshots and finish submission.

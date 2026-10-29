@@ -17,6 +17,7 @@ import os
 from pathlib import Path
 
 from tigerfish.report import sort_findings
+from tigerfish import batch_results
 
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS = ROOT / "results"
@@ -85,15 +86,24 @@ def _entry(report, meta, kind, path, queue=None, reviews=None):
         reviewed = review_counts(findings, queue, reviews)
     get = lambda k: report.get(k) if report.get(k) not in (None, "") else meta.get(k)
     return {
-        "id": report["id"], "title": report.get("title") or report["id"],
+        "id": report["id"],
+        "title": report.get("title") or report["id"],
         "project": get("project") or report.get("title") or report["id"],
-        "state": get("state"), "sector": get("sector"), "year": get("year"),
+        "state": get("state"),
+        "sector": get("sector"),
+        "year": get("year"),
         "consultant": get("consultant"),
-        "pages": int(report.get("pages_read") or 0), "pages_total": int(report.get("pages_total") or 0),
-        "unit": unit, "audit_type": AUDIT_TYPES.get(audit, FULL), "grades": counts(findings),
-        "reviewed": reviewed, "kind": kind, "path": str(path),
+        "pages": int(report.get("pages_read") or 0),
+        "pages_total": int(report.get("pages_total") or 0),
+        "unit": unit,
+        "audit_type": AUDIT_TYPES.get(audit, FULL),
+        "grades": counts(findings),
+        "reviewed": reviewed,
+        "kind": kind,
+        "path": str(path),
         "full_run": report.get("full_run") or None,
         "verified": sum(1 for f in findings if f.get("verification")),
+        "screening": batch_results.summary(report),
     }
 
 

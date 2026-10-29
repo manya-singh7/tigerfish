@@ -16,13 +16,13 @@ clicks) and must be visible.
 
 Start the app first (no keys), as for scripts/check_hosted_ui.py:
   set TIGERFISH_HOSTED=1 && set NEBIUS_API_KEY= && set TAVILY_API_KEY= &&
-  set TIGERFISH_BATCH_DIR=tests/fixtures/library/batch &&
   streamlit run app.py --server.headless true --server.port 8631
 Then:  python scripts/check_design.py http://localhost:8631 [screenshots folder]
 Exit code 1 if anything fails.
 """
 
 import hashlib
+import json
 import re
 import sys
 import urllib.request
@@ -44,9 +44,13 @@ FALLBACKS = {"sans-serif", "serif", "monospace", "georgia", "consolas", "arial",
              "system-ui", "material symbols rounded"}
 LAST_RESORT = {"source sans"}
 WIDTHS = (1920, 1440, 1280, 820, 390)
-SHOT_WIDTHS = (1920, 820, 390)       # screenshots of every page at these widths
+SHOT_WIDTHS = (1920, 820, 390)  # screenshots of every page at these widths
 REPORT = "great_nicobar_2021_draft"
-PAGES = {   # name: (path, tab to open or None)
+_batch_reports = json.loads(
+    (ROOT / "results" / "batch" / "index.json").read_text(encoding="utf-8")
+)["reports"]
+QUICK_REPORT = _batch_reports[0]["id"]
+PAGES = {  # name: (path, tab to open or None)
     "home": ("/", None),
     "library": ("/library", None),
     "upload": ("/upload", None),
@@ -54,7 +58,7 @@ PAGES = {   # name: (path, tab to open or None)
     "limitations": ("/limitations", None),
     "report_overview": (f"/library?report={REPORT}", None),
     "table_report": ("/library?report=indira_point_table_3_16", None),
-    "quick_check": ("/library?report=sample_quick_mine_odisha_2025", None),
+    "quick_check": (f"/library?report={QUICK_REPORT}", None),
 }
 TABS = ["Contradictions", "Species & nature", "Copied text", "Promises & timeline",
         "Public record", "Ask & investigate", "Take action", "Quality", "Cost & models"]
@@ -343,12 +347,18 @@ def main():
                     for t in TABS:
                         open_tab(page, t)
                         style_checks(page, f"{scheme} report {t}")
+                if name == "quick_check":
+                    open_tab(page, "Batch screening")
+                    style_checks(page, f"{scheme} batch screening")
             page.close()
         for w in WIDTHS:
             page = browser.new_page(viewport={"width": w, "height": 1000 if w > 500 else 844})
             for name, (path, _) in PAGES.items():
                 goto(page, path)
                 layout_checks(page, f"{w}px {name}")
+                if name == "quick_check":
+                    open_tab(page, "Batch screening")
+                    layout_checks(page, f"{w}px batch screening")
                 if SHOTS and w in SHOT_WIDTHS:
                     SHOTS.mkdir(parents=True, exist_ok=True)
                     full_shot(page, SHOTS / f"{name}_{w}.png")

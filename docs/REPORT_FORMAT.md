@@ -1,6 +1,7 @@
 # Quick-check report format (`tigerfish-report/1`)
 
-This is the format for the batch of quick checks: free checks only, about 90 EIAs. The app's
+This is the format for quick checks: the current batch has 25 executive summaries (the
+discovery script's default upper limit is 90). The app's
 report library (home screen) reads it. One small JSON file per report goes under
 `results/batch/`, plus one index file. Nothing else is needed: the library computes its
 totals, filters and counts from these files.
@@ -57,6 +58,9 @@ app reads only `results/`, and the PDFs (`data/eias/*.pdf`) are never committed.
 | `generated` | string | ISO time of the run |
 | `tool_version` | string | git commit |
 | `human_reviewed` | object, optional | `{"reviewed": x, "of": y}` once anyone has reviewed flags |
+| `batch_checks` | object, optional | Local certificate-date, baseline-period and species screen results, including GREY/OK |
+| `batch_flags` | list, optional | Additional batch observations; GREY check results are not flags |
+| `baseline_refresh` | object, optional | Parser version, original source SHA256 and regeneration timestamp |
 
 Sectors: `Ports and harbours`, `Airports`, `Highways and roads`, `Railways`, `Mining`,
 `Thermal power`, `Hydro power`, `River valley and irrigation`, `Industrial projects`,
@@ -91,6 +95,29 @@ Rules the validator enforces:
 - every finding's `check` is listed in `checks_run` with status `"ran"`;
 - `number_pair` findings are `INFO` only (no model judged them);
 - grades are `RED`, `ORANGE` or `INFO`.
+
+### Additional batch screens
+
+`batch_checks` retains `accreditation`, `baseline_season` and `species_iucn` results. These
+do not extend the four-check vocabulary above. The UI exposes them in **Batch screening**
+and the library's **Batch screening results** summary, including undetermined outcomes,
+source quotations/pages and PDF links. `OK` describes the extracted information, not a
+compliance finding. The certificate-date screen does not verify official NABET coverage;
+three months is a baseline screening reference unless the actual requirement is supplied.
+
+`tigerfish.batch_results` supplies the shared summaries. Certificate/baseline observations
+are counted separately from standard findings. Species flags already mapped into `findings`
+are not counted a second time. GREY is never an observation/finding.
+
+To refresh baseline results without rerunning model, GBIF or Tavily checks:
+
+```sh
+uv run --locked python scripts/build_corpus.py refresh-baselines --download-missing
+```
+
+The command reads all indexed PDFs and verifies their discovery SHA256 before writing any
+public result. Downloads go only to gitignored `data/eias/batch/`. Omit `--download-missing`
+to require local PDFs. Other checks, report IDs and recorded discovery costs are preserved.
 
 ### A finding
 

@@ -11,7 +11,7 @@ Navigation lives in the URL:
 
 import streamlit as st
 
-from tigerfish import library
+from tigerfish import batch_results, library
 from tigerfish.ui import data, slip
 from tigerfish.ui.style import badge, esc, mono
 
@@ -59,8 +59,12 @@ div[class*="st-key-tf-slip-rep"] .tf-slip-title { font-size: 1rem; }
 
 def _stamp():
     """Changes when any library file changes, so the cached list refreshes."""
-    files = [library.RESULTS / "index.json", library.RESULTS / "library.json",
-             library.batch_dir() / "index.json"]
+    files = [
+        library.RESULTS / "index.json",
+        library.RESULTS / "library.json",
+        library.batch_dir() / "index.json",
+        library.batch_dir() / "batch_summary.json",
+    ]
     return tuple((str(f), f.stat().st_mtime) if f.exists() else (str(f), 0) for f in files)
 
 
@@ -167,7 +171,12 @@ def row(e):
         top = _preview(e["path"], e["id"], _stamp())
         if top:
             slip.render(top, max_crops=1)
-        else:
+        if e.get("screening"):
+            st.caption(batch_results.summary_line(e["screening"]))
+            st.caption(
+                "Open Batch screening for check outcomes, uncertainties and source quotations."
+            )
+        elif not top:
             st.caption("No RED or ORANGE flags in this report: its INFO leads are inside.")
         st.button("Open report", key=f"tf::open::{e['id']}", on_click=open_report, args=(e["id"],),
                   type="secondary", help=f"Open {e['title']}")
@@ -278,6 +287,12 @@ def side_panel(items, shown):
             width="stretch",
         )
         st.caption(UPLOAD_NOTE)
+        screening = batch_results.totals(items)
+        if screening["reports"]:
+            st.caption(
+                f"Batch screening: {screening['observations']} additional observations and "
+                f"{screening['undetermined']} undetermined check results, separate from audit findings."
+            )
 
 
 # ---------- the library ----------
@@ -327,6 +342,16 @@ def render():
             if len(shown) > n:
                 st.button(f"Show more ({len(shown) - n} more)", key="lib::more", on_click=show_more)
 
+    if any(e.get("screening") for e in items):
+        from tigerfish.ui import batch as batch_ui
+
+        with (
+            st.container(key="tf-panel-batch-summary"),
+            st.expander("Batch screening results"),
+        ):
+            batch_ui.render_summary(items)
+
     st.write("")
     from tigerfish.ui import quality
+
     quality.library_section()

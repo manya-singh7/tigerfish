@@ -17,8 +17,9 @@ Snapshot on 30 October 2026; the UI computes its totals from saved files.
 | Maharashtra batch | 25 executive summaries, 564 pages | No-model certificate-date/baseline screens; GBIF where readable names exist |
 
 The library has 2,802 PDF pages plus one table, 234 RED/ORANGE cards and 23 standard INFO
-leads. Three additional batch baseline INFO leads are stored outside those totals and have
-known extraction errors (below). Zero flags does not mean all checks ran or the report is correct.
+leads. Batch screening observations are counted separately; the refreshed corpus has none.
+Its three earlier baseline INFO leads were extraction errors, now removed (below).
+Zero flags does not mean all checks ran or the report is correct.
 
 Great Nicobar's full run recorded 10,463 claims, 1,866 candidates, 1,440 Ultra verdicts,
 $15.78 model cost and about 62 minutes (`results/eval.md`). Cuddalore and Karnataka record
@@ -163,23 +164,40 @@ WPA evidence from PRS is labelled **authoritative, non-government**, never offic
 Later project revisions are not automatically errors in the earlier EIA. Web extraction,
 publication-date detection and project matching can miss or misidentify relevant records.
 
-## Batch screening and UI integration gaps
+## Batch screening: corrected extraction and remaining limits
 
 All 25 saved quick checks are Maharashtra executive summaries, not full model audits.
 Discovery cost 41 Tavily credits; the subsequent regex/GBIF screens made no model calls.
-The snapshot has GREY results for certificate dates in 17 reports, baseline periods in
-15, and species data in 23. Certificate-date screening is not official NABET verification.
+The refreshed snapshot has GREY results for certificate dates in 17 reports, baseline
+periods in 17, and species data in 23. Eight reports have an identified baseline period
+meeting the screening reference. Certificate-date screening is not official NABET verification.
 
-The baseline parser currently uses nearby dates without establishing a fieldwork interval.
-It reads October-December 2025 plus a report number as December-January, treats traffic
-counts as a baseline, and pairs application/EAC dates as a study. These cause the three
-saved INFO leads in `results/batch/batch_summary.json`; none is a verified shortfall.
-Fix and regenerate them before using them as examples. Batch-only evidence lives in
-`batch_checks`/`batch_flags` but is not fully exposed in the current quick-report UI.
+The old parser paired nearby dates without establishing fieldwork: October-December 2025
+plus a report number became December-January; traffic counts and application/EAC dates
+became study periods. Parser version 2 recognizes explicit shared-year ranges, rejects
+administrative/future/traffic contexts and monitoring frequencies, compares calendar months,
+and retains conflicting same-topic periods as GREY. The 25 source PDFs were downloaded
+from saved URLs and checked against their original SHA256 before baseline-only regeneration.
+Certificate/species results and discovery costs were preserved. The first case now correctly
+reads October-December; the traffic case is undetermined; Gadegaon has a genuine January-March
+2024 baseline statement on p.6. See each report's `baseline_refresh` and `periods` fields.
+
+This is still regex screening over readable English text, not a complete study inventory.
+It can miss unusual wording or split-page dates. An extracted three-month period is not a
+verified ToR requirement and is not proof that every topic, location or method was covered.
+Conflicting periods are not silently reconciled. GREY results remain inspectable, not flags.
+Some corpus titles are procedural sentences rather than clean project names, and the
+certificate screen's parsed report date may be an administrative date. Both are heuristics
+to verify against the linked source; neither was improved by the baseline-only refresh.
+
+`batch_checks`/`batch_flags` are now exposed in each batch report's Batch screening section
+and the library's Batch screening results summary. Standard species findings are not counted
+twice as additional batch observations. No model or web calls run while replaying the UI.
 
 The library renders 10 cards initially and then Show more. Reset clears filters and
-restores 10 cards; the current test instead expects all 29. The behavior contract needs
-explicit coverage, including reachability and ordering of every matching report.
+restores 10 cards. Changing a filter also restarts pagination. Regression tests use a
+controlled 25-report fixture to check 10/20/25 visibility, stable IDs, reset, off-page search
+and no duplicates; the former assertion that reset rendered all reports has been replaced.
 
 ## Evaluation, human review and demo scope
 
