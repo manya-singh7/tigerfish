@@ -1,0 +1,181 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2026-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "82 Part, Reserve Forest Land, Village Gargaon, Taluka Palghar, District Palghar, Maharashtra, with an approved lease area of 24.94 Ha The study covers all aspects of the lease area including geology, reserves estimation, mining methodology, blasting parameters, drainage, waste disposal, environmental management, and progressive mine closure planning. Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026). The study area for the proposed project covers a radial distance of 10 km from"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2026-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "82 Part, Reserve Forest Land, Village Gargaon, Taluka Palghar, District Palghar, Maharashtra, with an approved lease area of 24.94 Ha The study covers all aspects of the lease area including geology, reserves estimation, mining methodology, blasting parameters, drainage, waste disposal, environmental management, and progressive mine closure planning. Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026). The study area for the proposed project covers a radial distance of 10 km from"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:58:00Z",
+  "id": "dfb9a6acf99e0c9e",
+  "pages_read": 26,
+  "pages_total": 26,
+  "project": "Vadhvan patch 2 Gargaon 24.98 Ha Executive Summary (English) R2 29062026",
+  "project_name": "Vadhvan patch 2 Gargaon 24.98 Ha Executive Summary (English) R2 29062026",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Vadhvan_patch_2_Gargaon_24.98_Ha_Executive_Summary_(English)_R2_29062026.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Vadhvan_patch_2_Gargaon_24.98_Ha_Executive_Summary_(English)_R2_29062026.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Vadhvan_patch_2_Gargaon_24.98_Ha_Executive_Summary_(English)_R2_29062026.pdf",
+  "state": "Maharashtra",
+  "title": "Vadhvan patch 2 Gargaon 24.98 Ha Executive Summary (English) R2 29062026",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Vadhvan_patch_2_Gargaon_24.98_Ha_Executive_Summary_(English)_R2_29062026.pdf",
+  "year": null
+}

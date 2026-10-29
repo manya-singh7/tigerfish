@@ -1,0 +1,191 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA0474",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ":NABET/EIA/25-28/RA0474"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October 2028"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": ": SIA/MH/IND1/563389/2025 dated 13/01/2026 issued by"
+        }
+      ],
+      "report_date": "2026-01-13",
+      "valid_until": "2028-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 6,
+          "text": "Land Environment Eight Soil samples were collected analyzed for physico-chemical characteristics at selected locations in the study area to assess the existing soil conditions around the proposed project site. The relevant parameters show the following characteristics. The characteristics of the soil sample were compared with different depths for respective parameters. The observations of soil characteristics are discussed parameter wise below; a) Texture of all soil samples are Clay in Texture Classification. b) Colour of soil samples from agriculture and waste land is Black & Dark Brown in color. c) The bulk density of soil samples is in the range of 1"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA0474",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ":NABET/EIA/25-28/RA0474"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October 2028"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": ": SIA/MH/IND1/563389/2025 dated 13/01/2026 issued by"
+        }
+      ],
+      "report_date": "2026-01-13",
+      "valid_until": "2028-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 6,
+          "text": "Land Environment Eight Soil samples were collected analyzed for physico-chemical characteristics at selected locations in the study area to assess the existing soil conditions around the proposed project site. The relevant parameters show the following characteristics. The characteristics of the soil sample were compared with different depths for respective parameters. The observations of soil characteristics are discussed parameter wise below; a) Texture of all soil samples are Clay in Texture Classification. b) Colour of soil samples from agriculture and waste land is Black & Dark Brown in color. c) The bulk density of soil samples is in the range of 1"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:57:07Z",
+  "id": "4369faf125fd3ea3",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "Executive Summary Color Shine",
+  "project_name": "Executive Summary Color Shine",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary_Color_Shine.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary_Color_Shine.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary_Color_Shine.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary Color Shine",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary_Color_Shine.pdf",
+  "year": 2026
+}

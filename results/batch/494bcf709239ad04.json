@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "dated 23-12-2019"
+        }
+      ],
+      "report_date": "2019-12-23",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production ROM (Limestone) production will be @ 83295 tonnes per year (Average) & 101250 TPA Peak. Useable ore will be 74966 T , and rejects will be @ 8330 T/ year Anticipated Life of Mines 34 Years Elevation 216m on West and 212 on East Historical / Important Places"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "dated 23-12-2019"
+        }
+      ],
+      "report_date": "2019-12-23",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production ROM (Limestone) production will be @ 83295 tonnes per year (Average) & 101250 TPA Peak. Useable ore will be 74966 T , and rejects will be @ 8330 T/ year Anticipated Life of Mines 34 Years Elevation 216m on West and 212 on East Historical / Important Places"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T09:09:35Z",
+  "id": "494bcf709239ad04",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "(Executive Summary on Draft Report) REPORT ON ENVIRONMENTAL APPRAISAL & ASSESSMENT OF ENVIRONMENTAL IMPACT OF Adegaon Limestone Mine of Mr",
+  "project_name": "(Executive Summary on Draft Report) REPORT ON ENVIRONMENTAL APPRAISAL & ASSESSMENT OF ENVIRONMENTAL IMPACT OF Adegaon Limestone Mine of Mr",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_on_Draft_Report_English_Abhishek_Rai.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_on_Draft_Report_English_Abhishek_Rai.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_on_Draft_Report_English_Abhishek_Rai.pdf",
+  "state": "Maharashtra",
+  "title": "(Executive Summary on Draft Report) REPORT ON ENVIRONMENTAL APPRAISAL & ASSESSMENT OF ENVIRONMENTAL IMPACT OF Adegaon Limestone Mine of Mr",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_on_Draft_Report_English_Abhishek_Rai.pdf",
+  "year": 2019
+}

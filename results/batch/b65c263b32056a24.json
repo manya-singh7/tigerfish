@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0246",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0246 Certified Organization"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(NABL certificate Number: TC-14909, Validity Date: 17-11-2028)"
+        }
+      ],
+      "report_date": "2028-11-17",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 37.59,
+      "end_date": "2025-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2028-11-17"
+        },
+        {
+          "label": "End",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 37.59 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Rahatani, Pune, Pimpri-Chinchwad, Maharashtra 411017, INDIA E-mail: info@envirosphere.co.in, Contact: 9860220550 Website: www.envirosphere.co.in Environmental Monitoring Laboratory Ultratech Environmental Consultancy & Laboratory Pvt. Ltd. (NABL certificate Number: TC-14909, Validity Date: 17-11-2028) Baseline period – 1st October 2025 to 31st December 2025"
+        }
+      ],
+      "start_date": "2028-11-17"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0246",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0246 Certified Organization"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(NABL certificate Number: TC-14909, Validity Date: 17-11-2028)"
+        }
+      ],
+      "report_date": "2028-11-17",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 37.59,
+      "end_date": "2025-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2028-11-17"
+        },
+        {
+          "label": "End",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 37.59 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Rahatani, Pune, Pimpri-Chinchwad, Maharashtra 411017, INDIA E-mail: info@envirosphere.co.in, Contact: 9860220550 Website: www.envirosphere.co.in Environmental Monitoring Laboratory Ultratech Environmental Consultancy & Laboratory Pvt. Ltd. (NABL certificate Number: TC-14909, Validity Date: 17-11-2028) Baseline period – 1st October 2025 to 31st December 2025"
+        }
+      ],
+      "start_date": "2028-11-17"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T09:07:32Z",
+  "id": "b65c263b32056a24",
+  "pages_read": 77,
+  "pages_total": 77,
+  "project": "EXECUTIVE SUMMARY OF EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+  "project_name": "EXECUTIVE SUMMARY OF EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-05/English_Executive_Summary_Morex.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-05/English_Executive_Summary_Morex.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-05/English_Executive_Summary_Morex.pdf",
+  "state": "Maharashtra",
+  "title": "EXECUTIVE SUMMARY OF EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-05/English_Executive_Summary_Morex.pdf",
+  "year": 2028
+}

@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "11011/94/2012-IA II (I)dated 27th July 2012"
+        }
+      ],
+      "report_date": "2012-07-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 1,
+          "text": "with state highway -160 connecting to Nearest Town Kallam (25 km). Nearest Railway station is also at Latur (35 km) and nearest Airport is Latur at the distance of 27 km. (The study area map is attached as Annexure 1) 2. PROJECT DESCRIPTION 2.1 Salient Features of the Project The proposed expansion of distillery from 30 KLPD to 60 KLPD is proposed within the existing premises. (Layout Plan is attached as Annexure 2). The benefit of the sites is that the raw material and water availability is within the premises. The projects requirements are as follows:  The land requirement for the proposed 30KLPD distillery is approximately 14.5 acres and is already in possession of NSAIL"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "11011/94/2012-IA II (I)dated 27th July 2012"
+        }
+      ],
+      "report_date": "2012-07-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 1,
+          "text": "with state highway -160 connecting to Nearest Town Kallam (25 km). Nearest Railway station is also at Latur (35 km) and nearest Airport is Latur at the distance of 27 km. (The study area map is attached as Annexure 1) 2. PROJECT DESCRIPTION 2.1 Salient Features of the Project The proposed expansion of distillery from 30 KLPD to 60 KLPD is proposed within the existing premises. (Layout Plan is attached as Annexure 2). The benefit of the sites is that the raw material and water availability is within the premises. The projects requirements are as follows:  The land requirement for the proposed 30KLPD distillery is approximately 14.5 acres and is already in possession of NSAIL"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T09:03:00Z",
+  "id": "d86bf616e1eb4750",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": " Salient Features of the existing 30 KLPD Distillery and the proposed expansion of 30 KLPD are given below: Environmental Impact Assessment Report Expansion of Distillery from 30KLPD to 60 KLPD at Ranjani by Natural Sugar & Allied Industri",
+  "project_name": " Salient Features of the existing 30 KLPD Distillery and the proposed expansion of 30 KLPD are given below: Environmental Impact Assessment Report Expansion of Distillery from 30KLPD to 60 KLPD at Ranjani by Natural Sugar & Allied Industri",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_NSAIL.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_NSAIL.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_NSAIL.pdf",
+  "state": "Maharashtra",
+  "title": " Salient Features of the existing 30 KLPD Distillery and the proposed expansion of 30 KLPD are given below: Environmental Impact Assessment Report Expansion of Distillery from 30KLPD to 60 KLPD at Ranjani by Natural Sugar & Allied Industri",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_NSAIL.pdf",
+  "year": 2012
+}

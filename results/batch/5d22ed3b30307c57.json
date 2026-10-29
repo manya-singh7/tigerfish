@@ -1,0 +1,181 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2011-12-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2011-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2011-12-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 40,
+          "text": "and operation phase. Still at construction phase filtration system (aqua guard) will be used for drinking purpose. Even regular monitoring of water is proposed in monitoring plan. iii. Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011). The wind rose for the same is drawn and North East was the predominant wind direction."
+        }
+      ],
+      "start_date": "2011-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2011-12-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2011-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2011-12-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 40,
+          "text": "and operation phase. Still at construction phase filtration system (aqua guard) will be used for drinking purpose. Even regular monitoring of water is proposed in monitoring plan. iii. Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011). The wind rose for the same is drawn and North East was the predominant wind direction."
+        }
+      ],
+      "start_date": "2011-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:57:52Z",
+  "id": "5d22ed3b30307c57",
+  "pages_read": 75,
+  "pages_total": 75,
+  "project": "Earth Ex",
+  "project_name": "Earth Ex",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2020-04/Earth_Ex.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2020-04/Earth_Ex.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2020-04/Earth_Ex.pdf",
+  "state": "Maharashtra",
+  "title": "Earth Ex",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2020-04/Earth_Ex.pdf",
+  "year": null
+}
