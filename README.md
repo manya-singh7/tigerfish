@@ -4,7 +4,31 @@
 Assessment (EIA) reports: internal contradictions, implausible species, copied site data,
 each with the page, the exact quote and the evidence, so a reviewer can verify it.
 
-Run the app (replay mode, no keys needed): `streamlit run app.py`
+## Run locally
+
+With [uv](https://docs.astral.sh/uv/) installed:
+
+```sh
+uv sync --locked
+uv run --locked streamlit run app.py
+```
+
+Python 3.12 is pinned in `.python-version`. Replay mode needs no API keys or source PDFs.
+`uv sync` includes the `dev` dependency group (tests, audit scripts and browser tools).
+
+```sh
+uv run --locked python -m pytest -q -m "not live" --ignore=tests/test_species_live.py
+```
+
+The offline suite takes about five minutes. Keep `--ignore`: that live test file probes
+GBIF during import, even when live tests are deselected.
+
+Manage dependencies in `pyproject.toml` with `uv add <package>` or `uv add --dev <package>`;
+commit the updated `uv.lock`. Regenerate the runtime-only hosting export after changes:
+
+```sh
+uv export --locked --no-dev --no-hashes --no-emit-project --output-file requirements.txt
+```
 
 ## Tavily features used
 
