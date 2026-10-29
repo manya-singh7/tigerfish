@@ -1,11 +1,13 @@
-"""Summary strip and finding cards."""
+"""Summary strip and finding cards (each finding is an evidence slip, tigerfish/ui/slip.py)."""
+
+import re
 
 import streamlit as st
 
 from tigerfish import knowable, paper_trail, public_record, species_photos
-from tigerfish.ui import badges, crops, data, efficiency, feedback, investigate, official
+from tigerfish.ui import badges, data, efficiency, feedback, investigate, official, slip
 from tigerfish.ui import public_record as record_ui
-from tigerfish.ui.style import badge, esc, stat
+from tigerfish.ui.style import esc, stat
 
 REVIEW_OPTIONS = list(feedback.DECISIONS)
 # Checks whose linked evidence was found with Tavily search / extract (every URL in their
@@ -126,35 +128,40 @@ def evidence_html(items, check=None):
     return "".join(rows)
 
 
+def card_key(report_id, f):
+    return "tf-slip-f-" + re.sub(r"[^A-Za-z0-9_-]", "-", f"{report_id}-{f['id']}")
+
+
 def finding_card(report_id, f, report_title=""):
-    with st.container(border=True):
-        known = (f' <span class="tf-check">· matches known issue {esc(f["known_issue"])}</span>'
-                 if f.get("known_issue") else "")
-        st.markdown(f'{badge(f["grade"])}<span class="tf-check">{esc(f["check_name"])}</span>{known}'
-                    f'<div class="tf-card-title">{esc(f["title"])}</div>'
-                    + badges.html(badges.finding_badges(f, badges.readers(report_id)))
-                    + verification_html(f.get("verification"))
-                    + f'<div class="tf-message">{esc(f["message"])}</div>'
-                    + record_ui.knowable_html(report_id, f["id"])
-                    + record_ui.photo_html(report_id, f["id"]), unsafe_allow_html=True)
+    """One finding: its evidence slip (page crop, grade, check, quote, reason, the person's
+    check), then the evidence in an expander, the full pages, Investigate and the review."""
+    with st.container(key=card_key(report_id, f)):
+        photo = record_ui.photo_html(report_id, f["id"])
+        has_crop = bool(slip.crops_for(f))
+        extra = (badges.html(badges.finding_badges(f, badges.readers(report_id)))
+                 + record_ui.knowable_html(report_id, f["id"])
+                 + (photo if has_crop else ""))
+        slip.render(f, extra=extra, photo=None if has_crop else photo)
 
-        quotes = f["quotes"]
-        cols = st.columns(len(quotes)) if len(quotes) > 1 else [st.container()]
-        for col, q in zip(cols, quotes):
-            col.markdown(f'<div class="tf-quote-label">{esc(quote_label(q))}</div>'
-                         f'<div class="tf-quote">{esc(q["text"])}</div>', unsafe_allow_html=True)
-
-        st.markdown(f'<div style="margin-top:0.7rem">{evidence_html(f["evidence"], f.get("check"))}</div>'
-                    f'<div class="tf-line" style="margin-top:0.6rem"><b>Why flagged</b> &nbsp;{esc(f["why"])}</div>'
-                    f'<div class="tf-line"><b>What would clear this</b> &nbsp;{esc(f["clear"])}</div>',
-                    unsafe_allow_html=True)
+        with st.expander("Evidence, why it was flagged and what would clear it"):
+            known = (f'<div class="tf-meta">Matches known issue {esc(f["known_issue"])}</div>'
+                     if f.get("known_issue") else "")
+            quotes = "".join(f'<div class="tf-quote-label">{esc(quote_label(q))}</div>'
+                             f'<div class="tf-quote">{esc(q["text"])}</div>'
+                             for q in f["quotes"] if q.get("text"))
+            st.markdown(verification_html(f.get("verification")) + known
+                        + f'<div class="tf-message">{esc(f["message"])}</div>' + quotes
+                        + f'<div style="margin-top:0.7rem">{evidence_html(f["evidence"], f.get("check"))}</div>'
+                        f'<div class="tf-line" style="margin-top:0.6rem"><b>Why flagged</b> &nbsp;{esc(f["why"])}</div>'
+                        f'<div class="tf-line"><b>What would clear this</b> &nbsp;{esc(f["clear"])}</div>',
+                        unsafe_allow_html=True)
 
         images = list(dict.fromkeys(f.get("images") or []))
-        if crops.wants_crops(f):
-            zoomed(images)
         if images:
             with st.expander("Show highlighted page" + ("s" if len(images) > 1 else "")):
                 paths = [p for p in (data.image_path(rel) for rel in images) if p]
+                if not paths:
+                    st.caption("The page images for this finding are not in results/pages/.")
                 for col, path in zip(st.columns(len(paths)) if paths else [], paths):
                     col.image(str(path), caption=f"Page {page_no(path)}", width="stretch")
 
@@ -163,22 +170,5 @@ def finding_card(report_id, f, report_title=""):
         feedback.review_widgets(report_id, f)
 
 
-@st.cache_data(show_spinner=False)
-def _crop(path):
-    return crops.crop(path)
-
-
 def page_no(path):
     return int(path.stem.rsplit("_p", 1)[1])       # file names end in _p<NNNN>.png
-
-
-def zoomed(images):
-    """The highlighted lines of each page, side by side (the full pages are below)."""
-    shown = [(p, c) for p in (data.image_path(rel) for rel in images) if p
-             for c in [_crop(str(p))] if c]
-    if not shown:
-        return
-    st.markdown('<div class="tf-quote-label" style="margin-top:0.7rem">Highlighted lines, zoomed</div>',
-                unsafe_allow_html=True)
-    for col, (path, png) in zip(st.columns(len(shown)), shown):
-        col.image(png, caption=f"Page {page_no(path)}", width="stretch")

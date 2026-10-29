@@ -1,6 +1,7 @@
 # TigerFish
 
-*Sees clearly in murky waters.* An accuracy checker for Indian Environmental Impact
+*Built for murky water.* A second reader for environmental impact reports, and everyone who
+questions them. An accuracy checker for Indian Environmental Impact
 Assessment (EIA) reports: internal contradictions, implausible species, copied site data,
 each with the page, the exact quote and the evidence, so a reviewer can verify it.
 

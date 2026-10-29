@@ -83,6 +83,7 @@ def _entry(report, meta, kind, path, queue=None, reviews=None):
         "pages": int(report.get("pages_read") or 0), "pages_total": int(report.get("pages_total") or 0),
         "unit": unit, "audit_type": AUDIT_TYPES.get(audit, FULL), "grades": counts(findings),
         "reviewed": reviewed, "kind": kind, "path": str(path),
+        "verified": sum(1 for f in findings if f.get("verification")),
     }
 
 
@@ -135,7 +136,7 @@ def options(items, key):
 
 
 def filter_entries(items, query="", states=(), sectors=(), years=(), audit_types=(),
-                   has_red=False):
+                   has_red=False, has_verified=False):
     q = " ".join(str(query or "").lower().split())
     out = []
     for e in items:
@@ -151,6 +152,8 @@ def filter_entries(items, query="", states=(), sectors=(), years=(), audit_types
         if audit_types and e["audit_type"] not in audit_types:
             continue
         if has_red and not e["grades"]["RED"]:
+            continue
+        if has_verified and not e.get("verified"):
             continue
         out.append(e)
     return out

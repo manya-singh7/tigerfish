@@ -1,5 +1,7 @@
 # TigerFish: project brief (read this before every task)
-Tagline: "Sees clearly in murky waters."
+Tagline: "Built for murky water."
+Purpose line: "A second reader for environmental impact reports, and everyone who questions them."
+Design rules: docs/DESIGN.md (read it before any UI task). Feature inventory: docs/FEATURES.md.
 What: An AI auditor for Indian Environmental Impact Assessment (EIA) reports. It finds
 (1) internal contradictions, (2) biogeographically implausible species, (3) copy-pasted
 site-specific data. Every flag must include: page number, exact quote, evidence, and a

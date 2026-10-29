@@ -1,11 +1,12 @@
 """The app's pages, in the top menu: Home · Library · Upload · How it works · Limitations.
 
-app.py builds the menu with st.navigation(position="top") from PAGES. The library stays the
-main entry point: Home leads into it, and a report opens inside it (Library, ?report=<id>).
-Old links keep working: /?report=<id> and /?view=upload are sent on to the right page
-(redirect() in app.py).
+app.py builds the menu with st.navigation(position="top") from PAGES. Home leads into the
+library (it carries the library below its opening row); a report opens inside the Library
+(?report=<id>). Old links keep working: /?report=<id> and /?view=upload are sent on to the
+right page (redirect() in app.py). Layout rules: docs/DESIGN.md.
 """
 
+import json
 from pathlib import Path
 
 import streamlit as st
@@ -13,22 +14,18 @@ import streamlit as st
 from tigerfish import library, page_picks
 from tigerfish.ui import data, method, report_view, upload
 from tigerfish.ui import library as library_ui
-from tigerfish.ui.style import esc
+from tigerfish.ui.style import PURPOSE, TAGLINE, badge, esc, mono
 
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "assets"
-FEATURED = "great_nicobar_2021_draft"
 BUILT_WITH = "Built with NVIDIA Nemotron on Nebius Token Factory + Tavily"
-TAGLINE = "Sees clearly in murky waters."
-PROBLEM = ("An Environmental Impact Assessment can run to a thousand pages, and the people who "
-           "have to read it, from appraisal committees to communities at a public hearing, rarely "
-           "have time to check every figure. TigerFish reads the whole report and flags statements "
-           "that disagree with each other or with public records, with the page, the exact quote "
-           "and the evidence, so a reviewer can verify each one.")
-STORY = ("The tigerfish hunts in fast, silt-heavy African rivers, where the water is rarely clear.  \n"
-         "It still finds what it is looking for.  \n"
-         "TigerFish does the same with EIA reports: long, dense documents where the details that "
-         "matter are hard to see.")
+# The Home slip. The story text is fixed; the numbers come from results/eval.json.
+TIGERFISH_STORY = ("A government report listed an African fish off Great Nicobar. "
+                   "TigerFish reads the whole report so this gets caught.")
+SCROLL_URL = ("https://scroll.in/article/1095311/fake-claims-great-nicobar-lighthouse-project-"
+              "study-lists-species-found-in-africa-amazon")
+TIGERFISH_SPECIES = "Hydrocynus vittatus"
+INDIRA_POINT = (6.75, 93.83)
 
 # Which model does what, and why (tigerfish/llm.py).
 MODELS = [
@@ -59,87 +56,102 @@ LEVELS = [
      "with your own keys. The saved audits in the library are full runs."),
 ]
 
-CSS = """<style>
-.tf-home-tag { font-size: 1.9rem; font-weight: 750; line-height: 1.15; margin: 0.4rem 0 0.6rem 0; }
-.tf-home-lede { max-width: 48rem; font-size: 1.02rem; margin-bottom: 1rem; opacity: 0.9; }
-.tf-card-head { font-size: 1.05rem; font-weight: 650; margin-bottom: 0.2rem; }
-.tf-card-body { font-size: 0.9rem; opacity: 0.85; min-height: 4.6rem; }
-.tf-built { font-size: 0.85rem; opacity: 0.75; margin-top: 1.6rem; }
+
+def heading(title, sub=None, key=None, back=False):
+    """A page heading on its own paper strip (text never sits on the pattern)."""
+    with st.container(key=key or f"tf-panel-head-{title.lower().replace(' ', '-')}"):
+        if back:
+            library_ui.back_link()
+        st.markdown(f'<h1 class="tf-h1 tf-title">{esc(title)}</h1>'
+                    + (f'<div class="tf-lede">{esc(sub)}</div>' if sub else ""),
+                    unsafe_allow_html=True)
+
+
+def tigerfish_row():
+    """The tigerfish species check at Indira Point, from results/eval.json (None if absent)."""
+    path = ROOT / "results" / "eval.json"
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8"))["species"]["rows"]
+    except (OSError, KeyError, ValueError):
+        return None
+    return next((r for r in rows if r.get("name") == TIGERFISH_SPECIES), None)
+
+
+def tigerfish_slip():
+    r = tigerfish_row()
+    lat, lon = INDIRA_POINT
+    facts = ""
+    if r:
+        facts = (f'<div class="tf-slip-head">{badge(r["grade"])}<span class="tf-check">Species out '
+                 f'of range</span><span class="tf-slip-page">{lat:.2f} N, {lon:.2f} E</span></div>'
+                 f'<div class="tf-slip-title"><i>{esc(r["gbif_name"])}</i>, the tigerfish, at '
+                 f'Indira Point</div>'
+                 f'<div class="tf-slip-reason">GBIF records: {mono(f"{r["local"]:,}")} within 100 km, '
+                 f'{mono(f"{r["regional"]:,}")} within 500 km, {mono(f"{r["global"]:,}")} worldwide.</div>')
+    return (f'<div class="tf-slip tf-slip-noimg tf-home-slip"><div class="tf-slip-text">'
+            f'<blockquote class="tf-slip-quote tf-story">{esc(TIGERFISH_STORY)}</blockquote>'
+            f'{facts}<div class="tf-slip-foot"><span>Species check from results/eval.json.</span>'
+            f'<a href="{SCROLL_URL}" target="_blank" rel="noopener">Read the Scroll.in report</a>'
+            f'</div></div></div>')
+
+
+def go_search():
+    st.session_state["lib::q"] = st.session_state.get("home::q", "")
+    st.session_state["lib::shown"] = library_ui.PAGE_SIZE
+
+
+HOME_CSS = """<style>
+.tf-home-slip { margin: 0; height: 100%; }
+.tf-home-slip .tf-story { font-size: 1.5rem; line-height: 1.3; margin-bottom: 1rem; }
+.st-key-tf-home-top [data-testid="stHorizontalBlock"] { align-items: stretch; }
+@media (max-width: 1099px) {
+  .st-key-tf-home-top [data-testid="stHorizontalBlock"] { flex-direction: column-reverse !important; }
+  .st-key-tf-home-top [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+    width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
+}
 </style>"""
 
 
-def heading(title, sub=None):
-    st.markdown(f'<div class="tf-title">{esc(title)}</div>'
-                + (f'<div class="tf-tagline">{esc(sub)}</div>' if sub else ""),
-                unsafe_allow_html=True)
-
-
-def _card(col, title, body, page, label, query_params=None, primary=False):
-    with col.container(border=True):
-        st.markdown(f'<div class="tf-card-head">{esc(title)}</div>'
-                    f'<div class="tf-card-body">{esc(body)}</div>', unsafe_allow_html=True)
-        st.page_link(page, label=label, icon=":material/arrow_forward:", query_params=query_params,
-                     width="stretch")
-
-
-def logo_path():
-    """The full lockup for the viewer's theme (logo.svg on light, logo_dark.svg on dark)."""
-    try:
-        dark = st.context.theme.type == "dark"
-    except Exception:
-        dark = False
-    return ASSETS / ("logo_dark.svg" if dark else "logo.svg")
-
-
 def home():
-    st.markdown(CSS, unsafe_allow_html=True)
-    st.image(str(logo_path()), width=320)
-    st.markdown(f'<div class="tf-home-tag">{esc(TAGLINE)}</div>'
-                f'<div class="tf-home-lede">{esc(PROBLEM)}</div>', unsafe_allow_html=True)
-
+    st.markdown(HOME_CSS, unsafe_allow_html=True)
     t = library.totals(library_ui.entries())
-    m = st.columns(4)
-    m[0].metric("EIAs checked", f"{t['reports']:,}")
-    m[1].metric("Pages read", f"{t['pages']:,}")
-    m[2].metric("Flags", f"{t['flags']:,}", help=f"{t['red']:,} RED, {t['orange']:,} ORANGE")
-    m[3].metric("INFO leads", f"{t['info']:,}")
-    st.caption(f"Live totals, computed from the saved results: {library.totals_line(t)}. "
-               "A flag is a lead to verify against the report, not a verdict.")
-
+    with st.container(key="tf-home-top"):
+        left, right = st.columns([6, 5], gap="medium")
+        with left:
+            st.markdown(tigerfish_slip(), unsafe_allow_html=True)
+        with right, st.container(key="tf-panel-home"):
+            st.markdown(f'<h1 class="tf-h1 tf-home-tag">{esc(TAGLINE)}</h1>'
+                        f'<p class="tf-purpose">{esc(PURPOSE)}</p>'
+                        f'<p class="tf-totals tf-home-totals">{esc(library.totals_line(t))}, '
+                        f'computed from the saved results.</p>', unsafe_allow_html=True)
+            st.text_input("Search the library", key="home::q", on_change=go_search,
+                          placeholder="Project, state or sector, e.g. port")
+            st.page_link(PAGES["upload"], label="Upload your EIA", icon=":material/upload_file:")
+            st.markdown(f'<div class="tf-meta">{esc(BUILT_WITH)}</div>', unsafe_allow_html=True)
     st.write("")
-    a, b, c = st.columns(3)
-    _card(a, "Browse the library", f"Every report TigerFish has checked ({t['full']} full "
-          f"audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick check"
-          f"{'s' if t['quick'] != 1 else ''}), with filters and search.",
-          PAGES["library"], "Open the library")
-    _card(b, "Upload your EIA", "Run the free checks on a PDF of your own, then choose pages "
-          "for the model checks.", PAGES["upload"], "Upload a report")
-    featured = library.find(library_ui.entries(), FEATURED)
-    if featured:
-        g = featured["grades"]
-        _card(c, "See a full audit: Great Nicobar",
-              f"{featured['pages']:,} pages read, {g['RED']} RED and {g['ORANGE']} ORANGE flags, "
-              "each with its page and quote.", PAGES["library"], "Open the audit",
-              query_params={"report": FEATURED})
-
-    st.write("")
-    st.markdown("#### Why a tigerfish")
-    st.markdown(STORY)
-    st.markdown(f'<div class="tf-built">{esc(BUILT_WITH)}</div>', unsafe_allow_html=True)
+    library_ui.render()
 
 
 def library_page():
     view, report_id = library_ui.current()
     if view != "report":
-        heading("Report library")
+        heading("Report library", "Every EIA TigerFish has read. Open one to see its flags, "
+                "each with the page and the quote.")
         library_ui.render()
         return
-    library_ui.back_link()
     entry = library.find(library_ui.entries(), report_id)
+    with st.container(key="tf-panel-report-bar"):
+        a, b = st.columns([1, 2], vertical_alignment="center")
+        with a:
+            library_ui.back_link()
+        with b:
+            library_ui.switcher(report_id)
     if entry is None:
-        st.error("This report is not in the library.")
+        with st.container(key="tf-panel-missing"):
+            st.error("This report is not in the library.")
+            st.markdown(f"No saved report has the id `{esc(report_id)}`. The link may be old or "
+                        "mistyped. Go back to the library and pick the report from the list.")
         return
-    library_ui.switcher(report_id)
     if entry["audit_type"] == library.QUICK:      # free checks only: the lighter view
         report_view.render(library.load(entry), quick=True)
     else:
@@ -147,41 +159,57 @@ def library_page():
 
 
 def upload_page():
-    library_ui.back_link()
-    heading("Upload your EIA")
-    report = upload.render()
+    heading("Upload your EIA", back=True, sub="Run the free checks on a PDF of your own, then choose pages for "
+            "the model checks.")
+    with st.container(key="tf-panel-upload"):
+        report = upload.render()
     if report is not None:
         report_view.render(report)
 
 
-def how_it_works():
+def levels_table():
+    rows = "".join(f"<tr><td><b>{esc(n)}</b></td><td>{esc(s)}</td><td>{esc(b)}</td></tr>"
+                   for n, s, b in LEVELS)
+    return ('<table class="tf-table"><thead><tr><th>Level</th><th>Scope</th><th>What runs</th>'
+            f'</tr></thead><tbody>{rows}</tbody></table>')
+
+
+def _diagram():
+    from tigerfish.ui.diagram import diagram_svg
+    return diagram_svg()
+
+
+def how_it_works_page():
     heading("How it works", "From a PDF to flags a person can check.")
-    left, right = st.columns([3, 2], gap="large")
-    with left:
-        st.image(str(ASSETS / "how_it_works.svg"), width="stretch")
+    left, right = st.columns([5, 6], gap="medium")
+    with left, st.container(key="tf-panel-diagram"):
+        st.markdown(_diagram(), unsafe_allow_html=True)
     with right:
-        st.markdown("#### Which model does what, and why")
-        for name, does, why in MODELS:
-            st.markdown(f"**{name}**  \n{does}  \n*Why:* {why}")
-        st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Every quote a model "
-                   "returns is checked against the page text before it is shown.")
-    st.markdown("#### Three levels")
-    cols = st.columns(3)
-    for col, (name, sub, body) in zip(cols, LEVELS):
-        with col.container(border=True):
-            st.markdown(f"**{name}** ({sub})  \n{body}")
-    st.write("")
-    st.markdown(method.method_text())
-    st.page_link(PAGES["limitations"], label="Known limitations", icon=":material/arrow_forward:")
+        with st.container(key="tf-panel-levels"):
+            st.markdown('<h2 class="tf-h2">Three levels</h2>' + levels_table(), unsafe_allow_html=True)
+        with st.container(key="tf-panel-models"):
+            st.markdown('<h2 class="tf-h2">Which model does what, and why</h2>'
+                        '<table class="tf-table"><thead><tr><th>Model</th><th>Does</th><th>Why</th>'
+                        '</tr></thead><tbody>' + "".join(
+                            f'<tr><td class="tf-mono">{esc(n)}</td><td>{esc(d)}</td><td>{esc(w)}</td></tr>'
+                            for n, d, w in MODELS) + "</tbody></table>", unsafe_allow_html=True)
+            st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Every quote a model "
+                       "returns is checked against the page text before it is shown.")
+        with st.container(key="tf-panel-method"):
+            st.markdown(method.method_text())
+            st.page_link(PAGES["limitations"], label="Known limitations",
+                         icon=":material/arrow_forward:")
 
 
 def limitations():
     heading("Limitations", "Every flag is a lead for human review, not a verdict.")
-    st.markdown(method.limits_text())
+    with st.container(key="tf-panel-limits"):
+        st.markdown(method.limits_text())
     text = method.limitations_text()
     if text:
-        st.markdown("#### Failure cases from our own runs (docs/LIMITATIONS.md)")
-        st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
+        with st.container(key="tf-panel-failures"):
+            st.markdown("#### Failure cases from our own runs (docs/LIMITATIONS.md)")
+            st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
 
 
 # Filled by build(); the keys are used across the app (st.page_link / st.switch_page).
@@ -191,13 +219,10 @@ PAGES = {}
 def build():
     """The page objects, in menu order. Call once per run, before st.navigation."""
     PAGES.update({
-        "home": st.Page(home, title="Home", icon=":material/home:", url_path="home", default=True),
-        "library": st.Page(library_page, title="Library", icon=":material/library_books:",
-                           url_path="library"),
-        "upload": st.Page(upload_page, title="Upload", icon=":material/upload_file:", url_path="upload"),
-        "how": st.Page(how_it_works, title="How it works", icon=":material/account_tree:",
-                       url_path="how-it-works"),
-        "limitations": st.Page(limitations, title="Limitations", icon=":material/info:",
-                               url_path="limitations"),
+        "home": st.Page(home, title="Home", url_path="home", default=True),
+        "library": st.Page(library_page, title="Library", url_path="library"),
+        "upload": st.Page(upload_page, title="Upload", url_path="upload"),
+        "how": st.Page(how_it_works_page, title="How it works", url_path="how-it-works"),
+        "limitations": st.Page(limitations, title="Limitations", url_path="limitations"),
     })
     return list(PAGES.values())

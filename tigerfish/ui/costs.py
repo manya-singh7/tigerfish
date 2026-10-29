@@ -88,9 +88,11 @@ def modes(e):
     ]
 
 
-ACCENT = "#0F5E5E"
-ESTIMATE = "#8FB3B3"
-TEXT = "#1C2B33"
+ACCENT = "#0D4242"
+ESTIMATE = "#9FB7B2"
+TEXT = "#17302F"
+PAPER, RULE = "#FAF6EC", "#CFC6B3"
+FONT = "Schibsted Grotesk, sans-serif"
 
 
 def figure(rows):
@@ -102,16 +104,16 @@ def figure(rows):
     fig = go.Figure(go.Bar(
         x=usd, y=labels, orientation="h",
         marker={"color": [ESTIMATE if r["recall"] is None else ACCENT for r in rows][::-1],
-                "cornerradius": 4},
+                "cornerradius": 2},
         text=[f"${v:.2f} · {t}" for v, t in zip(usd, recall_txt)], textposition="outside",
-        textfont={"color": TEXT, "size": 13}, cliponaxis=False,
+        textfont={"color": TEXT, "size": 13, "family": "IBM Plex Mono, monospace"}, cliponaxis=False,
         customdata=[[r["verdicts"], r["recall_note"]] for r in rows][::-1],
         hovertemplate="<b>%{y}</b><br>$%{x:.2f} per full audit<br>%{customdata[0]:,} Ultra verdicts"
                       "<br>Recall: %{customdata[1]}<extra></extra>"))
     fig.update_layout(height=260, margin={"l": 0, "r": 150, "t": 10, "b": 30}, bargap=0.35,
-                      paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF", showlegend=False,
-                      font={"color": TEXT, "family": "Inter, Segoe UI, sans-serif"},
-                      xaxis={"title": "USD per full 1,213-page audit", "gridcolor": "#EEF1F2",
+                      paper_bgcolor=PAPER, plot_bgcolor=PAPER, showlegend=False,
+                      font={"color": TEXT, "family": FONT}, hoverlabel={"font": {"family": FONT}},
+                      xaxis={"title": "USD per full 1,213-page audit", "gridcolor": RULE,
                              "zeroline": False, "tickprefix": "$"},
                       yaxis={"automargin": True})
     return fig
@@ -121,7 +123,7 @@ def render(e):
     import streamlit as st
     rows = modes(e)
     st.markdown("#### Cost per full audit, by triage mode")
-    st.plotly_chart(figure(rows), width="stretch", config={"displayModeBar": False})
+    st.plotly_chart(figure(rows), width="stretch", theme=None, config={"displayModeBar": False})
     st.markdown("| Mode | Cost | Ultra verdicts | Recall |\n|---|---:|---:|---|\n" + "\n".join(
         f"| {r['mode']} | ${r['usd']:.2f} | {r['verdicts']:,} | "
         + (f"{r['recall'][0]} of {r['recall'][1]} ({r['recall_note']})" if r["recall"] else r["recall_note"])

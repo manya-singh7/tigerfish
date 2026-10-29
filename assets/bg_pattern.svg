@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520">
+<!-- TigerFish background tile: hand-drawn line art in one ink colour. The app recolours
+     the stroke for light and dark (tigerfish/ui/style.py); keep stroke="#0D4242". -->
+<g fill="none" stroke="#0D4242" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- small fish, swimming right -->
+  <path d="M38 62c10-11 27-13 40-4c4 3 7 6 9 9c-3 3-6 6-10 8c-13 8-30 6-39-5"/>
+  <path d="M38 62l-14-10c2 7 3 14 0 21l14-9"/>
+  <path d="M55 56c-3 6-3 13 0 19M64 54c-2 7-2 15 1 21"/>
+  <circle cx="78" cy="64" r="1.6"/>
+  <!-- reeds -->
+  <path d="M182 168c-2-30 1-58 9-86"/>
+  <path d="M191 82c-6 10-8 20-7 30c7-8 9-19 7-30z"/>
+  <path d="M194 170c3-26 10-48 22-66"/>
+  <path d="M206 170c-1-18-6-34-15-47"/>
+  <path d="M168 171c10-2 30-2 48 0"/>
+  <!-- ripples -->
+  <path d="M300 40c12-5 24-5 36 0s24 5 36 0"/>
+  <path d="M312 54c10-4 20-4 30 0s20 4 30 0"/>
+  <path d="M30 248c12-5 24-5 36 0s24 5 36 0"/>
+  <!-- loose report page, dog-eared, with lines of text and one highlighted line -->
+  <path d="M398 118l64 6l-7 84l-70-6l6-70z"/>
+  <path d="M462 124l-2 18l-16-2"/>
+  <path d="M400 142l38 3M398 154l50 4M397 166l50 4M396 178l30 2M394 190l46 4"/>
+  <path d="M396 163l52 5" stroke-width="5" stroke-opacity="0.35"/>
+  <!-- magnifier -->
+  <circle cx="262" cy="248" r="22"/>
+  <path d="M252 238c4-4 9-5 14-3"/>
+  <path d="M278 264l20 20"/>
+  <path d="M283 262l18 18" stroke-width="1"/>
+  <!-- survey stake with flagging tape and depth ticks -->
+  <path d="M120 300l6 118"/>
+  <path d="M121 312l26 6l-6 10l7 9l-26-4"/>
+  <path d="M123 350h7M124 366h7M125 382h7M126 398h7"/>
+  <path d="M106 420c12-4 30-4 42 0"/>
+  <!-- mangrove: trunk and arching prop roots into the water line -->
+  <path d="M388 270c2 30 0 56-4 76"/>
+  <path d="M386 300c-14 6-24 22-28 50M386 312c-6 10-8 24-6 38M386 300c14 6 24 24 26 50M385 322c10 8 14 18 14 30"/>
+  <path d="M352 352c20-4 50-4 78 0"/>
+  <path d="M370 268c-8-12-4-26 8-30c6 10 4 22-8 30zM390 266c4-14 16-20 28-14c-4 12-16 16-28 14z"/>
+  <!-- coral -->
+  <path d="M226 470c0-20 2-36-6-50M226 452c8-6 12-16 10-28M222 440c-10-4-16-12-16-24M232 470c8-14 18-22 30-24M250 448c2-8 0-14-4-20"/>
+  <path d="M206 471c16-2 44-2 64 0"/>
+  <!-- stamp: a round inspection stamp with a tick -->
+  <circle cx="460" cy="440" r="30"/>
+  <circle cx="460" cy="440" r="23" stroke-dasharray="3 4"/>
+  <path d="M448 440l8 8l16-17"/>
+  <!-- second fish, smaller, swimming left -->
+  <path d="M330 470c-8-8-21-9-31-2c-3 2-5 5-7 7c2 2 5 4 8 6c10 6 22 4 30-4"/>
+  <path d="M330 470l11-8c-1 6-2 11 0 16l-11-8"/>
+  <path d="M316 465c2 4 2 9 0 13"/>
+  <circle cx="300" cy="469" r="1.4"/>
+  <!-- bubbles -->
+  <circle cx="98" cy="40" r="3"/><circle cx="106" cy="28" r="2"/>
+  <circle cx="284" cy="456" r="2.5"/>
+  <!-- small weeds at the edges -->
+  <path d="M40 500c2-14 6-24 12-30M48 502c0-10-4-20-10-26"/>
+  <path d="M470 20c-4 10-4 22 0 32"/>
+</g>
+</svg>

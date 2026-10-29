@@ -25,7 +25,7 @@ def test_map_crops_cost_chart_and_pack_button(app):
     assert not app.exception
     text = "\n".join(m.value for m in app.markdown)
     assert "Where the flagged species are actually recorded" in text
-    assert "Highlighted lines, zoomed" in text
+    assert 'class="tf-slip-crop"' in text and "highlighted</figcaption>" in text   # page crops in slips
     assert "Cost per full audit, by triage mode" in text
     charts = plotly_titles(app)
     assert any("Scattergeo" in c or "scattergeo" in c for c in charts)       # species map

@@ -203,6 +203,39 @@ def page_chooser(pages, digest):
     return chosen
 
 
+MAX_UPLOAD_MB = 100      # also server.maxUploadSize; checked again here, on the server
+MAX_UPLOAD_PDF_PAGES = 5000
+
+
+def validate_pdf(data):
+    """(error message or None, page count). Checked on the server, whatever the browser sent:
+    the file type by its bytes, the size, and that the PDF opens and has pages."""
+    if not data:
+        return "The file is empty. Choose the EIA PDF again.", 0
+    mb = len(data) / 1e6
+    if mb > MAX_UPLOAD_MB:
+        return (f"This file is {mb:,.0f} MB; the limit is {MAX_UPLOAD_MB} MB. Upload the main "
+                "report volume on its own, or run scripts/audit.py locally for larger files."), 0
+    if b"%PDF-" not in data[:1024]:
+        return ("This file is not a PDF (it does not start like one, whatever its name). Upload "
+                "the EIA as a PDF."), 0
+    try:
+        with pymupdf.open(stream=data, filetype="pdf") as doc:
+            if doc.needs_pass:
+                return ("This PDF is password-protected, so its text cannot be read. Upload a "
+                        "copy without a password."), 0
+            n = doc.page_count
+    except Exception:
+        return ("This PDF could not be opened: it may be damaged or incomplete. Download it "
+                "again and upload the new copy."), 0
+    if n == 0:
+        return "This PDF has no pages. Check that it is the full report.", 0
+    if n > MAX_UPLOAD_PDF_PAGES:
+        return (f"This PDF has {n:,} pages; the limit is {MAX_UPLOAD_PDF_PAGES:,}. Upload one "
+                "volume at a time."), n
+    return None, n
+
+
 def read_upload(upload, digest):
     s = st.session_state
     if s.get(f"{S}digest") == digest:
@@ -218,8 +251,7 @@ def read_upload(upload, digest):
 def render():
     s = st.session_state
     is_hosted = hosted.is_hosted()
-    st.markdown("### Upload your own EIA")
-    st.caption(NOTE)
+    st.caption(NOTE + f" PDF only, up to {MAX_UPLOAD_MB} MB.")
     live.key_field_any()
     upload = st.file_uploader("EIA PDF", type=["pdf"], label_visibility="collapsed")
     if upload is None:
@@ -232,6 +264,10 @@ def render():
             "credits), ToR promises (needs the ToR PDF), and the full audit of every page.")
         return None
 
+    error, _ = validate_pdf(upload.getvalue())
+    if error:
+        st.error(f"Upload not accepted. {error}")
+        return None
     digest = hashlib.sha256(upload.getvalue()).hexdigest()[:12]
     seen = s.setdefault(live.SEEN_KEY, [])
     if digest not in seen:

@@ -60,13 +60,18 @@ def chart(data):
         layers.append(alt.Chart(win).mark_text(align="left", dx=4, dy=-6, baseline="bottom",
                                                color=MUTED, fontSize=11).encode(
             x="start:T", y=alt.value(0), text="label:N"))
-    layers.append(alt.Chart(bars).mark_bar(cornerRadius=4, height=14, color=ACCENT,
-                                           stroke="white", strokeWidth=1).encode(
+    layers.append(alt.Chart(bars).mark_bar(cornerRadius=2, height=14, color=ACCENT,
+                                           stroke="#FAF6EC", strokeWidth=1).encode(
         x=x, x2="end_excl:T", y=alt.Y("study:N", sort=order, title=None, axis=alt.Axis(labelLimit=260)),
         href="url:N",
         tooltip=[alt.Tooltip("study:N", title="Study"), alt.Tooltip("dates:N", title="Dates"),
                  alt.Tooltip("cite:N", title="Source"), alt.Tooltip("quote:N", title="Report text")]))
-    return alt.layer(*layers).properties(height=36 * len(order) + 30)
+    font = "Schibsted Grotesk"
+    return (alt.layer(*layers).properties(height=36 * len(order) + 30, background="#FAF6EC")
+            .configure(font=font)
+            .configure_axis(labelFont=font, titleFont=font, labelColor="#17302F", domainColor="#CFC6B3",
+                            tickColor="#CFC6B3", gridColor="#CFC6B3")
+            .configure_view(stroke=None))
 
 
 def load_granted(report_id):
@@ -111,7 +116,7 @@ def render(report_id):
     st.markdown("#### Survey timeline")
     st.caption("Each bar is a field study's dates as the report states them; the shaded band is "
                "the stated baseline period. Click a bar to open the cited page of the report.")
-    st.altair_chart(chart(data), width="stretch", theme="streamlit")
+    st.altair_chart(chart(data), width="stretch", theme=None)
     with st.expander("Timeline as a table"):
         frame = timeline_frame(data)[["study", "start", "end", "days", "cite", "quote", "url"]]
         st.dataframe(frame, hide_index=True, width="stretch",

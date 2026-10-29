@@ -1,10 +1,10 @@
 """Browser check of the app in hosted mode (no keys): the top menu (Home · Library · Upload ·
-How it works · Limitations); Home (tagline, live totals, three cards, tiger fish story,
-built-with line); the brand (logo, favicon, light and dark theme); How it works (diagram,
+How it works · Limitations); Home (tagline, purpose line, live totals sentence, the tiger fish
+slip with its Scroll.in link, search into the library, the library below, built-with line); the brand (logo, favicon, light and dark theme); How it works (diagram,
 models, three levels); Limitations; the report library (live totals, filters, search, a quick
 check with only its own sections, back link); the no-key upload (detected facts, free checks,
 which checks need a key, the three levels); then the report opened from the library, in
-sections side by side with their counts: Overview (hero, top flags), Contradictions (badges,
+sections side by side with their counts: Overview (top 3 human-verified slips, one totals sentence), Contradictions (badges,
 page images), Species & nature (map, photos), Promises & timeline (granted and proposed ToR),
 Take action (letter and RTI downloads, letter-language gating), Quality (review queue,
 evaluation), Ask & investigate (memo), Cost & models (cost card, efficiency line, scanned
@@ -122,13 +122,18 @@ with sync_playwright() as p:
     idle(page)
     items = library.entries()
     t = library.totals(items)
-    ok("home: tagline", page.locator(".tf-home-tag").inner_text().strip() == "Sees clearly in murky waters.")
-    metrics = page.locator('[data-testid="stMetricValue"]').all_inner_texts()
-    ok("home: live totals from results/", metrics[:4] == [f"{t['reports']:,}", f"{t['pages']:,}",
-       f"{t['flags']:,}", f"{t['info']:,}"], " / ".join(metrics))
-    ok("home: three cards", page.locator(".tf-card-head").all_inner_texts() == [
-        "Browse the library", "Upload your EIA", "See a full audit: Great Nicobar"])
-    ok("home: tiger fish story", page.get_by_text("Why a tigerfish").count() == 1)
+    ok("home: tagline", page.locator(".tf-home-tag").inner_text().strip() == "Built for murky water.")
+    ok("home: purpose line", page.locator(".tf-purpose").inner_text().strip() ==
+       "A second reader for environmental impact reports, and everyone who questions them.")
+    totals = page.locator(".tf-home-totals").inner_text()
+    ok("home: live totals from results/, one sentence", library.totals_line(t) in totals, totals)
+    ok("home: tiger fish slip", page.get_by_text("A government report listed an African fish off "
+       "Great Nicobar. TigerFish reads the whole report so this gets caught.").count() == 1
+       and page.locator('a[href*="scroll.in/article/1095311"]').count() == 1)
+    ok("home: no row of feature cards or metric banner", page.locator(".tf-card-head").count() == 0
+       and page.locator('[data-testid="stMetricValue"]').count() == 0)
+    ok("home: the library below", page.locator(".tf-lib-total").count() == 1
+       and page.locator(".tf-lib-title").count() == len(items))
     ok("home: built with", page.get_by_text(
         "Built with NVIDIA Nemotron on Nebius Token Factory + Tavily").count() == 1)
     shown_menu = [n for n in MENU if menu_link(page, n).count()]
@@ -137,7 +142,7 @@ with sync_playwright() as p:
     icon = page.evaluate("() => [...document.querySelectorAll('link[rel*=icon]')].map(l => l.href).join(' ')")
     ok("brand: favicon set", bool(icon) and "favicon.png" not in icon.split("/")[-1:], icon[:120])
     bg = page.evaluate("() => getComputedStyle(document.querySelector('.stApp')).backgroundColor")
-    ok("light theme: background", bg == "rgb(255, 255, 255)", bg)
+    ok("light theme: paper background", bg == "rgb(233, 226, 210)", bg)
     page.screenshot(path=str(OUT / "home.png"), full_page=True)
     no_exception(page, "home")
 
@@ -172,7 +177,7 @@ with sync_playwright() as p:
 
     ok("library: one row per report", opens() == len(items), f"{opens()} rows, {len(items)} reports")
     ok("library: upload button and note",
-       page.get_by_role("button", name="Upload your own EIA").count() == 1
+       page.get_by_role("button", name="Upload your EIA").count() == 1
        and page.get_by_text("Saved audits are full runs").count() > 0)
     page.get_by_text("Has RED flags").click()
     page.wait_for_timeout(2500)
@@ -202,7 +207,7 @@ with sync_playwright() as p:
                  "The total reclaimed area is 62 ha at the harbour site."):
         doc.new_page().insert_textbox(pymupdf.Rect(40, 40, 560, 800), text, fontsize=11)
     doc.save(pdf)
-    page.get_by_role("button", name="Upload your own EIA").click()
+    page.get_by_role("button", name="Upload your EIA").click()
     page.get_by_text("Quick check (free, whole report)").first.wait_for(timeout=60_000)
     idle(page)
     ok("upload: opens the Upload page", "/upload" in page.url, page.url)
@@ -230,7 +235,7 @@ with sync_playwright() as p:
     # ---------- open the Great Nicobar report from the library ----------
     idle(page)
     page.locator('[data-testid="stButton"] button', has_text="Open").first.click()
-    page.wait_for_selector(".tf-hero", timeout=180_000)
+    page.wait_for_selector(".tf-slip", timeout=180_000)
     tab(page, "Cost & models").wait_for(timeout=180_000)
     idle(page)
     ok("report opens in the Library", "/library" in page.url and "report=" in page.url, page.url)
@@ -238,7 +243,8 @@ with sync_playwright() as p:
     ok("sections side by side", labels(page) == SECTIONS, " | ".join(tab_text))
     ok("section labels carry counts", any(re.fullmatch(r"Contradictions \([\d,]+\)", x.strip())
                                           for x in tab_text))
-    ok("hero card in Overview", page.locator(".tf-hero-headline").count() > 0)
+    ok("Overview: top 3 human-verified slips", page.locator(".tf-slip:visible").count() == 3
+       and page.locator(".tf-slip:visible .tf-person").count() == 3)
     ok("Overview: top flags", page.get_by_text("Top flags").count() == 1)
     ok("back link on the report", page.get_by_role("button", name="Back to library").count() == 1)
     ok("no live toggle without a key", page.locator('[data-testid="stToggle"]').count() == 0
@@ -415,7 +421,7 @@ with sync_playwright() as p:
 
     # ---------- old links still work ----------
     page.goto(URL + "/?report=great_nicobar_2021_draft", timeout=120_000)
-    page.wait_for_selector(".tf-hero", timeout=180_000)
+    page.wait_for_selector(".tf-slip", timeout=180_000)
     ok("old link /?report=<id> opens the report in the Library", "/library" in page.url, page.url)
     ok("no page errors in the browser", not errors, "; ".join(errors[:3]))
 
@@ -425,10 +431,10 @@ with sync_playwright() as p:
     dark.wait_for_selector(".tf-home-tag", timeout=180_000)
     idle(dark)
     bg = dark.evaluate("() => getComputedStyle(document.querySelector('.stApp')).backgroundColor")
-    ok("dark theme: background from [theme.dark]", bg == "rgb(11, 29, 34)", bg)
+    ok("dark theme: background from [theme.dark]", bg == "rgb(15, 23, 22)", bg)
     dark.screenshot(path=str(OUT / "home_dark.png"), full_page=True)
     dark.goto(URL + "/library?report=great_nicobar_2021_draft", timeout=120_000)
-    dark.wait_for_selector(".tf-hero", timeout=180_000)
+    dark.wait_for_selector(".tf-slip", timeout=180_000)
     idle(dark)
     dark.screenshot(path=str(OUT / "report_overview_dark.png"), full_page=True)
     browser.close()

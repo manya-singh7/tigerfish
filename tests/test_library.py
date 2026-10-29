@@ -133,15 +133,27 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
     text = "\n".join(m.value for m in at.markdown)
     line = library.totals_line(library.totals(library.entries()))
     assert line in text                                    # totals computed, not hard-coded
-    assert any(b.label == "Upload your own EIA" for b in at.button)
+    assert any(b.label == "Upload your EIA" for b in at.button)
     assert any("Saved audits are full runs" in c.value for c in at.caption)
     assert {m.label for m in at.multiselect} == {"State", "Sector", "Year", "Audit type"}
-    n = len([b for b in at.button if b.label == "Open"])
+    n = len([b for b in at.button if b.label == "Open report"])
     at.checkbox(key="lib::red").check().run()
-    red = len([b for b in at.button if b.label == "Open"])
+    red = len([b for b in at.button if b.label == "Open report"])
     assert red == sum(e["grades"]["RED"] > 0 for e in library.entries()) and red <= n
     at.text_input(key="lib::q").input("Cuddalore").run()
-    assert len([b for b in at.button if b.label == "Open"]) == 1
+    assert len([b for b in at.button if b.label == "Open report"]) == 1
+
+
+@has_results
+def test_library_filter_has_human_verified_findings(no_keys):
+    at = open_app(report=None, page="library")
+    at.checkbox(key="lib::verified").check().run()
+    assert not at.exception
+    shown = len([b for b in at.button if b.label == "Open report"])
+    assert shown == sum(1 for e in library.entries() if e["verified"]) >= 1
+    assert any("Has human-verified findings" in m.value for m in at.markdown)   # its chip
+    at.button(key="lib::reset").click().run()                                   # Reset filters
+    assert len([b for b in at.button if b.label == "Open report"]) == len(library.entries())
 
 
 @has_results
@@ -151,10 +163,10 @@ def test_open_a_report_and_go_back(no_keys):
     assert not at.exception
     assert at.query_params.get("report") in (GN, [GN])
     assert [t.label.split(" (")[0] for t in at.tabs][:2] == ["Overview", "Contradictions"]
-    assert any(b.label == "← Back to library" for b in at.button)
+    assert any(b.label == "Back to library" for b in at.button)
     at.button(key="tf::back").click().run()
     assert not at.exception
-    assert not at.tabs and any(b.label == "Upload your own EIA" for b in at.button)
+    assert not at.tabs and any(b.label == "Upload your EIA" for b in at.button)
 
 
 @has_results
@@ -163,7 +175,7 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     text = "\n".join(m.value for m in at.markdown)
     assert "5 EIAs checked" in text or "EIAs checked" in text
     at.multiselect(key="lib::type").select(library.QUICK).run()
-    assert len([b for b in at.button if b.label == "Open"]) == 2
+    assert len([b for b in at.button if b.label == "Open report"]) == 2
     at.button(key="tf::open::sample_quick_mine_odisha_2025").click().run()
     assert not at.exception
     assert any(library.QUICK_NOTICE in w.value for w in at.warning)
@@ -186,4 +198,4 @@ def test_upload_screen_without_a_key(no_keys):
     assert any("No key: the free checks run" in c.value for c in at.caption)
     text = "\n".join(m.value for m in at.markdown)
     assert "Without a key" in text and "With a key" in text
-    assert any(b.label == "← Back to library" for b in at.button)
+    assert any(b.label == "Back to library" for b in at.button)

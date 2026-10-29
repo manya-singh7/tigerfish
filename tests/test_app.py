@@ -30,7 +30,7 @@ def test_app_runs_without_api_keys(no_keys):
     assert any(t.label.startswith("Contradictions (") for t in at.tabs)
     home = open_app(report=None, timeout=60)
     assert not home.exception
-    assert any("Sees clearly in murky waters." in m.value for m in home.markdown)
+    assert any("Built for murky water." in m.value for m in home.markdown)
 
 
 @pytest.mark.parametrize("report", [r["title"] for r in data.reports()])

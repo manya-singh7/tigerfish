@@ -28,13 +28,31 @@ def test_home_is_the_landing_page(no_keys):
     at = open_app(report=None)
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
-    assert pages.TAGLINE in text and pages.BUILT_WITH in text and "Why a tigerfish" in text
-    for card in ("Browse the library", "Upload your EIA", "See a full audit: Great Nicobar"):
-        assert card in text
+    assert pages.TAGLINE in text and pages.PURPOSE in text and pages.BUILT_WITH in text
+    assert pages.TIGERFISH_STORY in text and pages.SCROLL_URL in text     # the tiger fish slip
     t = library.totals(library.entries())
-    assert [m.value for m in at.metric] == [f"{t['reports']:,}", f"{t['pages']:,}",
-                                            f"{t['flags']:,}", f"{t['info']:,}"]
+    assert library.totals_line(t) in text                                 # one live sentence
+    assert not at.metric                                                  # no stat banner
+    assert any(b.label == "Open report" for b in at.button)               # the library below
     assert not at.tabs
+
+
+def test_home_search_goes_into_the_library(no_keys):
+    at = open_app(report=None)
+    at.text_input(key="home::q").input("Cuddalore").run()
+    assert not at.exception
+    assert len([b for b in at.button if b.label == "Open report"]) == 1
+
+
+def test_overview_is_top_three_verified_slips_and_one_sentence(no_keys):
+    at = open_app()
+    assert not at.exception
+    text = "\n".join(m.value for m in at.markdown)
+    report = data.load(GN)
+    assert report_view.totals_sentence(report) in text
+    slips = [m.value for m in at.tabs[0].markdown if 'class="tf-slip' in m.value]
+    assert len(slips) == report_view.TOP_FLAGS
+    assert all("Verified by a person" in v for v in slips)
 
 
 def test_old_report_link_opens_the_report(no_keys):
