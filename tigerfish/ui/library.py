@@ -33,14 +33,8 @@ CSS = """<style>
   .st-key-tf-lib-layout [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
     width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
 }
-/* on wide screens the filter expander is always open and its toggle is hidden */
-@media (min-width: 1100px) {
-  .st-key-tf-side-lib [data-testid="stExpander"] details { border: 0; background: transparent; pointer-events: auto !important; }
-  .st-key-tf-side-lib [data-testid="stExpander"] summary { display: none !important; pointer-events: none !important; }
-  .st-key-tf-side-lib [data-testid="stExpander"] details::details-content {
-    content-visibility: visible; display: block; height: auto; pointer-events: auto !important; }
-  .st-key-tf-side-lib [data-testid="stExpanderDetails"] { padding: 0 !important; pointer-events: auto !important; position: relative; z-index: 2; }
-}
+/* side panel is a clean container */
+.st-key-tf-side-lib { pointer-events: auto !important; position: relative; z-index: 2; }
 div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"],
 div[data-testid="stMultiSelect"],
@@ -203,23 +197,22 @@ def _chips():
 def side_panel(items, shown):
     t = library.totals(items)
     with st.container(key="tf-side-lib"):
-        with st.expander("Search and filters", expanded=True):
-            st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
-            st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
-            st.multiselect("State", library.options(items, "state"), key="lib::state")
-            st.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
-            st.multiselect("Year", library.options(items, "year"), key="lib::year")
-            st.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
-            st.checkbox("Has RED flags", key="lib::red")
-            st.checkbox("Has human-verified findings", key="lib::verified")
-            chips = _chips()
-            if chips:
-                st.markdown('<div class="tf-chips">' + "".join(
-                    f'<span class="tf-chip">{esc(c)}</span>' for c in chips) + "</div>",
+        st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
+        st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
+        st.multiselect("State", library.options(items, "state"), key="lib::state")
+        st.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
+        st.multiselect("Year", library.options(items, "year"), key="lib::year")
+        st.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
+        st.checkbox("Has RED flags", key="lib::red")
+        st.checkbox("Has human-verified findings", key="lib::verified")
+        chips = _chips()
+        if chips:
+            st.markdown('<div class="tf-chips">' + "".join(
+                f'<span class="tf-chip">{esc(c)}</span>' for c in chips) + "</div>",
+                unsafe_allow_html=True)
+            st.button("Reset filters", key="lib::reset", type="tertiary", on_click=reset_filters)
+        st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(items)} reports.</div>',
                     unsafe_allow_html=True)
-                st.button("Reset filters", key="lib::reset", type="tertiary", on_click=reset_filters)
-            st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(items)} reports.</div>',
-                        unsafe_allow_html=True)
         st.markdown(f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
                     unsafe_allow_html=True)
         st.caption(f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
