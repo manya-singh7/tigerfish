@@ -222,6 +222,7 @@ def test_library_filter_has_human_verified_findings(no_keys, paginated_library):
         "Has human-verified findings" in m.value for m in at.markdown
     )  # its chip
     at.button(key="lib::reset").click().run()  # Reset filters
+    assert len(visible_reports(at)) == min(len(paginated_library), library_ui.PAGE_SIZE)
     assert visible_reports(at) == [e["id"] for e in paginated_library[:10]]
     assert not at.checkbox(key="lib::verified").value
 

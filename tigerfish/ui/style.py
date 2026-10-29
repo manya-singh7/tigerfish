@@ -69,7 +69,7 @@ header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data
   font-family: "Schibsted Grotesk", sans-serif; font-size: 0.8125rem; line-height: 1.3;
   color: var(--tf-muted); width: max-content; max-width: 36rem; margin-left: 1.1rem; white-space: normal;
   overflow: visible; text-overflow: clip; display: block; }
-header nav { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
+header nav { margin-left: auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 0.5rem !important; }
 header [data-testid="stTopNavLink"] { padding: 0.35rem 0.65rem !important; }
 
 /* ---- page width: 1480px max, padding that scales with the screen ---- */
@@ -195,6 +195,13 @@ mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 }
 div[class*="st-key-tf-side"] { background: var(--tf-paper); border: 1px solid var(--tf-rule);
   border-radius: 3px; padding: 1rem 1.1rem; pointer-events: auto !important; }
+div[data-testid="stTextInput"] input,
+div[data-testid="stSelectbox"],
+div[data-testid="stMultiSelect"],
+div[data-testid="stCheckbox"],
+div[data-testid="stExpanderDetails"] * {
+  pointer-events: auto !important;
+}
 
 /* ---- multiselect pills and close buttons ---- */
 [data-testid="stMultiSelect"] [data-tag],
