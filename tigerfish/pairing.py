@@ -24,6 +24,7 @@ Yields candidates one by one (no all-pairs list in memory).
 The Ultra verdict prompt is not touched: it sees each claim's page, subject and quote only.
 """
 
+import contextvars
 import logging
 import re
 from itertools import combinations
@@ -38,10 +39,10 @@ KEY_BATCH = 40               # distinct subjects per LIGHTNING call
 KEY_MAX_TOKENS = 4000
 MAX_PAIRS_PER_GROUP = 8      # candidate pairs per subject group at most
 
-PLACES = ["great nicobar island", "galathea national park", "campbell bay national park",
-          "galathea bay", "project site", "andaman and nicobar islands", "study area"]
+GN_PLACES = ["great nicobar island", "galathea national park", "campbell bay national park",
+             "galathea bay", "project site", "andaman and nicobar islands", "study area"]
 # place -> places inside it (for the part-larger-than-whole pairs)
-INSIDE = {
+GN_INSIDE = {
     "great nicobar island": {"galathea national park", "campbell bay national park",
                              "galathea bay"},
     "andaman and nicobar islands": {"great nicobar island", "galathea national park",
@@ -49,7 +50,7 @@ INSIDE = {
                                     "project site"},
 }
 
-KEY_PROMPT = f"""You normalise the subjects of numbers taken from one Indian Environmental \
+GN_KEY_PROMPT = f"""You normalise the subjects of numbers taken from one Indian Environmental \
 Impact Assessment report (a project on Great Nicobar Island), so that numbers about the same \
 thing get the same key. For each numbered item return:
 - measure: what is measured or counted, 2-6 plain lowercase words, WITHOUT the place, e.g.
@@ -60,7 +61,7 @@ thing get the same key. For each numbered item return:
   blair", "distance to biosphere reserve core zone". Same thing -> same words. Different groups or parts (birds vs
   fauna, endemic vs all, one component vs the total) -> different words.
 - place: the place the number is about, lowercase. Use these exact forms when they apply:
-  {", ".join(f'"{p}"' for p in PLACES)} ("GNI" and "Great Nicobar" are
+  {", ".join(f'"{p}"' for p in GN_PLACES)} ("GNI" and "Great Nicobar" are
   "great nicobar island"; the proposed port, airport, township or project area is
   "project site"). Otherwise a short name, or "" if no place is given.
 - reading: true if the number is ONE measurement from a monitoring or lab results table
@@ -74,7 +75,7 @@ Return JSON only: {{"items": [{{"n": 1, "measure": "...", "place": "...", "readi
 
 # Reports with their own "pairing" settings (tigerfish/sites.py) get this wording instead, so
 # nothing about Great Nicobar reaches them. Great Nicobar and Cuddalore (run before this
-# existed) keep KEY_PROMPT above unchanged, so their cached keys and finding ids still hold.
+# existed) keep GN_KEY_PROMPT above unchanged, so their cached keys and finding ids still hold.
 PROFILE_KEY_PROMPT = """You normalise the subjects of numbers taken from one Environmental \
 Impact Assessment report ({project}), so that numbers about the same thing get the same key. \
 For each numbered item return:
@@ -95,10 +96,29 @@ For each numbered item return:
 Return JSON only: {{"items": [{{"n": 1, "measure": "...", "place": "...", "reading": false, \
 "station": ""}}, ...]}}"""
 
+# Places the model cannot tell apart reliably for project figures: compatible with each other.
+GN_SAME_PLACE = {"", "project site", "great nicobar island"}
 # The place that blank / project-site figures collapse into (a cell label, and a key of INSIDE)
-MERGED_PLACE = "great nicobar island"
-_GN = {"PLACES": PLACES, "INSIDE": INSIDE, "KEY_PROMPT": KEY_PROMPT,
-       "SAME_PLACE": None, "MERGED_PLACE": MERGED_PLACE}
+GN_MERGED_PLACE = "great nicobar island"
+_GN = {"PLACES": GN_PLACES, "INSIDE": GN_INSIDE, "KEY_PROMPT": GN_KEY_PROMPT,
+       "SAME_PLACE": GN_SAME_PLACE, "MERGED_PLACE": GN_MERGED_PLACE}
+
+# A visitor's upload has no profile in tigerfish/sites.py: neutral places, nothing about any
+# saved report.
+UPLOAD_PAIRING = {
+    "project": "a project in India uploaded by a visitor; its places are not known in advance",
+    "places": ["project site", "study area"],
+    "place_note": "the proposed plant, mine, road, port or other project area is \"project "
+                  "site\"; the area studied around it is \"study area\"; name a state, "
+                  "district, village, river or protected area as given",
+    "same_place": ["", "project site"],
+    "merged_place": "project site",
+    "inside": {"study area": ["project site"]},
+}
+
+# The settings in force: a context variable, so concurrent app sessions (and run_parallel's
+# worker threads, which copy the context) never see another report's places.
+_settings = contextvars.ContextVar("pairing_settings", default=_GN)
 
 last_stats = {}
 
@@ -106,19 +126,27 @@ last_stats = {}
 def use_profile(profile):
     """Pairing settings for one report: its profile's "pairing" entry (tigerfish/sites.py),
     or the Great Nicobar defaults when it has none (Great Nicobar, Cuddalore)."""
-    global PLACES, INSIDE, KEY_PROMPT, SAME_PLACE, MERGED_PLACE
     cfg = (profile or {}).get("pairing")
     if not cfg:
-        PLACES, INSIDE, KEY_PROMPT = _GN["PLACES"], _GN["INSIDE"], _GN["KEY_PROMPT"]
-        SAME_PLACE, MERGED_PLACE = _GN["SAME_PLACE"], _GN["MERGED_PLACE"]
+        _settings.set(_GN)
         return
-    PLACES = list(cfg["places"])
-    INSIDE = {k: set(v) for k, v in cfg.get("inside", {}).items()}
-    SAME_PLACE = set(cfg["same_place"])
-    MERGED_PLACE = cfg["merged_place"]
-    KEY_PROMPT = PROFILE_KEY_PROMPT.format(
-        project=cfg["project"], places=", ".join(f'"{p}"' for p in PLACES),
-        place_note=cfg["place_note"])
+    places = list(cfg["places"])
+    _settings.set({
+        "PLACES": places,
+        "INSIDE": {k: set(v) for k, v in cfg.get("inside", {}).items()},
+        "SAME_PLACE": set(cfg["same_place"]),
+        "MERGED_PLACE": cfg["merged_place"],
+        "KEY_PROMPT": PROFILE_KEY_PROMPT.format(
+            project=cfg["project"], places=", ".join(f'"{p}"' for p in places),
+            place_note=cfg["place_note"]),
+    })
+
+
+def __getattr__(name):
+    """pairing.PLACES, INSIDE, KEY_PROMPT, SAME_PLACE, MERGED_PLACE: the settings in force."""
+    if name in _GN:
+        return _settings.get()[name]
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 def norm(text):
@@ -164,7 +192,7 @@ def key_messages(batch):
         quote = claims_mod.normalize(c["quote"])[:200]
         lines.append(f'{i}. subject: {c["subject"]} | value: {c["value"]} {c.get("unit") or ""} '
                      f'| context: {c.get("context") or ""} | quote: "{quote}"')
-    return [{"role": "system", "content": KEY_PROMPT},
+    return [{"role": "system", "content": _settings.get()["KEY_PROMPT"]},
             {"role": "user", "content": "\n".join(lines)}]
 
 
@@ -226,9 +254,6 @@ QUALIFIERS = set("""endemic rare endangered threatened vulnerable total overall 
     new old non migratory marine terrestrial freshwater residential percentage per""".split())
 GENERIC = set("""count number area length distance species specie capacity value rate size cost
     percentage total height depth width population requirement""".split())
-# Places the model cannot tell apart reliably for project figures: compatible with each other.
-SAME_PLACE = {"", "project site", "great nicobar island"}
-_GN["SAME_PLACE"] = SAME_PLACE
 
 
 # Environmental monitoring parameters: a claim is a station reading only if the model says so
@@ -256,7 +281,8 @@ def cell_of(claim, key):
         return (bucket, key["measure"], key["station"]) if key["station"] else None
     # Blank, "project site" and the island (or the profile's SAME_PLACE) are one place for
     # pairing, so their repeats collapse together and share one cap.
-    place = MERGED_PLACE if key["place"] in SAME_PLACE else key["place"]
+    s = _settings.get()
+    place = s["MERGED_PLACE"] if key["place"] in s["SAME_PLACE"] else key["place"]
     return (bucket, key["measure"], place)
 
 
@@ -281,9 +307,10 @@ def measures_compatible(m1, m2):
 def place_relation(p1, p2):
     """"any": figures should agree; "nested": one place inside the other (pair only a part
     LARGER than the whole); None: different places, never paired."""
-    if p1 == p2 or (p1 in SAME_PLACE and p2 in SAME_PLACE):
+    same, inside = _settings.get()["SAME_PLACE"], _settings.get()["INSIDE"]
+    if p1 == p2 or (p1 in same and p2 in same):
         return "any"
-    if p2 in INSIDE.get(p1, ()) or p1 in INSIDE.get(p2, ()):
+    if p2 in inside.get(p1, ()) or p1 in inside.get(p2, ()):
         return "nested"
     return None
 
@@ -354,7 +381,7 @@ def cell_pairs(c1, cl1, c2, cl2):
             if relation == "nested":
                 if c1[0][1] == "percent" or c1[0][2] not in ("amount", "area"):
                     continue
-                inner_first = c1[2] in INSIDE.get(c2[2], ())
+                inner_first = c1[2] in _settings.get()["INSIDE"].get(c2[2], ())
                 part_v, whole_v = (va, vb) if inner_first else (vb, va)
                 if part_v <= whole_v:
                     continue

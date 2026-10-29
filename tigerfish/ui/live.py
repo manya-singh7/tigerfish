@@ -15,7 +15,8 @@ from pathlib import Path
 
 import streamlit as st
 
-from tigerfish import claims, contradictions, free_checks, hosted, llm, pdf_reader, report
+from tigerfish import (claims, contradictions, free_checks, hosted, llm, pairing, pdf_reader,
+                       report)
 
 ROOT = Path(__file__).resolve().parents[2]
 UPLOADS = ROOT / "cache" / "uploads"
@@ -75,6 +76,8 @@ def run_paid(pdf, pages, progress, max_cost_usd):
                               pdf_stem=pdf.stem)
     ledger = claims.load_ledger(pdf.stem)
     texts = {p["page"]: p["text"] for p in pages}
+    # An upload is no saved report: neutral places, never Great Nicobar's (the default)
+    pairing.use_profile({"pairing": pairing.UPLOAD_PAIRING})
     cands = contradictions.candidate_pairs(ledger, keyed=True)
     found = []
     for i, cand in enumerate(cands, 1):

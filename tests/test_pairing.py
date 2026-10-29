@@ -165,3 +165,64 @@ def test_new_subjects_are_keyed_in_their_own_batches(monkeypatch):
     assert sent[len(alone):] == [("1. subject: subject a",)]   # only the new subject
     assert set(keys) == {"subject a", "subject b", "subject d", "subject f"}
     assert pairing.last_stats["subjects_new"] == 1
+
+
+# ---------- settings per report: uploads never get Great Nicobar's places ----------
+
+def test_upload_settings_name_no_saved_report():
+    import contextvars
+
+    def check():
+        pairing.use_profile({"pairing": pairing.UPLOAD_PAIRING})
+        prompt = pairing.KEY_PROMPT
+        assert "Nicobar" not in prompt and "Galathea" not in prompt and "Campbell" not in prompt
+        assert '"project site", "study area"' in prompt
+        blank = claim("a", 1, 12, "plant area", unit="ha", ctype="area")
+        assert pairing.cell_of(blank, key("plant area"))[2] == "project site"
+        assert pairing.place_relation("", "project site") == "any"
+        assert pairing.place_relation("study area", "project site") == "nested"
+        assert pairing.place_relation("project site", "great nicobar island") is None
+
+    contextvars.copy_context().run(check)
+    assert pairing.KEY_PROMPT is pairing.GN_KEY_PROMPT       # this context keeps the default
+
+
+def test_settings_in_one_thread_never_reach_another():
+    """Two app sessions run in two threads: one session's report places stay its own."""
+    import threading
+    seen = {}
+
+    def session():
+        pairing.use_profile({"pairing": pairing.UPLOAD_PAIRING})
+        seen["merged"] = pairing.MERGED_PLACE
+
+    t = threading.Thread(target=session)
+    t.start()
+    t.join()
+    assert seen["merged"] == "project site"
+    assert pairing.MERGED_PLACE == "great nicobar island"
+
+
+def test_live_upload_pairs_with_the_upload_settings(monkeypatch):
+    import contextvars
+
+    from tigerfish.ui import live
+    prompts = []
+
+    def fake_candidates(ledger, keyed=False):
+        prompts.append(pairing.KEY_PROMPT)
+        return []
+
+    class Progress:
+        def progress(self, *a, **k):
+            pass
+
+    monkeypatch.setattr(live.claims, "extract_claims", lambda *a, **k: None)
+    monkeypatch.setattr(live.claims, "load_ledger", lambda stem: [])
+    monkeypatch.setattr(live.contradictions, "candidate_pairs", fake_candidates)
+    monkeypatch.setattr(live, "attach_page_images", lambda pdf, found: found)
+    pages = [{"page": 1, "text": "Plant area 12 ha."}]
+    contextvars.copy_context().run(live.run_paid, live.Path("upload.pdf"), pages, Progress(), 0.1)
+    assert prompts == [pairing.PROFILE_KEY_PROMPT.format(
+        project=pairing.UPLOAD_PAIRING["project"], places='"project site", "study area"',
+        place_note=pairing.UPLOAD_PAIRING["place_note"])]
