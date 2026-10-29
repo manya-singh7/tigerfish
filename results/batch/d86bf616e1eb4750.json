@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "d86bf616e1eb4750307ae4777d87c4717dbbfb1cd5d3464d7d67973d3ff04375"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -27,18 +32,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 1,
-          "text": "with state highway -160 connecting to Nearest Town Kallam (25 km). Nearest Railway station is also at Latur (35 km) and nearest Airport is Latur at the distance of 27 km. (The study area map is attached as Annexure 1) 2. PROJECT DESCRIPTION 2.1 Salient Features of the Project The proposed expansion of distillery from 30 KLPD to 60 KLPD is proposed within the existing premises. (Layout Plan is attached as Annexure 2). The benefit of the sites is that the raw material and water availability is within the premises. The projects requirements are as follows:  The land requirement for the proposed 30KLPD distillery is approximately 14.5 acres and is already in possession of NSAIL"
+          "text": "(The study area map is attached as Annexure 1) 2"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -81,18 +93,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 1,
-          "text": "with state highway -160 connecting to Nearest Town Kallam (25 km). Nearest Railway station is also at Latur (35 km) and nearest Airport is Latur at the distance of 27 km. (The study area map is attached as Annexure 1) 2. PROJECT DESCRIPTION 2.1 Salient Features of the Project The proposed expansion of distillery from 30 KLPD to 60 KLPD is proposed within the existing premises. (Layout Plan is attached as Annexure 2). The benefit of the sites is that the raw material and water availability is within the premises. The projects requirements are as follows:  The land requirement for the proposed 30KLPD distillery is approximately 14.5 acres and is already in possession of NSAIL"
+          "text": "(The study area map is attached as Annexure 1) 2"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

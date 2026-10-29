@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "962f4bfb100a3e52004f902c13bc4b015b8f616500871b452d143db34ab0c87d"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA 0412",
@@ -34,32 +39,41 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 1.74,
-      "end_date": "2025-06-19",
+      "duration_months": 3,
+      "end_date": "2024-03-01",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-04-28"
-        },
-        {
-          "label": "End",
-          "value": "2025-06-19"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify.",
+      "grade": "OK",
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
+        {
+          "duration_months": 3,
+          "end_date": "2024-03-01",
+          "page": 6,
+          "precision": "month",
+          "quote": "3.0 DESCRIPTION OF ENVIRONMENT AND ANTICIPATED IMPACT The present scenario has been assessed by the baseline data generated from January 2024 to March 2024",
+          "start_date": "2024-01-01",
+          "topic": "baseline"
+        }
+      ],
       "quotes": [
         {
-          "label": "Baseline/monitoring period",
-          "page": 3,
-          "text": "procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in…"
+          "label": "baseline: stated period",
+          "page": 6,
+          "text": "3.0 DESCRIPTION OF ENVIRONMENT AND ANTICIPATED IMPACT The present scenario has been assessed by the baseline data generated from January 2024 to March 2024"
         }
       ],
-      "start_date": "2025-04-28"
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2024-01-01"
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -74,37 +88,7 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [
-    {
-      "check": "baseline_season",
-      "duration_months": 1.74,
-      "end_date": "2025-06-19",
-      "evidence": [
-        {
-          "label": "Start",
-          "value": "2025-04-28"
-        },
-        {
-          "label": "End",
-          "value": "2025-06-19"
-        },
-        {
-          "label": "Method",
-          "value": "date-range regex; no model call"
-        }
-      ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify.",
-      "quotes": [
-        {
-          "label": "Baseline/monitoring period",
-          "page": 3,
-          "text": "procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in…"
-        }
-      ],
-      "start_date": "2025-04-28"
-    }
-  ],
+  "batch_flags": [],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA 0412",
@@ -139,32 +123,41 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 1.74,
-      "end_date": "2025-06-19",
+      "duration_months": 3,
+      "end_date": "2024-03-01",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-04-28"
-        },
-        {
-          "label": "End",
-          "value": "2025-06-19"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify.",
+      "grade": "OK",
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
+        {
+          "duration_months": 3,
+          "end_date": "2024-03-01",
+          "page": 6,
+          "precision": "month",
+          "quote": "3.0 DESCRIPTION OF ENVIRONMENT AND ANTICIPATED IMPACT The present scenario has been assessed by the baseline data generated from January 2024 to March 2024",
+          "start_date": "2024-01-01",
+          "topic": "baseline"
+        }
+      ],
       "quotes": [
         {
-          "label": "Baseline/monitoring period",
-          "page": 3,
-          "text": "procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in…"
+          "label": "baseline: stated period",
+          "page": 6,
+          "text": "3.0 DESCRIPTION OF ENVIRONMENT AND ANTICIPATED IMPACT The present scenario has been assessed by the baseline data generated from January 2024 to March 2024"
         }
       ],
-      "start_date": "2025-04-28"
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2024-01-01"
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -213,37 +206,7 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [
-    {
-      "check": "baseline_season",
-      "duration_months": 1.74,
-      "end_date": "2025-06-19",
-      "evidence": [
-        {
-          "label": "Start",
-          "value": "2025-04-28"
-        },
-        {
-          "label": "End",
-          "value": "2025-06-19"
-        },
-        {
-          "label": "Method",
-          "value": "date-range regex; no model call"
-        }
-      ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify.",
-      "quotes": [
-        {
-          "label": "Baseline/monitoring period",
-          "page": 3,
-          "text": "procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in…"
-        }
-      ],
-      "start_date": "2025-04-28"
-    }
-  ],
+  "flags": [],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:10:20Z",
   "id": "962f4bfb100a3e52",

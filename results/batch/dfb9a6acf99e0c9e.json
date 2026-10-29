@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "dfb9a6acf99e0c9e7412292d95118e39896ea14162230598a0c2e4e423a3a342"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -18,32 +23,65 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3,
-      "end_date": "2026-02-01",
+      "duration_months": 3.0,
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-02-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 3 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
+          "duration_months": 3.0,
           "page": 9,
-          "text": "82 Part, Reserve Forest Land, Village Gargaon, Taluka Palghar, District Palghar, Maharashtra, with an approved lease area of 24.94 Ha The study covers all aspects of the lease area including geology, reserves estimation, mining methodology, blasting parameters, drainage, waste disposal, environmental management, and progressive mine closure planning. Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026). The study area for the proposed project covers a radial distance of 10 km from"
+          "precision": "stated months",
+          "quote": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)",
+          "topic": "terrestrial ecology"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2026-02-01",
+          "page": 9,
+          "precision": "month",
+          "quote": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)",
+          "start_date": "2025-12-01",
+          "topic": "terrestrial ecology"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2026-02-01",
+          "page": 16,
+          "precision": "month",
+          "quote": "ENVIRONMENTAL BASELINE (EXISTING CONDITIONS) Primary baseline environmental monitoring was carried out by an NABL- accredited laboratory for the winter season (December 2025 — February 2026) at the project site and in a 5–10 km buffer zone",
+          "start_date": "2025-12-01",
+          "topic": "baseline"
         }
       ],
-      "start_date": "2025-12-01"
+      "quotes": [
+        {
+          "label": "terrestrial ecology: stated period",
+          "page": 9,
+          "text": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)"
+        },
+        {
+          "label": "terrestrial ecology: stated period",
+          "page": 9,
+          "text": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 16,
+          "text": "ENVIRONMENTAL BASELINE (EXISTING CONDITIONS) Primary baseline environmental monitoring was carried out by an NABL- accredited laboratory for the winter season (December 2025 — February 2026) at the project site and in a 5–10 km buffer zone"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -77,32 +115,65 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3,
-      "end_date": "2026-02-01",
+      "duration_months": 3.0,
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-02-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 3 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
+          "duration_months": 3.0,
           "page": 9,
-          "text": "82 Part, Reserve Forest Land, Village Gargaon, Taluka Palghar, District Palghar, Maharashtra, with an approved lease area of 24.94 Ha The study covers all aspects of the lease area including geology, reserves estimation, mining methodology, blasting parameters, drainage, waste disposal, environmental management, and progressive mine closure planning. Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026). The study area for the proposed project covers a radial distance of 10 km from"
+          "precision": "stated months",
+          "quote": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)",
+          "topic": "terrestrial ecology"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2026-02-01",
+          "page": 9,
+          "precision": "month",
+          "quote": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)",
+          "start_date": "2025-12-01",
+          "topic": "terrestrial ecology"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2026-02-01",
+          "page": 16,
+          "precision": "month",
+          "quote": "ENVIRONMENTAL BASELINE (EXISTING CONDITIONS) Primary baseline environmental monitoring was carried out by an NABL- accredited laboratory for the winter season (December 2025 — February 2026) at the project site and in a 5–10 km buffer zone",
+          "start_date": "2025-12-01",
+          "topic": "baseline"
         }
       ],
-      "start_date": "2025-12-01"
+      "quotes": [
+        {
+          "label": "terrestrial ecology: stated period",
+          "page": 9,
+          "text": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)"
+        },
+        {
+          "label": "terrestrial ecology: stated period",
+          "page": 9,
+          "text": "Baseline environmental data covering air, water, noise, soil, ground water, surface water land use, flora, and fauna have been collected and analysed for the lease area and surroundings for the period of 3 month (December 2025-February 2026)"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 16,
+          "text": "ENVIRONMENTAL BASELINE (EXISTING CONDITIONS) Primary baseline environmental monitoring was carried out by an NABL- accredited laboratory for the winter season (December 2025 — February 2026) at the project site and in a 5–10 km buffer zone"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

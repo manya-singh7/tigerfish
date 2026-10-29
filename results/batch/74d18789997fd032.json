@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "74d18789997fd032151fd93153d7d684d3586d8eda1e67db47431e82bdad14f3"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA 0423",
@@ -37,18 +42,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 3,
-          "text": "As per the guidelines of Ministry of Coal for preparation of mining plan and mine closure plan, there is a provision for revision of mining plan every five years after scientific study and accordingly this project has been studied in light of increase of extractable reserves from this coal mine. The revision has thus been carried out with a substantial increase in percentage of extraction from 41% to 67%. Also, capacity enhancement is proposed for the mine within the same lease area. In addition to the above objective, the revised plan has also examined the possibility of utilisation of OB for segregation of sand. The salient features of the revised mining plan for expansion may be summarize…"
+          "text": "As per the guidelines of Ministry of Coal for preparation of mining plan and mine closure plan, there is a provision for revision of mining plan every five years after scientific study and accordingly this project has been studied in light of increase of extractable reserves from this coal mine"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -101,18 +113,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 3,
-          "text": "As per the guidelines of Ministry of Coal for preparation of mining plan and mine closure plan, there is a provision for revision of mining plan every five years after scientific study and accordingly this project has been studied in light of increase of extractable reserves from this coal mine. The revision has thus been carried out with a substantial increase in percentage of extraction from 41% to 67%. Also, capacity enhancement is proposed for the mine within the same lease area. In addition to the above objective, the revised plan has also examined the possibility of utilisation of OB for segregation of sand. The salient features of the revised mining plan for expansion may be summarize…"
+          "text": "As per the guidelines of Ministry of Coal for preparation of mining plan and mine closure plan, there is a provision for revision of mining plan every five years after scientific study and accordingly this project has been studied in light of increase of extractable reserves from this coal mine"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

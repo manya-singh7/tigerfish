@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "ae71464f22892641ce263d2d5640421b84e874666579904fac02a7a48d0a0036"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/IA 0169",
@@ -37,18 +42,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 3,
-          "text": "M/s. K K Mines & Minerals, Mundra Dolomite Mining Project 3 3.0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries. Base-line environment quality data was collected for post monsoon season from October to December 2025. Study area was 10 km from the lease. Relevant information was collated from secondary sources and government departments. Air quality and mitigation methods : Micrometeorology data from IMD and that during monitoring was collected and nine AAQ sampling stations were selected. Average wind speed was 6 km/h with frequency of 67%, predominant wind direction- NE- 53%,"
+          "text": "0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -101,18 +113,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 3,
-          "text": "M/s. K K Mines & Minerals, Mundra Dolomite Mining Project 3 3.0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries. Base-line environment quality data was collected for post monsoon season from October to December 2025. Study area was 10 km from the lease. Relevant information was collated from secondary sources and government departments. Air quality and mitigation methods : Micrometeorology data from IMD and that during monitoring was collected and nine AAQ sampling stations were selected. Average wind speed was 6 km/h with frequency of 67%, predominant wind direction- NE- 53%,"
+          "text": "0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

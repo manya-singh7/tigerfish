@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "5d22ed3b30307c57fc2e7d03fc7da278c2d15649715bd5609576165f1cef5bd2"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -18,31 +23,40 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3.02,
+      "duration_months": 3.0,
       "end_date": "2011-12-31",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2011-10-01"
-        },
-        {
-          "label": "End",
-          "value": "2011-12-31"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 3.02 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
+          "duration_months": 3.0,
+          "end_date": "2011-12-31",
           "page": 40,
-          "text": "and operation phase. Still at construction phase filtration system (aqua guard) will be used for drinking purpose. Even regular monitoring of water is proposed in monitoring plan. iii. Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011). The wind rose for the same is drawn and North East was the predominant wind direction."
+          "precision": "day",
+          "quote": "Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011)",
+          "start_date": "2011-10-01",
+          "topic": "air"
         }
       ],
+      "quotes": [
+        {
+          "label": "air: stated period",
+          "page": 40,
+          "text": "Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011)"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false,
       "start_date": "2011-10-01"
     },
     "species_iucn": {
@@ -77,31 +91,40 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3.02,
+      "duration_months": 3.0,
       "end_date": "2011-12-31",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2011-10-01"
-        },
-        {
-          "label": "End",
-          "value": "2011-12-31"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 3.02 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
+          "duration_months": 3.0,
+          "end_date": "2011-12-31",
           "page": 40,
-          "text": "and operation phase. Still at construction phase filtration system (aqua guard) will be used for drinking purpose. Even regular monitoring of water is proposed in monitoring plan. iii. Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011). The wind rose for the same is drawn and North East was the predominant wind direction."
+          "precision": "day",
+          "quote": "Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011)",
+          "start_date": "2011-10-01",
+          "topic": "air"
         }
       ],
+      "quotes": [
+        {
+          "label": "air: stated period",
+          "page": 40,
+          "text": "Meteorological Conditions at the Site: Micro-meteorological data including wind speed and direction was collected from the Indian Meteorological Department during the study period (1st Oct, 2011 to 31th December, 2011)"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false,
       "start_date": "2011-10-01"
     },
     "species_iucn": {

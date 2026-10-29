@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "1b83aba79194f33cd5e2ae773b0bcdaf1ab31ed6f3c3f4545336853d869d7297"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA0474",
@@ -37,18 +42,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 2,
-          "text": "report and other documents for obtaining Terms of Reference (ToRs) for concerned Regulatory Authority for undertaking detailed EIA study. The committee prescribed Standard ToR vide letter No. IA-J-11011/414/2025-IA-II(Ind-I) dated on 01/03/2026. Source: SOI Toposheet Topographical Map (10 km Radius)"
+          "text": "ed 20/02/2026 along with Form-1, Pre-feasibility report and other documents for obtaining Terms of Reference (ToRs) for concerned Regulatory Authority for undertaking detailed EIA study"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -101,18 +113,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 2,
-          "text": "report and other documents for obtaining Terms of Reference (ToRs) for concerned Regulatory Authority for undertaking detailed EIA study. The committee prescribed Standard ToR vide letter No. IA-J-11011/414/2025-IA-II(Ind-I) dated on 01/03/2026. Source: SOI Toposheet Topographical Map (10 km Radius)"
+          "text": "ed 20/02/2026 along with Form-1, Pre-feasibility report and other documents for obtaining Terms of Reference (ToRs) for concerned Regulatory Authority for undertaking detailed EIA study"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

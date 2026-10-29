@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "3a84436e0e972dbfc3d3482c30e4c7460736efcd00eaf1b1f958a8ec17d3786c"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -27,18 +32,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 2,
-          "text": "REQUIREMENTS FOR THE PROJECT 4 1.2.1 RAW MATERIAL 4 1.2.2 OTHER REQUIREMENTS 4 2.0 PROCESS DESCRIPTION 5 3.0 BASELINE ENVIRONMENTAL STATUS 5 3.1 METEOROLOGICAL DATA 6 3.2 AMBIENT AIR QUALITY 6 3.3 WATER QUALITY 6 3.4 SOIL CHARACTERISTICS 7 3.5 NOISE LEVEL SURVEY 7 3.6 FLORA AND FAUNA STUDIES 7 3.7 SOCIO-ECONOMIC DETAILS 7 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES 7 4.1 AIR ENVIRONMENT 7 4.2 WATER ENVIRONMENT 8 4.3 NOISE ENVIRONMENT 8 4.4 LAND ENVIRONMENT 8 5.0 ENVIRONMENTAL MANAGEMNT PLAN 9 5.1 COST PROVISION FOR ENVIRONMENTAL MEASURES 9 6.0 ADDITIONAL STUDIES 9"
+          "text": "0 BASELINE ENVIRONMENTAL STATUS 5 3"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -81,18 +93,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 2,
-          "text": "REQUIREMENTS FOR THE PROJECT 4 1.2.1 RAW MATERIAL 4 1.2.2 OTHER REQUIREMENTS 4 2.0 PROCESS DESCRIPTION 5 3.0 BASELINE ENVIRONMENTAL STATUS 5 3.1 METEOROLOGICAL DATA 6 3.2 AMBIENT AIR QUALITY 6 3.3 WATER QUALITY 6 3.4 SOIL CHARACTERISTICS 7 3.5 NOISE LEVEL SURVEY 7 3.6 FLORA AND FAUNA STUDIES 7 3.7 SOCIO-ECONOMIC DETAILS 7 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES 7 4.1 AIR ENVIRONMENT 7 4.2 WATER ENVIRONMENT 8 4.3 NOISE ENVIRONMENT 8 4.4 LAND ENVIRONMENT 8 5.0 ENVIRONMENTAL MANAGEMNT PLAN 9 5.1 COST PROVISION FOR ENVIRONMENTAL MEASURES 9 6.0 ADDITIONAL STUDIES 9"
+          "text": "0 BASELINE ENVIRONMENTAL STATUS 5 3"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

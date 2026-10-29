@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "d386ea7b822fd86844909dbbad2de464eca36dca2e32a2875c2ff2ebb9b2d9ea"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -21,18 +26,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 1,
-          "text": "Various studies have been conducted to ascertain the feasibility and the most economic route. The various studies undertaken till date are: a. Techno-financial feasibility study of Passenger Water Transport System along west coast of Mumbai, by Mott MacDonald, Mumbai. b. Mathematical Model Studies for examining Wave Tranquillity and Optimising Layouts for Passenger Water Transport Terminals in Mumbai, by Central Water and Power Research Station."
+          "text": "Techno-financial feasibility study of Passenger Water Transport System along west coast of Mumbai, by Mott MacDonald, Mumbai"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -69,18 +81,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 1,
-          "text": "Various studies have been conducted to ascertain the feasibility and the most economic route. The various studies undertaken till date are: a. Techno-financial feasibility study of Passenger Water Transport System along west coast of Mumbai, by Mott MacDonald, Mumbai. b. Mathematical Model Studies for examining Wave Tranquillity and Optimising Layouts for Passenger Water Transport Terminals in Mumbai, by Central Water and Power Research Station."
+          "text": "Techno-financial feasibility study of Passenger Water Transport System along west coast of Mumbai, by Mott MacDonald, Mumbai"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

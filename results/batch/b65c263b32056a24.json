@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "b65c263b32056a24f6871674ccc866d28e4f5ec3007034e7ce936bd6f19a97b2"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/23-26/SA 0246",
@@ -29,32 +34,55 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 37.59,
-      "end_date": "2025-10-01",
+      "duration_months": 3.0,
+      "end_date": "2025-12-31",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2028-11-17"
-        },
-        {
-          "label": "End",
-          "value": "2025-10-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 37.59 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
-          "page": 1,
-          "text": "Rahatani, Pune, Pimpri-Chinchwad, Maharashtra 411017, INDIA E-mail: info@envirosphere.co.in, Contact: 9860220550 Website: www.envirosphere.co.in Environmental Monitoring Laboratory Ultratech Environmental Consultancy & Laboratory Pvt. Ltd. (NABL certificate Number: TC-14909, Validity Date: 17-11-2028) Baseline period – 1st October 2025 to 31st December 2025"
+          "duration_months": 3.0,
+          "end_date": "2025-12-31",
+          "page": 3,
+          "precision": "day",
+          "quote": "To assess the existing environmental status of the study area, baseline environmental monitoring was conducted during the pre-monsoon season from 1st October 2025 to 31st December 2025",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        },
+        {
+          "duration_months": 3.0,
+          "end_date": "2025-05-31",
+          "page": 18,
+          "precision": "day",
+          "quote": "The baseline environmental monitoring study was conducted during the pre-monsoon season from 1 March 2025 to 31 May 2025",
+          "start_date": "2025-03-01",
+          "topic": "baseline"
         }
       ],
-      "start_date": "2028-11-17"
+      "quotes": [
+        {
+          "label": "baseline: stated period",
+          "page": 3,
+          "text": "To assess the existing environmental status of the study area, baseline environmental monitoring was conducted during the pre-monsoon season from 1st October 2025 to 31st December 2025"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 18,
+          "text": "The baseline environmental monitoring study was conducted during the pre-monsoon season from 1 March 2025 to 31 May 2025"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2025-10-01"
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -99,32 +127,55 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 37.59,
-      "end_date": "2025-10-01",
+      "duration_months": 3.0,
+      "end_date": "2025-12-31",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2028-11-17"
-        },
-        {
-          "label": "End",
-          "value": "2025-10-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "OK",
-      "message": "The readable baseline/monitoring period is about 37.59 months.",
-      "quotes": [
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
         {
-          "label": "Baseline/monitoring period",
-          "page": 1,
-          "text": "Rahatani, Pune, Pimpri-Chinchwad, Maharashtra 411017, INDIA E-mail: info@envirosphere.co.in, Contact: 9860220550 Website: www.envirosphere.co.in Environmental Monitoring Laboratory Ultratech Environmental Consultancy & Laboratory Pvt. Ltd. (NABL certificate Number: TC-14909, Validity Date: 17-11-2028) Baseline period – 1st October 2025 to 31st December 2025"
+          "duration_months": 3.0,
+          "end_date": "2025-12-31",
+          "page": 3,
+          "precision": "day",
+          "quote": "To assess the existing environmental status of the study area, baseline environmental monitoring was conducted during the pre-monsoon season from 1st October 2025 to 31st December 2025",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        },
+        {
+          "duration_months": 3.0,
+          "end_date": "2025-05-31",
+          "page": 18,
+          "precision": "day",
+          "quote": "The baseline environmental monitoring study was conducted during the pre-monsoon season from 1 March 2025 to 31 May 2025",
+          "start_date": "2025-03-01",
+          "topic": "baseline"
         }
       ],
-      "start_date": "2028-11-17"
+      "quotes": [
+        {
+          "label": "baseline: stated period",
+          "page": 3,
+          "text": "To assess the existing environmental status of the study area, baseline environmental monitoring was conducted during the pre-monsoon season from 1st October 2025 to 31st December 2025"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 18,
+          "text": "The baseline environmental monitoring study was conducted during the pre-monsoon season from 1 March 2025 to 31 May 2025"
+        }
+      ],
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2025-10-01"
     },
     "species_iucn": {
       "check": "species_iucn",

@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "1ae34adcf58e6305bb657858dec60177c6007158b30ffc318beea931a39bafb6"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/24-27/RA0356",
@@ -34,32 +39,55 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 2,
-      "end_date": "2026-01-01",
+      "duration_months": 3,
+      "end_date": "2025-12-01",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-01-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "grade": "OK",
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
+        {
+          "duration_months": 3,
+          "end_date": "2025-12-01",
+          "page": 1,
+          "precision": "month",
+          "quote": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2025-12-01",
+          "page": 15,
+          "precision": "month",
+          "quote": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        }
+      ],
       "quotes": [
         {
-          "label": "Baseline/monitoring period",
+          "label": "baseline: stated period",
           "page": 1,
-          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+          "text": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 15,
+          "text": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi"
         }
       ],
-      "start_date": "2025-12-01"
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2025-10-01"
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -74,37 +102,7 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [
-    {
-      "check": "baseline_season",
-      "duration_months": 2,
-      "end_date": "2026-01-01",
-      "evidence": [
-        {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-01-01"
-        },
-        {
-          "label": "Method",
-          "value": "date-range regex; no model call"
-        }
-      ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
-      "quotes": [
-        {
-          "label": "Baseline/monitoring period",
-          "page": 1,
-          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
-        }
-      ],
-      "start_date": "2025-12-01"
-    }
-  ],
+  "batch_flags": [],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/24-27/RA0356",
@@ -139,32 +137,55 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 2,
-      "end_date": "2026-01-01",
+      "duration_months": 3,
+      "end_date": "2025-12-01",
       "evidence": [
         {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-01-01"
-        },
-        {
           "label": "Method",
-          "value": "date-range regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "grade": "OK",
+      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
+      "periods": [
+        {
+          "duration_months": 3,
+          "end_date": "2025-12-01",
+          "page": 1,
+          "precision": "month",
+          "quote": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        },
+        {
+          "duration_months": 3,
+          "end_date": "2025-12-01",
+          "page": 15,
+          "precision": "month",
+          "quote": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi",
+          "start_date": "2025-10-01",
+          "topic": "baseline"
+        }
+      ],
       "quotes": [
         {
-          "label": "Baseline/monitoring period",
+          "label": "baseline: stated period",
           "page": 1,
-          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+          "text": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        },
+        {
+          "label": "baseline: stated period",
+          "page": 15,
+          "text": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi"
         }
       ],
-      "start_date": "2025-12-01"
+      "reference_months": 3,
+      "requirement_verified": false,
+      "start_date": "2025-10-01"
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -213,37 +234,7 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [
-    {
-      "check": "baseline_season",
-      "duration_months": 2,
-      "end_date": "2026-01-01",
-      "evidence": [
-        {
-          "label": "Start",
-          "value": "2025-12-01"
-        },
-        {
-          "label": "End",
-          "value": "2026-01-01"
-        },
-        {
-          "label": "Method",
-          "value": "date-range regex; no model call"
-        }
-      ],
-      "grade": "INFO",
-      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
-      "quotes": [
-        {
-          "label": "Baseline/monitoring period",
-          "page": 1,
-          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
-        }
-      ],
-      "start_date": "2025-12-01"
-    }
-  ],
+  "flags": [],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:06:14Z",
   "id": "1ae34adcf58e6305",

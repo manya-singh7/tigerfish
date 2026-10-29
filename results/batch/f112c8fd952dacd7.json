@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "f112c8fd952dacd7a15e77dc7b4d6b1e85d85c4fbf913ebf717280fe1f4949be"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -27,18 +32,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 5,
-          "text": "Km. Airport Nagpur is nearest commercial airport at 150 Km. General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production dolomite Dolomite @ 494700 TPA (Average) & 487200TPA (Peak Production) Anticipated Life of Mines 12.5 Years Elevation 320m Historical / Important Places Archaeological/Historical/Ancient Monuments within 10 km area None within 10 Km radius study area"
+          "text": "General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production dolomite Dolomite @ 494700 TPA (Average) & 487200TPA (Peak Production) Anticipated Life of Mines 12"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -81,18 +93,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 5,
-          "text": "Km. Airport Nagpur is nearest commercial airport at 150 Km. General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production dolomite Dolomite @ 494700 TPA (Average) & 487200TPA (Peak Production) Anticipated Life of Mines 12.5 Years Elevation 320m Historical / Important Places Archaeological/Historical/Ancient Monuments within 10 km area None within 10 Km radius study area"
+          "text": "General Climatic Conditions Wind Pattern during study period Northwest to Southeast Maximum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Minimum Temperature Summer : 44 – 45 0C Winter : 09 – 12 0C Average Annual Rainfall (mm) 1200 – 1320 mm Details of the Project Production dolomite Dolomite @ 494700 TPA (Average) & 487200TPA (Peak Production) Anticipated Life of Mines 12"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",

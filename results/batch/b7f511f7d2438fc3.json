@@ -1,5 +1,10 @@
 {
   "audit_type": "quick",
+  "baseline_refresh": {
+    "generated_at": "2026-10-29T19:49:29Z",
+    "parser_version": 2,
+    "source_sha256": "b7f511f7d2438fc38fcb58d832226f296d460f83aeb055693da2226f07cfd991"
+  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -27,18 +32,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 7,
-          "text": "ORGANICS At A-12, MIDC Goregaon, District Gondia, State Maharashtra 7 6. Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site. From the plot boundary surrounding area 10 km is considered for setting up the baseline monitoring and predict the impacts from the proposed project site as per the MoEFCC guidelines. Environmental monitoring was done during winter season for the meteorology, air quality, water quality, noise levels, and soil characteristics, by setting up monitoring stations and samples collected as prescribed. Further, existing ecological and socio-economic features also"
+          "text": "Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -106,18 +118,25 @@
       "evidence": [
         {
           "label": "Method",
-          "value": "date-range and duration regex; no model call"
+          "value": "explicit fieldwork ranges and calendar months; no model call"
+        },
+        {
+          "label": "Reference",
+          "value": "Three months is a screening reference, not a verified project requirement."
         }
       ],
       "grade": "GREY",
-      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "message": "A baseline fieldwork period could not be established from readable text; verify.",
+      "periods": [],
       "quotes": [
         {
           "label": "Baseline/monitoring context",
           "page": 7,
-          "text": "ORGANICS At A-12, MIDC Goregaon, District Gondia, State Maharashtra 7 6. Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site. From the plot boundary surrounding area 10 km is considered for setting up the baseline monitoring and predict the impacts from the proposed project site as per the MoEFCC guidelines. Environmental monitoring was done during winter season for the meteorology, air quality, water quality, noise levels, and soil characteristics, by setting up monitoring stations and samples collected as prescribed. Further, existing ecological and socio-economic features also"
+          "text": "Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site"
         }
-      ]
+      ],
+      "reference_months": 3,
+      "requirement_verified": false
     },
     "species_iucn": {
       "check": "species_iucn",
