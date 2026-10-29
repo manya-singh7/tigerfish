@@ -1,0 +1,191 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/IA 0169",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "Accreditation Details: NABET/EIA/25-28/IA 0169 valid till June 2028"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Accreditation Details: NABET/EIA/25-28/IA 0169 valid till June 2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Date of ToR : 13.11.2025"
+        }
+      ],
+      "report_date": "2025-11-13",
+      "valid_until": "2028-06-01"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "M/s. K K Mines & Minerals, Mundra Dolomite Mining Project 3 3.0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries. Base-line environment quality data was collected for post monsoon season from October to December 2025. Study area was 10 km from the lease. Relevant information was collated from secondary sources and government departments. Air quality and mitigation methods : Micrometeorology data from IMD and that during monitoring was collected and nine AAQ sampling stations were selected. Average wind speed was 6 km/h with frequency of 67%, predominant wind direction- NE- 53%,"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/IA 0169",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "Accreditation Details: NABET/EIA/25-28/IA 0169 valid till June 2028"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Accreditation Details: NABET/EIA/25-28/IA 0169 valid till June 2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Date of ToR : 13.11.2025"
+        }
+      ],
+      "report_date": "2025-11-13",
+      "valid_until": "2028-06-01"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "M/s. K K Mines & Minerals, Mundra Dolomite Mining Project 3 3.0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries. Base-line environment quality data was collected for post monsoon season from October to December 2025. Study area was 10 km from the lease. Relevant information was collated from secondary sources and government departments. Air quality and mitigation methods : Micrometeorology data from IMD and that during monitoring was collected and nine AAQ sampling stations were selected. Average wind speed was 6 km/h with frequency of 67%, predominant wind direction- NE- 53%,"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:55:22Z",
+  "id": "ae71464f22892641",
+  "pages_read": 7,
+  "pages_total": 7,
+  "project": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN OF Mundra Dolomite Mine Dolomite @530000TPA (Average)Peak Production 900000 TPA) Project M/s K",
+  "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN OF Mundra Dolomite Mine Dolomite @530000TPA (Average)Peak Production 900000 TPA) Project M/s K",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-10/Executive_summary_18.87_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-10/Executive_summary_18.87_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-10/Executive_summary_18.87_English.pdf",
+  "state": "Maharashtra",
+  "title": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN OF Mundra Dolomite Mine Dolomite @530000TPA (Average)Peak Production 900000 TPA) Project M/s K",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-10/Executive_summary_18.87_English.pdf",
+  "year": 2025
+}

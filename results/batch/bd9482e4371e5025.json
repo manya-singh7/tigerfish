@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "report to the State Level Expert Appraisal Committee (SEAC), Maharashtra on dated 20.03.2026,"
+        }
+      ],
+      "report_date": "2026-03-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 234.32,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-03-24"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 234.32 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Reference (ToR Identification No. TO26B2504MH5269988N) for the project on dated 24.03.2026. Based on the Standard ToR, Environmental Impact Assessment study was carried out and draft EIA report has been prepared. As per EIA Notification dated 14th September, 2006 and its subsequent amendment, the project falls under Category “B”, Project or Activity „5(g)‟ (non-molasses based) Distillery. The proposal is to be appraised at State Level (State Expert Appraisal Committee, Maharashtra) under B1 Category for grant of Environmental Clearance. 2. PROJECT LOCATION CRPL has purchased land of 40000 sq.m area at Gat No. 81/82/89, situated at Village Mauje Khed, Taluka Lohara, District Dharashiv, Mahara…"
+        }
+      ],
+      "start_date": "2026-03-24"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "report to the State Level Expert Appraisal Committee (SEAC), Maharashtra on dated 20.03.2026,"
+        }
+      ],
+      "report_date": "2026-03-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 234.32,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-03-24"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 234.32 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Reference (ToR Identification No. TO26B2504MH5269988N) for the project on dated 24.03.2026. Based on the Standard ToR, Environmental Impact Assessment study was carried out and draft EIA report has been prepared. As per EIA Notification dated 14th September, 2006 and its subsequent amendment, the project falls under Category “B”, Project or Activity „5(g)‟ (non-molasses based) Distillery. The proposal is to be appraised at State Level (State Expert Appraisal Committee, Maharashtra) under B1 Category for grant of Environmental Clearance. 2. PROJECT LOCATION CRPL has purchased land of 40000 sq.m area at Gat No. 81/82/89, situated at Village Mauje Khed, Taluka Lohara, District Dharashiv, Mahara…"
+        }
+      ],
+      "start_date": "2026-03-24"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:58:37Z",
+  "id": "bd9482e4371e5025",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "Executive Summary English Corelife final 0",
+  "project_name": "Executive Summary English Corelife final 0",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_English_Corelife_final_0.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_English_Corelife_final_0.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_English_Corelife_final_0.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary English Corelife final 0",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-09/Executive_Summary_English_Corelife_final_0.pdf",
+  "year": 2026
+}

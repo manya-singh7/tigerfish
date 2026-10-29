@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "As per EIA Notification dated 14th September 2006, proposed expansion project"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "REQUIREMENTS FOR THE PROJECT 4 1.2.1 RAW MATERIAL 4 1.2.2 OTHER REQUIREMENTS 4 2.0 PROCESS DESCRIPTION 5 3.0 BASELINE ENVIRONMENTAL STATUS 5 3.1 METEOROLOGICAL DATA 6 3.2 AMBIENT AIR QUALITY 6 3.3 WATER QUALITY 6 3.4 SOIL CHARACTERISTICS 7 3.5 NOISE LEVEL SURVEY 7 3.6 FLORA AND FAUNA STUDIES 7 3.7 SOCIO-ECONOMIC DETAILS 7 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES 7 4.1 AIR ENVIRONMENT 7 4.2 WATER ENVIRONMENT 8 4.3 NOISE ENVIRONMENT 8 4.4 LAND ENVIRONMENT 8 5.0 ENVIRONMENTAL MANAGEMNT PLAN 9 5.1 COST PROVISION FOR ENVIRONMENTAL MEASURES 9 6.0 ADDITIONAL STUDIES 9"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "As per EIA Notification dated 14th September 2006, proposed expansion project"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "REQUIREMENTS FOR THE PROJECT 4 1.2.1 RAW MATERIAL 4 1.2.2 OTHER REQUIREMENTS 4 2.0 PROCESS DESCRIPTION 5 3.0 BASELINE ENVIRONMENTAL STATUS 5 3.1 METEOROLOGICAL DATA 6 3.2 AMBIENT AIR QUALITY 6 3.3 WATER QUALITY 6 3.4 SOIL CHARACTERISTICS 7 3.5 NOISE LEVEL SURVEY 7 3.6 FLORA AND FAUNA STUDIES 7 3.7 SOCIO-ECONOMIC DETAILS 7 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES 7 4.1 AIR ENVIRONMENT 7 4.2 WATER ENVIRONMENT 8 4.3 NOISE ENVIRONMENT 8 4.4 LAND ENVIRONMENT 8 5.0 ENVIRONMENTAL MANAGEMNT PLAN 9 5.1 COST PROVISION FOR ENVIRONMENTAL MEASURES 9 6.0 ADDITIONAL STUDIES 9"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T09:02:22Z",
+  "id": "3a84436e0e972dbf",
+  "pages_read": 12,
+  "pages_total": 12,
+  "project": "Executive Summary of EIA Report M/s",
+  "project_name": "Executive Summary of EIA Report M/s",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_Adlars.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_Adlars.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_Adlars.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary of EIA Report M/s",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2019-07/ES_Adlars.pdf",
+  "year": 2006
+}

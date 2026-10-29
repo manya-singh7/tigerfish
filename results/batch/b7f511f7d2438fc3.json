@@ -1,0 +1,221 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "dated 14th September, 2006 and its amendment till date and the project will be appraised as Category B1 and"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "ORGANICS At A-12, MIDC Goregaon, District Gondia, State Maharashtra 7 6. Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site. From the plot boundary surrounding area 10 km is considered for setting up the baseline monitoring and predict the impacts from the proposed project site as per the MoEFCC guidelines. Environmental monitoring was done during winter season for the meteorology, air quality, water quality, noise levels, and soil characteristics, by setting up monitoring stations and samples collected as prescribed. Further, existing ecological and socio-economic features also"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 4 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Organics+propo",
+          "grade": "GREY",
+          "name": "Organics proposes",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Organics+had+p",
+          "grade": "GREY",
+          "name": "Organics had proposed",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Now+proposing ",
+          "grade": "GREY",
+          "name": "Now proposing",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Notification+p",
+          "grade": "GREY",
+          "name": "Notification published",
+          "page": 2
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "dated 14th September, 2006 and its amendment till date and the project will be appraised as Category B1 and"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "ORGANICS At A-12, MIDC Goregaon, District Gondia, State Maharashtra 7 6. Description of Environment – Baseline Environment Considering the local and regional setting around the proposed project site. From the plot boundary surrounding area 10 km is considered for setting up the baseline monitoring and predict the impacts from the proposed project site as per the MoEFCC guidelines. Environmental monitoring was done during winter season for the meteorology, air quality, water quality, noise levels, and soil characteristics, by setting up monitoring stations and samples collected as prescribed. Further, existing ecological and socio-economic features also"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 4 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Organics+propo",
+          "grade": "GREY",
+          "name": "Organics proposes",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Organics+had+p",
+          "grade": "GREY",
+          "name": "Organics had proposed",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Now+proposing ",
+          "grade": "GREY",
+          "name": "Now proposing",
+          "page": 2
+        },
+        {
+          "error": "HTTPSConnectionPool(host='api.gbif.org', port=443): Max retries exceeded with url: /v1/species/match?name=Notification+p",
+          "grade": "GREY",
+          "name": "Notification published",
+          "page": 2
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 4,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 0,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 4,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T10:54:08Z",
+  "id": "b7f511f7d2438fc3",
+  "pages_read": 12,
+  "pages_total": 12,
+  "project": "] the State Expert Appraisal Committee (SEAC-1) and the State Environmental Impact Assessment Authority (SEIAA), Maharashtra",
+  "project_name": "] the State Expert Appraisal Committee (SEAC-1) and the State Environmental Impact Assessment Authority (SEIAA), Maharashtra",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Project_Summary_Indus_Organics_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Project_Summary_Indus_Organics_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Project_Summary_Indus_Organics_English.pdf",
+  "state": "Maharashtra",
+  "title": "] the State Expert Appraisal Committee (SEAC-1) and the State Environmental Impact Assessment Authority (SEIAA), Maharashtra",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-07/Project_Summary_Indus_Organics_English.pdf",
+  "year": 2006
+}

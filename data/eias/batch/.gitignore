@@ -1,0 +1,3 @@
+# Batch PDFs are local working data. Never commit downloaded reports.
+*
+!.gitignore

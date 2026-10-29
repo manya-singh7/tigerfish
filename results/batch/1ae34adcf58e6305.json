@@ -1,0 +1,273 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA0356",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "QCI-NABET Certificate No: NABET/EIA/24-27/RA0356; Valid till 22 May, 2027"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "QCI-NABET Certificate No: NABET/EIA/24-27/RA0356; Valid till 22 May, 2027"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ],
+      "report_date": "2026-01-23",
+      "valid_until": "2027-05-22"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA0356",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "QCI-NABET Certificate No: NABET/EIA/24-27/RA0356; Valid till 22 May, 2027"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "QCI-NABET Certificate No: NABET/EIA/24-27/RA0356; Valid till 22 May, 2027"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ],
+      "report_date": "2026-01-23",
+      "valid_until": "2027-05-22"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-29T09:06:14Z",
+  "id": "1ae34adcf58e6305",
+  "pages_read": 26,
+  "pages_total": 26,
+  "project": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incorporated in the Final EIA/EMP Report",
+  "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incorporated in the Final EIA/EMP Report",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf",
+  "state": "Maharashtra",
+  "title": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incorporated in the Final EIA/EMP Report",
+  "tool_version": "98e19b5",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf",
+  "year": 2026
+}
