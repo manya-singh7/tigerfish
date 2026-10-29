@@ -15,7 +15,7 @@ from tigerfish import library
 from tigerfish.ui import data, slip
 from tigerfish.ui.style import badge, esc, mono
 
-PAGE_SIZE = 10
+PAGE_SIZE = 30
 UPLOAD_NOTE = ("Saved audits are full runs. Upload your own EIA to run live checks: the free "
                "checks read the whole report; the model checks run on up to 30 pages you choose "
                "on this site (run locally for full reports).")
@@ -24,7 +24,7 @@ FILTER_KEYS = ("lib::q", "lib::state", "lib::sector", "lib::year", "lib::type", 
 CSS = """<style>
 /* report slips: two per row above 1400px, one below */
 @media (min-width: 1400px) {
-  .st-key-tf-grid { display: grid !important;
+  .st-key-tf-grid, div[class*="st-key-tf-grid-"] { display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
 }
 /* below 1100px the side panel goes above the list, full width */
@@ -39,6 +39,7 @@ div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"],
 div[data-testid="stMultiSelect"],
 div[data-testid="stCheckbox"],
+div[data-testid="stRadio"],
 div[data-testid="stExpanderDetails"] * {
   pointer-events: auto !important;
 }
@@ -46,6 +47,70 @@ div[data-testid="stExpanderDetails"] * {
   pointer-events: auto !important; cursor: pointer;
 }
 .st-key-tf-side-lib input[type="text"] { cursor: text; }
+.st-key-tf-side-lib div[data-testid="stRadio"] {
+  background: var(--tf-paper-2);
+  border: 1px solid var(--tf-rule);
+  border-radius: 3px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.75rem;
+}
+.st-key-tf-side-lib div[data-testid="stRadio"] [role="radiogroup"] {
+  gap: 0.35rem;
+}
+.st-key-tf-side-lib div[data-testid="stRadio"] label {
+  font-family: "Schibsted Grotesk", sans-serif !important;
+  color: var(--tf-ink) !important;
+  font-size: 0.8125rem !important;
+  cursor: pointer !important;
+}
+.st-key-tf-side-lib div[data-testid="stRadio"] [data-testid="stWidgetLabel"] p {
+  font-family: "Schibsted Grotesk", sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  color: var(--tf-ink) !important;
+  margin-bottom: 0.25rem !important;
+}
+div[class*="st-key-tf-panel-sec-"] {
+  padding: 1.1rem 1.35rem !important;
+  margin-bottom: 0.75rem !important;
+}
+.tf-sec-title {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--tf-teal);
+  line-height: 1.15;
+  margin: 0 0 0.35rem 0;
+}
+.tf-sec-sub {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 0.9375rem;
+  color: var(--tf-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+div[class*="st-key-tf-panel-empty-"] {
+  padding: 0.85rem 1.1rem !important;
+  margin-bottom: 0.75rem !important;
+}
+.tf-sec-empty {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 0.875rem;
+  color: var(--tf-muted);
+  margin: 0;
+}
+.tf-badge-quick {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--tf-teal);
+  background: var(--tf-paper-2);
+  border: 1px solid var(--tf-teal);
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.45rem;
+  display: inline-block;
+}
 .tf-lib-total { font-size: 1rem; color: var(--tf-ink); margin: 0.6rem 0 0.2rem 0; }
 .tf-lib-title { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600;
   line-height: 1.15; color: var(--tf-ink); }
@@ -156,8 +221,10 @@ def row(e):
         reviewed = (f' · {e["verified"]} verified by a person' if e.get("verified") else "")
         table_note = (f'<div class="tf-lib-meta">{esc(library.TABLE_NOTE)}</div>'
                       if e.get("audit_type") == library.TABLE else "")
+        is_quick = (e.get("kind") == "batch" or e.get("audit_type") == library.QUICK)
+        badge_html = '<span class="tf-badge-quick">Quick Audit</span> ' if is_quick else ''
         st.markdown(
-            f'<div class="tf-lib-title">{esc(e["project"])}</div>'
+            f'<div class="tf-lib-title">{badge_html}{esc(e["project"])}</div>'
             f'<div class="tf-lib-meta"><span class="tf-kind">{esc(e["audit_type"])}</span> · '
             f'{meta_line(e)}{esc(reviewed)}</div>'
             f'<div class="tf-lib-grades">{grade_line(e["grades"])}</div>'
@@ -185,7 +252,13 @@ def _chips():
     chips = []
     if (ss.get("lib::q") or "").strip():
         chips.append(f'"{ss["lib::q"].strip()}"')
-    for k in ("lib::state", "lib::sector", "lib::year", "lib::type"):
+    type_val = ss.get("lib::type")
+    if type_val and isinstance(type_val, str):
+        if "Full Audits" in type_val:
+            chips.append("Full Audits")
+        elif "Quick Batch Audits" in type_val or "Quick" in type_val:
+            chips.append("Quick Batch Audits")
+    for k in ("lib::state", "lib::sector", "lib::year"):
         chips += [str(v) for v in ss.get(k) or []]
     if ss.get("lib::red"):
         chips.append("Has RED flags")
@@ -196,13 +269,29 @@ def _chips():
 
 def side_panel(items, shown):
     t = library.totals(items)
+    n_full = sum(1 for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE))
+    n_quick = sum(1 for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK)
+    opt_all = f"All ({len(items)})"
+    opt_full = f"Full Audits ({n_full})"
+    opt_quick = f"Quick Batch Audits ({n_quick})"
+    audit_options = [opt_all, opt_full, opt_quick]
+
+    current_type = st.session_state.get("lib::type")
+    idx = 0
+    if current_type in audit_options:
+        idx = audit_options.index(current_type)
+    elif current_type == library.QUICK or (isinstance(current_type, (list, tuple)) and library.QUICK in current_type):
+        idx = 2
+    elif current_type == library.FULL or (isinstance(current_type, (list, tuple)) and library.FULL in current_type):
+        idx = 1
+
     with st.container(key="tf-side-lib"):
         st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
         st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
+        st.radio("Audit type", audit_options, index=idx, key="lib::type")
         st.multiselect("State", library.options(items, "state"), key="lib::state")
         st.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
         st.multiselect("Year", library.options(items, "year"), key="lib::year")
-        st.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
         st.checkbox("Has RED flags", key="lib::red")
         st.checkbox("Has human-verified findings", key="lib::verified")
         chips = _chips()
@@ -227,9 +316,24 @@ def side_panel(items, shown):
 
 def _filtered(items):
     ss = st.session_state
+    audit_choice = ss.get("lib::type", "")
+    audit_types = ()
+    if isinstance(audit_choice, str):
+        if "Full Audits" in audit_choice or audit_choice == library.FULL:
+            audit_types = (library.FULL, library.TABLE)
+        elif "Quick Batch Audits" in audit_choice or audit_choice == library.QUICK:
+            audit_types = (library.QUICK,)
+    elif isinstance(audit_choice, (list, tuple, set)):
+        if library.FULL in audit_choice and library.QUICK not in audit_choice:
+            audit_types = (library.FULL, library.TABLE)
+        elif library.QUICK in audit_choice and library.FULL not in audit_choice:
+            audit_types = (library.QUICK,)
+        else:
+            audit_types = tuple(audit_choice)
+
     return library.filter_entries(items, ss.get("lib::q", ""), ss.get("lib::state") or (),
                                   ss.get("lib::sector") or (), ss.get("lib::year") or (),
-                                  ss.get("lib::type") or (), bool(ss.get("lib::red")),
+                                  audit_types, bool(ss.get("lib::red")),
                                   bool(ss.get("lib::verified")))
 
 
@@ -262,12 +366,50 @@ def render():
                                 "Remove a filter, or reset them all.")
                     st.button("Reset filters", key="lib::reset-empty", on_click=reset_filters)
                 return
-            n = st.session_state.get("lib::shown", PAGE_SIZE)
-            with st.container(key="tf-grid"):
-                for e in shown[:n]:
-                    row(e)
-            if len(shown) > n:
-                st.button(f"Show more ({len(shown) - n} more)", key="lib::more", on_click=show_more)
+
+            audit_choice = st.session_state.get("lib::type", "")
+            is_full_only = isinstance(audit_choice, str) and "Full Audits" in audit_choice
+            is_quick_only = isinstance(audit_choice, str) and ("Quick Batch Audits" in audit_choice or audit_choice == library.QUICK)
+
+            full_total = [e for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+            quick_total = [e for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+
+            full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+            quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+
+            # Section A: Deep Investigation Audits
+            if not is_quick_only:
+                with st.container(key="tf-panel-sec-full"):
+                    st.markdown(
+                        f'<h2 class="tf-h2 tf-sec-title">Deep Investigation Audits ({len(full_total)} Benchmark Reports)</h2>'
+                        '<p class="tf-sec-sub">Multi-chapter contradiction analysis, cross-document text overlap, GBIF species checks, and NVIDIA Nemotron LLM validation.</p>',
+                        unsafe_allow_html=True)
+                if full_shown:
+                    with st.container(key="tf-grid-full"):
+                        for e in full_shown:
+                            row(e)
+                else:
+                    with st.container(key="tf-panel-empty-full"):
+                        st.markdown('<p class="tf-sec-empty">No reports match these filters in this category.</p>',
+                                    unsafe_allow_html=True)
+                if not is_full_only:
+                    st.write("")
+
+            # Section B: Automated Batch Triage
+            if not is_full_only:
+                with st.container(key="tf-panel-sec-quick"):
+                    st.markdown(
+                        f'<h2 class="tf-h2 tf-sec-title">Automated Batch Triage ({len(quick_total)} State Pollution Board Filings)</h2>'
+                        '<p class="tf-sec-sub">Zero-token automated checks: NABET accreditation validity, baseline monitoring duration, and GBIF species status.</p>',
+                        unsafe_allow_html=True)
+                if quick_shown:
+                    with st.container(key="tf-grid-quick"):
+                        for e in quick_shown:
+                            row(e)
+                else:
+                    with st.container(key="tf-panel-empty-quick"):
+                        st.markdown('<p class="tf-sec-empty">No reports match these filters in this category.</p>',
+                                    unsafe_allow_html=True)
 
     st.write("")
     from tigerfish.ui import quality

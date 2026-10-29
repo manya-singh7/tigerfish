@@ -135,7 +135,8 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
     assert line in text                                    # totals computed, not hard-coded
     assert any(b.label == "Upload your EIA" for b in at.button)
     assert any("Saved audits are full runs" in c.value for c in at.caption)
-    assert {m.label for m in at.multiselect} == {"State", "Sector", "Year", "Audit type"}
+    assert {m.label for m in at.multiselect} == {"State", "Sector", "Year"}
+    assert any(r.label == "Audit type" for r in at.radio)
     n = len([b for b in at.button if b.label == "Open report"])
     at.checkbox(key="lib::red").check().run()
     red = len([b for b in at.button if b.label == "Open report"])
@@ -175,7 +176,8 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     at = open_app(report=None, page="library")
     text = "\n".join(m.value for m in at.markdown)
     assert "5 EIAs checked" in text or "EIAs checked" in text
-    at.multiselect(key="lib::type").select(library.QUICK).run()
+    opt = next(o for o in at.radio(key="lib::type").options if "Quick" in o)
+    at.radio(key="lib::type").set_value(opt).run()
     assert len([b for b in at.button if b.label == "Open report"]) == 2
     at.button(key="tf::open::sample_quick_mine_odisha_2025").click().run()
     assert not at.exception
