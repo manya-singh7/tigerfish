@@ -175,12 +175,13 @@ def render_ask(report_id):
             return
         st.info("Recorded questions are saved for the Great Nicobar EIA only.")
         return
-    st.markdown("<div class='tf-message'>Every question sends the whole report to Nemotron Ultra. The "
-                "report comes first, word for word the same each time, and the question last, so "
-                "Token Factory serves the report from its prompt cache at "
-                f"${fulltext.PRICE_CACHED:.2f} instead of ${fulltext.PRICE_IN:.2f} per million tokens. "
-                "Answers must quote the report; quotes are checked, and an answer with no quote that "
-                f"checks out is replaced by “{esc(ask.DOES_NOT_SAY)}”</div>", unsafe_allow_html=True)
+    st.markdown("<div class='tf-message'>Every question sends the included report text to Nemotron Ultra. "
+        "Image-only and Hindi pages are skipped. The "
+        "report comes first, word for word the same each time, and the question last, so "
+        "Token Factory serves the report from its prompt cache at "
+        f"${fulltext.PRICE_CACHED:.2f} instead of ${fulltext.PRICE_IN:.2f} per million tokens. "
+        "Answers must quote the report; quotes are checked, and an answer with no quote that "
+        f"checks out is replaced by “{esc(ask.DOES_NOT_SAY)}”</div>", unsafe_allow_html=True)
     st.markdown(f"<div class='tf-review'>{esc(ask_totals_line(rec['totals'], len(rec['answers'])))}</div>",
                 unsafe_allow_html=True)
     for a in rec["answers"]:
@@ -207,7 +208,7 @@ def render_live(report_id):
     limit = hosted.MAX_ASKS_PER_SESSION if hosted.is_hosted() else ask.SESSION_LIMIT
     pending = s.pop("ask_pending", None)      # set by the Send button's callback
     if pending:
-        with st.spinner("Ultra is reading the whole report..."):
+        with st.spinner("Ultra is reading the included report text..."):
             try:
                 with hosted.paid_calls(s) if hosted.is_hosted() else contextlib.nullcontext():
                     a = ask.ask(pending, pages, log=lambda *_: None)

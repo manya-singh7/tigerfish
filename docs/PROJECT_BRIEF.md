@@ -21,7 +21,7 @@ If a model ID fails, list available models via the API and use the correct ID/re
 Other tools: Tavily (search/extract/crawl), GBIF API (species occurrence records),
 Nebius Sandboxes (optional, later; local Python fallback is fine).
 
-Stack: Python 3.11, PyMuPDF, openai SDK, tavily-python, requests, Streamlit, python-dotenv.
+Stack: Python 3.12 (uv, pyproject.toml), PyMuPDF, openai SDK, tavily-python, requests, Streamlit, python-dotenv.
 Rules for the agent: small modules in tigerfish/, tests in tests/, cache every API result
 to cache/ (never call the same model on the same input twice), log token usage and cost,
 keep code simple and readable, explain what you changed after each task.

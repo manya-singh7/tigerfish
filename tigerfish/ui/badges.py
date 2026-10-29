@@ -35,8 +35,8 @@ INFO = {
     READ_SUPER_VL: ("nemotron", "Nemotron 3.5 Super-VL read the page image (scanned page or table)."),
     SCREENED_LIGHTNING: ("nemotron", "Nemotron 3.5 Lightning screened this before Ultra was asked."),
     JUDGED_ULTRA: ("nemotron", "Nemotron 3 Ultra read the pages and gave the verdict."),
-    ANSWERED_ULTRA: ("nemotron", "Nemotron 3 Ultra read the whole report and answered. Only the "
-                                 "quotes are checked."),
+    ANSWERED_ULTRA: ("nemotron", "Nemotron 3 Ultra read the included report text and answered. Only the "
+        "quotes are checked."),
     TAVILY: ("tavily", "The linked source was found with Tavily web search."),
     GBIF: ("gbif", "Occurrence records or IUCN status from GBIF (gbif.org)."),
     HUMAN_VERIFIED: ("human", "A person checked this finding against the report pages by hand."),
@@ -115,7 +115,7 @@ def memo_badges(m=None):
 
 
 def ask_badges(a=None):
-    return [(ANSWERED_ULTRA, "whole report")]
+    return [(ANSWERED_ULTRA, "included report text")]
 
 
 def html(badges):

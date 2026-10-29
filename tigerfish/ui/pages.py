@@ -20,8 +20,8 @@ ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "assets"
 BUILT_WITH = "Built with NVIDIA Nemotron on Nebius Token Factory + Tavily"
 # The Home slip. The story text is fixed; the numbers come from results/eval.json.
-TIGERFISH_STORY = ("A government report listed an African fish off Great Nicobar. "
-                   "TigerFish reads the whole report so this gets caught.")
+TIGERFISH_STORY = ("An African fish at Great Nicobar? This planted evaluation case shows how "
+    "TigerFish checks a species claim against recorded geography.")
 SCROLL_URL = ("https://scroll.in/article/1095311/fake-claims-great-nicobar-lighthouse-project-"
               "study-lists-species-found-in-africa-amazon")
 TIGERFISH_SPECIES = "Hydrocynus vittatus"
@@ -29,8 +29,8 @@ INDIRA_POINT = (6.75, 93.83)
 
 # Which model does what, and why (tigerfish/llm.py).
 MODELS = [
-    ("Nemotron Lightning", "Reads text pages and pulls out every claim with its quote; first "
-     "pass on candidate pairs (triage); ToR promises; translates the letter.",
+    ("Nemotron Lightning", "Reads text pages and extracts checkable claims with quotes; first "
+        "pass on candidate pairs (triage); ToR promises; translates the letter.",
      "Fast and cheap, so it can read every page of a 1,000-page report."),
     ("Nemotron Super-VL", "Reads scanned pages, tables and maps from the page image.",
      "Takes images: many EIA tables exist only as scans."),
@@ -43,17 +43,18 @@ MODELS = [
      "Open biodiversity data; free."),
 ]
 LEVELS = [
-    ("Quick check", "free, whole report",
-     "Every free check on every page with a text layer: number pairs, species and IUCN "
-     "categories against GBIF, threatened species near the site that are never mentioned. "
-     "No key, no model calls."),
+    ("Quick check", "free, text layer",
+     "Available free checks on the readable text layer, within page and name caps: number pairs, species and IUCN "
+        "categories against GBIF, threatened species near the site that are never mentioned. "
+        "No key, no model calls."),
     ("Deep audit", "chosen pages, live",
      f"The model checks (claims, contradictions, recycled figures) on up to "
      f"{page_picks.MAX_PAGES} pages you choose. Needs a key: the site's or your own. The cost "
      "is shown before anything runs."),
-    ("Full audit", "every page",
-     "Every page and every check, about an hour per report. Run scripts/audit.py locally "
-     "with your own keys. The saved audits in the library are full runs."),
+    ("Full audit", "scoped report run",
+     "Claim extraction, contradictions and copied-text checks over the selected report scope. "
+        "Run scripts/audit.py locally; specialized checks use separate scripts and inputs. "
+        "The three saved full audits took about an hour each; quick checks are a different scope."),
 ]
 
 
@@ -89,10 +90,10 @@ def tigerfish_slip():
                  f'<div class="tf-slip-reason">GBIF records: {mono(f"{r["local"]:,}")} within 100 km, '
                  f'{mono(f"{r["regional"]:,}")} within 500 km, {mono(f"{r["global"]:,}")} worldwide.</div>')
     return (f'<div class="tf-slip tf-slip-noimg tf-home-slip"><div class="tf-slip-text">'
-            f'<blockquote class="tf-slip-quote tf-story">{esc(TIGERFISH_STORY)}</blockquote>'
-            f'{facts}<div class="tf-slip-foot"><span>Species check from results/eval.json.</span>'
-            f'<a href="{SCROLL_URL}" target="_blank" rel="noopener">Read the Scroll.in report</a>'
-            f'</div></div></div>')
+        f'<blockquote class="tf-slip-quote tf-story">{esc(TIGERFISH_STORY)}</blockquote>'
+        f'{facts}<div class="tf-slip-foot"><span>Planted species check from results/eval.json, not an extracted report finding.</span>'
+        f'<a href="{SCROLL_URL}" target="_blank" rel="noopener">Read the Scroll.in report</a>'
+        f"</div></div></div>")
 
 
 def go_search():
@@ -193,8 +194,9 @@ def how_it_works_page():
                         '</tr></thead><tbody>' + "".join(
                             f'<tr><td class="tf-mono">{esc(n)}</td><td>{esc(d)}</td><td>{esc(w)}</td></tr>'
                             for n, d, w in MODELS) + "</tbody></table>", unsafe_allow_html=True)
-            st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Every quote a model "
-                       "returns is checked against the page text before it is shown.")
+            st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Text-backed quotes "
+                "are matched to source text; image-only readings are shown with their "
+                "source image and labelled unverified.")
         with st.container(key="tf-panel-method"):
             st.markdown(method.method_text())
             st.page_link(PAGES["limitations"], label="Known limitations",

@@ -58,10 +58,11 @@ ABOUT = {
              "(contradictions), the same figure reused for different places or years (recycled "
              "figures), and number pairs that disagree. Ultra reads both full pages before a pair "
              "is flagged; each slip shows the highlighted lines of both pages."),
-    SPECIES: ("Every species the report lists is checked against GBIF records near the site, its "
-              "IUCN category and its Wildlife Protection Act schedule. Threatened species recorded "
-              "near the site that the report never mentions are listed as omissions. The map shows "
-              "where the flagged species are actually recorded; photos are reference images."),
+    SPECIES: ("Species found in readable tables are checked against GBIF records, within this "
+        "run's coverage and name limits. IUCN and Wildlife Protection Act checks run where "
+        "their inputs are available. Threatened species recorded "
+        "near the site that the report never mentions are listed as omissions. The map shows "
+        "where the flagged species are actually recorded; photos are reference images."),
     COPIED: ("Site-specific passages are searched on the web to find the same text in documents "
              "about other places. Standard equipment and method wording is filtered out first."),
     PROMISES: ("What the Terms of Reference asked for, compared with what the report says it did. "
@@ -70,9 +71,9 @@ ABOUT = {
     RECORD: ("Key facts compared with official public sources, what happened to the project after "
              "the report, the project's own documents found on official sites, and who to write "
              "to. The consultant's NABET accreditation is checked here too."),
-    ASK: ("The reviewer's memo: Ultra reads the whole report and lists cross-chapter issues, every "
-          "quote checked against the page. Ask the report answers one question at a time with "
-          "page citations. Investigate, on each flag, sends an agent for more evidence."),
+    ASK: ("The reviewer's memo: Ultra reads the included report text and lists cross-chapter issues, every "
+        "quote checked against the page. Ask the report answers one question at a time with "
+        "page citations. Investigate, on each flag, sends an agent for more evidence."),
     ACTION: ("Mark flags Confirm, Dismiss or Unsure on their slips. The objection letter (English, "
              "Hindi, and the state's language) and the RTI and public hearing pack are built only "
              "from the flags you confirmed."),

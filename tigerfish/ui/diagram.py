@@ -10,9 +10,9 @@ TEAL, INK, PAPER, MUTED = "#0D4242", "#17302F", "#F2ECDF", "#59625F"
 W = 720
 STAGES = [
     ("EIA report (PDF)", ["Hundreds of pages: text, scans, tables, maps"], None),
-    ("Read every page", ["Text pages: the text layer, read by Lightning",
+    ("Read selected pages", ["Text pages: the text layer, read by Lightning",
                          "Scans, tables, maps: Super-VL reads the image"], "Lightning, Super-VL"),
-    ("Extract claims", ["Each factual statement, with its page number"], "Lightning"),
+    ("Extract claims", ["Checkable statements, with their page numbers"], "Lightning, Super-VL"),
     ("Pair claims", ["Statements on the same topic that could disagree"], None),
     ("Triage", ["Drop pairs that clearly agree"], "Lightning"),
     ("Verdicts", ["Read both passages in full; decide and say why"], "Ultra"),

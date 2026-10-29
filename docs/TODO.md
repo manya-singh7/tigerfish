@@ -2,13 +2,42 @@
 
 Agent: at the start of every block, read this file and remind the user of the items for that block.
 
+## Current state and next work (30 October 2026)
+
+Saved JSON and code take precedence over the historical run notes below. The library has
+3 full-report audits, 1 published-table check and 25 Maharashtra executive-summary checks:
+2,802 PDF pages plus one table, 234 RED/ORANGE cards and 23 standard INFO leads. Three
+additional batch baseline INFO leads have known extraction errors. See `docs/LIMITATIONS.md`
+for scope and `docs/FEATURES.md` for current UI entry points.
+
+- [x] Python 3.12 + uv lockfile and dev dependency group.
+- [x] Branded Home, Library, Upload, How it works and Limitations; report sections, evidence
+  slips, highlighted crops, model badges, responsive theme, logo and self-hosted fonts.
+- [x] Three full-report replays, Indira Point table, 25 quick checks, corpus index and batch
+  discovery/check scripts. Quick checks are not full three-model audits.
+- [x] Own-document copy matches excluded and inspectable: 10 Karnataka and 3 Cuddalore RED cards removed.
+- [x] Human review/feedback, regional-language letters, RTI pack and review imports exist.
+- [x] Offline suite run: 976 passed, 1 failed, 1 skipped, 7 deselected. Failure: reset-filter
+  test expects all cards despite the library's initial 10-card pagination.
+- [ ] Specify and test pagination: 10 initially, ordered Show more without duplicates,
+  reset clears filters and restores the initial page, all matching reports remain reachable.
+- [ ] Fix batch baseline extraction: shared-year ranges, report-number exclusion, study vs
+  administrative/traffic context, calendar-aware durations and conflicting evidence.
+- [ ] Regenerate baseline results from source documents without rerunning unrelated checks.
+- [ ] Expose batch check results, uncertainty and observations on report pages and a reachable summary.
+- [ ] Recheck copied-text leads for taxonomy years, legitimate secondary data and attribution.
+- [ ] Verify and rehearse a short three-NVIDIA-model demo with real pages and labelled replays.
+- [ ] Confirm public deployment, record video/screenshots and finish submission.
+
+The Ultra verdict prompt remains **FROZEN** (Block G). Do not mark manual reviews or
+deployment complete based on tests. Balances and estimates below are historical.
+
 ## Waiting on (check daily)
 - [x] Hackathon credits promo code (form sent Oct 24, ~10:40pm IST): ARRIVED (Oct 27)
 - [x] Builders Program email ($25 Token Factory, $25 Tavily, $100 LangSmith, $100 Toloka): ARRIVED (Oct 27)
 - Balance as of Oct 27: Token Factory ~$29.50, Tavily ~4,000 credits
 - [ ] Replies: Discord #devpost-global-ai-hackathon, sujee@nebius.com, support@devpost.com, Token Factory "Contact us" ticket, Devpost forum
-- [ ] When a Token Factory promo code arrives: Billing > Top up > With promo code
-- [ ] When a Tavily promo code arrives: Tavily dashboard > Billing
+- [ ] Confirm the received Token Factory/Tavily codes were redeemed in Billing (arrival is recorded; redemption is not).
 - [ ] Before the trial ends: check whether promo credits need paid usage turned on; set a spending limit/alert first
 
 ## Before any commit
@@ -36,9 +65,10 @@ Agent: at the start of every block, read this file and remind the user of the it
   - [ ] pr-08: ToR p.2 corals "up to a depth of about 40 m" vs p.987 transects "deeper reef-16-30m". Check the ZSI coral pages for any dive deeper than 30 m.
   - [ ] pr-13: ToR p.3 water "20 locations" vs p.279 "sixteen locations" (8 surface + 8 ground water). Check Table 3.18 / Figure 3.34.
   - [ ] pr-15: ToR p.3 soil "three different levels up to a depth of 90 cm" vs p.258 "three different depths viz. 30 cm" and "up to a depth of 30 cm"; but p.870 (annexure) says "30 cm, 60 cm and 90 cm". Also p.258 says "20 locations" and "A total of 10 numbers of samples". Which is right?
-  - [ ] Compare against the ToR actually granted (MoEFCC letter of 25 May 2021, cited on EIA p.44); our file is the proposed ToR.
+- [x] Find the granted ToR (25 May 2021) through the paper trail and run a separately labelled comparison: 2 measurable commitments, both INFO.
+- [ ] Read the granted letter and standard ToR it incorporates; pr-06 still rests on the proposed ToR, not a proven granted-condition breach.
 
-- [ ] Full-audit top 30 (review/review_queue.json, app tab "Review queue"; D = both of you judge it independently; my quick read in results/full_audit_summary.md):
+- [ ] Full-audit top 30 (review/review_queue.json, report section "Quality"; D = independent judgments; quick triage notes in results/full_audit_summary.md are not recorded human decisions):
   - [x] (verified by hand: gn-006) 1. ct-071 (D) ORANGE p.738/1085: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "the presence of 117 species of scleractinian corals" [likely real]
   - [ ] 2. ct-056 ORANGE p.738/978: "As per the ZSI report, coral do not exist in the Galathea Bay area, ho" vs "Coral reef exists in the proposed site for Transshipment / Port" [likely real]
   - [ ] 3. ct-1645 (D) RED p.438/446: "916 Ha of area has been identified for development of International Ai" vs "the present site needs to reclaim land approximately 194 Ha of land in" [likely real]
@@ -97,7 +127,7 @@ Agent: at the start of every block, read this file and remind the user of the it
 ## Block F (Streamlit UI)
 - [ ] Optional: LangSmith free plan (smith.langchain.com), add LANGSMITH_API_KEY to .env, wrap calls in llm.py (~30 min)
 - [ ] Take one clean trace screenshot for README/video
-- [x] Replay mode opens by default (saved Great Nicobar results), so judges spend zero tokens
+- [x] Replay opens on Home with the library below it; saved reports and evidence need no keys or source PDFs.
 - [ ] Host free on Streamlit Community Cloud or Hugging Face Spaces (not paid Nebius compute)
 
 ## Block G (evaluation)
@@ -115,14 +145,15 @@ Agent: at the start of every block, read this file and remind the user of the it
 - [x] 11 added pairs judged (Oct 27 22:19, $0.11, all NONE). Final: $15.78, 62 min, 1,866 pairs, 0 not judged
 - [x] Second estimate in scripts/audit.py now prices only pairs that would reach Ultra (cached triage "no" skipped; untriaged pairs at the pass rate)
 - [x] Evaluation re-run from cache ($0): 7/7 on the 10 known-issue pages, 12/12 on the full audit with every check, both negative controls not flagged
-- [ ] Run the full test suite yourself: `.venv\Scripts\python.exe -m pytest -q` (only the touched test files were run)
+- [x] Run the offline suite: `uv run --locked python -m pytest -q -m "not live" --ignore=tests/test_species_live.py`. Latest result and remaining failure are recorded above.
 - [x] Statement-pair rule tightened (override only if same_subject yes and same_place not no): 0 of the 19 flags change (all 19 qualify), gn-001 still ORANGE
 
 ## Write-up (Oct 29)
 - [ ] "What's next": route uncertain ORANGE flags to human experts via Toloka
-- [ ] Feedback section (for the vibes)
+- [x] Feedback section, reviewer suggestions and export/import are implemented.
 - [ ] Great Nicobar EIA consultant is Vimta Labs; Indira Point REIA is WAPCOS. Never describe them as the same consultant.
-- [ ] Submit by Oct 29 evening (hard deadline Oct 30, 10:30pm IST)
+- [ ] Submit by the hard deadline: Oct 30, 10:30pm IST (the Oct 29 evening target has passed).
 
-## Drop if behind on Oct 28
-- LangSmith, then batch audit size (go to 5 EIAs instead of 10)
+## Optional stretch / earlier scope cuts
+- LangSmith and Toloka expert routing remain optional. The earlier 5/10-EIA target has
+  been superseded by 3 full audits and 25 no-model summaries, not 25 full model audits.

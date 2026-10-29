@@ -61,8 +61,8 @@ def levels(n_pages, chosen_usd=None):
     """The three levels as cards."""
     a, b, c = st.columns(3)
     where = f"all {n_pages:,} pages" if n_pages else "every page"
-    a.markdown(f"**Quick check (free, whole report)**  \nEvery free check on {where}: number pairs, species and IUCN categories vs GBIF, threatened species "
-               "near the site that are never mentioned. No key, no cost.")
+    a.markdown(f"**Quick check (free, whole report)**  \nAvailable free checks on the readable text of {where}: number pairs, species and IUCN categories vs GBIF, threatened species "
+        "near the site that are never mentioned. Page/name limits and missing-input restrictions apply. No key, no model cost.")
     cost = (f"Estimated **\\${chosen_usd:.2f}** for the pages chosen below."
             if chosen_usd is not None else "Cost shown before it runs.")
     b.markdown(f"**Deep audit (chosen pages, live)**  \nThe model checks (claims, contradictions, "
@@ -75,8 +75,8 @@ def levels(n_pages, chosen_usd=None):
     price = library.price_line(library.entries(), dollar="\\$")   # from the saved full runs
     c.markdown("**Full audit (your own key or run locally)**"
                + (f"  \n{price}." if price else "")
-               + f"  \nEvery page, every check, about an hour.{est} Run `scripts/audit.py` locally "
-               "with your own keys.")
+               + f"  \nScoped report processing; specialized checks need their own scripts and inputs.{est} Run `scripts/audit.py` locally "
+        "with your own keys. The saved full runs took about an hour each.")
 
 
 def save(upload):

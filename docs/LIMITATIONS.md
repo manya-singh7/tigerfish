@@ -1,206 +1,216 @@
 # TigerFish: known limitations and failure cases
 
-**Every flag is a lead for human review, not a verdict.** TigerFish says that two statements
-in a report do not agree with each other or with a public record, and shows the page, the
-exact quote and the evidence. It does not say why, and it does not decide whether a project
-complies with its approval. A person has to read the pages.
+**Every flag is a lead for human review, not a verdict.** TigerFish shows statements that
+may disagree, their physical PDF pages, exact quotations and supporting evidence. It does
+not establish intent, certify a report correct, or decide regulatory compliance.
 
-Each item below gives the evidence from our own runs, with the file it comes from. "Rehearsal"
-means the 100-page test run on pages 250-350 of the Great Nicobar draft EIA
-(`results/audit_great_nicobar_2021_draft_eia__p250-350.md`). The full 1,213-page run had not
-finished when this was written, so its numbers are not here.
+## Current saved coverage
 
-## 1. GBIF has few records for the Nicobar Islands
+Snapshot on 30 October 2026; the UI computes its totals from saved files.
 
-Having no GBIF records of a species near the site does not prove the species is absent. The
-Nicobars are poorly surveyed.
-
-- **Evidence.** Indira Point (Table 3.16): 85 mammal records of any species within 100 km
-  and 513 within 500 km. The local survey-effort threshold is 500 records, so the check only
-  works there through the 500 km fallback, and 513 is barely above 500
-  (`results/indira_point_table_3_16.json`, finding sp-01). On the Great Nicobar species
-  tables, 391 of 581 names were graded GREY ("too little surveyed to judge") and never shown.
-- **Mobile-species rule.** Birds, fish, marine invertebrates, sea turtles, crocodiles, sea
-  snakes, marine mammals and plants are flagged only when GBIF has no record of them anywhere
-  in the Andaman & Nicobar Islands and none within 3,000 km. On the Great Nicobar tables this
-  rule kept 151 names from being flagged (local cache, `species_pages.json`). Land mammals,
-  amphibians and land reptiles keep the strict 100 km / 500 km rules.
-- **Effect.** The species check misses some real errors (for example a mobile species that
-  is recorded somewhere in the region but not at the site). The one Great Nicobar species
-  flagged RED, *Panulirus interruptus* (p.954), has 0 records within 3,000 km and 294,577
-  worldwide, mostly from North America. It is still a lead: TODO.md asks for a manual check.
-- **Taxonomy.** GBIF's synonyms can differ from current usage. It maps *Pteropus giganteus*
-  to *P. vampyrus* (EN), while the Indian flying fox is usually *P. medius* (LC). Status
-  differences after a name correction are graded GREY.
-
-## 2. False alarms found in the rehearsal, and how each was fixed
-
-The first rehearsal (commit bfb7720) gave **8 RED/ORANGE flags**. Only one of them (rainfall, below) still looks
-real; the other 7 and their fixes are in the table. After the fixes below (commit 4f0f98e), the same pages gave 2 flags, and then 1 after
-the last fix.
-
-| Flag in the first rehearsal | Why it was wrong | Fix |
+| Entry | Recorded coverage | Scope |
 |---|---|---|
-| cp-p287-1, cp-p287-2 RED: noise meter description "found in another document" | Standard equipment text (model OB-100, 31.5 to 16000 Hz) copied across many EIAs. Not site data | Boilerplate phrase list plus a Lightning yes/no "is this site-specific?" before any copy-paste flag (`tigerfish/copycheck.py`) |
-| cp-p288-3 RED: L10 / L50 / L90 noise definitions | Textbook definitions | Same boilerplate filter |
-| rf-001 RED: "20 locations" for soil sampling and for noise monitoring | Small counts repeat by chance, and the ToR itself asks for 20 locations | Recycled figures need values above 25 and at least 3 shared figures; counts that come from the ToR are ignored (`TRIVIAL_MAX`, `tor_location_counts`) |
-| ct-008, ct-010 ORANGE: "not found in Andaman Islands" vs a list of endemic species on p.292 | Ultra was given a vague subject, and its free-form grade turned "different scope" into ORANGE | Statement pairs must name every key word of the subject X; Ultra answers fixed yes/no questions (same subject, place, scope; incompatible; explained) and code computes the grade |
-| ct-215 ORANGE: about 600 plant species in the reserve vs 640 higher plants on the island | Different scopes (all groups vs higher plants, reserve vs island) | Same structured verdict: "unclear" only with a concrete, named reason |
-| ct-105 RED (second rehearsal): chlorides and sulphates "18 to 16300 mg/l" (p.285) vs "18 to 16,300 mg/l and 4.8 to 2150 mg/l respectively" (p.286) | Ultra saw a sentence fragment; the full sentence on p.285 is the same statement | Ultra now gets the complete sentence(s) around each quote; ct-105 is NONE |
+| Great Nicobar draft EIA, Vimta Labs | 1,114 of 1,213 pages | Scoped full run plus specialized checks |
+| Cuddalore Port draft EIA | 768 of 802 pages | Scoped full run plus specialized checks |
+| Karnataka Rural Roads EIA, ADB | 356 of 364 pages in replay | Run ledger records 364; check-specific coverage differs |
+| Indira Point REIA, WAPCOS | One published table | Species/status checks, not the whole REIA |
+| Maharashtra batch | 25 executive summaries, 564 pages | No-model certificate-date/baseline screens; GBIF where readable names exist |
 
-Other changes from the same work: Super-VL replies cut off on long tables (p.307, p.330) are
-re-asked with a larger budget and partial JSON is salvaged; numbers written as words
-("sixteen locations") are read.
+The library has 2,802 PDF pages plus one table, 234 RED/ORANGE cards and 23 standard INFO
+leads. Three additional batch baseline INFO leads are stored outside those totals and have
+known extraction errors (below). Zero flags does not mean all checks ran or the report is correct.
 
-**Still open.** ct-037, rainfall "3000 to 3500 Cm" (p.291) vs "300 to 350 Cm" (p.337). It looks
-real (probably mm vs cm) but has not been checked by hand. The saved rehearsal report still
-lists ct-105 as RED because it was written before the last fix.
+Great Nicobar's full run recorded 10,463 claims, 1,866 candidates, 1,440 Ultra verdicts,
+$15.78 model cost and about 62 minutes (`results/eval.md`). Cuddalore and Karnataka record
+$13.34 and $2.40 model-run costs. Separate web-context checks have their own costs.
+The older pages 250-350 rehearsal and cost estimates are historical, not current coverage.
 
-The Ultra verdict prompt was frozen on Oct 27 so the evaluation numbers stay comparable.
-Fixing false alarms on the pages we tested could have tuned TigerFish to those pages; the
-planted-error test below is the guard against that.
+## GBIF coverage, taxonomy and geographical scope
 
-## 3. Ultra's page citations drift on very long inputs
+- No occurrence records does not prove absence. The Nicobars are poorly surveyed. The
+  Indira Point snapshot has 85 mammal records within 100 km and 513 within 500 km; the
+  wider fallback only narrowly clears the 500-record threshold.
+- The Great Nicobar species-table run graded 391 of 581 names GREY. Birds, marine species
+  and plants recorded elsewhere in the archipelago or within 3,000 km are conservatively
+  protected from out-of-range flags by the mobile-species rules. This also misses genuine
+  site-level discrepancies. The saved run suppressed 151 such flags.
+- *Panulirus interruptus*, p.954, has no records within 3,000 km and 294,577 worldwide in
+  the saved snapshot. It was checked by hand as likely misidentification (gn-009), not
+  established absent by the automated check.
+- GBIF maps *Pteropus giganteus* to *P. vampyrus*, while the Indian flying fox is usually
+  *P. medius*. Status disagreements after a name correction are GREY because taxa may differ.
+- IUCN comparisons use current GBIF data, not necessarily the assessment available when the
+  report was written. Only selected findings have dated "knowable at the time" evidence.
+- Species-map arcs end at approximate country centres. They show occurrence counts, not
+  exact range boundaries; records may include introduced or captive populations.
+- Omissions mean a name was not found in searchable material, not proof that an impact
+  was unassessed. Common names, synonyms, scans and incomplete source volumes limit recall.
 
-When Nemotron Ultra reads the whole report in one call, it often cites a page next to the
-right one.
+## False alarms and protections developed in the rehearsal
 
-- **Evidence.** Reviewer's memo (`results/memo_great_nicobar_2021_draft.json`): 39 quotes,
-  30 found word for word in the report, and **23 of those 30 were on a page 1 to 3 away from
-  the page Ultra cited**. The other 9 could not be found close to the cited page and are dropped.
-- **Context test** (`results/ultra_context_test.json`): at 191k tokens (371 pages) Ultra
-  named the last page correctly. At 545k tokens (1,071 pages) it named **p.1143 as the last
-  page; it is p.1173**.
-- **What the app does.** Every quote is searched in the page text. A quote found on a page up
-  to 3 away is shown with the corrected page and a note ("cited as p.X; the quote is on
-  p.Y"). A quote further away, or not found at all, is listed as "did not check out" and is
-  not used as evidence. Ultra's reasoning text is shown but labelled "not checked".
+The first 100-page rehearsal produced eight RED/ORANGE flags. Several were false alarms;
+fixes included the following (`tigerfish/copycheck.py`, `claims.py`, `contradictions.py`).
 
-## 4. Proposed ToR, not the granted ToR
+| Failure | Protection |
+|---|---|
+| Noise-meter specifications and L10/L50/L90 definitions matched elsewhere | Boilerplate filter and Lightning site-specific screening |
+| "20 locations" repeated in unrelated sampling plans | Recycled figures require values above 25 and at least three shared breakdown figures; ToR counts excluded |
+| Vague "not found" claims paired with unrelated species lists | Explicit statement subjects and structured scope/place answers |
+| Chloride/sulphate fragments looked inconsistent | Ultra receives complete source sentences and page context |
+| Long vision replies were cut off | Larger retry budget, partial-JSON salvage, duplicate filtering |
 
-The ToR promises check compares the EIA with `data/eias/great_nicobar_tor_2021.pdf`, which
-is the **proposed** Terms of Reference. The ToR MoEFCC granted (letter of 25 May 2021, cited on
-EIA p.44) may differ, and an expert committee can approve changes later. Example: pr-06 (the
-ToR asks for 3 months of baseline data; the EIA describes surveys on 14-22 December 2020 and
-12-18 February 2021, p.292) is a strong lead only if the granted ToR kept the 3-month
-requirement. TODO.md lists the comparison with the granted ToR as manual work.
+Rainfall "3000 to 3500 Cm" (p.291) vs "300 to 350 Cm" (p.337) is now ct-239 in the
+full replay, checked by hand as gn-008: confirmed, low severity, likely a unit slip.
+Rehearsal IDs and older grades should not be substituted for current full-report IDs.
 
-**Granted ToR, found by the paper trail.** The MoEFCC letter granting the ToR (F.No.
-10/17/2021-IA.III, 25 May 2021, proposal IA/AN/NCP/201159/2021, 18 pages) was found on
-environmentclearance.nic.in and checked the same way (`results/great_nicobar_2021_draft_promises_granted.json`).
-It states few measurable study conditions: the check found 2 (one complete non-monsoon season of
-site-specific meteorological and air-quality data; at least one monitoring station upwind and one
-downwind), both INFO (not confirmed from the report text searched). Its numbered conditions are
-split into separate items and its running page header is removed before the check; quotes stay
-verbatim from the letter. The letter's text has no "3 months" / "three months"; it grants
-specific conditions "in addition to all standard ToR conditions applicable for such projects",
-which are not in the letter and were not checked. So pr-06 rests on the proposed ToR only. Read
-the granted letter (and the standard ToR it refers to) by hand before using pr-06.
+## Long-context quotations are checked, reasoning is not independently verified
 
-Other limits of this check: "3 months" for a list of attributes is read as applying to each;
-studies without stated dates have no bar on the timeline; regex can miss numbers in tables
-split across pages.
+The Great Nicobar memo includes 1,071 pages of usable text. Of 39 attempted quotations,
+30 verified, and 23 of those needed a page correction of one to three pages. Nine were
+dropped (`results/memo_great_nicobar_2021_draft.json`). In the context test Ultra named
+**p.1143** as the final page when it was **p.1173** at roughly 545k input tokens.
 
-## 5. Hindi pages and scanned pages are partly skipped
+`fulltext.verify` accepts a nearby match with the page corrected and the original citation
+recorded; more distant/unmatched quotations are not evidence. Finding a quotation verifies
+its presence, not the model's interpretation. Memo reasoning and unsupported agent reasons
+are labelled unverified. An Ask answer with no verified quote becomes "The report does not say."
 
-- **Hindi.** The text layer of the Hindi summary and the Gazette notifications does not extract
-  cleanly. 91 pages containing Devanagari were left out of the cost estimate
-  (`results/eval.json`), and 77 Hindi pages were skipped when Ultra read the whole report
-  (memo and Ask). The Hindi pages are not checked for contradictions with the English text.
-- **Scanned pages.** Claim extraction sends scanned and table pages to Super-VL (521 pages
-  in the claims ledger, `results/page_readers_great_nicobar_2021_draft.json`), but
-  text-only steps cannot search them: the omissions check searched 1,132 of 1,213 pages (81
-  scanned pages not searched), and Ultra's whole-report read skipped 65 pages with no text
-  layer. Handwritten tables (p.896, p.901) and maps (p.909) are read by Super-VL in the
-  inspector; those readings have not been checked cell by cell.
+## Proposed and granted Terms of Reference
 
-## 6. Part vs total
+Both comparisons are saved and separately labelled in Promises & timeline. pr-06 compares
+the **proposed** three-month requirement with a nine-day terrestrial survey and separate
+seven-day turtle survey. The air/water/soil baseline did run three months. This lead does
+not establish a breach of the granted conditions.
 
-A smaller figure for a component does not contradict a larger total, but the two look alike
-to a number-pairing rule.
+The paper trail found the 18-page **granted** MoEFCC letter of 25 May 2021, F.No.
+10/17/2021-IA.III. The saved check found two measurable commitments, both INFO. It contains
+no explicit "three months" phrase, but incorporates standard ToR conditions that were not
+checked. Read those conditions before relying on pr-06. Sources:
+`results/great_nicobar_2021_draft_promises.json` and the `_promises_granted.json` counterpart.
 
-- **Evidence.** ct-005 (TODO.md): total reclaimed land 194 ha (p.444) vs 71 ha for the airport
-  (p.751). The pairing rule paired them. Ultra now gets an explicit part-vs-total rule for such pairs
-  and grades it NONE. gn-002 (coral loss 1-2 ha vs 4 ha restoration, p.444 vs p.751) is also
-  graded NONE; Ultra reads the 4 ha as covering the whole project, not just the airport. Both
-  are on the manual-check list.
-- **Risk.** The rule can now hide a real contradiction where a "component" really is
-  larger than the report allows. The negative-control test (island area 1045 vs 910 sq km,
-  explained in the text) is not flagged, and 0 of 5 planted explained differences were flagged.
+The parser treats a duration over a list as applying to each attribute. Missing dates do
+not create a timeline bar. Search, regexes and split-page tables can miss relevant evidence.
+An INFO "not found" result is not proof a commitment was unmet.
 
-## 7. Thresholds and their effects
+## Hindi and image-only pages
 
-Lower thresholds find more and flag more noise; higher ones miss weaker cases. Current values:
+The whole-report text prompt skipped 77 Hindi pages and 65 pages without usable text;
+the older estimate skipped 91 Hindi pages under its different scope. Claim extraction
+routed 521 pages to Super-VL in the saved reader ledger, but downstream text searches do
+not automatically inherit every vision reading. The omissions run searched 1,132 of 1,213
+pages, leaving 81 without searchable text.
 
-| Threshold | Value | Effect of raising it / lowering it |
+Image-only readings have no independent text layer for quotation matching. The scanned-page
+inspector labels these unverified and displays the image beside the rows. The handwritten
+tables on pp.896/901 and map on p.909 have not been checked cell by cell by a person.
+
+## Part vs total and model judgments
+
+A component smaller than a total is not a contradiction. ct-005 paired 194 ha total
+reclamation (p.444) with 71 ha for the airport (p.751); the part-vs-total rule grades it
+NONE, but its interpretation remains on the manual-check list. gn-002, coral restoration
+of 4 ha for the whole project versus 1-2 ha affected, was checked by hand and is an
+explained negative control. Such rules can also hide a real discrepancy if scope is misread.
+
+Grades are computed from structured Ultra answers, not a proposed model grade. RED is not
+a calibrated probability. The current coral pair ct-031 and the ten-page evaluation are
+both ORANGE; older artifacts graded related claims RED. The verdict prompt is frozen to
+preserve the evaluation baseline, not because its judgments are infallible.
+
+## Thresholds and candidate selection
+
+| Rule | Current setting | Limitation |
 |---|---|---|
-| Numeric difference before a pair is checked | 5% | Higher misses small but real differences; lower sends rounding to Ultra |
-| Subject similarity for pairing | 0.75 | Lower pairs unrelated subjects (more Ultra cost, more noise) |
-| Quote match (fuzzy repair) | 90% | Lower would accept quotes the model reworded |
-| Recycled figure | values > 25, at least 3 shared figures | Lower brings back the "20 locations" false alarm |
-| Borrowed text | 20+ consecutive words | Lower flags common phrases |
-| GBIF survey effort | 500 class records within 100 km, else 500 within 500 km | Indira Point passes with 513 at 500 km; a little lower would grade those 5 mammals GREY |
-| Far range | no records within 3,000 km (and 100+ worldwide) is RED | |
-| Ultra calls per contradiction run | 30 candidates | Extra candidates are dropped and logged |
-| Accreditation | official record within 12 months of the report date | See item 9 |
+| Numeric difference | More than 5% | Smaller differences can be missed |
+| Subject similarity | 0.75 | Loose grouping creates noise; strict grouping misses comparisons |
+| Fuzzy quotation repair | 90% | A repaired quote is actual source text, not the model's original wording |
+| Recycled figures | Values above 25, at least 3 shared breakdown figures | Small reused counts are ignored |
+| Generic borrowed text | 20 consecutive words | Citation detection is page-local and heuristic |
+| GBIF effort | 500 class records at 100 km, else 500 at 500 km | Sensitive to sampling and regional geography |
+| Distant absence | No records within 3,000 km, at least 100 worldwide | No occurrence record is not proof of absence |
+| Default contradiction cap | 30 candidates | Small/deep checks can stop early; full audit explicitly raises this cap |
+| Keyed pairing | At most 8 pairs per group | Even full runs are not exhaustive all-pairs comparisons |
 
-## 8. Triage drops most candidate pairs before Ultra sees them
+**Triage:** the completed Great Nicobar run retained 1,440/1,866 candidates (about 77%):
+1,431 yes, 9 unsure, 426 dropped. Safe mode kept all 11 ten-page evaluation candidates.
+An earlier sample of 19 dropped pairs all graded NONE, but this does not establish recall
+over the report. Safe mode drops a pair only when both Lightning views say no; a single
+view has missed real findings during development. Recycled candidates bypass this triage.
 
-Nemotron Lightning screens candidate pairs ("could these disagree?") so that only some reach
-Ultra.
+Cuddalore's old subject keys used Great Nicobar wording. Later report profiles fix this,
+but the old candidate selection may have missed comparisons or created irrelevant ones;
+there is no independent rerun establishing that the findings were unaffected.
 
-- **Evidence.** Rehearsal: 280 candidate pairs, **85 passed (30%)**, 195 dropped. A random
-  sample of 19 dropped pairs was sent to Ultra anyway: all 19 graded NONE. The earlier run used
-  in `results/full_run_estimate.md` passed 88 of 286 (31%).
-- **But** on the 10 known-issue pages the pass rate was 90% (`results/eval.json`), so the rate
-  depends heavily on the pages. A 19-pair sample cannot rule out that triage drops a few real
-  contradictions across the whole report. The full-run cost estimate ranges from $9.30
-  (31% pass rate) to $41.50 (90%, faster growth of pairs) for the same reason.
-- Recycled-figure candidates and the negative control are never triaged.
+## Copied text, attribution and self-matches
 
-## 9. Accreditation evidence predates the report
+Self-matches are GREY, never flags: a known paper-trail document, or an official/lender/
+proponent portal document naming the project. URLs and reasons remain under Excluded
+matches. Cache regrading removed Karnataka's 10 ADB self-matches and three Cuddalore
+executive-summary matches. The older Great Nicobar exclusion heuristics still apply;
+third-party coverage is not universally recognized as a report's own document.
 
-Consultant accreditation (ac-01, Vimta Labs) is compared with the closest official record we
-could find: the NABET Accreditation Committee minutes of **26 October 2021**. The report is
-dated **December 2021**, about two months later. The minutes state no validity date, so
-accreditation status on the report date cannot be confirmed from them. The finding says so
-in its evidence. The grade is ORANGE ("could not be confirmed"), not a claim that the
-consultant was unaccredited.
+Remaining text matches are not proof of improper reuse. Cuddalore matches district
+fisheries statistics; Great Nicobar taxonomy lists share authority publication years
+that the checker counts as numbers. Legitimate secondary data, nomenclature and attribution
+need human interpretation. The checker does not establish direction of copying or intent.
 
-## 10. PRS Legislative Research is not a government source
+## Official records and source dates
 
-For Wild Life (Protection) Act schedules (st-07, Indira Point), India Code and the Gazette were
-searched first; the pages read did not state the number of schedules. The source used is PRS
-Legislative Research, labelled in the app as **"authoritative, non-government"**, never as
-official. The finding records that the official tier gave nothing.
+Vimta's accreditation lead uses NABET minutes of **26 October 2021**, before the December
+2021 report. The minutes have no validity date; ORANGE means accreditation could not be
+confirmed for the relevant sector/category, not that the consultant was unaccredited.
+WPA evidence from PRS is labelled **authoritative, non-government**, never official.
+Later project revisions are not automatically errors in the earlier EIA. Web extraction,
+publication-date detection and project matching can miss or misidentify relevant records.
 
-## 11. Other known limits
+## Batch screening and UI integration gaps
 
-- **Hosted app limits.** An upload always gets the free checks on the whole report (up to
-  2,000 pages, `MAX_FREE_PAGES` in `tigerfish/ui/upload.py`). The paid model checks run on at
-  most 30 pages the visitor picks (`page_picks.MAX_PAGES`; the default pick is the pages with
-  the most figures and species names), within caps of $0.50 per upload (`MAX_RUN_USD`) and
-  $1.00 per UTC day for all visitors together on the owner's key (`DAILY_BUDGET_USD`, in
-  `tigerfish/hosted.py`). A visitor's own key is not counted against the daily cap. The daily
-  total is kept in memory and in a temporary file (`tigerfish_daily_spend.json` in the system
-  temp folder), so it survives app reruns but resets when the hosted container restarts cold
-  and its temp folder is cleared.
-- **Self-match rule (Oct 29).** Before grading, a copied-text match is checked against the report's own identity. It is graded GREY "self-match: same report published elsewhere" only if the matched document is one of the report's paper-trail documents, or is hosted on an official, lender or proponent portal (`SELF_MATCH_PORTALS` in `tigerfish/copycheck.py`: gov.in, nic.in, adb.org, worldbank.org, plus the report's own official sites from its paper trail) and names the project or its proposal/project number (`paper_trail.names_project`). It is listed under a collapsed "Excluded matches" list with the URL and never counted as a flag. News coverage and other third-party pages are graded by the normal rules, even when they name the project. Re-graded from cache: Karnataka 10 RED -> 0 (all on ADB's own copy of the EIA), Cuddalore 4 RED -> 1 (3 on TNPCB's executive summary); Great Nicobar unchanged. Self-matches are limited to the report's own paper-trail documents and official/lender portals that name the project; news coverage is graded normally.
-- **Cuddalore subject grouping.** Cuddalore's subject-grouping step was run with wording that
-  named Great Nicobar Island; this was fixed for later reports. Its claims, verdicts and flags
-  were not affected by the wording, only how numbers were grouped into pairs.
-- **Coverage of the replay.** The saved Great Nicobar results count 47 of 1,213 pages as read:
-  the contradiction and copy-paste checks ran on 10 pages with known issues, and the
-  species check on 40 species-table pages (3 overlap). The ToR, accreditation and omission
-  checks searched the report text more widely, but only for their own topics. Zero findings on a
-  page means it was not checked, not that it is correct.
-- **The grade can change between runs.** The saved app finding ct-003 (gn-001, coral at the
-  port site, p.392 vs p.978) is RED; the latest evaluation (`results/eval.json`) grades the same
-  pair ORANGE. Both count as caught, but a grade is the model's reading, not a measured quantity.
-- **Models misread.** Models can misread tables or silently fix spelling. Quotes are checked
-  against the page text, and table names keep the spelling the model read.
-- **Small evaluation.** 4 of 4 scored known issues, 10 of 10 planted contradictions,
-  0 of 5 planted explained differences flagged, 5 of 5 planted out-of-place species, 0 of 5
-  real species wrongly flagged (`results/eval.md`). These are small samples from one report.
-- **Two reports.** Great Nicobar (Vimta Labs) and the Indira Point Table 3.16 (WAPCOS, as
-  published by Scroll.in). Thresholds were set on these and may not transfer to other EIAs.
+All 25 saved quick checks are Maharashtra executive summaries, not full model audits.
+Discovery cost 41 Tavily credits; the subsequent regex/GBIF screens made no model calls.
+The snapshot has GREY results for certificate dates in 17 reports, baseline periods in
+15, and species data in 23. Certificate-date screening is not official NABET verification.
+
+The baseline parser currently uses nearby dates without establishing a fieldwork interval.
+It reads October-December 2025 plus a report number as December-January, treats traffic
+counts as a baseline, and pairs application/EAC dates as a study. These cause the three
+saved INFO leads in `results/batch/batch_summary.json`; none is a verified shortfall.
+Fix and regenerate them before using them as examples. Batch-only evidence lives in
+`batch_checks`/`batch_flags` but is not fully exposed in the current quick-report UI.
+
+The library renders 10 cards initially and then Show more. Reset clears filters and
+restores 10 cards; the current test instead expects all 29. The behavior contract needs
+explicit coverage, including reachability and ordering of every matching report.
+
+## Evaluation, human review and demo scope
+
+`results/eval.md` records 7/7 ten-page known-case checks and 12/12 full-audit checks
+(including two negative controls), 10/10 planted contradictions caught, 0/5 explained
+differences wrongly flagged, 5/5 planted out-of-place species flagged and 0/5 locally
+recorded species wrongly flagged. These are small, development-influenced samples.
+
+Only 10 flags have recorded human judgments, all Great Nicobar and confirmed. This is
+too few to estimate general precision. Thresholds were developed mainly on Great Nicobar
+and the Indira Point table; more reports do not establish generalization. Software tests
+are not human validation of the results.
+
+Home's tigerfish occurrence counts come from a **planted evaluation case**, not a quoted
+finding extracted from an audited EIA. The published story is separate motivation. Rich
+saved memos/questions and the scanned-page inspector exist mainly for Great Nicobar;
+live investigation of saved reports needs local source material and keys.
+
+## Uploads and hosted operation
+
+Free checks use the readable text layer of at most 2,000 pages, with name caps and missing-
+input restrictions. Paid deep audits use up to 30 chosen pages. Specialized web checks
+need local scripts/keys; ToR comparison also needs the second document. A full audit does
+not mean every check ran on every page.
+
+The upload renderer passes its truncated page count to the omission check. Above 2,000
+pages this can misrepresent an incomplete search as complete. New Ask questions require
+available page text; saved reports on the host do not include a universal full-text store.
+
+Owner-key controls target $0.50/upload and $1/day, three uploads and three Ask questions per
+session. They do not reserve the next request's cost: in-flight calls and concurrent sessions
+can overshoot. The temporary daily-spend file resets on a cold container restart. Visitor
+keys bypass the owner's daily allowance, not the session limits. Visitor reviews stay in
+session state; committed team decisions are not overwritten. See `docs/DEPLOY.md`.

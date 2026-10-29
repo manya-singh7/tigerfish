@@ -14,8 +14,9 @@ METHOD = f"""
 #### What TigerFish checks
 
 **Claims.** Each page is read by NVIDIA Nemotron models on Nebius Token Factory: Lightning for
-text pages, Super-VL for scanned pages and tables. Every quote is checked against the page text;
-a quote that cannot be found on its page is never shown as evidence.
+text pages, Super-VL for scanned pages and tables. Text-backed quotes are checked against the
+page text. Image-only readings have no independent text layer and are labelled unverified
+beside the source image in the scanned-page inspector.
 
 **Internal contradictions.** Figures and statements about the same subject on different pages are
 paired by rule (compatible units, similar subject, values differing by more than
@@ -37,8 +38,9 @@ sources and quoted: India Code and the Gazette first, then official sites (PIB, 
 and PRS Legislative Research, which is labelled authoritative but non-government.
 
 **Copied and borrowed text.** Distinctive, site-specific sentences are searched on the web with
-Tavily. A match with a document about a different place is flagged. Long verbatim runs from
-generic guidance without a citation are listed as INFO.
+Tavily. Matches are leads: legitimate secondary data and shared taxonomy can also overlap.
+Own-report matches are excluded. Long verbatim runs from generic guidance without a citation
+found on that page are listed as INFO, not proof of improper reuse.
 
 **Terms of Reference promises.** Every measurable number in the project's Terms of Reference
 (ToR) is found by regex (durations, numbers of sampling locations, depths, sampling frequency);
@@ -89,8 +91,9 @@ for human review, not a verdict.
 - **Hindi pages are skipped.** The text layer of the Hindi summary does not extract cleanly.
 - **Models.** Models can misread tables or silently correct spelling; quotes are verified against
   the page, and table names keep the spelling the model read.
-- **Terms of Reference.** Only the proposed ToR document is compared (data/eias); the ToR
-  granted by MoEFCC (25 May 2021) may differ, and a committee can approve changes. A promise that
+- **Terms of Reference.** Proposed and granted ToR comparisons are shown separately. pr-06
+  uses the proposed ToR; the granted letter of 25 May 2021 incorporates standard conditions
+  that were not checked. A promise that
   says "3 months" for a list of attributes is read as applying to each; the timeline shows dates
   only where the report states them, so a study without stated dates has no bar. Regex can miss
   numbers written in tables split across pages. An ORANGE finding is a question for the reviewer,
@@ -98,8 +101,10 @@ for human review, not a verdict.
 - **Thresholds.** Lower thresholds find more and flag more noise; higher ones miss weaker cases.
   Current values: contradiction difference {contradictions.MIN_DIFFERENCE:.0%}; quote match
   {claims.MIN_QUOTE_SIMILARITY:.0%}; borrowed text {copycheck.BORROWED_RUN}+ words; candidate cap
-  {contradictions.MAX_CANDIDATES} per run.
-- **Coverage.** The replay shows the pages audited so far, not the whole report.
+  {contradictions.MAX_CANDIDATES} by default (full-run scripts raise it).
+- **Coverage.** The library distinguishes scoped full audits, no-model quick checks and one
+  published-table check. Each reports its own coverage; a full run does not apply every check
+  to every page. Batch certificate-date screens are not official NABET verification.
 """
 
 
@@ -135,7 +140,7 @@ def render_evaluation(with_costs=True):
     neg_ok = all(r["ok"] for r in k["rows"] if r["id"] == "gn-neg-001")
     st.markdown("#### Evaluation")
     st.markdown(_table(["Test", "Result"], [
-        ["Known issues in the Great Nicobar EIA", f"{k['passed']} of {k['scored']} scored issues found"],
+        ["Known cases on the ten-page evaluation", f"{k['passed']} of {k['scored']} checks pass (includes negative controls)"],
         ["Negative control (explained 1045 vs 910 sq km)", "not flagged" if neg_ok else "flagged"],
         ["Planted contradictions", f"{sc.get('planted_caught')} of {sc.get('planted_total')} caught"],
         ["Planted differences the text explains",
@@ -145,9 +150,10 @@ def render_evaluation(with_costs=True):
         ["Table 3.16, species judged plausible", f"{len(t['plausible'])} of 12 (Scroll.in: three)"],
     ]))
     st.markdown(
-        f"**Full 1,213-page audit, estimated:** about ${x['usd']:.2f} (Rs {x['inr']:,} at "
+        f"**Historical ten-page extrapolation, not the measured full run:** about ${x['usd']:.2f} (Rs {x['inr']:,} at "
         f"1 USD = 84 INR) and about {x['api_minutes_sequential']} minutes of model time if run "
-        f"one call at a time. Estimate from the audited pages: `{x['formula']}`.")
+        f"one call at a time. Formula: `{x['formula']}`. The measured Great Nicobar run "
+        "is recorded in results/eval.md and Cost & models.")
     st.caption(f"Generated {e['generated']} by scripts/evaluate.py (seed {e['seed']}). "
                f"Full tables in results/eval.md.")
     if with_costs:
