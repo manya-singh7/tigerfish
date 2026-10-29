@@ -41,6 +41,13 @@ CSS = """<style>
     content-visibility: visible; display: block; height: auto; pointer-events: auto !important; }
   .st-key-tf-side-lib [data-testid="stExpanderDetails"] { padding: 0 !important; pointer-events: auto !important; position: relative; z-index: 2; }
 }
+div[data-testid="stTextInput"] input,
+div[data-testid="stSelectbox"],
+div[data-testid="stMultiSelect"],
+div[data-testid="stCheckbox"],
+div[data-testid="stExpanderDetails"] * {
+  pointer-events: auto !important;
+}
 .st-key-tf-side-lib input, .st-key-tf-side-lib [data-baseweb="select"], .st-key-tf-side-lib [data-testid="stCheckbox"], .st-key-tf-side-lib button {
   pointer-events: auto !important; cursor: pointer;
 }

@@ -153,7 +153,8 @@ def test_library_filter_has_human_verified_findings(no_keys):
     assert shown == sum(1 for e in library.entries() if e["verified"]) >= 1
     assert any("Has human-verified findings" in m.value for m in at.markdown)   # its chip
     at.button(key="lib::reset").click().run()                                   # Reset filters
-    assert len([b for b in at.button if b.label == "Open report"]) == len(library.entries())
+    from tigerfish.ui.library import PAGE_SIZE
+    assert len([b for b in at.button if b.label == "Open report"]) == min(len(library.entries()), PAGE_SIZE)
 
 
 @has_results
