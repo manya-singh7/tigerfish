@@ -19,7 +19,7 @@ import re
 import subprocess
 import time
 from calendar import monthrange
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 from urllib.parse import urldefrag, urljoin, urlsplit, urlunsplit
@@ -160,7 +160,7 @@ def _safe_date(year: int, month: int, day: int = 1) -> date | None:
     try:
         if not 1990 <= year <= 2100 or not 1 <= month <= 12:
             return None
-        return date(year, month, min(day, monthrange(year, month)[1]))
+        return date(year, month, day)
     except ValueError:
         return None
 
@@ -250,7 +250,16 @@ def period_months(start: date, end: date, precision: str = "day") -> float:
         start, end = end, start
     if precision == "month":
         return round((end.year - start.year) * 12 + end.month - start.month + 1, 2)
-    return round((end - start).days / 30.4375 + 1 / 30.4375, 2)
+    # Inclusive end: Feb 1-Apr 30 is three calendar months, not 89/30.4375.
+    stop = end + timedelta(days=1)
+    whole = (stop.year - start.year) * 12 + stop.month - start.month
+    if add_months(start, whole) > stop:
+        whole -= 1
+    anniversary = add_months(start, whole)
+    next_anniversary = add_months(start, whole + 1)
+    return round(
+        whole + (stop - anniversary).days / (next_anniversary - anniversary).days, 2
+    )
 
 
 def _result(check: str, grade: str, message: str, quotes: Iterable[dict[str, Any]] = (),
@@ -359,65 +368,237 @@ def accreditation_check(pages: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
 
 
 BASELINE_RE = re.compile(r"\b(?:baseline|monitoring|sampling|study)\b", re.I)
-MONTH_DURATION_RE = re.compile(r"\b(\d+(?:\.\d+)?)\s*(months?|month|seasons?)\b", re.I)
+_MONTH_NUMBERS = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+}
+MONTH_DURATION_RE = re.compile(
+    r"\b(?:for|over|during|of|lasting)\s+(?:a\s+(?:period|duration)\s+of\s+)?"
+    r"(?P<n>\d+(?:\.\d+)?|" + "|".join(_MONTH_NUMBERS) + r")\s+months?\b",
+    re.I,
+)
+_DATE_ATOM = (
+    rf"(?:\d{{4}}[./-]\d{{1,2}}[./-]\d{{1,2}}|"
+    rf"\d{{1,2}}[./-]\d{{1,2}}[./-]\d{{2,4}}|"
+    rf"\d{{1,2}}(?:st|nd|rd|th)?\s+{MONTH_WORDS}[, ]+\d{{4}}|"
+    rf"{MONTH_WORDS}\s+\d{{1,2}}(?:st|nd|rd|th)?[, ]+\d{{4}}|"
+    rf"{MONTH_WORDS}\s+\d{{4}})"
+)
+_RANGE_SEP = r"\s*(?:to|until|through|[-–—])\s*"
+_FULL_RANGE = re.compile(
+    rf"(?<![\w/])(?P<a>{_DATE_ATOM}){_RANGE_SEP}(?P<b>{_DATE_ATOM})(?![\w/])", re.I
+)
+_MONTH_RANGE = re.compile(
+    rf"\b(?P<sm>{MONTH_WORDS})(?:\s+(?P<sy>\d{{4}}))?{_RANGE_SEP}"
+    rf"(?P<em>{MONTH_WORDS})\s+(?P<ey>\d{{4}})\b",
+    re.I,
+)
+_DAY_RANGE = re.compile(
+    rf"\b(?P<sd>\d{{1,2}})(?:st|nd|rd|th)?{_RANGE_SEP}"
+    rf"(?P<ed>\d{{1,2}})(?:st|nd|rd|th)?\s+(?P<m>{MONTH_WORDS})\s+(?P<y>\d{{4}})\b",
+    re.I,
+)
+_FIELDWORK = re.compile(
+    r"\b(?:baseline|monitoring|sampling|study\s+period|field\s+(?:survey|studies)|ecolog\w*)\b",
+    re.I,
+)
+_NOT_BASELINE = re.compile(
+    r"\b(?:traffic|vehicul\w*|application|applied|submitted|submission|EAC|SEAC|committee|"
+    r"ToR|terms of reference|grant(?:ed)?|certificate|validity|hearing|report\s+(?:date|no\.?|number))\b",
+    re.I,
+)
+_FUTURE = re.compile(
+    r"\b(?:will|shall)\b|\b(?:proposed|planned)\s+(?:monitoring|sampling|study)", re.I
+)
+_FREQUENCY = re.compile(r"\b(?:every|frequency|intervals?|once\s+(?:in|per))\b", re.I)
+
+
+def _baseline_ranges(text: str) -> list[dict[str, Any]]:
+    """Explicit ranges only. Dates in report IDs or unrelated sentences are not paired."""
+    out = []
+    occupied = []
+    for pattern in (_FULL_RANGE, _MONTH_RANGE, _DAY_RANGE):
+        for match in pattern.finditer(text):
+            if any(match.start() < b and match.end() > a for a, b in occupied):
+                continue
+            occupied.append(match.span())
+            if pattern is _FULL_RANGE:
+                a, b = parse_date_token(match["a"]), parse_date_token(match["b"])
+                if not a or not b or a[1] != b[1]:
+                    continue
+                start, end, precision = a[0], b[0], a[1]
+            elif pattern is _MONTH_RANGE:
+                sm, em, ey = (
+                    MONTHS[match["sm"].lower()],
+                    MONTHS[match["em"].lower()],
+                    int(match["ey"]),
+                )
+                sy = int(match["sy"]) if match["sy"] else ey - int(sm > em)
+                start, end, precision = _safe_date(sy, sm), _safe_date(ey, em), "month"
+            else:
+                y, m = int(match["y"]), MONTHS[match["m"].lower()]
+                start, end, precision = (
+                    _safe_date(y, m, int(match["sd"])),
+                    _safe_date(y, m, int(match["ed"])),
+                    "day",
+                )
+            if start is None or end is None or end < start:
+                continue
+            out.append(
+                {
+                    "start": match.start(),
+                    "end": match.end(),
+                    "start_date": start.isoformat(),
+                    "end_date": end.isoformat(),
+                    "precision": precision,
+                    "duration_months": period_months(start, end, precision),
+                }
+            )
+    return sorted(out, key=lambda x: x["start"])
+
+
+def _baseline_context(text: str, start: int, end: int) -> tuple[str, str]:
+    # Keep PDF line wraps, but do not borrow a keyword from the preceding sentence.
+    before = re.split(r"[.;!?]\s+", text[max(0, start - 220) : start])[-1]
+    after = re.split(r"[.;!?]\s+", text[end : end + 120])[0]
+    return before, _compact(before + text[start:end] + after)
+
+
+def _baseline_topic(text: str) -> str:
+    for topic, pattern in (
+        ("terrestrial ecology", r"terrestrial|flora|fauna|biodiversity"),
+        ("marine ecology", r"marine|coral|turtle"),
+        ("air", r"\bair\b|meteorolog"),
+        ("water", r"\bwater\b"),
+        ("soil", r"\bsoil\b"),
+        ("noise", r"\bnoise\b"),
+    ):
+        if re.search(pattern, text, re.I):
+            return topic
+    return "baseline"
 
 
 def baseline_check(pages: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
-    pages = _page_texts(pages)
-    best_unknown = None
+    """Screen stated fieldwork periods, not compliance with an assumed universal ToR."""
+    periods, unknown = [], None
     for p in pages:
-        text = str(p.get("text") or "")
-        for match in BASELINE_RE.finditer(text):
-            start, end = max(0, match.start() - 120), min(len(text), match.end() + 520)
-            context = text[start:end]
-            tokens = date_tokens(context, allow_year=False)
-            if len(tokens) >= 2:
-                a, b = tokens[0], tokens[1]
-                duration = period_months(a["date"], b["date"],
-                                         "month" if a["precision"] == b["precision"] == "month" else "day")
-                quote = _quote(text, start, end, limit=700)
-                quotes = [{"page": p.get("page"), "text": quote, "label": "Baseline/monitoring period"}]
-                if duration < 3:
-                    return _result("baseline_season", "INFO",
-                                   f"The readable baseline/monitoring period is about {duration:g} months, shorter than three months; verify.",
-                                   quotes,
-                                   [{"label": "Start", "value": a["date"].isoformat()},
-                                    {"label": "End", "value": b["date"].isoformat()},
-                                    {"label": "Method", "value": "date-range regex; no model call"}],
-                                   start_date=a["date"].isoformat(), end_date=b["date"].isoformat(),
-                                   duration_months=duration)
-                return _result("baseline_season", "OK",
-                               f"The readable baseline/monitoring period is about {duration:g} months.",
-                               quotes,
-                               [{"label": "Start", "value": a["date"].isoformat()},
-                                {"label": "End", "value": b["date"].isoformat()},
-                                {"label": "Method", "value": "date-range regex; no model call"}],
-                               start_date=a["date"].isoformat(), end_date=b["date"].isoformat(),
-                               duration_months=duration)
-            duration_match = MONTH_DURATION_RE.search(context)
-            if duration_match:
-                duration = float(duration_match.group(1))
-                quote = _quote(text, start, end, limit=700)
-                quotes = [{"page": p.get("page"), "text": quote, "label": "Baseline/monitoring period"}]
-                grade = "INFO" if duration < 3 else "OK"
-                message = (f"The readable baseline/monitoring period is {duration:g} months, shorter than three months; verify."
-                           if grade == "INFO" else f"The readable baseline/monitoring period is {duration:g} months.")
-                return _result("baseline_season", grade, message, quotes,
-                               [{"label": "Method", "value": "duration regex; no model call"}],
-                               duration_months=duration)
-            if best_unknown is None:
-                best_unknown = (p, start, end)
-    if best_unknown:
-        p, start, end = best_unknown
-        text = str(p.get("text") or "")
-        return _result("baseline_season", "GREY",
-                       "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
-                       [{"page": p.get("page"), "text": _quote(text, start, end, limit=700),
-                         "label": "Baseline/monitoring context"}],
-                       [{"label": "Method", "value": "date-range and duration regex; no model call"}])
-    return _result("baseline_season", "GREY",
-                   "A baseline or monitoring period could not be located in the readable text; verify.",
-                   [], [{"label": "Method", "value": "date-range and duration regex; no model call"}])
+        text = _compact(str(p.get("text") or ""))
+        ranges = _baseline_ranges(text)
+        candidates = list(ranges)
+        for match in MONTH_DURATION_RE.finditer(text):
+            n = match["n"].lower()
+            duration = _MONTH_NUMBERS[n] if n in _MONTH_NUMBERS else float(n)
+            candidates.append(
+                {
+                    "start": match.start(),
+                    "end": match.end(),
+                    "duration_months": duration,
+                    "precision": "stated months",
+                }
+            )
+        for candidate in sorted(candidates, key=lambda x: x["start"]):
+            before, quote = _baseline_context(
+                text, candidate["start"], candidate["end"]
+            )
+            if (
+                not _FIELDWORK.search(before)
+                or _NOT_BASELINE.search(before)
+                or _FUTURE.search(before)
+            ):
+                continue
+            if _FREQUENCY.search(before):
+                continue
+            periods.append(
+                {k: v for k, v in candidate.items() if k not in ("start", "end")}
+                | {
+                    "page": p.get("page"),
+                    "quote": quote,
+                    "topic": _baseline_topic(before),
+                }
+            )
+        if unknown is None and (match := BASELINE_RE.search(text)):
+            unknown = {
+                "page": p.get("page"),
+                "text": _quote(text, match.start(), match.end()),
+                "label": "Baseline/monitoring context",
+            }
+    # Repeated evidence remains quotable, but must not create a false conflict.
+    unique = {
+        (
+            p["topic"],
+            p.get("start_date"),
+            p.get("end_date"),
+            p["duration_months"],
+            p["page"],
+        ): p
+        for p in periods
+    }
+    periods = list(unique.values())
+    quotes = [
+        {"page": p["page"], "text": p["quote"], "label": f"{p['topic']}: stated period"}
+        for p in periods
+    ]
+    method = [
+        {
+            "label": "Method",
+            "value": "explicit fieldwork ranges and calendar months; no model call",
+        },
+        {
+            "label": "Reference",
+            "value": "Three months is a screening reference, not a verified project requirement.",
+        },
+    ]
+    extra = {"periods": periods, "reference_months": 3, "requirement_verified": False}
+    if not periods:
+        return _result(
+            "baseline_season",
+            "GREY",
+            "A baseline fieldwork period could not be established from readable text; verify.",
+            [unknown] if unknown else [],
+            method,
+            **extra,
+        )
+    topics = {p["topic"] for p in periods}
+    if any(
+        len({p["duration_months"] for p in periods if p["topic"] == topic}) > 1
+        for topic in topics
+    ):
+        return _result(
+            "baseline_season",
+            "GREY",
+            "Different periods are stated for the same baseline topic; their relationship needs review.",
+            quotes,
+            method,
+            **extra,
+        )
+    shortest = min(periods, key=lambda p: p["duration_months"])
+    duration = shortest["duration_months"]
+    grade = "INFO" if duration < 3 else "OK"
+    message = (
+        f"The stated {shortest['topic']} period is {duration:g} calendar months, below the three-month screening reference. Compare with the applicable ToR; no requirement was verified."
+        if grade == "INFO"
+        else "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage."
+    )
+    return _result(
+        "baseline_season",
+        grade,
+        message,
+        quotes,
+        method,
+        **{k: shortest[k] for k in ("start_date", "end_date") if k in shortest},
+        duration_months=duration,
+        **extra,
+    )
 
 
 BINOMIAL_STATUS_RE = re.compile(r"\b(?:CR|EN|VU|NT|LC|DD|EW|EX|Critically Endangered|Endangered|Vulnerable|Near Threatened|Least Concern|Data Deficient)\b", re.I)
@@ -1084,30 +1265,58 @@ def make_summary(reports: Iterable[Mapping[str, Any]], tavily: Mapping[str, Any]
 
 
 def summary_markdown(summary: Mapping[str, Any]) -> str:
-    lines = ["# TigerFish batch summary", "",
-             "Free, no-model checks over Indian EIA executive summaries. Flags are neutral leads for verification.", "",
-             f"Reports processed: **{summary.get('reports_processed', 0)}**", "",
-             "## Checks", "", "| Check | Grade/status counts |", "|---|---|"]
+    lines = [
+        "# TigerFish batch summary",
+        "",
+        "Free, no-model checks over Indian EIA executive summaries. Flags are neutral leads for verification.",
+        "",
+        f"Reports processed: **{summary.get('reports_processed', 0)}**",
+        "",
+        "## Checks",
+        "",
+        "| Check | Grade/status counts |",
+        "|---|---|",
+    ]
     for check, counts in sorted((summary.get("per_check_counts") or {}).items()):
-        lines.append(f"| {check} | " + ", ".join(f"{k}: {v}" for k, v in sorted(counts.items())) + " |")
+        lines.append(
+            f"| {check} | "
+            + ", ".join(f"{k}: {v}" for k, v in sorted(counts.items()))
+            + " |"
+        )
     lines += ["", "## States", "", "| State | Reports |", "|---|---:|"]
     for state, count in (summary.get("per_state_counts") or {}).items():
         lines.append(f"| {state} | {count} |")
-    lines += ["", "## Tavily", "",
-              f"Calls: {summary.get('tavily', {}).get('calls', 0)}; "
-              f"cached calls: {summary.get('tavily', {}).get('cached', 0)}; "
-              f"credits: {summary.get('tavily', {}).get('credits', 0)} / {summary.get('tavily', {}).get('cap', MAX_TAVILY_CREDITS)}.", "",
-              "| Grade | State | Project | Check | Page | Quote | Message |", "|---|---|---|---|---:|---|---|"]
+    lines += [
+        "",
+        "## Tavily",
+        "",
+        f"Calls: {summary.get('tavily', {}).get('calls', 0)}; "
+        f"cached calls: {summary.get('tavily', {}).get('cached', 0)}; "
+        f"credits: {summary.get('tavily', {}).get('credits', 0)} / {summary.get('tavily', {}).get('cap', MAX_TAVILY_CREDITS)}.",
+        "",
+        "| Grade | State | Project | Check | Page | Quote | Message |",
+        "|---|---|---|---|---:|---|---|",
+    ]
     for flag in summary.get("flags", []):
         quotes = flag.get("quotes") or []
-        quote = "<br>".join(f"p.{q.get('page')}: {_compact(q.get('text'))}" for q in quotes)
-        lines.append("| {grade} | {state} | {project} | {check} | {page} | {quote} | {message} |".format(
-            grade=flag.get("grade", ""), state=_compact(flag.get("state")),
-            project=_compact(flag.get("project_name")), check=flag.get("check", ""),
-            page=", ".join(str(q.get("page")) for q in quotes if q.get("page")),
-            quote=quote.replace("|", "\\|"), message=_compact(flag.get("message"))))
+        quote = "<br>".join(
+            f"p.{q.get('page')}: {_compact(q.get('text'))}" for q in quotes
+        )
+        lines.append(
+            "| {grade} | {state} | {project} | {check} | {page} | {quote} | {message} |".format(
+                grade=flag.get("grade", ""),
+                state=_compact(flag.get("state")),
+                project=_compact(flag.get("project_name")),
+                check=flag.get("check", ""),
+                page=", ".join(str(q.get("page")) for q in quotes if q.get("page")),
+                quote=quote.replace("|", "\\|"),
+                message=_compact(flag.get("message")),
+            )
+        )
     if not summary.get("flags"):
-        lines.append("| — | — | No flags yet | — | — | — | Run the batch command with a Tavily key and downloaded corpus. |")
+        lines.append(
+            "| | | No screening leads | | | | See the check counts for undetermined results; no compliance conclusion follows. |"
+        )
     return "\n".join(lines) + "\n"
 
 
@@ -1152,6 +1361,123 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
     _json_dump(QUICK_INDEX, {"format": "tigerfish-report/1",
                              "generated": summary["generated_at"],
                              "tool_version": _tool_version(), "reports": report_items})
+    return summary
+
+
+def _baseline_source_pages(
+    doc: Mapping[str, Any], download_missing: bool
+) -> list[dict[str, Any]]:
+    """Read the exact disclosed PDF; refuse silent source changes since discovery."""
+    import pymupdf
+
+    report_id = str(doc["document_id"])
+    if not re.fullmatch(r"[a-zA-Z0-9_-]+", report_id):
+        raise ValueError("Invalid corpus document ID")
+    path = BATCH_DATA / f"{report_id}.pdf"
+    if not path.exists():
+        if not download_missing:
+            raise FileNotFoundError(
+                f"{path}: use --download-missing to fetch the saved source URL"
+            )
+        url = _clean_url(str(doc.get("url") or ""))
+        if not url or not RobotsPolicy().allowed(url):
+            raise ValueError(f"Source cannot be fetched: {url}")
+        with requests.get(
+            url,
+            headers={"User-Agent": "TigerFishBatch/1.0"},
+            timeout=DOWNLOAD_TIMEOUT,
+            stream=True,
+        ) as response:
+            response.raise_for_status()
+            parts, total = [], 0
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
+                total += len(chunk)
+                if total > MAX_PDF_BYTES:
+                    raise ValueError("Source PDF exceeds the download limit")
+                parts.append(chunk)
+        content = b"".join(parts)
+        if not content.startswith(b"%PDF-"):
+            raise ValueError(f"Source is not a PDF: {url}")
+        if hashlib.sha256(content).hexdigest() != doc.get("sha256"):
+            raise ValueError(f"Source changed since corpus discovery: {url}")
+        BATCH_DATA.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(content)
+        time.sleep(DOWNLOAD_DELAY)
+    if hashlib.sha256(path.read_bytes()).hexdigest() != doc.get("sha256"):
+        raise ValueError(
+            f"Local source hash does not match the saved corpus: {report_id}"
+        )
+    with pymupdf.open(path) as pdf:
+        return [
+            {"page": i + 1, "text": pdf.load_page(i).get_text()}
+            for i in range(pdf.page_count)
+        ]
+
+
+def refresh_baselines(download_missing: bool = False) -> dict[str, Any]:
+    """Refresh every published baseline screen, preserving species, certificates and costs.
+
+    No model/GBIF/Tavily calls. Missing PDFs can be downloaded from their saved URLs;
+    all inputs must load and match their original SHA256 before any public result changes.
+    """
+    index = load_index(QUICK_INDEX)
+    corpus = {
+        d["document_id"]: d
+        for d in load_index(PUBLIC_CORPUS_INDEX).get("documents", [])
+    }
+    old_summary = load_index(SUMMARY_JSON)
+    updates = []
+    generated = (
+        datetime.now(timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
+    for item in index.get("reports", []):
+        path = BATCH_RESULTS / Path(item["file"]).name
+        quick = json.loads(path.read_text(encoding="utf-8"))
+        doc = corpus[quick["id"]]
+        result = baseline_check(_baseline_source_pages(doc, download_missing))
+        checks = dict(quick.get("batch_checks") or {})
+        checks["baseline_season"] = result
+        flags = [
+            f
+            for f in quick.get("batch_flags", [])
+            if f.get("check") != "baseline_season"
+        ]
+        if result["grade"] in ("RED", "ORANGE", "INFO"):
+            flags.append(result)
+        quick.update(
+            batch_checks=checks,
+            checks=checks,
+            batch_flags=flags,
+            flags=flags,
+            baseline_refresh={
+                "parser_version": 2,
+                "source_sha256": doc["sha256"],
+                "generated_at": generated,
+            },
+        )
+        updates.append((path, quick))
+    if not updates:
+        raise ValueError("No published batch reports were found to refresh")
+    reports = [
+        {
+            "id": q["id"],
+            "state": q.get("state"),
+            "project_name": q.get("project_name"),
+            "checks": q["batch_checks"],
+            "flags": q["batch_flags"],
+        }
+        for _, q in updates
+    ]
+    summary = make_summary(reports, tavily=old_summary.get("tavily"))
+    summary["reports_requested"] = old_summary.get("reports_requested", len(reports))
+    summary["baseline_parser_version"] = 2
+    for path, quick in updates:
+        _json_dump(path, quick)
+    _json_dump(SUMMARY_JSON, summary)
+    SUMMARY_MD.write_text(summary_markdown(summary), encoding="utf-8")
     return summary
 
 

@@ -9,6 +9,7 @@ import pytest
 
 from apptest import GN, open_app
 from tigerfish import library
+from tigerfish.ui import library as library_ui
 
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURES = ROOT / "tests" / "fixtures" / "library" / "batch"
@@ -46,6 +47,7 @@ def fake_results(tmp_path):
 
 # ---------- library logic ----------
 
+
 def test_entries_totals_and_filters(tmp_path):
     items = library.entries(fake_results(tmp_path), queue={}, reviews={})
     assert [e["id"] for e in items] == ["r1", "sample_quick_mine_odisha_2025",
@@ -75,7 +77,7 @@ def test_review_counts_from_the_queue():
     reviews = {"x": {"asha": {"flag_id": "x", "reviewer": "Asha", "decision": "false_alarm",
                               "time": "2026-10-28T10:00:00"}}}
     assert library.review_counts(findings, queue, reviews) == (1, 2)
-    assert library.review_counts(findings) is None      # no reviews, no queue: not shown
+    assert library.review_counts(findings) is None  # no reviews, no queue: not shown
 
 
 @has_results
@@ -89,6 +91,7 @@ def test_totals_are_computed_from_the_saved_results():
 
 
 # ---------- the quick-check format ----------
+
 
 @pytest.mark.parametrize("path", SAMPLES, ids=lambda p: p.stem)
 def test_sample_quick_checks_are_valid(path):
@@ -126,6 +129,70 @@ def test_format_doc_matches_the_code():
 
 # ---------- the app ----------
 
+
+@pytest.fixture
+def paginated_library(monkeypatch):
+    """A stable 25-report library, independent of the committed corpus size/order."""
+    items = [
+        {
+            "id": f"report_{i:02d}",
+            "title": f"Report {i:02d}",
+            "project": f"Project {i:02d}",
+            "state": "Goa",
+            "sector": "Mining",
+            "year": 2025,
+            "pages": 1,
+            "pages_total": 1,
+            "unit": "page",
+            "audit_type": library.QUICK,
+            "grades": {"RED": 0, "ORANGE": 0, "INFO": 0},
+            "verified": int(i < 5),
+            "reviewed": None,
+            "kind": "batch",
+            "path": "unused",
+            "full_run": None,
+        }
+        for i in range(25)
+    ]
+    monkeypatch.setattr(library_ui, "entries", lambda: items)
+    monkeypatch.setattr(library_ui, "_preview", lambda *args: None)
+    return items
+
+
+def visible_reports(at):
+    return [
+        b.key.removeprefix("tf::open::") for b in at.button if b.label == "Open report"
+    ]
+
+
+def test_library_pagination_keeps_order_reachability_and_reset(
+    no_keys, paginated_library
+):
+    at = open_app(report=None, page="library")
+    expected = [e["id"] for e in paginated_library]
+    assert visible_reports(at) == expected[:10]
+    for count in (20, 25):
+        at.button(key="lib::more").click().run()
+        assert not at.exception
+        assert visible_reports(at) == expected[:count]
+        assert len(set(visible_reports(at))) == count
+    assert not any(b.key == "lib::more" for b in at.button)
+
+    at.checkbox(key="lib::verified").check().run()
+    assert visible_reports(at) == expected[:5]
+    at.button(key="lib::reset").click().run()
+    assert not at.checkbox(key="lib::verified").value
+    assert visible_reports(at) == expected[:10]
+    assert any(b.key == "lib::more" for b in at.button)
+    assert not any("Has human-verified findings" in m.value for m in at.markdown)
+
+    at.button(key="lib::more").click().run()
+    at.text_input(key="lib::q").input("Project").run()
+    assert visible_reports(at) == expected[:10]  # changing a filter starts a fresh page
+    at.text_input(key="lib::q").input("Project 24").run()
+    assert visible_reports(at) == [expected[-1]]  # off-page reports remain searchable
+
+
 @has_results
 def test_library_home_shows_totals_filters_and_upload(no_keys):
     at = open_app(report=None, page="library")
@@ -145,15 +212,18 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
 
 
 @has_results
-def test_library_filter_has_human_verified_findings(no_keys):
+def test_library_filter_has_human_verified_findings(no_keys, paginated_library):
     at = open_app(report=None, page="library")
     at.checkbox(key="lib::verified").check().run()
     assert not at.exception
     shown = len([b for b in at.button if b.label == "Open report"])
-    assert shown == sum(1 for e in library.entries() if e["verified"]) >= 1
-    assert any("Has human-verified findings" in m.value for m in at.markdown)   # its chip
-    at.button(key="lib::reset").click().run()                                   # Reset filters
-    assert len([b for b in at.button if b.label == "Open report"]) == len(library.entries())
+    assert shown == sum(1 for e in paginated_library if e["verified"]) >= 1
+    assert any(
+        "Has human-verified findings" in m.value for m in at.markdown
+    )  # its chip
+    at.button(key="lib::reset").click().run()  # Reset filters
+    assert visible_reports(at) == [e["id"] for e in paginated_library[:10]]
+    assert not at.checkbox(key="lib::verified").value
 
 
 @has_results
@@ -183,7 +253,7 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     assert labels[0] == "Overview" and set(labels) <= {"Overview", "Contradictions", "Species & nature"}
     text = "\n".join(m.value for m in at.markdown)
     assert "Checks that ran" in text and "Not run for this report" in text
-    assert "GBIF not called" in text                       # the reason a check did not run
+    assert "GBIF not called" in text  # the reason a check did not run
 
 
 @has_results

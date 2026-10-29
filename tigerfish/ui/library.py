@@ -87,6 +87,7 @@ def _preview(path, report_id, stamp):
 
 # ---------- navigation ----------
 
+
 def current():
     """("library" | "upload" | "report", report id or None)."""
     qp = st.query_params
@@ -136,6 +137,7 @@ def switcher(report_id):
 
 # ---------- one report card ----------
 
+
 def grade_line(g):
     return " ".join(f'{badge(k)}{mono(f"{g[k]:,}")}&nbsp;&nbsp;' for k in ("RED", "ORANGE", "INFO"))
 
@@ -173,9 +175,15 @@ def row(e):
 
 # ---------- the side panel ----------
 
+
 def reset_filters():
     for k in FILTER_KEYS:
         st.session_state.pop(k, None)
+    reset_page()
+
+
+def reset_page():
+    """Filter changes and Reset return to the first page, never hide matching reports."""
     st.session_state["lib::shown"] = PAGE_SIZE
 
 
@@ -197,33 +205,83 @@ def side_panel(items, shown):
     t = library.totals(items)
     with st.container(key="tf-side-lib"):
         with st.expander("Search and filters", expanded=True):
-            st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
-            st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
-            st.multiselect("State", library.options(items, "state"), key="lib::state")
-            st.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
-            st.multiselect("Year", library.options(items, "year"), key="lib::year")
-            st.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
-            st.checkbox("Has RED flags", key="lib::red")
-            st.checkbox("Has human-verified findings", key="lib::verified")
+            st.markdown(
+                '<div class="tf-h3">Find a report</div>', unsafe_allow_html=True
+            )
+            st.text_input(
+                "Search by project name",
+                key="lib::q",
+                placeholder="e.g. port, Karnataka",
+                on_change=reset_page,
+            )
+            st.multiselect(
+                "State",
+                library.options(items, "state"),
+                key="lib::state",
+                on_change=reset_page,
+            )
+            st.multiselect(
+                "Sector",
+                library.options(items, "sector"),
+                key="lib::sector",
+                on_change=reset_page,
+            )
+            st.multiselect(
+                "Year",
+                library.options(items, "year"),
+                key="lib::year",
+                on_change=reset_page,
+            )
+            st.multiselect(
+                "Audit type",
+                [library.FULL, library.QUICK, library.TABLE],
+                key="lib::type",
+                on_change=reset_page,
+            )
+            st.checkbox("Has RED flags", key="lib::red", on_change=reset_page)
+            st.checkbox(
+                "Has human-verified findings", key="lib::verified", on_change=reset_page
+            )
             chips = _chips()
             if chips:
-                st.markdown('<div class="tf-chips">' + "".join(
-                    f'<span class="tf-chip">{esc(c)}</span>' for c in chips) + "</div>",
-                    unsafe_allow_html=True)
-                st.button("Reset filters", key="lib::reset", type="tertiary", on_click=reset_filters)
-            st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(items)} reports.</div>',
-                        unsafe_allow_html=True)
-        st.markdown(f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
-                    unsafe_allow_html=True)
-        st.caption(f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
-                   f"check{'s' if t['quick'] != 1 else ''}. Computed from the saved results. A flag "
-                   "is a lead to verify against the report, not a verdict.")
-        st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload,
-                  width="stretch")
+                st.markdown(
+                    '<div class="tf-chips">'
+                    + "".join(f'<span class="tf-chip">{esc(c)}</span>' for c in chips)
+                    + "</div>",
+                    unsafe_allow_html=True,
+                )
+                st.button(
+                    "Reset filters",
+                    key="lib::reset",
+                    type="tertiary",
+                    on_click=reset_filters,
+                )
+            visible = min(len(shown), st.session_state.get("lib::shown", PAGE_SIZE))
+            st.markdown(
+                f'<div class="tf-count">Showing {visible} of {len(shown)} matching reports ({len(items)} total).</div>',
+                unsafe_allow_html=True,
+            )
+        st.markdown(
+            f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
+            unsafe_allow_html=True,
+        )
+        st.caption(
+            f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
+            f"check{'s' if t['quick'] != 1 else ''}. Computed from the saved results. A flag "
+            "is a lead to verify against the report, not a verdict."
+        )
+        st.button(
+            "Upload your EIA",
+            key="tf::upload",
+            type="primary",
+            on_click=open_upload,
+            width="stretch",
+        )
         st.caption(UPLOAD_NOTE)
 
 
 # ---------- the library ----------
+
 
 def _filtered(items):
     ss = st.session_state
