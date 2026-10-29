@@ -1,0 +1,12 @@
+# Tests, scripts and browser checks (not needed by the hosted app).
+-r requirements.txt
+pytest==9.1.1
+playwright==1.64.1   # browser checks; then: python -m playwright install chromium
+kaleido==1.5.0       # PNG export in scripts/species_map.py
+tavily-python==0.8.5 # web search in the audit scripts (copy-paste, official record, agent)
+# Brand build (scripts/build_brand.py; run it with Python 3.12: vtracer crashes on 3.14/Windows)
+vtracer==0.6.15
+fonttools==4.68.0
+brotli==1.2.1
+uharfbuzz==0.57.0
+resvg-py==0.5.0

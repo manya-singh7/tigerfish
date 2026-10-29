@@ -46,17 +46,18 @@ def library_section():
     data = rows()
     if not data:
         return
-    st.markdown("#### Quality")
-    st.markdown(esc(quality.overall_line(quality.overall(data))))
-    table = [{"Report": r["title"], "Type": r["type"], "Flags (RED/ORANGE)": r["flags"],
-              "Reviewed": r["reviewed"], "Confirmed": r["confirmed"], "Dismissed": r["dismissed"],
-              "Unsure": r["unsure"], "Disputed": r["disputed"], "Precision": r["text"]}
-             for r in data]
-    st.dataframe(table, hide_index=True, width="stretch")
-    st.caption("From the team's saved reviews only (hand checks against the PDF and "
-               "review/reviews.jsonl); reviews made in a browser session are not counted. "
-               f"Precision = confirmed / (confirmed + dismissed), shown once {quality.MIN_JUDGED} "
-               "flags are judged, with a 95% Wilson interval.")
+    with st.container(key="tf-panel-quality"):
+        st.markdown("#### Quality")
+        st.markdown(esc(quality.overall_line(quality.overall(data))))
+        table = [{"Report": r["title"], "Type": r["type"], "Flags (RED/ORANGE)": r["flags"],
+                  "Reviewed": r["reviewed"], "Confirmed": r["confirmed"], "Dismissed": r["dismissed"],
+                  "Unsure": r["unsure"], "Disputed": r["disputed"], "Precision": r["text"]}
+                 for r in data]
+        st.dataframe(table, hide_index=True, width="stretch")
+        st.caption("From the team's saved reviews only (hand checks against the PDF and "
+                   "review/reviews.jsonl); reviews made in a browser session are not counted. "
+                   f"Precision = confirmed / (confirmed + dismissed), shown once {quality.MIN_JUDGED} "
+                   "flags are judged, with a 95% Wilson interval.")
 
 
 def headline(k, n, what="precision"):
@@ -154,3 +155,15 @@ def reviews_panel(report, entries=None):
     st.caption("Precision = confirmed / (confirmed + dismissed); unsure reviews are counted but "
                f"left out. A percentage is shown once {quality.MIN_JUDGED} flags are judged, "
                "with a 95% Wilson interval.")
+
+
+def render(report):
+    """Render the Quality section of a report (review queue, feedback panel, evaluation)."""
+    from tigerfish.ui import feedback, method, review
+    rid = report["id"]
+    review.render(rid)
+    st.write("")
+    feedback.panel(rid, report.get("findings") or [])
+    st.write("")
+    method.render_evaluation(with_costs=False)
+

@@ -113,11 +113,22 @@ def _table(headers, rows):
     return "\n".join(out)
 
 
-def render_evaluation():
+def _eval():
+    return json.loads(EVAL_FILE.read_text(encoding="utf-8")) if EVAL_FILE.exists() else None
+
+
+def render_costs():
+    """The cost card (cost per full audit by triage mode, and context efficiency)."""
+    e = _eval()
+    if e:
+        costs.render(e)
+
+
+def render_evaluation(with_costs=True):
     """The Evaluation section, from results/eval.json (written by scripts/evaluate.py)."""
-    if not EVAL_FILE.exists():
+    e = _eval()
+    if not e:
         return
-    e = json.loads(EVAL_FILE.read_text(encoding="utf-8"))
     k, s, t = e["known"], e["species"], e["table"]
     sc = e["planted"].get("score", {})
     x = e["cost"]["extrapolation"]
@@ -139,7 +150,8 @@ def render_evaluation():
         f"one call at a time. Estimate from the audited pages: `{x['formula']}`.")
     st.caption(f"Generated {e['generated']} by scripts/evaluate.py (seed {e['seed']}). "
                f"Full tables in results/eval.md.")
-    costs.render(e)
+    if with_costs:
+        costs.render(e)
 
 
 def limitations_text():
@@ -155,6 +167,19 @@ def render_limitations():
     if text:
         with st.expander("Known limitations and failure cases (docs/LIMITATIONS.md)"):
             st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
+
+
+KNOWN_LIMITS = "#### Known limits"
+
+
+def method_text():
+    """What TigerFish checks and the grades (METHOD up to the known limits)."""
+    return METHOD.split(KNOWN_LIMITS)[0]
+
+
+def limits_text():
+    """The known-limits list of METHOD (with its link to docs/LIMITATIONS.md)."""
+    return KNOWN_LIMITS + METHOD.split(KNOWN_LIMITS, 1)[1]
 
 
 def render():

@@ -1,21 +1,56 @@
-"""Home screen: the report library (every report under results/), live totals, filters,
-and the "Upload your own EIA" button. Navigation lives in the URL:
-  (none)            the library
-  ?report=<id>      a report (full audit: the usual tabs; quick check: the lighter view)
-  ?view=upload      upload a new EIA
-"""
+"""The report library: every report under results/, as evidence-slip previews in the main
+column, with search, filters, live totals and "Upload your EIA" in a sticky side panel
+(docs/DESIGN.md). On tablets and phones the panel moves above the list, in an expander.
 
-from pathlib import Path
+Navigation lives in the URL:
+  (none)            the library
+  ?report=<id>      a report (tigerfish/ui/report_view.py: sections side by side; a quick
+                    check gets only its own sections)
+  ?view=upload      upload a new EIA (app.py sends it on to the Upload page)
+"""
 
 import streamlit as st
 
 from tigerfish import library
-from tigerfish.ui.style import badge, esc
+from tigerfish.ui import data, slip
+from tigerfish.ui.style import badge, esc, mono
 
-PAGE_SIZE = 25
+PAGE_SIZE = 10
 UPLOAD_NOTE = ("Saved audits are full runs. Upload your own EIA to run live checks: the free "
                "checks read the whole report; the model checks run on up to 30 pages you choose "
                "on this site (run locally for full reports).")
+FILTER_KEYS = ("lib::q", "lib::state", "lib::sector", "lib::year", "lib::type", "lib::red",
+               "lib::verified")
+CSS = """<style>
+/* report slips: two per row above 1400px, one below */
+@media (min-width: 1400px) {
+  .st-key-tf-grid { display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+}
+/* below 1100px the side panel goes above the list, full width */
+@media (max-width: 1099px) {
+  .st-key-tf-lib-layout [data-testid="stHorizontalBlock"] { flex-direction: column-reverse !important; }
+  .st-key-tf-lib-layout [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+    width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
+}
+/* on wide screens the filter expander is always open and its toggle is hidden */
+@media (min-width: 1100px) {
+  .st-key-tf-side-lib [data-testid="stExpander"] details { border: 0; background: transparent; }
+  .st-key-tf-side-lib [data-testid="stExpander"] summary { display: none; }
+  .st-key-tf-side-lib [data-testid="stExpander"] details::details-content {
+    content-visibility: visible; display: block; height: auto; }
+  .st-key-tf-side-lib [data-testid="stExpanderDetails"] { padding: 0 !important; }
+}
+.tf-lib-total { font-size: 1rem; color: var(--tf-ink); margin: 0.6rem 0 0.2rem 0; }
+.tf-lib-title { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600;
+  line-height: 1.15; color: var(--tf-ink); }
+.tf-lib-meta { font-size: 0.8125rem; color: var(--tf-muted); margin-top: 0.2rem; }
+.tf-lib-grades { margin: 0.4rem 0 0.6rem 0; font-size: 0.8125rem; color: var(--tf-ink); }
+div[class*="st-key-tf-slip-rep"] { padding: 1rem; }
+div[class*="st-key-tf-slip-rep"] .tf-slip { border: 0; padding: 0; margin: 0.4rem 0 0.2rem 0;
+  grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+div[class*="st-key-tf-slip-rep"] .tf-slip-title { font-size: 1rem; }
+</style>"""
 
 
 def _stamp():
@@ -32,6 +67,18 @@ def _entries(stamp):
 
 def entries():
     return _entries(_stamp())
+
+
+@st.cache_data(show_spinner=False, max_entries=256)
+def _preview(path, report_id, stamp):
+    """The finding a library card shows: human-verified first, then the strongest with a page."""
+    if report_id in {r["id"] for r in data.reports()}:
+        report = data.load(report_id)
+    else:
+        report = library.load({"path": path})
+    findings = [f for f in report.get("findings") or [] if f.get("grade") in ("RED", "ORANGE")]
+    top = slip.pick(findings, 1)
+    return top[0] if top else None
 
 
 # ---------- navigation ----------
@@ -61,7 +108,11 @@ def back():
 
 
 def back_link():
-    st.button("← Back to library", key="tf::back", on_click=back, type="tertiary")
+    if st.button("Back to library", key="tf::back", type="tertiary",
+                 icon=":material/arrow_back:"):
+        from tigerfish.ui import pages
+        back()
+        st.switch_page(pages.PAGES["library"])
 
 
 def switcher(report_id):
@@ -79,11 +130,10 @@ def switcher(report_id):
                  on_change=change, label_visibility="collapsed")
 
 
-# ---------- the library ----------
+# ---------- one report card ----------
 
 def grade_line(g):
-    parts = [f"{badge(k)} {g[k]}" for k in ("RED", "ORANGE", "INFO")]
-    return " &nbsp; ".join(parts)
+    return " ".join(f'{badge(k)}{mono(f"{g[k]:,}")}&nbsp;&nbsp;' for k in ("RED", "ORANGE", "INFO"))
 
 
 def meta_line(e):
@@ -96,102 +146,125 @@ def meta_line(e):
 
 
 def row(e):
-    with st.container(border=True):
-        left, right = st.columns([5, 1])
-        kind = {library.QUICK: "tf-lib-quick", library.TABLE: "tf-lib-table"}.get(e["audit_type"],
-                                                                               "tf-lib-full")
-        reviewed = (f'<div class="tf-lib-meta">human-reviewed: {e["reviewed"][0]} of '
-                    f'{e["reviewed"][1]} flags</div>' if e.get("reviewed") else "")
-        if e["audit_type"] == library.TABLE:
-            reviewed = f'<div class="tf-lib-meta">{esc(library.TABLE_NOTE)}</div>' + reviewed
-        left.markdown(
+    """A report card: title, facts, grade counts, and a slip of its strongest finding."""
+    with st.container(key=f"tf-slip-rep-{e['id']}"):
+        reviewed = (f' · {e["verified"]} verified by a person' if e.get("verified") else "")
+        table_note = (f'<div class="tf-lib-meta">{esc(library.TABLE_NOTE)}</div>'
+                      if e.get("audit_type") == library.TABLE else "")
+        st.markdown(
             f'<div class="tf-lib-title">{esc(e["project"])}</div>'
-            f'<div class="tf-lib-meta"><span class="tf-lib-type {kind}">{esc(e["audit_type"])}</span> '
-            f'{meta_line(e)}</div>'
-            f'<div class="tf-lib-grades">{grade_line(e["grades"])}</div>{reviewed}',
+            f'<div class="tf-lib-meta"><span class="tf-kind">{esc(e["audit_type"])}</span> · '
+            f'{meta_line(e)}{esc(reviewed)}</div>'
+            f'<div class="tf-lib-grades">{grade_line(e["grades"])}</div>'
+            f'{table_note}',
             unsafe_allow_html=True)
-        right.button("Open", key=f"tf::open::{e['id']}", on_click=open_report, args=(e["id"],),
-                     width="stretch")
+        top = _preview(e["path"], e["id"], _stamp())
+        if top:
+            slip.render(top, max_crops=1)
+        else:
+            st.caption("No RED or ORANGE flags in this report: its INFO leads are inside.")
+        st.button("Open report", key=f"tf::open::{e['id']}", on_click=open_report, args=(e["id"],),
+                  type="secondary", help=f"Open {e['title']}")
 
 
-CSS = """<style>
-.tf-lib-total { font-size: 1.05rem; font-weight: 600; margin: 0.2rem 0 0.6rem 0; }
-.tf-lib-title { font-size: 1.02rem; font-weight: 650; }
-.tf-lib-meta { font-size: 0.85rem; color: #5B6B73; margin-top: 0.15rem; }
-.tf-lib-grades { margin-top: 0.3rem; font-size: 0.85rem; }
-.tf-lib-type { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.05rem 0.4rem;
-  border-radius: 4px; margin-right: 0.3rem; }
-.tf-lib-full { color: #1F5F5F; background: #EAF2F2; }
-.tf-lib-quick { color: #6B5200; background: #FFF4DE; }
-.tf-lib-table { color: #4A4A6A; background: #EEEEF6; }
-</style>"""
+# ---------- the side panel ----------
+
+def reset_filters():
+    for k in FILTER_KEYS:
+        st.session_state.pop(k, None)
+    st.session_state["lib::shown"] = PAGE_SIZE
+
+
+def _chips():
+    ss = st.session_state
+    chips = []
+    if (ss.get("lib::q") or "").strip():
+        chips.append(f'"{ss["lib::q"].strip()}"')
+    for k in ("lib::state", "lib::sector", "lib::year", "lib::type"):
+        chips += [str(v) for v in ss.get(k) or []]
+    if ss.get("lib::red"):
+        chips.append("Has RED flags")
+    if ss.get("lib::verified"):
+        chips.append("Has human-verified findings")
+    return chips
+
+
+def side_panel(items, shown):
+    t = library.totals(items)
+    with st.container(key="tf-side-lib"):
+        with st.expander("Search and filters", expanded=False):
+            st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
+            st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
+            st.multiselect("State", library.options(items, "state"), key="lib::state")
+            st.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
+            st.multiselect("Year", library.options(items, "year"), key="lib::year")
+            st.multiselect("Audit type", [library.FULL, library.QUICK], key="lib::type")
+            st.checkbox("Has RED flags", key="lib::red")
+            st.checkbox("Has human-verified findings", key="lib::verified")
+            chips = _chips()
+            if chips:
+                st.markdown('<div class="tf-chips">' + "".join(
+                    f'<span class="tf-chip">{esc(c)}</span>' for c in chips) + "</div>",
+                    unsafe_allow_html=True)
+                st.button("Reset filters", key="lib::reset", type="tertiary", on_click=reset_filters)
+            st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(items)} reports.</div>',
+                        unsafe_allow_html=True)
+        st.markdown(f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
+                    unsafe_allow_html=True)
+        st.caption(f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
+                   f"check{'s' if t['quick'] != 1 else ''}. Computed from the saved results. A flag "
+                   "is a lead to verify against the report, not a verdict.")
+        st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload,
+                  width="stretch")
+        st.caption(UPLOAD_NOTE)
+
+
+# ---------- the library ----------
+
+def _filtered(items):
+    ss = st.session_state
+    return library.filter_entries(items, ss.get("lib::q", ""), ss.get("lib::state") or (),
+                                  ss.get("lib::sector") or (), ss.get("lib::year") or (),
+                                  ss.get("lib::type") or (), bool(ss.get("lib::red")),
+                                  bool(ss.get("lib::verified")))
+
+
+def show_more():
+    st.session_state["lib::shown"] = st.session_state.get("lib::shown", PAGE_SIZE) + PAGE_SIZE
 
 
 def render():
     st.markdown(CSS, unsafe_allow_html=True)
     items = entries()
-    t = library.totals(items)
-    st.markdown(f'<div class="tf-lib-total">{esc(library.totals_line(t))}</div>',
-                unsafe_allow_html=True)
-    table = (f", {t['table']} single-table check{'s' if t['table'] != 1 else ''}"
-             if t.get("table") else "")
-    st.caption(f"{t['full']} full audit{'s' if t['full'] != 1 else ''}, {t['quick']} quick "
-               f"check{'s' if t['quick'] != 1 else ''}{table}. Totals are computed from the saved results. "
-               "A flag is a lead to verify against the report, not a verdict.")
-    up, note = st.columns([1, 3])
-    up.button("Upload your own EIA", key="tf::upload", type="primary", on_click=open_upload,
-              width="stretch")
-    note.caption(UPLOAD_NOTE)
+    if not items:
+        with st.container(key="tf-panel-lib-empty"):
+            st.markdown('<div class="tf-h2">The library is empty</div>', unsafe_allow_html=True)
+            st.markdown("No saved reports were found in `results/` (results/index.json is missing "
+                        "or lists no reports). Run `scripts/export_results.py` after an audit, or "
+                        "upload an EIA to run the free checks now.")
+            st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload)
+        return
+    shown = _filtered(items)
+    with st.container(key="tf-lib-layout"):
+        main, side = st.columns([7, 3], gap="medium")
+        with side:
+            side_panel(items, shown)
+        with main:
+            if not shown:
+                with st.container(key="tf-panel-lib-none"):
+                    st.markdown('<div class="tf-h3">No reports match these filters</div>',
+                                unsafe_allow_html=True)
+                    st.markdown(f"None of the {len(items)} reports matches every filter you chose. "
+                                "Remove a filter, or reset them all.")
+                    st.button("Reset filters", key="lib::reset-empty", on_click=reset_filters)
+                return
+            n = st.session_state.get("lib::shown", PAGE_SIZE)
+            with st.container(key="tf-grid"):
+                for e in shown[:n]:
+                    row(e)
+            if len(shown) > n:
+                st.button(f"Show more ({len(shown) - n} more)", key="lib::more", on_click=show_more)
 
     st.write("")
-    query = st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
-    c1, c2, c3, c4, c5 = st.columns([2, 2, 1.2, 1.6, 1.2])
-    states = c1.multiselect("State", library.options(items, "state"), key="lib::state")
-    sectors = c2.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
-    years = c3.multiselect("Year", library.options(items, "year"), key="lib::year")
-    types = c4.multiselect("Audit type", [library.FULL, library.QUICK, library.TABLE], key="lib::type")
-    c5.write("")
-    red = c5.checkbox("Has RED flags", key="lib::red")
-    shown = library.filter_entries(items, query, states, sectors, years, types, red)
-    st.caption(f"Showing {len(shown)} of {len(items)} reports.")
-    if not shown:
-        st.info("No reports match these filters.")
-    pages = max(1, -(-len(shown) // PAGE_SIZE))
-    page = 1
-    if pages > 1:
-        page = st.number_input(f"Page (of {pages})", 1, pages, 1, key="lib::page")
-    for e in shown[(page - 1) * PAGE_SIZE: page * PAGE_SIZE]:
-        row(e)
-
-    st.write("")
-    from tigerfish.ui import quality      # across all reports, from the saved review files
+    from tigerfish.ui import quality
     quality.library_section()
-
-
-# ---------- a quick check (lighter view) ----------
-
-def render_quick(report):
-    """Only the checks that ran, what did not run and why, and the findings."""
-    from tigerfish.ui import cards
-    st.markdown(f"### {esc(report.get('project') or report['title'])}")
-    st.warning(library.QUICK_NOTICE)
-    bits = [report.get("state"), report.get("sector"), report.get("year"),
-            f"{report.get('pages_read', 0):,} of {report.get('pages_total', 0):,} pages read"]
-    st.caption(" · ".join(str(b) for b in bits if b))
-    ran = [c for c in report.get("checks_run", []) if c.get("status") == "ran"]
-    not_run = [c for c in report.get("checks_run", []) if c.get("status") != "ran"]
-    st.markdown("**Checks that ran** (free: no model calls)")
-    for c in ran:
-        n = c.get("count")
-        st.markdown(f"- {esc(c['name'])}" + (f": {n} finding{'s' if n != 1 else ''}" if n is not None else ""))
-    if not_run:
-        st.markdown("**Not run for this report**")
-        for c in not_run:
-            st.markdown(f"- {esc(c['name'])}: {esc(c.get('reason') or 'not available')}")
-    st.caption("Not run in a quick check: the model checks (internal contradictions, recycled "
-               "figures, scanned pages), copied text, consultant accreditation, ToR promises.")
-    findings = report.get("findings") or []
-    if not findings:
-        st.info("No RED, ORANGE or INFO findings from the checks that ran.")
-    for f in findings:
-        cards.finding_card(report["id"], f, report.get("title", ""))

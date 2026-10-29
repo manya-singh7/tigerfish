@@ -18,9 +18,12 @@ FACETS_FILE = ROOT / "data" / "gbif_country_facets.json"
 TOP_COUNTRIES = 8
 SPECIES_CHECKS = ("species_range",)
 
-# Default validated categorical palette (dataviz skill), fixed order, never cycled.
-SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
-SITE_COLOR = "#1C2B33"
+# Muted field-notebook inks (docs/DESIGN.md: no rainbow accents), fixed order, never cycled;
+# each species also has its own legend entry and hover label.
+SERIES = ["#0D4242", "#A86B12", "#8E3B2A", "#3E6178", "#5F6E26", "#7A5C48"]
+SITE_COLOR = "#17302F"
+PAPER, PAPER_2, RULE = "#FAF6EC", "#F2ECDF", "#CFC6B3"
+FONT = "Schibsted Grotesk, sans-serif"
 GRADE_LABEL = {"RED": "RED (strong)", "ORANGE": "ORANGE (likely)"}
 
 _LATLON = re.compile(r"\((-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)\)")
@@ -123,7 +126,7 @@ def figure(species_list, facets, title=None, height=430):
     color = {}
     for s in species_list:
         color.setdefault(s["accepted"], SERIES[len(color) % len(SERIES)] if len(color) < len(SERIES)
-                         else "#8A979D")      # more than six species fold into grey
+                         else "#59625F")      # more than six species fold into grey
     for r in rows:
         lats, lons = arc_points(r["site"], (r["lat"], r["lon"]))
         fig.add_trace(go.Scattergeo(
@@ -138,7 +141,7 @@ def figure(species_list, facets, title=None, height=430):
         fig.add_trace(go.Scattergeo(
             lat=[r["lat"] for r in mine], lon=[r["lon"] for r in mine], mode="markers",
             marker={"size": [8 + 2 * math.log10(max(r["count"], 1)) for r in mine],
-                    "color": color[s["accepted"]], "line": {"width": 2, "color": "#FFFFFF"}},
+                    "color": color[s["accepted"]], "line": {"width": 2, "color": PAPER}},
             name=f"{name} · {s['grade']}", legendgroup=s["accepted"],
             customdata=[[name, GRADE_LABEL.get(s["grade"], s["grade"]), r["country"],
                          f"{r['count']:,}", s["gbif_counts"]] for r in mine],
@@ -148,17 +151,18 @@ def figure(species_list, facets, title=None, height=430):
     sites = {s["site"]: s["place"] for s in species_list if s["site"]}
     fig.add_trace(go.Scattergeo(
         lat=[p[0] for p in sites], lon=[p[1] for p in sites], mode="markers+text",
-        marker={"size": 15, "symbol": "star", "color": SITE_COLOR, "line": {"width": 2, "color": "#FFFFFF"}},
+        marker={"size": 15, "symbol": "star", "color": SITE_COLOR, "line": {"width": 2, "color": PAPER}},
         text=[f"Project site: {name}" if name else "Project site" for name in sites.values()],
         textposition="bottom center", textfont={"color": SITE_COLOR, "size": 13},
         name="Project site", hovertemplate="%{text}<br>%{lat:.2f}, %{lon:.2f}<extra></extra>"))
-    fig.update_geos(projection_type="natural earth", showcountries=True, countrycolor="#D5DCDF",
-                    showland=True, landcolor="#F4F7F7", showocean=True, oceancolor="#FFFFFF",
-                    coastlinecolor="#C3CCD0", showframe=False)
+    fig.update_geos(projection_type="natural earth", showcountries=True, countrycolor=RULE,
+                    showland=True, landcolor=PAPER_2, showocean=True, oceancolor=PAPER,
+                    coastlinecolor=RULE, showframe=False, bgcolor=PAPER)
     fig.update_layout(height=height, margin={"l": 0, "r": 0, "t": 40 if title else 10, "b": 0},
                       title={"text": title, "x": 0.01, "font": {"size": 16, "color": SITE_COLOR}} if title else None,
                       legend={"orientation": "h", "y": -0.02, "font": {"color": SITE_COLOR}},
-                      paper_bgcolor="#FFFFFF", font={"family": "Inter, Segoe UI, sans-serif"})
+                      paper_bgcolor=PAPER, font={"family": FONT, "color": SITE_COLOR},
+                      hoverlabel={"font": {"family": FONT}})
     return fig
 
 
@@ -174,7 +178,7 @@ def render(report, default_site=None):
     if not rows:
         st.caption("No GBIF country data saved for these species (run scripts/species_map.py).")
         return False
-    st.plotly_chart(figure(species_list, facets), width="stretch",
+    st.plotly_chart(figure(species_list, facets), width="stretch", theme=None,
                     config={"displayModeBar": False})
     note = (f"Arcs go from the project site to the {TOP_COUNTRIES} countries with the most GBIF "
             "records of each species (country centre, approximate). Line width grows with the "
