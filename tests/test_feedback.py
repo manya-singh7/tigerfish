@@ -97,6 +97,15 @@ def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
     saved = json.loads(feedback_file.read_text(encoding="utf-8"))["entries"]
     e = saved[f"great_nicobar_2021_draft::{fid}"]
     assert e["decision"] == "Confirm" and e["reviewer"] == "Asha" and e["note"] == "p.392 read"
+    reviews_file = feedback_file.parent / "reviews.jsonl"
+    assert reviews_file.exists()
+    lines = [json.loads(line) for line in reviews_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+    assert len(lines) >= 2
+    assert lines[0]["report_id"] == "great_nicobar_2021_draft" and lines[0]["flag_id"] == fid
+    assert lines[0]["verdict"] == "confirm"
+    assert lines[1]["note"] == "p.392 read"
+    captions = "\n".join(c.value for c in at.caption)
+    assert "Community feedback is saved as a reviewer suggestion and does not modify the verified finding without audit review." in captions
     text = "\n".join(m.value for m in at.markdown)
     assert "#### Precision" in text and "**Team reviews (saved)**" in text
     assert "1 reviewed so far: too few to estimate precision" in text

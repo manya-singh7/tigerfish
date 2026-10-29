@@ -167,6 +167,7 @@ def finding_card(report_id, f, report_title=""):
 
         investigate.render(report_id, f, report_title)
 
+        st.caption("Community feedback is saved as a reviewer suggestion and does not modify the verified finding without audit review.")
         feedback.review_widgets(report_id, f)
 
 

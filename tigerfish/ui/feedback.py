@@ -201,11 +201,38 @@ def _seed(report_id, findings):
         st.session_state.setdefault(note_key(report_id, f["id"]), e["note"] if e else "")
 
 
+DEFAULT_REVIEWS_FILE = ROOT / "feedback" / "reviews.jsonl"
+
+
+def reviews_path():
+    p = os.getenv("TIGERFISH_FEEDBACK")
+    return Path(p).parent / "reviews.jsonl" if p else DEFAULT_REVIEWS_FILE
+
+
+def log_review(report_id, flag_id, verdict, note=""):
+    file = reviews_path()
+    file.parent.mkdir(parents=True, exist_ok=True)
+    v = verdict.lower() if verdict else ""
+    row = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "report_id": report_id,
+        "flag_id": flag_id,
+        "verdict": v,
+        "note": note or "",
+    }
+    with file.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row) + "\n")
+
+
 def _save_one(report_id, finding):
     import streamlit as st
     s = st.session_state
-    save(record(load(), report_id, finding, s.get(widget_key(report_id, finding["id"])),
-                s.get(REVIEWER_KEY, ""), s.get(note_key(report_id, finding["id"]), "")))
+    decision = s.get(widget_key(report_id, finding["id"]))
+    note = s.get(note_key(report_id, finding["id"]), "")
+    reviewer = s.get(REVIEWER_KEY, "")
+    save(record(load(), report_id, finding, decision, reviewer, note))
+    log_review(report_id, finding["id"], decision, note)
+    st.toast("Feedback recorded for audit review.")
 
 
 def reviewer_input(report_id, findings):

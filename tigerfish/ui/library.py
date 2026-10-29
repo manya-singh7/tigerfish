@@ -35,12 +35,16 @@ CSS = """<style>
 }
 /* on wide screens the filter expander is always open and its toggle is hidden */
 @media (min-width: 1100px) {
-  .st-key-tf-side-lib [data-testid="stExpander"] details { border: 0; background: transparent; }
-  .st-key-tf-side-lib [data-testid="stExpander"] summary { display: none; }
+  .st-key-tf-side-lib [data-testid="stExpander"] details { border: 0; background: transparent; pointer-events: auto !important; }
+  .st-key-tf-side-lib [data-testid="stExpander"] summary { display: none !important; pointer-events: none !important; }
   .st-key-tf-side-lib [data-testid="stExpander"] details::details-content {
-    content-visibility: visible; display: block; height: auto; }
-  .st-key-tf-side-lib [data-testid="stExpanderDetails"] { padding: 0 !important; }
+    content-visibility: visible; display: block; height: auto; pointer-events: auto !important; }
+  .st-key-tf-side-lib [data-testid="stExpanderDetails"] { padding: 0 !important; pointer-events: auto !important; position: relative; z-index: 2; }
 }
+.st-key-tf-side-lib input, .st-key-tf-side-lib [data-baseweb="select"], .st-key-tf-side-lib [data-testid="stCheckbox"], .st-key-tf-side-lib button {
+  pointer-events: auto !important; cursor: pointer;
+}
+.st-key-tf-side-lib input[type="text"] { cursor: text; }
 .tf-lib-total { font-size: 1rem; color: var(--tf-ink); margin: 0.6rem 0 0.2rem 0; }
 .tf-lib-title { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600;
   line-height: 1.15; color: var(--tf-ink); }

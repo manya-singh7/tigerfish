@@ -66,9 +66,11 @@ header[data-testid="stHeader"] { background: var(--tf-paper) !important;
 header [data-testid="stHeaderLogo"] { height: 2rem; width: auto; max-width: none; }
 header div:has(> img[data-testid="stHeaderLogo"]), header div:has(> [data-testid="stLogoLink"]) { display: flex; align-items: center; }
 header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { content: "@@PURPOSE@@";
-  font-family: "Schibsted Grotesk", sans-serif; font-size: 0.8125rem; line-height: 1.25;
-  color: var(--tf-muted); width: 15.5rem; margin-left: 0.9rem; white-space: normal;
+  font-family: "Schibsted Grotesk", sans-serif; font-size: 0.8125rem; line-height: 1.3;
+  color: var(--tf-muted); width: max-content; max-width: 36rem; margin-left: 1.1rem; white-space: normal;
   overflow: visible; text-overflow: clip; display: block; }
+header nav { margin-left: auto; display: flex; align-items: center; gap: 0.5rem; }
+header [data-testid="stTopNavLink"] { padding: 0.35rem 0.65rem !important; }
 
 /* ---- page width: 1480px max, padding that scales with the screen ---- */
 .block-container, [data-testid="stMainBlockContainer"] { max-width: 1480px !important;
@@ -188,11 +190,76 @@ mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 
 /* ---- side panel: sticky on wide screens ---- */
 @media (min-width: 1100px) {
-  div[class*="st-key-tf-side"] { position: sticky; top: 4.5rem; align-self: flex-start; }
-  [data-testid="stColumn"]:has(div[class*="st-key-tf-side"]) { position: sticky; top: 4.5rem; align-self: flex-start; }
+  div[class*="st-key-tf-side"] { position: sticky; top: 4.5rem; align-self: flex-start; z-index: 10; }
+  [data-testid="stColumn"]:has(div[class*="st-key-tf-side"]) { position: sticky; top: 4.5rem; align-self: flex-start; z-index: 10; }
 }
 div[class*="st-key-tf-side"] { background: var(--tf-paper); border: 1px solid var(--tf-rule);
-  border-radius: 3px; padding: 1rem 1.1rem; }
+  border-radius: 3px; padding: 1rem 1.1rem; pointer-events: auto !important; }
+
+/* ---- multiselect pills and close buttons ---- */
+[data-testid="stMultiSelect"] [data-tag],
+[data-testid="stMultiSelectTagsContainer"] [data-tag],
+[data-baseweb="tag"] {
+  background: var(--tf-paper-2) !important;
+  color: var(--tf-ink) !important;
+  border: 1px solid var(--tf-rule) !important;
+  border-radius: 3px !important;
+  padding: 0.15rem 0.5rem !important;
+  height: auto !important;
+  min-height: 1.55rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  font-family: "Schibsted Grotesk", sans-serif !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.25 !important;
+}
+[data-testid="stMultiSelect"] [data-tag] span[title],
+[data-testid="stMultiSelectTagsContainer"] [data-tag] span[title],
+[data-baseweb="tag"] span {
+  color: var(--tf-ink) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+[data-testid="stMultiSelect"] [data-tag] button,
+[data-testid="stMultiSelectTagsContainer"] [data-tag] button,
+[data-baseweb="tag"] [role="button"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  min-width: 1rem !important;
+  min-height: 1rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--tf-muted) !important;
+  cursor: pointer !important;
+  border-radius: 2px !important;
+  opacity: 0.8 !important;
+  line-height: 1 !important;
+}
+[data-testid="stMultiSelect"] [data-tag] button:hover,
+[data-testid="stMultiSelectTagsContainer"] [data-tag] button:hover,
+[data-baseweb="tag"] [role="button"]:hover {
+  opacity: 1 !important;
+  color: var(--tf-red) !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+[data-testid="stMultiSelect"] [data-tag] button svg,
+[data-testid="stMultiSelectTagsContainer"] [data-tag] button svg,
+[data-baseweb="tag"] [role="button"] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  min-width: 0.75rem !important;
+  min-height: 0.75rem !important;
+  display: block !important;
+  stroke: currentColor !important;
+  color: inherit !important;
+}
 .tf-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.2rem 0 0.4rem 0; }
 .tf-chip { font-size: 0.8125rem; border: 1px solid var(--tf-rule); border-radius: 2px; padding: 0 0.4rem;
   color: var(--tf-ink); background: var(--tf-paper-2); }
@@ -282,6 +349,9 @@ div[class*="st-key-tf-side"] { background: var(--tf-paper); border: 1px solid va
 .tf-diagram .d-model { font-family: "IBM Plex Mono", monospace; font-size: 15px; font-weight: 500; fill: var(--tf-teal); }
 
 /* ---- phone and tablet ---- */
+@media (max-width: 1200px) {
+  header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { max-width: 22rem; }
+}
 @media (max-width: 760px) {
   .tf-h1 { font-size: 2.5rem; }
   .block-container, [data-testid="stMainBlockContainer"] { padding-top: 7rem !important; }
