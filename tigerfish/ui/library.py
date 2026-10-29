@@ -53,6 +53,7 @@ div[data-testid="stExpanderDetails"] * {
   border-radius: 3px;
   padding: 0.6rem 0.8rem;
   margin-bottom: 0.75rem;
+  pointer-events: auto !important;
 }
 .st-key-tf-side-lib div[data-testid="stRadio"] [role="radiogroup"] {
   gap: 0.35rem;
@@ -62,6 +63,7 @@ div[data-testid="stExpanderDetails"] * {
   color: var(--tf-ink) !important;
   font-size: 0.8125rem !important;
   cursor: pointer !important;
+  pointer-events: auto !important;
 }
 .st-key-tf-side-lib div[data-testid="stRadio"] [data-testid="stWidgetLabel"] p {
   font-family: "Schibsted Grotesk", sans-serif !important;
@@ -70,34 +72,50 @@ div[data-testid="stExpanderDetails"] * {
   color: var(--tf-ink) !important;
   margin-bottom: 0.25rem !important;
 }
-div[class*="st-key-tf-panel-sec-"] {
-  padding: 1.1rem 1.35rem !important;
-  margin-bottom: 0.75rem !important;
+
+.tf-sec-header {
+  background: var(--tf-paper) !important;
+  border: 1px solid var(--tf-rule) !important;
+  border-radius: 3px !important;
+  padding: 1.25rem 1.5rem !important;
+  margin: 0 0 1rem 0 !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 .tf-sec-title {
-  font-family: Newsreader, Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--tf-teal);
-  line-height: 1.15;
-  margin: 0 0 0.35rem 0;
+  font-family: Newsreader, Georgia, serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: var(--tf-teal) !important;
+  line-height: 1.2 !important;
+  margin: 0 0 0.35rem 0 !important;
 }
 .tf-sec-sub {
-  font-family: "Schibsted Grotesk", sans-serif;
-  font-size: 0.9375rem;
-  color: var(--tf-muted);
-  line-height: 1.4;
-  margin: 0;
+  font-family: "Schibsted Grotesk", sans-serif !important;
+  font-size: 0.9375rem !important;
+  color: var(--tf-muted) !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
 }
-div[class*="st-key-tf-panel-empty-"] {
-  padding: 0.85rem 1.1rem !important;
-  margin-bottom: 0.75rem !important;
+.tf-sec-rule {
+  border: 0 !important;
+  border-top: 1px solid var(--tf-rule) !important;
+  margin: 2rem 0 !important;
+  width: 100% !important;
+}
+.tf-sec-empty-box {
+  background: var(--tf-paper) !important;
+  border: 1px solid var(--tf-rule) !important;
+  border-radius: 3px !important;
+  padding: 1rem 1.25rem !important;
+  margin: 0 0 1rem 0 !important;
 }
 .tf-sec-empty {
-  font-family: "Schibsted Grotesk", sans-serif;
-  font-size: 0.875rem;
-  color: var(--tf-muted);
-  margin: 0;
+  font-family: "Schibsted Grotesk", sans-serif !important;
+  font-size: 0.875rem !important;
+  color: var(--tf-muted) !important;
+  margin: 0 !important;
 }
 .tf-badge-quick {
   font-family: "IBM Plex Mono", Consolas, monospace;
@@ -253,7 +271,7 @@ def _chips():
     if (ss.get("lib::q") or "").strip():
         chips.append(f'"{ss["lib::q"].strip()}"')
     type_val = ss.get("lib::type")
-    if type_val and isinstance(type_val, str):
+    if type_val and isinstance(type_val, str) and not type_val.startswith("All"):
         if "Full Audits" in type_val:
             chips.append("Full Audits")
         elif "Quick Batch Audits" in type_val or "Quick" in type_val:
@@ -276,14 +294,11 @@ def side_panel(items, shown):
     opt_quick = f"Quick Batch Audits ({n_quick})"
     audit_options = [opt_all, opt_full, opt_quick]
 
-    current_type = st.session_state.get("lib::type")
-    idx = 0
-    if current_type in audit_options:
-        idx = audit_options.index(current_type)
-    elif current_type == library.QUICK or (isinstance(current_type, (list, tuple)) and library.QUICK in current_type):
-        idx = 2
-    elif current_type == library.FULL or (isinstance(current_type, (list, tuple)) and library.FULL in current_type):
-        idx = 1
+    # Explicit default: never start empty or uninitialized
+    if "lib::type" not in st.session_state or not isinstance(st.session_state["lib::type"], str) or st.session_state["lib::type"] not in audit_options:
+        st.session_state["lib::type"] = opt_all
+
+    idx = audit_options.index(st.session_state["lib::type"])
 
     with st.container(key="tf-side-lib"):
         st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
@@ -377,38 +392,42 @@ def render():
             full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
             quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
 
-            # Section A: Deep Investigation Audits
+            # Container 1: Deep Investigation Audits
             if not is_quick_only:
-                with st.container(key="tf-panel-sec-full"):
+                with st.container(key="tf-sec-deep"):
                     st.markdown(
+                        '<div class="tf-sec-header">'
                         f'<h2 class="tf-h2 tf-sec-title">Deep Investigation Audits ({len(full_total)} Benchmark Reports)</h2>'
-                        '<p class="tf-sec-sub">Multi-chapter contradiction analysis, cross-document text overlap, GBIF species checks, and NVIDIA Nemotron LLM validation.</p>',
+                        '<p class="tf-sec-sub">Multi-chapter contradiction analysis, cross-document text overlap, GBIF species checks, and NVIDIA Nemotron LLM validation.</p>'
+                        '</div>',
                         unsafe_allow_html=True)
-                if full_shown:
-                    with st.container(key="tf-grid-full"):
-                        for e in full_shown:
-                            row(e)
-                else:
-                    with st.container(key="tf-panel-empty-full"):
-                        st.markdown('<p class="tf-sec-empty">No reports match these filters in this category.</p>',
+                    if full_shown:
+                        with st.container(key="tf-grid-full"):
+                            for e in full_shown:
+                                row(e)
+                    else:
+                        st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                                     unsafe_allow_html=True)
-                if not is_full_only:
-                    st.write("")
 
-            # Section B: Automated Batch Triage
+            # Divider: Clean visual hairline separator (when both sections are shown)
+            if not is_full_only and not is_quick_only:
+                st.markdown('<hr class="tf-sec-rule">', unsafe_allow_html=True)
+
+            # Container 2: Automated Batch Triage
             if not is_full_only:
-                with st.container(key="tf-panel-sec-quick"):
+                with st.container(key="tf-sec-batch"):
                     st.markdown(
+                        '<div class="tf-sec-header">'
                         f'<h2 class="tf-h2 tf-sec-title">Automated Batch Triage ({len(quick_total)} State Pollution Board Filings)</h2>'
-                        '<p class="tf-sec-sub">Zero-token automated checks: NABET accreditation validity, baseline monitoring duration, and GBIF species status.</p>',
+                        '<p class="tf-sec-sub">Zero-token automated checks: NABET accreditation validity, baseline monitoring duration, and GBIF species status.</p>'
+                        '</div>',
                         unsafe_allow_html=True)
-                if quick_shown:
-                    with st.container(key="tf-grid-quick"):
-                        for e in quick_shown:
-                            row(e)
-                else:
-                    with st.container(key="tf-panel-empty-quick"):
-                        st.markdown('<p class="tf-sec-empty">No reports match these filters in this category.</p>',
+                    if quick_shown:
+                        with st.container(key="tf-grid-quick"):
+                            for e in quick_shown:
+                                row(e)
+                    else:
+                        st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                                     unsafe_allow_html=True)
 
     st.write("")
