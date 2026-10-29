@@ -248,6 +248,7 @@ def head_checks(page):
     page.wait_for_function(f"() => document.title === {TITLE!r}", timeout=30_000)
     ok("page title", page.title() == TITLE, page.title())
     ok("page title is not 'Streamlit'", page.title() != "Streamlit")
+    page.wait_for_function("() => !!document.querySelector('meta[name=description]')", timeout=30_000)
     desc = page.evaluate("() => (document.querySelector('meta[name=description]') || {}).content")
     ok("meta description is the purpose line", desc == PURPOSE, str(desc))
     hrefs = page.evaluate("() => [...document.querySelectorAll('link[rel*=icon]')].map(l => l.href)")
@@ -259,6 +260,9 @@ def head_checks(page):
         except Exception:
             got.append("unreadable")
     ok("favicon is TigerFish's (not the default)", want in got, " ".join(hrefs)[:120])
+    page.wait_for_function("""() => { const d = document.querySelector(
+        'header div:has(> img[data-testid=stHeaderLogo]), header div:has(> [data-testid=stLogoLink])');
+        return d && getComputedStyle(d, '::after').content.length > 2 }""", timeout=30_000)
     purpose = page.evaluate("""() => { const d = document.querySelector(
         'header div:has(> img[data-testid=stHeaderLogo]), header div:has(> [data-testid=stLogoLink])');
         return d ? getComputedStyle(d, '::after').content : '' }""")

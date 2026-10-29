@@ -17,7 +17,10 @@ if sys.platform == "win32":
         if self._called_connection_lost:
             return
         try:
-            self._protocol.connection_lost(exc)
+            if getattr(self, "_protocol", None) is not None:
+                self._protocol.connection_lost(exc)
+        except Exception:
+            pass
         finally:
             if hasattr(self, "_sock") and self._sock is not None:
                 if hasattr(self._sock, "shutdown") and self._sock.fileno() != -1:

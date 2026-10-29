@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.15 !important; letter-spacing: -0.005em;
 code, kbd, pre, .tf-mono { font-family: "IBM Plex Mono", Consolas, monospace !important;
   font-variant-numeric: tabular-nums; }
 .tf-mono { font-size: 0.8125rem; }
-a { color: var(--tf-teal); }
+a { color: var(--tf-teal); font-family: "Schibsted Grotesk", sans-serif; }
 
 /* ---- the top bar: paper, hairline, logo and the purpose line ---- */
 header[data-testid="stHeader"] { background: var(--tf-paper) !important;
@@ -98,6 +98,7 @@ div[class*="st-key-tf-plain"] { background: var(--tf-paper); padding: 1rem 1.25r
 [data-testid="stAlert"] [data-testid="stAlertContentError"] * { color: var(--tf-ink) !important; }
 [data-testid="stAlertContentError"] p:first-child, [data-testid="stAlertContentWarning"] p:first-child { font-weight: 600; }
 [data-testid="stAlertDynamicIcon"] { display: none; }
+div[data-baseweb="tooltip"], [role="tooltip"], div[data-testid="stTooltipContent"] { pointer-events: none !important; }
 [data-testid="stCaptionContainer"], .stCaption { font-size: 0.8125rem !important; color: var(--tf-muted) !important; }
 [data-testid="stWidgetLabel"] p { font-size: 0.8125rem !important; font-weight: 600; color: var(--tf-ink); }
 [data-testid="stTable"], [data-testid="stDataFrame"] { background: var(--tf-paper); }

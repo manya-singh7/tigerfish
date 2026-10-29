@@ -192,7 +192,7 @@ def _chips():
 def side_panel(items, shown):
     t = library.totals(items)
     with st.container(key="tf-side-lib"):
-        with st.expander("Search and filters", expanded=False):
+        with st.expander("Search and filters", expanded=True):
             st.markdown('<div class="tf-h3">Find a report</div>', unsafe_allow_html=True)
             st.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
             st.multiselect("State", library.options(items, "state"), key="lib::state")

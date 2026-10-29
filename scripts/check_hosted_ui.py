@@ -180,11 +180,11 @@ with sync_playwright() as p:
     ok("library: upload button and note",
        page.get_by_role("button", name="Upload your EIA").count() == 1
        and page.get_by_text("Saved audits are full runs").count() > 0)
-    page.get_by_text("Has RED flags").click()
+    page.get_by_text("Has RED flags").first.click()
     page.wait_for_timeout(2500)
     n_red = sum(e["grades"]["RED"] > 0 for e in items)
     ok("library: 'Has RED flags' filter", opens() == n_red, f"{opens()} shown, {n_red} expected")
-    page.get_by_text("Has RED flags").click()
+    page.get_by_text("Has RED flags").first.click()
     page.wait_for_timeout(2000)
     search = page.get_by_label("Search by project name")
     search.fill("Cuddalore")
@@ -290,18 +290,20 @@ with sync_playwright() as p:
         path = TMP / f"download{suffix}"
         d.value.save_as(str(path))
         ok(f"download {label}", path.stat().st_size > 1000, f"{path.stat().st_size} bytes")
+    page.mouse.move(0, 0)
+    page.keyboard.press("Escape")
     ok("reviews kept in session (wording)", page.get_by_text("in this browser session only").count() > 0)
     # letter language: Tamil only for Tamil Nadu reports; a translation without a key is gated
     radio = page.locator('[data-testid="stRadio"]').filter(has_text="Letter language")
     ok("no Tamil option for a non-Tamil Nadu report", radio.get_by_text("Tamil").count() == 0)
-    radio.get_by_text("Hindi", exact=True).click()
+    radio.get_by_text("Hindi", exact=True).click(force=True)
     try:
         page.get_by_text("needs the translation model").wait_for(timeout=120_000)   # full rerun
     except Exception:
         pass
     ok("Hindi letter gated without a key", page.get_by_text("needs the translation model").count() > 0
        and page.get_by_role("button", name="Draft objection letter (.docx)").is_disabled())
-    radio.get_by_text("English", exact=True).click()
+    radio.get_by_text("English", exact=True).click(force=True)
     page.get_by_role("button", name="Draft objection letter (.docx)").and_(
         page.locator(":enabled")).wait_for(timeout=120_000)
 

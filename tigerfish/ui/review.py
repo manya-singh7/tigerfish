@@ -114,7 +114,7 @@ def render(report_id, report=None):
     pos_key, name_key = f"{POS_KEY}::{report_id}", NAME_KEY
     double = (f"{queue['double_review']} flags are judged by both reviewers independently. "
               if queue.get("double_review") else "")
-    st.markdown(f"Every RED/ORANGE flag of this report, in order: {esc(queue['order'])}. {double}"
+    st.markdown(f"Every new RED/ORANGE flag of this report, in order: {esc(queue['order'])}. {double}"
                 + ("The team's saved decisions are shown read-only. Your decisions stay in this "
                    "browser session only (download them below); they never change the saved "
                    "review or the precision figures." if in_session
