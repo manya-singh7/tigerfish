@@ -146,15 +146,18 @@ def test_queue_file_order_and_double_review():
 @pytest.mark.skipif(not review.QUEUE.exists() or not (ROOT / "results" / "index.json").exists(),
                     reason="no queue or results")
 def test_review_tab_records_a_decision(tmp_path, monkeypatch):
-    from streamlit.testing.v1 import AppTest
+    from apptest import open_app
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
     monkeypatch.setenv("TIGERFISH_FEEDBACK", str(tmp_path / "feedback.json"))
     monkeypatch.setattr(review, "REVIEWS", tmp_path / "reviews.jsonl")
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=120).run()
+    at = open_app(timeout=120)
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
-    q = review.load_queue()
+    from tigerfish.ui import data
+    report = data.load(review.load_queue()["report_id"])
+    q = review.queue_for(report)
+    assert f"#### Review queue: {report['title']} ({q['total']} RED/ORANGE flags)" in text
     # opens on the first flag that still needs a decision (human-verified ones are reviewed)
     n, first = next((i["n"], i["flag_id"]) for i in q["items"] if not i.get("verified"))
     assert f"Flag {n} of {q['total']}" in "\n".join(str(p.proto.text) for p in at.get("progress"))

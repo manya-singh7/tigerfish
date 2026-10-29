@@ -37,7 +37,7 @@ from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 from tigerfish import claims as claims_mod
-from tigerfish import llm, trace
+from tigerfish import llm, tavily_usage, trace
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "cache" / "tavily"
@@ -132,15 +132,19 @@ def is_cached(endpoint, **params):
 
 
 def tavily_call(endpoint, budget, est_credits, **params):
-    """Cached Tavily search/extract. Credits come from the response's usage when given."""
+    """Cached Tavily search / extract / map / crawl. Credits come from the response's usage
+    when given. Every response is counted in tavily_usage (characters returned)."""
     path = _cache_path(endpoint, params)
     trace.record("tavily", path)
     if path.exists():
         budget.cached += 1
-        return json.loads(path.read_text(encoding="utf-8"))["data"]
+        data = json.loads(path.read_text(encoding="utf-8"))["data"]
+        tavily_usage.returned(endpoint, params, data)
+        return data
     budget.check(est_credits)
-    fn = client().search if endpoint == "search" else client().extract
+    fn = getattr(client(), endpoint)          # search, extract, map or crawl
     data = fn(include_usage=True, **params)
+    tavily_usage.returned(endpoint, params, data)
     credits = (data.get("usage") or {}).get("credits")
     budget.add(credits if isinstance(credits, (int, float)) else est_credits)
     CACHE_DIR.mkdir(parents=True, exist_ok=True)

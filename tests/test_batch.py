@@ -2,8 +2,10 @@
 
 from datetime import date
 
+from tigerfish.library import validate
 from tigerfish.batch import (accreditation_check, baseline_check, date_tokens, make_summary,
-                             parse_date_token, period_months, public_index, summary_markdown)
+                             parse_date_token, period_months, public_index, summary_markdown,
+                             _quick_report)
 
 
 def page(number, text):
@@ -72,3 +74,31 @@ def test_summary_and_public_index_never_expose_local_path():
     assert "valid till July 2024" in summary_markdown(summary)
     public = public_index({"documents": [{"local_path": "data/eias/batch/x.pdf", "url": "https://example.test/x.pdf"}]})
     assert "local_path" not in public["documents"][0]
+
+
+def test_quick_report_is_discoverable_by_library_and_keeps_batch_flags():
+    report = _quick_report({
+        "id": "demo_001",
+        "state": "Goa",
+        "project_name": "Demo port expansion",
+        "url": "https://example.test/demo.pdf",
+        "source_page": "https://example.test/hearings",
+        "pages": 12,
+        "checks": {
+            "accreditation": {"check": "accreditation", "grade": "ORANGE", "quotes": []},
+            "baseline_season": {"check": "baseline_season", "grade": "INFO", "quotes": []},
+            "species_iucn": {"check": "species_iucn", "status": "OK", "rows": [{
+                "page": 4, "name": "Panthera leo", "report_iucn": "VU", "gbif_iucn": "EN"
+            }], "location": {"lat": 15.49, "lon": 73.83, "label": "Goa", "source": "named site"},
+                "flags": [{"check": "species_iucn", "grade": "ORANGE", "name": "Panthera leo",
+                           "page": 4, "title": "Panthera leo (p.4)", "message": "verify",
+                           "quotes": [{"page": 4, "text": "Panthera leo VU"}],
+                           "evidence": [{"label": "GBIF", "value": "current EN"}],
+                           "report_iucn": "VU", "gbif_iucn": "EN"}]},
+        },
+        "flags": [{"check": "accreditation", "grade": "ORANGE", "message": "verify",
+                   "quotes": [{"page": 2, "text": "NABET certificate"}]}],
+    })
+    assert validate(report) == []
+    assert report["findings"][0]["check"] == "iucn_status"
+    assert report["batch_flags"][0]["check"] == "accreditation"

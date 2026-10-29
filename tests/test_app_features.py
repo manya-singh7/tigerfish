@@ -3,7 +3,8 @@
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 ROOT = Path(__file__).resolve().parent.parent
 pytestmark = pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), reason="no results/")
@@ -13,7 +14,7 @@ pytestmark = pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), 
 def app(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    return AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    return open_app(timeout=60)
 
 
 def plotly_titles(at):

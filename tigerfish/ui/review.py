@@ -1,4 +1,5 @@
-"""Review queue tab: walk review/review_queue.json in order, record decisions, show precision.
+"""Review queue tab: walk the open report's queue (review.queue_for: every RED/ORANGE flag)
+in order, record decisions, show precision (tigerfish/ui/quality.py: the 20-judged rule).
 
 Decisions go to review/reviews.jsonl (two independent decisions for double-review flags).
 A single-review decision is also saved to the card reviews (feedback/feedback.json), so the
@@ -15,7 +16,7 @@ import streamlit as st
 from tigerfish import hosted, review
 from tigerfish.ui import feedback
 from tigerfish.ui.cards import quote_label
-from tigerfish.ui.style import badge, esc, stat
+from tigerfish.ui.style import badge, esc
 
 POS_KEY = "review::pos"
 NAME_KEY = "review::name"
@@ -31,33 +32,13 @@ def pct(x):
 
 
 def precision_panel(queue, reviews):
-    p = review.precision(queue, reviews)
-    a = review.agreement(queue, reviews)
-    rnd = review.precision(queue, reviews, [i for i in queue["items"] if i["group"] == "random"])
-    top = review.precision(queue, reviews, [i for i in queue["items"] if i["group"] == "top30"])
-    cols = st.columns(4)
-    cols[0].markdown(stat("Reviewed", f"{p['reviewed']} of {p['total']}",
-                          f"{p['unsure']} unsure, {p['disputed']} disputed, "
-                          f"{p['waiting']} waiting for a 2nd reviewer"), unsafe_allow_html=True)
-    cols[1].markdown(stat("Precision", pct(p["precision"]),
-                          f"{p['real']} real of {p['judged']} judged (unsure and disputed left out)"),
-                     unsafe_allow_html=True)
-    cols[2].markdown(stat("Precision, random part", pct(rnd["precision"]),
-                          f"{rnd['judged']} judged; the fair sample (top 30 was hand-picked: "
-                          f"{pct(top['precision'])} of {top['judged']})"), unsafe_allow_html=True)
-    kappa = "" if a["kappa"] is None else f"; Cohen's kappa {a['kappa']:.2f}"
-    cols[3].markdown(stat("Reviewer agreement", pct(a["rate"]),
-                          f"{a['agree']} of {a['both_reviewed']} double-review flags agree "
-                          f"({a['double_total']} marked){kappa}"), unsafe_allow_html=True)
+    from tigerfish.ui import quality
+    quality.precision_stats(queue, reviews)
 
 
-def queue_section(report_id):
-    """For the Precision panel on the Findings tab (nothing if there is no queue)."""
-    queue = review.load_queue()
-    if queue and queue["report_id"] == report_id:
-        st.markdown("**Review queue** (all new RED/ORANGE flags of the full audit; see the "
-                    "Review queue tab)")
-        precision_panel(queue, review.load_reviews())
+def session_rows_for(report_id):
+    """This visitor's decisions on one report (older rows without a report id: Great Nicobar)."""
+    return [r for r in session_rows() if review.row_report(r) == report_id]
 
 
 def item_card(item, reviews, reviewer):
@@ -68,7 +49,10 @@ def item_card(item, reviews, reviewer):
         tag += " · human-verified" if verified else ""
         st.markdown(f'{badge(item["grade"])}<span class="tf-check">{esc(item["check_name"])} · '
                     f'{esc(item["flag_id"])}{esc(tag)}</span>'
-                    f'<div class="tf-card-title">Pages {esc(", ".join(map(str, item["pages"])))}</div>',
+                    f'<div class="tf-card-title">'
+                    + (esc(item["title"]) + " · " if item.get("title") else "")
+                    + (f'Pages {esc(", ".join(map(str, item["pages"])))}' if item["pages"]
+                       else "No page (a public record)") + '</div>',
                     unsafe_allow_html=True)
         quotes = item["quotes"]
         cols = st.columns(len(quotes)) if len(quotes) > 1 else [st.container()]
@@ -109,18 +93,29 @@ def item_card(item, reviews, reviewer):
     return None, None
 
 
-def render(report_id):
-    queue = review.load_queue()
-    if not queue or queue["report_id"] != report_id:
-        st.info("No review queue for this report.")
+def title_of(report):
+    return report.get("title") or report["id"]
+
+
+def render(report_id, report=None):
+    if report is None:
+        from tigerfish.ui import data
+        report = data.load(report_id)
+    queue = review.queue_for(report)
+    items = queue["items"]
+    st.markdown(f"#### Review queue: {esc(title_of(report))} ({len(items)} RED/ORANGE flag"
+                f"{'s' if len(items) != 1 else ''})")
+    if not items:
+        st.info("No RED or ORANGE flags in this report, so there is nothing to review.")
         return
     in_session = hosted.is_hosted()
-    committed = review.load_reviews()
-    reviews = review.with_rows(committed, session_rows()) if in_session else committed
-    items = queue["items"]
-    st.markdown(f"Every new RED/ORANGE flag of the full audit, in order: {esc(queue['order'])}. "
-                f"{queue['double_review']} flags are judged by both reviewers independently. "
-                + ("The project's own decisions are shown read-only. Your decisions stay in this "
+    committed = review.load_reviews(report_id=report_id)
+    reviews = review.with_rows(committed, session_rows_for(report_id)) if in_session else committed
+    pos_key, name_key = f"{POS_KEY}::{report_id}", NAME_KEY
+    double = (f"{queue['double_review']} flags are judged by both reviewers independently. "
+              if queue.get("double_review") else "")
+    st.markdown(f"Every RED/ORANGE flag of this report, in order: {esc(queue['order'])}. {double}"
+                + ("The team's saved decisions are shown read-only. Your decisions stay in this "
                    "browser session only (download them below); they never change the saved "
                    "review or the precision figures." if in_session
                    else "Decisions are saved to review/reviews.jsonl."))
@@ -131,24 +126,25 @@ def render(report_id):
     reviewer = st.text_input("Reviewer name (required)", key=NAME_KEY).strip()
     if not reviewer:
         st.caption("Enter your name to record decisions.")
-    if POS_KEY not in st.session_state:
+    if pos_key not in st.session_state:
         # open on the first flag still needing a decision (human-verified ones are done)
-        st.session_state[POS_KEY] = review.next_index(queue, reviews, reviewer) or 0
-    pos = st.session_state[POS_KEY]
+        st.session_state[pos_key] = review.next_index(queue, reviews, reviewer) or 0
+    pos = min(st.session_state[pos_key], len(items) - 1)
+    st.session_state[POS_KEY] = pos             # the open report's position (tests read it)
 
     left = sum(review.needs(it, reviews, reviewer) for it in items) if reviewer else None
     st.progress(pos / max(len(items) - 1, 1), text=f"Flag {pos + 1} of {len(items)}"
                 + (f" · {left} still need your decision" if left is not None else ""))
     nav = st.columns(3)
     if nav[0].button("Previous", disabled=pos == 0, width="stretch"):
-        st.session_state[POS_KEY] = pos - 1
+        st.session_state[pos_key] = pos - 1
         st.rerun()
     if nav[1].button("Next", disabled=pos >= len(items) - 1, width="stretch"):
-        st.session_state[POS_KEY] = pos + 1
+        st.session_state[pos_key] = pos + 1
         st.rerun()
     if nav[2].button("Next needing me", disabled=not reviewer, width="stretch"):
         nxt = review.next_index(queue, reviews, reviewer, start=pos + 1)
-        st.session_state[POS_KEY] = pos if nxt is None else nxt
+        st.session_state[pos_key] = pos if nxt is None else nxt
         st.rerun()
 
     decision, note = item_card(items[pos], reviews, reviewer)
@@ -156,9 +152,10 @@ def render(report_id):
         it = items[pos]
         try:
             if in_session:
-                session_rows().append(review.make_row(it["flag_id"], reviewer, decision, note or ""))
+                session_rows().append(review.make_row(it["flag_id"], reviewer, decision, note or "",
+                                                      report_id))
             else:
-                review.record(it["flag_id"], reviewer, decision, note or "")
+                review.record(it["flag_id"], reviewer, decision, note or "", report_id=report_id)
             if not it["double_review"] and it.get("finding_id"):
                 fid = it["finding_id"]
                 feedback.save(feedback.record(feedback.load(), report_id,
@@ -170,18 +167,18 @@ def render(report_id):
         except OSError as e:
             st.error(f"Could not save the decision ({e}). Reviews need a writable review/ folder.")
             return
-        reviews = (review.with_rows(committed, session_rows()) if in_session
-                   else review.load_reviews())
+        reviews = (review.with_rows(committed, session_rows_for(report_id)) if in_session
+                   else review.load_reviews(report_id=report_id))
         nxt = review.next_index(queue, reviews, reviewer, start=pos + 1)
         if nxt is not None:
-            st.session_state[POS_KEY] = nxt
+            st.session_state[pos_key] = nxt
         st.rerun()
 
     if in_session:
-        rows = session_rows()
+        rows = session_rows_for(report_id)
         st.download_button(f"Download your decisions (.jsonl, {len(rows)})", review.rows_jsonl(rows),
-                           file_name="tigerfish_my_reviews.jsonl", mime="application/json",
-                           disabled=not rows)
+                           file_name=f"tigerfish_my_reviews_{report_id}.jsonl",
+                           mime="application/json", disabled=not rows)
     elif review.REVIEWS.exists():
         st.download_button("Download reviews (.jsonl)", review.REVIEWS.read_bytes(),
                            file_name="reviews.jsonl", mime="application/json")

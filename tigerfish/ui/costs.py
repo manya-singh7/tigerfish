@@ -135,3 +135,5 @@ def render(e):
                "test that Ultra graded RED or ORANGE, and how many each triage mode would have "
                "passed on to Ultra. The Ultra-every-page bar assumes Ultra would need the same "
                "tokens per page as the measured extraction models; its recall was not measured.")
+    from tigerfish.ui import efficiency
+    efficiency.render_card()

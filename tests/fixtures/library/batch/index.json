@@ -1,0 +1,9 @@
+{
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-28T12:00:00",
+  "tool_version": "sample",
+  "reports": [
+    {"id": "sample_quick_mine_odisha_2025", "file": "sample_quick_mine_odisha_2025.json"},
+    {"id": "sample_quick_highway_kerala_2024", "file": "sample_quick_highway_kerala_2024.json"}
+  ]
+}

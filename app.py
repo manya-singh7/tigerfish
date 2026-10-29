@@ -1,18 +1,20 @@
 """TigerFish: an accuracy checker for Indian Environmental Impact Assessment reports.
 
 Run:  streamlit run app.py
-Replay mode (default) shows saved results from results/ and needs no API keys.
-Live mode appears only when NEBIUS_API_KEY is set. On the hosted app (tigerfish/hosted.py)
+The home screen is the report library (tigerfish/ui/library.py): every saved report in
+results/, needing no API keys. "Upload your own EIA" (tigerfish/ui/upload.py) runs the free
+checks with no key, and the model checks with a key. On the hosted app (tigerfish/hosted.py)
 everything shown comes from committed files, and paid model calls are capped.
 """
 
 import streamlit as st
 
-from tigerfish import hosted
+from tigerfish import hosted, library
 from tigerfish import review as review_store
-from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, live, memo_ask, method,
-                          official, promises, public_record, review, rti, species_map,
-                          web_evidence, batch as batch_ui)
+from tigerfish.ui import (cards, data, feedback, hero, inspector, letter, memo_ask, method,
+                          official, promises, public_record, review, rti, species_map, upload,
+                          web_evidence)
+from tigerfish.ui import library as library_ui
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import CSS
 
@@ -30,27 +32,26 @@ st.markdown('<div class="tf-title">TigerFish</div>'
             'the exact quote and the evidence for each, so a reviewer can verify them.</div>',
             unsafe_allow_html=True)
 
-saved = data.reports()
-titles = {r["title"]: r["id"] for r in saved}
-pick_col, mode_col = st.columns([3, 1])
-live_mode = False
-if live.available():
-    live_mode = mode_col.toggle("Live mode", help="Upload a PDF and run the models (costs money).")
-elif hosted.is_hosted():
-    st.info(live.replay_only_note())
-if not live_mode:
-    choice = pick_col.selectbox("Report", list(titles), label_visibility="collapsed")
-
-# ---------- load the report ----------
-if live_mode:
-    report = live.render()
+# ---------- home: report library; ?report=<id> opens a report, ?view=upload the upload ----------
+view, open_id = library_ui.current()
+if view == "library":
+    library_ui.render()
+    st.stop()
+library_ui.back_link()
+if view == "upload":
+    report = upload.render()
     if report is None:
         st.stop()
 else:
-    if not saved:
-        st.error("No saved results found. Run: python scripts/export_results.py")
+    entry = library.find(library_ui.entries(), open_id)
+    if entry is None:
+        st.error("This report is not in the library.")
         st.stop()
-    report = data.load(titles[choice])
+    library_ui.switcher(open_id)
+    if entry["audit_type"] == library.QUICK:      # free checks only: the lighter view
+        library_ui.render_quick(library.load(entry))
+        st.stop()
+    report = data.load(open_id)
     st.caption(f"Saved results. Source: {report.get('source', '')}")
     for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
         st.warning(notice)
@@ -58,10 +59,9 @@ else:
         hero.render(report)
 
 (findings_tab, review_tab, memo_tab, promises_tab, record_tab, web_tab, scanned_tab,
- batch_tab, method_tab) = st.tabs(
+ method_tab) = st.tabs(
     ["Findings", "Review queue", "Reviewer's memo & Ask", "ToR promises", "Public record",
-     "Evidence from the web", "Scanned pages", f"Batch: {batch_ui.report_count()} reports",
-     "Method & limits"])
+     "Evidence from the web", "Scanned pages", "Method & limits"])
 
 with findings_tab:
     st.write("")
@@ -76,7 +76,8 @@ with findings_tab:
     shown = data.filter_findings(findings, grades, checks)
     feedback.reviewer_input(report["id"], findings)
     # Flags judged false alarms (Review queue tab, or Dismiss on a card) are hidden by default.
-    dismissed = (review_store.dismissed_finding_ids(review_store.load_queue(), review_store.load_reviews())
+    dismissed = (review_store.dismissed_finding_ids(review_store.queue_for(report),
+                                                    review_store.load_reviews(report_id=report["id"]))
                  | {f["id"] for f in cards.reviewed(report["id"], findings, "Dismiss")})
     n_dismissed = sum(f["id"] in dismissed for f in shown)
     if n_dismissed and not st.toggle(f"Show dismissed ({n_dismissed})", key="show_dismissed"):
@@ -151,10 +152,10 @@ with findings_tab:
         st.caption(letter_error)
 
     st.write("")
-    feedback.panel(report["id"], findings)
+    feedback.panel(report["id"], findings, report)
 
 with review_tab:
-    review.render(report["id"])
+    review.render(report["id"], report)
 
 with memo_tab:
     memo_ask.render(report["id"])
@@ -170,9 +171,6 @@ with web_tab:
 
 with scanned_tab:
     inspector.render(report["id"])
-
-with batch_tab:
-    batch_ui.render()
 
 with method_tab:
     method.render()

@@ -1,0 +1,30 @@
+{
+  "great_nicobar_2021_draft": {
+    "project": "Holistic Development of Great Nicobar Island",
+    "state": "Andaman and Nicobar Islands",
+    "sector": "Infrastructure and townships",
+    "year": 2021,
+    "consultant": "Vimta Labs"
+  },
+  "cuddalore_port_2026_draft": {
+    "project": "Expansion of Cuddalore Port",
+    "state": "Tamil Nadu",
+    "sector": "Ports and harbours",
+    "year": 2026,
+    "consultant": "Falcon Resilient Infra Consultants"
+  },
+  "karnataka_rural_roads_2026_adb": {
+    "project": "Karnataka Rural Roads Improvement Project (ADB)",
+    "state": "Karnataka",
+    "sector": "Highways and roads",
+    "year": 2026,
+    "consultant": "Karnataka Rural Roads Development Agency (no EIA consultant named)"
+  },
+  "indira_point_table_3_16": {
+    "project": "Indira Point REIA, Table 3.16 (one table, as published by Scroll.in)",
+    "state": "Andaman and Nicobar Islands",
+    "sector": "Other",
+    "year": 2026,
+    "consultant": "WAPCOS"
+  }
+}

@@ -4,7 +4,8 @@ investigation memos, each linking to the source; never on GBIF or report-page li
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import cards, data, investigate
 
@@ -57,6 +58,6 @@ def test_every_tavily_source_in_saved_results_gets_a_tag():
 def test_app_shows_tags(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     html = "\n".join(m.value for m in at.markdown)
     assert "Found via Tavily" in html

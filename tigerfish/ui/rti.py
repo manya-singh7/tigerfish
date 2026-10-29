@@ -16,6 +16,7 @@ from docx import Document
 from docx.enum.text import WD_BREAK
 from docx.shared import Pt
 
+from tigerfish import authority
 from tigerfish.ui import letter
 
 DRAFT_NOTE = ("DRAFT, please review. Check each question against the report, fill in the "
@@ -113,10 +114,10 @@ def application_blocks(report, f):
     """One RTI application as (kind, text) blocks."""
     return [
         ("draft", DRAFT_NOTE),
-        ("text", "To,\nThe Public Information Officer\n[Name of the public authority that holds "
-                 "these records, for example the Ministry of Environment, Forest and Climate "
-                 "Change (Impact Assessment Division), or the project proponent if it is a "
-                 "public authority]\n[address]"),
+        ("text", authority.rti_to(report, "To,\nThe Public Information Officer\n[Name of the public "
+                 "authority that holds these records, for example the Ministry of Environment, Forest "
+                 "and Climate Change (Impact Assessment Division), or the project proponent if it is "
+                 "a public authority]\n[address]")),
         ("subject", "Subject: Application for information under Section 6 of the Right to "
                     "Information Act, 2005"),
         ("text", "Sir / Madam,"),

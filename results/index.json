@@ -10,6 +10,11 @@
     "file": "cuddalore_port_2026_draft.json"
   },
   {
+    "id": "karnataka_rural_roads_2026_adb",
+    "title": "Karnataka Rural Roads Improvement Project EIA (ADB, July 2026)",
+    "file": "karnataka_rural_roads_2026_adb.json"
+  },
+  {
     "id": "indira_point_table_3_16",
     "title": "Indira Point REIA, Table 3.16 (as published by Scroll.in)",
     "file": "indira_point_table_3_16.json"

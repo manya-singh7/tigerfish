@@ -1,0 +1,2039 @@
+{
+  "id": "karnataka_rural_roads_2026_adb",
+  "title": "Karnataka Rural Roads Improvement Project EIA (ADB, July 2026)",
+  "source": "Environmental Impact Assessment, Part 1 of 4 (Main Report), prepared by the Karnataka Rural Roads Development Agency, Government of Karnataka, for the Asian Development Bank, July 2026",
+  "state": "Karnataka",
+  "site": {
+    "lat": 15.0,
+    "lon": 76.25,
+    "label": "Karnataka (statewide road network)",
+    "source": "report p.23 (also p.56, p.83): Karnataka lies between 11.5° N and 18.5° N and between 74° E and 78.5° E; 1,335 roads in all 31 districts (p.11), so there is no single project site; the midpoint of that extent is used"
+  },
+  "letter_addressee": "lender",
+  "letter_to": "The Chief Operating Officer and Project Director\nKarnataka Rural Roads Development Agency (KRRDA), Government of Karnataka\nCopy: Asian Development Bank, project team, Karnataka Rural Roads Improvement Project (RRP IND 59160-001)",
+  "not_applicable": {
+    "omission": "not applicable to this report: No single project site: 1,335 roads across all 31 districts (p.11). The check looks for threatened species recorded within 25 km of one site, so it does not fit a statewide road network.",
+    "accreditation": "not applicable to this report: No Indian EIA consultant is named: the report was prepared by KRRDA, Government of Karnataka, for the Asian Development Bank (p.1), under ADB SPS 2009 (p.11). Rural roads need no prior environmental clearance under the EIA Notification, 2006 (p.11, p.357), and NABET/QCI is not mentioned anywhere in the report.",
+    "promise": "not applicable to this report: No Indian Terms of Reference: the project needs no environmental clearance under the EIA Notification, 2006 (p.11, p.357), and we hold no ToR for it.",
+    "public_consultation": "not applicable to this report: No public hearing under the EIA Notification, 2006: the project needs no environmental clearance (p.11, p.357). Its consultations follow ADB SPS 2009 (e.g. Udupi and Uttara Kannada, 6-11 July 2026, p.17)."
+  },
+  "audit_status": {
+    "complete": true,
+    "judged": 404,
+    "candidates": 404,
+    "label": "Audit complete: all 404 candidate pairs judged"
+  },
+  "human_reviewed": false,
+  "notices": [
+    "Audit complete: all 404 candidate pairs judged",
+    "Flags not yet human-reviewed: each one is flagged for checking; verify it against the report before relying on it.",
+    "Threatened species not mentioned (GBIF): not applicable to this report. No single project site: 1,335 roads across all 31 districts (p.11). The check looks for threatened species recorded within 25 km of one site, so it does not fit a statewide road network.",
+    "Consultant accreditation (NABET, official list): not applicable to this report. No Indian EIA consultant is named: the report was prepared by KRRDA, Government of Karnataka, for the Asian Development Bank (p.1), under ADB SPS 2009 (p.11). Rural roads need no prior environmental clearance under the EIA Notification, 2006 (p.11, p.357), and NABET/QCI is not mentioned anywhere in the report.",
+    "Terms of Reference vs report: not applicable to this report. No Indian Terms of Reference: the project needs no environmental clearance under the EIA Notification, 2006 (p.11, p.357), and we hold no ToR for it.",
+    "Public hearing comments (EIA Notification, 2006): not applicable to this report. No public hearing under the EIA Notification, 2006: the project needs no environmental clearance (p.11, p.357). Its consultations follow ADB SPS 2009 (e.g. Udupi and Uttara Kannada, 6-11 July 2026, p.17)."
+  ],
+  "pages_read": 356,
+  "pages_total": 364,
+  "pages_skipped": 8,
+  "pages_note": "pages audited; 8 skipped: blank_form/lab sheets/forms",
+  "checks": [
+    "Claim extraction (Nemotron Lightning / Super-VL)",
+    "Internal contradictions and recycled figures (Nemotron Ultra)",
+    "Copied text (Tavily)",
+    "Species tables in the report (GBIF)",
+    "IUCN status and WPA schedules in the report's tables (GBIF, Tavily)"
+  ],
+  "cost": {
+    "nebius_usd": 2.404,
+    "tavily_credits": 128,
+    "gbif_calls": 0,
+    "approx_seconds": 3988.9,
+    "time_note": "wall clock, full audit, 6 parallel calls",
+    "note": "Nebius models: full audit $2.40 (audit complete: all 404 candidate pairs judged); Tavily: audit 128 credits"
+  },
+  "full_run": {
+    "file": "audit_karnataka_rural_roads_2026_adb_eia.json",
+    "cost_usd": 2.404,
+    "wall_clock_s": 3988.9,
+    "pages_audited": 364
+  },
+  "known_issues": [],
+  "findings": [
+    {
+      "id": "ct-007",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 11 and 317 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 11,
+          "text": "requires forest clearance for diversion of 0.748 ha under the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980"
+        },
+        {
+          "page": 317,
+          "text": "Forest Clearance – Scrutiny of the forest clearance proposal for road ID 4817 involving 1.02 hectares of forest land diversion, recommendation to state government for the clearance, providing stage-1 clearance and provide report on compliance with the conditions to the State Government/ MoEFCC, Implementation Monitoring and Reporting, to assist in the process of providing stage-2 forest clearance."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 4 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.11 (0.748 ha)",
+          "value": "also on pp. 12"
+        }
+      ],
+      "why": "Page 11 states 0.748 ha of forest land diversion for Road ID 4817, while page 317 states 1.02 hectares for the same road. The report does not explain the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0011.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0317.png"
+      ]
+    },
+    {
+      "id": "ct-019",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 136 and 286 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 136,
+          "text": "Out of the 1335 project roads, 547 roads are reported to have surface water body within 500m."
+        },
+        {
+          "page": 286,
+          "text": "Approximately 500 roads not only has surface water bodies within 2 km of the roads, streams or canals also crosses a number of project roads."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 4 possible explanation words searched"
+        }
+      ],
+      "why": "The first statement reports 547 roads with surface water bodies within 500 m, while the second states approximately 500 roads have surface water bodies within 2 km; since the 500 m buffer is a subset of the 2 km buffer, the latter number should be at least 547, making the two figures incompatible.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0136.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0286.png"
+      ]
+    },
+    {
+      "id": "ct-020",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 51 and 271 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 271,
+          "text": "The requirement of 0.748 hectares of additional forest land for one project road (4817) has been indicated in the data shared by KRRDA."
+        },
+        {
+          "page": 51,
+          "text": "one road will require additional forest land amounting to ~1.02 hectares"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 17 possible explanation words searched"
+        }
+      ],
+      "why": "Both statements cite KRRDA data for additional forest land needed for project road 4817 but report different hectare figures (0.748 vs ~1.02) with no explanation in the provided text for the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0271.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0051.png"
+      ]
+    },
+    {
+      "id": "ct-056",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 51 and 59 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 51,
+          "text": "one road will require additional forest land amounting to ~1.02 hectares"
+        },
+        {
+          "page": 59,
+          "text": "except for one road (4817) which requires ~0.748 ha of forest land"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 15 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.59 (0.748 ha)",
+          "value": "also on pp. 206"
+        }
+      ],
+      "why": "The two statements give different figures (~1.02 ha vs ~0.748 ha) for the additional forest land required for road 4817, and the report does not explain the discrepancy.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0051.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0059.png"
+      ]
+    },
+    {
+      "id": "ct-094",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 14 and 23 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 23,
+          "text": "305 roads are located outside protected areas and eco-sensitive zones but fall within EAAAs identified as critical habitat"
+        },
+        {
+          "page": 14,
+          "text": "The remaining 420 roads are within EAAAs determined to be critical habitats but outside legally designated protected areas, forest lands, or eco-sensitive zones"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 12 possible explanation words searched"
+        }
+      ],
+      "why": "The two statements give different counts (305 vs 420) for the same residual category of roads within EAAAs but outside protected areas, forest lands, and eco-sensitive zones. Page 14 notes that 171 roads fall into multiple categories, which may affect the calculation, but the report does not explicitly reconcile the two figures.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0023.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0014.png"
+      ]
+    },
+    {
+      "id": "ct-102",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 57 and 357 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 357,
+          "text": "0.748 ha of forest land"
+        },
+        {
+          "page": 57,
+          "text": "except road ID 4817, where 1.02 hectares of forest land will be required."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 15 possible explanation words searched"
+        }
+      ],
+      "why": "Both statements refer to forest land for Road ID 4817, but report different areas (0.748 ha diversion vs 1.02 ha required) without any explanation in the provided pages.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0357.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0057.png"
+      ]
+    },
+    {
+      "id": "ct-264",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 263 and 329 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 329,
+          "text": "50"
+        },
+        {
+          "page": 263,
+          "text": "Noise Pollution (Regulation and Control) Rules, 2000 limits applicable to Silence Zones (50 dB(A) day; 40 dB(A) night)."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 6 possible explanation words searched"
+        },
+        {
+          "label": "Same figure as p.329 (50 dB(A))",
+          "value": "also on pp. 263"
+        }
+      ],
+      "why": "Both statements give a nighttime noise limit for Silence Zones but cite different values (50 dB(A) vs 40 dB(A)) without reconciling them.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0329.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0263.png"
+      ]
+    },
+    {
+      "id": "ct-354",
+      "check": "contradiction",
+      "check_name": "Internal contradiction",
+      "grade": "RED",
+      "title": "Pages 71 and 253 disagree",
+      "message": "Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 71,
+          "text": "Borrow materials such as soil, gravel, moorum, or laterite required for embankment, subgrade, and shoulders will be procured from approved borrow areas generally located within 2 km to 10 km of the Project alignment."
+        },
+        {
+          "page": 253,
+          "text": "with borrow areas to be sourced within 200 m of the alignment wherever suitable material is available"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked by",
+          "value": "Nemotron Ultra, reading both full pages; 11 possible explanation words searched"
+        }
+      ],
+      "why": "The first statement says borrow areas are generally 2-10 km from the alignment, while the second says they should be sourced within 200 m wherever suitable material is available, without clarifying how these two ranges relate.",
+      "clear": "A statement in the report that the two passages cover different areas, dates or scopes, or a correction of one of them.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0071.png",
+        "pages/karnataka_rural_roads_2026_adb_full_p0253.png"
+      ]
+    },
+    {
+      "id": "cp-p115-1",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 115 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 115,
+          "text": "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "ing Exposure ..................................................................................................................................... 91 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) ........................................................................................................................ 95 Table IV-8: Project Road"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 16 words, 8-gram overlap 3%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [12.0, 15.0, 17.0, 18.0, 24.0, 38.0, 44.0, 60.0, 95.0, 109.0, 117.0, 118.0, 120.0, 125.0, 131.0, 136.0, 141.0, 144.0, 4446.0, 4758.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0115.png"
+      ]
+    },
+    {
+      "id": "cp-p154-2",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 154 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Project site in Tamil Nadu, India. Verify.",
+      "quotes": [
+        {
+          "page": 154,
+          "text": "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "Name Common Name Family Habi t Endemism status IUCN Status (Global) Rema rks 196 Croton bonplandianus Baill. Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L. Wild Gourd Cucurbitacea e Clim ber - 199 Cuscuta reflexa Roxb. Amar Bel Convolvulace ae Clim ber LC 200 Cyclea peltata (Lam.) Hook.f. & Thomson Pada"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 19 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [197.0, 198.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0154.png"
+      ]
+    },
+    {
+      "id": "cp-p155-3",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 155 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Chanchali, Dhaka District, Bangladesh. Verify.",
+      "quotes": [
+        {
+          "page": 155,
+          "text": "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "I.Darbysh. Panicled Foldwing Acanthaceae Herb - 230 Digera muricata (L.) Mart. Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb. Karmal / Dillenia Dilleniaceae Tree - 233 Dioscorea sp. Yam Dioscoreace ae Clim ber - 234 Diospyros melanoxylon Roxb. Coromandel Ebony Ebenaceae Tre"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 18 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [231.0, 232.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0155.png"
+      ]
+    },
+    {
+      "id": "cp-p17-0",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 17 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes India. Verify.",
+      "quotes": [
+        {
+          "page": 17,
+          "text": "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "nal monitoring will also review corrective actions, plantation survival, biodiversity actions, contractor compliance and safeguard reporting quality. The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a [...] been prepared as an integral part of the EIA to define mitigation measures, monitoring requirements, institutional responsibilities, 342 report"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 18 words, 8-gram overlap 38%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [326.0, 370.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0017.png"
+      ]
+    },
+    {
+      "id": "cp-p23-4",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 23 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 23,
+          "text": "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "The Project comprises 1,335 rural roads, of which 591 fall within Ecologically Appropriate Areas of Analysis (EAAAs) identified as critical habitat. Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones. The remaining 305 roads are located outside protected areas and eco-sensitive zones but fall within EAAAs identified as critical habitat. Considerin"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 20 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0023.png"
+      ]
+    },
+    {
+      "id": "cp-p25-5",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 25 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 25,
+          "text": "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "villages, and 347 cities and towns. According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population. The population of Karnataka constitutes 61.4% of rural and 38.6% of urban population. C. Project Objectives 14. The objective of the Project is to u"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 24 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [5.05, 2011.0, 61095297.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0025.png"
+      ]
+    },
+    {
+      "id": "cp-p53-6",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 53 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 53,
+          "text": "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "The Project comprises 1,335 rural roads, of which 591 fall within Ecologically Appropriate Areas of Analysis (EAAAs) identified as critical habitat. Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14. Considering the potential for significant environmental and biodiversity-related impacts across these road sections, the overall Project in accordan"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 20 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0053.png"
+      ]
+    },
+    {
+      "id": "cp-p57-7",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 57 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 57,
+          "text": "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "of Right of Way (RoW). Roads with sufficient available RoW for the improvement and widening works, where applicable, 37 are selected for the Project. Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required. Also, roads located within forest lands16 having significant importance for [...] 339 25.32% Up to 13 meters 413 30.94% 485 28.75% Total 1335 100% 1"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 41 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [1.02, 4817.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0057.png"
+      ]
+    },
+    {
+      "id": "cp-p91-8",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 91 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka State, India. Verify.",
+      "quotes": [
+        {
+          "page": 91,
+          "text": "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "at 16%, and the pre-monsoon season (March–May) at 10%. 230. In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal. The percentage departure of annual rainfall from normal for the State since 1971 is given in the following Figure IV-6. Figure IV-6: Percentage Depa"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 21 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [14.0, 1319.0, 2025.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0091.png"
+      ]
+    },
+    {
+      "id": "cp-p93-9",
+      "check": "copy_paste",
+      "check_name": "Copied text",
+      "grade": "RED",
+      "title": "Page 93 text found in another document",
+      "message": "Text closely matches https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf, which describes Karnataka, India. Verify.",
+      "quotes": [
+        {
+          "page": 93,
+          "text": "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara."
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Matching document",
+          "value": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+          "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+        },
+        {
+          "label": "Matching text",
+          "value": "an the corresponding period of the last year. Figure IV-10: Percentage departure of the Annual rainfall from Normal in Coastal Region since 1971 232. District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara. 74 Figure IV-11: District-wise Annual [...] Karnataka: During 2025, the Annual rainfall was recorded Normal in Bagalkote, Ballari, Belagavi, Bidar,"
+        },
+        {
+          "label": "Overlap",
+          "value": "longest run 35 words, 8-gram overlap 100%"
+        }
+      ],
+      "why": "site-specific data also in the other document (numbers [11.0, 19.0, 2025.0]; species [])",
+      "clear": "A citation for the matching text, or site-specific data for this project.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_full_p0093.png"
+      ]
+    },
+    {
+      "id": "sp-p192-011",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "RED",
+      "title": "Tandanus tandanus at Karnataka (p.192)",
+      "message": "0 GBIF records of Tandanus tandanus within 3,000 km; its 4,592 records worldwide are mostly from Australia. Local survey effort is low (142 ray-finned fish records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 192,
+          "text": "Tandanus tandanus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 4,592 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Tandanus tandanus",
+          "url": "https://www.gbif.org/species/2341877"
+        }
+      ],
+      "why": "0 GBIF records of Tandanus tandanus within 3,000 km; its 4,592 records worldwide are mostly from Australia. Local survey effort is low (142 ray-finned fish records within 100 km), but the species is not recorded anywhere in this region. Inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0192.png"
+      ]
+    },
+    {
+      "id": "st-01",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Threskiornis melanocephalus: IUCN category Near Threatened (p.172)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 172,
+          "text": "Threskiornis melanocephalus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Near Threatened"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Threskiornis melanocephalus",
+          "url": "https://www.gbif.org/species/2480767"
+        }
+      ],
+      "why": "Report says NT; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Threskiornis melanocephalus: https://www.gbif.org/species/2480767",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0172.png"
+      ]
+    },
+    {
+      "id": "st-02",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Calidris falcinellus: IUCN category Least concern (p.173)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 173,
+          "text": "Calidris falcinellus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least concern"
+        },
+        {
+          "label": "Current",
+          "value": "VU"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Calidris falcinellus",
+          "url": "https://www.gbif.org/species/7537888"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says VU (VULNERABLE) for Calidris falcinellus: https://www.gbif.org/species/7537888",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0173.png"
+      ]
+    },
+    {
+      "id": "st-03",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Calidris ferruginea: IUCN category Near Threatened (p.174)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 174,
+          "text": "Calidris ferruginea"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Near Threatened"
+        },
+        {
+          "label": "Current",
+          "value": "VU"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Calidris ferruginea",
+          "url": "https://www.gbif.org/species/2481741"
+        }
+      ],
+      "why": "Report says NT; GBIF/IUCN Red List says VU (VULNERABLE) for Calidris ferruginea: https://www.gbif.org/species/2481741",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0174.png"
+      ]
+    },
+    {
+      "id": "st-04",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Calidris alpina: IUCN category Least concern (p.174)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 174,
+          "text": "Calidris alpina"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Calidris alpina",
+          "url": "https://www.gbif.org/species/2481759"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Calidris alpina: https://www.gbif.org/species/2481759",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0174.png"
+      ]
+    },
+    {
+      "id": "st-05",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Cursorius coromandelicus: IUCN category Least concern (p.176)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 176,
+          "text": "Cursorius coromandelicus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Cursorius coromandelicus",
+          "url": "https://www.gbif.org/species/2480743"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Cursorius coromandelicus: https://www.gbif.org/species/2480743",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0176.png"
+      ]
+    },
+    {
+      "id": "st-06",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Anhinga melanogaster: IUCN category Near Threatened (p.178)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 178,
+          "text": "Anhinga melanogaster"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Near Threatened"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Anhinga melanogaster",
+          "url": "https://www.gbif.org/species/2482081"
+        }
+      ],
+      "why": "Report says NT; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Anhinga melanogaster: https://www.gbif.org/species/2482081",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0178.png"
+      ]
+    },
+    {
+      "id": "st-07",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Elephas maximus: IUCN category Least Concern (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Elephas maximus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "EN"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Elephas maximus",
+          "url": "https://www.gbif.org/species/5219461"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says EN (ENDANGERED) for Elephas maximus: https://www.gbif.org/species/5219461",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-08",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Rhinolophus beddomei: IUCN category Endangered (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Rhinolophus beddomei"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Endangered"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Rhinolophus beddomei",
+          "url": "https://www.gbif.org/species/7261961"
+        }
+      ],
+      "why": "Report says EN; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Rhinolophus beddomei: https://www.gbif.org/species/7261961",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-09",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Rhinolophus lepidus: IUCN category Vulnerable (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Rhinolophus lepidus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Vulnerable"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Rhinolophus lepidus",
+          "url": "https://www.gbif.org/species/2432618"
+        }
+      ],
+      "why": "Report says VU; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Rhinolophus lepidus: https://www.gbif.org/species/2432618",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-10",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Macaca radiata: IUCN category Least Concern (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Macaca radiata"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "VU"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Macaca radiata",
+          "url": "https://www.gbif.org/species/2436612"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says VU (VULNERABLE) for Macaca radiata: https://www.gbif.org/species/2436612",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-11",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Loris lydekkerianus: IUCN category Least Concern (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Loris lydekkerianus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Loris lydekkerianus",
+          "url": "https://www.gbif.org/species/7262073"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Loris lydekkerianus: https://www.gbif.org/species/7262073",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-12",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Ratufa macroura: IUCN category Least Concern (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Ratufa macroura"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Ratufa macroura",
+          "url": "https://www.gbif.org/species/2437563"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Ratufa macroura: https://www.gbif.org/species/2437563",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-13",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Myotis formosus: IUCN category Data Deficient (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Myotis formosus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Data Deficient"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Myotis formosus",
+          "url": "https://www.gbif.org/species/2432443"
+        }
+      ],
+      "why": "Report says DD; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Myotis formosus: https://www.gbif.org/species/2432443",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-14",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Crocidura horsfieldii: IUCN category Least Concern (p.183)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 183,
+          "text": "Crocidura horsfieldii"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "DD"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Crocidura horsfieldii",
+          "url": "https://www.gbif.org/species/2435677"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says DD (DATA_DEFICIENT) for Crocidura horsfieldii: https://www.gbif.org/species/2435677",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0183.png"
+      ]
+    },
+    {
+      "id": "st-15",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Rousettus leschenaultii: IUCN category Least Concern (p.184)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 184,
+          "text": "Rousettus leschenaultii"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Rousettus leschenaultii",
+          "url": "https://www.gbif.org/species/7261759"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Rousettus leschenaultii: https://www.gbif.org/species/7261759",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0184.png"
+      ]
+    },
+    {
+      "id": "st-16",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Prionailurus rubiginosus: IUCN category Vulnerable (p.184)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 184,
+          "text": "Prionailurus rubiginosus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Vulnerable"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Prionailurus rubiginosus",
+          "url": "https://www.gbif.org/species/2434895"
+        }
+      ],
+      "why": "Report says VU; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Prionailurus rubiginosus: https://www.gbif.org/species/2434895",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0184.png"
+      ]
+    },
+    {
+      "id": "st-17",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Kerivoula picta: IUCN category Least Concern (p.184)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 184,
+          "text": "Kerivoula picta"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Kerivoula picta",
+          "url": "https://www.gbif.org/species/2432543"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Kerivoula picta: https://www.gbif.org/species/2432543",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0184.png"
+      ]
+    },
+    {
+      "id": "st-18",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Funambulus palmarum: IUCN category Data Deficient (p.185)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 185,
+          "text": "Funambulus palmarum"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Data Deficient"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Funambulus palmarum",
+          "url": "https://www.gbif.org/species/2437246"
+        }
+      ],
+      "why": "Report says DD; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Funambulus palmarum: https://www.gbif.org/species/2437246",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0185.png"
+      ]
+    },
+    {
+      "id": "st-19",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Semnopithecus priam: IUCN category Least Concern (p.185)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 185,
+          "text": "Semnopithecus priam"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Semnopithecus priam",
+          "url": "https://www.gbif.org/species/4267223"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Semnopithecus priam: https://www.gbif.org/species/4267223",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0185.png"
+      ]
+    },
+    {
+      "id": "st-20",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Sus scrofa: IUCN category Data Deficient (p.185)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 185,
+          "text": "Sus scrofa"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Data Deficient"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Sus scrofa",
+          "url": "https://www.gbif.org/species/7705930"
+        }
+      ],
+      "why": "Report says DD; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Sus scrofa: https://www.gbif.org/species/7705930",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0185.png"
+      ]
+    },
+    {
+      "id": "st-21",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Ophiophagus hannah: IUCN category LC (p.187)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Ophiophagus hannah"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "VU"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Ophiophagus hannah",
+          "url": "https://www.gbif.org/species/2469850"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says VU (VULNERABLE) for Ophiophagus hannah: https://www.gbif.org/species/2469850",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0187.png"
+      ]
+    },
+    {
+      "id": "st-22",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Eryx conicus: IUCN category LC (p.188)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 188,
+          "text": "Eryx conicus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "LC"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Eryx conicus",
+          "url": "https://www.gbif.org/species/5225641"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Eryx conicus: https://www.gbif.org/species/5225641",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0188.png"
+      ]
+    },
+    {
+      "id": "st-23",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Nyctibatrachus jog: IUCN category Least Concern (p.190)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 190,
+          "text": "Nyctibatrachus jog"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "VU"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Nyctibatrachus jog",
+          "url": "https://www.gbif.org/species/10697394"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says VU (VULNERABLE) for Nyctibatrachus jog: https://www.gbif.org/species/10697394",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0190.png"
+      ]
+    },
+    {
+      "id": "st-24",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Kaloula pulchra: IUCN category Vulnerable (p.190)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 190,
+          "text": "Kaloula pulchra"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Vulnerable"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Kaloula pulchra",
+          "url": "https://www.gbif.org/species/2421636"
+        }
+      ],
+      "why": "Report says VU; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Kaloula pulchra: https://www.gbif.org/species/2421636",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0190.png"
+      ]
+    },
+    {
+      "id": "st-25",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Uperodon montanus: IUCN category Least Concern (p.191)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 191,
+          "text": "Uperodon montanus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "NT"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Uperodon montanus",
+          "url": "https://www.gbif.org/species/9782367"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says NT (NEAR_THREATENED) for Uperodon montanus: https://www.gbif.org/species/9782367",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0191.png"
+      ]
+    },
+    {
+      "id": "st-26",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Glyptothorax kudremukhensis: IUCN category Least Concern (p.193)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 193,
+          "text": "Glyptothorax kudremukhensis"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "CR"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Glyptothorax kudremukhensis",
+          "url": "https://www.gbif.org/species/2341379"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says CR (CRITICALLY_ENDANGERED) for Glyptothorax kudremukhensis: https://www.gbif.org/species/2341379",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0193.png"
+      ]
+    },
+    {
+      "id": "st-27",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Pangio ammophila: IUCN category Least Concern (p.193)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 193,
+          "text": "Pangio ammophila"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Least Concern"
+        },
+        {
+          "label": "Current",
+          "value": "DD"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Pangio ammophila",
+          "url": "https://www.gbif.org/species/7527200"
+        }
+      ],
+      "why": "Report says LC; GBIF/IUCN Red List says DD (DATA_DEFICIENT) for Pangio ammophila: https://www.gbif.org/species/7527200",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0193.png"
+      ]
+    },
+    {
+      "id": "st-28",
+      "check": "iucn_status",
+      "check_name": "IUCN status",
+      "grade": "ORANGE",
+      "title": "Schistura denisoni: IUCN category Endangered (p.193)",
+      "message": "IUCN status may be outdated. Verify.",
+      "quotes": [
+        {
+          "page": 193,
+          "text": "Schistura denisoni"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Report says",
+          "value": "Endangered"
+        },
+        {
+          "label": "Current",
+          "value": "LC"
+        },
+        {
+          "label": "GBIF / IUCN Red List",
+          "value": "Schistura denisoni",
+          "url": "https://www.gbif.org/species/5204993"
+        }
+      ],
+      "why": "Report says EN; GBIF/IUCN Red List says LC (LEAST_CONCERN) for Schistura denisoni: https://www.gbif.org/species/5204993",
+      "clear": "The report stating which IUCN assessment it used, or the current category.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_status_p0193.png"
+      ]
+    },
+    {
+      "id": "sp-p185-001",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Melanophidium punctatum at Karnataka (p.185)",
+      "message": "0 GBIF records of Melanophidium punctatum within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 185,
+          "text": "Melanophidium punctatum"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 6 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Melanophidium punctatum",
+          "url": "https://www.gbif.org/species/2448723"
+        }
+      ],
+      "why": "0 GBIF records of Melanophidium punctatum within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0185.png"
+      ]
+    },
+    {
+      "id": "sp-p186-002",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Coelognathus radiatus at Karnataka (p.186)",
+      "message": "0 GBIF records of Coelognathus radiatus within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 186,
+          "text": "Coelognathus radiatus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 944 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Coelognathus radiatus",
+          "url": "https://www.gbif.org/species/5224321"
+        }
+      ],
+      "why": "0 GBIF records of Coelognathus radiatus within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0186.png"
+      ]
+    },
+    {
+      "id": "sp-p186-003",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Gerarda prevostiana at Karnataka (p.186)",
+      "message": "0 GBIF records of Gerarda prevostiana within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 186,
+          "text": "Gerarda prevostiana"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 77 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Gerarda prevostiana",
+          "url": "https://www.gbif.org/species/2457717"
+        }
+      ],
+      "why": "0 GBIF records of Gerarda prevostiana within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0186.png"
+      ]
+    },
+    {
+      "id": "sp-p187-004",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Uropeltis liura at Karnataka (p.187)",
+      "message": "0 GBIF records of Uropeltis liura within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Uropeltis liura"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 5 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Uropeltis liura",
+          "url": "https://www.gbif.org/species/2448780"
+        }
+      ],
+      "why": "0 GBIF records of Uropeltis liura within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0187.png"
+      ]
+    },
+    {
+      "id": "sp-p187-005",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Xylophis stenorhynchus at Karnataka (p.187)",
+      "message": "0 GBIF records of Xylophis stenorhynchus within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Xylophis stenorhynchus"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 5 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Xylophis stenorhynchus",
+          "url": "https://www.gbif.org/species/2455464"
+        }
+      ],
+      "why": "0 GBIF records of Xylophis stenorhynchus within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0187.png"
+      ]
+    },
+    {
+      "id": "sp-p187-006",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Chitra indica at Karnataka (p.187)",
+      "message": "0 GBIF records of Chitra indica within 500 km. Local survey data is thin (34 Testudines records within 100 km), but the wider 500 km region is surveyed (1,366 Testudines records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Chitra indica"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 38 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Chitra indica",
+          "url": "https://www.gbif.org/species/5220487"
+        }
+      ],
+      "why": "0 GBIF records of Chitra indica within 500 km. Local survey data is thin (34 Testudines records within 100 km), but the wider 500 km region is surveyed (1,366 Testudines records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0187.png"
+      ]
+    },
+    {
+      "id": "sp-p187-007",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Trimeresurus macrolepis at Karnataka (p.187)",
+      "message": "0 GBIF records of Trimeresurus macrolepis within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Trimeresurus macrolepis"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 5 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Trimeresurus macrolepis",
+          "url": "https://www.gbif.org/species/5960921"
+        }
+      ],
+      "why": "0 GBIF records of Trimeresurus macrolepis within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0187.png"
+      ]
+    },
+    {
+      "id": "sp-p187-008",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Psammophis leithii at Karnataka (p.187)",
+      "message": "0 GBIF records of Psammophis leithii within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 187,
+          "text": "Psammophis leithii"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 19 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Psammophis leithii",
+          "url": "https://www.gbif.org/species/5959466"
+        }
+      ],
+      "why": "0 GBIF records of Psammophis leithii within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0187.png"
+      ]
+    },
+    {
+      "id": "sp-p188-009",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Uropeltis rubromaculata at Karnataka (p.188)",
+      "message": "0 GBIF records of Uropeltis rubromaculata within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 188,
+          "text": "Uropeltis rubromaculata"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 7 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Uropeltis rubromaculata",
+          "url": "https://www.gbif.org/species/2448739"
+        }
+      ],
+      "why": "0 GBIF records of Uropeltis rubromaculata within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0188.png"
+      ]
+    },
+    {
+      "id": "sp-p188-010",
+      "check": "species_range",
+      "check_name": "Species out of range",
+      "grade": "ORANGE",
+      "title": "Bungarus walli at Karnataka (p.188)",
+      "message": "0 GBIF records of Bungarus walli within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "quotes": [
+        {
+          "page": 188,
+          "text": "Bungarus walli"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Checked at",
+          "value": "Karnataka (15.0, 76.25): continues the table from p.144 ('Karnataka' named 6 time(s) on p.143-144)"
+        },
+        {
+          "label": "GBIF records of this species",
+          "value": "0 within 100 km, 0 within 500 km, 21 worldwide"
+        },
+        {
+          "label": "GBIF species page",
+          "value": "Bungarus walli",
+          "url": "https://www.gbif.org/species/10665719"
+        }
+      ],
+      "why": "0 GBIF records of Bungarus walli within 500 km. Local survey data is thin (305 Squamata records within 100 km), but the wider 500 km region is surveyed (26,186 Squamata records) and has no records of this species. Possible range inconsistency flagged, verify.",
+      "clear": "A dated record (specimen, photo or publication) of this species within 100 km of the site.",
+      "known_issue": null,
+      "images": [
+        "pages/karnataka_rural_roads_2026_adb_species_p0188.png"
+      ]
+    }
+  ],
+  "exported_in_s": 65.7
+}

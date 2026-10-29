@@ -13,7 +13,15 @@ never reads `cache/`, `data/eias/`, `logs/` or `feedback/`, so nothing gitignore
 - Visitors' reviews (cards and the review queue) stay in their session, and they can download
   them. The committed review decisions are shown read-only and are never changed.
 
-Python: **3.12** (`runtime.txt`). Runtime packages: `requirements.txt` (pinned). Theme:
+Python: **3.12** (`.python-version`, `runtime.txt`). Dependencies are declared in
+`pyproject.toml` and locked in `uv.lock`; `requirements.txt` is a generated runtime-only
+export for pip-based hosts. Regenerate it after dependency changes:
+
+```sh
+uv export --locked --no-dev --no-hashes --no-emit-project --output-file requirements.txt
+```
+
+Theme:
 `.streamlit/config.toml` (no secrets in it; secrets go only in the hosting dashboard).
 
 ---
@@ -104,14 +112,16 @@ Spaces now runs Streamlit through the Docker SDK.
 ## Check a clean copy locally (as the host will run it)
 
 ```bash
-git clone https://github.com/manya-singh7/tigerfish.git tf-clean && cd tf-clean
-py -3.12 -m venv .venv            # macOS/Linux: python3.12 -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt
-set TIGERFISH_HOSTED=1            # macOS/Linux: export TIGERFISH_HOSTED=1
-.venv\Scripts\python -m streamlit run app.py --server.headless true
+git clone https://github.com/manya-singh7/tigerfish.git tf-clean
+cd tf-clean
+uv sync --locked --no-dev
+TIGERFISH_HOSTED=1 uv run --locked --no-dev streamlit run app.py --server.headless true
 ```
-With no `.env`, the app must open in replay mode with no errors. Browser check (from a venv
-with `requirements-dev.txt` and `python -m playwright install chromium`):
+With no `.env`, the app must open in replay mode with no errors. The commands above use
+a POSIX shell; on PowerShell set `$env:TIGERFISH_HOSTED = "1"` before `uv run` instead.
+For the browser check, install the dev group and Chromium, then run against the server:
 ```bash
-python scripts/check_hosted_ui.py http://localhost:8501 shots/
+uv sync --locked
+uv run --locked playwright install chromium
+uv run --locked python scripts/check_hosted_ui.py http://localhost:8501 shots/
 ```

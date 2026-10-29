@@ -167,10 +167,10 @@ def precision(entries, report_id=None):
 
 def precision_table(rows):
     """Markdown table for the Precision panel."""
+    from tigerfish import quality
     lines = ["| Check | Confirmed | Dismissed | Unsure | Precision |", "|---|---:|---:|---:|---:|"]
     for r in rows:
-        p = ("-" if r["precision"] is None else
-             f"{r['precision']:.0%} ({r['confirmed']} of {r['confirmed'] + r['dismissed']})")
+        p = quality.estimate(r["confirmed"], r["confirmed"] + r["dismissed"])
         lines.append(f"| {r['check']} | {r['confirmed']} | {r['dismissed']} | {r['unsure']} | {p} |")
     return "\n".join(lines)
 
@@ -243,23 +243,13 @@ def _import(report_id, findings, uploader_key):
     st.session_state["feedback::import_msg"] = f"Imported {taken} review(s)."
 
 
-def panel(report_id, findings):
-    """Precision panel, plus export / import of the feedback file."""
+def panel(report_id, findings, report=None):
+    """Precision panel (team reviews apart from yours), plus export / import of your reviews."""
     import streamlit as st
+    from tigerfish.ui import quality         # here: tigerfish.ui.quality imports this module
     entries = load()
     st.markdown("#### Precision")
-    scope = st.radio("Precision for", ["This report", "All reports"], horizontal=True,
-                     key="feedback::scope", label_visibility="collapsed")
-    rows = precision(entries, report_id if scope == "This report" else None)
-    if rows:
-        st.markdown(precision_table(rows))
-    else:
-        st.caption("No reviews saved yet.")
-    st.caption("Precision = confirmed / (confirmed + dismissed): the share of flags a reviewer "
-               f"kept. Unsure reviews are counted but left out of the ratio. Reviews are kept "
-               f"{where()}.")
-    from tigerfish.ui import review          # here: tigerfish.ui.review imports this module
-    review.queue_section(report_id)
+    quality.reviews_panel(report or {"id": report_id, "findings": findings}, entries)
     e1, e2 = st.columns(2)
     e1.download_button("Export reviews (.json)", data=dump(entries), mime="application/json",
                        file_name="tigerfish_feedback.json", disabled=not entries)

@@ -43,7 +43,14 @@ def test_letter_is_for_the_public_consultation_under_eia_notification_2006(pack)
     first = text.strip().splitlines()[0]
     assert first.startswith("DRAFT, please review")
     assert "EIA Notification, 2006" in text and "S.O. 1533(E)" in text
-    assert "public consultation" in text and "[Name]" in text and "[address]" in text
+    assert "public consultation" in text and "[Name]" in text
+    # addressee: the state board's published address (with the check note), else the placeholder
+    from tigerfish import authority
+    c = authority.contact("great_nicobar_2021_draft", "hearing")
+    if c:
+        assert c["address"] in text and authority.CHECK in text
+    else:
+        assert "[address]" in text
     assert "page 392" in text and "page 978" in text
 
 

@@ -5,7 +5,8 @@ import json
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1 import AppTest  # noqa: F401
+from apptest import open_app
 
 from tigerfish.ui import feedback
 
@@ -69,7 +70,9 @@ def test_precision_per_check_ignores_unsure():
     only_gn = {r["check"]: r for r in feedback.precision(e, "gn")}
     assert only_gn["Species out of range"]["precision"] is None
     table = feedback.precision_table(feedback.precision(e))
-    assert "50% (1 of 2)" in table and "100% (1 of 1)" in table
+    # fewer than 20 judged: no percentage (tigerfish/quality.py)
+    assert "2 reviewed so far: too few to estimate precision" in table
+    assert "1 reviewed so far: too few to estimate precision" in table and "%" not in table
 
 
 @pytest.fixture
@@ -80,7 +83,7 @@ def no_keys(monkeypatch):
 
 @pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), reason="no results/")
 def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at = open_app(timeout=60)
     at.text_input(key=feedback.REVIEWER_KEY).input("Asha").run()
     from tigerfish.ui import data
     fid = next(f["id"] for f in data.load("great_nicobar_2021_draft")["findings"]
@@ -95,9 +98,10 @@ def test_app_saves_a_review_and_shows_precision(no_keys, feedback_file):
     e = saved[f"great_nicobar_2021_draft::{fid}"]
     assert e["decision"] == "Confirm" and e["reviewer"] == "Asha" and e["note"] == "p.392 read"
     text = "\n".join(m.value for m in at.markdown)
-    assert "#### Precision" in text and "100% (1 of 1)" in text
+    assert "#### Precision" in text and "**Team reviews (saved)**" in text
+    assert "1 reviewed so far: too few to estimate precision" in text
 
     # a fresh session reads the decision back from the file
-    at2 = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+    at2 = open_app(timeout=60)
     assert at2.session_state[key] == "Confirm"
     assert at2.text_input(key=feedback.REVIEWER_KEY).value == "Asha"

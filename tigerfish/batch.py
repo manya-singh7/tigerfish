@@ -16,6 +16,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import time
 from calendar import monthrange
 from datetime import date, datetime, timezone
@@ -34,7 +35,8 @@ CORPUS_INDEX = BATCH_DATA / "index.json"
 PUBLIC_CORPUS_INDEX = BATCH_RESULTS / "corpus_index.json"
 SUMMARY_JSON = BATCH_RESULTS / "batch_summary.json"
 SUMMARY_MD = BATCH_RESULTS / "batch_summary.md"
-REPORT_RESULTS = BATCH_RESULTS / "reports"
+QUICK_INDEX = BATCH_RESULTS / "index.json"
+REPORT_RESULTS = BATCH_RESULTS
 TAVILY_CACHE = ROOT / "cache" / "tavily"
 
 MAX_TAVILY_CREDITS = 400
@@ -908,6 +910,158 @@ def _flag_counts(flags: Iterable[Mapping[str, Any]]) -> dict[str, int]:
     return {k: v for k, v in counts.items() if v or k in ("RED", "ORANGE", "INFO")}
 
 
+def _tool_version() -> str:
+    """Return the source revision without making the batch depend on git."""
+    try:
+        result = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT,
+                                capture_output=True, text=True, check=True)
+        value = result.stdout.strip()
+        if value:
+            return value
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return "batch-free-checks"
+
+
+def _sector_for(project: str) -> str:
+    text = str(project or "").lower()
+    choices = (
+        ("Ports and harbours", ("port", "jetty", "harbour", "harbor", "berth")),
+        ("Airports", ("airport", "air strip", "aerodrome")),
+        ("Highways and roads", ("highway", "road", "corridor")),
+        ("Railways", ("railway", "rail line", "metro")),
+        ("Mining", ("mine", "mining", "quarry")),
+        ("Thermal power", ("thermal power", "power plant")),
+        ("Hydro power", ("hydro power", "hydroelectric")),
+        ("Industrial projects", ("industrial", "manufacturing", "steel plant")),
+    )
+    for sector, words in choices:
+        if any(word in text for word in words):
+            return sector
+    return "Other"
+
+
+def _year_from_report(report: Mapping[str, Any]) -> int | None:
+    for value in (report.get("hearing_date"), report.get("checks", {}).get("accreditation", {}).get("report_date")):
+        match = re.search(r"(?:19|20)\d{2}", str(value or ""))
+        if match:
+            return int(match.group(0))
+    return None
+
+
+def _quick_check(check: str, name: str, status: str, count: int | None = None,
+                 reason: str | None = None) -> dict[str, Any]:
+    item = {"check": check, "name": name, "status": status}
+    if count is not None:
+        item["count"] = count
+    if reason:
+        item["reason"] = reason
+    return item
+
+
+def _quick_findings(report: Mapping[str, Any]) -> list[dict[str, Any]]:
+    """Map the batch species flags into the library's four-check vocabulary.
+
+    Accreditation and baseline are deliberately retained in ``batch_flags`` and the
+    aggregate summary.  They are local batch checks, not one of the library's four
+    standard upload checks, so putting them in ``findings`` would make the report
+    invalid and hide the whole report from the library.
+    """
+    findings = []
+    flags = [f for f in report.get("flags", []) if f.get("check") == "species_iucn"]
+    if not flags:
+        flags = list((report.get("checks", {}).get("species_iucn") or {}).get("flags", []))
+    for number, original in enumerate(flags, 1):
+        if original.get("check") != "species_iucn" or original.get("grade") not in ("RED", "ORANGE"):
+            continue
+        check = "iucn_status" if original.get("report_iucn") and original.get("gbif_iucn") \
+            and original.get("report_iucn") != original.get("gbif_iucn") else "species_range"
+        fid = str(original.get("id") or f"{check[:2]}-{number:03d}")
+        quotes = [{"page": q.get("page"), "text": q.get("text", "")}
+                  for q in original.get("quotes", [])]
+        evidence = list(original.get("evidence") or [])
+        findings.append({
+            "id": fid,
+            "check": check,
+            "check_name": "IUCN status" if check == "iucn_status" else "Species out of range",
+            "grade": original["grade"],
+            "title": original.get("title") or str(original.get("name") or "Species check"),
+            "message": original.get("message") or "A possible species inconsistency was flagged; verify.",
+            "quotes": quotes,
+            "evidence": evidence,
+            "why": original.get("message") or "The free GBIF check found a possible inconsistency; verify.",
+            "clear": "A dated local record or the report's cited assessment that resolves the difference.",
+            "known_issue": None,
+            "images": [],
+        })
+    return findings
+
+
+def _quick_report(report: Mapping[str, Any], generated: str | None = None) -> dict[str, Any]:
+    """Build a library-compatible report and retain the batch-only evidence fields."""
+    checks = dict(report.get("checks") or {})
+    species_result = checks.get("species_iucn") or {}
+    species_ran = species_result.get("status") == "OK" and bool(species_result.get("rows"))
+    species_flags = _quick_findings(report)
+    iucn_count = sum(1 for row in species_result.get("rows", []) if row.get("report_iucn"))
+    location = species_result.get("location")
+    site = None
+    if location:
+        site = {"lat": location.get("lat"), "lon": location.get("lon"),
+                "how": location.get("source", "text search"), "page": None, "quote": None}
+    generated = generated or datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    batch_checks = {}
+    for name, value in checks.items():
+        # Page text is never stored in a result.  The compact rows and the quoted flags
+        # are enough for replay and review while keeping each report below 200 KB.
+        batch_checks[name] = {k: v for k, v in value.items() if k != "flags"}
+    report_id = str(report.get("id") or "eia")
+    quick = {
+        "format": "tigerfish-report/1",
+        "id": report_id,
+        "audit_type": "quick",
+        "title": report.get("project_name") or report_id,
+        "project": report.get("project_name") or report_id,
+        "state": report.get("state") or None,
+        "sector": _sector_for(str(report.get("project_name") or "")),
+        "year": _year_from_report(report),
+        "consultant": None,
+        "source": {"url": report.get("url") or None, "portal": report.get("source_page") or None,
+                   "proposal_no": None},
+        "pages_total": int(report.get("pages") or 0),
+        "pages_read": int(report.get("pages") or 0),
+        "site": site,
+        "checks_run": [
+            _quick_check("number_pair", "Number pairs (rule, free)", "not_available",
+                         reason="This batch run was scoped to accreditation, baseline and species checks."),
+            _quick_check("species_range", "Species in the report's tables vs GBIF (free)",
+                         "ran" if species_ran else "not_available",
+                         count=len(species_result.get("rows", [])) if species_ran else None,
+                         reason=None if species_ran else species_result.get("message", "No readable binomial names were confirmed.")),
+            _quick_check("iucn_status", "IUCN categories vs GBIF (free)",
+                         "ran" if species_ran else "not_available", count=iucn_count if species_ran else None,
+                         reason=None if species_ran else species_result.get("message", "No readable binomial names were confirmed.")),
+            _quick_check("omission", "Threatened species near the site not mentioned (GBIF, free)",
+                         "not_available", reason="Omission checks were outside this batch run's scope."),
+        ],
+        "findings": species_flags,
+        "cost": {"nebius_usd": 0, "tavily_credits": 0,
+                 "gbif_calls": len(species_result.get("rows", [])), "approx_seconds": 0},
+        "generated": generated,
+        "tool_version": _tool_version(),
+        # These fields are ignored by the library validator but are used by the
+        # batch summary and keep the requested accreditation/baseline evidence public.
+        "batch_checks": batch_checks,
+        "batch_flags": list(report.get("flags", [])),
+        "project_name": report.get("project_name", ""),
+        "url": report.get("url", ""),
+        "source_page": report.get("source_page", ""),
+        "checks": batch_checks,
+        "flags": list(report.get("flags", [])),
+    }
+    return quick
+
+
 def make_summary(reports: Iterable[Mapping[str, Any]], tavily: Mapping[str, Any] | None = None) -> dict[str, Any]:
     reports = list(reports)
     flags = []
@@ -961,6 +1115,7 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
               tavily: Mapping[str, Any] | None = None, **kwargs: Any) -> dict[str, Any]:
     index = dict(index or load_index())
     reports = []
+    report_items = []
     for doc in index.get("documents", [])[:max_reports]:
         local_path = doc.get("local_path")
         path = ROOT / local_path if local_path and not Path(local_path).is_absolute() else Path(local_path or "")
@@ -970,25 +1125,38 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
         cached = REPORT_RESULTS / f"{report_id}.json"
         if cached.exists():
             try:
-                report = json.loads(cached.read_text(encoding="utf-8"))
+                quick = json.loads(cached.read_text(encoding="utf-8"))
+                # The extra batch fields make a cached public report sufficient to
+                # regenerate the aggregate summary without reopening the PDF.
+                report = {"id": quick.get("id", report_id),
+                          "state": quick.get("state", ""),
+                          "project_name": quick.get("project_name") or quick.get("project", ""),
+                          "checks": quick.get("batch_checks") or quick.get("checks", {}),
+                          "flags": quick.get("batch_flags") or quick.get("flags", [])}
                 reports.append(report)
+                report_items.append({"id": quick.get("id", report_id), "file": cached.name})
                 continue
             except (OSError, ValueError):
                 pass
         report = analyze_pdf(path, {**doc, "id": report_id}, **kwargs)
-        _json_dump(cached, report)
+        quick = _quick_report(report)
+        _json_dump(cached, quick)
         reports.append(report)
+        report_items.append({"id": report_id, "file": cached.name})
     summary = make_summary(reports, tavily=tavily)
     summary["reports_requested"] = max_reports
     _json_dump(SUMMARY_JSON, summary)
     SUMMARY_MD.parent.mkdir(parents=True, exist_ok=True)
     SUMMARY_MD.write_text(summary_markdown(summary), encoding="utf-8")
     _json_dump(PUBLIC_CORPUS_INDEX, public_index(index))
+    _json_dump(QUICK_INDEX, {"format": "tigerfish-report/1",
+                             "generated": summary["generated_at"],
+                             "tool_version": _tool_version(), "reports": report_items})
     return summary
 
 
 def initialize_public_results() -> None:
-    """Create keyless, empty schemas for replay mode and the new app tab."""
+    """Create keyless, empty schemas for replay mode and the report library."""
     if not PUBLIC_CORPUS_INDEX.exists():
         _json_dump(PUBLIC_CORPUS_INDEX, public_index({"version": 1, "documents": []}))
     if not SUMMARY_JSON.exists():
@@ -1000,3 +1168,7 @@ def initialize_public_results() -> None:
         _json_dump(SUMMARY_JSON, summary)
         SUMMARY_MD.parent.mkdir(parents=True, exist_ok=True)
         SUMMARY_MD.write_text(summary_markdown(summary), encoding="utf-8")
+    if not QUICK_INDEX.exists():
+        _json_dump(QUICK_INDEX, {"format": "tigerfish-report/1",
+                                 "generated": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+                                 "tool_version": _tool_version(), "reports": []})
