@@ -53,7 +53,7 @@ def load_rows(path=None):
     p = Path(path or REVIEWS)
     if not p.exists():
         return []
-    return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
+    return [json.loads(line) for line in p.read_text(encoding="utf-8-sig").splitlines() if line.strip()]
 
 
 def row_report(row):

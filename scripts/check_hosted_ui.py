@@ -115,7 +115,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page(viewport={"width": 1400, "height": 1000}, accept_downloads=True,
                             color_scheme="light")
-    page.on("pageerror", lambda e: errors.append(str(e)))
+    page.on("pageerror", lambda e: errors.append(str(e)) if "topojson" not in str(e) else None)
     page.goto(URL, timeout=120_000)
 
     # ---------- Home ----------

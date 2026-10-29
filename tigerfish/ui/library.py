@@ -34,7 +34,16 @@ CSS = """<style>
     width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
 }
 /* side panel is a clean container */
-.st-key-tf-side-lib { pointer-events: auto !important; position: relative; z-index: 2; }
+.st-key-tf-side-lib {
+  background: var(--tf-paper) !important;
+  border: 1px solid var(--tf-rule) !important;
+  border-radius: 3px !important;
+  padding: 1.25rem 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 2;
+}
 div[data-testid="stTextInput"] input,
 div[data-testid="stSelectbox"],
 div[data-testid="stMultiSelect"],
@@ -368,67 +377,65 @@ def render():
             st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload)
         return
     shown = _filtered(items)
-    with st.container(key="tf-lib-layout"):
-        main, side = st.columns([7, 3], gap="medium")
-        with side:
-            side_panel(items, shown)
-        with main:
-            if not shown:
-                with st.container(key="tf-panel-lib-none"):
-                    st.markdown('<div class="tf-h3">No reports match these filters</div>',
-                                unsafe_allow_html=True)
-                    st.markdown(f"None of the {len(items)} reports matches every filter you chose. "
-                                "Remove a filter, or reset them all.")
-                    st.button("Reset filters", key="lib::reset-empty", on_click=reset_filters)
-                return
+    side_panel(items, shown)
 
-            audit_choice = st.session_state.get("lib::type", "")
-            is_full_only = isinstance(audit_choice, str) and "Full Audits" in audit_choice
-            is_quick_only = isinstance(audit_choice, str) and ("Quick Batch Audits" in audit_choice or audit_choice == library.QUICK)
-
-            full_total = [e for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
-            quick_total = [e for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
-
-            full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
-            quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
-
-            # Container 1: Deep Investigation Audits
-            if not is_quick_only:
-                with st.container(key="tf-sec-deep"):
-                    st.markdown(
-                        '<div class="tf-sec-header">'
-                        f'<h2 class="tf-h2 tf-sec-title">Deep Investigation Audits ({len(full_total)} Benchmark Reports)</h2>'
-                        '<p class="tf-sec-sub">Multi-chapter contradiction analysis, cross-document text overlap, GBIF species checks, and NVIDIA Nemotron LLM validation.</p>'
-                        '</div>',
+    if not shown:
+        with st.container(key="tf-panel-lib-none"):
+            st.markdown('<div class="tf-h3">No reports match these filters</div>',
                         unsafe_allow_html=True)
-                    if full_shown:
-                        with st.container(key="tf-grid-full"):
-                            for e in full_shown:
-                                row(e)
-                    else:
-                        st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
-                                    unsafe_allow_html=True)
+            st.markdown(f"None of the {len(items)} reports matches every filter you chose. "
+                        "Remove a filter, or reset them all.")
+            st.button("Reset filters", key="lib::reset-empty", on_click=reset_filters)
+        st.write("")
+        from tigerfish.ui import quality
+        quality.library_section()
+        return
 
-            # Divider: Clean visual hairline separator (when both sections are shown)
-            if not is_full_only and not is_quick_only:
-                st.markdown('<hr class="tf-sec-rule">', unsafe_allow_html=True)
+    audit_choice = st.session_state.get("lib::type", "")
+    is_full_only = isinstance(audit_choice, str) and "Full Audits" in audit_choice
+    is_quick_only = isinstance(audit_choice, str) and ("Quick Batch Audits" in audit_choice or audit_choice == library.QUICK)
 
-            # Container 2: Automated Batch Triage
-            if not is_full_only:
-                with st.container(key="tf-sec-batch"):
-                    st.markdown(
-                        '<div class="tf-sec-header">'
-                        f'<h2 class="tf-h2 tf-sec-title">Automated Batch Triage ({len(quick_total)} State Pollution Board Filings)</h2>'
-                        '<p class="tf-sec-sub">Zero-token automated checks: NABET accreditation validity, baseline monitoring duration, and GBIF species status.</p>'
-                        '</div>',
+    full_total = [e for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+    quick_total = [e for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+
+    full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+    quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+
+    # Section A: Deep Investigation Audits
+    if not is_quick_only:
+        st.markdown(
+            '<div class="tf-sec-header">'
+            f'<h2 class="tf-h2 tf-sec-title">Deep Investigation Audits ({len(full_total)} Benchmark Reports)</h2>'
+            '<p class="tf-sec-sub">Multi-chapter contradiction analysis, cross-document text overlap, GBIF species checks, and NVIDIA Nemotron LLM validation.</p>'
+            '</div>',
+            unsafe_allow_html=True)
+        if full_shown:
+            with st.container(key="tf-grid-full"):
+                for e in full_shown:
+                    row(e)
+        else:
+            st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                         unsafe_allow_html=True)
-                    if quick_shown:
-                        with st.container(key="tf-grid-quick"):
-                            for e in quick_shown:
-                                row(e)
-                    else:
-                        st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
-                                    unsafe_allow_html=True)
+
+    # Divider: Clean visual hairline separator (when both sections are shown)
+    if not is_full_only and not is_quick_only:
+        st.markdown('<hr class="tf-sec-rule">', unsafe_allow_html=True)
+
+    # Section B: Automated Batch Triage
+    if not is_full_only:
+        st.markdown(
+            '<div class="tf-sec-header">'
+            f'<h2 class="tf-h2 tf-sec-title">Automated Batch Triage ({len(quick_total)} State Pollution Board Filings)</h2>'
+            '<p class="tf-sec-sub">Zero-token automated checks: NABET accreditation validity, baseline monitoring duration, and GBIF species status.</p>'
+            '</div>',
+            unsafe_allow_html=True)
+        if quick_shown:
+            with st.container(key="tf-grid-quick"):
+                for e in quick_shown:
+                    row(e)
+        else:
+            st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
+                        unsafe_allow_html=True)
 
     st.write("")
     from tigerfish.ui import quality
