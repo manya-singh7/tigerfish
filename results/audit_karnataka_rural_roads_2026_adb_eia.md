@@ -25,61 +25,11 @@ Findings by check and grade:
 
 - recycled_figure: {'RED': 0, 'ORANGE': 0, 'NONE': 2}
 - contradiction: {'RED': 11, 'ORANGE': 0, 'NONE': 240}
-- copy_paste: {'NONE': 90, 'RED': 10}
+- copy_paste: {'NONE': 90, 'GREY': 10}
 
 Known issues matched: none
 
-## All 21 new RED/ORANGE flags
-
-**cp-p115-2 RED** (copy_paste, pages [115])
-- p.115: "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity."
-- Why: site-specific data also in the other document (numbers [12.0, 15.0, 17.0, 18.0, 24.0, 38.0, 44.0, 60.0, 95.0, 109.0, 117.0, 118.0, 120.0, 125.0, 131.0, 136.0, 141.0, 144.0, 4446.0, 4758.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p154-3 RED** (copy_paste, pages [154])
-- p.154: "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L."
-- Why: site-specific data also in the other document (numbers [197.0, 198.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p155-4 RED** (copy_paste, pages [155])
-- p.155: "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb."
-- Why: site-specific data also in the other document (numbers [231.0, 232.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p17-1 RED** (copy_paste, pages [17])
-- p.17: "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts."
-- Why: site-specific data also in the other document (numbers [326.0, 370.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p23-5 RED** (copy_paste, pages [23])
-- p.23: "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones."
-- Why: site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p25-6 RED** (copy_paste, pages [25])
-- p.25: "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population."
-- Why: site-specific data also in the other document (numbers [5.05, 2011.0, 61095297.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p53-7 RED** (copy_paste, pages [53])
-- p.53: "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14."
-- Why: site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p57-8 RED** (copy_paste, pages [57])
-- p.57: "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required."
-- Why: site-specific data also in the other document (numbers [1.02, 4817.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p91-9 RED** (copy_paste, pages [91])
-- p.91: "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal."
-- Why: site-specific data also in the other document (numbers [14.0, 1319.0, 2025.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
-
-**cp-p93-10 RED** (copy_paste, pages [93])
-- p.93: "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara."
-- Why: site-specific data also in the other document (numbers [11.0, 19.0, 2025.0]; species [])
-- Match: RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf
+## All 11 new RED/ORANGE flags
 
 **ct-007 RED** (contradiction, pages [11, 317])
 - p.11: "requires forest clearance for diversion of 0.748 ha under the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980" (also on pp. 12)
@@ -146,3 +96,16 @@ Known issues matched: none
 - p.253: "with borrow areas to be sourced within 200 m of the alignment wherever suitable material is available"
 - Why: The first statement says borrow areas are generally 2-10 km from the alignment, while the second says they should be sourced within 200 m wherever suitable material is available, without clarifying how these two ranges relate.
 - Ultra's answers: {'same_subject': True, 'same_place': True, 'same_scope': True, 'incompatible': True, 'explained': False}
+
+## Excluded copied-text matches (10, GREY: self-match: same report published elsewhere)
+
+- p.17: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 18 words)
+- p.115: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 16 words)
+- p.154: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 19 words)
+- p.155: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 18 words)
+- p.23: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 20 words)
+- p.25: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 24 words)
+- p.53: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 20 words)
+- p.57: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 41 words)
+- p.91: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 21 words)
+- p.93: https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 35 words)

@@ -94,6 +94,7 @@ with findings_tab:
             species_map.render({**report, "findings": shown}, site)
             map_drawn = True
         cards.finding_card(report["id"], f, report.get("title", ""))
+    cards.excluded_matches(report)     # GREY copied-text self-matches, collapsed, with URLs
 
     # ---------- key facts vs the official record ----------
     st.write("")

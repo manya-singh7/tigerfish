@@ -64,7 +64,8 @@ def run(pdf, pages_wanted, table=None, max_credits=cc.MAX_TAVILY_CREDITS, dry_ru
     budget = cc.Budget(max_credits)
     start = llm.session_cost_usd
     species_names = {str(c["value"]) for c in ledger if c["type"] == "species"}
-    out["results"], out["stopped"] = cc.check_passages(passages, budget, species_names, pages)
+    out["results"], out["stopped"] = cc.check_passages(passages, budget, species_names, pages,
+                                                       own=cc.own_for_pdf(pdf.stem))
     if names and not out["stopped"]:
         out["hunt"], out["stopped"] = cc.hunt_species_source(names, budget, rarest, flagged)
     out.update(credits=budget.used, tavily_calls=budget.calls, tavily_cached=budget.cached,
@@ -119,6 +120,10 @@ def main():
             print(f"      ours  p.{r['page']}: {short(r['passage'])}")
             print(f"      theirs: {short(h['snippet'], 200)}")
     print(f"\n{flagged} RED/ORANGE matches.")
+    excluded = cc.excluded_matches(out["results"])
+    print(f"\n=== Excluded matches (GREY, {cc.SELF_MATCH}) ({len(excluded)})")
+    for e in excluded:
+        print(f"  p.{e['page']}: {e['url']}  ({e['why']})")
 
     borrowed = [b for r in out["results"] for b in r["borrowed"]]
     print(f"\n=== Borrowed text (INFO, not a finding grade) ({len(borrowed)})")

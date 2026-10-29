@@ -176,6 +176,16 @@ official. The finding records that the official tier gave nothing.
 
 ## 11. Other known limits
 
+- **Hosted app limits.** An upload always gets the free checks on the whole report (up to
+  2,000 pages, `MAX_FREE_PAGES` in `tigerfish/ui/upload.py`). The paid model checks run on at
+  most 30 pages the visitor picks (`page_picks.MAX_PAGES`; the default pick is the pages with
+  the most figures and species names), within caps of $0.50 per upload (`MAX_RUN_USD`) and
+  $1.00 per UTC day for all visitors together on the owner's key (`DAILY_BUDGET_USD`, in
+  `tigerfish/hosted.py`). A visitor's own key is not counted against the daily cap. The daily
+  total is kept in memory and in a temporary file (`tigerfish_daily_spend.json` in the system
+  temp folder), so it survives app reruns but resets when the hosted container restarts cold
+  and its temp folder is cleared.
+- **Self-match rule (Oct 29).** Before grading, a copied-text match is checked against the report's own identity. It is graded GREY "self-match: same report published elsewhere" only if the matched document is one of the report's paper-trail documents, or is hosted on an official, lender or proponent portal (`SELF_MATCH_PORTALS` in `tigerfish/copycheck.py`: gov.in, nic.in, adb.org, worldbank.org, plus the report's own official sites from its paper trail) and names the project or its proposal/project number (`paper_trail.names_project`). It is listed under a collapsed "Excluded matches" list with the URL and never counted as a flag. News coverage and other third-party pages are graded by the normal rules, even when they name the project. Re-graded from cache: Karnataka 10 RED -> 0 (all on ADB's own copy of the EIA), Cuddalore 4 RED -> 1 (3 on TNPCB's executive summary); Great Nicobar unchanged. Self-matches are limited to the report's own paper-trail documents and official/lender portals that name the project; news coverage is graded normally.
 - **Cuddalore subject grouping.** Cuddalore's subject-grouping step was run with wording that
   named Great Nicobar Island; this was fixed for later reports. Its claims, verdicts and flags
   were not affected by the wording, only how numbers were grouped into pairs.

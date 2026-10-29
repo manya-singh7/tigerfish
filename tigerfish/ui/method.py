@@ -58,7 +58,7 @@ text, is INFO.
 | RED | Strong: the same subject, directly incompatible, and not explained in the report |
 | ORANGE | Likely: worth checking, but the scope or the data is less certain |
 | INFO | Not an inconsistency, e.g. borrowed text without a citation |
-| GREY | Not enough data to judge. Never shown as a finding |
+| GREY | Not enough data to judge, or a copied-text self-match (the matching document is this report's own: a paper-trail document, or an official or lender portal page naming the project; news pages are graded normally). Never shown as a finding; self-matches are listed under \"Excluded matches\" |
 
 Every finding is phrased as something to verify. TigerFish does not say why a statement is
 wrong, only that it does not agree with another statement or with public records.

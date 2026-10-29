@@ -1116,212 +1116,12 @@
     },
     "copy_paste": {
       "NONE": 90,
-      "RED": 10
+      "GREY": 10
     }
   },
   "known_issues_matched": {},
-  "new_flagged": 21,
+  "new_flagged": 11,
   "flags": [
-    {
-      "id": "cp-p115-2",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        115
-      ],
-      "quotes": [
-        {
-          "page": 115,
-          "text": "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [12.0, 15.0, 17.0, 18.0, 24.0, 38.0, 44.0, 60.0, 95.0, 109.0, 117.0, 118.0, 120.0, 125.0, 131.0, 136.0, 141.0, 144.0, 4446.0, 4758.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p154-3",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        154
-      ],
-      "quotes": [
-        {
-          "page": 154,
-          "text": "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [197.0, 198.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p155-4",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        155
-      ],
-      "quotes": [
-        {
-          "page": 155,
-          "text": "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [231.0, 232.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p17-1",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        17
-      ],
-      "quotes": [
-        {
-          "page": 17,
-          "text": "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [326.0, 370.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p23-5",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        23
-      ],
-      "quotes": [
-        {
-          "page": 23,
-          "text": "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p25-6",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        25
-      ],
-      "quotes": [
-        {
-          "page": 25,
-          "text": "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [5.05, 2011.0, 61095297.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p53-7",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        53
-      ],
-      "quotes": [
-        {
-          "page": 53,
-          "text": "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [14.0, 86.0, 307.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p57-8",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        57
-      ],
-      "quotes": [
-        {
-          "page": 57,
-          "text": "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [1.02, 4817.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p91-9",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        91
-      ],
-      "quotes": [
-        {
-          "page": 91,
-          "text": "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [14.0, 1319.0, 2025.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
-    {
-      "id": "cp-p93-10",
-      "grade": "RED",
-      "type": "copy_paste",
-      "pages": [
-        93
-      ],
-      "quotes": [
-        {
-          "page": 93,
-          "text": "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara."
-        }
-      ],
-      "reason": "site-specific data also in the other document (numbers [11.0, 19.0, 2025.0]; species [])",
-      "part_total": null,
-      "answers": {},
-      "urls": [
-        "RED https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
-      ]
-    },
     {
       "id": "ct-007",
       "grade": "RED",
@@ -1654,5 +1454,117 @@
       "urls": null
     }
   ],
-  "triage_audit": null
+  "triage_audit": null,
+  "copy_excluded": [
+    {
+      "page": 17,
+      "quote": "The estimated EMP implementation budget is ₹326 million, and the Biodiversity Action Plan budget is ₹370 million, a combined ₹696 million or approximately ₹0.13 million per km, in addition to costs embedded in civil works contracts.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 18,
+      "ngram": 0.379
+    },
+    {
+      "page": 115,
+      "quote": "95 Table IV-7 Project Roads Located in High Drought Recurrence Taluks (12–15 Year Frequency Class) District High Drought- prone Taluka Drought Frequency Roads IDs Bagalkote Jamkhandi,Badami, Guledagudda High (12- 15 Years) 24, 109, 117, 118, 125, 131, 136, 141, 1324, 1372, 2085, 2160, 2337, 2818, 2821, 3372, 3644, 4487, 4598, 4606, 4607, 4648, 5183, 5251 Total – 24 Roads Raichur Deodurga, Raichur High (12- 15 Years) 1931, 2442, 3099, 3113, 3114, 3127, 3190, 3307, 4410, 4480, 4481, 4506, 4902, 4920, 5247, 5248, 5249, 5264 Total – 18 Roads Ballari & Vijayanagara Siruguppa, Kampli, Hosapete, Sandur,Ballari, High (12- 15 Years) 351, 630, 660, 671, 679, 695, 700, 808, 810, 825, 828, 892, 901, 904, 909, 913, 925, 2765, 2968, 3257, 3270, 3354, 3367, 3378, 3381, 4007, 4009, 4446, 4468, 4745, 4749, 4756, 4757, 4758, 4759, 4842, 4886, 4925, 4997, 5019, 5252, 5385, 5391, 5479 Total – 44 Roads Haveri Hirekerur High (12- 15 Years) 954, 997, 2214, 2380, 4246, 5343, 5434 Total – 7 Roads Gadag Laxmeshwar High (12- 15 Years) 144, 2301, 4287, 4522, 4580 Total – 5 Roads Chikkaballapu ra Bagepalli, Chikkaballapura, Chintamani High (12- 15 Years) 60, 409, 417, 462, 470, 476, 491, 1897, 3117, 3186, 3868, 3869, 3870, 3878, 3998, 4081, 5219 Total – 17 Roads Kolar Srinivasapura, Kolar, Mulbagal, Bangrapete, High (12- 15 Years) 120, 382, 438, 596, 748, 912, 950, 960, 1108, 1126, 1203, 1204, 1217, 1302, 1425, 1444, 1663, 1697, 1897, 1975, 2211, 2485, 2492, 2789, 2958, 3462, 3469, 3526, 3539, 3546, 3565, 3609, 3841, 4013, 4578, 5282, 5373, 5508 Total – 38 Roads Ramanagara Horohalli, Kanakapura, High (12- 15 Years) 1817, 1818, 1819, 3891, 5085, 5089, 5130, 5141, 5142, 5180, 5226, 5422, 5423, 5427, 5428 Total – 15 Roads Chamarajana gara Kollegal, Hansur High (12- 15 Years) 2536, 2538, 2540, 2543, 4221 Total –5 Roads Note: The classification is based on taluka-level drought frequency and provides a screening-level indication; it does not represent road-specific drought intensity.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 16,
+      "ngram": 0.029
+    },
+    {
+      "page": 154,
+      "quote": "Railway Weed Euphorbiace ae Herb - 197 Cryptocarya wightiana Thwaites Cupped-Fruit Litsea Lauraceae Tree LC 198 Cucumis prophetarum L.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 19,
+      "ngram": 1.0
+    },
+    {
+      "page": 155,
+      "quote": "Chanchali Amaranthace ae Herb - 231 Digitaria ciliaris (Retz.) Koeler Wild Crabgrass Poaceae Gras s - 232 Dillenia pentagyna Roxb.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 18,
+      "ngram": 1.0
+    },
+    {
+      "page": 23,
+      "quote": "Of these, 307 roads intersect forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 20,
+      "ngram": 1.0
+    },
+    {
+      "page": 25,
+      "quote": "According to the Census of India 2011, Karnataka had a population of 61,095,297 individuals, comprising 5.05% of the country’s total population.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 24,
+      "ngram": 1.0
+    },
+    {
+      "page": 53,
+      "quote": "Further, 307 roads intersect reserved forests, 14 roads traverse legally protected areas and 86 are in their eco-sensitive zones14.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 20,
+      "ngram": 1.0
+    },
+    {
+      "page": 57,
+      "quote": "Roads inside forest lands, legally protected areas, and other ecologically sensitive areas where sufficient ROW was not available and required additional land were not selected in this Project, except road ID 4817, where 1.02 hectares of forest land will be required.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 41,
+      "ngram": 1.0
+    },
+    {
+      "page": 91,
+      "quote": "In the year 2025, the state recorded 1,319 mm rainfall, representing a 14% positive departure from the long-term normal.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 21,
+      "ngram": 1.0
+    },
+    {
+      "page": 93,
+      "quote": "District wise Annual rainfall pattern during 2025 in Karnataka state is presented in Figure IV-11 indicates that during 2025, the rainfall was Excess in 11 Districts, Normal in 19 districts while Deficit in Chamarajanagara.",
+      "url": "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf",
+      "title": "Karnataka Rural Roads Improvement Project Part 1 of 4",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 35,
+      "ngram": 1.0
+    }
+  ]
 }

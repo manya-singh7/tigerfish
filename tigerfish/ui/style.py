@@ -39,6 +39,7 @@ CSS = f"""
   .tf-line {{ font-size: 0.92rem; margin: 0.2rem 0; }}
   .tf-line b {{ color: {ACCENT}; font-weight: 650; }}
   .tf-review {{ font-size: 0.85rem; color: {MUTED}; }}
+  .tf-excluded {{ font-size: 0.85rem; margin: 0 0 0.8rem; overflow-wrap: anywhere; }}
   .tf-timeline {{ border-left: 2px solid {BORDER}; margin: 0.4rem 0 0 0.6rem; }}
   .tf-step {{ display: flex; gap: 0.7rem; margin: 0 0 0.75rem -0.75rem; }}
   .tf-step-n {{ flex: 0 0 1.4rem; height: 1.4rem; border-radius: 999px; background: {ACCENT}; color: #FFF;

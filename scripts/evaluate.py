@@ -450,7 +450,12 @@ def full_run_md():
               "The estimate above assumed the 10 audited pages' density; the full report had fewer "
               "candidate pairs per page after keyed pairing, but each verdict was longer. Findings by "
               "check: " + "; ".join(f"{k} {v}" for k, v in run["findings_by_check"].items())
-              + ". Details and the top 30 flags: results/full_audit_summary.md.", ""]
+              + ". Details and the top 30 flags: results/full_audit_summary.md.", "",
+              "Copied text: a match whose document is this report's own (a paper-trail document, or a "
+              "document on an official / lender / proponent portal that names the project or its "
+              "proposal/project number; news pages are graded normally) is graded GREY "
+              "\"self-match: same report published elsewhere\", listed under \"Excluded matches\" with "
+              "the URL, never a flag.", ""]
     return lines
 
 

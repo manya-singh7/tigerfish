@@ -104,6 +104,10 @@ App export (results/great_nicobar_2021_draft.json): 146 findings after duplicate
 
 All 100 passages and their 145 cached Tavily responses were re-graded with the rule "one shared number alone is not data". **No copy-paste flag changed grade**: still 2 RED (p.1001, p.1015) and 1 ORANGE (p.29). The full run never matched a passage with exactly one shared number (the p.327 Vembanad case was in the rehearsal). Note: audit.py does not pass species names to grade_hit. Passing them would make p.29 RED against two news pages about this same project, so leave it off.
 
+## Copy-paste self-match rule (Oct 29, cache only)
+
+**Self-match rule (Oct 29).** Before grading, a copied-text match is checked against the report's own identity. It is graded GREY "self-match: same report published elsewhere" only if the matched document is one of the report's paper-trail documents, or is hosted on an official, lender or proponent portal (`SELF_MATCH_PORTALS` in `tigerfish/copycheck.py`: gov.in, nic.in, adb.org, worldbank.org, plus the report's own official sites from its paper trail) and names the project or its proposal/project number (`paper_trail.names_project`). It is listed under a collapsed "Excluded matches" list with the URL and never counted as a flag. News coverage and other third-party pages are graded by the normal rules, even when they name the project. Re-graded from cache: **no Great Nicobar flag changed** (still 2 RED, 1 ORANGE); 2 matches moved from NONE to GREY: p.1075 and p.1076 (public hearing proceedings, a paper-trail document). The two news pages on p.29 that name the project (ijpiel.com, hindustantimes.com) are graded by the normal rules and stay NONE; p.29 stays ORANGE on indianculture.gov.in. copy_paste is now NONE 95, GREY 2, RED 2, ORANGE 1.
+
 ## Top 30 RED/ORANGE flags (quick read, not verified)
 
 Review order in the queue; **D** = double review (both reviewers judge independently).

@@ -5225,6 +5225,30 @@
       ]
     }
   ],
+  "excluded_matches": [
+    {
+      "page": 1075,
+      "quote": "Dredging will be required with higher volume which is more than Galathea Bay. • The location is not fit to correlate due to isolation from the rest of the proposed developments in Great Nicobar Island. • Some portion of the designated area is falling under ICRZ Zone 1A. • Falling under Great Nicobar Biosphere Reserve and Campbell Bay National Park. • Represents 39 species of scleractinian corals (Schedule-I species under IW(P)A, 1972). • Represents 7 species of Scheduled-I holothurians. • Total benthic cover of reef habitat is 21.22-hect. including Live coral-15.66%, Other animal-1.52%, Dead Coral- 5.33%, Other algae-45.15%, and Abiotic-32.34%. • Three species of marine mammals are sighted. • Presence of saltwater crocodile (Crocodylus porosus Schneider, 1801) in adjoining Dagmar River. • Presence of mangrove patches in adjoining Dagmar River. • Presence of nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764) is predominant. • Presence of active mounds of endemic Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919) in the proposed site adjoining areas. • Presence of two troupes of only one species of non-human primates i.e. the Long-Tailed Macaque Macaca fascicularis umbrosus (Miller, 1902) in this area.",
+      "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf",
+      "title": "compilation of the proceeding of public hearing",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 13,
+      "ngram": 0.072
+    },
+    {
+      "page": 1076,
+      "quote": "Dredging will be required with higher volume. • Requirement reclamation of land to develop onshore storage facilities is comparatively high. • Some portion of the designated area is falling under ICRZ Zone 1A. • Represents 45 species of scleractinian corals (Schedule-I species under IW(P)A, 1972). • Represents 10 species of Scheduled-I holothurians. • Total benthic cover of reef habitat is 35.1254 including Live coral-14.9%, Dead Coral- 2.51%, Other animal-3.28%, Other algae-22.07%, and Abiotic-57.24%. • Three species of marine mammals are sighted. • Presence of saltwater crocodile (Crocodylus porosus Schneider, 1801) in mudflats, submerged wetlands, and mangrove creeks. • Presence of mangrove patches. • Active mounds of Nicobar Megapode Megapodius nicobariensis abbotti (Oberholser, 1919) in the proposed project adjoining site. • Presence nests of vulnerable leatherback turtle Dermochelys coriacea (Vandelli, 1764) is predominantly. • Close to Naval facility at Indira Point. • The location is not fit to for major development due to presence of defence land in nearby places.",
+      "url": "https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf",
+      "title": "compilation of the proceeding of public hearing",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 13,
+      "ngram": 0.088
+    }
+  ],
   "exported_in_s": 23.0,
   "pages_skipped": 99,
   "pages_note": "pages audited; 99 skipped: Hindi/lab sheets/forms",

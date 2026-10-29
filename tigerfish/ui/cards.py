@@ -182,3 +182,23 @@ def zoomed(images):
                 unsafe_allow_html=True)
     for col, (path, png) in zip(st.columns(len(shown)), shown):
         col.image(png, caption=f"Page {page_no(path)}", width="stretch")
+
+
+def excluded_matches(report):
+    """Collapsed list of copied-text matches excluded as GREY self-matches (the matched
+    document is this report's own, e.g. the lender's or the board's copy). Never hidden."""
+    rows = report.get("excluded_matches") or []
+    if not rows:
+        return
+    with st.expander(f"Excluded matches ({len(rows)})", expanded=False):
+        st.caption("Copied-text matches graded GREY, not flagged: the matching document is this "
+                   "report's own (same project), so a match is expected.")
+        for e in rows:
+            quote = e["quote"] if len(e["quote"]) <= 220 else e["quote"][:217] + "..."
+            st.markdown(
+                f'<div class="tf-excluded">{badge("GREY")} <b>p.{e["page"]}</b> · {esc(e["label"])}'
+                f'<br><a href="{esc(e["url"])}" target="_blank">{esc(e.get("title") or e["url"])}</a>'
+                f'<br><code>{esc(e["url"])}</code>'
+                f'<br>Why: {esc(e["why"])}. Overlap: longest run {e["longest_run"]} words, '
+                f'8-gram {e["ngram"]:.0%}.<br>Ours: &ldquo;{esc(quote)}&rdquo;</div>',
+                unsafe_allow_html=True)

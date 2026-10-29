@@ -406,11 +406,13 @@ def full_run_core(pdf=GN_PDF):
         # by score without it: use_llm=False reproduces that exactly, with no new calls.
         passages = copycheck.select_passages(ledger, texts, max_passages=run["copy_passages"],
                                              use_llm=False)
-    copy, stopped = copycheck.check_passages(passages, budget, pages=texts)
+    copy, stopped = copycheck.check_passages(passages, budget, pages=texts,
+                                             own=copycheck.own_for_pdf(pdf.stem))
     if stopped:
         print(f"WARNING copy-paste export stopped: {stopped}")
     findings = contradiction_findings(con, known) + copy_findings(copy)
-    return findings, rows, {"run": run, "kept": {p["page"] for p in kept}, "skipped": skipped}
+    return findings, rows, {"run": run, "kept": {p["page"] for p in kept}, "skipped": skipped,
+                            "excluded": copycheck.excluded_matches(copy)}
 
 
 def great_nicobar():
@@ -420,9 +422,10 @@ def great_nicobar():
     for old in PAGES_OUT.glob(f"{report_id}_*.png"):
         old.unlink()
     full = full_run_core()
+    excluded = []
     if full:
         findings, rows, extra = full
-        pages = extra["kept"]
+        pages, excluded = extra["kept"], extra["excluded"]
     else:                     # no full run yet: the 10 known-issue pages
         pages = set(GN_PAGES)
         page_dicts = [p for p in pdf_reader.read_pdf(GN_PDF) if p["page"] in pages]
@@ -432,6 +435,7 @@ def great_nicobar():
         rows = con["evaluation"]
         known = {r["finding_id"]: r["id"] for r in rows if r["finding_id"]}
         findings = contradiction_findings(con["findings"], known) + copy_findings(cp["results"])
+        excluded = copycheck.excluded_matches(cp["results"])
         page_images(report_id, findings, shared=False)
 
     findings += species_table_findings(report_id)
@@ -470,7 +474,8 @@ def great_nicobar():
         "known_issue_score": dict(zip(("passed", "scored"), ct.score(rows))),
         "known_issues": [{k: r[k] for k in ("id", "type", "expected", "grade", "finding_id",
                                             "ok", "scored", "status")} for r in rows],
-        "findings": findings, "exported_in_s": round(time.time() - started, 1),
+        "findings": findings, "excluded_matches": excluded,
+        "exported_in_s": round(time.time() - started, 1),
     }
     if full:
         run, skipped = extra["run"], extra["skipped"]
@@ -710,7 +715,8 @@ def cuddalore():
         "full_run": {"file": f"audit_{CUD_PDF.stem}.json", "cost_usd": tot["cost_usd"],
                      "wall_clock_s": tot["wall_clock_s"], "pages_audited": run["pages_audited"]},
         "known_issues": [],
-        "findings": findings, "exported_in_s": round(time.time() - started, 1),
+        "findings": findings, "excluded_matches": extra["excluded"],
+        "exported_in_s": round(time.time() - started, 1),
     }
     return report_id, out
 
@@ -803,7 +809,8 @@ def karnataka():
         "full_run": {"file": f"audit_{KA_PDF.stem}.json", "cost_usd": tot["cost_usd"],
                      "wall_clock_s": tot["wall_clock_s"], "pages_audited": run["pages_audited"]},
         "known_issues": [],
-        "findings": findings, "exported_in_s": round(time.time() - started, 1),
+        "findings": findings, "excluded_matches": extra["excluded"],
+        "exported_in_s": round(time.time() - started, 1),
     }
     return report_id, out
 

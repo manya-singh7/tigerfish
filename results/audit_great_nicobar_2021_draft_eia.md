@@ -25,7 +25,7 @@ Findings by check and grade:
 
 - recycled_figure: {'RED': 4, 'ORANGE': 1, 'NONE': 9}
 - contradiction: {'RED': 103, 'ORANGE': 46, 'NONE': 1277}
-- copy_paste: {'NONE': 97, 'RED': 2, 'ORANGE': 1}
+- copy_paste: {'NONE': 95, 'GREY': 2, 'RED': 2, 'ORANGE': 1}
 
 Known issues matched: {'ct-031': 'gn-001', 'rf-010': 'gn-003', 'ct-403': 'gn-004', 'rf-009': 'gn-005'}
 
@@ -948,3 +948,8 @@ Known issues matched: {'ct-031': 'gn-001', 'rf-010': 'gn-003', 'ct-403': 'gn-004
 - p.1148: "The corresponding volume of waste water generated is estimated at 60 MLD."
 - Why: The same figures for water demand and sewerage generation appear in both the township chapter and the executive summary, but the report does not clarify whether they refer to the same area or if the summary is citing the township data. No explanation for the identical numbers is provided.
 - Ultra's answers: {'same_subject': 'unclear', 'same_place': None, 'same_scope': None, 'incompatible': None, 'explained': False}
+
+## Excluded copied-text matches (2, GREY: self-match: same report published elsewhere)
+
+- p.1075: https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 13 words)
+- p.1076: https://dstpcc.andamannicobar.gov.in/admin-pannel/whatsnew/145-COMPILATION%20OF%20THE%20PROCEEDING%20OF%20PUBLIC%20HEARING.pdf (self-match: same report published elsewhere (one of this report's paper-trail documents); longest run 13 words)

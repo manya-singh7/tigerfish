@@ -14,6 +14,14 @@ is mostly deterministic so results are reproducible and cheap.
                            DIFFERENT place
                      ORANGE near-identical description, place names changed
                      NONE  generic text, or the same project / coverage of it
+                     GREY  self-match: the matched document is this report's own (decided
+                           before the other grades): one of its paper-trail documents, or a
+                           document on an official / lender / proponent portal (SELF_MATCH_PORTALS,
+                           plus the report's own official sites from its paper trail) whose URL,
+                           title or text names the project (proposal or project number, or the
+                           project name, as paper_trail.names_project reads them). A news or
+                           other third-party page naming the project is graded normally.
+                           Never a flag; listed under "Excluded matches" with the URL.
    borrowed_text     INFO (own section, never RED/ORANGE): >= BORROWED_RUN verbatim
                      words from generic external guidance, with no citation of that
                      source (domain name or title) anywhere on our page
@@ -32,7 +40,7 @@ import os
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urldefrag, urlparse
 
 from dotenv import load_dotenv
 
@@ -57,6 +65,18 @@ MAX_HIT_CHARS = 200_000       # extracted page text kept per hit
 HUNT_QUERIES = 4              # species source hunt: searches per table
 HUNT_NAMES_PER_QUERY = 3
 NEUTRAL = "Text closely matches {url}, which describes {place}. Verify."
+SELF_MATCH = "self-match: same report published elsewhere"
+# Portals where a report's own copy (or its executive summary) is officially disclosed. A
+# matched document on one of these hosts (the domain or any subdomain) that names the project
+# is a self-match. Extend here: e.g. a state pollution control board that is not on gov.in /
+# nic.in, or another lender. A report's own official sites (the paper trail's "sites" and
+# "official_extra", e.g. the proponent's site) count too, read per report, never listed here.
+SELF_MATCH_PORTALS = (
+    "gov.in",        # central and state government, incl. most state PCBs (tnpcb.gov.in) and moef.gov.in
+    "nic.in",        # NIC-hosted sites: parivesh.nic.in, environmentclearance.nic.in, district sites
+    "adb.org",       # Asian Development Bank project disclosures
+    "worldbank.org",  # World Bank project documents
+)
 
 # This report's own copies and coverage of it: never evidence of copying.
 EXCLUDE_DOMAINS = ["scroll.in", "environmentclearance.nic.in", "parivesh.nic.in",
@@ -342,8 +362,72 @@ def same_project(url, text):
     return any(name.lower() in low for name in SITE_NAMES)
 
 
-def grade_hit(passage, hit_text, ov, is_same_project, species_names=()):
-    """(grade or None, why). None = not a match at all."""
+def _url_key(url):
+    return urldefrag(unquote(str(url or ""))).url.strip().rstrip("/").lower()
+
+
+def own_documents(report_id):
+    """{"ident", "urls"} for a report: its identity (proposal / project numbers, name terms,
+    all read from the report itself) and its paper-trail document URLs, from
+    results/paper_trail_<report_id>.json. None if the report has no paper trail."""
+    path = ROOT / "results" / f"paper_trail_{report_id}.json"
+    if not path.exists():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    ident = data.get("identity") or {}
+    if not ident.get("name_groups"):
+        return None
+    portals = tuple(dict.fromkeys([*SELF_MATCH_PORTALS, *(ident.get("sites") or []),
+                                   *(ident.get("official_extra") or [])]))
+    return {"ident": ident, "portals": portals,
+            "urls": {_url_key(d["url"]) for d in data.get("documents", []) if d.get("url")}}
+
+
+def on_portal(url, portals):
+    """True if the URL's host is one of the portals or a subdomain of one."""
+    h = (urlparse(str(url or "")).hostname or "").lower().removeprefix("www.")
+    return any(h == d or h.endswith("." + d) for d in portals)
+
+
+def own_for_pdf(pdf_stem):
+    """own_documents for the report read from data/eias/<pdf_stem>.pdf, or None."""
+    from tigerfish import paper_trail      # imports this module: import here, not at the top
+    rid = next((r for r, prof in paper_trail.PROFILES.items() if prof.get("pages") == pdf_stem),
+               None)
+    return own_documents(rid) if rid else None
+
+
+def self_match(url, title, text, own):
+    """Why the matched document is this report's own (same project), or None.
+
+    own: from own_documents. A paper-trail document; or a document on an official / lender /
+    proponent portal whose URL, title or text (checked in that order) names the proposal /
+    project number or the project name. Any other page (news, blogs, petitions, court records
+    on third-party sites) is not a self-match, even if it names the project."""
+    if not own:
+        return None
+    from tigerfish import paper_trail
+    if _url_key(url) in own["urls"]:
+        return "one of this report's paper-trail documents"
+    if not on_portal(url, own.get("portals") or SELF_MATCH_PORTALS):
+        return None
+    for where, s in (("URL", unquote(str(url or ""))), ("title", title or ""), ("text", text or "")):
+        how, quote = paper_trail.names_project(s, own["ident"])
+        if how:
+            quote = claims_mod.normalize(quote or "")
+            short = quote if len(quote) <= 160 else quote[:157] + "..."
+            return (f"official portal, {how} in its {where}"
+                    + (f': "{short}"' if where == "text" and short else ""))
+    return None
+
+
+def grade_hit(passage, hit_text, ov, is_same_project, species_names=(), self_reason=None):
+    """(grade or None, why). None = not a match at all.
+
+    self_reason (from self_match): the document is this report's own, so a real match is
+    GREY (a self-match, never a flag), decided before the other grades."""
+    if self_reason and (ov["longest_run"] >= MIN_RUN or ov["ngram"] >= MIN_NGRAM):
+        return "GREY", f"{SELF_MATCH} ({self_reason})"
     if is_same_project:
         return "NONE", "same project or coverage of it"
     if ov["longest_run"] < MIN_RUN and ov["ngram"] < MIN_NGRAM:
@@ -418,10 +502,11 @@ def borrowed_text(passage, page_text, hit, run_words):
                         f"Consider citing it.")}
 
 
-def check_passage(passage, budget, species_names=(), page_text=None):
+def check_passage(passage, budget, species_names=(), page_text=None, own=None):
     """Search, extract, score and grade one passage. Returns graded hits and borrowed text.
 
     page_text (the passage's full page) is needed for the borrowed-text citation check.
+    own (own_documents): this report's identity and paper trail, for the self-match rule.
     """
     phrase = distinctive_phrase(passage["text"])
     results = search(f'"{phrase}"', budget).get("results", [])
@@ -432,7 +517,8 @@ def check_passage(passage, budget, species_names=(), page_text=None):
         url = r["url"]
         text = texts.get(url) or r.get("content", "")
         ov = overlap(passage["text"], text)
-        grade, why = grade_hit(passage["text"], text, ov, same_project(url, text), species_names)
+        grade, why = grade_hit(passage["text"], text, ov, same_project(url, text), species_names,
+                               self_match(url, r.get("title"), text, own))
         if grade is None:
             continue
         hit = {"url": url, "title": r.get("title"), "grade": grade, "why": why,
@@ -460,15 +546,32 @@ def flagged_hits(result):
     return (hits[0]["grade"] if hits else None), hits
 
 
-def check_passages(passages, budget, species_names=(), pages=None):
+def excluded_hits(result):
+    """GREY self-matches for one passage (this report's own document), longest run first."""
+    return sorted((h for h in result["hits"] if h["grade"] == "GREY"),
+                  key=lambda h: -h["longest_run"])
+
+
+def excluded_matches(results):
+    """One row per GREY self-match over all passages: [{"page", "quote", "url", "title",
+    "grade", "label", "why", "longest_run", "ngram"}]. Shown, never hidden, never a flag."""
+    return [{"page": r["page"], "quote": r["passage"], "url": h["url"], "title": h["title"],
+             "grade": "GREY", "label": SELF_MATCH, "why": h["why"],
+             "longest_run": h["longest_run"], "ngram": h["ngram"]}
+            for r in results for h in excluded_hits(r)]
+
+
+def check_passages(passages, budget, species_names=(), pages=None, own=None):
     """Run check_passage over all passages; stops cleanly at the credit cap.
 
     pages: {page number: text}, for the borrowed-text citation check.
+    own (own_documents): this report's identity and paper trail, for the self-match rule.
     """
     out, stopped = [], None
     for p in passages:
         try:
-            out.append(check_passage(p, budget, species_names, (pages or {}).get(p["page"])))
+            out.append(check_passage(p, budget, species_names, (pages or {}).get(p["page"]),
+                                     own))
         except CreditCapReached as e:
             stopped = str(e)
             log.warning(stopped)

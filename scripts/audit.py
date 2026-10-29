@@ -378,7 +378,8 @@ def run_audit(args, kept, per):
                                              max_passages=previous["copy_passages"], use_llm=False)
     else:
         passages = copycheck.select_passages(found, texts, max_passages=args.top_passages)
-    copy, copy_stopped = copycheck.check_passages(passages, budget, pages=texts)
+    copy, copy_stopped = copycheck.check_passages(passages, budget, pages=texts,
+                                                  own=copycheck.own_for_pdf(Path(args.pdf).stem))
     stage("copy-paste", t0, c0)
 
     report = build_report(args, name, kept, found, cands, findings, con_run, copy, budget,
@@ -484,7 +485,9 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
     for r in copy:   # one row per passage; matching documents listed under it
         grade, hits = copycheck.flagged_hits(r)
         row = by_check.setdefault("copy_paste", {})
-        row[grade or "NONE"] = row.get(grade or "NONE", 0) + 1
+        # a passage whose only real match is this report's own document counts as GREY
+        best = grade or ("GREY" if copycheck.excluded_hits(r) else "NONE")
+        row[best] = row.get(best, 0) + 1
         if grade:
             copy_rows.append({"id": f"cp-p{r['page']}-{len(copy_rows) + 1}",
                               "grade": grade, "type": "copy_paste", "pages": [r["page"]],
@@ -505,6 +508,7 @@ def build_report(args, name, kept, found, cands, findings, con_run, copy, budget
         "triage_answers": con_run.get("triage"), "verdicts": con_run.get("verdicts"),
         "verdicts_failed": con_run.get("failed"), "stopped": con_run.get("stopped"),
         "copy_passages": len(copy), "copy_stopped": copy_stopped,
+        "copy_excluded": copycheck.excluded_matches(copy),
         "copy_passage_list": [{"page": r["page"], "text": r["passage"],
                                "claim_ids": r["claim_ids"]} for r in copy],
         "pairing": {k: v for k, v in pairing.last_stats.items() if k != "dropped_groups"},
@@ -559,6 +563,12 @@ def report_md(r):
         if f.get("answers"):
             lines.append(f"- Ultra's answers: {f['answers']}")
         lines += [f"- Match: {u}" for u in f.get("urls") or []] + [""]
+    excluded = r.get("copy_excluded") or []
+    if excluded:   # GREY self-matches: listed with the URL, never a flag
+        lines += [f"## Excluded copied-text matches ({len(excluded)}, GREY: "
+                  f"{copycheck.SELF_MATCH})", ""]
+        lines += [f"- p.{e['page']}: {e['url']} ({e['why']}; longest run {e['longest_run']} "
+                  f"words)" for e in excluded] + [""]
     a = r.get("triage_audit")
     if a:
         lines += ["## Triage audit", "",

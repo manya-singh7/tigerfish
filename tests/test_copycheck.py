@@ -184,6 +184,109 @@ def test_same_project_detection():
     assert not cc.same_project("https://x.org", "An EIA for a port in Kutch")
 
 
+
+# ---------- self-match: this report's own document (GREY, never a flag) ----------
+
+KA_OWN = {"ident": {"name_groups": [["karnataka rural road"], ["improvement project", "krrip", "59160"]],
+                    "proposals": ["59160-001"], "number_label": "project number"},
+          "urls": {cc._url_key("https://www.adb.org/projects/59160-001/main")}}
+CUD_OWN = {"ident": {"name_groups": [["cuddalore port"], ["expansion", "mahathi", "mcpmpl"]],
+                     "proposals": ["IA/TN/INFRA1/564208/2026"]},
+           "urls": {cc._url_key("https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf")}}
+
+
+def test_self_match_paper_trail_or_official_portal_naming_the_project():
+    adb = "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+    assert "project number in its URL" in cc.self_match(adb, None, "", KA_OWN)
+    assert "paper-trail" in cc.self_match("https://www.adb.org/projects/59160-001/main/", None, "", KA_OWN)
+    assert "paper-trail" in cc.self_match(
+        "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf", None, "", CUD_OWN)
+    assert "title" in cc.self_match("https://www.tnpcb.gov.in/PDF/other.pdf",
+                                    "Executive summary: Expansion of Cuddalore Port", "", CUD_OWN)
+    assert "text" in cc.self_match("https://parivesh.nic.in/a.pdf", "Report",
+                                   "Proposal no. IA/TN/INFRA1/564208/2026 for the port.", CUD_OWN)
+    assert cc.self_match("https://documents.worldbank.org/x.pdf", "Karnataka Rural Roads "
+                         "Improvement Project", "", KA_OWN)
+    # an official portal that does not name the project is not a self-match
+    assert cc.self_match("https://moef.gov.in/x.pdf", "Coastal guidelines", "Ports in general.",
+                         CUD_OWN) is None
+
+
+def test_portal_matching_is_by_host():
+    assert cc.on_portal("https://www.tnpcb.gov.in/a.pdf", cc.SELF_MATCH_PORTALS)
+    assert cc.on_portal("https://adb.org/a", cc.SELF_MATCH_PORTALS)
+    assert not cc.on_portal("https://notgov.in.example.com/a", cc.SELF_MATCH_PORTALS)
+    assert not cc.on_portal("https://example.com/gov.in/a.pdf", cc.SELF_MATCH_PORTALS)
+    # a report's own official sites (paper-trail identity) extend the list
+    assert cc.on_portal("https://krrda.example.org/a", ("krrda.example.org",))
+
+
+NEWS = ("https://www.hindustantimes.com/india-news/public-hearing-on-january-27-for-great-"
+        "nicobar-development-project-101640943466176.html")
+
+
+def test_news_page_naming_the_project_is_graded_normally_not_self_match():
+    """Identical text on a news page that names the project: normal rules, never GREY."""
+    own = {"ident": KA_OWN["ident"], "urls": set()}
+    title = "Karnataka Rural Roads Improvement Project (59160-001) explained"
+    text = "Karnataka Rural Roads Improvement Project 59160-001. " + OTHER_PLACE
+    reason = cc.self_match(NEWS, title, text, own)
+    assert reason is None
+    ov = cc.overlap(SITE, text)
+    assert cc.grade_hit(SITE, text, ov, False, self_reason=reason) ==         cc.grade_hit(SITE, text, ov, False)                      # exactly the rules without it
+    assert cc.grade_hit(SITE, text, ov, False, self_reason=reason)[0] == "RED"
+
+
+def test_self_match_none_for_other_documents():
+    # same district, different document: not this report
+    assert cc.self_match("https://cuddalore.nic.in/fisheries", "Fisheries | Cuddalore District",
+                         "Fish landings in Cuddalore district were 235 tonnes.", CUD_OWN) is None
+    assert cc.self_match("https://x.org", "Road EIA", "A road project in Kutch.", KA_OWN) is None
+    # a blog naming the project in its title and text: not a self-match
+    assert cc.self_match("https://blog.example.com/krrip", "Karnataka Rural Roads Improvement "
+                         "Project", "the 59160-001 loan", KA_OWN) is None
+    assert cc.self_match("https://x.org", "t", "text", None) is None       # no paper trail
+
+
+def test_grade_grey_for_self_match_before_red():
+    ov = cc.overlap(SITE, SITE)
+    grade, why = cc.grade_hit(SITE, SITE, ov, is_same_project=False,
+                              self_reason="one of this report's paper-trail documents")
+    assert grade == "GREY" and why.startswith(cc.SELF_MATCH)
+    # without the self-match the same text is RED (the other rules are unchanged)
+    assert cc.grade_hit(SITE, OTHER_PLACE, cc.overlap(SITE, OTHER_PLACE), False)[0] == "RED"
+    # a self-match with no real overlap is not a match at all
+    text = "Rainfall data for Rajasthan."
+    assert cc.grade_hit(SITE, text, cc.overlap(SITE, text), False, self_reason="x")[0] is None
+
+
+def test_self_matches_listed_not_flagged(monkeypatch):
+    own_url = "https://www.adb.org/sites/default/files/project-documents/59160/59160-001-eia-1164971-en.pdf"
+    other = "https://example.org/kutch.pdf"
+    monkeypatch.setattr(cc, "search", lambda q, b: {"results": [
+        {"url": own_url, "title": "Karnataka Rural Roads Improvement Project Part 1 of 4", "content": SITE},
+        {"url": other, "title": "Kutch baseline", "content": OTHER_PLACE}]})
+    monkeypatch.setattr(cc, "extract", lambda urls, b: {})
+    monkeypatch.setattr(cc, "describe_place", lambda url, text: "Kutch, Gujarat")
+    r = cc.check_passage({"page": 17, "text": SITE, "claim_ids": []}, cc.Budget(0), own=KA_OWN)
+    grade, hits = cc.flagged_hits(r)
+    assert grade == "RED" and [h["url"] for h in hits] == [other]     # the own copy is not a flag
+    ex = cc.excluded_matches([r])
+    assert len(ex) == 1 and ex[0]["url"] == own_url and ex[0]["grade"] == "GREY"
+    assert ex[0]["label"] == cc.SELF_MATCH and ex[0]["page"] == 17
+
+
+def test_own_documents_from_paper_trail(tmp_path, monkeypatch):
+    (tmp_path / "results").mkdir()
+    (tmp_path / "results" / "paper_trail_r1.json").write_text(json.dumps({
+        "identity": KA_OWN["ident"], "documents": [{"url": "https://www.adb.org/projects/59160-001/main"}]}))
+    monkeypatch.setattr(cc, "ROOT", tmp_path)
+    own = cc.own_documents("r1")
+    assert own["ident"]["proposals"] == ["59160-001"] and own["urls"] == KA_OWN["urls"]
+    assert own["portals"][:len(cc.SELF_MATCH_PORTALS)] == cc.SELF_MATCH_PORTALS
+    assert cc.own_documents("missing") is None
+
+
 # ---------- Tavily cache and credit cap ----------
 
 class FakeTavily:

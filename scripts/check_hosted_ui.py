@@ -6,7 +6,8 @@ downloads, letter-language gating, public record with the merged paper trail (on
 documents found with their Tavily tag, who to write to), ToR promises (granted and proposed),
 knowable-at-the-time line, species photos, cost card and efficiency line, every tab;
 Indira Point (no document guessed); Cuddalore (audit status from the saved audit, Tamil letter,
-documents, TNPCB contact); the back link; no exceptions.
+documents, TNPCB contact); copied-text self-matches in a collapsed "Excluded matches" list
+(Cuddalore, Karnataka); the back link; no exceptions.
 
 Start the app first, with no keys and the sample quick checks from tests/fixtures:
   set TIGERFISH_HOSTED=1 && set NEBIUS_API_KEY= && set TAVILY_API_KEY= &&
@@ -14,6 +15,7 @@ Start the app first, with no keys and the sample quick checks from tests/fixture
   streamlit run app.py --server.headless true --server.port 8631
 Then:  python scripts/check_hosted_ui.py http://localhost:8631 shots/   (needs requirements-dev.txt)
 """
+import json
 import os
 import sys
 from pathlib import Path
@@ -43,6 +45,23 @@ def idle(page, timeout=120_000):
     page.wait_for_function("""() => !document.querySelector('[data-testid="stStatusWidget"]')
         && document.querySelectorAll('[data-stale="true"]').length === 0""", timeout=timeout)
     page.wait_for_timeout(500)
+
+
+def excluded_matches(page, name, report_id):
+    """GREY copied-text self-matches: a collapsed "Excluded matches (N)" list with the URLs."""
+    rows = json.loads((ROOT_RESULTS / f"{report_id}.json").read_text(encoding="utf-8")).get(
+        "excluded_matches") or []
+    exp = page.locator('[data-testid="stExpander"]').filter(has_text=f"Excluded matches ({len(rows)})")
+    ok(f"{name}: 'Excluded matches ({len(rows)})' list", exp.count() == 1 if rows else exp.count() == 0)
+    if not rows:
+        return
+    url = exp.locator(".tf-excluded code").first
+    ok(f"{name}: excluded matches collapsed", not url.is_visible())
+    exp.locator("summary").first.click()
+    page.wait_for_timeout(800)
+    ok(f"{name}: excluded match shows GREY self-match and URL",
+       url.is_visible() and rows[0]["url"] in url.inner_text()
+       and exp.get_by_text("self-match: same report published elsewhere").count() > 0)
 
 
 def no_exception(page, where):
@@ -283,6 +302,7 @@ with sync_playwright() as p:
         pass
     ok("Cuddalore: Tamil letter option", radio.get_by_text("Tamil", exact=True).count() > 0
        and radio.get_by_text("English + Tamil", exact=True).count() > 0)
+    excluded_matches(page, "Cuddalore", "cuddalore_port_2026_draft")
     page.screenshot(path=str(OUT / "cuddalore.png"))
     # Cuddalore paper trail: documents found, Tamil Nadu board as the hearing contact
     page.get_by_role("tab", name="Public record").click()
@@ -311,6 +331,7 @@ with sync_playwright() as p:
         except Exception:
             pass
         ok("Karnataka: Kannada letter option", radio.get_by_text("Kannada", exact=True).count() > 0)
+        excluded_matches(page, "Karnataka", "karnataka_rural_roads_2026_adb")
         page.get_by_role("tab", name="Review queue").click()
         page.wait_for_timeout(2000)
         ok("Karnataka: its own review queue", page.get_by_text("Review queue: Karnataka").count() > 0)

@@ -427,76 +427,6 @@
       ]
     },
     {
-      "id": "cp-p103-3",
-      "check": "copy_paste",
-      "check_name": "Copied text",
-      "grade": "RED",
-      "title": "Page 103 text found in another document",
-      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
-      "quotes": [
-        {
-          "page": 103,
-          "text": "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51"
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Matching document",
-          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
-          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
-        },
-        {
-          "label": "Matching text",
-          "value": "r Area 12.31 8.43 Mahanthi Cuddalore port and Maritime Private Limited (MCPMPL) C25014 Executive Summary DL004, Rev.0 6 S. No. Category Area in Ac. % 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail sliding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipb"
-        },
-        {
-          "label": "Overlap",
-          "value": "longest run 48 words, 8-gram overlap 82%"
-        }
-      ],
-      "why": "site-specific data also in the other document (numbers [0.01, 0.02, 0.47, 0.69, 0.79, 1.16, 1.46, 2.52, 3.68, 4.8, 5.23, 5.45, 5.67, 7.01, 7.58, 7.64, 7.96, 8.28, 8.43, 10.0, 10.41, 11.0, 11.07, 11.71, 12.0, 12.31, 12.4, 13.0, 14.0, 15.0, 15.2, 17.1, 18.14, 23.51, 34.29, 93.58, 111.72]; species [])",
-      "clear": "A citation for the matching text, or site-specific data for this project.",
-      "known_issue": null,
-      "images": [
-        "pages/cuddalore_port_2026_draft_full_p0103.png"
-      ]
-    },
-    {
-      "id": "cp-p40-1",
-      "check": "copy_paste",
-      "check_name": "Copied text",
-      "grade": "RED",
-      "title": "Page 40 text found in another document",
-      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
-      "quotes": [
-        {
-          "page": 40,
-          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient."
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Matching document",
-          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
-          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
-        },
-        {
-          "label": "Matching text",
-          "value": "nd remaining 3 MCM for beach nourishment towards north side of north breakwater and south side of south breakwater) 16 Maintenance Dredge disposal M. Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non-hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient. Mahanthi Cuddalore port and Maritime Private Limited (MCPMPL) C25014 Executive Summary DL004, Rev.0 5 S. No Description Unit Approved Proposed Total"
-        },
-        {
-          "label": "Overlap",
-          "value": "longest run 130 words, 8-gram overlap 100%"
-        }
-      ],
-      "why": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
-      "clear": "A citation for the matching text, or site-specific data for this project.",
-      "known_issue": null,
-      "images": [
-        "pages/cuddalore_port_2026_draft_full_p0040.png"
-      ]
-    },
-    {
       "id": "cp-p428-0",
       "check": "copy_paste",
       "check_name": "Copied text",
@@ -529,41 +459,6 @@
       "known_issue": null,
       "images": [
         "pages/cuddalore_port_2026_draft_full_p0428.png"
-      ]
-    },
-    {
-      "id": "cp-p74-2",
-      "check": "copy_paste",
-      "check_name": "Copied text",
-      "grade": "RED",
-      "title": "Page 74 text found in another document",
-      "message": "Text closely matches https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf, which describes Cuddalore district, Tamil Nadu. Verify.",
-      "quotes": [
-        {
-          "page": 74,
-          "text": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcoke, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD is not being consumed yet."
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Matching document",
-          "value": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
-          "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf"
-        },
-        {
-          "label": "Matching text",
-          "value": "nd remaining 3 MCM for beach nourishment towards north side of north breakwater and south side of south breakwater) 16 Maintenance Dredge disposal M. Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non-hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oi"
-        },
-        {
-          "label": "Overlap",
-          "value": "longest run 73 words, 8-gram overlap 96%"
-        }
-      ],
-      "why": "site-specific data also in the other document (numbers [0.0187, 0.237, 17.0, 18.0, 19.0, 48.0, 98.0, 100.0]; species [])",
-      "clear": "A citation for the matching text, or site-specific data for this project.",
-      "known_issue": null,
-      "images": [
-        "pages/cuddalore_port_2026_draft_full_p0074.png"
       ]
     },
     {
@@ -2237,5 +2132,40 @@
       "images": []
     }
   ],
-  "exported_in_s": 16.3
+  "excluded_matches": [
+    {
+      "page": 40,
+      "quote": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcock, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, Slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD will be sufficient.",
+      "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf",
+      "title": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 130,
+      "ngram": 1.0
+    },
+    {
+      "page": 74,
+      "quote": "Cum 0.0187 0.237 0.237 Beach nourishment towards north side of north breakwater and south side of south breakwater 17 Cargo type - Coal, Cement, Fertilizers and Clean Cargo like container s Coal, Cement, Fertilizers, container, Cereals, wood, clean cargo, Liquid cargo such as non- hazardous and Class A, B, C chemicals including Methanol, Ethylene Di Chloride, Sulphuric Acid 98%, Caustic Soda Lye 48%, Linear Alkyl Benzene, Acetic Acid, Palm Fatty Acid Distillate, Glycerine, Ethanol, Petcoke, Bitumen, Low Sulphur Fuel Oil, Marine Gas Oil (NFPA Class II or Class IIIA), Motor Spirit (Class 1A), HSD (Class B Chemical) and Furnace Oil etc., Iron ore, slag and Limestone Change in cargo mix 18 Water requirement KLD 100 - 100 Desalination plant 19 Desalination plant KLD 100 - 100 No change, 100 KLD is not being consumed yet.",
+      "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf",
+      "title": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 73,
+      "ngram": 0.96
+    },
+    {
+      "page": 103,
+      "quote": "Category Area in Ac. % 1 Bulk Storage yard 11.07 7.58 2 Container Area 12.31 8.43 3 Multi Storage Yard 7.96 5.45 4 Liquid Storage Area 8.28 5.67 5 CFS Area 1.46 1.00 6 Transit Shed 7.64 5.23 7 Buildings 1.16 0.79 8 Desalination plant 0.02 0.01 9 Common Utility Area 0.69 0.47 10 Parking Area 3.68 2.52 11 Road 17.1 11.71 12 Rail siding area 7.01 4.80 13 Greenery / Landscaping 15.2 10.41 Total 93.58 14 Future Development area 18.14 12.40 Total Port Backup area 111.72 15 Shipbuilding and Repair area 34.29 23.51",
+      "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMCPMPL2626.pdf",
+      "title": "Expansion of Cuddalore Port, Cuddalore district, Tamil Nadu",
+      "grade": "GREY",
+      "label": "self-match: same report published elsewhere",
+      "why": "self-match: same report published elsewhere (one of this report's paper-trail documents)",
+      "longest_run": 48,
+      "ngram": 0.824
+    }
+  ],
+  "exported_in_s": 20.0
 }
