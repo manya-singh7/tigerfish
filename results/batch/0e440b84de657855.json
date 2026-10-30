@@ -51,6 +51,34 @@
       ],
       "start_date": "2022-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+      "docket_title": "Aditya Roop Singh Chauhan vs. The Ministry of ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 16000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 16000 cum/year and 80000 cum is the total production during the plan"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -64,7 +92,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+      "docket_title": "Aditya Roop Singh Chauhan vs. The Ministry of ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 16000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 16000 cum/year and 80000 cum is the total production during the plan"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -116,6 +173,34 @@
       ],
       "start_date": "2022-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+      "docket_title": "Aditya Roop Singh Chauhan vs. The Ministry of ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 16000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 16000 cum/year and 80000 cum is the total production during the plan"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -163,7 +248,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+      "docket_title": "Aditya Roop Singh Chauhan vs. The Ministry of ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 16000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 16000 cum/year and 80000 cum is the total production during the plan"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:40:41Z",
   "id": "0e440b84de657855",

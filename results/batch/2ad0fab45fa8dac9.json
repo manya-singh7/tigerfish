@@ -1,10 +1,5 @@
 {
   "audit_type": "quick",
-  "baseline_refresh": {
-    "generated_at": "2026-10-29T19:49:29Z",
-    "parser_version": 2,
-    "source_sha256": "2ad0fab45fa8dac946c3fa14aae5516b82d255c30177dcd811deb27d4f7949f7"
-  },
   "batch_checks": {
     "accreditation": {
       "certificate": null,
@@ -23,28 +18,60 @@
     },
     "baseline_season": {
       "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2012-10-26",
       "evidence": [
         {
-          "label": "Method",
-          "value": "explicit fieldwork ranges and calendar months; no model call"
+          "label": "Start",
+          "value": "2012-10-25"
         },
         {
-          "label": "Reference",
-          "value": "Three months is a screening reference, not a verified project requirement."
+          "label": "End",
+          "value": "2012-10-26"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
         }
       ],
-      "grade": "GREY",
-      "message": "A baseline fieldwork period could not be established from readable text; verify.",
-      "periods": [],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
       "quotes": [
         {
-          "label": "Baseline/monitoring context",
-          "page": 2,
-          "text": "4 Baseline Data 5 2"
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell"
         }
       ],
-      "reference_months": 3,
-      "requirement_verified": false
+      "start_date": "2012-10-25"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/faqs",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/faqs",
+          "value": "https://www.greentribunal.gov.in/faqs"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -59,7 +86,65 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2012-10-26",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2012-10-25"
+        },
+        {
+          "label": "End",
+          "value": "2012-10-26"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell"
+        }
+      ],
+      "start_date": "2012-10-25"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/faqs",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/faqs",
+          "value": "https://www.greentribunal.gov.in/faqs"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -78,28 +163,60 @@
     },
     "baseline_season": {
       "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2012-10-26",
       "evidence": [
         {
-          "label": "Method",
-          "value": "explicit fieldwork ranges and calendar months; no model call"
+          "label": "Start",
+          "value": "2012-10-25"
         },
         {
-          "label": "Reference",
-          "value": "Three months is a screening reference, not a verified project requirement."
+          "label": "End",
+          "value": "2012-10-26"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
         }
       ],
-      "grade": "GREY",
-      "message": "A baseline fieldwork period could not be established from readable text; verify.",
-      "periods": [],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
       "quotes": [
         {
-          "label": "Baseline/monitoring context",
-          "page": 2,
-          "text": "4 Baseline Data 5 2"
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell"
         }
       ],
-      "reference_months": 3,
-      "requirement_verified": false
+      "start_date": "2012-10-25"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/faqs",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/faqs",
+          "value": "https://www.greentribunal.gov.in/faqs"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -148,7 +265,65 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2012-10-26",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2012-10-25"
+        },
+        {
+          "label": "End",
+          "value": "2012-10-26"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell"
+        }
+      ],
+      "start_date": "2012-10-25"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/faqs",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/faqs",
+          "value": "https://www.greentribunal.gov.in/faqs"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:08:11Z",
   "id": "2ad0fab45fa8dac9",

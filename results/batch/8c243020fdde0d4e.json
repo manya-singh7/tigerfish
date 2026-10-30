@@ -83,6 +83,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -120,7 +148,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -199,6 +256,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -270,7 +355,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T10:59:08Z",
   "id": "8c243020fdde0d4e",

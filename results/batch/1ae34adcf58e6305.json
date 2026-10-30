@@ -1,10 +1,5 @@
 {
   "audit_type": "quick",
-  "baseline_refresh": {
-    "generated_at": "2026-10-29T19:49:29Z",
-    "parser_version": 2,
-    "source_sha256": "1ae34adcf58e6305bb657858dec60177c6007158b30ffc318beea931a39bafb6"
-  },
   "batch_checks": {
     "accreditation": {
       "certificate": "NABET/EIA/24-27/RA0356",
@@ -39,55 +34,60 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3,
-      "end_date": "2025-12-01",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
       "evidence": [
         {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
           "label": "Method",
-          "value": "explicit fieldwork ranges and calendar months; no model call"
-        },
-        {
-          "label": "Reference",
-          "value": "Three months is a screening reference, not a verified project requirement."
+          "value": "date-range regex; no model call"
         }
       ],
-      "grade": "OK",
-      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
-      "periods": [
-        {
-          "duration_months": 3,
-          "end_date": "2025-12-01",
-          "page": 1,
-          "precision": "month",
-          "quote": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026",
-          "start_date": "2025-10-01",
-          "topic": "baseline"
-        },
-        {
-          "duration_months": 3,
-          "end_date": "2025-12-01",
-          "page": 15,
-          "precision": "month",
-          "quote": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi",
-          "start_date": "2025-10-01",
-          "topic": "baseline"
-        }
-      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
       "quotes": [
         {
-          "label": "baseline: stated period",
+          "label": "Baseline/monitoring period",
           "page": 1,
-          "text": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
-        },
-        {
-          "label": "baseline: stated period",
-          "page": 15,
-          "text": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi"
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
         }
       ],
-      "reference_months": 3,
-      "requirement_verified": false,
-      "start_date": "2025-10-01"
+      "start_date": "2025-12-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incor",
+      "proposal_no": "SIA/MH/IND1/564190/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -102,7 +102,65 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incor",
+      "proposal_no": "SIA/MH/IND1/564190/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/24-27/RA0356",
@@ -137,55 +195,60 @@
     },
     "baseline_season": {
       "check": "baseline_season",
-      "duration_months": 3,
-      "end_date": "2025-12-01",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
       "evidence": [
         {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
           "label": "Method",
-          "value": "explicit fieldwork ranges and calendar months; no model call"
-        },
-        {
-          "label": "Reference",
-          "value": "Three months is a screening reference, not a verified project requirement."
+          "value": "date-range regex; no model call"
         }
       ],
-      "grade": "OK",
-      "message": "The extracted baseline periods meet the three-month screening reference. This does not establish compliance or complete study coverage.",
-      "periods": [
-        {
-          "duration_months": 3,
-          "end_date": "2025-12-01",
-          "page": 1,
-          "precision": "month",
-          "quote": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026",
-          "start_date": "2025-10-01",
-          "topic": "baseline"
-        },
-        {
-          "duration_months": 3,
-          "end_date": "2025-12-01",
-          "page": 15,
-          "precision": "month",
-          "quote": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi",
-          "start_date": "2025-10-01",
-          "topic": "baseline"
-        }
-      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
       "quotes": [
         {
-          "label": "baseline: stated period",
+          "label": "Baseline/monitoring period",
           "page": 1,
-          "text": "Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
-        },
-        {
-          "label": "baseline: stated period",
-          "page": 15,
-          "text": "Baseline Environmental Conditions The field studies conducted from October to December 2025 for the Environmental Impact Assessment (EIA) study provided baseline data for the present environmental scenario withi"
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
         }
       ],
-      "reference_months": 3,
-      "requirement_verified": false,
-      "start_date": "2025-10-01"
+      "start_date": "2025-12-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incor",
+      "proposal_no": "SIA/MH/IND1/564190/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -234,7 +297,65 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incor",
+      "proposal_no": "SIA/MH/IND1/564190/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:06:14Z",
   "id": "1ae34adcf58e6305",
@@ -252,7 +373,7 @@
   },
   "source": {
     "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/MH/IND1/564190/2026",
     "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf"
   },
   "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-03/Executive_Summery_GPI_English.pdf",

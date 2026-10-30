@@ -56,6 +56,34 @@
       ],
       "start_date": "2025-05-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+      "docket_title": "Subhas Datta vs. State of West Bengal & Ors. 2026 NGTeJ 430",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "(2 Proposed quarry + 2 Existing quarries)"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -98,6 +126,34 @@
         }
       ],
       "start_date": "2025-05-01"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+      "docket_title": "Subhas Datta vs. State of West Bengal & Ors. 2026 NGTeJ 430",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "(2 Proposed quarry + 2 Existing quarries)"
+        }
+      ]
     }
   ],
   "checks": {
@@ -155,6 +211,34 @@
         }
       ],
       "start_date": "2025-05-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+      "docket_title": "Subhas Datta vs. State of West Bengal & Ors. 2026 NGTeJ 430",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "(2 Proposed quarry + 2 Existing quarries)"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -232,6 +316,34 @@
         }
       ],
       "start_date": "2025-05-01"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+      "docket_title": "Subhas Datta vs. State of West Bengal & Ors. 2026 NGTeJ 430",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "(2 Proposed quarry + 2 Existing quarries)"
+        }
+      ]
     }
   ],
   "format": "tigerfish-report/1",

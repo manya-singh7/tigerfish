@@ -75,6 +75,34 @@
       "requirement_verified": false,
       "start_date": "2025-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -88,7 +116,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA 0397",
@@ -159,6 +216,34 @@
       "requirement_verified": false,
       "start_date": "2025-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -206,7 +291,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T10:54:45Z",
   "id": "43b4deb950576f5b",

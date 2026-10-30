@@ -51,6 +51,34 @@
       ],
       "start_date": "2022-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+      "docket_title": "2026 NGTeJ 163",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 12000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 12000 cum/year and 60000 cum is the total production during the"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -88,7 +116,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+      "docket_title": "2026 NGTeJ 163",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 12000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 12000 cum/year and 60000 cum is the total production during the"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -139,6 +196,34 @@
         }
       ],
       "start_date": "2022-03-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+      "docket_title": "2026 NGTeJ 163",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 12000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 12000 cum/year and 60000 cum is the total production during the"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -211,7 +296,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+      "docket_title": "2026 NGTeJ 163",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 12000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 12000 cum/year and 60000 cum is the total production during the"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:42:10Z",
   "id": "f2388b0ccd99c9df",

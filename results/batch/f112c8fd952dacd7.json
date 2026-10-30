@@ -52,6 +52,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -65,7 +93,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -112,6 +169,34 @@
       ],
       "reference_months": 3,
       "requirement_verified": false
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -160,7 +245,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:08:54Z",
   "id": "f112c8fd952dacd7",

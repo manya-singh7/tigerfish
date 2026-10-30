@@ -41,6 +41,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment-compensation-guidelines-by-CPCB.pdf"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -54,7 +82,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment-compensation-guidelines-by-CPCB.pdf"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -93,6 +150,34 @@
           "label": "Baseline/monitoring period",
           "page": 84,
           "text": "forthwith monitor the compliance of the rules by reviewing the need for action in all the states. (iii) The Central Pollution Control Board may forthwith constitute a monitoring Committee for the purpose it may appoint a Nodal Officer exclusively to oversee the compliance of the rules. The Member Secretary CPCB may act as a Nodal Officer till a substitute is found. The action taken must be placed on the website of the Central Pollution Control Board within 3 months from today. Compliance report be filed before this Tribunal on or before 30th November, 2018, which will be treated as a separate application.” 83"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment-compensation-guidelines-by-CPCB.pdf"
         }
       ]
     },
@@ -143,7 +228,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment-compensation-guidelines-by-CPCB.pdf"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:59:13Z",
   "id": "9cbd29a409d09399",

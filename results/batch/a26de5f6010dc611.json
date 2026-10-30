@@ -34,6 +34,34 @@
       "message": "A baseline or monitoring period could not be located in the readable text; verify.",
       "quotes": []
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: cpr fcr'crR \"\"It! fcp-m ~ mTfT 1"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -47,7 +75,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: cpr fcr'crR \"\"It! fcp-m ~ mTfT 1"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -81,6 +138,34 @@
       "grade": "GREY",
       "message": "A baseline or monitoring period could not be located in the readable text; verify.",
       "quotes": []
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: cpr fcr'crR \"\"It! fcp-m ~ mTfT 1"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -129,7 +214,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: cpr fcr'crR \"\"It! fcp-m ~ mTfT 1"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:59:15Z",
   "id": "a26de5f6010dc611",

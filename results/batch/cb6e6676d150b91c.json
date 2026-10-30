@@ -61,6 +61,34 @@
       ],
       "start_date": "2024-03-08"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "25.04:2025",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 25.04:2025"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -134,6 +162,34 @@
         }
       ],
       "start_date": "2024-03-08"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "25.04:2025",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 25.04:2025"
+        }
+      ]
     }
   ],
   "checks": {
@@ -196,6 +252,34 @@
         }
       ],
       "start_date": "2024-03-08"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "25.04:2025",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 25.04:2025"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -304,6 +388,34 @@
         }
       ],
       "start_date": "2024-03-08"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "25.04:2025",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 25.04:2025"
+        }
+      ]
     }
   ],
   "format": "tigerfish-report/1",

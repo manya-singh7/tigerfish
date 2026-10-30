@@ -41,6 +41,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "national competitive bidding for supply, installation, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: national competitive bidding for supply, installation, ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -54,7 +82,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "national competitive bidding for supply, installation, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: national competitive bidding for supply, installation, ..."
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -93,6 +150,34 @@
           "label": "Baseline/monitoring period",
           "page": 41,
           "text": "location of the city to another location, due to some reason – functional or otherwise, Bidder shall shift the same to new locations based on the requirement of sampling. Penalties: During O&M period, in case of any Analyzer/ system failure, penalty will be charged by Authority @ Rs.1,000/- (one thousand) per day per Analyzer after a grace period of seven (7) continuous non-working days. The grace period of seven (7) continuous non-working days shall be given only once per quarter (3 months). For a failure of Data display: JSPCB/panel, a penalty will be charged by SPCB @ Rs. 1,000/- (one thousand) per day after a grace period of five (5) continuous non-working days"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "national competitive bidding for supply, installation, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: national competitive bidding for supply, installation, ..."
         }
       ]
     },
@@ -143,7 +228,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "national competitive bidding for supply, installation, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: national competitive bidding for supply, installation, ..."
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:58:18Z",
   "id": "246cf16334c23b10",

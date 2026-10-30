@@ -52,6 +52,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA Report M/s",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA Report M/s"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -65,7 +93,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA Report M/s",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA Report M/s"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -112,6 +169,34 @@
       ],
       "reference_months": 3,
       "requirement_verified": false
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA Report M/s",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA Report M/s"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -160,7 +245,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA Report M/s",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA Report M/s"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:02:22Z",
   "id": "3a84436e0e972dbf",

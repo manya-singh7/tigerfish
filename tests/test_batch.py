@@ -122,3 +122,37 @@ def test_batch_page_registered_in_nav():
     page_list = pages.build()
     assert "batch" in pages.PAGES
     assert pages.PAGES["batch"] in page_list
+
+
+def test_extract_proposal_and_project_matches_regex():
+    from tigerfish.batch import extract_proposal_and_project
+    pages = [
+        {"page": 1, "text": "EXECUTIVE SUMMARY\nProject: Solar Plant"},
+        {"page": 2, "text": "File No. SIA/MH/IND1/564190/2026 dated 23.01.2026"},
+    ]
+    prop, proj, p, q = extract_proposal_and_project(pages)
+    assert prop == "SIA/MH/IND1/564190/2026"
+    assert p == 2
+    assert "SIA/MH/IND1/564190/2026" in q
+
+
+def test_public_record_check_appends_info_on_court_docket():
+    from tigerfish.batch import public_record_check
+    class MockClient:
+        def search(self, **kwargs):
+            return {
+                "results": [
+                    {"url": "https://www.greentribunal.gov.in/Ejournal/uploads/case-123.pdf",
+                     "title": "National Green Tribunal Order"}
+                ]
+            }
+
+    pages = [{"page": 1, "text": "Application IA/OR/CMIN/579355/2026"}]
+    res = public_record_check(pages, {"project_name": "Test Mine"}, client=MockClient())
+    assert res["check"] == "public_record"
+    assert res["grade"] == "INFO"
+    assert res["message"] == "Prior tribunal docket indexed; verify status."
+    assert res["court_url"] == "https://www.greentribunal.gov.in/Ejournal/uploads/case-123.pdf"
+    assert res["page"] == 1
+    assert res["quotes"][0]["page"] == 1
+    assert any(e.get("url") == res["court_url"] for e in res["evidence"])

@@ -40,6 +40,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+      "docket_title": "Satrughan Meher vs. State of Odisha",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Draft Environmental Impact ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Draft Environmental Impact ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -100,7 +128,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+      "docket_title": "Satrughan Meher vs. State of Odisha",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Draft Environmental Impact ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Draft Environmental Impact ..."
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -138,6 +195,34 @@
           "label": "Baseline/monitoring context",
           "page": 5,
           "text": "Zone - II is most stable and Zone – V is considered to be least stable. In the revision of the seismic zones in the year 2000, the seismic Zone - I have been merged in Zone - II by BIS. Baseline AAQ Environment: Total six AAQM locations were selected depending on physical obstructions and activities in the immediate area, accessibility/availability of utilities and other support facilities in correlation with the defined purpose of the specific monitor and its design. The purpose is also to establish a benchmark, which can form the reference for monitoring in the construction and operation period.  The average concentration of PM10 ranges from 64 to 87 µg/m3  The average concentration of P…"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+      "docket_title": "Satrughan Meher vs. State of Odisha",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Draft Environmental Impact ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Draft Environmental Impact ..."
         }
       ]
     },
@@ -235,7 +320,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+      "docket_title": "Satrughan Meher vs. State of Odisha",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Draft Environmental Impact ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Draft Environmental Impact ..."
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:25:32Z",
   "id": "28523eaf5bd1b04b",

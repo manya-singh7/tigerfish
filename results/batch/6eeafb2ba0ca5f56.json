@@ -51,6 +51,34 @@
       ],
       "start_date": "2024-01-09"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Mediaid Medical Ancillary Services at Khata no. 552",
+      "proposal_no": "SIA/OR/INFRA2/455259/2024",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "- SIA/OR/INFRA2/455259/2024"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -64,7 +92,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Mediaid Medical Ancillary Services at Khata no. 552",
+      "proposal_no": "SIA/OR/INFRA2/455259/2024",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "- SIA/OR/INFRA2/455259/2024"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -116,6 +173,34 @@
       ],
       "start_date": "2024-01-09"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Mediaid Medical Ancillary Services at Khata no. 552",
+      "proposal_no": "SIA/OR/INFRA2/455259/2024",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "- SIA/OR/INFRA2/455259/2024"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -163,7 +248,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Mediaid Medical Ancillary Services at Khata no. 552",
+      "proposal_no": "SIA/OR/INFRA2/455259/2024",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "- SIA/OR/INFRA2/455259/2024"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:31:38Z",
   "id": "6eeafb2ba0ca5f56",
@@ -181,7 +295,7 @@
   },
   "source": {
     "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/OR/INFRA2/455259/2024",
     "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf"
   },
   "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf",

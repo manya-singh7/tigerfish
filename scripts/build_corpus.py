@@ -29,6 +29,7 @@ def main() -> int:
     parser.add_argument("command", choices=("discover", "download", "check", "run"))
     parser.add_argument("--limit", type=int, default=batch.DEFAULT_MAX_REPORTS)
     parser.add_argument("--max-credits", type=int, default=batch.MAX_TAVILY_CREDITS)
+    parser.add_argument("--force", action="store_true", help="force re-running public record check")
     args = parser.parse_args()
 
     # load_dotenv is optional for this script; an explicitly exported key wins.
@@ -52,7 +53,7 @@ def main() -> int:
     elif args.command == "download":
         parser.error("download is resumable through the discover/run command; discovery must use Tavily Map/Crawl")
     else:
-        summary = batch.run_batch(max_reports=args.limit)
+        summary = batch.run_batch(max_reports=args.limit, force=args.force)
 
     print(f"Processed {summary['reports_processed']} reports; flags: {summary['flag_counts']}", flush=True)
     print(f"Wrote {batch.SUMMARY_JSON} and {batch.SUMMARY_MD}")

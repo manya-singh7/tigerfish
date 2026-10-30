@@ -40,6 +40,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 1. One major national daily newspaper. 2. One Regional ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -53,7 +81,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 1. One major national daily newspaper. 2. One Regional ..."
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -91,6 +148,34 @@
           "label": "Baseline/monitoring context",
           "page": 3,
           "text": "M/s Paras Croplife Private Limited, Village Nagla Megha, Tehsil Karnal, Haryana 132001. Copies of executive summary of the project report and EIA study report, submitted by the project proponent are available in the Head Oﬃce of the HSPCB as well as in the following oﬃces, which can be perused during oﬃce hours, on any working day:- 1. Deputy Commissioner, Karnal. 2. Chairman, Zila Parishad, Karnal. 3. Sub Divisional Magistrate, Assandh, Karnal. 4. Joint Director, District Industries Centre, Karnal. 5. Secretary, Municipal Committee, Assandh, Karnal. Notice is hereby given to all concerned to ﬁle suggestions, views, comments and objections, if any, on the above said proposed project, to the"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 1. One major national daily newspaper. 2. One Regional ..."
         }
       ]
     },
@@ -141,7 +226,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 1. One major national daily newspaper. 2. One Regional ..."
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:44:21Z",
   "id": "eb2e8e74a72dd187",

@@ -61,6 +61,34 @@
       ],
       "start_date": "2024-10-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT Adani Power Limited",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT Adani Power Limited (Formerly known as Orissa Thermal Energy Limited)"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -74,7 +102,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT Adani Power Limited",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT Adani Power Limited (Formerly known as Orissa Thermal Energy Limited)"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/26-29/RA 0489",
@@ -136,6 +193,34 @@
       ],
       "start_date": "2024-10-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT Adani Power Limited",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT Adani Power Limited (Formerly known as Orissa Thermal Energy Limited)"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -183,7 +268,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT Adani Power Limited",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT Adani Power Limited (Formerly known as Orissa Thermal Energy Limited)"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:24:26Z",
   "id": "148cd46895015312",

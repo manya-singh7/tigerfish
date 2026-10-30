@@ -56,6 +56,34 @@
       ],
       "start_date": "2019-08-31"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+      "docket_title": "[PDF] before the national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S/o- Padma Charan Sahu"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -69,7 +97,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+      "docket_title": "[PDF] before the national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S/o- Padma Charan Sahu"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/1992/IA0053",
@@ -126,6 +183,34 @@
       ],
       "start_date": "2019-08-31"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+      "docket_title": "[PDF] before the national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S/o- Padma Charan Sahu"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -173,7 +258,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+      "docket_title": "[PDF] before the national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S/o- Padma Charan Sahu"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:21:20Z",
   "id": "01c36ce1c8ac2bfe",

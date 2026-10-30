@@ -40,6 +40,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=223",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=223",
+          "value": "https://www.greentribunal.gov.in/news-update?page=223"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/s. M.P. Mining and Leasing Company No.2",
+      "proposal_no": "SIA/TN/MIN/577692/",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/TN/MIN/577692/"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -53,7 +81,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=223",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=223",
+          "value": "https://www.greentribunal.gov.in/news-update?page=223"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/s. M.P. Mining and Leasing Company No.2",
+      "proposal_no": "SIA/TN/MIN/577692/",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/TN/MIN/577692/"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -91,6 +148,34 @@
           "label": "Baseline/monitoring context",
           "page": 6,
           "text": "0.59.85 32.5 Total 1.84.0 100 % 1.4 Description of the environment 1.4.1 Base line environmental study Collection of base line data is an integral part of the preparation of environmental impact assessment reports. The baseline monitoring study has been carried out during March 2026 – May 2026 to assess the existing environmental scenario in the area. For the purpose of EIA studies, mine lease area was considered as the core zone and area outside the mine lease boundary up to 10km radius from the lease boundary was considered as buffer zone."
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=223",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=223",
+          "value": "https://www.greentribunal.gov.in/news-update?page=223"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/s. M.P. Mining and Leasing Company No.2",
+      "proposal_no": "SIA/TN/MIN/577692/",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/TN/MIN/577692/"
         }
       ]
     },
@@ -141,7 +226,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=223",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=223",
+          "value": "https://www.greentribunal.gov.in/news-update?page=223"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/s. M.P. Mining and Leasing Company No.2",
+      "proposal_no": "SIA/TN/MIN/577692/",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/TN/MIN/577692/"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T02:00:33Z",
   "id": "a41599a4a4f0195f",
@@ -159,7 +273,7 @@
   },
   "source": {
     "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/TN/MIN/577692/",
     "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf"
   },
   "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf",

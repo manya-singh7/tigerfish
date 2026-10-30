@@ -56,6 +56,34 @@
       ],
       "start_date": "2022-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/S SGS MINES & INDUSTRIES PVT. LTD. SADAR BAZAR, CHAIBASA, WEST SINGHBHUM, JHARKH",
+      "proposal_no": "SIA/OR/MIN/73412/2022",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/OR/MIN/73412/2022 and File no"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -69,7 +97,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/S SGS MINES & INDUSTRIES PVT. LTD. SADAR BAZAR, CHAIBASA, WEST SINGHBHUM, JHARKH",
+      "proposal_no": "SIA/OR/MIN/73412/2022",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/OR/MIN/73412/2022 and File no"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/2023/IA0058",
@@ -126,6 +183,34 @@
       ],
       "start_date": "2022-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/S SGS MINES & INDUSTRIES PVT. LTD. SADAR BAZAR, CHAIBASA, WEST SINGHBHUM, JHARKH",
+      "proposal_no": "SIA/OR/MIN/73412/2022",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/OR/MIN/73412/2022 and File no"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -173,7 +258,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/S SGS MINES & INDUSTRIES PVT. LTD. SADAR BAZAR, CHAIBASA, WEST SINGHBHUM, JHARKH",
+      "proposal_no": "SIA/OR/MIN/73412/2022",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/OR/MIN/73412/2022 and File no"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:30:38Z",
   "id": "e81c4bdf3df313e0",
@@ -191,7 +305,7 @@
   },
   "source": {
     "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665815402_2142544721.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/OR/MIN/73412/2022",
     "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665815402_2142544721.pdf"
   },
   "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665815402_2142544721.pdf",

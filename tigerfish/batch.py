@@ -601,6 +601,170 @@ def baseline_check(pages: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
     )
 
 
+
+
+PROPOSAL_NO_RE = re.compile(r'(?:IA|SIA)/[A-Z]{2}/[A-Z0-9/_-]+')
+COURT_DOMAINS = ('greentribunal.gov.in', 'ecourts.gov.in', 'sci.gov.in')
+GENERIC_PROJECT_NAMES = {
+    'executive summary', 'draft eia', 'draft eia report', 'environmental impact assessment',
+    'executive summary (english)', 'executive summary report', 'resubmission',
+    'maharashtra pollution control board', 'the hazardous and other wastes',
+    'the noise pollution regulation and control rules 2000'
+}
+
+
+def _clean_project_name(name: str) -> str:
+    cleaned = _compact(name).strip(' -:#\n\r')
+    if cleaned.lower() in GENERIC_PROJECT_NAMES or cleaned.lower().startswith('executive summary of environmental impact'):
+        return ''
+    cleaned = re.sub(r'^(?:executive summary\s*(?:of|for)?\s*)+', '', cleaned, flags=re.I).strip(' -:#')
+    return cleaned[:120]
+
+
+def extract_proposal_and_project(pages: Iterable[Mapping[str, Any]],
+                                metadata: Mapping[str, Any] | None = None) -> tuple[str | None, str, int, str]:
+    """Extract (proposal_no, project_name, page_no, quote_text) from the first 3 pages."""
+    proposal_no = None
+    proposal_page = 1
+    quote_text = ''
+    pages_list = list(pages)
+    first_pages = [p for p in pages_list if int(p.get('page', 0) or 0) <= 3]
+    if not first_pages and pages_list:
+        first_pages = pages_list[:3]
+
+    for p in first_pages:
+        text = str(p.get('text') or '')
+        match = PROPOSAL_NO_RE.search(text)
+        if match:
+            proposal_no = match.group(0).strip('.,;:()')
+            proposal_page = int(p.get('page', 1) or 1)
+            quote_text = _quote(text, match.start(), match.end())
+            break
+
+    meta = dict(metadata or {})
+    if not proposal_no:
+        for q in meta.get('batch_checks', {}).get('accreditation', {}).get('quotes', []):
+            m = PROPOSAL_NO_RE.search(q.get('text', ''))
+            if m:
+                proposal_no = m.group(0).strip('.,;:()')
+                proposal_page = int(q.get('page', 1) or 1)
+                quote_text = q.get('text', '')
+                break
+
+    project_name = _clean_project_name(str(meta.get('project_name') or meta.get('title') or meta.get('project') or ''))
+    if not project_name:
+        for p in first_pages:
+            text = str(p.get('text') or '')
+            m = re.search(r'(?:M/s\.?|Project Proponent\s*:?|Proposed\s+)([A-Z0-9\s,&.-]{4,80})', text, re.I)
+            if m:
+                candidate = _clean_project_name(m.group(0))
+                if candidate:
+                    project_name = candidate
+                    if not quote_text:
+                        proposal_page = int(p.get('page', 1) or 1)
+                        quote_text = _quote(text, m.start(), m.end())
+                    break
+
+    if not quote_text:
+        if proposal_no:
+            quote_text = f'Proposal number: {proposal_no}'
+        elif project_name:
+            quote_text = f'Project: {project_name}'
+        else:
+            quote_text = 'Project reference'
+
+    return proposal_no, project_name, proposal_page, quote_text
+
+
+def _is_court_docket_url(url: str, title: str = '', content: str = '') -> bool:
+    u = url.lower()
+    t = (title + ' ' + content).lower()
+    if any(dom in u for dom in COURT_DOMAINS):
+        return True
+    if 'indiankanoon.org' in u and any(kw in t for kw in ('green tribunal', 'ngt', 'tribunal', 'court', 'order', 'judgment')):
+        return True
+    return False
+
+
+def public_record_check(pages: Iterable[Mapping[str, Any]],
+                        metadata: Mapping[str, Any] | None = None,
+                        client: Any | None = None,
+                        stats: TavilyStats | None = None) -> dict[str, Any]:
+    """Public record / litigation check via Tavily search for NGT / court dockets."""
+    pages = _page_texts(pages)
+    proposal_no, project_name, exact_page, quote_text = extract_proposal_and_project(pages, metadata)
+
+    if proposal_no and project_name:
+        query = f'"{proposal_no}" OR "{project_name}" site:greentribunal.gov.in OR "National Green Tribunal" OR "stay order" OR penalty'
+    elif proposal_no:
+        query = f'"{proposal_no}" site:greentribunal.gov.in OR "National Green Tribunal" OR "stay order" OR penalty'
+    elif project_name:
+        query = f'"{project_name}" site:greentribunal.gov.in OR "National Green Tribunal" OR "stay order" OR penalty'
+    else:
+        return _result('public_record', 'GREY', 'No proposal number or project name available to search.',
+                       quotes=[], evidence=[], proposal_no=None, project_name='')
+
+    if stats is None:
+        stats = TavilyStats()
+
+    data = None
+    params = {'query': query, 'max_results': 5}
+    path = _tavily_path('search', params)
+    if path.exists():
+        data = tavily_call(client, 'search', stats, **params)
+    else:
+        if client is None:
+            key = os.getenv('TAVILY_API_KEY')
+            if key:
+                try:
+                    from tavily import TavilyClient
+                    client = TavilyClient(api_key=key)
+                except Exception:
+                    pass
+        if client is not None:
+            try:
+                data = tavily_call(client, 'search', stats, **params)
+            except Exception as e:
+                return _result('public_record', 'GREY', f'Tavily search error: {str(e)[:120]}',
+                               quotes=[{'page': exact_page, 'text': quote_text, 'label': 'Proposal / project reference'}],
+                               evidence=[{'label': 'Method', 'value': 'Tavily search over tribunal and court dockets; no model call'}],
+                               proposal_no=proposal_no, project_name=project_name, page=exact_page)
+        else:
+            return _result('public_record', 'GREY', 'Tavily search skipped: no cache and TAVILY_API_KEY not set.',
+                           quotes=[{'page': exact_page, 'text': quote_text, 'label': 'Proposal / project reference'}],
+                           evidence=[{'label': 'Method', 'value': 'Tavily search over tribunal and court dockets; no model call'}],
+                           proposal_no=proposal_no, project_name=project_name, page=exact_page)
+
+    results = (data or {}).get('results') or []
+    matched_item = None
+    for item in results:
+        url = str(item.get('url') or item.get('link') or '')
+        title = str(item.get('title') or '')
+        content = str(item.get('content') or '')
+        if _is_court_docket_url(url, title, content):
+            matched_item = item
+            break
+
+    quotes = [{'page': exact_page, 'text': quote_text, 'label': 'Proposal / project reference'}]
+    if matched_item:
+        court_url = matched_item.get('url') or matched_item.get('link')
+        evidence = [
+            {'label': 'Matched court URL', 'value': court_url, 'url': court_url},
+            {'label': 'Method', 'value': 'Tavily search over tribunal and court dockets; no model call'},
+        ]
+        return _result('public_record', 'INFO', 'Prior tribunal docket indexed; verify status.',
+                       quotes=quotes, evidence=evidence,
+                       proposal_no=proposal_no, project_name=project_name, page=exact_page,
+                       court_url=court_url, docket_title=matched_item.get('title', ''))
+
+    evidence = [
+        {'label': 'Method', 'value': 'Tavily search over tribunal and court dockets; no model call'},
+    ]
+    return _result('public_record', 'OK', 'No prior tribunal or court dockets indexed.',
+                   quotes=quotes, evidence=evidence,
+                   proposal_no=proposal_no, project_name=project_name, page=exact_page)
+
+
 BINOMIAL_STATUS_RE = re.compile(r"\b(?:CR|EN|VU|NT|LC|DD|EW|EX|Critically Endangered|Endangered|Vulnerable|Near Threatened|Least Concern|Data Deficient)\b", re.I)
 STATUS_CODES = {"critically endangered": "CR", "endangered": "EN", "vulnerable": "VU",
                 "near threatened": "NT", "least concern": "LC", "data deficient": "DD",
@@ -728,18 +892,20 @@ def species_check(pages: Iterable[Mapping[str, Any]], state: str = "", max_speci
 
 
 def analyze_pages(pages: Iterable[Mapping[str, Any]], metadata: Mapping[str, Any] | None = None,
+                  client: Any | None = None, stats: TavilyStats | None = None,
                   **species_kwargs: Any) -> dict[str, Any]:
     metadata = dict(metadata or {})
-    # All three checks receive the same materialized page list.  This matters
+    # All four checks receive the same materialized page list.  This matters
     # to callers that pass read_pdf's generator rather than a list.
     page_list = _page_texts(pages)
     accreditation = accreditation_check(page_list)
     baseline = baseline_check(page_list)
     species_result = species_check(page_list, state=str(metadata.get("state") or ""), **species_kwargs)
+    public_rec = public_record_check(page_list, metadata=metadata, client=client, stats=stats)
     checks = {"accreditation": accreditation, "baseline_season": baseline,
-              "species_iucn": species_result}
+              "species_iucn": species_result, "public_record": public_rec}
     flags = []
-    for item in (accreditation, baseline):
+    for item in (accreditation, baseline, public_rec):
         if item.get("grade") in ("RED", "ORANGE", "INFO"):
             flags.append(item)
     flags.extend(species_result.get("flags", []))
@@ -750,9 +916,11 @@ def analyze_pages(pages: Iterable[Mapping[str, Any]], metadata: Mapping[str, Any
             "status": "complete"}
 
 
-def analyze_pdf(pdf_path: str | Path, metadata: Mapping[str, Any] | None = None, **kwargs: Any) -> dict[str, Any]:
+def analyze_pdf(pdf_path: str | Path, metadata: Mapping[str, Any] | None = None,
+                client: Any | None = None, stats: TavilyStats | None = None,
+                **kwargs: Any) -> dict[str, Any]:
     from tigerfish.pdf_reader import read_pdf
-    return analyze_pages(read_pdf(pdf_path, render=False), metadata, **kwargs)
+    return analyze_pages(read_pdf(pdf_path, render=False), metadata, client=client, stats=stats, **kwargs)
 
 
 # ---------------------------------------------------------------------------
@@ -1271,7 +1439,7 @@ def _quick_report(report: Mapping[str, Any], generated: str | None = None) -> di
         "year": _year_from_report(report),
         "consultant": None,
         "source": {"url": report.get("url") or None, "portal": report.get("source_page") or None,
-                   "proposal_no": None},
+                   "proposal_no": (checks.get("public_record") or {}).get("proposal_no") or None},
         "pages_total": int(report.get("pages") or 0),
         "pages_read": int(report.get("pages") or 0),
         "site": site,
@@ -1384,13 +1552,23 @@ def summary_markdown(summary: Mapping[str, Any]) -> str:
 
 
 def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT_MAX_REPORTS,
-              tavily: Mapping[str, Any] | None = None, **kwargs: Any) -> dict[str, Any]:
+              tavily: Mapping[str, Any] | None = None, client: Any | None = None,
+              check_public_record: bool = True, force: bool = False, **kwargs: Any) -> dict[str, Any]:
     index = dict(index or load_index())
     if tavily is None and SUMMARY_JSON.exists():
         try:
             tavily = json.loads(SUMMARY_JSON.read_text(encoding="utf-8")).get("tavily")
         except Exception:
             pass
+    stats = TavilyStats(initial=tavily)
+    if client is None:
+        key = os.getenv("TAVILY_API_KEY")
+        if key:
+            try:
+                from tavily import TavilyClient
+                client = TavilyClient(api_key=key)
+            except Exception:
+                pass
     reports = []
     report_items = []
     for doc in index.get("documents", [])[:max_reports]:
@@ -1401,8 +1579,28 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
         if cached.exists():
             try:
                 quick = json.loads(cached.read_text(encoding="utf-8"))
-                # The extra batch fields make a cached public report sufficient to
-                # regenerate the aggregate summary without reopening the PDF.
+                # If cached report does not yet have public_record check, compute it
+                if check_public_record and (force or "public_record" not in (quick.get("batch_checks") or {})):
+                    pages = []
+                    if path.exists() and path.suffix.lower() == ".pdf":
+                        from tigerfish.pdf_reader import read_pdf
+                        try:
+                            for p in read_pdf(path, render=False):
+                                pages.append(p)
+                                if len(pages) == 3:
+                                    break
+                        except Exception:
+                            pass
+                    rec = public_record_check(pages, metadata={**doc, **quick}, client=client, stats=stats)
+                    quick.setdefault("batch_checks", {})["public_record"] = rec
+                    quick.setdefault("checks", {})["public_record"] = rec
+                    if rec.get("proposal_no") and not (quick.get("source") or {}).get("proposal_no"):
+                        quick.setdefault("source", {})["proposal_no"] = rec["proposal_no"]
+                    if rec.get("grade") in ("RED", "ORANGE", "INFO"):
+                        quick.setdefault("batch_flags", []).append(rec)
+                        quick.setdefault("flags", []).append(rec)
+                    _json_dump(cached, quick)
+
                 report = {"id": quick.get("id", report_id),
                           "state": quick.get("state") or doc.get("state", ""),
                           "project_name": quick.get("project_name") or quick.get("project") or doc.get("project_name", ""),
@@ -1415,12 +1613,12 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
                 pass
         if not path.exists() or path.suffix.lower() != ".pdf":
             continue
-        report = analyze_pdf(path, {**doc, "id": report_id}, **kwargs)
+        report = analyze_pdf(path, {**doc, "id": report_id}, client=client, stats=stats, **kwargs)
         quick = _quick_report(report)
         _json_dump(cached, quick)
         reports.append(report)
         report_items.append({"id": report_id, "file": cached.name})
-    summary = make_summary(reports, tavily=tavily)
+    summary = make_summary(reports, tavily=stats.as_dict())
     summary["reports_requested"] = max_reports
     _json_dump(SUMMARY_JSON, summary)
     SUMMARY_MD.parent.mkdir(parents=True, exist_ok=True)

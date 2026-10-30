@@ -61,6 +61,34 @@
       ],
       "start_date": "2021-05-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/61621/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/61621/2021"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -74,7 +102,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/61621/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/61621/2021"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/1922/RA0154",
@@ -136,6 +193,34 @@
       ],
       "start_date": "2021-05-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/61621/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/61621/2021"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -183,7 +268,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/61621/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/61621/2021"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:44:01Z",
   "id": "a62d87096a5baef2",
@@ -201,7 +315,7 @@
   },
   "source": {
     "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1641889356_1866205509.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/OR/MIN/61621/2021",
     "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1641889356_1866205509.pdf"
   },
   "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1641889356_1866205509.pdf",

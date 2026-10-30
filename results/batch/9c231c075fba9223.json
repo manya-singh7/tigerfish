@@ -41,6 +41,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/s Sri Bhubaneswari Granites and M",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "stone of M/s Sri Bhubaneswari Granites and M/s KPK Granites is spread over an"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -54,7 +82,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/s Sri Bhubaneswari Granites and M",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "stone of M/s Sri Bhubaneswari Granites and M/s KPK Granites is spread over an"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -93,6 +150,34 @@
           "label": "Baseline/monitoring period",
           "page": 5,
           "text": "00 Lakhs (Rupees Nine Lakhs) per annum for each mine. 2. DESCRIPTION OF THE ENVIRONMENT For the purpose of environmental impact assessment, the study was carried out within as well as the 10km area around the project site. The study was carried out to collect the baseline scenario of Land Use of the region, Ambient Air Quality, Water Quality, Noise Level, Soil Quality, Ecological Study and Socio-Economic Study. Samples were collected during the study period spanning over 3 months; 1st March. 2022 to 31st May. 2022 & tested in the MoEF&CC accredited laboratory of M/s. Centre for Envotech & Management Consultancy Pvt. Ltd., Bhubaneswar, Odisha. The study area covers 10km surrounding the propos…"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/s Sri Bhubaneswari Granites and M",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "stone of M/s Sri Bhubaneswari Granites and M/s KPK Granites is spread over an"
         }
       ]
     },
@@ -143,7 +228,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/s Sri Bhubaneswari Granites and M",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "stone of M/s Sri Bhubaneswari Granites and M/s KPK Granites is spread over an"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:26:30Z",
   "id": "9c231c075fba9223",

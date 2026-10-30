@@ -62,6 +62,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=139",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=139",
+          "value": "https://www.greentribunal.gov.in/news-update?page=139"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -75,7 +103,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=139",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=139",
+          "value": "https://www.greentribunal.gov.in/news-update?page=139"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/IA 0169",
@@ -133,6 +190,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=139",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=139",
+          "value": "https://www.greentribunal.gov.in/news-update?page=139"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -180,7 +265,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=139",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=139",
+          "value": "https://www.greentribunal.gov.in/news-update?page=139"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T10:55:22Z",
   "id": "ae71464f22892641",

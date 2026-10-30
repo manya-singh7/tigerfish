@@ -51,6 +51,34 @@
       ],
       "start_date": "2024-12-31"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "COMPETITIVE BIDDING(CB) FOR SUPPLY, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: COMPETITIVE BIDDING(CB) FOR SUPPLY, ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -64,7 +92,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "COMPETITIVE BIDDING(CB) FOR SUPPLY, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: COMPETITIVE BIDDING(CB) FOR SUPPLY, ..."
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -116,6 +173,34 @@
       ],
       "start_date": "2024-12-31"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "COMPETITIVE BIDDING(CB) FOR SUPPLY, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: COMPETITIVE BIDDING(CB) FOR SUPPLY, ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -163,7 +248,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "COMPETITIVE BIDDING(CB) FOR SUPPLY, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: COMPETITIVE BIDDING(CB) FOR SUPPLY, ..."
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:57:26Z",
   "id": "14f814e3b40bfee2",

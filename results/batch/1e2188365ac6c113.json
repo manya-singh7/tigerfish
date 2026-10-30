@@ -34,6 +34,34 @@
       "message": "A baseline or monitoring period could not be located in the readable text; verify.",
       "quotes": []
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Public Hearing Panel in respect of National Highways Authority of India for their proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yedshi to"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -47,7 +75,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Public Hearing Panel in respect of National Highways Authority of India for their proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yedshi to"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -81,6 +138,34 @@
       "grade": "GREY",
       "message": "A baseline or monitoring period could not be located in the readable text; verify.",
       "quotes": []
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Public Hearing Panel in respect of National Highways Authority of India for their proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yedshi to"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -129,7 +214,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Public Hearing Panel in respect of National Highways Authority of India for their proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yedshi to"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:15:25Z",
   "id": "1e2188365ac6c113",

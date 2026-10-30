@@ -40,6 +40,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "20250605_HCAPSD_EOI for IVA",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 20250605_HCAPSD_EOI for IVA"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -53,7 +81,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "20250605_HCAPSD_EOI for IVA",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 20250605_HCAPSD_EOI for IVA"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -91,6 +148,34 @@
           "label": "Baseline/monitoring context",
           "page": 1,
           "text": "​The Board proposes to engage such organizations through an open competitive selection process. Interested entities with proven expertise in monitoring & evaluation, auditing, third-party verification, impact assessment or related domains are hereby invited to submit their EOIs indicating interest and qualifications for undertaking the proposed assignment.​ 3.​The interested organizations may submit their Expression of Interest (EOI) by providing the required information as per the prescribed format, which may be downloaded from the official website of the Board (www.hspcb.gov.in).​ 4.​The duly filled EOI, supported with relevant documents, must reach the office of the"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "20250605_HCAPSD_EOI for IVA",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 20250605_HCAPSD_EOI for IVA"
         }
       ]
     },
@@ -141,7 +226,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "20250605_HCAPSD_EOI for IVA",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 20250605_HCAPSD_EOI for IVA"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:45:19Z",
   "id": "2424e1b5ae6b48de",

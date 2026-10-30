@@ -45,6 +45,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "kusupanga & kurunti brahmani sand quarry (cluster)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: kusupanga & kurunti brahmani sand quarry (cluster)"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -82,7 +110,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "kusupanga & kurunti brahmani sand quarry (cluster)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: kusupanga & kurunti brahmani sand quarry (cluster)"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/2124/RA 0219",
@@ -125,6 +182,34 @@
           "label": "Baseline/monitoring context",
           "page": 6,
           "text": "NABET/EIA/2124/RA 0219 2.0 DESCRIPTION OF THE ENVIRONMENT 2.1 PRESENTATION OF RESULTS (AIR, NOISE, WATER & SOIL) Baseline study of the study area was conducted during post-monsoon from 1st October 2023 to 31st December 2023for Kusupanga & Kurunti Brahmani Sand Quarry (Cluster). The concentrations of PM10 and PM2.5 for all the 8 AAQM stations were found between 53.8 to 83.4 µg/m3 and 18.3 to 25.2 µg/m3 respectively. The concentrations of SO2 and NOx were found to be in range of range of 5.4 to 9.2µg/m3 and 8.7 to 13.3µg/m3 respectively. Ambient noise levels were measured at 8 locations around the Mine site. Noise levels varied from 35"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "kusupanga & kurunti brahmani sand quarry (cluster)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: kusupanga & kurunti brahmani sand quarry (cluster)"
         }
       ]
     },
@@ -199,7 +284,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "kusupanga & kurunti brahmani sand quarry (cluster)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: kusupanga & kurunti brahmani sand quarry (cluster)"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:40:56Z",
   "id": "0ded9a079f3dbdd3",

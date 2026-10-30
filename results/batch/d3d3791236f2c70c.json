@@ -50,6 +50,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 1 (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESS",
+      "proposal_no": "SIA/MH/MIN/525081/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/MH/MIN/525081/2025 dated 18"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -76,7 +104,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 1 (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESS",
+      "proposal_no": "SIA/MH/MIN/525081/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/MH/MIN/525081/2025 dated 18"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/IA 0169",
@@ -124,6 +181,34 @@
           "label": "Baseline/monitoring context",
           "page": 3,
           "text": "M/s. K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 3 3.0 Environment setting and monitoring: There are no industrial activities except for a few manually- operated stone -metal quarries. Base-line environment quality data was collected for post monsoon season from October to December 2025. Study area was 10 km from the lease. Relevant information was collated from secondary sources and government departments. Air quality and mitigation methods : Micrometeorology data from IMD and that during monitoring was collected and nine AAQ sampling stations were selected. Average wind speed was 6 km/h with frequency of 67%, predominant wind direction- NE- 53%,"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 1 (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESS",
+      "proposal_no": "SIA/MH/MIN/525081/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/MH/MIN/525081/2025 dated 18"
         }
       ]
     },
@@ -187,7 +272,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 1 (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESS",
+      "proposal_no": "SIA/MH/MIN/525081/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/MH/MIN/525081/2025 dated 18"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:15:09Z",
   "id": "d3d3791236f2c70c",
@@ -205,7 +319,7 @@
   },
   "source": {
     "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/MH/MIN/525081/2025",
     "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary.pdf"
   },
   "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-06/Executive_Summary.pdf",

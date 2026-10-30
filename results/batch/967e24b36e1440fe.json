@@ -56,6 +56,34 @@
       ],
       "start_date": "2021-12-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "proposed for mining of River sand from the Mankidia Sand Bed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "The project has been proposed for mining of River sand from the Mankidia Sand Bed “Ka”, Mankidia"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -69,7 +97,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "proposed for mining of River sand from the Mankidia Sand Bed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "The project has been proposed for mining of River sand from the Mankidia Sand Bed “Ka”, Mankidia"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/2124/RA 0254",
@@ -126,6 +183,34 @@
       ],
       "start_date": "2021-12-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "proposed for mining of River sand from the Mankidia Sand Bed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "The project has been proposed for mining of River sand from the Mankidia Sand Bed “Ka”, Mankidia"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -173,7 +258,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "proposed for mining of River sand from the Mankidia Sand Bed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "The project has been proposed for mining of River sand from the Mankidia Sand Bed “Ka”, Mankidia"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:22:13Z",
   "id": "967e24b36e1440fe",

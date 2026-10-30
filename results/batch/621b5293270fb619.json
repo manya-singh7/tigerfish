@@ -51,6 +51,34 @@
       ],
       "start_date": "2018-09-04"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+      "docket_title": "Item No. 05",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+          "value": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "haryana state pollution control board",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: haryana state pollution control board"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -93,6 +121,34 @@
         }
       ],
       "start_date": "2018-09-04"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+      "docket_title": "Item No. 05",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+          "value": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "haryana state pollution control board",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: haryana state pollution control board"
+        }
+      ]
     }
   ],
   "checks": {
@@ -145,6 +201,34 @@
         }
       ],
       "start_date": "2018-09-04"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+      "docket_title": "Item No. 05",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+          "value": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "haryana state pollution control board",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: haryana state pollution control board"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -222,6 +306,34 @@
         }
       ],
       "start_date": "2018-09-04"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+      "docket_title": "Item No. 05",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+          "value": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "haryana state pollution control board",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: haryana state pollution control board"
+        }
+      ]
     }
   ],
   "format": "tigerfish-report/1",

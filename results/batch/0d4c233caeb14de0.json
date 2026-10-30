@@ -40,6 +40,15 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "evidence": [],
+      "grade": "GREY",
+      "message": "No proposal number or project name available to search.",
+      "project_name": "",
+      "proposal_no": null,
+      "quotes": []
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -93,6 +102,15 @@
           "text": "Web agenda of 7th CC meeting (Booklet No. 13) of 2014-15 dtd. 27.06.2014 12 6] There was no adequate stack monitoring facility to boiler, thermo pack, D.G Set and scrubber chimney. 7] The industry not sending H.W i.e- spent catalyst to CHWTSDF a per consent .It is reported that it is being send to Hindustan Platinum for which consent not obtained. In view of the above consent may be refused or may be granted only for 1 year subject to submission of suitable B.G to ensure the above compliance."
         }
       ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "evidence": [],
+      "grade": "GREY",
+      "message": "No proposal number or project name available to search.",
+      "project_name": "",
+      "proposal_no": null,
+      "quotes": []
     },
     "species_iucn": {
       "check": "species_iucn",

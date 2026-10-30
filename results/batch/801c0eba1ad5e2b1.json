@@ -56,6 +56,34 @@
       ],
       "start_date": "2021-10-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -93,7 +121,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/2124/RA 0219",
@@ -149,6 +206,34 @@
         }
       ],
       "start_date": "2021-10-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -221,7 +306,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:38:17Z",
   "id": "801c0eba1ad5e2b1",

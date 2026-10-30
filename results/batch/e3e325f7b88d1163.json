@@ -51,6 +51,34 @@
       ],
       "start_date": "2020-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+      "docket_title": "1737526079.pdf",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -64,7 +92,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+      "docket_title": "1737526079.pdf",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -116,6 +173,34 @@
       ],
       "start_date": "2020-03-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+      "docket_title": "1737526079.pdf",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -163,7 +248,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+      "docket_title": "1737526079.pdf",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:27:27Z",
   "id": "e3e325f7b88d1163",

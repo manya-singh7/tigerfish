@@ -61,6 +61,34 @@
       ],
       "start_date": "2022-05-10"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/62748/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/62748/2021"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -259,7 +287,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/62748/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/62748/2021"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/1922/RA0154",
@@ -320,6 +377,34 @@
         }
       ],
       "start_date": "2022-05-10"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/62748/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/62748/2021"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -553,7 +638,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/62748/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/62748/2021"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:43:40Z",
   "id": "9bf5903dd55be26f",
@@ -571,7 +685,7 @@
   },
   "source": {
     "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf",
-    "proposal_no": null,
+    "proposal_no": "SIA/OR/MIN/62748/2021",
     "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf"
   },
   "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf",

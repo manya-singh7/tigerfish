@@ -61,6 +61,34 @@
       ],
       "start_date": "2012-07-03"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: draft eia / emp for proposed rough stone and gravel quarry"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -103,6 +131,34 @@
         }
       ],
       "start_date": "2012-07-03"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: draft eia / emp for proposed rough stone and gravel quarry"
+        }
+      ]
     }
   ],
   "checks": {
@@ -165,6 +221,34 @@
         }
       ],
       "start_date": "2012-07-03"
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: draft eia / emp for proposed rough stone and gravel quarry"
+        }
+      ]
     },
     "species_iucn": {
       "check": "species_iucn",
@@ -242,6 +326,34 @@
         }
       ],
       "start_date": "2012-07-03"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: draft eia / emp for proposed rough stone and gravel quarry"
+        }
+      ]
     }
   ],
   "format": "tigerfish-report/1",

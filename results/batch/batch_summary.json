@@ -1,10 +1,190 @@
 {
   "flag_counts": {
-    "INFO": 10,
+    "INFO": 96,
     "ORANGE": 1,
     "RED": 0
   },
   "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA Report M/s",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA Report M/s"
+        }
+      ],
+      "report_id": "3a84436e0e972dbf",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/index.php?page=11",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/index.php?page=11",
+          "value": "https://www.greentribunal.gov.in/index.php?page=11"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " Salient Features of the existing 30 KLPD Distillery and the proposed expansion of 30 KLPD are given below: Environment",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  Salient Features of the existing 30 KLPD Distillery and the proposed expansion of 30 KLPD are given below: Environment"
+        }
+      ],
+      "report_id": "d86bf616e1eb4750",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal",
+      "docket_title": "NGT E-Journal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal",
+          "value": "https://www.greentribunal.gov.in/Ejournal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EXe.Summeryaxis",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EXe.Summeryaxis"
+        }
+      ],
+      "report_id": "beed0d468b433776",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf",
+      "docket_title": "Pateshwari Prasad Singh vs. State of U.P. & Ors. 2026 NGTeJ 502",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "7 6",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 7 6"
+        }
+      ],
+      "report_id": "7621dbc2a2e87bb1",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL MANAGEMENT PLAN The Environmental Management Plan (EMP) is also prepared to take care of and to counter en",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: ENVIRONMENTAL MANAGEMENT PLAN The Environmental Management Plan (EMP) is also prepared to take care of and to counter en"
+        }
+      ],
+      "report_id": "d386ea7b822fd868",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Chamundai Ex",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Chamundai Ex"
+        }
+      ],
+      "report_id": "595788e840b569b6",
+      "state": "Maharashtra"
+    },
     {
       "check": "baseline_season",
       "duration_months": 2,
@@ -35,6 +215,66 @@
       ],
       "report_id": "1ae34adcf58e6305",
       "start_date": "2025-12-01",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incor",
+      "proposal_no": "SIA/MH/IND1/564190/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "SIA/MH/IND1/564190/2026 dated 23.01.2026]"
+        }
+      ],
+      "report_id": "1ae34adcf58e6305",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=109",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=109",
+          "value": "https://www.greentribunal.gov.in/news-update?page=109"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No"
+        }
+      ],
+      "report_id": "b65c263b32056a24",
       "state": "Maharashtra"
     },
     {
@@ -70,6 +310,96 @@
       "state": "Maharashtra"
     },
     {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/faqs",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/faqs",
+          "value": "https://www.greentribunal.gov.in/faqs"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project:  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Che"
+        }
+      ],
+      "report_id": "2ad0fab45fa8dac9",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN for Adegaon Dolomite Mine of Mr"
+        }
+      ],
+      "report_id": "f112c8fd952dacd7",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Executive Summary on Draft Report) REPORT ON ENVIRONMENTAL APPRAISAL & ASSESSMENT OF ENVIRONMENTAL IMPACT OF Adegaon Li",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Executive Summary on Draft Report) REPORT ON ENVIRONMENTAL APPRAISAL & ASSESSMENT OF ENVIRONMENTAL IMPACT OF Adegaon Li"
+        }
+      ],
+      "report_id": "494bcf709239ad04",
+      "state": "Maharashtra"
+    },
+    {
       "check": "baseline_season",
       "duration_months": 1.74,
       "end_date": "2025-06-19",
@@ -102,6 +432,996 @@
       "state": "Maharashtra"
     },
     {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "This Executive Summary presents, in simple and clear language, the key aspects of the Environmental Impact Assessment (E",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: This Executive Summary presents, in simple and clear language, the key aspects of the Environmental Impact Assessment (E"
+        }
+      ],
+      "report_id": "ac5844d338dbc953",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-6%20IN%20APPEAL%20NO.%2037%20of%202025%20ASHOK%20KUMAR%20VS%20STATE%20OF%20HARYANA_0.pdf",
+      "docket_title": "[PDF] REPLY BY R-6 IN APPEAL NO. 37 of 2025 ASHOK KUMAR VS ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-6%20IN%20APPEAL%20NO.%2037%20of%202025%20ASHOK%20KUMAR%20VS%20STATE%20OF%20HARYANA_0.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-6%20IN%20APPEAL%20NO.%2037%20of%202025%20ASHOK%20KUMAR%20VS%20STATE%20OF%20HARYANA_0.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "] the State Expert Appraisal Committee (SEAC-1) and the State Environmental Impact Assessment Authority (SEIAA), Maharas",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: ] the State Expert Appraisal Committee (SEAC-1) and the State Environmental Impact Assessment Authority (SEIAA), Maharas"
+        }
+      ],
+      "report_id": "b7f511f7d2438fc3",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Khalapur, Dist Raigad-410222 Executive Summary of Draft EIA-EMP Report for Development of Master Plan (Expansion) by Dig"
+        }
+      ],
+      "report_id": "43b4deb950576f5b",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=139",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=139",
+          "value": "https://www.greentribunal.gov.in/news-update?page=139"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: K K Mines & Minerals, Mundra Dolomite Mining Project 1 (Draft Report) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRO"
+        }
+      ],
+      "report_id": "ae71464f22892641",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+      "docket_title": "[PDF] Kambala Ram - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA "
+        }
+      ],
+      "report_id": "1b83aba79194f33c",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf",
+      "docket_title": "[PDF] 1809 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "TJB Summary EIA AIPL",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: TJB Summary EIA AIPL"
+        }
+      ],
+      "report_id": "74d18789997fd032",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "Color Shine",
+      "proposal_no": "SIA/MH/IND1/563389/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": ": SIA/MH/IND1/563389/2025 dated 13/01/2026 issued by"
+        }
+      ],
+      "report_id": "4369faf125fd3ea3",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf",
+      "docket_title": "Pramod Tyagi vs. State of NCT & Ors 2025 NGTeJ 392",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Earth Ex",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Earth Ex"
+        }
+      ],
+      "report_id": "5d22ed3b30307c57",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 2 Gargaon 24.98 Ha Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 2 Gargaon 24.98 Ha Executive Summary (English) R2 29062026"
+        }
+      ],
+      "report_id": "dfb9a6acf99e0c9e",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "English Corelife final 0",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: English Corelife final 0"
+        }
+      ],
+      "report_id": "bd9482e4371e5025",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "English Jigsun Alloys",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: English Jigsun Alloys"
+        }
+      ],
+      "report_id": "74090f9ecab37f01",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Vadhvan patch 1 Gargaon 17.08 Executive Summary (English) R2 29062026"
+        }
+      ],
+      "report_id": "8c243020fdde0d4e",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+      "docket_title": "[PDF] MR. TA - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Additional%20Documents%20by%20Applicant%20in%20OA%20No.33-2019%20(page%20nos.2480-3207).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "(Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN Swastik Minerals Dolomite ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN Swastik Minerals Dolomite "
+        }
+      ],
+      "report_id": "d6b768dfeeb064bc",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "K K Mines & Minerals, Chilai –Mundra Dolomite Mining Project 1 (Executive Summary) REPORT ON ENVIRONMENTAL IMPACT ASSESS",
+      "proposal_no": "SIA/MH/MIN/525081/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/MH/MIN/525081/2025 dated 18"
+        }
+      ],
+      "report_id": "d3d3791236f2c70c",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+      "docket_title": "[PDF] M - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1767590466_pagenumber.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Public Hearing Panel in respect of National Highways Authority of India for their proposed project of Rehabilitation and Upgradation from existing 2- Lane to 4-lane of Yedshi to"
+        }
+      ],
+      "report_id": "1e2188365ac6c113",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=3",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=3",
+          "value": "https://www.greentribunal.gov.in/news-update?page=3"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd ..."
+        }
+      ],
+      "report_id": "989ffb70c0cae1d5",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=2",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=2",
+          "value": "https://www.greentribunal.gov.in/news-update?page=2"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FOR PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER (PPF & I), ODISHA, BHUBANESWAR"
+        }
+      ],
+      "report_id": "8e165603c6f292a7",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed capacity",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Proposed capacity: - 2080 cu"
+        }
+      ],
+      "report_id": "e6bff3196bb09df6",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Agrawal Rasayan Village",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s Agrawal Rasayan Village – Jayantpur, Tahasil – Jujumura,"
+        }
+      ],
+      "report_id": "765f5e78a2549b1f",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+      "docket_title": "[PDF] before the national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Compilation%20of%20Judgment%20by%20Applicant%20in%20OA%20No.32-2022%20(page%20nos.999-1436).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : EXECUTIVE SUMMARY Sri Gopal Chandra Sahu & Sri Kapila Chandra Sahu S/o- Padma Charan Sahu"
+        }
+      ],
+      "report_id": "01c36ce1c8ac2bfe",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "proposed for mining of River sand from the Mankidia Sand Bed",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "The project has been proposed for mining of River sand from the Mankidia Sand Bed “Ka”, Mankidia"
+        }
+      ],
+      "report_id": "967e24b36e1440fe",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT: SHRI PADMALOCHAN BISWAL S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT: SHRI PADMALOCHAN BISWAL S/o Rajkishore Biswal"
+        }
+      ],
+      "report_id": "80b1df85d2c48353",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=89",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=89",
+          "value": "https://www.greentribunal.gov.in/news-update?page=89"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT : Sri Juti Krushna Pandi & others S",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT : Sri Juti Krushna Pandi & others S/o- Banchhanidhi Pandi"
+        }
+      ],
+      "report_id": "3a7fb9d1e71b8553",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROJECT PROPONENT Adani Power Limited",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPONENT Adani Power Limited (Formerly known as Orissa Thermal Energy Limited)"
+        }
+      ],
+      "report_id": "148cd46895015312",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+      "docket_title": "Satrughan Meher vs. State of Odisha",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-033_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Draft Environmental Impact ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Draft Environmental Impact ..."
+        }
+      ],
+      "report_id": "28523eaf5bd1b04b",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+      "docket_title": "[PDF] 15 OF 2020 IN THE MATTER OF - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Submission%20of%20the%20Applicant%20in%20OA%20No.15-2020%20(page%20nos.387-408).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/s Sri Bhubaneswari Granites and M",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "stone of M/s Sri Bhubaneswari Granites and M/s KPK Granites is spread over an"
+        }
+      ],
+      "report_id": "9c231c075fba9223",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+      "docket_title": "1737526079.pdf",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/1737526079.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12"
+        }
+      ],
+      "report_id": "e3e325f7b88d1163",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf",
+      "docket_title": "Pateshwari Prasad Singh vs. State of U.P. & Ors. 2026 ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-022_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed PPL-2 project without any additional land acquisition. The details of the propo",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "manufacturing facilities within the existing plant premises under the proposed PPL-2 project without any additional land acquisition. The details of the proposed expansion"
+        }
+      ],
+      "report_id": "d1b447d2daa47bc1",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 19,500 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "The average production is proposed to be 19,500 cum/year and 97,500 cum is"
+        }
+      ],
+      "report_id": "a58f40a8fd6a50b0",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=364",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=364",
+          "value": "https://www.greentribunal.gov.in/news-update?page=364"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABET Certificate No:-NABET/EIA/2124/IA0087"
+        }
+      ],
+      "report_id": "24dfe14b711bb928",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/S SGS MINES & INDUSTRIES PVT. LTD. SADAR BAZAR, CHAIBASA, WEST SINGHBHUM, JHARKH",
+      "proposal_no": "SIA/OR/MIN/73412/2022",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/OR/MIN/73412/2022 and File no"
+        }
+      ],
+      "report_id": "e81c4bdf3df313e0",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s Mediaid Medical Ancillary Services at Khata no. 552",
+      "proposal_no": "SIA/OR/INFRA2/455259/2024",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "- SIA/OR/INFRA2/455259/2024"
+        }
+      ],
+      "report_id": "6eeafb2ba0ca5f56",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Samakoi Sand Quarry, Dobalapal",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Samakoi Sand Quarry, Dobalapal"
+        }
+      ],
+      "report_id": "510e4018f8913936",
+      "state": "Odisha"
+    },
+    {
       "check": "baseline_season",
       "duration_months": 0.82,
       "end_date": "2026-07-27",
@@ -131,6 +1451,96 @@
       ],
       "report_id": "8f37fe07193019d5",
       "start_date": "2026-07-03",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=76",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=76",
+          "value": "https://www.greentribunal.gov.in/news-update?page=76"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "Atlas Energy & Resources Pvt. Ltd.",
+      "proposal_no": "IA/OR/CMIN/579355/2026",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "IA/OR/CMIN/579355/2026"
+        }
+      ],
+      "report_id": "8f37fe07193019d5",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Deogaon Sand Quarry on Baitarani River",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Deogaon Sand Quarry on Baitarani River"
+        }
+      ],
+      "report_id": "7ce696f09658e860",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "JINDAL UNITED STEEL LIMITED EXECUTIVE SUMMARY",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: JINDAL UNITED STEEL LIMITED EXECUTIVE SUMMARY"
+        }
+      ],
+      "report_id": "8f2d888afd4e30b5",
       "state": "Odisha"
     },
     {
@@ -166,6 +1576,66 @@
       "state": "Odisha"
     },
     {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=12",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=12",
+          "value": "https://www.greentribunal.gov.in/news-update?page=12"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "summary of environmental impact assessment report for public ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: summary of environmental impact assessment report for public ..."
+        }
+      ],
+      "report_id": "f170ccb5e0cf7715",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf",
+      "docket_title": "[PDF] 1809 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OBJECTIONS%20BY%20R-6%20IN%20OA%20NO.%20549%20of%202025%20(EARLIER%20OA%20NO.%2042%20of%202025%20CZ)%20DHEERAJ%20TIWARI%20VS%20MOEF%20&%20CC%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA/EMP of Devadari Iron Ore Mine ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA/EMP of Devadari Iron Ore Mine ..."
+        }
+      ],
+      "report_id": "7b23fbca3768d70e",
+      "state": "Odisha"
+    },
+    {
       "check": "baseline_season",
       "duration_months": 2.63,
       "end_date": "2021-02-18",
@@ -198,6 +1668,546 @@
       "state": "Odisha"
     },
     {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+      "proposal_no": "SIA/OR/MIN/54922/2020",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": ": SIA/OR/MIN/54922/2020"
+        }
+      ],
+      "report_id": "5a0386e236f2bcf0",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf",
+      "docket_title": "Pramod Tyagi vs. State of NCT & Ors 2025 NGTeJ 392",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-013_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENT IMPACT ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: ENVIRONMENT IMPACT ..."
+        }
+      ],
+      "report_id": "c9d5bab2f5e8c026",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ],
+      "report_id": "c0452ee2df5e9a2c",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT ENVIRONMENTAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT ENVIRONMENTAL ..."
+        }
+      ],
+      "report_id": "801c0eba1ad5e2b1",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL PRINCIPAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment (eia)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment (eia)"
+        }
+      ],
+      "report_id": "951b4342ea072cf0",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+      "proposal_no": "SIA/OR/MIN/54898/2020",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": ": SIA/OR/MIN/54898/2020"
+        }
+      ],
+      "report_id": "b75a5080cc6196ed",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf",
+      "docket_title": "President Municipal Committee Thathri vs. State of J&K & ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA/EMP REPORT of GLOBAL ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA/EMP REPORT of GLOBAL ..."
+        }
+      ],
+      "report_id": "3aa9f4917359d89c",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+      "docket_title": "Aditya Roop Singh Chauhan vs. The Ministry of ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2024-038_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 16000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 16000 cum/year and 80000 cum is the total production during the plan"
+        }
+      ],
+      "report_id": "0e440b84de657855",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "kusupanga & kurunti brahmani sand quarry (cluster)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: kusupanga & kurunti brahmani sand quarry (cluster)"
+        }
+      ],
+      "report_id": "0ded9a079f3dbdd3",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf",
+      "docket_title": "President Municipal Committee Thathri vs. State of J&K & ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-023_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "DRAFT EIA/EMP REPORT",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: DRAFT EIA/EMP REPORT"
+        }
+      ],
+      "report_id": "679cfc9bc77d64dc",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 11000cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "The average production is proposed to be 11000cum/year and 55000 cum is the total production during the plan period"
+        }
+      ],
+      "report_id": "fcf42f1e01e8ffcd",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+      "docket_title": "2026 NGTeJ 163",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-004_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "proposed to be 12000 cum",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "proposed to be 12000 cum/year and 60000 cum is the total production during the"
+        }
+      ],
+      "report_id": "f2388b0ccd99c9df",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment and environment ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment and environment ..."
+        }
+      ],
+      "report_id": "a085c8750787584c",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=207",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=207",
+          "value": "https://www.greentribunal.gov.in/news-update?page=207"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/62748/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/62748/2021"
+        }
+      ],
+      "report_id": "9bf5903dd55be26f",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-023_case_note.pdf",
+      "docket_title": "Tvl. Vels Minerals LLP vs. State Level Environment Impact ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-023_case_note.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-023_case_note.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment Impact Assessment",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment Impact Assessment"
+        }
+      ],
+      "report_id": "46edd48add49e7c3",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+      "proposal_no": "SIA/OR/MIN/61621/2021",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FILE NO: SIA/OR/MIN/61621/2021"
+        }
+      ],
+      "report_id": "a62d87096a5baef2",
+      "state": "Odisha"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 1. One major national daily newspaper. 2. One Regional ..."
+        }
+      ],
+      "report_id": "eb2e8e74a72dd187",
+      "state": "Haryana"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "20250605_HCAPSD_EOI for IVA",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 20250605_HCAPSD_EOI for IVA"
+        }
+      ],
+      "report_id": "2424e1b5ae6b48de",
+      "state": "Haryana"
+    },
+    {
       "check": "baseline_season",
       "duration_months": 0.07,
       "end_date": "2018-09-05",
@@ -228,6 +2238,156 @@
       "report_id": "621b5293270fb619",
       "start_date": "2018-09-04",
       "state": "Haryana"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+      "docket_title": "Item No. 05",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D",
+          "value": "https://www.greentribunal.gov.in/gen_pdf_test.php?filepath=L25ndF9kb2N1bWVudHMvbmd0L2Nhc2Vkb2Mvb3JkZXJzL0RFTEhJLzIwMjQtMDgtMDEvY291cnRzLzIvZGFpbHkvMTcyMjg0NDM1NTE0MDgxNDM5NDY2NmIwODRjM2YxMjczLnBkZg%3D%3D"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "haryana state pollution control board",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: haryana state pollution control board"
+        }
+      ],
+      "report_id": "621b5293270fb619",
+      "state": "Haryana"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Status%20Report%20of%20GPCB,%20R-2%20in%20O.A.No_.%20104-2019%20(page%20nos.%20488-513).pdf",
+      "docket_title": "[PDF] before the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Status%20Report%20of%20GPCB,%20R-2%20in%20O.A.No_.%20104-2019%20(page%20nos.%20488-513).pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Status%20Report%20of%20GPCB,%20R-2%20in%20O.A.No_.%20104-2019%20(page%20nos.%20488-513).pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "The Noise Pollution (Regulation and Control) Rules, 2000;",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: The Noise Pollution (Regulation and Control) Rules, 2000;"
+        }
+      ],
+      "report_id": "acf48150bc41a071",
+      "state": "Haryana"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-001_judgment.pdf",
+      "docket_title": "Mukesh Kumar Chouhan vs. State of Uttar Pradesh & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-001_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-001_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "THE HAZARDOUS AND OTHER WASTES ( ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: THE HAZARDOUS AND OTHER WASTES ( ..."
+        }
+      ],
+      "report_id": "01b9c6457066ef5f",
+      "state": "Haryana"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Classification of Sectors into Red, Orange, Green, White ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Classification of Sectors into Red, Orange, Green, White ..."
+        }
+      ],
+      "report_id": "7d942a0c0f3ecee0",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+      "docket_title": "[PDF] before of the hon'ble national green tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/CPCB%20REPORT%20in%20NGT%20Appeal%20no%202%20of%202024%20order%20dated%2018%20Sept%202024.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "ENVIRONMENTAL STATEMENT IN FORM-V RAJPURA OC",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: ENVIRONMENTAL STATEMENT IN FORM-V RAJPURA OC"
+        }
+      ],
+      "report_id": "7bb6d5c7844cde45",
+      "state": "Jharkhand"
     },
     {
       "certificate": "NABET/ EIA/2225/IA 0096",
@@ -296,6 +2456,306 @@
       "state": "Jharkhand"
     },
     {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "25.04:2025",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: 25.04:2025"
+        }
+      ],
+      "report_id": "cb6e6676d150b91c",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-020_judgment.pdf",
+      "docket_title": "Pramod Dhanraj Khursange vs. District Collector, Nagpur & ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-020_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-020_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "TENDER DOCUMENT",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: TENDER DOCUMENT"
+        }
+      ],
+      "report_id": "f6a2cd5d5b1d47ea",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "COMPETITIVE BIDDING(CB) FOR SUPPLY, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: COMPETITIVE BIDDING(CB) FOR SUPPLY, ..."
+        }
+      ],
+      "report_id": "14f814e3b40bfee2",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+      "docket_title": "[PDF] TEJ - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20R-3%20MC,%20JALANDHAR%20IN%20OA%20NO.%2097%20of%202026%20TEJASVI%20MINHAS%20VS%20STATE%20OF%20PUNJAB%20and%20ORS..pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "national competitive bidding for supply, installation, ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: national competitive bidding for supply, installation, ..."
+        }
+      ],
+      "report_id": "246cf16334c23b10",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+      "docket_title": "Haider Ali vs. Commissioner Nagar Nigam Alwar & Ors.",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-019_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Environment-compensation-guidelines-by-CPCB.pdf"
+        }
+      ],
+      "report_id": "9cbd29a409d09399",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/about-national-green-tribunal",
+          "value": "https://www.greentribunal.gov.in/about-national-green-tribunal"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: cpr fcr'crR \"\"It! fcp-m ~ mTfT 1"
+        }
+      ],
+      "report_id": "a26de5f6010dc611",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update/1000?page=8",
+          "value": "https://www.greentribunal.gov.in/news-update/1000?page=8"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "published in the gazette of india, extraordinary, part ii",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: published in the gazette of india, extraordinary, part ii"
+        }
+      ],
+      "report_id": "b0acd74f92cc0d62",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=223",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=223",
+          "value": "https://www.greentribunal.gov.in/news-update?page=223"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 3,
+      "project_name": "M/s. M.P. Mining and Leasing Company No.2",
+      "proposal_no": "SIA/TN/MIN/577692/",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 3,
+          "text": "SIA/TN/MIN/577692/"
+        }
+      ],
+      "report_id": "a41599a4a4f0195f",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+      "docket_title": "[PDF] 485 - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/Reply%20on%20behalf%20of%20SEIAA%20UP%20in%20OA%20No%2048%20of%202025%20Pawan%20Kumar%20Vs%20MoEFCC%20and%20Ors.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 2,
+      "project_name": "M/S. A.P.Mines Rough Stone And Gravel Quarry Executive ...",
+      "proposal_no": "SIA/TN/MIN/561886/2025",
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 2,
+          "text": "SIA/TN/MIN/561886/2025 dated: 18"
+        }
+      ],
+      "report_id": "7e3ceefeb16d355d",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/15621_0.pdf",
+      "docket_title": "Fsr'- l-",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/15621_0.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/15621_0.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "proposed rough stone quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: proposed rough stone quarry"
+        }
+      ],
+      "report_id": "af2c182069891e54",
+      "state": "Tamil Nadu"
+    },
+    {
       "check": "baseline_season",
       "duration_months": 1,
       "end_date": "2025-05-01",
@@ -325,6 +2785,36 @@
       ],
       "report_id": "2c0e6434d65dcaa6",
       "start_date": "2025-05-01",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+      "docket_title": "Subhas Datta vs. State of West Bengal & Ors. 2026 NGTeJ 430",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2026-018_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "(2 Proposed quarry + 2 Existing quarries)"
+        }
+      ],
+      "report_id": "2c0e6434d65dcaa6",
       "state": "Tamil Nadu"
     },
     {
@@ -358,9 +2848,99 @@
       "report_id": "ba9a111ebda4fd16",
       "start_date": "2012-07-03",
       "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+      "docket_title": "[PDF] P - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/REPLY%20BY%20SEIAA%20AND%20SEAC,%20UP%20IN%20OA%20NO.%20169%20of%202025%20PAWAN%20KUMAR%20VS%20UNION%20OF%20INDIA%20&%20ORS.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: draft eia / emp for proposed rough stone and gravel quarry"
+        }
+      ],
+      "report_id": "ba9a111ebda4fd16",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-014_judgment.pdf",
+      "docket_title": "Sanu Das vs. State of Odisha & Ors. 2025 NGTeJ 432",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-014_judgment.pdf",
+          "value": "https://www.greentribunal.gov.in/Ejournal/uploads/case_pdfs/case-2025-014_judgment.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "TERMS OF REFERENCE (ToR) COMPLIANCE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: TERMS OF REFERENCE (ToR) COMPLIANCE"
+        }
+      ],
+      "report_id": "a1620e775558f593",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in",
+          "value": "https://www.greentribunal.gov.in"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Application For Conducting Public Hearing ( Draft EIA ...",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Application For Conducting Public Hearing ( Draft EIA ..."
+        }
+      ],
+      "report_id": "906818542b94bc76",
+      "state": "Tamil Nadu"
     }
   ],
-  "generated_at": "2026-10-30T02:13:30Z",
+  "generated_at": "2026-10-30T04:38:11Z",
   "neutral_note": "Flags are leads for verification; they are not conclusions about intent or compliance.",
   "per_check_counts": {
     "accreditation": {
@@ -372,6 +2952,10 @@
       "GREY": 32,
       "INFO": 10,
       "OK": 46
+    },
+    "public_record": {
+      "GREY": 2,
+      "INFO": 86
     },
     "species_iucn": {
       "GREY": 76,
@@ -406,27 +2990,27 @@
         "credits": 20.0
       },
       "search": {
-        "cached": 18,
-        "calls": 3,
-        "credits": 3.0
+        "cached": 90,
+        "calls": 88,
+        "credits": 88.0
       }
     },
-    "cached": 31,
-    "calls": 18,
+    "cached": 103,
+    "calls": 103,
     "cap": 400,
     "crawl_cached": 6,
     "crawl_calls": 8,
     "crawl_credits": 21.0,
-    "credits": 44.0,
+    "credits": 129.0,
     "extract_cached": 0,
     "extract_calls": 0,
     "extract_credits": 0.0,
     "map_cached": 7,
     "map_calls": 7,
     "map_credits": 20.0,
-    "search_cached": 18,
-    "search_calls": 3,
-    "search_credits": 3.0
+    "search_cached": 90,
+    "search_calls": 88,
+    "search_credits": 88.0
   },
   "version": 1
 }

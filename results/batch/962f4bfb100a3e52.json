@@ -75,6 +75,15 @@
       "requirement_verified": false,
       "start_date": "2024-01-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "evidence": [],
+      "grade": "GREY",
+      "message": "No proposal number or project name available to search.",
+      "project_name": "",
+      "proposal_no": null,
+      "quotes": []
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -158,6 +167,15 @@
       "reference_months": 3,
       "requirement_verified": false,
       "start_date": "2024-01-01"
+    },
+    "public_record": {
+      "check": "public_record",
+      "evidence": [],
+      "grade": "GREY",
+      "message": "No proposal number or project name available to search.",
+      "project_name": "",
+      "proposal_no": null,
+      "quotes": []
     },
     "species_iucn": {
       "check": "species_iucn",

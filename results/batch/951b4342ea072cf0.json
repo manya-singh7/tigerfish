@@ -40,6 +40,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL PRINCIPAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment (eia)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment (eia)"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -53,7 +81,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL PRINCIPAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment (eia)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment (eia)"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -91,6 +148,34 @@
           "label": "Baseline/monitoring context",
           "page": 5,
           "text": "390 0 2 Domestic Use 10 2 8 3 Dust Suppression 40 40 0 4 Greenbelt 60 60 0 Total 500 492 8 PRESENT ENVIRONMENTAL SCENARIO Study Area: Core: The proposed project is located within the existing plant of JSL at Kalinganagar Industrial Complex, Jajpur District in Odisha and it falls under the Survey of India Topo sheet No. G/16. The Latitude and Longitude of the proposed site 20⁰ 57’ 10.31” N to 20⁰ 57’18.09” N and 86⁰ 02’ 14.46’’ E to 86⁰ 02’ 32.39’’ E respectively. The nearest national highway is NH- 6, which is about 20 km E of the project site. The plant is bounded by East Coast Railway’s line"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL PRINCIPAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment (eia)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment (eia)"
         }
       ]
     },
@@ -141,7 +226,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+      "docket_title": "BEFORE HON'BLE NATIONAL GREEN TRIBUNAL PRINCIPAL ...",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/RESPONSE%20AFFIDAVIT%20BY%20GOVT.%20OF%20UP%20IN%20EA%20NO.%2029%20of%202024%20IN%20APPEAL%20NO.%2079%20of%202014%20Debadityo%20Sinha%20Vs%20Ministry%20of%20Environment,%20Forest%20and%20Climate%20Change.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "environmental impact assessment (eia)",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: environmental impact assessment (eia)"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:39:06Z",
   "id": "951b4342ea072cf0",

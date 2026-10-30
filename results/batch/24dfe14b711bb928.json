@@ -45,6 +45,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=364",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=364",
+          "value": "https://www.greentribunal.gov.in/news-update?page=364"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABET Certificate No:-NABET/EIA/2124/IA0087"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -58,7 +86,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=364",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=364",
+          "value": "https://www.greentribunal.gov.in/news-update?page=364"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABET Certificate No:-NABET/EIA/2124/IA0087"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/2124/IA0087",
@@ -101,6 +158,34 @@
           "label": "Baseline/monitoring context",
           "page": 3,
           "text": "Water Requirement 5KLDs Proposed CSR 5.00Lakhs Proposed EMP Capital Cost 12.0 Lakh Proposed EMP Recurring Cost 5.0 Lakhs Baseline Data The baseline data was collected for the pre-monsoon season i.e. Dec-21 to February 2022 in the 10 km study area results. The maximum value for PM2.5 was observed, as 24.8 μg /m3 at Village-Pahanga (A3) while 24 hours applicable limit is 60μg/m3 mixed use areas. The area observes average PM2.5 concentration in the range of 8.4-24.8 μg/m3 with the lowest concentration of 8.4 μg/m3 recorded at Village- Debidol Village (A6). The maximum value for PM10 was observed, as 62.7μg/m3 at village-Agara (A7) while 24 hours applicable limit is 100μg/m3 for mixed use areas"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=364",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=364",
+          "value": "https://www.greentribunal.gov.in/news-update?page=364"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABET Certificate No:-NABET/EIA/2124/IA0087"
         }
       ]
     },
@@ -151,7 +236,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=364",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=364",
+          "value": "https://www.greentribunal.gov.in/news-update?page=364"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABE",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "M/s VVN Technologies Pvt Ltd Plot No 305, Uppal, Hyderabad, Telengana-500013 NABET Certificate No:-NABET/EIA/2124/IA0087"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:30:05Z",
   "id": "24dfe14b711bb928",

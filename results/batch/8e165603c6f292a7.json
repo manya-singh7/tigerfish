@@ -34,6 +34,34 @@
         }
       ]
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=2",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=2",
+          "value": "https://www.greentribunal.gov.in/news-update?page=2"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FOR PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER (PPF & I), ODISHA, BHUBANESWAR"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -71,7 +99,36 @@
       "status": "OK"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=2",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=2",
+          "value": "https://www.greentribunal.gov.in/news-update?page=2"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FOR PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER (PPF & I), ODISHA, BHUBANESWAR"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": null,
@@ -103,6 +160,34 @@
           "label": "Baseline/monitoring context",
           "page": 5,
           "text": "Cost per Ha of CCA : Rs.2.64 Lakhs/Ha 3. B.C. Ratio : 1.695 4. IRR : 15.26% 1.2 DESCRIPTION OF THE ENVIRONMENT KEY FINDINGS The general study area covers about 10 km radius with respect to the site. The impact identification always starts with the collection of primary or baseline data such as the ambient air quality, water quality, noise levels, land use patterns, flora & fauna and the socio- economic aspects within the 10 Km radius zone. 1.2.1 Air Environment Maximum level of PM 10 is recorded in the study area was 19.0µg/m3 at Near Hotel Sh ree Du rga Road Site and the minimum recorded was 8.7 µg/m3 at project site. The maximum level of PM 2.5 is recorded in the study area was 14"
+        }
+      ]
+    },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=2",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=2",
+          "value": "https://www.greentribunal.gov.in/news-update?page=2"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FOR PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER (PPF & I), ODISHA, BHUBANESWAR"
         }
       ]
     },
@@ -177,7 +262,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=2",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=2",
+          "value": "https://www.greentribunal.gov.in/news-update?page=2"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "FOR PROPOSED KHAIRIBHANDAN BARRAGE PROJECT MAYURBHANJ , ODISHA CHIEF ENGINEER (PPF & I), ODISHA, BHUBANESWAR"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-30T01:18:25Z",
   "id": "8e165603c6f292a7",

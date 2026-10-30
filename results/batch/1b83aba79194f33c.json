@@ -62,6 +62,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+      "docket_title": "[PDF] Kambala Ram - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA "
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -75,7 +103,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+      "docket_title": "[PDF] Kambala Ram - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA "
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/25-28/RA0474",
@@ -133,6 +190,34 @@
       "reference_months": 3,
       "requirement_verified": false
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+      "docket_title": "[PDF] Kambala Ram - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA "
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -180,7 +265,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+      "docket_title": "[PDF] Kambala Ram - National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf",
+          "value": "https://www.greentribunal.gov.in/sites/default/files/news_updates/OA%2061%20of%202026%20Report%20filed%20by%20SEIAA%20AP%20R3.pdf"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA ",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: Proposed Expansion of Existing Grinding and Screening unit of Manganese Ore with addition of Manufacturing of 30000 TPA "
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T10:55:58Z",
   "id": "1b83aba79194f33c",

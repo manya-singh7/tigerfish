@@ -84,6 +84,34 @@
       "requirement_verified": false,
       "start_date": "2025-10-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=109",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=109",
+          "value": "https://www.greentribunal.gov.in/news-update?page=109"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -97,7 +125,36 @@
       "status": "GREY"
     }
   },
-  "batch_flags": [],
+  "batch_flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=109",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=109",
+          "value": "https://www.greentribunal.gov.in/news-update?page=109"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No"
+        }
+      ]
+    }
+  ],
   "checks": {
     "accreditation": {
       "certificate": "NABET/EIA/23-26/SA 0246",
@@ -177,6 +234,34 @@
       "requirement_verified": false,
       "start_date": "2025-10-01"
     },
+    "public_record": {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=109",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=109",
+          "value": "https://www.greentribunal.gov.in/news-update?page=109"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No"
+        }
+      ]
+    },
     "species_iucn": {
       "check": "species_iucn",
       "location": {
@@ -224,7 +309,36 @@
     "tavily_credits": 0
   },
   "findings": [],
-  "flags": [],
+  "flags": [
+    {
+      "check": "public_record",
+      "court_url": "https://www.greentribunal.gov.in/news-update?page=109",
+      "docket_title": "National Green Tribunal",
+      "evidence": [
+        {
+          "label": "Matched court URL",
+          "url": "https://www.greentribunal.gov.in/news-update?page=109",
+          "value": "https://www.greentribunal.gov.in/news-update?page=109"
+        },
+        {
+          "label": "Method",
+          "value": "Tavily search over tribunal and court dockets; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "Prior tribunal docket indexed; verify status.",
+      "page": 1,
+      "project_name": "EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No",
+      "proposal_no": null,
+      "quotes": [
+        {
+          "label": "Proposal / project reference",
+          "page": 1,
+          "text": "Project: EIA REPORT Proposed Manufacturing of Synthetic Organic Chemicals (Unsaturated Polyester Resin) At Plot No"
+        }
+      ]
+    }
+  ],
   "format": "tigerfish-report/1",
   "generated": "2026-10-29T09:07:32Z",
   "id": "b65c263b32056a24",
