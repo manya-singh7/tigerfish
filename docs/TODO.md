@@ -20,18 +20,26 @@ for scope and `docs/FEATURES.md` for current UI entry points.
 - [x] Human review/feedback, regional-language letters, RTI pack and review imports exist.
 - [x] Before this branch, offline suite run: 976 passed, 1 failed, 1 skipped, 7 deselected. Failure: reset-filter
   test expects all cards despite the library's initial 10-card pagination.
-- [x] Specify and test pagination: 10 initially, ordered Show more without duplicates,
-  reset clears filters and restores the initial page, all matching reports remain reachable.
+- [x] Adopt current main's library behavior: separate deep/table and batch binders, a single
+  Audit type radio choice, all matching reports rendered without a page cap, and Reset
+  restoring All and clearing every filter. A 35-report regression replaces the old ten-card
+  Show more test and verifies identities, order, combined filters and no duplicates.
 - [x] Fix batch baseline extraction: shared-year ranges, report-number exclusion, study vs
   administrative/traffic context, calendar-aware durations and conflicting evidence.
 - [x] Regenerate all 25 baseline results from original SHA256-matching PDFs without model,
   GBIF or Tavily calls; preserve unrelated checks and discovery costs. No baseline INFO leads remain.
 - [x] Expose batch check results, uncertainty and observations on report pages and a reachable summary.
-- [x] Complete offline suite: 1,003 passed, 1 skipped, 7 live tests deselected. Browser:
+- [x] Previous branch verification: 1,003 passed, 1 skipped, 7 live tests deselected. Browser:
   663/663 design checks (including the Batch screening tab), plus batch summary/report smoke
   checks at 1440px light and 390px dark. Repeated successfully after merging updated main.
   Every regenerated baseline quotation was matched to its original hash-verified source;
   unrelated checks, standard findings and costs were compared with the pre-refresh artifacts.
+- [x] Verification after adopting main's binders/radio behavior and new review records:
+  1,005 offline tests passed, 1 skipped, 7 live tests deselected; 663/663 design checks;
+  desktop-light and mobile-dark browser checks for radio filters, reset and batch evidence.
+- [x] Preserve seven new team decisions for Indira Point Table 3.16 and the normalized
+  comment/reviewed_at import handling. There are now 17 recorded confirmed judgments;
+  still too few to estimate precision.
 - [ ] Improve batch project-title extraction and verify parsed report dates used by the
   certificate-date screen; baseline-only regeneration intentionally leaves those unchanged.
 - [ ] Recheck copied-text leads for taxonomy years, legitimate secondary data and attribution.

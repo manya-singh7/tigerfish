@@ -93,12 +93,14 @@ and in the library's report previews:
 
 - `layout="wide"`, content max-width 1480px, side padding that shrinks with the screen. No
   half-empty screens at 1920px **(checked)**; no horizontal scroll at 390px **(checked)**.
-- Library: a main column (about 70%) of report slips, two per row above 1400px; a sticky side
-  panel (about 30%) with search, every filter, the totals sentence and "Upload your EIA".
-  On tablet and phone the panel moves above the list inside an expander.
-- Library pagination: render 10 matching cards initially. Show more adds 10 in stable order;
-  no duplicate cards and every matching report remains reachable. Changing a filter or
-  resetting filters returns to the first 10. Counts distinguish matching from rendered cards.
+- Library: a plain filter container above two full-width binders, Deep Investigation Audits
+  (saved full audits and the standalone table) and Automated Batch Triage (quick checks).
+  Each binder has a full-width header and a two-column card grid above 1400px.
+- Audit type is one radio choice: All, Full Audits, or Quick Batch Audits. State, Sector
+  and Year remain multiselects; search and the RED/human-verified checkboxes combine with them.
+- Render every matching report in its binder, in stable order, without duplicates. There is
+  no active page-size cap or Show more control. Reset clears all filters and restores All;
+  empty binders explain that no reports match. Batch screening evidence remains separately reachable.
 - Home: left, the tiger fish slip; right, tagline, purpose line, totals as one sentence, a
   search box into the library and "Upload your EIA". Below, the library. No centered hero,
   no row of three feature cards.

@@ -49,10 +49,10 @@ visible. Its steps, separated by ` · `, are followed from Home in order:
 | Report library with live totals | Home (below the opening row) and Library | css=.tf-lib-total |
 | Batch check summary and report links | Library, Batch screening results expander | text=Batch screening results |
 | Batch certificate, baseline and species evidence | Quick report, Batch screening tab | report=3a84436e0e972dbf · tab=Batch screening · text=Certificate-date screen |
-| Library search | Library side panel | text=Search by project name |
-| Library filters: State, Sector, Year, Audit type | Library side panel | text=Audit type |
-| Filter: Has RED flags | Library side panel | text=Has RED flags |
-| Filter: Has human-verified findings | Library side panel | text=Has human-verified findings |
+| Library search | Library filter container above the binders | text=Search by project name |
+| Library filters: State, Sector, Year, Audit type radio | Library filter container above the binders | text=Audit type |
+| Filter: Has RED flags | Library filter container above the binders | text=Has RED flags |
+| Filter: Has human-verified findings | Library filter container above the binders | text=Has human-verified findings |
 | Upload with three levels | Top menu, Upload | menu=Upload · text=Deep audit (chosen pages, live) |
 | Page picks for the deep audit | Upload page (after a PDF is read) | menu=Upload · text=pages you choose |
 | How it works (diagram, levels, models) | Top menu, How it works | menu=How it works · text=Three levels |

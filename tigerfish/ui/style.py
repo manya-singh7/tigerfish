@@ -67,7 +67,7 @@ header [data-testid="stHeaderLogo"] { height: 2rem; width: auto; max-width: none
 header div:has(> img[data-testid="stHeaderLogo"]), header div:has(> [data-testid="stLogoLink"]) { display: flex; align-items: center; }
 header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { content: "@@PURPOSE@@";
   font-family: "Schibsted Grotesk", sans-serif; font-size: 0.8125rem; line-height: 1.3;
-  color: var(--tf-muted); width: max-content; max-width: 36rem; margin-left: 1.1rem; white-space: normal;
+  color: var(--tf-muted); width: max-content; max-width: 38rem; margin-left: 1.1rem; white-space: nowrap !important;
   overflow: visible; text-overflow: clip; display: block; }
 header nav { margin-left: auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 0.5rem !important; }
 header [data-testid="stTopNavLink"] { padding: 0.35rem 0.65rem !important; }
@@ -106,6 +106,9 @@ div[data-baseweb="tooltip"], [role="tooltip"], div[data-testid="stTooltipContent
 [data-testid="stTable"], [data-testid="stDataFrame"] { background: var(--tf-paper); }
 input, textarea, [data-baseweb="select"] > div, [data-baseweb="input"] { background: var(--tf-paper) !important; }
 button[kind="primary"], button[data-testid="stBaseButton-primary"] { color: var(--tf-on-teal) !important; }
+/* a disabled button keeps a readable label (cream on Streamlit's pale disabled fill vanished) */
+.stApp button:disabled { background-color: var(--tf-paper-2) !important; border-color: var(--tf-rule) !important; cursor: not-allowed; }
+.stApp button:disabled, .stApp button:disabled * { color: var(--tf-muted) !important; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--tf-teal) !important; outline-offset: 2px; }
 .stButton button:active, .stDownloadButton button:active { transform: translateY(1px); }
 [data-testid="stMarkdownContainer"] p { font-size: 1rem; }
@@ -190,8 +193,8 @@ mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 
 /* ---- side panel: sticky on wide screens ---- */
 @media (min-width: 1100px) {
+  [data-testid="stColumn"]:has(div[class*="st-key-tf-side"]) { align-self: flex-start; }
   div[class*="st-key-tf-side"] { position: sticky; top: 4.5rem; align-self: flex-start; z-index: 10; }
-  [data-testid="stColumn"]:has(div[class*="st-key-tf-side"]) { position: sticky; top: 4.5rem; align-self: flex-start; z-index: 10; }
 }
 div[class*="st-key-tf-side"] { background: var(--tf-paper); border: 1px solid var(--tf-rule);
   border-radius: 3px; padding: 1rem 1.1rem; pointer-events: auto !important; }

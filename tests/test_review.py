@@ -28,6 +28,19 @@ def test_reviewer_name_is_required(store):
         review.record("ct-1", "A", "maybe", path=store)
 
 
+def test_hand_written_comment_and_reviewed_at_read_as_note_and_time(store):
+    store.write_text(json.dumps({"report_id": "r", "flag_id": "sp-01", "decision": "real",
+                                 "reviewer": "A", "comment": "absent here",
+                                 "reviewed_at": "2026-10-30T04:30:00Z"}) + "\n")
+    row = review.load_reviews(store, report_id="r")["sp-01"]["a"]
+    assert (row["note"], row["time"]) == ("absent here", "2026-10-30T04:30:00Z")
+    assert "comment" not in row and "reviewed_at" not in row
+
+
+def test_committed_reviews_have_note_and_time():
+    assert all({"note", "time"} <= set(r) for r in review.load_rows())
+
+
 def test_single_review_latest_decision_counts(store):
     q = queue(("ct-1", False, "top30", "ct-1"))
     review.record("ct-1", "A", "real", path=store)

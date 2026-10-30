@@ -53,7 +53,17 @@ def load_rows(path=None):
     p = Path(path or REVIEWS)
     if not p.exists():
         return []
-    return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
+    return [normalized(json.loads(line))
+            for line in p.read_text(encoding="utf-8-sig").splitlines() if line.strip()]
+
+
+def normalized(row):
+    """A row with the schema's note and time keys. Hand-written lines may say "comment" and
+    "reviewed_at" instead; the file is left as written."""
+    row = dict(row)
+    row.setdefault("note", row.pop("comment", "") or "")
+    row.setdefault("time", row.pop("reviewed_at", "") or "")
+    return row
 
 
 def row_report(row):

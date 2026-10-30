@@ -131,28 +131,32 @@ def test_format_doc_matches_the_code():
 
 
 @pytest.fixture
-def paginated_library(monkeypatch):
-    """A stable 25-report library, independent of the committed corpus size/order."""
+def binder_library(monkeypatch):
+    """More than 30 mixed reports: main renders all matches in separate binders."""
     items = [
         {
             "id": f"report_{i:02d}",
             "title": f"Report {i:02d}",
             "project": f"Project {i:02d}",
-            "state": "Goa",
+            "state": "Goa" if i % 2 == 0 else "Kerala",
             "sector": "Mining",
             "year": 2025,
             "pages": 1,
             "pages_total": 1,
-            "unit": "page",
-            "audit_type": library.QUICK,
+            "unit": "table" if i == 2 else "page",
+            "audit_type": library.FULL
+            if i < 2
+            else library.TABLE
+            if i == 2
+            else library.QUICK,
             "grades": {"RED": 0, "ORANGE": 0, "INFO": 0},
             "verified": int(i < 5),
             "reviewed": None,
-            "kind": "batch",
+            "kind": "saved" if i < 3 else "batch",
             "path": "unused",
             "full_run": None,
         }
-        for i in range(25)
+        for i in range(35)
     ]
     monkeypatch.setattr(library_ui, "entries", lambda: items)
     monkeypatch.setattr(library_ui, "_preview", lambda *args: None)
@@ -165,32 +169,48 @@ def visible_reports(at):
     ]
 
 
-def test_library_pagination_keeps_order_reachability_and_reset(
-    no_keys, paginated_library
+def test_library_binders_render_every_match_and_reset_all_filters(
+    no_keys, binder_library
 ):
     at = open_app(report=None, page="library")
-    expected = [e["id"] for e in paginated_library]
-    assert visible_reports(at) == expected[:10]
-    for count in (20, 25):
-        at.button(key="lib::more").click().run()
-        assert not at.exception
-        assert visible_reports(at) == expected[:count]
-        assert len(set(visible_reports(at))) == count
+    expected = [e["id"] for e in binder_library]
+    assert visible_reports(at) == expected
+    assert len(set(visible_reports(at))) == 35
     assert not any(b.key == "lib::more" for b in at.button)
+    text = " ".join(m.value for m in at.markdown)
+    assert "Deep Investigation Audits (3 Benchmark Reports)" in text
+    assert "Automated Batch Triage (32 State Pollution Board Filings)" in text
 
+    full_option = next(
+        o for o in at.radio(key="lib::type").options if o.startswith("Full")
+    )
+    at.radio(key="lib::type").set_value(full_option).run()
+    assert (
+        visible_reports(at) == expected[:3]
+    )  # full binder includes the standalone table
+    assert "Automated Batch Triage" not in " ".join(m.value for m in at.markdown)
+    quick_option = next(
+        o for o in at.radio(key="lib::type").options if o.startswith("Quick")
+    )
+    at.radio(key="lib::type").set_value(quick_option).run()
+    assert visible_reports(at) == expected[3:]  # 32 matches, not a hidden PAGE_SIZE cap
+    assert "Deep Investigation Audits" not in " ".join(m.value for m in at.markdown)
+    at.multiselect(key="lib::state").select("Goa").run()
+    assert visible_reports(at) == [
+        e["id"] for e in binder_library[3:] if e["state"] == "Goa"
+    ]
+    at.text_input(key="lib::q").input("Project 34").run()
+    assert visible_reports(at) == [expected[-1]]
     at.checkbox(key="lib::verified").check().run()
-    assert visible_reports(at) == expected[:5]
-    at.button(key="lib::reset").click().run()
+    assert visible_reports(at) == []
+    at.button(key="lib::reset-empty").click().run()
+    assert not at.exception
     assert not at.checkbox(key="lib::verified").value
-    assert visible_reports(at) == expected[:10]
-    assert any(b.key == "lib::more" for b in at.button)
+    assert at.text_input(key="lib::q").value == ""
+    assert at.multiselect(key="lib::state").value == []
+    assert at.radio(key="lib::type").value == "All (35)"
+    assert visible_reports(at) == expected
     assert not any("Has human-verified findings" in m.value for m in at.markdown)
-
-    at.button(key="lib::more").click().run()
-    at.text_input(key="lib::q").input("Project").run()
-    assert visible_reports(at) == expected[:10]  # changing a filter starts a fresh page
-    at.text_input(key="lib::q").input("Project 24").run()
-    assert visible_reports(at) == [expected[-1]]  # off-page reports remain searchable
 
 
 @has_results
@@ -199,10 +219,11 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     line = library.totals_line(library.totals(library.entries()))
-    assert line in text                                    # totals computed, not hard-coded
+    assert line in text  # totals computed, not hard-coded
     assert any(b.label == "Upload your EIA" for b in at.button)
     assert any("Saved audits are full runs" in c.value for c in at.caption)
-    assert {m.label for m in at.multiselect} == {"State", "Sector", "Year", "Audit type"}
+    assert {m.label for m in at.multiselect} == {"State", "Sector", "Year"}
+    assert any(r.label == "Audit type" for r in at.radio)
     n = len([b for b in at.button if b.label == "Open report"])
     at.checkbox(key="lib::red").check().run()
     red = len([b for b in at.button if b.label == "Open report"])
@@ -212,18 +233,17 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
 
 
 @has_results
-def test_library_filter_has_human_verified_findings(no_keys, paginated_library):
+def test_library_filter_has_human_verified_findings(no_keys, binder_library):
     at = open_app(report=None, page="library")
     at.checkbox(key="lib::verified").check().run()
     assert not at.exception
     shown = len([b for b in at.button if b.label == "Open report"])
-    assert shown == sum(1 for e in paginated_library if e["verified"]) >= 1
+    assert shown == sum(1 for e in binder_library if e["verified"]) >= 1
     assert any(
         "Has human-verified findings" in m.value for m in at.markdown
     )  # its chip
     at.button(key="lib::reset").click().run()  # Reset filters
-    assert len(visible_reports(at)) == min(len(paginated_library), library_ui.PAGE_SIZE)
-    assert visible_reports(at) == [e["id"] for e in paginated_library[:10]]
+    assert visible_reports(at) == [e["id"] for e in binder_library]
     assert not at.checkbox(key="lib::verified").value
 
 
@@ -245,12 +265,13 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     at = open_app(report=None, page="library")
     text = "\n".join(m.value for m in at.markdown)
     assert "5 EIAs checked" in text or "EIAs checked" in text
-    at.multiselect(key="lib::type").select(library.QUICK).run()
+    opt = next(o for o in at.radio(key="lib::type").options if "Quick" in o)
+    at.radio(key="lib::type").set_value(opt).run()
     assert len([b for b in at.button if b.label == "Open report"]) == 2
     at.button(key="tf::open::sample_quick_mine_odisha_2025").click().run()
     assert not at.exception
     assert any(library.QUICK_NOTICE in w.value for w in at.warning)
-    labels = [t.label.split(" (")[0] for t in at.tabs]     # only the quick check's sections
+    labels = [t.label.split(" (")[0] for t in at.tabs]  # only the quick check's sections
     assert labels[0] == "Overview" and set(labels) <= {"Overview", "Contradictions", "Species & nature"}
     text = "\n".join(m.value for m in at.markdown)
     assert "Checks that ran" in text and "Not run for this report" in text

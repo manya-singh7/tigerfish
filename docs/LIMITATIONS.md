@@ -194,10 +194,12 @@ to verify against the linked source; neither was improved by the baseline-only r
 and the library's Batch screening results summary. Standard species findings are not counted
 twice as additional batch observations. No model or web calls run while replaying the UI.
 
-The library renders 10 cards initially and then Show more. Reset clears filters and
-restores 10 cards. Changing a filter also restarts pagination. Regression tests use a
-controlled 25-report fixture to check 10/20/25 visibility, stable IDs, reset, off-page search
-and no duplicates; the former assertion that reset rendered all reports has been replaced.
+The library follows the current main-branch binders: saved audits/table in Deep Investigation
+Audits and quick checks in Automated Batch Triage. The All / Full Audits / Quick Batch Audits
+radio filter selects binders; all matching cards render without a pagination cap. Reset
+clears all filters and restores All. Tests use 35 mixed reports to check reachability,
+stable IDs, binder separation, combined filters and no duplicates. This supersedes the
+earlier ten-card Show more contract. Large corpora can therefore cost more to render.
 
 ## Evaluation, human review and demo scope
 
@@ -206,8 +208,9 @@ and no duplicates; the former assertion that reset rendered all reports has been
 differences wrongly flagged, 5/5 planted out-of-place species flagged and 0/5 locally
 recorded species wrongly flagged. These are small, development-influenced samples.
 
-Only 10 flags have recorded human judgments, all Great Nicobar and confirmed. This is
-too few to estimate general precision. Thresholds were developed mainly on Great Nicobar
+There are 17 recorded human judgments: 10 Great Nicobar hand checks and 7 Indira Point
+Table 3.16 decisions in `review/reviews.jsonl`, all confirmed. This remains too few to
+estimate general precision. Thresholds were developed mainly on Great Nicobar
 and the Indira Point table; more reports do not establish generalization. Software tests
 are not human validation of the results.
 
