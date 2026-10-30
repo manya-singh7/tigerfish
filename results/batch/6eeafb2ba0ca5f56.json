@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "• Dated: 09/01/2024"
+        }
+      ],
+      "report_date": "2024-01-09",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.32,
+      "end_date": "2023-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-01-09"
+        },
+        {
+          "label": "End",
+          "value": "2023-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.32 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "- TO23B3301OR5268861N • ToR File No.: 455259/06-INFRA2/01-2024 • TOR Proposal no. - SIA/OR/INFRA2/455259/2024 • Dated: 09/01/2024 • Baseline Period: October 2023 to December 2023 (Post- monsoon) NABL Accreditation: Valid up to 25.09.2025 NABET Accreditation- Valid up to 16th December, 2024 Category of Project Executive Summary (English) 2024 For Setting up a Common Biomedical Waste Treatment Facility (CBWTF) by M/s Mediaid Medical Ancillary Services at Khata no. 552/149, Plot no. 2283 & 465/5610 at mauza-Seepur, Karnapal, Tehsil- Kaniha, Talcher, Dist- Angul – 759100 Project Proponent"
+        }
+      ],
+      "start_date": "2024-01-09"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "• Dated: 09/01/2024"
+        }
+      ],
+      "report_date": "2024-01-09",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.32,
+      "end_date": "2023-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-01-09"
+        },
+        {
+          "label": "End",
+          "value": "2023-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.32 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "- TO23B3301OR5268861N • ToR File No.: 455259/06-INFRA2/01-2024 • TOR Proposal no. - SIA/OR/INFRA2/455259/2024 • Dated: 09/01/2024 • Baseline Period: October 2023 to December 2023 (Post- monsoon) NABL Accreditation: Valid up to 25.09.2025 NABET Accreditation- Valid up to 16th December, 2024 Category of Project Executive Summary (English) 2024 For Setting up a Common Biomedical Waste Treatment Facility (CBWTF) by M/s Mediaid Medical Ancillary Services at Khata no. 552/149, Plot no. 2283 & 465/5610 at mauza-Seepur, Karnapal, Tehsil- Kaniha, Talcher, Dist- Angul – 759100 Project Proponent"
+        }
+      ],
+      "start_date": "2024-01-09"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:31:38Z",
+  "id": "6eeafb2ba0ca5f56",
+  "pages_read": 30,
+  "pages_total": 30,
+  "project": "Executive Summary (English)",
+  "project_name": "Executive Summary (English)",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf",
+  "state": "Odisha",
+  "title": "Executive Summary (English)",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1734343990_786585590.pdf",
+  "year": 2024
+}

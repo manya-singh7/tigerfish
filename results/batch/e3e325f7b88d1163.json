@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "312 on dated 19.02.2020"
+        }
+      ],
+      "report_date": "2020-02-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2020-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2020-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "HILLOCKS OVER AN AREA OF 36.65 HECTARES AT VILL: BICHHAKHANDI TAHASIL: DHARMASALA DISTRICT: JAJPUR ODISHA CATEGORY OF PROJECT: B BASELINE MONITORING PERIOD: MARCH 2020 TO MAY 2020 ENVIRONMENT CONSULTANT KALYANI LABORATORIES PVT.LTD. PLOT NO. 78/944, MILLENIUM CITY, NEAR NISSAN SHOW ROOM, PAHALA, BHUBANESWAR - 752101 e-mail: kalyanilab@yahoo.co.in PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12 Document Name: EIA/EMP Report For Bichhakhandi hillocks (Cluster-4) over an area of 36.65 Hectares in Village Bichhakhandi of Dharmasala Tahasil, District Jajpur Odisha. Issue. No.: 01 Date: 16.06.2020"
+        }
+      ],
+      "start_date": "2020-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "312 on dated 19.02.2020"
+        }
+      ],
+      "report_date": "2020-02-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2020-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2020-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "HILLOCKS OVER AN AREA OF 36.65 HECTARES AT VILL: BICHHAKHANDI TAHASIL: DHARMASALA DISTRICT: JAJPUR ODISHA CATEGORY OF PROJECT: B BASELINE MONITORING PERIOD: MARCH 2020 TO MAY 2020 ENVIRONMENT CONSULTANT KALYANI LABORATORIES PVT.LTD. PLOT NO. 78/944, MILLENIUM CITY, NEAR NISSAN SHOW ROOM, PAHALA, BHUBANESWAR - 752101 e-mail: kalyanilab@yahoo.co.in PROJECT PROPOSED BY DHARMASALA TAHASIL, JAJPUR, ODISHA Document No.: KLPL-EIA(MM)B1/2020-12 Document Name: EIA/EMP Report For Bichhakhandi hillocks (Cluster-4) over an area of 36.65 Hectares in Village Bichhakhandi of Dharmasala Tahasil, District Jajpur Odisha. Issue. No.: 01 Date: 16.06.2020"
+        }
+      ],
+      "start_date": "2020-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:27:27Z",
+  "id": "e3e325f7b88d1163",
+  "pages_read": 16,
+  "pages_total": 16,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1596541493_87639669.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1596541493_87639669.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1596541493_87639669.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1596541493_87639669.pdf",
+  "year": 2020
+}

@@ -1,0 +1,207 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "Cost per Ha of CCA : Rs.2.64 Lakhs/Ha 3. B.C. Ratio : 1.695 4. IRR : 15.26% 1.2 DESCRIPTION OF THE ENVIRONMENT KEY FINDINGS The general study area covers about 10 km radius with respect to the site. The impact identification always starts with the collection of primary or baseline data such as the ambient air quality, water quality, noise levels, land use patterns, flora & fauna and the socio- economic aspects within the 10 Km radius zone. 1.2.1 Air Environment Maximum level of PM 10 is recorded in the study area was 19.0µg/m3 at Near Hotel Sh ree Du rga Road Site and the minimum recorded was 8.7 µg/m3 at project site. The maximum level of PM 2.5 is recorded in the study area was 14"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "20 GBIF records of Dalbergia sissoo within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 2603,
+            "local_count": 20,
+            "regional_count": 120
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Dalbergia sissoo",
+          "name": "Dalbergia sisoo",
+          "page": 7,
+          "range_grade": null,
+          "report_iucn": "EN"
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "Cost per Ha of CCA : Rs.2.64 Lakhs/Ha 3. B.C. Ratio : 1.695 4. IRR : 15.26% 1.2 DESCRIPTION OF THE ENVIRONMENT KEY FINDINGS The general study area covers about 10 km radius with respect to the site. The impact identification always starts with the collection of primary or baseline data such as the ambient air quality, water quality, noise levels, land use patterns, flora & fauna and the socio- economic aspects within the 10 Km radius zone. 1.2.1 Air Environment Maximum level of PM 10 is recorded in the study area was 19.0µg/m3 at Near Hotel Sh ree Du rga Road Site and the minimum recorded was 8.7 µg/m3 at project site. The maximum level of PM 2.5 is recorded in the study area was 14"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "20 GBIF records of Dalbergia sissoo within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 2603,
+            "local_count": 20,
+            "regional_count": 120
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Dalbergia sissoo",
+          "name": "Dalbergia sisoo",
+          "page": 7,
+          "range_grade": null,
+          "report_iucn": "EN"
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 1,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 1,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 1,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:18:25Z",
+  "id": "8e165603c6f292a7",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "EXECUTIVE SUMMARY OF",
+  "project_name": "EXECUTIVE SUMMARY OF",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1515410696_282362981.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1515410696_282362981.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1515410696_282362981.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY OF",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1515410696_282362981.pdf",
+  "year": null
+}

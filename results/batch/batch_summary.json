@@ -1,38 +1,398 @@
 {
-  "baseline_parser_version": 2,
   "flag_counts": {
-    "INFO": 0,
-    "ORANGE": 0,
+    "INFO": 10,
+    "ORANGE": 1,
     "RED": 0
   },
-  "flags": [],
-  "generated_at": "2026-10-29T19:49:30Z",
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2026-01-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-01-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "project_name": "The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incorporated in the Final EIA/EMP Report",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026"
+        }
+      ],
+      "report_id": "1ae34adcf58e6305",
+      "start_date": "2025-12-01",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2012-10-26",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2012-10-25"
+        },
+        {
+          "label": "End",
+          "value": "2012-10-26"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "project_name": " To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Check List format",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 9,
+          "text": "5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell"
+        }
+      ],
+      "report_id": "2ad0fab45fa8dac9",
+      "start_date": "2012-10-25",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 1.74,
+      "end_date": "2025-06-19",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-04-28"
+        },
+        {
+          "label": "End",
+          "value": "2025-06-19"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify.",
+      "project_name": "EXECUTIVE SUMMARY of ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN FOR PUBLIC HEARING As per EIA Notification, 2006 OF GADEGAON OPEN CAST MINE Village - Gadegaon , Tehsil - Korpana , Dist - Chandrapur , State - Maharashtra",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in…"
+        }
+      ],
+      "report_id": "962f4bfb100a3e52",
+      "start_date": "2025-04-28",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2026-07-27",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2026-07-27"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "project_name": "Atlas Energy & Resources Pvt. Ltd.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation."
+        }
+      ],
+      "report_id": "8f37fe07193019d5",
+      "start_date": "2026-07-03",
+      "state": "Odisha"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.59,
+      "end_date": "2024-03-16",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-02-28"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-16"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify.",
+      "project_name": "summary of environmental impact assessment report for public ...",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age"
+        }
+      ],
+      "report_id": "f170ccb5e0cf7715",
+      "start_date": "2024-02-28",
+      "state": "Odisha"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 2.63,
+      "end_date": "2021-02-18",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-02-18"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify.",
+      "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator"
+        }
+      ],
+      "report_id": "5a0386e236f2bcf0",
+      "start_date": "2020-12-01",
+      "state": "Odisha"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2018-09-05",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-09-04"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-05"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "project_name": "haryana state pollution control board",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5"
+        }
+      ],
+      "report_id": "621b5293270fb619",
+      "start_date": "2018-09-04",
+      "state": "Haryana"
+    },
+    {
+      "certificate": "NABET/ EIA/2225/IA 0096",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "ORANGE",
+      "message": "The certificate appears to expire before the report date; verify the applicable accreditation record.",
+      "project_name": "25.04:2025",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 2,
+          "text": "NABET/ EIA/2225/IA 0096 (Rev"
+        },
+        {
+          "label": "Validity date",
+          "page": 2,
+          "text": "01) valid till 29.03.2025"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "10 Road transportation of coal bevond 30/06/2025 is not permitted"
+        }
+      ],
+      "report_date": "2025-06-30",
+      "report_id": "cb6e6676d150b91c",
+      "state": "Jharkhand",
+      "valid_until": "2025-03-29"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.49,
+      "end_date": "2024-02-23",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-03-08"
+        },
+        {
+          "label": "End",
+          "value": "2024-02-23"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.49 months, shorter than three months; verify.",
+      "project_name": "25.04:2025",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": " Transfer of EC to NTPC Mining Ltd. Dated 08.03.2024 10 MOEF&CC recognition and latest NABL accreditation certificate of monitoring laboratory 11 QCI-NABET Certificate of Accreditation of Consultant for EIA 12 Ambient air quality test results 13 Noise level monitoring data 14 List of sensitive receptors adjoining proposed transportation routes 15 ECR has conveyed that construction may require 3 years after Railway Board approval 16 Letter to Ministry of Power dt. 23.02.2024 & 14.08.2024"
+        }
+      ],
+      "report_id": "cb6e6676d150b91c",
+      "start_date": "2024-03-08",
+      "state": "Jharkhand"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 1,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 1 months, shorter than three months; verify.",
+      "project_name": "EXECUTIVE SUMMARY",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "EHS 360 LABS PRIVATE LIMITED, NABL Accredited laboratory 10/2 Ground floor, 50th street, 7th Avenue, Ashok Nagar, Chennai – 600 083. Baseline Monitoring Period MARCH TO MAY 2025 MAY 2025"
+        }
+      ],
+      "report_id": "2c0e6434d65dcaa6",
+      "start_date": "2025-05-01",
+      "state": "Tamil Nadu"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.03,
+      "end_date": "2012-07-03",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2012-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2012-07-03"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.03 months, shorter than three months; verify.",
+      "project_name": "draft eia / emp for proposed rough stone and gravel quarry",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 14,
+          "text": "SOCIO-ECONOMIC ENVIRONMENT ............................................................ 141 3.7.12.1 OBJECTIVES OF THE STUDY ....................................................................... 142 3.7.12.2 SCOPE OF WORK ............................................................................................... 142 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES .................................................................................................................................... 147 4.1 GENERAL ......................................................................................................"
+        }
+      ],
+      "report_id": "ba9a111ebda4fd16",
+      "start_date": "2012-07-03",
+      "state": "Tamil Nadu"
+    }
+  ],
+  "generated_at": "2026-10-30T02:13:30Z",
   "neutral_note": "Flags are leads for verification; they are not conclusions about intent or compliance.",
   "per_check_counts": {
     "accreditation": {
-      "GREY": 17,
-      "OK": 8
+      "GREY": 70,
+      "OK": 17,
+      "ORANGE": 1
     },
     "baseline_season": {
-      "GREY": 17,
-      "OK": 8
+      "GREY": 32,
+      "INFO": 10,
+      "OK": 46
     },
     "species_iucn": {
-      "GREY": 23,
-      "OK": 2
+      "GREY": 76,
+      "OK": 12
     }
   },
   "per_state_counts": {
-    "Maharashtra": 25
+    "Haryana": 5,
+    "Jharkhand": 9,
+    "Maharashtra": 29,
+    "Odisha": 38,
+    "Tamil Nadu": 7
   },
-  "reports_processed": 25,
-  "reports_requested": 50,
+  "reports_processed": 88,
+  "reports_requested": 90,
   "status": "complete",
   "tavily": {
     "by_endpoint": {
       "crawl": {
-        "cached": 0,
-        "calls": 7,
+        "cached": 6,
+        "calls": 8,
         "credits": 21.0
       },
       "extract": {
@@ -41,32 +401,32 @@
         "credits": 0.0
       },
       "map": {
-        "cached": 0,
+        "cached": 7,
         "calls": 7,
         "credits": 20.0
       },
       "search": {
-        "cached": 0,
-        "calls": 0,
-        "credits": 0.0
+        "cached": 18,
+        "calls": 3,
+        "credits": 3.0
       }
     },
-    "cached": 0,
-    "calls": 14,
+    "cached": 31,
+    "calls": 18,
     "cap": 400,
-    "crawl_cached": 0,
-    "crawl_calls": 7,
+    "crawl_cached": 6,
+    "crawl_calls": 8,
     "crawl_credits": 21.0,
-    "credits": 41.0,
+    "credits": 44.0,
     "extract_cached": 0,
     "extract_calls": 0,
     "extract_credits": 0.0,
-    "map_cached": 0,
+    "map_cached": 7,
     "map_calls": 7,
     "map_credits": 20.0,
-    "search_cached": 0,
-    "search_calls": 0,
-    "search_credits": 0.0
+    "search_cached": 18,
+    "search_calls": 3,
+    "search_credits": 3.0
   },
   "version": 1
 }

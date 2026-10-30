@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(January 2025)"
+        }
+      ],
+      "report_date": "2025-01-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "LPG: Liquefied Petroleum Gas NGT: National Green Tribunal NOC: No Objection Certificate OCEMS: Online Continuous Effluent/Emission Monitoring System PCC: Pollution Control Committee PM: Particulate Matter PI: Pollution Index PIA: Air pollutant score PIH: Waste pollutant score PIW: Water pollutant score PNG: Piped Natural Gas SPCB: State Pollution Control Board TTZ: Taz Trapezium Zone VOCs: Volatile Organic Compounds"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(January 2025)"
+        }
+      ],
+      "report_date": "2025-01-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "LPG: Liquefied Petroleum Gas NGT: National Green Tribunal NOC: No Objection Certificate OCEMS: Online Continuous Effluent/Emission Monitoring System PCC: Pollution Control Committee PM: Particulate Matter PI: Pollution Index PIA: Air pollutant score PIH: Waste pollutant score PIW: Water pollutant score PNG: Piped Natural Gas SPCB: State Pollution Control Board TTZ: Taz Trapezium Zone VOCs: Volatile Organic Compounds"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:50:01Z",
+  "id": "7d942a0c0f3ecee0",
+  "pages_read": 96,
+  "pages_total": 96,
+  "project": "Classification of Sectors into Red, Orange, Green, White ...",
+  "project_name": "Classification of Sectors into Red, Orange, Green, White ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://my.jspcb.org.in/upload/file/CPCB%20directions%20Classification.pdf",
+    "proposal_no": null,
+    "url": "https://my.jspcb.org.in/upload/file/CPCB%20directions%20Classification.pdf"
+  },
+  "source_page": "https://my.jspcb.org.in/upload/file/CPCB%20directions%20Classification.pdf",
+  "state": "Jharkhand",
+  "title": "Classification of Sectors into Red, Orange, Green, White ...",
+  "tool_version": "6b6a903",
+  "url": "https://my.jspcb.org.in/upload/file/CPCB%20directions%20Classification.pdf",
+  "year": 2025
+}

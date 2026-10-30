@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/SA 0147",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 424,
+          "text": "NABET/EIA/2124/SA 0147"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "9211/2022/SEAC/ToR-1535/2023 Dated: 21.08.2023"
+        }
+      ],
+      "report_date": "2023-08-21",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2023-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2023-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 18,
+          "text": "Name of the experts Involvement (Period and task) Signature and date 1 AP Mrs. K. Vijayalakshmi 1. Selection of Baseline Monitoring stations based on the wind direction 2. Interpretation of Baseline data by comparing it with standards prescribed by CPCB against the type of area 3. Identification of sources of air pollution and suggesting mitigation measures to minimize impact Period: January 2023 - March 2023"
+        }
+      ],
+      "start_date": "2023-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/SA 0147",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 424,
+          "text": "NABET/EIA/2124/SA 0147"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "9211/2022/SEAC/ToR-1535/2023 Dated: 21.08.2023"
+        }
+      ],
+      "report_date": "2023-08-21",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2023-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2023-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 18,
+          "text": "Name of the experts Involvement (Period and task) Signature and date 1 AP Mrs. K. Vijayalakshmi 1. Selection of Baseline Monitoring stations based on the wind direction 2. Interpretation of Baseline data by comparing it with standards prescribed by CPCB against the type of area 3. Identification of sources of air pollution and suggesting mitigation measures to minimize impact Period: January 2023 - March 2023"
+        }
+      ],
+      "start_date": "2023-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T02:12:20Z",
+  "id": "906818542b94bc76",
+  "pages_read": 424,
+  "pages_total": 424,
+  "project": "Application For Conducting Public Hearing ( Draft EIA ...",
+  "project_name": "Application For Conducting Public Hearing ( Draft EIA ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 13.08,
+    "lon": 80.27,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngPerumal191023.pdf",
+    "proposal_no": null,
+    "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngPerumal191023.pdf"
+  },
+  "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngPerumal191023.pdf",
+  "state": "Tamil Nadu",
+  "title": "Application For Conducting Public Hearing ( Draft EIA ...",
+  "tool_version": "6b6a903",
+  "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngPerumal191023.pdf",
+  "year": 2023
+}

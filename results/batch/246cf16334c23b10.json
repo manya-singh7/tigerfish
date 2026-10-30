@@ -1,0 +1,173 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "27/09/2025"
+        }
+      ],
+      "report_date": "2025-09-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 41,
+          "text": "location of the city to another location, due to some reason – functional or otherwise, Bidder shall shift the same to new locations based on the requirement of sampling. Penalties: During O&M period, in case of any Analyzer/ system failure, penalty will be charged by Authority @ Rs.1,000/- (one thousand) per day per Analyzer after a grace period of seven (7) continuous non-working days. The grace period of seven (7) continuous non-working days shall be given only once per quarter (3 months). For a failure of Data display: JSPCB/panel, a penalty will be charged by SPCB @ Rs. 1,000/- (one thousand) per day after a grace period of five (5) continuous non-working days"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "27/09/2025"
+        }
+      ],
+      "report_date": "2025-09-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 41,
+          "text": "location of the city to another location, due to some reason – functional or otherwise, Bidder shall shift the same to new locations based on the requirement of sampling. Penalties: During O&M period, in case of any Analyzer/ system failure, penalty will be charged by Authority @ Rs.1,000/- (one thousand) per day per Analyzer after a grace period of seven (7) continuous non-working days. The grace period of seven (7) continuous non-working days shall be given only once per quarter (3 months). For a failure of Data display: JSPCB/panel, a penalty will be charged by SPCB @ Rs. 1,000/- (one thousand) per day after a grace period of five (5) continuous non-working days"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:58:18Z",
+  "id": "246cf16334c23b10",
+  "pages_read": 183,
+  "pages_total": 183,
+  "project": "national competitive bidding for supply, installation, ...",
+  "project_name": "national competitive bidding for supply, installation, ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://jspcb.org.in/wp-content/uploads/2025/11/Tender_Document_for_Mobile-CAAQMS.pdf",
+    "proposal_no": null,
+    "url": "https://jspcb.org.in/wp-content/uploads/2025/11/Tender_Document_for_Mobile-CAAQMS.pdf"
+  },
+  "source_page": "https://jspcb.org.in/wp-content/uploads/2025/11/Tender_Document_for_Mobile-CAAQMS.pdf",
+  "state": "Jharkhand",
+  "title": "national competitive bidding for supply, installation, ...",
+  "tool_version": "6b6a903",
+  "url": "https://jspcb.org.in/wp-content/uploads/2025/11/Tender_Document_for_Mobile-CAAQMS.pdf",
+  "year": 2025
+}

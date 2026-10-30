@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(As per EIA Notification, 2006 dated 14.09.2006 and amendments)"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 6,
+          "text": "0.59.85 32.5 Total 1.84.0 100 % 1.4 Description of the environment 1.4.1 Base line environmental study Collection of base line data is an integral part of the preparation of environmental impact assessment reports. The baseline monitoring study has been carried out during March 2026 – May 2026 to assess the existing environmental scenario in the area. For the purpose of EIA studies, mine lease area was considered as the core zone and area outside the mine lease boundary up to 10km radius from the lease boundary was considered as buffer zone."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "(As per EIA Notification, 2006 dated 14.09.2006 and amendments)"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 6,
+          "text": "0.59.85 32.5 Total 1.84.0 100 % 1.4 Description of the environment 1.4.1 Base line environmental study Collection of base line data is an integral part of the preparation of environmental impact assessment reports. The baseline monitoring study has been carried out during March 2026 – May 2026 to assess the existing environmental scenario in the area. For the purpose of EIA studies, mine lease area was considered as the core zone and area outside the mine lease boundary up to 10km radius from the lease boundary was considered as buffer zone."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T02:00:33Z",
+  "id": "a41599a4a4f0195f",
+  "pages_read": 20,
+  "pages_total": 20,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 13.08,
+    "lon": 80.27,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf",
+    "proposal_no": null,
+    "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf"
+  },
+  "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf",
+  "state": "Tamil Nadu",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngMPMining27826.pdf",
+  "year": 2006
+}

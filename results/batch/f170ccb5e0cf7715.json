@@ -1,0 +1,263 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/21-24/SA 0211",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 9,
+          "text": "NABET/EIA/21-24/SA 0211)"
+        },
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide"
+        }
+      ],
+      "report_date": "2024-02-28",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.59,
+      "end_date": "2024-03-16",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-02-28"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-16"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age"
+        }
+      ],
+      "start_date": "2024-02-28"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.59,
+      "end_date": "2024-03-16",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-02-28"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-16"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age"
+        }
+      ],
+      "start_date": "2024-02-28"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/21-24/SA 0211",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 9,
+          "text": "NABET/EIA/21-24/SA 0211)"
+        },
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide"
+        }
+      ],
+      "report_date": "2024-02-28",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.59,
+      "end_date": "2024-03-16",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-02-28"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-16"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age"
+        }
+      ],
+      "start_date": "2024-02-28"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.59,
+      "end_date": "2024-03-16",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-02-28"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-16"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age"
+        }
+      ],
+      "start_date": "2024-02-28"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:34:54Z",
+  "id": "f170ccb5e0cf7715",
+  "pages_read": 9,
+  "pages_total": 9,
+  "project": "summary of environmental impact assessment report for public ...",
+  "project_name": "summary of environmental impact assessment report for public ...",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1719658949_624075154.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1719658949_624075154.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1719658949_624075154.pdf",
+  "state": "Odisha",
+  "title": "summary of environmental impact assessment report for public ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1719658949_624075154.pdf",
+  "year": 2024
+}

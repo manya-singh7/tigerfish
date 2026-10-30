@@ -1,0 +1,213 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0391",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 2,
+          "text": "NABET/EIA/24-27/RA 0391, Dated 10th April 2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 2,
+          "text": "Valid up to 17th December 2027"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "NABET/EIA/24-27/RA 0391, Dated 10th April 2025"
+        }
+      ],
+      "report_date": "2025-04-10",
+      "valid_until": "2027-12-17"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2026-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Tehsil – Jujumura, District – Sambalpur, Odisha. Project Proponent M/s Agrawal Rasayan Category of Project – B1 Unique File No. VCSPL/AGRA/EIA/001/01 Monitoring Period: December 2025 to February 2026 (Winter Season) Laboratory Engaged: Inhouse Lab NABET Certificate No. & Date of Issue: NABET/EIA/24-27/RA 0391, Dated 10th April 2025 Valid up to 17th December 2027"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0391",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 2,
+          "text": "NABET/EIA/24-27/RA 0391, Dated 10th April 2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 2,
+          "text": "Valid up to 17th December 2027"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "NABET/EIA/24-27/RA 0391, Dated 10th April 2025"
+        }
+      ],
+      "report_date": "2025-04-10",
+      "valid_until": "2027-12-17"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2026-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Tehsil – Jujumura, District – Sambalpur, Odisha. Project Proponent M/s Agrawal Rasayan Category of Project – B1 Unique File No. VCSPL/AGRA/EIA/001/01 Monitoring Period: December 2025 to February 2026 (Winter Season) Laboratory Engaged: Inhouse Lab NABET Certificate No. & Date of Issue: NABET/EIA/24-27/RA 0391, Dated 10th April 2025 Valid up to 17th December 2027"
+        }
+      ],
+      "start_date": "2025-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:20:24Z",
+  "id": "765f5e78a2549b1f",
+  "pages_read": 10,
+  "pages_total": 10,
+  "project": "Executive Summary",
+  "project_name": "Executive Summary",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792583302_529790113.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792583302_529790113.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792583302_529790113.pdf",
+  "state": "Odisha",
+  "title": "Executive Summary",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792583302_529790113.pdf",
+  "year": 2025
+}

@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "- 1356 dated 19.04.2022 for five years"
+        }
+      ],
+      "report_date": "2022-04-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 187.17,
+      "end_date": "2022-04-19",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "End",
+          "value": "2022-04-19"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 187.17 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "0 ha, so, it comes under B1 category as per the MoEFCC, New Delhi Gazette dated 14th September 2006, amended till date. The Environmental Impact Assessment (EIA) study report is prepared for obtaining Environmental Clearance (EC) from SEIAA for the proposed project. Table -1: Detail of the lease are within cluster S no. Name of Quarry Name of the leasee Khata/plot no. Lease area (Ha.) LOI/ Form F letter no Mining plan approval letter 1 Dhunkapada Stone Quarry Shri Padmalochan Biswal Khata no. 1382 plot no. 5896, 5897, 5898 7.271 Ha Letter no.- 1356 dated 19.04.2022 Memo no- 5568/DG dated 06.08.2020 Total 7.271 ha PROJECT DESCRIPTION"
+        }
+      ],
+      "start_date": "2006-09-14"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "- 1356 dated 19.04.2022 for five years"
+        }
+      ],
+      "report_date": "2022-04-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 187.17,
+      "end_date": "2022-04-19",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "End",
+          "value": "2022-04-19"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 187.17 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "0 ha, so, it comes under B1 category as per the MoEFCC, New Delhi Gazette dated 14th September 2006, amended till date. The Environmental Impact Assessment (EIA) study report is prepared for obtaining Environmental Clearance (EC) from SEIAA for the proposed project. Table -1: Detail of the lease are within cluster S no. Name of Quarry Name of the leasee Khata/plot no. Lease area (Ha.) LOI/ Form F letter no Mining plan approval letter 1 Dhunkapada Stone Quarry Shri Padmalochan Biswal Khata no. 1382 plot no. 5896, 5897, 5898 7.271 Ha Letter no.- 1356 dated 19.04.2022 Memo no- 5568/DG dated 06.08.2020 Total 7.271 ha PROJECT DESCRIPTION"
+        }
+      ],
+      "start_date": "2006-09-14"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:22:40Z",
+  "id": "80b1df85d2c48353",
+  "pages_read": 9,
+  "pages_total": 9,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1669034779_1228954168.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1669034779_1228954168.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1669034779_1228954168.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1669034779_1228954168.pdf",
+  "year": 2022
+}

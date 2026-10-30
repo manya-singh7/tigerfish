@@ -1,0 +1,213 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2023/IA0067",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 241,
+          "text": ": NABET/EIA/2023/IA0067 &March 30,2021"
+        },
+        {
+          "label": "Validity date",
+          "page": 241,
+          "text": ": Valid till 29.12.2023"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "28.11.2022”"
+        }
+      ],
+      "report_date": "2022-11-28",
+      "valid_until": "2023-12-29"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 28.91,
+      "end_date": "2020-05-12",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-10-08"
+        },
+        {
+          "label": "End",
+          "value": "2020-05-12"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 28.91 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "proposal was placed in 557th SEIAA meeting held on 08.10.2022. The Authority after detailed deliberation, noted that Yes, we assured that all the baseline data and other secondary data’s are used in this project was originally collected from the field and concern dept. 1. The proposed site is abutting a huge lake/pond/tank as ascertained from the KML uploaded by the proponent in the online through PARIVESH portal. As per the Lr.No. CPCB/IPC-IIAGT-OA 30,1of 2019/2020 Doted: 12.05.2020 slated that \"ln compliance of Hon'ble NGT order dt: - 28.02.2020 in OA No.304/2019, CPCB has examined the matter and prepared a report on Distance Criteria for permitting"
+        }
+      ],
+      "start_date": "2022-10-08"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2023/IA0067",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 241,
+          "text": ": NABET/EIA/2023/IA0067 &March 30,2021"
+        },
+        {
+          "label": "Validity date",
+          "page": 241,
+          "text": ": Valid till 29.12.2023"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "28.11.2022”"
+        }
+      ],
+      "report_date": "2022-11-28",
+      "valid_until": "2023-12-29"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 28.91,
+      "end_date": "2020-05-12",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-10-08"
+        },
+        {
+          "label": "End",
+          "value": "2020-05-12"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 28.91 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "proposal was placed in 557th SEIAA meeting held on 08.10.2022. The Authority after detailed deliberation, noted that Yes, we assured that all the baseline data and other secondary data’s are used in this project was originally collected from the field and concern dept. 1. The proposed site is abutting a huge lake/pond/tank as ascertained from the KML uploaded by the proponent in the online through PARIVESH portal. As per the Lr.No. CPCB/IPC-IIAGT-OA 30,1of 2019/2020 Doted: 12.05.2020 slated that \"ln compliance of Hon'ble NGT order dt: - 28.02.2020 in OA No.304/2019, CPCB has examined the matter and prepared a report on Distance Criteria for permitting"
+        }
+      ],
+      "start_date": "2022-10-08"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T02:10:10Z",
+  "id": "a1620e775558f593",
+  "pages_read": 366,
+  "pages_total": 366,
+  "project": "TERMS OF REFERENCE (ToR) COMPLIANCE",
+  "project_name": "TERMS OF REFERENCE (ToR) COMPLIANCE",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 13.08,
+    "lon": 80.27,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngKaruppanan11523.pdf",
+    "proposal_no": null,
+    "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngKaruppanan11523.pdf"
+  },
+  "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngKaruppanan11523.pdf",
+  "state": "Tamil Nadu",
+  "title": "TERMS OF REFERENCE (ToR) COMPLIANCE",
+  "tool_version": "6b6a903",
+  "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/EIARptEngKaruppanan11523.pdf",
+  "year": 2022
+}

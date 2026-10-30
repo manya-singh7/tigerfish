@@ -1,0 +1,213 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0241",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Accreditation No: NABET/EIA/23-26/SA 0241,"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid Until - January 4, 2026"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "12472), dated 04/09/2025"
+        }
+      ],
+      "report_date": "2025-09-04",
+      "valid_until": "2026-01-04"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(Sector No. 1(a) (Sector no.1 as per NABET) Category of the Project: B1 Cluster Mining, Total Cluster Area – 6.69.5 Ha Baseline Monitoring Period – March 2025 to May 2025 APPLICANT THIRU.S.AYYAPPAN, S/O. SINGARAM CHETTIYAR, NO. 193, LAKSHMIPURAM, PALANI TALUK, DINDIGUL DISTRICT- 624 601. ENVIRONMENTAL CONSULTANT LABORATORY M/s. GLOBAL MINING SOLUTIONS (NABET Accredited & ISO 9001 Certified Consultant) Plot No. 6, S.F.No. 13/2, A2, VS City, RC Chettypatty, Kottamettupatty, Omalur, Salem, Tamil Nadu – 636 455. NABET Accreditation No: NABET/EIA/23-26/SA 0241, Valid Until - January 4, 2026 Contact: 97502 23535 & 94446 54520 Email: infoglobalmining@gmail"
+        }
+      ],
+      "start_date": "2025-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0241",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Accreditation No: NABET/EIA/23-26/SA 0241,"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid Until - January 4, 2026"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "12472), dated 04/09/2025"
+        }
+      ],
+      "report_date": "2025-09-04",
+      "valid_until": "2026-01-04"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(Sector No. 1(a) (Sector no.1 as per NABET) Category of the Project: B1 Cluster Mining, Total Cluster Area – 6.69.5 Ha Baseline Monitoring Period – March 2025 to May 2025 APPLICANT THIRU.S.AYYAPPAN, S/O. SINGARAM CHETTIYAR, NO. 193, LAKSHMIPURAM, PALANI TALUK, DINDIGUL DISTRICT- 624 601. ENVIRONMENTAL CONSULTANT LABORATORY M/s. GLOBAL MINING SOLUTIONS (NABET Accredited & ISO 9001 Certified Consultant) Plot No. 6, S.F.No. 13/2, A2, VS City, RC Chettypatty, Kottamettupatty, Omalur, Salem, Tamil Nadu – 636 455. NABET Accreditation No: NABET/EIA/23-26/SA 0241, Valid Until - January 4, 2026 Contact: 97502 23535 & 94446 54520 Email: infoglobalmining@gmail"
+        }
+      ],
+      "start_date": "2025-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T02:02:15Z",
+  "id": "af2c182069891e54",
+  "pages_read": 33,
+  "pages_total": 33,
+  "project": "executive summary for proposed rough stone quarry",
+  "project_name": "executive summary for proposed rough stone quarry",
+  "sector": "Mining",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 13.08,
+    "lon": 80.27,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAyyappan231225.pdf",
+    "proposal_no": null,
+    "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAyyappan231225.pdf"
+  },
+  "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAyyappan231225.pdf",
+  "state": "Tamil Nadu",
+  "title": "executive summary for proposed rough stone quarry",
+  "tool_version": "6b6a903",
+  "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAyyappan231225.pdf",
+  "year": 2025
+}

@@ -1,0 +1,251 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/RA 0219",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 10,
+          "text": "NABET/EIA/2124/RA 0219"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "honorable NGT order and as per OM dated 12.12.2018"
+        }
+      ],
+      "report_date": "2018-12-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2021-12-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-12-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ENVIRONMENT CONSULTANT P a g e | 5 TURKEL SAND QUARRY-2 AT TEL RIVER M/S GREEN CIRCLE INC. NABET/EIA/2124/RA 0219 Baseline study of the study area was conducted during pre-monsoon from 1st October 2021 to 31st December 2021 for Turkel Sand quarry-2. The concentrations of PM10 and PM2.5 for all the 8 AAQM stations were found between 52.30 to 73.8 µg/m3 and 16.70 to 23.60 µg/m3 respectively. The concentrations of SO2 and NOx were found to be in range of range of 6.4 to 9.1µg/m3 and 9.7 to 13.60 µg/m3 respectively. Ambient noise levels were measured at 8 locations around the Mine site. Noise levels varied from 42.1dB (A) Leq to 44"
+        }
+      ],
+      "start_date": "2021-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "0 GBIF records of Mine site within 100 km, but only 0 records of any the same group within 100 km, so the area is too little surveyed to judge.",
+          "gbif": {
+            "effort_count": 0,
+            "far_count": 0,
+            "global_count": 0,
+            "local_count": 0,
+            "regional_count": 0
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mine site",
+          "name": "Mine site",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/RA 0219",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 10,
+          "text": "NABET/EIA/2124/RA 0219"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "honorable NGT order and as per OM dated 12.12.2018"
+        }
+      ],
+      "report_date": "2018-12-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2021-12-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-12-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ENVIRONMENT CONSULTANT P a g e | 5 TURKEL SAND QUARRY-2 AT TEL RIVER M/S GREEN CIRCLE INC. NABET/EIA/2124/RA 0219 Baseline study of the study area was conducted during pre-monsoon from 1st October 2021 to 31st December 2021 for Turkel Sand quarry-2. The concentrations of PM10 and PM2.5 for all the 8 AAQM stations were found between 52.30 to 73.8 µg/m3 and 16.70 to 23.60 µg/m3 respectively. The concentrations of SO2 and NOx were found to be in range of range of 6.4 to 9.1µg/m3 and 9.7 to 13.60 µg/m3 respectively. Ambient noise levels were measured at 8 locations around the Mine site. Noise levels varied from 42.1dB (A) Leq to 44"
+        }
+      ],
+      "start_date": "2021-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "0 GBIF records of Mine site within 100 km, but only 0 records of any the same group within 100 km, so the area is too little surveyed to judge.",
+          "gbif": {
+            "effort_count": 0,
+            "far_count": 0,
+            "global_count": 0,
+            "local_count": 0,
+            "regional_count": 0
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mine site",
+          "name": "Mine site",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 1,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 0,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 1,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:38:17Z",
+  "id": "801c0eba1ad5e2b1",
+  "pages_read": 10,
+  "pages_total": 10,
+  "project": "EXECUTIVE SUMMARY OF DRAFT ENVIRONMENTAL ...",
+  "project_name": "EXECUTIVE SUMMARY OF DRAFT ENVIRONMENTAL ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1654435357_200617502.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1654435357_200617502.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1654435357_200617502.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY OF DRAFT ENVIRONMENTAL ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1654435357_200617502.pdf",
+  "year": 2018
+}

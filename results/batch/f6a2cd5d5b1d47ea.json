@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "05/07/2025"
+        }
+      ],
+      "report_date": "2025-07-05",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 12.06,
+      "end_date": "2012-05-02",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2011-05-02"
+        },
+        {
+          "label": "End",
+          "value": "2012-05-02"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 12.06 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 15,
+          "text": "of CAAQMs, client certificate in favor of bidder or manufacturers of equipment for similar air monitoring stations (CAAQM stations for all eight (CO, SO2, NH3, NO/NO2/NOx, O3, BTX, PM10, PM2.5) AAQ monitoring parameters) with CPCB or any of the SPCB in India towards support of the satisfactory operation of similar air monitoring stations, which is in use for last two (2) years in case bidder is manufacturer or for last two (2) year in case bidder is authorized representative. 2.5.11 The bidder shall submit latest AQI report for any of the supplied & installed CAAQMS by bidder, including all the specified 8 parameters dully approved by CPCB/ SPCBs. 2.5.12 Bidder or their associate as O&M part…"
+        }
+      ],
+      "start_date": "2011-05-02"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "05/07/2025"
+        }
+      ],
+      "report_date": "2025-07-05",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 12.06,
+      "end_date": "2012-05-02",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2011-05-02"
+        },
+        {
+          "label": "End",
+          "value": "2012-05-02"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 12.06 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 15,
+          "text": "of CAAQMs, client certificate in favor of bidder or manufacturers of equipment for similar air monitoring stations (CAAQM stations for all eight (CO, SO2, NH3, NO/NO2/NOx, O3, BTX, PM10, PM2.5) AAQ monitoring parameters) with CPCB or any of the SPCB in India towards support of the satisfactory operation of similar air monitoring stations, which is in use for last two (2) years in case bidder is manufacturer or for last two (2) year in case bidder is authorized representative. 2.5.11 The bidder shall submit latest AQI report for any of the supplied & installed CAAQMS by bidder, including all the specified 8 parameters dully approved by CPCB/ SPCBs. 2.5.12 Bidder or their associate as O&M part…"
+        }
+      ],
+      "start_date": "2011-05-02"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:56:21Z",
+  "id": "f6a2cd5d5b1d47ea",
+  "pages_read": 196,
+  "pages_total": 196,
+  "project": "TENDER DOCUMENT",
+  "project_name": "TENDER DOCUMENT",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://jspcb.org.in/wp-content/uploads/2026/02/JSPCB_Final_Tender_for_CAAQMS_with_BC_R6.pdf",
+    "proposal_no": null,
+    "url": "https://jspcb.org.in/wp-content/uploads/2026/02/JSPCB_Final_Tender_for_CAAQMS_with_BC_R6.pdf"
+  },
+  "source_page": "https://jspcb.org.in/wp-content/uploads/2026/02/JSPCB_Final_Tender_for_CAAQMS_with_BC_R6.pdf",
+  "state": "Jharkhand",
+  "title": "TENDER DOCUMENT",
+  "tool_version": "6b6a903",
+  "url": "https://jspcb.org.in/wp-content/uploads/2026/02/JSPCB_Final_Tender_for_CAAQMS_with_BC_R6.pdf",
+  "year": 2025
+}

@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "1750,(20/04/2022)"
+        }
+      ],
+      "report_date": "2022-04-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "34 µg/m3 with the 98th percentile 42.99 µg/m3 to 54.66 µg/m3. The minimum and maximum concentration of SO2 recorded within the study area was in the range of was 6.43 µg/m3 to 20.80 µg/m3 with the 98th percentile 11.62 µg/m3 to 20.34 µg/m3. The minimum and maximum level of NO2 recorded within the study area was in the range of was 7.56µg/m3 to 25.17 µg/m3 with the 98th percentile 13.81 µg/m3 to 25.14 µg/m3. From the ambient air quality monitoring carried out for three months (December 2023 to February 2024) of the study period shows that the critical pollutants like PM10, PM 2.5, SOx and NOx are well within the permissible limits. Noise Levels"
+        }
+      ],
+      "start_date": "2023-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "1750,(20/04/2022)"
+        }
+      ],
+      "report_date": "2022-04-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "34 µg/m3 with the 98th percentile 42.99 µg/m3 to 54.66 µg/m3. The minimum and maximum concentration of SO2 recorded within the study area was in the range of was 6.43 µg/m3 to 20.80 µg/m3 with the 98th percentile 11.62 µg/m3 to 20.34 µg/m3. The minimum and maximum level of NO2 recorded within the study area was in the range of was 7.56µg/m3 to 25.17 µg/m3 with the 98th percentile 13.81 µg/m3 to 25.14 µg/m3. From the ambient air quality monitoring carried out for three months (December 2023 to February 2024) of the study period shows that the critical pollutants like PM10, PM 2.5, SOx and NOx are well within the permissible limits. Noise Levels"
+        }
+      ],
+      "start_date": "2023-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:23:27Z",
+  "id": "3a7fb9d1e71b8553",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1729579667_1344660141.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1729579667_1344660141.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1729579667_1344660141.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1729579667_1344660141.pdf",
+  "year": 2022
+}

@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "Draft Report, June 2026"
+        }
+      ],
+      "report_date": "2026-06-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 7,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-06-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 7 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "Executive Summary Environmental Impact Assessment Study for the Proposed New Projects (PPL-2) and Expansion of the Paradeep Unit of M/s Paradeep Phosphates Limited Draft Report, June 2026 E-3 2.0 Description of Environment Baseline data collection was carried out during December 2025 to February 2026 for the following environmental components. 2.1 Air Environment Ambient air quality monitoring was carried out at eight locations within the study area, namely ETP, HB Colony, Paradeepgarh, Bagadia, Gandipur, Pratappur, Trilochanpur, and Lokpada. The average concentrations of PM₁₀ ranged from 129 to 238"
+        }
+      ],
+      "start_date": "2026-06-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "Draft Report, June 2026"
+        }
+      ],
+      "report_date": "2026-06-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 7,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-06-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 7 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "Executive Summary Environmental Impact Assessment Study for the Proposed New Projects (PPL-2) and Expansion of the Paradeep Unit of M/s Paradeep Phosphates Limited Draft Report, June 2026 E-3 2.0 Description of Environment Baseline data collection was carried out during December 2025 to February 2026 for the following environmental components. 2.1 Air Environment Ambient air quality monitoring was carried out at eight locations within the study area, namely ETP, HB Colony, Paradeepgarh, Bagadia, Gandipur, Pratappur, Trilochanpur, and Lokpada. The average concentrations of PM₁₀ ranged from 129 to 238"
+        }
+      ],
+      "start_date": "2026-06-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:28:23Z",
+  "id": "d1b447d2daa47bc1",
+  "pages_read": 9,
+  "pages_total": 9,
+  "project": "Executive Summary",
+  "project_name": "Executive Summary",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1784374528_1454636663.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1784374528_1454636663.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1784374528_1454636663.pdf",
+  "state": "Odisha",
+  "title": "Executive Summary",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1784374528_1454636663.pdf",
+  "year": 2026
+}

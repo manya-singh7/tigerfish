@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "R329 (E) dated 13th March, 1992, the"
+        }
+      ],
+      "report_date": "1992-03-13",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 10,
+      "end_date": "2015-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2014-06-01"
+        },
+        {
+          "label": "End",
+          "value": "2015-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 10 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 13,
+          "text": "============================================================================ Environmental Statement for Rajpura OC for 2014-15 11 Annexure-I Air Quality Monitoring Report (Q/E June, 2014 to Q/E March, 2015) Stn No Monitoring Station Sampling Date TSPM PM10 SO2 NOX Noise Level dB(A) Station Category A1 Agent's Office 03-Apr-14 154.2 79.6 <10.0 22.6 49.0 Industrial 04-Apr-14 157.3 81.0 <10.0 20.7 - 07-Jul-14 118.4 72.7 <10.0 20.2 47.3 08-Jul-14 124.2 74.9 <10.0 22.1 - 25-Nov-14 124.2 86.2 <10.0 19.7 47.1 26-Nov-14 134.7 78.4 <10.0 20.8 - 16-Feb-15 138.2 94.7 <10.0 22.1 49.4 17-Feb-15 142.1 108.3 <10.0 20.6"
+        }
+      ],
+      "start_date": "2014-06-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "R329 (E) dated 13th March, 1992, the"
+        }
+      ],
+      "report_date": "1992-03-13",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 10,
+      "end_date": "2015-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2014-06-01"
+        },
+        {
+          "label": "End",
+          "value": "2015-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 10 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 13,
+          "text": "============================================================================ Environmental Statement for Rajpura OC for 2014-15 11 Annexure-I Air Quality Monitoring Report (Q/E June, 2014 to Q/E March, 2015) Stn No Monitoring Station Sampling Date TSPM PM10 SO2 NOX Noise Level dB(A) Station Category A1 Agent's Office 03-Apr-14 154.2 79.6 <10.0 22.6 49.0 Industrial 04-Apr-14 157.3 81.0 <10.0 20.7 - 07-Jul-14 118.4 72.7 <10.0 20.2 47.3 08-Jul-14 124.2 74.9 <10.0 22.1 - 25-Nov-14 124.2 86.2 <10.0 19.7 47.1 26-Nov-14 134.7 78.4 <10.0 20.8 - 16-Feb-15 138.2 94.7 <10.0 22.1 49.4 17-Feb-15 142.1 108.3 <10.0 20.6"
+        }
+      ],
+      "start_date": "2014-06-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:50:59Z",
+  "id": "7bb6d5c7844cde45",
+  "pages_read": 18,
+  "pages_total": 18,
+  "project": "ENVIRONMENTAL STATEMENT IN FORM-V RAJPURA OC",
+  "project_name": "ENVIRONMENTAL STATEMENT IN FORM-V RAJPURA OC",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://jspcb.org.in/wp-content/uploads/2025/06/Env_-statement-RAJPURA-OC-OPENCAST-MINE-Mugma-Area-Eastern-Coalfields-Limited-20151128rajpura-4.pdf",
+    "proposal_no": null,
+    "url": "https://jspcb.org.in/wp-content/uploads/2025/06/Env_-statement-RAJPURA-OC-OPENCAST-MINE-Mugma-Area-Eastern-Coalfields-Limited-20151128rajpura-4.pdf"
+  },
+  "source_page": "https://jspcb.org.in/wp-content/uploads/2025/06/Env_-statement-RAJPURA-OC-OPENCAST-MINE-Mugma-Area-Eastern-Coalfields-Limited-20151128rajpura-4.pdf",
+  "state": "Jharkhand",
+  "title": "ENVIRONMENTAL STATEMENT IN FORM-V RAJPURA OC",
+  "tool_version": "6b6a903",
+  "url": "https://jspcb.org.in/wp-content/uploads/2025/06/Env_-statement-RAJPURA-OC-OPENCAST-MINE-Mugma-Area-Eastern-Coalfields-Limited-20151128rajpura-4.pdf",
+  "year": 1992
+}

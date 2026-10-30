@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1720/SA 95",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/1720/SA 95,"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "3786, dated 22.05.2006"
+        }
+      ],
+      "report_date": "2006-05-22",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2020-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2019-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2020-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": " The total explosive requirement is estimated to be about 1600 tons per year (approx). 2.0 Description of the Environment: Study was undertaken during Dec 2019 to Feb 2020. 2.1 Meteorological study: The maximum & minimum temperature, relative humidity (%) & Rainfall (mm) recorded during the study period are given below: Sr. No. Month Parameter Temperature (0C) Humidity (%) Rain fall Max. Min. Max. Min. Mm 1 Dec, 19 31.0 9.0 97.0 23.0 34.2 2 Jan, 20 32.0 9.0 98.3 20.1 3 Feb, 20 32.0 12.0 98.7 21.6 2.2 Ambient Air Quality: S.No. Parameter PM10(µg/m3) PM2.5(µg/m3) SO2(µg/m3) NO2(µg/m3) Location Max."
+        }
+      ],
+      "start_date": "2019-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1720/SA 95",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/1720/SA 95,"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "3786, dated 22.05.2006"
+        }
+      ],
+      "report_date": "2006-05-22",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2020-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2019-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2020-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": " The total explosive requirement is estimated to be about 1600 tons per year (approx). 2.0 Description of the Environment: Study was undertaken during Dec 2019 to Feb 2020. 2.1 Meteorological study: The maximum & minimum temperature, relative humidity (%) & Rainfall (mm) recorded during the study period are given below: Sr. No. Month Parameter Temperature (0C) Humidity (%) Rain fall Max. Min. Max. Min. Mm 1 Dec, 19 31.0 9.0 97.0 23.0 34.2 2 Jan, 20 32.0 9.0 98.3 20.1 3 Feb, 20 32.0 12.0 98.7 21.6 2.2 Ambient Air Quality: S.No. Parameter PM10(µg/m3) PM2.5(µg/m3) SO2(µg/m3) NO2(µg/m3) Location Max."
+        }
+      ],
+      "start_date": "2019-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:35:50Z",
+  "id": "7b23fbca3768d70e",
+  "pages_read": 11,
+  "pages_total": 11,
+  "project": "Executive Summary of EIA/EMP of Devadari Iron Ore Mine ...",
+  "project_name": "Executive Summary of EIA/EMP of Devadari Iron Ore Mine ...",
+  "sector": "Mining",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1602761665_132549297.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1602761665_132549297.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1602761665_132549297.pdf",
+  "state": "Odisha",
+  "title": "Executive Summary of EIA/EMP of Devadari Iron Ore Mine ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1602761665_132549297.pdf",
+  "year": 2006
+}

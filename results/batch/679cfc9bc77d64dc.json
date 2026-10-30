@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "4917/SEIAA dated 19.07.2022"
+        }
+      ],
+      "report_date": "2022-07-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Season of (Mar 2022 to May 2022) for the above said parameters and have been given in this report. For the purposes of this study, the area has been divided into two zones, namely, core zone and buffer zones. Core zone covers 74.370 Ha of Mine lease and buffer zone covers 10km radius area around core zone. The total area 74.370 is forest area under reserve forest. Proposal for diversion of forest land has been applied under Section 2 (ii & iii) of Forest Conservation Act 1980.  Socio-Economy the study area is balanced with male and female population with 50.59% male and 49.41% female. Out of total literates 20641, male 61.7% are literate and female 38"
+        }
+      ],
+      "start_date": "2022-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "4917/SEIAA dated 19.07.2022"
+        }
+      ],
+      "report_date": "2022-07-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Season of (Mar 2022 to May 2022) for the above said parameters and have been given in this report. For the purposes of this study, the area has been divided into two zones, namely, core zone and buffer zones. Core zone covers 74.370 Ha of Mine lease and buffer zone covers 10km radius area around core zone. The total area 74.370 is forest area under reserve forest. Proposal for diversion of forest land has been applied under Section 2 (ii & iii) of Forest Conservation Act 1980.  Socio-Economy the study area is balanced with male and female population with 50.59% male and 49.41% female. Out of total literates 20641, male 61.7% are literate and female 38"
+        }
+      ],
+      "start_date": "2022-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:41:48Z",
+  "id": "679cfc9bc77d64dc",
+  "pages_read": 12,
+  "pages_total": 12,
+  "project": "EXECUTIVE SUMMARY Of DRAFT EIA/EMP REPORT",
+  "project_name": "EXECUTIVE SUMMARY Of DRAFT EIA/EMP REPORT",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665653033_234683882.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665653033_234683882.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665653033_234683882.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY Of DRAFT EIA/EMP REPORT",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665653033_234683882.pdf",
+  "year": 2022
+}

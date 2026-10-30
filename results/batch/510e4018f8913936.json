@@ -1,0 +1,183 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1821/SA 0107",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/1821/SA 0107"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "on dated 30.04.2021 in favour of Tahsildar, Telkoi"
+        }
+      ],
+      "report_date": "2021-04-30",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 8,
+          "text": "Sri Kuna Sahu 6 one hour interval starting at 06:15 hrs to 05:15 hrs next day once in a month for 3 months during the study period, at all locations.Noise level varies from 41 to 53 dB (A) during Day time and 31 to 43 dB (A) during Night time, which are below the prescribed limits of CPCB. Socio-economic Environment Total population of the study area is 29803 with sex ratio (nos. of female per thousand males) is 987. Literacy rate of the study area is 42.6 % of the total population, the occupational pattern shows that the workers in the study area comprise of 24.23 % main workers, 22.73 % marginal workers and 53.04 % non-workers"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1821/SA 0107",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/1821/SA 0107"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "on dated 30.04.2021 in favour of Tahsildar, Telkoi"
+        }
+      ],
+      "report_date": "2021-04-30",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 8,
+          "text": "Sri Kuna Sahu 6 one hour interval starting at 06:15 hrs to 05:15 hrs next day once in a month for 3 months during the study period, at all locations.Noise level varies from 41 to 53 dB (A) during Day time and 31 to 43 dB (A) during Night time, which are below the prescribed limits of CPCB. Socio-economic Environment Total population of the study area is 29803 with sex ratio (nos. of female per thousand males) is 987. Literacy rate of the study area is 42.6 % of the total population, the occupational pattern shows that the workers in the study area comprise of 24.23 % main workers, 22.73 % marginal workers and 53.04 % non-workers"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:31:53Z",
+  "id": "510e4018f8913936",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "Samakoi Sand Quarry, Dobalapal",
+  "project_name": "Samakoi Sand Quarry, Dobalapal",
+  "sector": "Mining",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1671520173_622289018.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1671520173_622289018.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1671520173_622289018.pdf",
+  "state": "Odisha",
+  "title": "Samakoi Sand Quarry, Dobalapal",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1671520173_622289018.pdf",
+  "year": 2021
+}

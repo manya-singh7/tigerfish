@@ -1,0 +1,213 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/26-29/RA 0489",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/26-29/RA 0489 Valid upto 22"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NABET/EIA/26-29/RA 0489 Valid upto 22.02.2029"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "II (T) dated 18.02.2009 in favour of M/s"
+        }
+      ],
+      "report_date": "2009-02-18",
+      "valid_until": "2029-02-22"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "Pollution Control Board. 1.7 BASELINE ENVIRONMENT Baseline environment data forms a part of the Environmental Impact Assessment study and helps to evaluate the predicted impacts on various environmental attributes and also required in preparing Environmental Management Plan (EMP) outlining the measures for improving the environment quality and scope of future expansions for environmentally sustainable development. Study Area and Period: An area of 10km radius (aerial distance) from the boundary of the project area is the study area for the EIA Study. The study period for baseline data collection was October,2024 to December, 2024. Methodology Adopted: Baseline data was generated for various…"
+        }
+      ],
+      "start_date": "2024-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/26-29/RA 0489",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/26-29/RA 0489 Valid upto 22"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NABET/EIA/26-29/RA 0489 Valid upto 22.02.2029"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "II (T) dated 18.02.2009 in favour of M/s"
+        }
+      ],
+      "report_date": "2009-02-18",
+      "valid_until": "2029-02-22"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "Pollution Control Board. 1.7 BASELINE ENVIRONMENT Baseline environment data forms a part of the Environmental Impact Assessment study and helps to evaluate the predicted impacts on various environmental attributes and also required in preparing Environmental Management Plan (EMP) outlining the measures for improving the environment quality and scope of future expansions for environmentally sustainable development. Study Area and Period: An area of 10km radius (aerial distance) from the boundary of the project area is the study area for the EIA Study. The study period for baseline data collection was October,2024 to December, 2024. Methodology Adopted: Baseline data was generated for various…"
+        }
+      ],
+      "start_date": "2024-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:24:26Z",
+  "id": "148cd46895015312",
+  "pages_read": 17,
+  "pages_total": 17,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792569317_1967392885.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792569317_1967392885.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792569317_1967392885.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792569317_1967392885.pdf",
+  "year": 2009
+}

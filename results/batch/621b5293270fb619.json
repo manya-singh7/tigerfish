@@ -1,0 +1,253 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Dated:- 14/07/2022"
+        }
+      ],
+      "report_date": "2022-07-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2018-09-05",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-09-04"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-05"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5"
+        }
+      ],
+      "start_date": "2018-09-04"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2018-09-05",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-09-04"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-05"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5"
+        }
+      ],
+      "start_date": "2018-09-04"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Dated:- 14/07/2022"
+        }
+      ],
+      "report_date": "2022-07-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2018-09-05",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-09-04"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-05"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5"
+        }
+      ],
+      "start_date": "2018-09-04"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.07,
+      "end_date": "2018-09-05",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-09-04"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-05"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5"
+        }
+      ],
+      "start_date": "2018-09-04"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:46:22Z",
+  "id": "621b5293270fb619",
+  "pages_read": 46,
+  "pages_total": 46,
+  "project": "haryana state pollution control board",
+  "project_name": "haryana state pollution control board",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 30.73,
+    "lon": 76.78,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://hspcb.gov.in/uploads/category/mining_project_66acbe7f21872.pdf",
+    "proposal_no": null,
+    "url": "https://hspcb.gov.in/uploads/category/mining_project_66acbe7f21872.pdf"
+  },
+  "source_page": "https://hspcb.gov.in/uploads/category/mining_project_66acbe7f21872.pdf",
+  "state": "Haryana",
+  "title": "haryana state pollution control board",
+  "tool_version": "6b6a903",
+  "url": "https://hspcb.gov.in/uploads/category/mining_project_66acbe7f21872.pdf",
+  "year": 2022
+}

@@ -2,26 +2,40 @@
 
 Free, no-model checks over Indian EIA executive summaries. Flags are neutral leads for verification.
 
-Reports processed: **25**
+Reports processed: **88**
 
 ## Checks
 
 | Check | Grade/status counts |
 |---|---|
-| accreditation | GREY: 17, OK: 8 |
-| baseline_season | GREY: 17, OK: 8 |
-| species_iucn | GREY: 23, OK: 2 |
+| accreditation | GREY: 70, OK: 17, ORANGE: 1 |
+| baseline_season | GREY: 32, INFO: 10, OK: 46 |
+| species_iucn | GREY: 76, OK: 12 |
 
 ## States
 
 | State | Reports |
 |---|---:|
-| Maharashtra | 25 |
+| Haryana | 5 |
+| Jharkhand | 9 |
+| Maharashtra | 29 |
+| Odisha | 38 |
+| Tamil Nadu | 7 |
 
 ## Tavily
 
-Calls: 14; cached calls: 0; credits: 41.0 / 400.
+Calls: 18; cached calls: 31; credits: 44.0 / 400.
 
 | Grade | State | Project | Check | Page | Quote | Message |
 |---|---|---|---|---:|---|---|
-| | | No screening leads | | | | See the check counts for undetermined results; no compliance conclusion follows. |
+| INFO | Maharashtra | The Draft EIA/EMP Report will be submitted to MPCB for conducting the Public Hearing, and the proceedings shall be incorporated in the Final EIA/EMP Report | baseline_season | 1 | p.1: Nilawar Laboratories Nilawar Motors Complex, Amravati Road, Waddhamna, Nagpur 440023 NABL Accreditation no. TC-9782. Study Period – October - December 2025 Report No.: OA/GPIL/071/EIA/03/2026/01 Month & Year – March 2026 | The readable baseline/monitoring period is about 2 months, shorter than three months; verify. |
+| INFO | Maharashtra |  To identify the Significant Environmental Impact & any Special Issues associated with the proposed project, in the Check List format | baseline_season | 9 | p.9: 5 Mtrs. depth. 2.8 TRAFFIC PATTERN: The traffic survey to ascertain the traffic density in the study area was conducted for one day at the Shivaji Park Rd No. 3 near the project site. The traffic survey was carried out covering both opposing directions. The number of vehicles is presented in the following table; Vehicular Traffic Data: Date Cars/ Jeeps Buses / Tempos/ LCV Two Wheelers 25/10/2012 3256 624 1093 26/10/2012 3433 695 1877 Average 3343 654 1482 It is observed that the road is 60 Mtrs wide. The road is used to connect Cadell | The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify. |
+| INFO | Maharashtra | EXECUTIVE SUMMARY of ENVIRONMENTAL IMPACT ASSESSMENT & ENVIRONMENTAL MANAGEMENT PLAN FOR PUBLIC HEARING As per EIA Notification, 2006 OF GADEGAON OPEN CAST MINE Village - Gadegaon , Tehsil - Korpana , Dist - Chandrapur , State - Maharashtra | baseline_season | 3 | p.3: procedure for obtaining Environmental Clearance. As a part of the procedure, application to MoEF&CC for obtaining Terms of References ( ToR ) for conducting the EIA study was submitted online vide proposal no. IA/MH/CMIN/532813/2025 dated 28/04/2025. The proposal was considered in the 27th EAC (Coal Mining) meeting held on 18-19th June 2025, wherein the ToR for the project was recommended. Terms of Reference ( ToR ) for Gadegaon project was granted by MoEF&CC vide File No. J-11015/46/2009- IA.II (M), ToR Identification no. TO25A0101MH5958827N dated 08.07.2025 for production capacity of 3 MTPA and total lease area of 615.56 Ha. (Refer Annexure No.-1). Draft EIA/EMP Report has been prepared in… | The readable baseline/monitoring period is about 1.74 months, shorter than three months; verify. |
+| INFO | Odisha | Atlas Energy & Resources Pvt. Ltd. | baseline_season | 2 | p.2: Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation. | The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify. |
+| INFO | Odisha | summary of environmental impact assessment report for public ... | baseline_season | 4 | p.4: application along with Pre-Feasibility Report to the SEIAA ODISHA on dated 28/02/2024 vide proposal No: - SIA/OR/IND1/464277/2024 for seeking Terms of Reference for conducting the EIA Study. Terms of Reference was granted by SEAC ODISHA for the project on 16/03/2024 vide File No.: 464277/11-IND1/02-2024 The State Level Expert Appraisal Committee (SEAC), ODISHA shall appraise the project. Project Promoters: The project will be managed by Directors Mr. Rahul Gadodia and Mr. Basant Kumar Lohia. They will be associated with their experienced and knowledgeable employees for the respective areas of operation. Mr. Rahul Gadodia Full Name Mr. Rahul Gadodia Father’s Name Mr. Bimal Gadodia DOB/Age | The readable baseline/monitoring period is about 0.59 months, shorter than three months; verify. |
+| INFO | Odisha | ENVIRONMENTAL IMPACT ASSESSMENT & ... | baseline_season | 1 | p.1: TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator | The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify. |
+| INFO | Haryana | haryana state pollution control board | baseline_season | 11 | p.11: Particulars 1. OA No. 173/2018 Sudarsan Das v. State of West Bengal & Ors. 04.09.2018 Inter alia directing revision of monitoring mechanism by the MoEF&CC. 2. OA No. 44/2016 Mushtakeem v. MoEF&CC & Ors. 05.09.2018 3. OA No. 186 of 2016 Satendra Pandey Vs. Ministry of Environment, Forest & Climate Change & Anr 13.09.2018 Inter alia disapproving dispensing with requirement of public hearing and requiring evaluation by DEIAA. 4. OA 606/2018, Compliance of Municipal Solid Waste Management Rules, 2016 16.01.2019 Requiring the Chief Secretaries to monitor the subject of unregulated and unscientific sand mining 5 | The readable baseline/monitoring period is about 0.07 months, shorter than three months; verify. |
+| ORANGE | Jharkhand | 25.04:2025 | accreditation | 2, 2, 1 | p.2: NABET/ EIA/2225/IA 0096 (Rev<br>p.2: 01) valid till 29.03.2025<br>p.1: 10 Road transportation of coal bevond 30/06/2025 is not permitted | The certificate appears to expire before the report date; verify the applicable accreditation record. |
+| INFO | Jharkhand | 25.04:2025 | baseline_season | 7 | p.7:  Transfer of EC to NTPC Mining Ltd. Dated 08.03.2024 10 MOEF&CC recognition and latest NABL accreditation certificate of monitoring laboratory 11 QCI-NABET Certificate of Accreditation of Consultant for EIA 12 Ambient air quality test results 13 Noise level monitoring data 14 List of sensitive receptors adjoining proposed transportation routes 15 ECR has conveyed that construction may require 3 years after Railway Board approval 16 Letter to Ministry of Power dt. 23.02.2024 & 14.08.2024 | The readable baseline/monitoring period is about 0.49 months, shorter than three months; verify. |
+| INFO | Tamil Nadu | EXECUTIVE SUMMARY | baseline_season | 1 | p.1: EHS 360 LABS PRIVATE LIMITED, NABL Accredited laboratory 10/2 Ground floor, 50th street, 7th Avenue, Ashok Nagar, Chennai – 600 083. Baseline Monitoring Period MARCH TO MAY 2025 MAY 2025 | The readable baseline/monitoring period is about 1 months, shorter than three months; verify. |
+| INFO | Tamil Nadu | draft eia / emp for proposed rough stone and gravel quarry | baseline_season | 14 | p.14: SOCIO-ECONOMIC ENVIRONMENT ............................................................ 141 3.7.12.1 OBJECTIVES OF THE STUDY ....................................................................... 142 3.7.12.2 SCOPE OF WORK ............................................................................................... 142 4.0 ANTICIPATED ENVIRONMENTAL IMPACTS AND MITIGATION MEASURES .................................................................................................................................... 147 4.1 GENERAL ...................................................................................................... | The readable baseline/monitoring period is about 0.03 months, shorter than three months; verify. |

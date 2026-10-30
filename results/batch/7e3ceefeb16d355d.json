@@ -1,0 +1,213 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA0424",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "Certificate No : NABET/EIA/25-28/RA0424 Dated: 25-08-2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid till 06.08.2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "13175 ToR Identification: TO25B0108TN5290078N Dated: 13.02.2026"
+        }
+      ],
+      "report_date": "2026-02-13",
+      "valid_until": "2028-08-06"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2025-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "EHS 360 LABS PRIVATE LIMITED, NABL Accredited laboratory 10/2 Ground floor, 50th street, 7th Avenue, Ashok Nagar, Chennai – 600 083. Baseline Monitoring Period DECEMBER 2024 – FEBRUARY 2025 APRIL 2026"
+        }
+      ],
+      "start_date": "2024-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA0424",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "Certificate No : NABET/EIA/25-28/RA0424 Dated: 25-08-2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid till 06.08.2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "13175 ToR Identification: TO25B0108TN5290078N Dated: 13.02.2026"
+        }
+      ],
+      "report_date": "2026-02-13",
+      "valid_until": "2028-08-06"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2025-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "EHS 360 LABS PRIVATE LIMITED, NABL Accredited laboratory 10/2 Ground floor, 50th street, 7th Avenue, Ashok Nagar, Chennai – 600 083. Baseline Monitoring Period DECEMBER 2024 – FEBRUARY 2025 APRIL 2026"
+        }
+      ],
+      "start_date": "2024-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Tamil Nadu approximate centre",
+        "lat": 13.08,
+        "lon": 80.27,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T02:01:25Z",
+  "id": "7e3ceefeb16d355d",
+  "pages_read": 26,
+  "pages_total": 26,
+  "project": "M/S. A.P.Mines Rough Stone And Gravel Quarry Executive ...",
+  "project_name": "M/S. A.P.Mines Rough Stone And Gravel Quarry Executive ...",
+  "sector": "Mining",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 13.08,
+    "lon": 80.27,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAPMines.pdf",
+    "proposal_no": null,
+    "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAPMines.pdf"
+  },
+  "source_page": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAPMines.pdf",
+  "state": "Tamil Nadu",
+  "title": "M/S. A.P.Mines Rough Stone And Gravel Quarry Executive ...",
+  "tool_version": "6b6a903",
+  "url": "https://www.tnpcb.gov.in/PDF/Citizen_corner/ph/ExeSumEngAPMines.pdf",
+  "year": 2026
+}

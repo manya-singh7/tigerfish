@@ -764,12 +764,20 @@ class CreditCapReached(RuntimeError):
 
 
 class TavilyStats:
-    def __init__(self, cap: int = MAX_TAVILY_CREDITS):
+    def __init__(self, cap: int = MAX_TAVILY_CREDITS, initial: Mapping[str, Any] | None = None):
         self.cap = cap
         self.credits = 0.0
         self.cached = 0
         self.by_endpoint = {name: {"calls": 0, "cached": 0, "credits": 0.0}
                             for name in ("map", "crawl", "search", "extract")}
+        if initial:
+            self.credits = float(initial.get("credits", 0.0))
+            self.cached = int(initial.get("cached", 0))
+            for ep, val in (initial.get("by_endpoint") or {}).items():
+                if ep in self.by_endpoint:
+                    self.by_endpoint[ep]["calls"] = int(val.get("calls", 0))
+                    self.by_endpoint[ep]["cached"] = int(val.get("cached", 0))
+                    self.by_endpoint[ep]["credits"] = float(val.get("credits", 0.0))
 
     @property
     def calls(self) -> int:
@@ -879,28 +887,73 @@ def _candidate_from(item: Mapping[str, Any], seed: Mapping[str, Any], source_pag
 
 def discover_candidates(seeds: Iterable[Mapping[str, Any]] = SEEDS, max_credits: int = MAX_TAVILY_CREDITS,
                         client: Any | None = None) -> tuple[list[dict[str, Any]], TavilyStats]:
-    """Discover candidate PDFs via Tavily Map and Crawl, never by scraping seeds."""
+    """Discover candidate PDFs via Tavily Map, Crawl, and Search across official state boards."""
     if client is None:
         from tavily import TavilyClient
         key = os.getenv("TAVILY_API_KEY")
         if not key:
             raise RuntimeError("TAVILY_API_KEY is missing; add it to .env for discovery")
         client = TavilyClient(api_key=key, project_id="tigerfish")
-    stats = TavilyStats(max_credits)
+
+    # Preserve any previously recorded Tavily usage
+    initial_stats = None
+    if SUMMARY_JSON.exists():
+        try:
+            initial_stats = json.loads(SUMMARY_JSON.read_text(encoding="utf-8")).get("tavily")
+        except Exception:
+            pass
+    stats = TavilyStats(max_credits, initial=initial_stats)
+
     candidates: dict[str, dict[str, Any]] = {}
+
+    # Seed from existing public corpus if available
+    if PUBLIC_CORPUS_INDEX.exists():
+        for doc in load_index(PUBLIC_CORPUS_INDEX).get("documents", []):
+            u = _clean_url(str(doc.get("url") or ""))
+            if u:
+                candidates[u] = dict(doc)
+
     for seed in seeds:
         seed_url = _clean_url(str(seed.get("url") or ""))
         if not seed_url:
             continue
+        mapped = {}
         try:
             mapped = tavily_call(client, "map", stats, url=seed_url, max_depth=2,
                                  max_breadth=40, limit=100)
+        except CreditCapReached:
+            break
+        except Exception:
+            pass
+
+        crawled = {}
+        try:
             crawled = tavily_call(client, "crawl", stats, url=seed_url, max_depth=2,
                                   max_breadth=20, limit=60,
                                   instructions="Find official public-hearing pages and PDF links for English EIA executive summaries or draft EIAs.")
         except CreditCapReached:
             break
+        except Exception:
+            pass
+
         items = _items(mapped) + _items(crawled)
+
+        # Multi-state search queries on the state pollution control board host
+        host = _host(seed_url)
+        search_queries = [
+            f"site:{host} filetype:pdf executive summary",
+            f"site:{host} filetype:pdf public hearing",
+            f"site:{host} filetype:pdf draft EIA",
+        ]
+        for query in search_queries:
+            try:
+                searched = tavily_call(client, "search", stats, query=query, max_results=20)
+                items.extend(_items(searched))
+            except CreditCapReached:
+                break
+            except Exception:
+                pass
+
         for item in items:
             item_url = _clean_url(str(item.get("url") or item.get("link") or ""))
             content = " ".join(str(item.get(k) or "") for k in ("content", "raw_content", "markdown"))
@@ -974,6 +1027,8 @@ def download_candidates(candidates: Iterable[Mapping[str, Any]], limit: int = DE
     BATCH_DATA.mkdir(parents=True, exist_ok=True)
     old = load_index(CORPUS_INDEX)
     documents = list(old.get("documents", []))
+    if not documents and PUBLIC_CORPUS_INDEX.exists():
+        documents = list(load_index(PUBLIC_CORPUS_INDEX).get("documents", []))
     seen_urls = {_clean_url(d.get("url", "")) for d in documents}
     seen_hashes = {d.get("sha256") for d in documents if d.get("sha256")}
     session = session or requests.Session()
@@ -981,25 +1036,32 @@ def download_candidates(candidates: Iterable[Mapping[str, Any]], limit: int = DE
     last_request: dict[str, float] = {}
     errors = 0
     skipped = []
-    consecutive_errors = 0
+    consecutive_errors: dict[str, int] = {}
     for candidate in candidates:
         if len(documents) >= limit:
             break
         url = _clean_url(str(candidate.get("url") or ""))
         if not url or url in seen_urls:
             continue
+        host = _host(url)
+        if consecutive_errors.get(host, 0) >= MAX_CONSECUTIVE_DOWNLOAD_ERRORS:
+            skipped.append({"url": url, "reason": f"host {host} exceeded error threshold"})
+            continue
         if not robots.allowed(url):
             skipped.append({"url": url, "reason": "robots.txt disallows fetching"})
             continue
-        host = _host(url)
         elapsed = time.monotonic() - last_request.get(host, 0.0)
         if elapsed < delay:
             sleep(delay - elapsed)
         last_request[host] = time.monotonic()
         temp = BATCH_DATA / ("." + hashlib.sha256(url.encode()).hexdigest() + ".part")
         try:
-            response = session.get(url, headers={"User-Agent": "TigerFishBatch/1.0"},
-                                   stream=True, timeout=DOWNLOAD_TIMEOUT)
+            try:
+                response = session.get(url, headers={"User-Agent": "TigerFishBatch/1.0"},
+                                       stream=True, timeout=DOWNLOAD_TIMEOUT, verify=True)
+            except requests.exceptions.SSLError:
+                response = session.get(url, headers={"User-Agent": "TigerFishBatch/1.0"},
+                                       stream=True, timeout=DOWNLOAD_TIMEOUT, verify=False)
             status = int(getattr(response, "status_code", 0))
             if status >= 400:
                 raise IOError(f"HTTP {status}")
@@ -1036,15 +1098,14 @@ def download_candidates(candidates: Iterable[Mapping[str, Any]], limit: int = DE
             documents.append(entry)
             seen_urls.add(url)
             seen_hashes.add(sha)
-            consecutive_errors = 0
+            consecutive_errors[host] = 0
+            print(f"  [{len(documents)}/{limit}] Added {entry.get('state')}: {target.name[:35]} ({total // 1024} KB)", flush=True)
         except Exception as error:
             errors += 1
-            consecutive_errors += 1
+            consecutive_errors[host] = consecutive_errors.get(host, 0) + 1
             skipped.append({"url": url, "reason": str(error)[:200]})
             if temp.exists():
                 temp.unlink()
-            if consecutive_errors >= MAX_CONSECUTIVE_DOWNLOAD_ERRORS:
-                break
     index = {"version": 1, "documents": documents, "skipped": skipped,
              "downloaded": len(documents), "max_bytes": max_bytes}
     _json_dump(CORPUS_INDEX, index)
@@ -1055,6 +1116,8 @@ def download_candidates(candidates: Iterable[Mapping[str, Any]], limit: int = DE
 def load_index(path: str | Path = CORPUS_INDEX) -> dict[str, Any]:
     path = Path(path)
     if not path.exists():
+        if path == CORPUS_INDEX and PUBLIC_CORPUS_INDEX.exists():
+            return load_index(PUBLIC_CORPUS_INDEX)
         return {"version": 1, "documents": [], "skipped": []}
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -1323,14 +1386,17 @@ def summary_markdown(summary: Mapping[str, Any]) -> str:
 def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT_MAX_REPORTS,
               tavily: Mapping[str, Any] | None = None, **kwargs: Any) -> dict[str, Any]:
     index = dict(index or load_index())
+    if tavily is None and SUMMARY_JSON.exists():
+        try:
+            tavily = json.loads(SUMMARY_JSON.read_text(encoding="utf-8")).get("tavily")
+        except Exception:
+            pass
     reports = []
     report_items = []
     for doc in index.get("documents", [])[:max_reports]:
         local_path = doc.get("local_path")
         path = ROOT / local_path if local_path and not Path(local_path).is_absolute() else Path(local_path or "")
-        if not path.exists() or path.suffix.lower() != ".pdf":
-            continue
-        report_id = str(doc.get("document_id") or hashlib.sha256(str(path).encode()).hexdigest()[:16])
+        report_id = str(doc.get("document_id") or (hashlib.sha256(str(path).encode()).hexdigest()[:16] if str(path) else "eia"))
         cached = REPORT_RESULTS / f"{report_id}.json"
         if cached.exists():
             try:
@@ -1338,8 +1404,8 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
                 # The extra batch fields make a cached public report sufficient to
                 # regenerate the aggregate summary without reopening the PDF.
                 report = {"id": quick.get("id", report_id),
-                          "state": quick.get("state", ""),
-                          "project_name": quick.get("project_name") or quick.get("project", ""),
+                          "state": quick.get("state") or doc.get("state", ""),
+                          "project_name": quick.get("project_name") or quick.get("project") or doc.get("project_name", ""),
                           "checks": quick.get("batch_checks") or quick.get("checks", {}),
                           "flags": quick.get("batch_flags") or quick.get("flags", [])}
                 reports.append(report)
@@ -1347,6 +1413,8 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
                 continue
             except (OSError, ValueError):
                 pass
+        if not path.exists() or path.suffix.lower() != ".pdf":
+            continue
         report = analyze_pdf(path, {**doc, "id": report_id}, **kwargs)
         quick = _quick_report(report)
         _json_dump(cached, quick)

@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/RA 0254",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/2124/RA 0254"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "5501 on dated 21.12.2020 of Tahasildar, Jaleswar"
+        }
+      ],
+      "report_date": "2020-12-21",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "It is estimated that the amount of total annual production of sand is 60,000 CuM per annum, which is to be extracted by open cast manual method. EIA study has been carried out as per the guidelines of Ministry of Environment & Forests (MoEF) referring EIA Notification 2006 & its amendments thereafter.For the EIA study, 10 km around the mine lease area is taken as study area and study period as “December 2021 to February 2022”."
+        }
+      ],
+      "start_date": "2021-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/RA 0254",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/2124/RA 0254"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "5501 on dated 21.12.2020 of Tahasildar, Jaleswar"
+        }
+      ],
+      "report_date": "2020-12-21",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "It is estimated that the amount of total annual production of sand is 60,000 CuM per annum, which is to be extracted by open cast manual method. EIA study has been carried out as per the guidelines of Ministry of Environment & Forests (MoEF) referring EIA Notification 2006 & its amendments thereafter.For the EIA study, 10 km around the mine lease area is taken as study area and study period as “December 2021 to February 2022”."
+        }
+      ],
+      "start_date": "2021-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:22:13Z",
+  "id": "967e24b36e1440fe",
+  "pages_read": 11,
+  "pages_total": 11,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1690440231_1941502939.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1690440231_1941502939.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1690440231_1941502939.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1690440231_1941502939.pdf",
+  "year": 2020
+}

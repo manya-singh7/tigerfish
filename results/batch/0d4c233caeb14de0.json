@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "27.06.2014"
+        }
+      ],
+      "report_date": "2014-06-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 12,
+          "text": "Web agenda of 7th CC meeting (Booklet No. 13) of 2014-15 dtd. 27.06.2014 12 6] There was no adequate stack monitoring facility to boiler, thermo pack, D.G Set and scrubber chimney. 7] The industry not sending H.W i.e- spent catalyst to CHWTSDF a per consent .It is reported that it is being send to Hindustan Platinum for which consent not obtained. In view of the above consent may be refused or may be granted only for 1 year subject to submission of suitable B.G to ensure the above compliance."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "27.06.2014"
+        }
+      ],
+      "report_date": "2014-06-27",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 12,
+          "text": "Web agenda of 7th CC meeting (Booklet No. 13) of 2014-15 dtd. 27.06.2014 12 6] There was no adequate stack monitoring facility to boiler, thermo pack, D.G Set and scrubber chimney. 7] The industry not sending H.W i.e- spent catalyst to CHWTSDF a per consent .It is reported that it is being send to Hindustan Platinum for which consent not obtained. In view of the above consent may be refused or may be granted only for 1 year subject to submission of suitable B.G to ensure the above compliance."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:16:37Z",
+  "id": "0d4c233caeb14de0",
+  "pages_read": 66,
+  "pages_total": 66,
+  "project": "Resubmission",
+  "project_name": "Resubmission",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://mpcb.gov.in/sites/default/files/cc-meetings/agenda/CC_7thAgenda_BookletNo.13_2706.2014.pdf",
+    "proposal_no": null,
+    "url": "https://mpcb.gov.in/sites/default/files/cc-meetings/agenda/CC_7thAgenda_BookletNo.13_2706.2014.pdf"
+  },
+  "source_page": "https://mpcb.gov.in/sites/default/files/cc-meetings/agenda/CC_7thAgenda_BookletNo.13_2706.2014.pdf",
+  "state": "Maharashtra",
+  "title": "Resubmission",
+  "tool_version": "6b6a903",
+  "url": "https://mpcb.gov.in/sites/default/files/cc-meetings/agenda/CC_7thAgenda_BookletNo.13_2706.2014.pdf",
+  "year": 2014
+}

@@ -1,0 +1,583 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NO: NABET/EIA/1922/RA0154, Valid till 28"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NO: NABET/EIA/1922/RA0154, Valid till 28.04.2022"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "1503/SEIAA dated 17.06.2021, Odisha and"
+        }
+      ],
+      "report_date": "2021-06-17",
+      "valid_until": "2022-04-28"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 29.54,
+      "end_date": "2024-10-24",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-05-10"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-24"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 29.54 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "AT-KRUSHNACHANDRAPUR, TAHASIL-TIRTOL, DISTRICT- JAGATSINGHPUR, ODISHA FILE NO: SIA/OR/MIN/62748/2021 SECTOR – 1 (a); CATEGORY: B1 BASELINE MONITORING PERIOD: OCTOBER TO DECEMBAR 2021 LABORATORY USED: KALYANI LABORATORIES PRIVATE LIMITED, BHUBANESWAR NABL: Certificate No.TC -7043 validity 10.05.2022 MoEF: File No: Q-15018/46/2018-CPW Validity 24.10.2024 ENVIRONMENT CONSULTANT: KALYANI LABORATORIES PVT.LTD. PLOT NO. 78/944, MILLENIUM CITY, PAHALA, BHUBANESWAR - 752101 e-mail:kalyanilab@yahoo.co.in NABET CERT. NO: NABET/EIA/1922/RA0154, Valid till 28.04.2022 LESSEE: SRI DAMODAR MOHAPATRA AT: MUGURIA, P.O. DHARIBIL, P.S. KRISHNA NAGAR, CUTTACK, ODISHA"
+        }
+      ],
+      "start_date": "2022-05-10"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 8 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "350 GBIF records of Mangifera indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 149041,
+            "local_count": 350,
+            "regional_count": 1230
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mangifera indica",
+          "name": "Mangifera indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "362 GBIF records of Azadirachta indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 62714,
+            "local_count": 362,
+            "regional_count": 1086
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Azadirachta indica",
+          "name": "Azadirachta indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "30 GBIF records of Aegle marmelos within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 12823,
+            "local_count": 30,
+            "regional_count": 168
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Aegle marmelos",
+          "name": "Aegle marmelos",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "11 GBIF records of Senna siamea within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 15911,
+            "local_count": 11,
+            "regional_count": 55
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Senna siamea",
+          "name": "Cassia siamea",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "32 GBIF records of Syzygium cumini within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 33073,
+            "local_count": 32,
+            "regional_count": 361
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Syzygium cumini",
+          "name": "Syzygium cumini",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "17 GBIF records of Tamarindus indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 50464,
+            "local_count": 17,
+            "regional_count": 223
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Tamarindus indica",
+          "name": "Tamarindus indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "91 GBIF records of Ficus benghalensis within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 12132,
+            "local_count": 91,
+            "regional_count": 509
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Ficus benghalensis",
+          "name": "Ficus benghalensis",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "61 GBIF records of Ficus religiosa within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 25180,
+            "local_count": 61,
+            "regional_count": 439
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Ficus religiosa",
+          "name": "Ficus religiosa",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NO: NABET/EIA/1922/RA0154, Valid till 28"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NO: NABET/EIA/1922/RA0154, Valid till 28.04.2022"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "1503/SEIAA dated 17.06.2021, Odisha and"
+        }
+      ],
+      "report_date": "2021-06-17",
+      "valid_until": "2022-04-28"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 29.54,
+      "end_date": "2024-10-24",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-05-10"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-24"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 29.54 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "AT-KRUSHNACHANDRAPUR, TAHASIL-TIRTOL, DISTRICT- JAGATSINGHPUR, ODISHA FILE NO: SIA/OR/MIN/62748/2021 SECTOR – 1 (a); CATEGORY: B1 BASELINE MONITORING PERIOD: OCTOBER TO DECEMBAR 2021 LABORATORY USED: KALYANI LABORATORIES PRIVATE LIMITED, BHUBANESWAR NABL: Certificate No.TC -7043 validity 10.05.2022 MoEF: File No: Q-15018/46/2018-CPW Validity 24.10.2024 ENVIRONMENT CONSULTANT: KALYANI LABORATORIES PVT.LTD. PLOT NO. 78/944, MILLENIUM CITY, PAHALA, BHUBANESWAR - 752101 e-mail:kalyanilab@yahoo.co.in NABET CERT. NO: NABET/EIA/1922/RA0154, Valid till 28.04.2022 LESSEE: SRI DAMODAR MOHAPATRA AT: MUGURIA, P.O. DHARIBIL, P.S. KRISHNA NAGAR, CUTTACK, ODISHA"
+        }
+      ],
+      "start_date": "2022-05-10"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 8 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "350 GBIF records of Mangifera indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 149041,
+            "local_count": 350,
+            "regional_count": 1230
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mangifera indica",
+          "name": "Mangifera indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "362 GBIF records of Azadirachta indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 62714,
+            "local_count": 362,
+            "regional_count": 1086
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Azadirachta indica",
+          "name": "Azadirachta indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "30 GBIF records of Aegle marmelos within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 12823,
+            "local_count": 30,
+            "regional_count": 168
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Aegle marmelos",
+          "name": "Aegle marmelos",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "11 GBIF records of Senna siamea within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 15911,
+            "local_count": 11,
+            "regional_count": 55
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Senna siamea",
+          "name": "Cassia siamea",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "32 GBIF records of Syzygium cumini within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 33073,
+            "local_count": 32,
+            "regional_count": 361
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Syzygium cumini",
+          "name": "Syzygium cumini",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "17 GBIF records of Tamarindus indica within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 50464,
+            "local_count": 17,
+            "regional_count": 223
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Tamarindus indica",
+          "name": "Tamarindus indica",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "91 GBIF records of Ficus benghalensis within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 12132,
+            "local_count": 91,
+            "regional_count": 509
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Ficus benghalensis",
+          "name": "Ficus benghalensis",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "61 GBIF records of Ficus religiosa within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 25180,
+            "local_count": 61,
+            "regional_count": 439
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Ficus religiosa",
+          "name": "Ficus religiosa",
+          "page": 5,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 8,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 0,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 8,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:43:40Z",
+  "id": "9bf5903dd55be26f",
+  "pages_read": 12,
+  "pages_total": 12,
+  "project": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+  "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf",
+  "state": "Odisha",
+  "title": "ENVIRONMENTAL IMPACT ASSESSMENT AND ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1644823708_1472927691.pdf",
+  "year": 2021
+}

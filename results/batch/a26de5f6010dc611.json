@@ -1,0 +1,159 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "11.02.2017"
+        }
+      ],
+      "report_date": "2017-02-11",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period could not be located in the readable text; verify.",
+      "quotes": []
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "11.02.2017"
+        }
+      ],
+      "report_date": "2017-02-11",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period could not be located in the readable text; verify.",
+      "quotes": []
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:59:15Z",
+  "id": "a26de5f6010dc611",
+  "pages_read": 1,
+  "pages_total": 1,
+  "project": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+  "project_name": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://jspcb.org.in/wp-content/uploads/2025/07/Public-hearing-letter-No.-D-2583-dated-29.12.2016.pdf",
+    "proposal_no": null,
+    "url": "https://jspcb.org.in/wp-content/uploads/2025/07/Public-hearing-letter-No.-D-2583-dated-29.12.2016.pdf"
+  },
+  "source_page": "https://jspcb.org.in/wp-content/uploads/2025/07/Public-hearing-letter-No.-D-2583-dated-29.12.2016.pdf",
+  "state": "Jharkhand",
+  "title": "cpr fcr'crR \"\"It! fcp-m ~ mTfT 1",
+  "tool_version": "6b6a903",
+  "url": "https://jspcb.org.in/wp-content/uploads/2025/07/Public-hearing-letter-No.-D-2583-dated-29.12.2016.pdf",
+  "year": 2017
+}

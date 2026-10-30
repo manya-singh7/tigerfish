@@ -1,0 +1,241 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "vide memo no – 588/SZ on dated 02.05.2022"
+        }
+      ],
+      "report_date": "2022-05-02",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Manual Method will be used in sand open excavation without affecting the ground water table. 1.3 DESCRIPTION OF THE ENVIRONMENT For monitoring the environmental parameters like meteorology, air, water, soil and noise quality, the monitoring stations have been established in the study area. Additionally four stations were selected for surface water sampling. The baseline data has been collected in the pre – monsoon season (March, 2022 to May, 2022). The detail of the sampling locations is given in below:- Table 1.2: Sampling Location S. No Sampling Location Distance (km) Directi on Components Remarks Ambient Air quality and Noise quality sampling locations"
+        }
+      ],
+      "start_date": "2022-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "0 GBIF records of Mine site within 100 km, but only 0 records of any the same group within 100 km, so the area is too little surveyed to judge.",
+          "gbif": {
+            "effort_count": 0,
+            "far_count": 0,
+            "global_count": 0,
+            "local_count": 0,
+            "regional_count": 0
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mine site",
+          "name": "Mine site location",
+          "page": 7,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "vide memo no – 588/SZ on dated 02.05.2022"
+        }
+      ],
+      "report_date": "2022-05-02",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2022-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2022-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2022-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Manual Method will be used in sand open excavation without affecting the ground water table. 1.3 DESCRIPTION OF THE ENVIRONMENT For monitoring the environmental parameters like meteorology, air, water, soil and noise quality, the monitoring stations have been established in the study area. Additionally four stations were selected for surface water sampling. The baseline data has been collected in the pre – monsoon season (March, 2022 to May, 2022). The detail of the sampling locations is given in below:- Table 1.2: Sampling Location S. No Sampling Location Distance (km) Directi on Components Remarks Ambient Air quality and Noise quality sampling locations"
+        }
+      ],
+      "start_date": "2022-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 1 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "0 GBIF records of Mine site within 100 km, but only 0 records of any the same group within 100 km, so the area is too little surveyed to judge.",
+          "gbif": {
+            "effort_count": 0,
+            "far_count": 0,
+            "global_count": 0,
+            "local_count": 0,
+            "regional_count": 0
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Mine site",
+          "name": "Mine site location",
+          "page": 7,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 1,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 0,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 1,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:42:10Z",
+  "id": "f2388b0ccd99c9df",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "EXECUTIVE SUMMARY OF ENVIRONMENTAL IMPACT ...",
+  "project_name": "EXECUTIVE SUMMARY OF ENVIRONMENTAL IMPACT ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1666855780_1172487511.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1666855780_1172487511.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1666855780_1172487511.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY OF ENVIRONMENTAL IMPACT ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1666855780_1172487511.pdf",
+  "year": 2022
+}

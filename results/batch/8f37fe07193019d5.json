@@ -1,0 +1,263 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0456",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 3,
+          "text": "NABET/EIA/25-28/RA 0456, for preparing Environmental"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "20.06.2026"
+        }
+      ],
+      "report_date": "2026-06-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2026-07-27",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2026-07-27"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation."
+        }
+      ],
+      "start_date": "2026-07-03"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2026-07-27",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2026-07-27"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation."
+        }
+      ],
+      "start_date": "2026-07-03"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0456",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 3,
+          "text": "NABET/EIA/25-28/RA 0456, for preparing Environmental"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "20.06.2026"
+        }
+      ],
+      "report_date": "2026-06-20",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2026-07-27",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2026-07-27"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation."
+        }
+      ],
+      "start_date": "2026-07-03"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2026-07-27",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2026-07-03"
+        },
+        {
+          "label": "End",
+          "value": "2026-07-27"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Climate Change (MoEF&CC), New Delhi online vide proposal No. IA/OR/CMIN/579355/2026 dated 03.07.2026 for grant of Terms of Reference for EIA study. The proposal was considered in the 47th EAC (Coal Mining) meeting held on 27th July 2026. After deliberation, TOR was issued vide letter File No. IA-J-11015/35/2026-IA-II(M) dated 17.08.2026. Draft EIA report has been prepared incorporating the Terms of Reference & is being submitted to Odisha State Pollution Control Board (OSPCB) for conducting Public hearing/consultation."
+        }
+      ],
+      "start_date": "2026-07-03"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:32:53Z",
+  "id": "8f37fe07193019d5",
+  "pages_read": 18,
+  "pages_total": 18,
+  "project": "Atlas Energy & Resources Pvt. Ltd.",
+  "project_name": "Atlas Energy & Resources Pvt. Ltd.",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792577633_763621951.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792577633_763621951.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792577633_763621951.pdf",
+  "state": "Odisha",
+  "title": "Atlas Energy & Resources Pvt. Ltd.",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1792577633_763621951.pdf",
+  "year": 2026
+}

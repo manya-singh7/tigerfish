@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1992/IA0053",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1992/IA0053"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "31-08-2019"
+        }
+      ],
+      "report_date": "2019-08-31",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 11.4,
+      "end_date": "2018-09-19",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2019-08-31"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-19"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 11.4 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "So, as per the EIA notification 2006 and its subsequent amendment, proposed project fall in category B1. The Environmental Impact Assessment (EIA) study report is prepared for obtaining Environmental Clearance (EC) from SEAC for the proposed project. Table -1, Detail of the lease area Mine Village Khata No. Plot No. Area (Ha) LOI/ Lease Mining plan approval A Sunathar 2103 6439 (A) 0.809 Letter no- 3504 dated 31-08-2019 GXV(j)- 175(P)/187897/ DG on 14-05- 2020 B 6439 (B) 5.261 Letter no- 4963 dated 19-09-2018 GXVII(g)- 175/18 DG on 18-03-2020 C 6439 (C) 5.261 Letter no- 4964 dated 19-09-2018 GXVII(g)- 176/18 DG on 18-03-2020 Total"
+        }
+      ],
+      "start_date": "2019-08-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1992/IA0053",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1992/IA0053"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "31-08-2019"
+        }
+      ],
+      "report_date": "2019-08-31",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 11.4,
+      "end_date": "2018-09-19",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2019-08-31"
+        },
+        {
+          "label": "End",
+          "value": "2018-09-19"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 11.4 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "So, as per the EIA notification 2006 and its subsequent amendment, proposed project fall in category B1. The Environmental Impact Assessment (EIA) study report is prepared for obtaining Environmental Clearance (EC) from SEAC for the proposed project. Table -1, Detail of the lease area Mine Village Khata No. Plot No. Area (Ha) LOI/ Lease Mining plan approval A Sunathar 2103 6439 (A) 0.809 Letter no- 3504 dated 31-08-2019 GXV(j)- 175(P)/187897/ DG on 14-05- 2020 B 6439 (B) 5.261 Letter no- 4963 dated 19-09-2018 GXVII(g)- 175/18 DG on 18-03-2020 C 6439 (C) 5.261 Letter no- 4964 dated 19-09-2018 GXVII(g)- 176/18 DG on 18-03-2020 Total"
+        }
+      ],
+      "start_date": "2019-08-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:21:20Z",
+  "id": "01c36ce1c8ac2bfe",
+  "pages_read": 10,
+  "pages_total": 10,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1627638566_856884987.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1627638566_856884987.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1627638566_856884987.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1627638566_856884987.pdf",
+  "year": 2019
+}

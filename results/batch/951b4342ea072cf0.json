@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "1533, dated 14.09.06 as"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "390 0 2 Domestic Use 10 2 8 3 Dust Suppression 40 40 0 4 Greenbelt 60 60 0 Total 500 492 8 PRESENT ENVIRONMENTAL SCENARIO Study Area: Core: The proposed project is located within the existing plant of JSL at Kalinganagar Industrial Complex, Jajpur District in Odisha and it falls under the Survey of India Topo sheet No. G/16. The Latitude and Longitude of the proposed site 20⁰ 57’ 10.31” N to 20⁰ 57’18.09” N and 86⁰ 02’ 14.46’’ E to 86⁰ 02’ 32.39’’ E respectively. The nearest national highway is NH- 6, which is about 20 km E of the project site. The plant is bounded by East Coast Railway’s line"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "1533, dated 14.09.06 as"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "390 0 2 Domestic Use 10 2 8 3 Dust Suppression 40 40 0 4 Greenbelt 60 60 0 Total 500 492 8 PRESENT ENVIRONMENTAL SCENARIO Study Area: Core: The proposed project is located within the existing plant of JSL at Kalinganagar Industrial Complex, Jajpur District in Odisha and it falls under the Survey of India Topo sheet No. G/16. The Latitude and Longitude of the proposed site 20⁰ 57’ 10.31” N to 20⁰ 57’18.09” N and 86⁰ 02’ 14.46’’ E to 86⁰ 02’ 32.39’’ E respectively. The nearest national highway is NH- 6, which is about 20 km E of the project site. The plant is bounded by East Coast Railway’s line"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:39:06Z",
+  "id": "951b4342ea072cf0",
+  "pages_read": 19,
+  "pages_total": 19,
+  "project": "environmental impact assessment (eia)",
+  "project_name": "environmental impact assessment (eia)",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1494425202_936510111.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1494425202_936510111.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1494425202_936510111.pdf",
+  "state": "Odisha",
+  "title": "environmental impact assessment (eia)",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1494425202_936510111.pdf",
+  "year": 2006
+}

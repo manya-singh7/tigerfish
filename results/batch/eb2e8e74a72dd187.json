@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "I/286934/2026 Dated:- 12-03-2026"
+        }
+      ],
+      "report_date": "2026-03-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "M/s Paras Croplife Private Limited, Village Nagla Megha, Tehsil Karnal, Haryana 132001. Copies of executive summary of the project report and EIA study report, submitted by the project proponent are available in the Head Oﬃce of the HSPCB as well as in the following oﬃces, which can be perused during oﬃce hours, on any working day:- 1. Deputy Commissioner, Karnal. 2. Chairman, Zila Parishad, Karnal. 3. Sub Divisional Magistrate, Assandh, Karnal. 4. Joint Director, District Industries Centre, Karnal. 5. Secretary, Municipal Committee, Assandh, Karnal. Notice is hereby given to all concerned to ﬁle suggestions, views, comments and objections, if any, on the above said proposed project, to the"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "I/286934/2026 Dated:- 12-03-2026"
+        }
+      ],
+      "report_date": "2026-03-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "M/s Paras Croplife Private Limited, Village Nagla Megha, Tehsil Karnal, Haryana 132001. Copies of executive summary of the project report and EIA study report, submitted by the project proponent are available in the Head Oﬃce of the HSPCB as well as in the following oﬃces, which can be perused during oﬃce hours, on any working day:- 1. Deputy Commissioner, Karnal. 2. Chairman, Zila Parishad, Karnal. 3. Sub Divisional Magistrate, Assandh, Karnal. 4. Joint Director, District Industries Centre, Karnal. 5. Secretary, Municipal Committee, Assandh, Karnal. Notice is hereby given to all concerned to ﬁle suggestions, views, comments and objections, if any, on the above said proposed project, to the"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:44:21Z",
+  "id": "eb2e8e74a72dd187",
+  "pages_read": 3,
+  "pages_total": 3,
+  "project": "1. One major national daily newspaper. 2. One Regional ...",
+  "project_name": "1. One major national daily newspaper. 2. One Regional ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 30.73,
+    "lon": 76.78,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://hspcb.gov.in/uploads/pages/public_heaing_parascrop_life_69b7987bdf206.pdf",
+    "proposal_no": null,
+    "url": "https://hspcb.gov.in/uploads/pages/public_heaing_parascrop_life_69b7987bdf206.pdf"
+  },
+  "source_page": "https://hspcb.gov.in/uploads/pages/public_heaing_parascrop_life_69b7987bdf206.pdf",
+  "state": "Haryana",
+  "title": "1. One major national daily newspaper. 2. One Regional ...",
+  "tool_version": "6b6a903",
+  "url": "https://hspcb.gov.in/uploads/pages/public_heaing_parascrop_life_69b7987bdf206.pdf",
+  "year": 2026
+}

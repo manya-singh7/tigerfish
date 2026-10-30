@@ -27,6 +27,8 @@ def _rows(stamp):
     from tigerfish.ui import library as library_ui
     rows = []
     for e in library_ui.entries():
+        if e.get("audit_type") == library.QUICK:
+            continue
         try:
             report = library.load(e)
         except (OSError, ValueError):

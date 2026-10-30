@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "31 & 32) Consent Committee meeting of 2014 held on 05.11.2014 circulated under Board’s letter No"
+        }
+      ],
+      "report_date": "2014-11-05",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 12,
+          "text": "renewal as industry has failed to submit Board Resolution / Bank Guarantee as per previous consent condition and results of stack monitoring are exceeding. 29 MMP Industries Ltd., (formerly known as Maharashtra Metal Powders Ltd.,) Vill- Maregaon, Po- Shahpur, Dist - Bhandara Not Approved Establish (Expansion) _____ JD(APC) It was decided to issue SCN for refusal of consent to establish for expansion as industry has failed to comply previous consent conditions. Booklet No. 33 /2014 Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd. 24.11.2014 12"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "31 & 32) Consent Committee meeting of 2014 held on 05.11.2014 circulated under Board’s letter No"
+        }
+      ],
+      "report_date": "2014-11-05",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 12,
+          "text": "renewal as industry has failed to submit Board Resolution / Bank Guarantee as per previous consent condition and results of stack monitoring are exceeding. 29 MMP Industries Ltd., (formerly known as Maharashtra Metal Powders Ltd.,) Vill- Maregaon, Po- Shahpur, Dist - Bhandara Not Approved Establish (Expansion) _____ JD(APC) It was decided to issue SCN for refusal of consent to establish for expansion as industry has failed to comply previous consent conditions. Booklet No. 33 /2014 Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd. 24.11.2014 12"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Maharashtra approximate centre",
+        "lat": 19.08,
+        "lon": 72.88,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:17:20Z",
+  "id": "989ffb70c0cae1d5",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd ...",
+  "project_name": "Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 19.08,
+    "lon": 72.88,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/cac-meetings/minutes/18thCCmeetingminutesBNo3324112014.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/cac-meetings/minutes/18thCCmeetingminutesBNo3324112014.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/cac-meetings/minutes/18thCCmeetingminutesBNo3324112014.pdf",
+  "state": "Maharashtra",
+  "title": "Minutes of 18th CC meeting (Booklet No. 33) of 2014-15 dtd ...",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/cac-meetings/minutes/18thCCmeetingminutesBNo3324112014.pdf",
+  "year": 2014
+}

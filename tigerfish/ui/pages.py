@@ -218,15 +218,32 @@ def limitations():
             st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
 
 
+def batch_count():
+    path = ROOT / "results" / "batch" / "batch_summary.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8")).get("reports_processed", 88)
+        except Exception:
+            pass
+    return 88
+
+
+def batch_page():
+    from tigerfish.ui import batch_view
+    batch_view.render()
+
+
 # Filled by build(); the keys are used across the app (st.page_link / st.switch_page).
 PAGES = {}
 
 
 def build():
     """The page objects, in menu order. Call once per run, before st.navigation."""
+    n_batch = batch_count()
     PAGES.update({
         "home": st.Page(home, title="Home", url_path="home", default=True),
         "library": st.Page(library_page, title="Library", url_path="library"),
+        "batch": st.Page(batch_page, title=f"Batch: {n_batch} reports", url_path="batch"),
         "upload": st.Page(upload_page, title="Upload", url_path="upload"),
         "how": st.Page(how_it_works_page, title="How it works", url_path="how-it-works"),
         "limitations": st.Page(limitations, title="Limitations", url_path="limitations"),

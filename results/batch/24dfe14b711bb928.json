@@ -1,0 +1,181 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/IA0087",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No:-NABET/EIA/2124/IA0087"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "3611 (E) NEW DELHI dated 25-07-2018 the preparation"
+        }
+      ],
+      "report_date": "2018-07-25",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "Water Requirement 5KLDs Proposed CSR 5.00Lakhs Proposed EMP Capital Cost 12.0 Lakh Proposed EMP Recurring Cost 5.0 Lakhs Baseline Data The baseline data was collected for the pre-monsoon season i.e. Dec-21 to February 2022 in the 10 km study area results. The maximum value for PM2.5 was observed, as 24.8 μg /m3 at Village-Pahanga (A3) while 24 hours applicable limit is 60μg/m3 mixed use areas. The area observes average PM2.5 concentration in the range of 8.4-24.8 μg/m3 with the lowest concentration of 8.4 μg/m3 recorded at Village- Debidol Village (A6). The maximum value for PM10 was observed, as 62.7μg/m3 at village-Agara (A7) while 24 hours applicable limit is 100μg/m3 for mixed use areas"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2124/IA0087",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No:-NABET/EIA/2124/IA0087"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "3611 (E) NEW DELHI dated 25-07-2018 the preparation"
+        }
+      ],
+      "report_date": "2018-07-25",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 3,
+          "text": "Water Requirement 5KLDs Proposed CSR 5.00Lakhs Proposed EMP Capital Cost 12.0 Lakh Proposed EMP Recurring Cost 5.0 Lakhs Baseline Data The baseline data was collected for the pre-monsoon season i.e. Dec-21 to February 2022 in the 10 km study area results. The maximum value for PM2.5 was observed, as 24.8 μg /m3 at Village-Pahanga (A3) while 24 hours applicable limit is 60μg/m3 mixed use areas. The area observes average PM2.5 concentration in the range of 8.4-24.8 μg/m3 with the lowest concentration of 8.4 μg/m3 recorded at Village- Debidol Village (A6). The maximum value for PM10 was observed, as 62.7μg/m3 at village-Agara (A7) while 24 hours applicable limit is 100μg/m3 for mixed use areas"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:30:05Z",
+  "id": "24dfe14b711bb928",
+  "pages_read": 6,
+  "pages_total": 6,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1660288943_1320670249.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1660288943_1320670249.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1660288943_1320670249.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1660288943_1320670249.pdf",
+  "year": 2018
+}

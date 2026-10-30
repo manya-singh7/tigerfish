@@ -1,0 +1,173 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "192/SM & 196/SM dated 07.01.2022"
+        }
+      ],
+      "report_date": "2022-01-07",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "00 Lakhs (Rupees Nine Lakhs) per annum for each mine. 2. DESCRIPTION OF THE ENVIRONMENT For the purpose of environmental impact assessment, the study was carried out within as well as the 10km area around the project site. The study was carried out to collect the baseline scenario of Land Use of the region, Ambient Air Quality, Water Quality, Noise Level, Soil Quality, Ecological Study and Socio-Economic Study. Samples were collected during the study period spanning over 3 months; 1st March. 2022 to 31st May. 2022 & tested in the MoEF&CC accredited laboratory of M/s. Centre for Envotech & Management Consultancy Pvt. Ltd., Bhubaneswar, Odisha. The study area covers 10km surrounding the propos…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "192/SM & 196/SM dated 07.01.2022"
+        }
+      ],
+      "report_date": "2022-01-07",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "00 Lakhs (Rupees Nine Lakhs) per annum for each mine. 2. DESCRIPTION OF THE ENVIRONMENT For the purpose of environmental impact assessment, the study was carried out within as well as the 10km area around the project site. The study was carried out to collect the baseline scenario of Land Use of the region, Ambient Air Quality, Water Quality, Noise Level, Soil Quality, Ecological Study and Socio-Economic Study. Samples were collected during the study period spanning over 3 months; 1st March. 2022 to 31st May. 2022 & tested in the MoEF&CC accredited laboratory of M/s. Centre for Envotech & Management Consultancy Pvt. Ltd., Bhubaneswar, Odisha. The study area covers 10km surrounding the propos…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:26:30Z",
+  "id": "9c231c075fba9223",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "EXECUTIVE SUMMARY",
+  "project_name": "EXECUTIVE SUMMARY",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1688730624_501649441.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1688730624_501649441.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1688730624_501649441.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1688730624_501649441.pdf",
+  "year": 2022
+}

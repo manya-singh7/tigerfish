@@ -1,0 +1,193 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "11011/491/2008-IAII (I) dated 31st July, 2015 incorporating 1x3T additional IF along with"
+        }
+      ],
+      "report_date": "2015-07-31",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2016-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2015-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2016-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "In Buffer zone there are some major forests, these are Kuriya Block RF, Senara RF are two major reserved forests with in 10 km radius of the Study area. Indira pahari PF, Brindabanpur PF, Muktipur PF, Bheti PF,Dubrajpur PF, Nimtikur PF,dandahit PF. But the company does not require any forest land for non-forestry work. Environmental status Base line study of 10km radius area of project site was done from Dec 2015 to Feb 2016 The climate in the study region is generally dry and hot and is characterized with seasonal variations of temp., humidity, rainfall etc. Wind roses on sixteen-sector basis (N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, and NNW) have been drawn for 01-24…"
+        }
+      ],
+      "start_date": "2015-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "11011/491/2008-IAII (I) dated 31st July, 2015 incorporating 1x3T additional IF along with"
+        }
+      ],
+      "report_date": "2015-07-31",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2016-02-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2015-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2016-02-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "In Buffer zone there are some major forests, these are Kuriya Block RF, Senara RF are two major reserved forests with in 10 km radius of the Study area. Indira pahari PF, Brindabanpur PF, Muktipur PF, Bheti PF,Dubrajpur PF, Nimtikur PF,dandahit PF. But the company does not require any forest land for non-forestry work. Environmental status Base line study of 10km radius area of project site was done from Dec 2015 to Feb 2016 The climate in the study region is generally dry and hot and is characterized with seasonal variations of temp., humidity, rainfall etc. Wind roses on sixteen-sector basis (N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, and NNW) have been drawn for 01-24…"
+        }
+      ],
+      "start_date": "2015-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:40:09Z",
+  "id": "3aa9f4917359d89c",
+  "pages_read": 11,
+  "pages_total": 11,
+  "project": "EXECUTIVE SUMMARY EIA/EMP REPORT of GLOBAL ...",
+  "project_name": "EXECUTIVE SUMMARY EIA/EMP REPORT of GLOBAL ...",
+  "sector": "Ports and harbours",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1517482889_194560231.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1517482889_194560231.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1517482889_194560231.pdf",
+  "state": "Odisha",
+  "title": "EXECUTIVE SUMMARY EIA/EMP REPORT of GLOBAL ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1517482889_194560231.pdf",
+  "year": 2015
+}

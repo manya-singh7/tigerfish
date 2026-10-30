@@ -1,0 +1,203 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1922/RA0154"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "19.11.2020, Odisha and as per Ministry of environment forest & Climate Change, Govt"
+        }
+      ],
+      "report_date": "2020-11-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 364.42,
+      "end_date": "2026-09-20",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2057-01-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-09-20"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 364.42 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "chill winds from the North. Mid January to mid March is pleasant with moderate climate. The site 1.3.8 Ambient Air Quality In the study area, the observed source of particulate matter is material handling and vehicular movement. The ambient air quality status observed during the study period (arithmetic mean & 98th percentile values) is presented in the above tabular form. During the study period, the concentration of PM10 varies from 43.1-57.2μg/m3; the concentration of PM2.5 varies from 20.9-26.5μg/m3. The concentration of SO2 varies from 5.1-9.14 μg/m3 and the concentration of NOx within the project site ranges between 7.4-19.3 μg/m3. From the ambient air quality"
+        }
+      ],
+      "start_date": "2057-01-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1922/RA0154"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "19.11.2020, Odisha and as per Ministry of environment forest & Climate Change, Govt"
+        }
+      ],
+      "report_date": "2020-11-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 364.42,
+      "end_date": "2026-09-20",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2057-01-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-09-20"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 364.42 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "chill winds from the North. Mid January to mid March is pleasant with moderate climate. The site 1.3.8 Ambient Air Quality In the study area, the observed source of particulate matter is material handling and vehicular movement. The ambient air quality status observed during the study period (arithmetic mean & 98th percentile values) is presented in the above tabular form. During the study period, the concentration of PM10 varies from 43.1-57.2μg/m3; the concentration of PM2.5 varies from 20.9-26.5μg/m3. The concentration of SO2 varies from 5.1-9.14 μg/m3 and the concentration of NOx within the project site ranges between 7.4-19.3 μg/m3. From the ambient air quality"
+        }
+      ],
+      "start_date": "2057-01-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:39:15Z",
+  "id": "b75a5080cc6196ed",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105081_117215802.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105081_117215802.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105081_117215802.pdf",
+  "state": "Odisha",
+  "title": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105081_117215802.pdf",
+  "year": 2020
+}

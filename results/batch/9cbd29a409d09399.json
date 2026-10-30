@@ -1,0 +1,173 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "12.04.2019"
+        }
+      ],
+      "report_date": "2019-04-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 84,
+          "text": "forthwith monitor the compliance of the rules by reviewing the need for action in all the states. (iii) The Central Pollution Control Board may forthwith constitute a monitoring Committee for the purpose it may appoint a Nodal Officer exclusively to oversee the compliance of the rules. The Member Secretary CPCB may act as a Nodal Officer till a substitute is found. The action taken must be placed on the website of the Central Pollution Control Board within 3 months from today. Compliance report be filed before this Tribunal on or before 30th November, 2018, which will be treated as a separate application.” 83"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "12.04.2019"
+        }
+      ],
+      "report_date": "2019-04-12",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 84,
+          "text": "forthwith monitor the compliance of the rules by reviewing the need for action in all the states. (iii) The Central Pollution Control Board may forthwith constitute a monitoring Committee for the purpose it may appoint a Nodal Officer exclusively to oversee the compliance of the rules. The Member Secretary CPCB may act as a Nodal Officer till a substitute is found. The action taken must be placed on the website of the Central Pollution Control Board within 3 months from today. Compliance report be filed before this Tribunal on or before 30th November, 2018, which will be treated as a separate application.” 83"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Jharkhand approximate centre",
+        "lat": 23.34,
+        "lon": 85.31,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:59:13Z",
+  "id": "9cbd29a409d09399",
+  "pages_read": 95,
+  "pages_total": 95,
+  "project": "Environment-compensation-guidelines-by-CPCB.pdf",
+  "project_name": "Environment-compensation-guidelines-by-CPCB.pdf",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 23.34,
+    "lon": 85.31,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://my.jspcb.org.in/upload/file/Environment-compensation-guidelines-by-CPCB.pdf",
+    "proposal_no": null,
+    "url": "https://my.jspcb.org.in/upload/file/Environment-compensation-guidelines-by-CPCB.pdf"
+  },
+  "source_page": "https://my.jspcb.org.in/upload/file/Environment-compensation-guidelines-by-CPCB.pdf",
+  "state": "Jharkhand",
+  "title": "Environment-compensation-guidelines-by-CPCB.pdf",
+  "tool_version": "6b6a903",
+  "url": "https://my.jspcb.org.in/upload/file/Environment-compensation-guidelines-by-CPCB.pdf",
+  "year": 2019
+}

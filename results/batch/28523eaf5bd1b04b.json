@@ -1,0 +1,265 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "January, 2018"
+        }
+      ],
+      "report_date": "2018-01-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "Zone - II is most stable and Zone – V is considered to be least stable. In the revision of the seismic zones in the year 2000, the seismic Zone - I have been merged in Zone - II by BIS. Baseline AAQ Environment: Total six AAQM locations were selected depending on physical obstructions and activities in the immediate area, accessibility/availability of utilities and other support facilities in correlation with the defined purpose of the specific monitor and its design. The purpose is also to establish a benchmark, which can form the reference for monitoring in the construction and operation period.  The average concentration of PM10 ranges from 64 to 87 µg/m3  The average concentration of P…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 2 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "47 GBIF records of Shorea robusta within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 469,
+            "local_count": 47,
+            "regional_count": 125
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Shorea robusta",
+          "name": "Shorea robusta",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "0 GBIF records of Adina cordifolia within 100 km, but 11 within 500 km: mobile species recorded in the wider region; local absence likely reflects survey gaps. Not graded.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 276,
+            "local_count": 0,
+            "regional_count": 11
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Adina cordifolia",
+          "name": "Adina cordifolia",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "January, 2018"
+        }
+      ],
+      "report_date": "2018-01-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 5,
+          "text": "Zone - II is most stable and Zone – V is considered to be least stable. In the revision of the seismic zones in the year 2000, the seismic Zone - I have been merged in Zone - II by BIS. Baseline AAQ Environment: Total six AAQM locations were selected depending on physical obstructions and activities in the immediate area, accessibility/availability of utilities and other support facilities in correlation with the defined purpose of the specific monitor and its design. The purpose is also to establish a benchmark, which can form the reference for monitoring in the construction and operation period.  The average concentration of PM10 ranges from 64 to 87 µg/m3  The average concentration of P…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "Checked 2 readable binomial name(s) with cached GBIF data.",
+      "rows": [
+        {
+          "evidence": "47 GBIF records of Shorea robusta within 100 km; plausible.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 469,
+            "local_count": 47,
+            "regional_count": 125
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Shorea robusta",
+          "name": "Shorea robusta",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        },
+        {
+          "evidence": "0 GBIF records of Adina cordifolia within 100 km, but 11 within 500 km: mobile species recorded in the wider region; local absence likely reflects survey gaps. Not graded.",
+          "gbif": {
+            "effort_count": 8118,
+            "far_count": null,
+            "global_count": 276,
+            "local_count": 0,
+            "regional_count": 11
+          },
+          "gbif_iucn": null,
+          "grade": "OK",
+          "location": {
+            "label": "Odisha approximate centre",
+            "lat": 20.3,
+            "lon": 85.82,
+            "source": "state-centre fallback; verify"
+          },
+          "matched_name": "Adina cordifolia",
+          "name": "Adina cordifolia",
+          "page": 6,
+          "range_grade": null,
+          "report_iucn": null
+        }
+      ],
+      "status": "OK"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "count": 2,
+      "name": "Species in the report's tables vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "iucn_status",
+      "count": 0,
+      "name": "IUCN categories vs GBIF (free)",
+      "status": "ran"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 2,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:25:32Z",
+  "id": "28523eaf5bd1b04b",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "Executive Summary of Draft Environmental Impact ...",
+  "project_name": "Executive Summary of Draft Environmental Impact ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1521029206_1230339178.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1521029206_1230339178.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1521029206_1230339178.pdf",
+  "state": "Odisha",
+  "title": "Executive Summary of Draft Environmental Impact ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1521029206_1230339178.pdf",
+  "year": 2018
+}

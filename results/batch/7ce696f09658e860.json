@@ -1,0 +1,183 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1821/SA 0107",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/1821/SA 0107"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "No – 494 on dated 14.02.2020 of Tahasildar, Patna, Keonjhar"
+        }
+      ],
+      "report_date": "2020-02-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "density of soil samples varies from 1.3 to 1.66 gm/cm3; while porosity varies from 33.3 to 42.55 %. Biological Environment As per the said study, there are no endangered species of flora & fauna in the core & buffer zone. As indicated in the report, no flora and fauna of significance are available within the lease area. Noise Environment Noise monitoring was carried out at 6 locations as per the standard prescribed by CPCB. Noise level monitoring was carried out continuously for 24 hours at one hour interval starting at 06:15 hrs to 05:15 hrs next day once in a month for 3 months during the study period, at all locations. Noise level varies from 49 to"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1821/SA 0107",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET Certificate No: NABET Certificate No: - NABET/EIA/1821/SA 0107"
+        },
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "No – 494 on dated 14.02.2020 of Tahasildar, Patna, Keonjhar"
+        }
+      ],
+      "report_date": "2020-02-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.0,
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "duration regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 7,
+          "text": "density of soil samples varies from 1.3 to 1.66 gm/cm3; while porosity varies from 33.3 to 42.55 %. Biological Environment As per the said study, there are no endangered species of flora & fauna in the core & buffer zone. As indicated in the report, no flora and fauna of significance are available within the lease area. Noise Environment Noise monitoring was carried out at 6 locations as per the standard prescribed by CPCB. Noise level monitoring was carried out continuously for 24 hours at one hour interval starting at 06:15 hrs to 05:15 hrs next day once in a month for 3 months during the study period, at all locations. Noise level varies from 49 to"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:32:59Z",
+  "id": "7ce696f09658e860",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "Deogaon Sand Quarry on Baitarani River",
+  "project_name": "Deogaon Sand Quarry on Baitarani River",
+  "sector": "Mining",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665818713_220568799.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665818713_220568799.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665818713_220568799.pdf",
+  "state": "Odisha",
+  "title": "Deogaon Sand Quarry on Baitarani River",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1665818713_220568799.pdf",
+  "year": 2020
+}

@@ -1,0 +1,263 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1922/RA0154"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "19.11.2020, Odisha and as per Ministry of environment forest & Climate Change, Govt"
+        }
+      ],
+      "report_date": "2020-11-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.63,
+      "end_date": "2021-02-18",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-02-18"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator"
+        }
+      ],
+      "start_date": "2020-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.63,
+      "end_date": "2021-02-18",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-02-18"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator"
+        }
+      ],
+      "start_date": "2020-12-01"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/1922/RA0154",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/1922/RA0154"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "19.11.2020, Odisha and as per Ministry of environment forest & Climate Change, Govt"
+        }
+      ],
+      "report_date": "2020-11-19",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.63,
+      "end_date": "2021-02-18",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-02-18"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator"
+        }
+      ],
+      "start_date": "2020-12-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Odisha approximate centre",
+        "lat": 20.3,
+        "lon": 85.82,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.63,
+      "end_date": "2021-02-18",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2020-12-01"
+        },
+        {
+          "label": "End",
+          "value": "2021-02-18"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.63 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "TAHASIL: CUTTACK SADAR DISTRICT: CUTTACK, ODISHA PROJECT PROPOSED BY TAHASILDAR, SADAR CUTTACK PROPOSAL NO.: SIA/OR/MIN/54922/2020 BASELINE MONITORING PERIOD: OCTOBER2020- DECEMBER 2020 Environment Consultant M/S Kalyani Laboratories Pvt.Ltd. Plot No: 78/944, Pahala Bhubaneswar, 752101 email: kalyanilab@yahoo.co.in NABET ACC. NO.: NABET/EIA/1922/RA0154 Document No. : KLPL/EIA/(MM)2020/35 Document Name: Draft EIA Report for Brahmapur sand bed mines on Kathajodi river over an area of 5.26Ha or 13Acres in village Brahmapur, Cuttack, Odisha. Date:18.02.2021 Copy No.: 01 Signature of EIA Co-ordinator"
+        }
+      ],
+      "start_date": "2020-12-01"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:36:41Z",
+  "id": "5a0386e236f2bcf0",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "project_name": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 20.3,
+    "lon": 85.82,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105270_725774842.pdf",
+    "proposal_no": null,
+    "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105270_725774842.pdf"
+  },
+  "source_page": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105270_725774842.pdf",
+  "state": "Odisha",
+  "title": "ENVIRONMENTAL IMPACT ASSESSMENT & ...",
+  "tool_version": "6b6a903",
+  "url": "https://ospcboard.odisha.gov.in/wp-content/plugins/hearing/uploads/files_1617105270_725774842.pdf",
+  "year": 2020
+}

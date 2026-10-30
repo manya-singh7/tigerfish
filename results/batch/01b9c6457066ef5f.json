@@ -1,0 +1,171 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "24th July, 2015 in the Gazette of India, Extraordinary Part II, section 3, sub-section (ii) inviting objections"
+        }
+      ],
+      "report_date": "2015-07-24",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Act, 1981 (14 of 1981) and the rules made thereunder and as amended from time to time; (b) wastes arising out of the operation from ships beyond five kilometres of the relevant baseline as covered under the provisions of the Merchant Shipping Act, 1958 (44 of 1958) and the rules made thereunder and as amended from time to time; (c) radio-active wastes as covered under the provisions of the Atomic Energy Act, 1962 (33 of 1962) and the rules made thereunder and as amended from time to time; (d) bio-medical wastes covered under the Bio-Medical Wastes (Management and Handling) Rules, 1998 made under the Act and as amended from time to time; and (e) wastes covered under the Municipal Solid Wastes…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "24th July, 2015 in the Gazette of India, Extraordinary Part II, section 3, sub-section (ii) inviting objections"
+        }
+      ],
+      "report_date": "2015-07-24",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Act, 1981 (14 of 1981) and the rules made thereunder and as amended from time to time; (b) wastes arising out of the operation from ships beyond five kilometres of the relevant baseline as covered under the provisions of the Merchant Shipping Act, 1958 (44 of 1958) and the rules made thereunder and as amended from time to time; (c) radio-active wastes as covered under the provisions of the Atomic Energy Act, 1962 (33 of 1962) and the rules made thereunder and as amended from time to time; (d) bio-medical wastes covered under the Bio-Medical Wastes (Management and Handling) Rules, 1998 made under the Act and as amended from time to time; and (e) wastes covered under the Municipal Solid Wastes…"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": {
+        "label": "Haryana approximate centre",
+        "lat": 30.73,
+        "lon": 76.78,
+        "source": "state-centre fallback; verify"
+      },
+      "message": "No readable binomial names were confirmed with GBIF.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "No readable binomial names were confirmed with GBIF.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T01:48:20Z",
+  "id": "01b9c6457066ef5f",
+  "pages_read": 61,
+  "pages_total": 61,
+  "project": "THE HAZARDOUS AND OTHER WASTES ( ...",
+  "project_name": "THE HAZARDOUS AND OTHER WASTES ( ...",
+  "sector": "Other",
+  "site": {
+    "how": "state-centre fallback; verify",
+    "lat": 30.73,
+    "lon": 76.78,
+    "page": null,
+    "quote": null
+  },
+  "source": {
+    "portal": "https://www.hspcb.gov.in/uploads/laws/hsm1.pdf",
+    "proposal_no": null,
+    "url": "https://www.hspcb.gov.in/uploads/laws/hsm1.pdf"
+  },
+  "source_page": "https://www.hspcb.gov.in/uploads/laws/hsm1.pdf",
+  "state": "Haryana",
+  "title": "THE HAZARDOUS AND OTHER WASTES ( ...",
+  "tool_version": "6b6a903",
+  "url": "https://www.hspcb.gov.in/uploads/laws/hsm1.pdf",
+  "year": 2015
+}
