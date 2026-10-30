@@ -98,8 +98,6 @@ div[class*="st-key-tf-slip-f-"] .tf-slip { border: 0; padding: 0; margin: 0 0 0.
 .tf-report-grades { margin: 0.5rem 0 0 0; }
 .tf-report-grades .tf-mono { font-size: 1rem; margin-right: 1rem; }
 .tf-what-line { color: var(--tf-muted); max-width: 52rem; margin: 0.25rem 0 0.75rem 0; }
-.tf-sub-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem; font-weight: 600;
-  color: var(--tf-ink); margin: 2rem 0 0.5rem 0; }
 </style>"""
 
 

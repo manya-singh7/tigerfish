@@ -116,6 +116,8 @@ hr { border-color: var(--tf-rule) !important; }
   color: var(--tf-teal); margin: 0 0 0.4rem 0; }
 .tf-h3 { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600; line-height: 1.15;
   color: var(--tf-ink); margin: 0 0 0.3rem 0; }
+.tf-sub-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem; font-weight: 600;
+  color: var(--tf-ink); margin: 2rem 0 0.5rem 0; }
 .tf-purpose { font-size: 1.125rem; color: var(--tf-ink); max-width: 36rem; margin: 0 0 1rem 0; }
 .tf-lede { color: var(--tf-muted); font-size: 1rem; max-width: 46rem; margin: 0 0 0.6rem 0; }
 .tf-meta { font-size: 0.8125rem; color: var(--tf-muted); }

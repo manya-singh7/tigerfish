@@ -331,7 +331,7 @@ def library_page():
 
 
 def upload_page():
-    heading("Upload your EIA", back=True, sub="Run the free checks on a PDF of your own, then choose pages for "
+    heading("Upload your EIA", sub="Run the free checks on a PDF of your own, then choose pages for "
             "the model checks.")
     with st.container(key="tf-panel-upload"):
         report = upload.render()
@@ -352,26 +352,30 @@ def _diagram():
 
 
 def how_it_works_page():
+    st.markdown(HOME_CSS, unsafe_allow_html=True)
     heading("How it works", "From a PDF to flags a person can check.")
-    left, right = st.columns([5, 6], gap="medium")
+    left, right = st.columns([5, 6], gap="large")
     with left, st.container(key="tf-panel-diagram"):
         st.markdown(_diagram(), unsafe_allow_html=True)
-    with right:
-        with st.container(key="tf-panel-levels"):
-            st.markdown('<h2 class="tf-h2">Three levels</h2>' + levels_table(), unsafe_allow_html=True)
-        with st.container(key="tf-panel-models"):
-            st.markdown('<h2 class="tf-h2">Which model does what, and why</h2>'
-                        '<table class="tf-table"><thead><tr><th>Model</th><th>Does</th><th>Why</th>'
-                        '</tr></thead><tbody>' + "".join(
-                            f'<tr><td class="tf-mono">{esc(n)}</td><td>{esc(d)}</td><td>{esc(w)}</td></tr>'
-                            for n, d, w in MODELS) + "</tbody></table>", unsafe_allow_html=True)
-            st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Text-backed quotes "
-                "are matched to source text; image-only readings are shown with their "
-                "source image and labelled unverified.")
-        with st.container(key="tf-panel-method"):
-            st.markdown(method.method_text())
-            st.page_link(PAGES["limitations"], label="Known limitations",
-                         icon=":material/arrow_forward:")
+    with right, st.container(key="tf-panel-method"):
+        st.markdown(method.method_text())
+        st.page_link(PAGES["limitations"], label="Known limitations",
+                     icon=":material/arrow_forward:")
+    c = model_counts()
+    with st.container(key="tf-panel-models"):
+        st.markdown('<h2 class="tf-section-head">Which model does what, and why</h2>'
+                    + (f'<p class="tf-section-sub">With the counts from the saved run on the '
+                       f'{esc(c["title"])}.</p>' + models_html(c) if c else "")
+                    + '<table class="tf-table" style="margin-top:1.5rem"><thead><tr><th>Model or '
+                    "tool</th><th>Does</th><th>Why</th></tr></thead><tbody>" + "".join(
+                        f'<tr><td class="tf-mono">{esc(n)}</td><td>{esc(d)}</td><td>{esc(w)}</td></tr>'
+                        for n, d, w in MODELS) + "</tbody></table>", unsafe_allow_html=True)
+        st.caption("NVIDIA Nemotron models run on Nebius Token Factory. Text-backed quotes "
+            "are matched to source text; image-only readings are shown with their "
+            "source image and labelled unverified.")
+    with st.container(key="tf-panel-levels"):
+        st.markdown('<h2 class="tf-section-head">Three levels</h2>' + levels_table(),
+                    unsafe_allow_html=True)
 
 
 def limitations():
@@ -381,7 +385,9 @@ def limitations():
     text = method.limitations_text()
     if text:
         with st.container(key="tf-panel-failures"):
-            st.markdown("#### Failure cases from our own runs (docs/LIMITATIONS.md)")
+            st.markdown('<h2 class="tf-section-head">Failure cases from our own runs</h2>'
+                        '<p class="tf-section-sub">From docs/LIMITATIONS.md.</p>',
+                        unsafe_allow_html=True)
             st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
 
 
