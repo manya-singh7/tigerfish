@@ -253,7 +253,7 @@ def test_open_a_report_and_go_back(no_keys):
     at.button(key=f"tf::open::{GN}").click().run()
     assert not at.exception
     assert at.query_params.get("report") in (GN, [GN])
-    assert [t.label.split(" (")[0] for t in at.tabs][:2] == ["Overview", "Contradictions"]
+    assert [t.label.split(" (")[0] for t in at.tabs][:2] == ["Overview", "Findings"]
     assert any(b.label == "Back to library" for b in at.button)
     at.button(key="tf::back").click().run()
     assert not at.exception
@@ -272,7 +272,7 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     assert not at.exception
     assert any(library.QUICK_NOTICE in w.value for w in at.warning)
     labels = [t.label.split(" (")[0] for t in at.tabs]  # only the quick check's sections
-    assert labels[0] == "Overview" and set(labels) <= {"Overview", "Contradictions", "Species & nature"}
+    assert labels[0] == "Overview" and set(labels) <= {"Overview", "Findings", "Batch screening"}
     text = "\n".join(m.value for m in at.markdown)
     assert "Checks that ran" in text and "Not run for this report" in text
     assert "GBIF not called" in text  # the reason a check did not run

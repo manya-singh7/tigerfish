@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import findings_text, open_app
 
 from tigerfish.ui import cards, data, investigate
 
@@ -59,5 +59,5 @@ def test_app_shows_tags(monkeypatch):
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
     at = open_app(timeout=60)
-    html = "\n".join(m.value for m in at.markdown)
+    html = "\n".join(m.value for m in at.markdown) + findings_text(at)
     assert "Found via Tavily" in html

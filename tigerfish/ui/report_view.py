@@ -1,16 +1,17 @@
-"""One report, in sections side by side (tabs across the full width), not one long scroll.
+"""One report: a header, then five tabs (docs/DESIGN.md).
 
-  Overview · Contradictions · Species & nature · Copied text · Promises & timeline ·
-  Public record · Ask & investigate · Take action · Quality · Cost & models
+  Overview · Findings · Ask & investigate · Take action · Method & quality
 
-Each finding appears in exactly one section (by its check; see SECTION_CHECKS), so its review
-widgets are drawn once. A label carries its count, e.g. "Contradictions (14)". A section that
-does not apply to this report is left out, and one line in the Overview says which and why.
-Quick checks (free checks only) get only the sections their checks fill.
+Findings holds the finding sections (Contradictions, Species & nature, Copied text,
+Promises & timeline, Public record) behind one selector, so only the chosen section is drawn.
+Each finding belongs to exactly one section (by its check; see SECTION_CHECKS), so its review
+widgets are drawn once. Labels carry counts, e.g. "Contradictions (14)". A section that does
+not apply to this report is left out, and one line in the Overview says which and why. Quick
+checks (free checks only) get Overview, Findings and Batch screening.
 
-Inside a finding section (docs/DESIGN.md): the evidence slips in the main column, 10 at a
-time, and a side panel with the section's filters, counts and what the check does. The
-Overview shows only the top 3 human-verified findings and one sentence of totals.
+Inside a section: what the check does in one line, the filters in a row, then the evidence
+slips, 10 at a time. The Overview opens with the report's lead finding, then the top
+verified findings and one sentence of totals.
 
 Quality section hook: if a module tigerfish/ui/quality.py exists with render(report), it is
 drawn as the Quality section; otherwise the review queue, the precision panel and the
@@ -38,6 +39,8 @@ OVERVIEW, CONTRA, SPECIES, COPIED, PROMISES = ("Overview", "Contradictions", "Sp
 RECORD, ASK, ACTION, QUALITY, COST = ("Public record", "Ask & investigate", "Take action",
                                       "Quality", "Cost & models")
 ORDER = (OVERVIEW, CONTRA, SPECIES, COPIED, PROMISES, RECORD, ASK, ACTION, QUALITY, COST)
+FINDINGS, METHOD = "Findings", "Method & quality"
+CATEGORIES = (CONTRA, SPECIES, COPIED, PROMISES, RECORD)     # the sections inside Findings
 
 # Which section shows a finding, by its check. Unknown checks go to OTHER_SECTION.
 SECTION_CHECKS = {
@@ -87,15 +90,16 @@ ABOUT = {
            "context efficiency, and how Super-VL read the scanned pages."),
 }
 CSS = """<style>
-@media (max-width: 1099px) {
-  div[class*="st-key-tf-sec-"] [data-testid="stHorizontalBlock"] { flex-direction: column-reverse !important; }
-  div[class*="st-key-tf-sec-"] [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
-    width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
-}
-div[class*="st-key-tf-slip-f-"] { padding: 1rem; margin-bottom: 0.25rem; }
+div[class*="st-key-tf-slip-f-"] { padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
 div[class*="st-key-tf-slip-f-"] .tf-slip { border: 0; padding: 0; margin: 0 0 0.25rem 0; }
-.tf-h3.tf-on-paper { background: var(--tf-paper); border: 1px solid var(--tf-rule); border-radius: 3px;
-  padding: 0.5rem 1rem; margin: 0 0 0.75rem 0; display: block; }
+.tf-h3.tf-on-paper { margin: 1.5rem 0 0.75rem 0; display: block; font-size: 1.5rem; }
+.tf-report-head .tf-h1 { color: var(--tf-ink); margin: 0.25rem 0 0.35rem 0; }
+.tf-report-head .tf-meta { font-size: 1rem; }
+.tf-report-grades { margin: 0.5rem 0 0 0; }
+.tf-report-grades .tf-mono { font-size: 1rem; margin-right: 1rem; }
+.tf-what-line { color: var(--tf-muted); max-width: 52rem; margin: 0.25rem 0 0.75rem 0; }
+.tf-sub-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem; font-weight: 600;
+  color: var(--tf-ink); margin: 2rem 0 0.5rem 0; }
 </style>"""
 
 
@@ -198,7 +202,7 @@ def hidden_line(hidden):
         f"{', '.join(names)} ({why})" for why, names in groups.items()) + ".")
 
 
-# ---------- section layout: main column and side panel ----------
+# ---------- section layout: one column, filters in a row ----------
 
 
 def _dismissed(report_id, findings):
@@ -206,40 +210,15 @@ def _dismissed(report_id, findings):
             | {f["id"] for f in cards.reviewed(report_id, findings, "Dismiss")})
 
 
-def section_columns(key):
-    """(main, side) columns of a section; below 1100px the side panel goes on top (CSS)."""
-    with st.container(key=f"tf-sec-{key}"):
-        main, side = st.columns([7, 3], gap="medium")
-    return main, side
-
-
-def side_panel(side, section, key, findings=None):
-    """The section's side panel, with its counts by grade. Returns the panel container."""
-    with side:
-        box = st.container(key=f"tf-side-{key}")
-    with box:
-        st.markdown(f'<div class="tf-h3">{esc(section)}</div>', unsafe_allow_html=True)
-        if findings is not None:
-            c = data.counts(findings)
-            st.markdown('<div class="tf-rep-grades">' + " ".join(
-                f"{badge(g)}{mono(f'{c[g]:,}')}&nbsp;&nbsp;" for g in ("RED", "ORANGE", "INFO"))
-                + "</div>", unsafe_allow_html=True)
-    return box
-
-
-def about(box, section):
-    with box:
-        st.markdown(f'<div class="tf-meta" style="margin-top:0.8rem"><b>What this check does</b></div>'
-                    f'<div class="tf-what">{esc(ABOUT[section])}</div>', unsafe_allow_html=True)
+def what_line(section):
+    """What the section's check does, in one muted paragraph above its content."""
+    st.markdown(f'<p class="tf-what-line">{esc(ABOUT[section])}</p>', unsafe_allow_html=True)
 
 
 def plain_section(section, key, draw, report_id):
-    """A section without findings of its own: content in the main column, the side panel
-    says what it does."""
-    main, side = section_columns(key)
-    box = side_panel(side, section, key)
-    about(box, section)
-    with main:
+    """A section without findings of its own: what it does, then its content."""
+    what_line(section)
+    with st.container(key=f"tf-sec-{key}"):
         draw(report_id)
 
 
@@ -248,41 +227,42 @@ def _more(key):
 
 
 def finding_list(report, findings, key, empty, map_species=False, section=None):
-    """A finding section: the slips in the main column (10 at a time); in the side panel the
-    grade and check filters, the dismissed toggle, the counts and what the check does.
-    Returns the main column, for content the section adds below its findings."""
+    """A finding section: what the check does, the grade and check filters and the dismissed
+    toggle in a row, then the slips (10 at a time). Returns the container below the
+    findings, for content the section adds."""
     rid = report["id"]
-    main, side = section_columns(key)
-    box = side_panel(side, section or key, key, findings)
+    if section:
+        what_line(section)
+    main = st.container(key=f"tf-sec-{key}")
     if not findings:
         with main, st.container(key=f"tf-panel-empty-{key}"):
             st.markdown(f'<div class="tf-h3">Nothing flagged here</div><p>{esc(empty)}</p>',
                         unsafe_allow_html=True)
-        if section:
-            about(box, section)
         return main
-    with box:
-        present = [g for g in ("RED", "ORANGE", "INFO") if any(f["grade"] == g for f in findings)]
-        grades = st.multiselect("Grade", present, default=present, key=f"sec::{rid}::{key}::grades")
+    with main:
+        g, c, d, n = st.columns([3, 4, 2, 2], gap="medium", vertical_alignment="bottom")
+        present = [x for x in ("RED", "ORANGE", "INFO") if any(f["grade"] == x for f in findings)]
+        with g:
+            grades = st.multiselect("Grade", present, default=present, key=f"sec::{rid}::{key}::grades")
         checks = sorted({f["check_name"] for f in findings})
         if len(checks) > 1:
-            checks = st.multiselect("Check", checks, default=checks, key=f"sec::{rid}::{key}::checks")
+            with c:
+                checks = st.multiselect("Check", checks, default=checks, key=f"sec::{rid}::{key}::checks")
         shown = data.filter_findings(findings, grades, checks)
-        # Flags judged false alarms (Quality section, or Dismiss on a card) are hidden by default.
+        # Flags judged false alarms (Quality, or Dismiss on a card) are hidden by default.
         dismissed = _dismissed(rid, findings)
         n_dismissed = sum(f["id"] in dismissed for f in shown)
-        if n_dismissed and not st.toggle(f"Show dismissed ({n_dismissed})",
-                                         key=f"sec::{rid}::{key}::dismissed"):
-            shown = [f for f in shown if f["id"] not in dismissed]
-        st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(findings)} findings.</div>',
-                    unsafe_allow_html=True)
-    if section:
-        about(box, section)
-    with main:
+        if n_dismissed:
+            with d:
+                if not st.toggle(f"Show dismissed ({n_dismissed})", key=f"sec::{rid}::{key}::dismissed"):
+                    shown = [f for f in shown if f["id"] not in dismissed]
+        with n:
+            st.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(findings)} findings.</div>',
+                        unsafe_allow_html=True)
         if not shown:
             with st.container(key=f"tf-panel-none-{key}"):
                 st.markdown('<div class="tf-h3">No findings match these filters</div>'
-                            '<p>Add a grade or a check back in the side panel.</p>',
+                            '<p>Add a grade or a check back in the filters above.</p>',
                             unsafe_allow_html=True)
         if map_species and any(f["check"] in species_map.SPECIES_CHECKS for f in shown):
             site = (REPORTS.get(rid) or (None, None))[1]
@@ -319,8 +299,8 @@ def totals_sentence(report, confirmed=None):
         f"{verified:,} verified by a person" if verified or not by_reviewer else "",
         f"{by_reviewer:,} confirmed by a reviewer" if by_reviewer else "") if x)
     return (f"{len(findings):,} findings ({c['RED']:,} RED, {c['ORANGE']:,} ORANGE, {c['INFO']:,} "
-            f"INFO leads) from {unit}; {checked}. Every finding is in its "
-            "section tab. A flag is a lead to verify, not a verdict.")
+            f"INFO leads) from {unit}; {checked}. Every finding is under "
+            "Findings. A flag is a lead to verify, not a verdict.")
 
 
 def overview(report, shown, hidden, quick=False):
@@ -335,8 +315,7 @@ def overview(report, shown, hidden, quick=False):
     verified = [f for f in live if f.get("verification")
                 and f["verification"].get("outcome") != "explained"]
     with st.container(key="tf-panel-overview"):
-        st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report.get("title", ""))}</h2>'
-                    f'<p class="tf-totals">{esc(totals_sentence(report, confirmed))}</p>',
+        st.markdown(f'<p class="tf-totals">{esc(totals_sentence(report, confirmed))}</p>',
                     unsafe_allow_html=True)
         hidden_line(hidden)
     by_reviewer = [f for f in live if not f.get("verification") and f["id"] in confirmed]
@@ -379,8 +358,6 @@ def overview(report, shown, hidden, quick=False):
 def library_quick_overview(report):
     """The quick check's header: what ran, what did not, and why."""
     with st.container(key="tf-panel-quick"):
-        st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report["title"])}</h2>',
-                    unsafe_allow_html=True)
         st.warning(library.QUICK_NOTICE)
         bits = [report.get("state"), report.get("sector"), report.get("year"),
                 f"{report.get('pages_read', 0):,} of {report.get('pages_total', 0):,} pages read"]
@@ -549,64 +526,99 @@ def _panel(key, draw, *args):
 # ---------- the report page ----------
 
 
+def header(report, quick=False):
+    """The report's one header block: title, where it came from, and its flags by grade."""
+    c = data.counts(report.get("findings") or [])
+    source = report.get("source", "")
+    meta = (("Quick check, free checks only. " if quick else
+             ("Saved results. " if _saved(report["id"]) else "")) + (f"Source: {source}" if source else ""))
+    with st.container(key="tf-plain-source"):
+        st.markdown(f'<div class="tf-report-head"><h1 class="tf-h1">'
+                    f'{esc(report.get("project") or report.get("title", ""))}</h1>'
+                    f'<div class="tf-meta">{esc(meta)}</div><div class="tf-report-grades">'
+                    + "".join(f"{badge(g)}{mono(f'{c[g]:,}')}" for g in ("RED", "ORANGE", "INFO"))
+                    + "</div></div>", unsafe_allow_html=True)
+        for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
+            st.warning(notice)
+
+
+def findings_tab(report, cats, by):
+    """The finding sections behind one selector; only the chosen one is drawn."""
+    rid = report["id"]
+    counts = dict(cats)
+    names = [s for s, _ in cats]
+    pick = st.segmented_control("Section", names, default=names[0], required=True,
+                                format_func=lambda s: label(s, counts[s]),
+                                key=f"sec::{rid}::pick", label_visibility="collapsed")
+    pick = pick or names[0]
+    if pick == CONTRA:
+        finding_list(report, by[CONTRA], "contra",
+                     "No contradictions or recycled figures were flagged in this report.",
+                     section=CONTRA)
+    elif pick == SPECIES:
+        finding_list(report, by[SPECIES], "species",
+                     "No species, status or omission findings for this report.",
+                     map_species=True, section=SPECIES)
+    elif pick == COPIED:
+        main = finding_list(report, by[COPIED], "copied", "No copied or borrowed text was flagged.",
+                            section=COPIED)
+        with main:
+            cards.excluded_matches(report)
+    elif pick == PROMISES:
+        main = finding_list(report, by[PROMISES], "promises",
+                            "No ToR promise was found unmet; the comparison is below.",
+                            section=PROMISES)
+        with main:
+            _panel("promises-detail", promises.render, rid)
+    elif pick == RECORD:
+        public_record_section(report, by[RECORD])
+
+
+def method_tab(report, sections):
+    """Quality (review, precision, evaluation) and Cost & models, one after the other."""
+    for section, draw in ((QUALITY, quality), (COST, cost_and_models)):
+        if section in sections:
+            st.markdown(f'<h2 class="tf-sub-head">{esc(section)}</h2>', unsafe_allow_html=True)
+            plain_section(section, section.split()[0].lower(),
+                          lambda r, d=draw: _panel(section.split()[0].lower(), d, report), report["id"])
+
+
 def render(report, quick=False):
     """Draw one report. quick=True: a quick check (library.load), free checks only."""
     st.markdown(CSS, unsafe_allow_html=True)
     rid = report["id"]
+    header(report, quick)
     if not quick:
-        with st.container(key="tf-plain-source"):
-            st.caption(f"Saved results. Source: {report.get('source', '')}" if _saved(rid)
-                       else f"Source: {report.get('source', '')}")
-            for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
-                st.warning(notice)
         feedback._seed(rid, report.get("findings") or [])  # before any review widget is drawn
     shown, hidden = plan(report, quick)
     by = split(report.get("findings") or [])
+    names = [s for s, _ in shown]
+    cats = [(s, c) for s, c in shown if s in CATEGORIES]
+    tab_labels = [(OVERVIEW, None)]
+    if cats:
+        tab_labels.append((FINDINGS, sum(len(by[s]) for s, _ in cats)))
+    tab_labels += [(s, c) for s, c in shown if s in (SCREENING, ASK, ACTION)]
+    if QUALITY in names or COST in names:
+        tab_labels.append((METHOD, None))
     # A container keyed by the report: switching reports draws fresh widgets, instead of the
     # browser reusing the previous report's filters at the same place.
     box = st.container(key="tf-report-" + re.sub(r"[^A-Za-z0-9_-]", "-", str(rid)))
-    tabs = dict(zip([s for s, _ in shown], box.tabs([label(s, c) for s, c in shown])))
+    tabs = dict(zip([s for s, _ in tab_labels], box.tabs([label(s, c) for s, c in tab_labels])))
 
     with tabs[OVERVIEW]:
         overview(report, shown, hidden, quick)
-    if CONTRA in tabs:
-        with tabs[CONTRA]:
-            finding_list(report, by[CONTRA], "contra",
-                         "No contradictions or recycled figures were flagged in this report.",
-                         section=CONTRA)
-    if SPECIES in tabs:
-        with tabs[SPECIES]:
-            finding_list(report, by[SPECIES], "species",
-                         "No species, status or omission findings for this report.",
-                         map_species=True, section=SPECIES)
+    if FINDINGS in tabs:
+        with tabs[FINDINGS]:
+            findings_tab(report, cats, by)
     if SCREENING in tabs:
         with tabs[SCREENING], st.container(key=f"tf-panel-screening-{rid}"):
             batch_ui.render_report(report)
-    if COPIED in tabs:
-        with tabs[COPIED]:
-            main = finding_list(report, by[COPIED], "copied", "No copied or borrowed text was flagged.",
-                                section=COPIED)
-            with main:
-                cards.excluded_matches(report)
-    if PROMISES in tabs:
-        with tabs[PROMISES]:
-            main = finding_list(report, by[PROMISES], "promises",
-                                "No ToR promise was found unmet; the comparison is below.",
-                                section=PROMISES)
-            with main:
-                _panel("promises-detail", promises.render, rid)
-    if RECORD in tabs:
-        with tabs[RECORD]:
-            public_record_section(report, by[RECORD])
     if ASK in tabs:
         with tabs[ASK]:
             plain_section(ASK, "ask", lambda r: _panel("ask", memo_ask.render, r), rid)
     if ACTION in tabs:
         with tabs[ACTION]:
             plain_section(ACTION, "action", lambda r: _panel("action", take_action, report), rid)
-    if QUALITY in tabs:
-        with tabs[QUALITY]:
-            plain_section(QUALITY, "quality", lambda r: _panel("quality", quality, report), rid)
-    if COST in tabs:
-        with tabs[COST]:
-            plain_section(COST, "cost", lambda r: _panel("cost", cost_and_models, report), rid)
+    if METHOD in tabs:
+        with tabs[METHOD]:
+            method_tab(report, names)

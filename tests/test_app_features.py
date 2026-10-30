@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import open_app, show_section
 
 ROOT = Path(__file__).resolve().parent.parent
 pytestmark = pytest.mark.skipif(not (ROOT / "results" / "index.json").exists(), reason="no results/")
@@ -24,9 +24,10 @@ def plotly_titles(at):
 def test_map_crops_cost_chart_and_pack_button(app):
     assert not app.exception
     text = "\n".join(m.value for m in app.markdown)
-    assert "Where the flagged species are actually recorded" in text
     assert 'class="tf-slip-crop"' in text and "highlighted</figcaption>" in text   # page crops in slips
     assert "Cost per full audit, by triage mode" in text
+    show_section(app, "Species & nature")
+    assert "Where the flagged species are actually recorded" in "\n".join(m.value for m in app.markdown)
     charts = plotly_titles(app)
     assert any("Scattergeo" in c or "scattergeo" in c for c in charts)       # species map
     assert any('"type":"bar"' in c.replace(" ", "") for c in charts)         # cost chart

@@ -313,7 +313,7 @@ def library_page():
         return
     entry = library.find(library_ui.entries(), report_id)
     with st.container(key="tf-panel-report-bar"):
-        a, b = st.columns([1, 2], vertical_alignment="center")
+        a, _, b = st.columns([2, 3, 2], vertical_alignment="center")
         with a:
             library_ui.back_link()
         with b:

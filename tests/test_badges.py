@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import findings_text, open_app
 
 from tigerfish.ui import badges, data, memo_ask
 
@@ -178,7 +178,7 @@ def test_app_shows_badges_on_cards_memo_and_answers(monkeypatch):
     monkeypatch.setenv("TAVILY_API_KEY", "")
     at = open_app(timeout=60)
     assert not at.exception
-    text = "\n".join(m.value for m in at.markdown)
+    text = "\n".join(m.value for m in at.markdown) + findings_text(at)
     for label in (badges.READ_LIGHTNING, badges.READ_SUPER_VL, badges.SCREENED_LIGHTNING,
                   badges.JUDGED_ULTRA, badges.TAVILY, badges.GBIF, badges.ANSWERED_ULTRA):
         assert f">{label}" in text, label

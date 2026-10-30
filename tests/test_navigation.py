@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from apptest import GN, open_app
+from apptest import GN, open_app, section_picker
 from tigerfish import library
 from tigerfish.ui import data, report_view
 from tigerfish.ui import pages
@@ -73,8 +73,9 @@ def test_overview_counts_reviewer_confirmations(no_keys):
 def test_old_report_link_opens_the_report(no_keys):
     at = open_app()                                        # /?report=<id>
     assert not at.exception
-    assert labels(at) == list(report_view.ORDER)
-    assert any(t.label.startswith("Contradictions (") for t in at.tabs)
+    assert labels(at) == [report_view.OVERVIEW, report_view.FINDINGS, report_view.ASK,
+                          report_view.ACTION, report_view.METHOD]
+    assert [o.split(" (")[0] for o in section_picker(at).options] == list(report_view.CATEGORIES)
 
 
 def test_every_finding_is_in_exactly_one_section():

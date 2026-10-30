@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from docx import Document
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import every_section, open_app, section_picker
 
 from tigerfish.ui import data, letter
 
@@ -27,7 +27,8 @@ def test_app_runs_without_api_keys(no_keys):
     at = open_app(timeout=60)
     assert not at.exception
     assert not [t for t in at.toggle if not t.key.startswith("action::")]  # no live mode without a key
-    assert any(t.label.startswith("Contradictions (") for t in at.tabs)
+    assert any(t.label.startswith("Findings (") for t in at.tabs)
+    assert section_picker(at).options[0].startswith("Contradictions (")
     home = open_app(report=None, timeout=60)
     assert not home.exception
     assert any("Built for murky water." in m.value for m in home.markdown)
@@ -86,13 +87,16 @@ def test_method_tab_shows_evaluation(no_keys):
 def test_prerecorded_investigations_replay(no_keys):
     at = open_app(timeout=60)
     assert not at.exception
-    labels = [e.label for e in at.expander if e.label.startswith("Investigation:")]
+    labels, html, buttons = [], [], []
+    for a in every_section(at):                                # each section under Findings
+        labels += [e.label for e in a.expander if e.label.startswith("Investigation:")]
+        html += [m.value for m in a.markdown]
+        buttons += [b for b in a.button if b.label == "Investigate"]
     assert len(labels) == 3                                    # gn-001 (recorded as ct-003), ac-01, sp-p954-001
-    html = "\n".join(m.value for m in at.markdown)
+    html = "\n".join(html)
     assert 'class="tf-timeline"' in html and "READ PAGE" in html and "Evidence memo" in html
     assert "Unverified reasoning (not checked)" in html and 'class="tf-ref"' in html
     # findings without a recording get an Investigate button, disabled without a key
-    buttons = [b for b in at.button if b.label == "Investigate"]
     assert buttons and all(b.disabled for b in buttons)
 
 
