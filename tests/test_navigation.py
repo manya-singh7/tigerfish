@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from apptest import GN, open_app
+from apptest import GN, open_app, section_picker
 from tigerfish import library
 from tigerfish.ui import data, report_view
 from tigerfish.ui import pages
@@ -29,37 +29,53 @@ def test_home_is_the_landing_page(no_keys):
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     assert pages.TAGLINE in text and pages.PURPOSE in text and pages.BUILT_WITH in text
-    assert pages.TIGERFISH_STORY in text and pages.SCROLL_URL in text     # the tiger fish slip
+    assert "names the sambar and the barking deer" in text                # the species tile
+    assert "Confirmed by a reviewer" in text and "planted" not in text
     t = library.totals(library.entries())
     assert library.totals_line(t) in text                                 # one live sentence
     assert not at.metric                                                  # no stat banner
-    assert any(b.label == "Open report" for b in at.button)               # the library below
+    assert any(b.label == "See the Great Nicobar audit" for b in at.button)
     assert not at.tabs
 
 
-def test_home_search_goes_into_the_library(no_keys):
+def test_home_is_short_and_points_into_the_reports(no_keys):
     at = open_app(report=None)
-    at.text_input(key="home::q").input("Cuddalore").run()
     assert not at.exception
-    assert len([b for b in at.button if b.label == "Open report"]) == 1
+    text = "\n".join(m.value for m in at.markdown)
+    full = [e for e in library.entries() if e["audit_type"] != library.QUICK]
+    assert all(f"/library?report={e['id']}" in text for e in full)   # one row per full audit
+    assert "Open report" not in [b.label for b in at.button]          # not the whole library
+    c = pages.model_counts()
+    assert f"{c['claims']:,} checkable claims" in text and f"{c['verdicts']:,} pairs" in text
+    assert "rf-010" not in text and "Same figure for different places" in text   # a verified tile
 
 
-def test_overview_is_top_three_verified_slips_and_one_sentence(no_keys):
+def test_overview_is_the_lead_then_top_three_verified_slips_and_one_sentence(no_keys):
     at = open_app()
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     report = data.load(GN)
     assert report_view.totals_sentence(report) in text
     slips = [m.value for m in at.tabs[0].markdown if 'class="tf-slip' in m.value]
-    assert len(slips) == report_view.TOP_FLAGS
+    assert len(slips) == 1 + report_view.TOP_FLAGS
+    assert "tf-slip-lead" in slips[0] and library.lead_finding(GN) in slips[0]
+    assert all("tf-slip-lead" not in v for v in slips[1:])
     assert all("Verified by a person" in v for v in slips)
+
+
+def test_overview_counts_reviewer_confirmations(no_keys):
+    at = open_app(report="indira_point_table_3_16")
+    assert not at.exception
+    text = "\n".join(m.value for m in at.tabs[0].markdown)
+    assert "confirmed by a reviewer" in text and "Confirmed by a reviewer (" in text
 
 
 def test_old_report_link_opens_the_report(no_keys):
     at = open_app()                                        # /?report=<id>
     assert not at.exception
-    assert labels(at) == list(report_view.ORDER)
-    assert any(t.label.startswith("Contradictions (") for t in at.tabs)
+    assert labels(at) == [report_view.OVERVIEW, report_view.FINDINGS, report_view.ASK,
+                          report_view.ACTION, report_view.METHOD]
+    assert [o.split(" (")[0] for o in section_picker(at).options] == list(report_view.CATEGORIES)
 
 
 def test_every_finding_is_in_exactly_one_section():
@@ -103,3 +119,13 @@ def test_quality_hook_uses_a_quality_module(monkeypatch):
     monkeypatch.setitem(sys.modules, "tigerfish.ui.quality", mod)
     report_view.quality({"id": "x", "findings": []})
     assert seen == ["x"]
+
+
+def test_limitations_page_is_a_plain_list(no_keys):
+    at = open_app(report=None, page="limitations")
+    assert not at.exception
+    text = "\n".join(m.value for m in at.markdown)
+    assert all(title in text for title, _ in pages.LIMITS)
+    assert "docs/LIMITATIONS.md" not in text and "repository" not in text
+    for internal in ("Failure cases from our own runs", "Thresholds", "BM25", "pr-06", "regex"):
+        assert internal not in text, internal

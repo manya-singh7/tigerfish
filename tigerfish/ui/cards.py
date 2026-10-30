@@ -106,10 +106,12 @@ def summary_strip(report):
                      unsafe_allow_html=True)
     cols[2].markdown(stat("Checks run", str(len(report["checks"])), "see How it works"),
                      unsafe_allow_html=True)
-    cols[3].markdown(stat("Cost", cost_value, cost_note), unsafe_allow_html=True)
+    cols[3].markdown(stat("Cost", cost_value, base), unsafe_allow_html=True)
     cols[4].markdown(stat("Time", fmt_time(cost.get("approx_seconds")),
                           cost.get("time_note", "API time, estimated")),
                      unsafe_allow_html=True)
+    if cost_note != base:        # the details behind the cost, under the row, not in a card
+        st.caption(f"Cost: {cost_note}.".replace("$", "\\$").replace("..", "."))
 
 
 def quote_label(q):
@@ -132,16 +134,20 @@ def card_key(report_id, f):
     return "tf-slip-f-" + re.sub(r"[^A-Za-z0-9_-]", "-", f"{report_id}-{f['id']}")
 
 
-def finding_card(report_id, f, report_title=""):
-    """One finding: its evidence slip (page crop, grade, check, quote, reason, the person's
-    check), then the evidence in an expander, the full pages, Investigate and the review."""
+def finding_card(report_id, f, report_title="", confirmed=None, open_pages=False):
+    """One finding: its evidence slip (page crop, grade, check, quote, the whole reason, the
+    person's check), then the evidence in an expander, the full pages, Investigate and the
+    review. confirmed: reviewers' decision rows confirming it (review.confirmed_findings).
+    open_pages: the highlighted pages start open (the first card of a section)."""
     with st.container(key=card_key(report_id, f)):
         photo = record_ui.photo_html(report_id, f["id"])
         has_crop = bool(slip.crops_for(f))
         extra = (badges.html(badges.finding_badges(f, badges.readers(report_id)))
                  + record_ui.knowable_html(report_id, f["id"])
                  + (photo if has_crop else ""))
-        slip.render(f, extra=extra, photo=None if has_crop else photo)
+        # A hand check is in the badges (with the name): no second "Verified by a person" line.
+        slip.render(f, extra=extra, photo=None if has_crop else photo, confirmed=confirmed,
+                    full_reason=True, person=not f.get("verification"))
 
         with st.expander("Evidence, why it was flagged and what would clear it"):
             known = (f'<div class="tf-meta">Matches known issue {esc(f["known_issue"])}</div>'
@@ -158,7 +164,8 @@ def finding_card(report_id, f, report_title=""):
 
         images = list(dict.fromkeys(f.get("images") or []))
         if images:
-            with st.expander("Show highlighted page" + ("s" if len(images) > 1 else "")):
+            with st.expander("Show highlighted page" + ("s" if len(images) > 1 else ""),
+                             expanded=open_pages):
                 paths = [p for p in (data.image_path(rel) for rel in images) if p]
                 if not paths:
                     st.caption("The page images for this finding are not in results/pages/.")

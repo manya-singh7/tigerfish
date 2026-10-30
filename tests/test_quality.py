@@ -225,7 +225,7 @@ def test_library_home_shows_quality(monkeypatch):
     from apptest import open_app
     monkeypatch.setenv("NEBIUS_API_KEY", "")
     monkeypatch.setenv("TAVILY_API_KEY", "")
-    at = open_app(report=None)
+    at = open_app(report=None, page="library")
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     assert "#### Quality" in text and "RED/ORANGE flags" in text

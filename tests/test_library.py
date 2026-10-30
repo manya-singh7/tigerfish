@@ -163,10 +163,26 @@ def binder_library(monkeypatch):
     return items
 
 
-def visible_reports(at):
+def visible_reports(at, every=True):
+    """The reports with an Open report button; every=True first shows every page of quick checks."""
+    while every and any(b.key == "lib::quick-more" for b in at.button):
+        at.button(key="lib::quick-more").click().run()
     return [
         b.key.removeprefix("tf::open::") for b in at.button if b.label == "Open report"
     ]
+
+
+def test_quick_checks_load_five_at_a_time(no_keys, binder_library):
+    at = open_app(report=None, page="library")
+    full, quick = binder_library[:3], binder_library[3:]
+    assert visible_reports(at, every=False) == [e["id"] for e in full + quick[:5]]
+    more = at.button(key="lib::quick-more")
+    assert more.label == f"Show 5 more quick checks ({len(quick) - 5} not shown)"
+    more.click().run()
+    assert visible_reports(at, every=False) == [e["id"] for e in full + quick[:10]]
+    at.multiselect(key="lib::state").select("Goa").run()      # a filter starts again at 5
+    goa = [e["id"] for e in quick if e["state"] == "Goa"]
+    assert [r for r in visible_reports(at, every=False) if r in goa] == goa[:5]
 
 
 def test_library_binders_render_every_match_and_reset_all_filters(
@@ -178,8 +194,8 @@ def test_library_binders_render_every_match_and_reset_all_filters(
     assert len(set(visible_reports(at))) == 35
     assert not any(b.key == "lib::more" for b in at.button)
     text = " ".join(m.value for m in at.markdown)
-    assert "Deep Investigation Audits (3 Benchmark Reports)" in text
-    assert "Automated Batch Triage (32 State Pollution Board Filings)" in text
+    assert "Full audits (3)" in text
+    assert "Quick checks (32)" in text
 
     full_option = next(
         o for o in at.radio(key="lib::type").options if o.startswith("Full")
@@ -188,13 +204,13 @@ def test_library_binders_render_every_match_and_reset_all_filters(
     assert (
         visible_reports(at) == expected[:3]
     )  # full binder includes the standalone table
-    assert "Automated Batch Triage" not in " ".join(m.value for m in at.markdown)
+    assert "Quick checks (" not in " ".join(m.value for m in at.markdown)
     quick_option = next(
         o for o in at.radio(key="lib::type").options if o.startswith("Quick")
     )
     at.radio(key="lib::type").set_value(quick_option).run()
     assert visible_reports(at) == expected[3:]  # 32 matches, not a hidden PAGE_SIZE cap
-    assert "Deep Investigation Audits" not in " ".join(m.value for m in at.markdown)
+    assert "Full audits (" not in " ".join(m.value for m in at.markdown)
     at.multiselect(key="lib::state").select("Goa").run()
     assert visible_reports(at) == [
         e["id"] for e in binder_library[3:] if e["state"] == "Goa"
@@ -224,9 +240,9 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
     assert any("Saved audits are full runs" in c.value for c in at.caption)
     assert {m.label for m in at.multiselect} == {"State", "Sector", "Year"}
     assert any(r.label == "Audit type" for r in at.radio)
-    n = len([b for b in at.button if b.label == "Open report"])
+    n = len(visible_reports(at))
     at.checkbox(key="lib::red").check().run()
-    red = len([b for b in at.button if b.label == "Open report"])
+    red = len(visible_reports(at))
     assert red == sum(e["grades"]["RED"] > 0 for e in library.entries()) and red <= n
     at.text_input(key="lib::q").input("Cuddalore").run()
     assert len([b for b in at.button if b.label == "Open report"]) == 1
@@ -237,7 +253,7 @@ def test_library_filter_has_human_verified_findings(no_keys, binder_library):
     at = open_app(report=None, page="library")
     at.checkbox(key="lib::verified").check().run()
     assert not at.exception
-    shown = len([b for b in at.button if b.label == "Open report"])
+    shown = len(visible_reports(at))
     assert shown == sum(1 for e in binder_library if e["verified"]) >= 1
     assert any(
         "Has human-verified findings" in m.value for m in at.markdown
@@ -253,7 +269,7 @@ def test_open_a_report_and_go_back(no_keys):
     at.button(key=f"tf::open::{GN}").click().run()
     assert not at.exception
     assert at.query_params.get("report") in (GN, [GN])
-    assert [t.label.split(" (")[0] for t in at.tabs][:2] == ["Overview", "Contradictions"]
+    assert [t.label.split(" (")[0] for t in at.tabs][:2] == ["Overview", "Findings"]
     assert any(b.label == "Back to library" for b in at.button)
     at.button(key="tf::back").click().run()
     assert not at.exception
@@ -272,7 +288,7 @@ def test_quick_check_opens_in_the_lighter_view(no_keys, batch):
     assert not at.exception
     assert any(library.QUICK_NOTICE in w.value for w in at.warning)
     labels = [t.label.split(" (")[0] for t in at.tabs]  # only the quick check's sections
-    assert labels[0] == "Overview" and set(labels) <= {"Overview", "Contradictions", "Species & nature"}
+    assert labels[0] == "Overview" and set(labels) <= {"Overview", "Findings", "Batch screening"}
     text = "\n".join(m.value for m in at.markdown)
     assert "Checks that ran" in text and "Not run for this report" in text
     assert "GBIF not called" in text  # the reason a check did not run
@@ -284,10 +300,10 @@ def test_upload_screen_without_a_key(no_keys):
     assert not at.exception
     assert any("up to 30 pages you choose" in c.value for c in at.caption)
     text = "\n".join(m.value for m in at.markdown)
-    for level in ("Quick check (free, whole report)", "Deep audit (chosen pages, live)",
-                  "Full audit (your own key or run locally"):
+    for level in ("#### Quick check\n**Free, whole report.**", "#### Deep audit\n**Chosen pages, live.**",
+                  "#### Full audit\n**Your own key, or run locally.**"):
         assert level in text
     assert any("No key: the free checks run" in c.value for c in at.caption)
     text = "\n".join(m.value for m in at.markdown)
     assert "Without a key" in text and "With a key" in text
-    assert any(b.label == "Back to library" for b in at.button)
+    assert not any(b.label == "Back to library" for b in at.button)    # a top-menu page

@@ -35,3 +35,25 @@ def switch_to(at, url_path):
     assert hashes, f"no page {url_path!r}"
     at._page_hash = hashes[0]
     return at.run()
+
+
+def section_picker(at, report=GN):
+    """The selector of the sections under the Findings tab."""
+    return at.button_group(key=f"sec::{report}::pick")
+
+
+def show_section(at, section, report=GN):
+    """Draw one section under Findings (only the chosen one is drawn)."""
+    section_picker(at, report).set_value(section).run()
+    return at
+
+
+def every_section(at, report=GN):
+    """Draw each section under Findings in turn; yield the app after each."""
+    for section in section_picker(at, report).options:
+        yield show_section(at, section.split(" (")[0], report)
+
+
+def findings_text(at, report=GN):
+    """The markdown of every section under Findings, drawn one after the other."""
+    return "\n".join(m.value for a in every_section(at, report) for m in a.markdown)

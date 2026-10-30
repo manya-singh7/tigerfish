@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from docx import Document
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import every_section, open_app, section_picker
 
 from tigerfish.ui import data, letter
 
@@ -26,8 +26,9 @@ def no_keys(monkeypatch):
 def test_app_runs_without_api_keys(no_keys):
     at = open_app(timeout=60)
     assert not at.exception
-    assert not at.toggle                                  # no live mode without a key
-    assert any(t.label.startswith("Contradictions (") for t in at.tabs)
+    assert not [t for t in at.toggle if not t.key.startswith("action::")]  # no live mode without a key
+    assert any(t.label.startswith("Findings (") for t in at.tabs)
+    assert section_picker(at).options[0].startswith("Contradictions (")
     home = open_app(report=None, timeout=60)
     assert not home.exception
     assert any("Built for murky water." in m.value for m in home.markdown)
@@ -86,13 +87,16 @@ def test_method_tab_shows_evaluation(no_keys):
 def test_prerecorded_investigations_replay(no_keys):
     at = open_app(timeout=60)
     assert not at.exception
-    labels = [e.label for e in at.expander if e.label.startswith("Investigation:")]
+    labels, html, buttons = [], [], []
+    for a in every_section(at):                                # each section under Findings
+        labels += [e.label for e in a.expander if e.label.startswith("Investigation:")]
+        html += [m.value for m in a.markdown]
+        buttons += [b for b in a.button if b.label == "Investigate"]
     assert len(labels) == 3                                    # gn-001 (recorded as ct-003), ac-01, sp-p954-001
-    html = "\n".join(m.value for m in at.markdown)
+    html = "\n".join(html)
     assert 'class="tf-timeline"' in html and "READ PAGE" in html and "Evidence memo" in html
     assert "Unverified reasoning (not checked)" in html and 'class="tf-ref"' in html
     # findings without a recording get an Investigate button, disabled without a key
-    buttons = [b for b in at.button if b.label == "Investigate"]
     assert buttons and all(b.disabled for b in buttons)
 
 
@@ -114,3 +118,18 @@ def test_saved_investigations_are_neutral_and_verified():
         for e in memo["evidence"]:
             if e.get("page") and pages:
                 assert claims.quote_on_page(e["quote"], pages[e["page"]]), (p.name, e["quote"][:60])
+
+
+def test_take_action_starts_from_the_findings_the_team_checked(no_keys):
+    from tigerfish.ui import letter, report_view
+    gn = data.load("great_nicobar_2021_draft")
+    team = report_view.team_checked(gn)
+    assert {f["id"] for f in team} == {f["id"] for f in gn["findings"] if f.get("verification")}
+    ip = data.load("indira_point_table_3_16")
+    assert len(report_view.team_checked(ip)) == len(ip["findings"])    # all 7 confirmed by a reviewer
+    html = letter.preview_html(gn, team)
+    assert all(f["title"] in html for f in team) and "Clarification requested" in html
+    at = open_app(timeout=60)
+    assert any(t.label.startswith("Take action (10)") for t in at.tabs)
+    at.toggle(key=report_view.team_key("great_nicobar_2021_draft")).set_value(False).run()
+    assert any(t.label.startswith("Take action (0)") for t in at.tabs)

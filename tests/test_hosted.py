@@ -64,7 +64,7 @@ def test_hosted_replay_opens_no_gitignored_files(hosted_no_key):
         assert any("Saved audits are full runs" in c.value for c in home.caption)
         at = open_app(timeout=90)
         assert not at.exception
-        assert not at.toggle                                   # no live mode without a key
+        assert not [t for t in at.toggle if not t.key.startswith("action::")]  # no live mode without a key
         assert any(b.label in ("Back to library", "← Back to library") for b in at.button)
         for title in [r["title"] for r in data.reports()]:
             at.selectbox[0].select(title).run()

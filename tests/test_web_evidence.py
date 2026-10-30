@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import open_app, show_section
 
 from tigerfish.ui import official, web_evidence
 
@@ -60,6 +60,7 @@ def test_table_hides_grey_rows():
 @pytest.mark.skipif(not HAS_RECORD, reason="no saved official-record result")
 def test_app_shows_official_record_section_and_web_tab(app):
     assert not app.exception
+    show_section(app, "Public record")
     html = "\n".join(m.value for m in app.markdown)
     assert "Does it match the official record?" in html
     assert "tf-table" in html and "Found via Tavily" in html
@@ -70,6 +71,7 @@ def test_app_shows_official_record_section_and_web_tab(app):
 def test_indira_point_has_no_official_record_section(app):
     app.selectbox[0].select("Indira Point REIA, Table 3.16 (as published by Scroll.in)").run()
     assert not app.exception
+    show_section(app, "Public record", report="indira_point_table_3_16")
     html = "\n".join(m.value for m in app.markdown)
     assert "Does it match the official record?" not in html
     assert "Evidence from the web" in html                     # the tab covers all reports
@@ -98,5 +100,6 @@ def test_saved_wpa_finding_is_labelled_honestly():
 
 def test_web_tab_shows_authoritative_badge(app):
     assert not app.exception
+    show_section(app, "Public record")
     html = "\n".join(m.value for m in app.markdown)
     assert "authoritative, non-government" in html and "Source type" in html

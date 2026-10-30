@@ -2,21 +2,61 @@
 
 Read this before any UI task. `scripts/check_design.py` enforces the rules marked **(checked)**.
 
+## Who it is for
+
+First, someone meeting TigerFish for a few minutes (a hackathon judge, a journalist, a
+reviewer): they should understand what it does, see one real finding with its evidence, and
+see what the models did, without reading instructions. Then the person who uses it: someone
+preparing an objection, who needs the page, the quote, a way to confirm it and a letter.
+
+Every page answers, in order: what is this, what did it find, how do I check it, what do I do
+next.
+
 ## Mood
 
-An environmental auditor's field notebook. Murky water, paper, ink, evidence. Nothing glows,
-nothing sparkles; every mark on the page is there because someone could check it.
+A simplified field notebook: paper, ink, evidence. The water (a hand-drawn doodle pattern,
+`assets/bg_pattern.svg`, at low contrast) around one paper sheet that holds the content;
+serif headings, one accent (teal), and colour only where it means something (the grades). Nothing glows, nothing
+sparkles; every mark on the page is there because someone could check it.
 
-## Core principle
+## Layout
 
-One background personality and one repeated card.
+- One reading column, at most 1200px wide, with padding that shrinks with the screen. No
+  horizontal scroll at 390px; no half-empty screen at 1920px **(checked)**.
+- Sections are separated by space and hairlines, not boxes. No panel-in-a-box stacks.
+- The evidence slip is the one card (below). Report rows and Home's finding cards are its
+  smaller relatives: paper, a 1px hairline, no shadow.
+- Filters sit in a row above what they filter, never in a side panel.
 
-- **The water**: a hand-drawn doodle pattern (fish, reeds, mangrove roots, coral, ripples, a
-  survey stake, a magnifier, a loose report page, a stamp) covers the app background
-  (`assets/bg_pattern.svg`, drawn in ink at low contrast on the paper colour).
-- **The evidence slip**: the one card. Content sits on solid paper surfaces that cover the
-  pattern, so the library visibly fills the water as reports are added. Text never sits
-  directly on the pattern **(checked)**.
+## Pages
+
+- **Home**: the tagline as a small line, the purpose line as the headline, one paragraph on
+  what TigerFish does, two actions (see the Great Nicobar audit, upload an EIA) and the live
+  totals in one line. Then three findings a person checked, each a card that opens its
+  report; what each Nemotron model did on the showcase audit, with the counts from the saved
+  run; the fully audited reports as rows; a link to the whole library. Home does not repeat
+  the library's filters.
+- **Library**: the totals and Upload in one line; search and the audit type in one row,
+  state, sector, year and the two checkboxes in a second; the count and the active filters;
+  then two groups (Full audits, Quick checks), one row per report: name, facts, flags by
+  grade, Open report.
+- **Report**: one header (the report's name as the page title, its source, its flags by
+  grade), then five tabs: Overview, Findings, Ask & investigate, Take action, Method &
+  quality. A quick check gets Overview, Findings and Batch screening.
+  - Overview opens with the report's lead finding ("Start here", from `lead_finding` in
+    `results/library.json`), then the other findings a person checked, and one sentence of
+    totals.
+  - Findings holds the finding sections (Contradictions, Species & nature, Copied text,
+    Promises & timeline, Public record) behind one selector with counts. Inside a section:
+    what the check does in one line, the filters in a row, the slips 10 at a time.
+  - Take action starts from the findings the team checked (a switch turns them off) and
+    shows the letter on the page before the downloads.
+- **Upload**: the drop zone first, then the key field, then what runs at each level.
+- **How it works**: the diagram beside the method, what each model did (with counts), the
+  models and tools, the three levels.
+- **Limitations**: a short plain-language list of what to keep in mind before relying on a
+  flag. No implementation details (thresholds, internal IDs, failure logs) and no pointer to
+  the technical notes (docs/LIMITATIONS.md stays in the repository for developers).
 
 ## Palette
 
@@ -24,14 +64,14 @@ Sampled from `assets/tigerfish_icon_source.png`: tile teal `#0D4242`, fish cream
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--tf-page` | `#E9E2D2` | `#0F1716` | app background, under the pattern |
-| `--tf-paper` | `#FAF6EC` | `#16201F` | every surface: slips, panels, inputs |
-| `--tf-paper-2` | `#F2ECDF` | `#1C2827` | quiet fills: page crops' mat, table heads |
-| `--tf-ink` | `#17302F` | `#ECE5D6` | body text |
-| `--tf-teal` | `#0D4242` | `#8CC7BE` | headings, links, primary actions |
+| `--tf-water` | `#E9E2D2` | `#0B1211` | around the sheet, under the doodle pattern |
+| `--tf-page` | `#F6F2E9` | `#0F1716` | the sheet and the top bar |
+| `--tf-paper` | `#FFFDF8` | `#16201F` | cards: slips, report rows on hover, inputs |
+| `--tf-paper-2` | `#EFE9DC` | `#1C2827` | quiet fills: page crops' mat, table heads |
+| `--tf-ink` | `#17302F` | `#ECE5D6` | body text, headings |
+| `--tf-teal` | `#0D4242` | `#8CC7BE` | links, primary actions, the tagline |
 | `--tf-muted` | `#59625F` | `#A7AFAB` | meta lines, captions |
-| `--tf-rule` | `#CFC6B3` | `#33403E` | 1px hairlines |
-| `--tf-pattern` | `#0D4242` at 9% | `#ECE5D6` at 7% | the doodles |
+| `--tf-rule` | `#DDD5C4` | `#33403E` | 1px hairlines |
 | `--tf-red` | `#9E2A1F` | `#F08F84` | RED grade only |
 | `--tf-orange` | `#8F4A06` | `#E5A35C` | ORANGE grade only |
 | `--tf-grey` | `#59625F` | `#A7AFAB` | GREY grade (INFO leads, not enough data) |
@@ -39,10 +79,7 @@ Sampled from `assets/tigerfish_icon_source.png`: tile teal `#0D4242`, fish cream
 - Never pure `#FFFFFF` for the page **(checked)**.
 - Colour is reserved for meaning: RED, ORANGE, GREY grades. Everything else is ink, teal and
   paper. No gradients **(checked)**, no glows, no purple, no neon, no rainbow accents.
-- All text meets WCAG AA (4.5:1). On `--tf-paper`, light: ink 13.0, teal 10.4, muted 5.8,
-  red 6.9, orange 6.2; dark: ink 13.3, teal 8.7, muted 7.4, red 7.1, orange 7.7. Button
-  text on teal: 10.4 (light), 9.6 (dark). Even on the bare page colour every pair stays
-  above 4.5 (lowest: muted on the light page, 4.9).
+- All text meets WCAG AA (4.5:1) in light and dark.
 
 ## Type
 
@@ -51,76 +88,41 @@ Sampled from `assets/tigerfish_icon_source.png`: tile teal `#0D4242`, fish cream
 | Headings, the "TigerFish" wordmark | Newsreader (optical sizes) | 500 to 600, sentence case |
 | UI text, buttons, labels, body | Schibsted Grotesk | 400, 500, 600 |
 | Quotes from the reports (inside slips) | Newsreader italic, one step above body | 400 |
-| Numbers, page refs (p.737), flag IDs, costs, coordinates, model names | IBM Plex Mono, tabular figures | 400, 500 |
+| Numbers, page refs (p.737), flag IDs, costs, model names | IBM Plex Mono, tabular figures | 400, 500 |
 | Hindi, Tamil, Kannada in the app | Noto Sans Devanagari, Tamil, Kannada | 400 to 600 |
 
-The `.docx` letters keep Nirmala UI. Fonts are self-hosted in `static/fonts/` (Streamlit only
-serves a folder named `static/`; `server.enableStaticServing = true`) and declared as
-`[[theme.fontFaces]]` in `.streamlit/config.toml`, with `font`, `headingFont` and `codeFont`
-naming them. Only these families plus system fallbacks may appear **(checked)**. Streamlit
-appends its own Source Sans to the end of every stack as a last resort for a glyph none of
-the above has; no element may use it as its font.
-
-Five sizes, no more: 2.5rem (page headline), 1.5rem (section heading), 1.125rem (sub-heading,
-quotes), 1rem (body), 0.8125rem (meta, labels, captions). Body line height 1.5, headings 1.15.
-No all-caps headings **(checked)**; a grade stamp may be capitals because the grade is a code.
+Fonts are self-hosted in `static/fonts/` and declared as `[[theme.fontFaces]]` in
+`.streamlit/config.toml`. Only these families plus system fallbacks may appear **(checked)**.
+Sizes: 2.5rem (page headline), 1.5rem (section heading), 1.125rem (sub-heading, quotes), 1rem
+(body), 0.8125rem (meta, captions). No all-caps headings **(checked)**; a grade stamp may be
+capitals because the grade is a code.
 
 ## The evidence slip
 
-The signature layout primitive (`tigerfish/ui/slip.py`), reused on Home, in every flag list
-and in the library's report previews:
+The one card (`tigerfish/ui/slip.py`): a crop of the real report page with the quote
+highlighted, the grade stamp, the check, the page, the title, the quote, the reason, and who
+checked it. Crop and text side by side on desktop, stacked on a phone. A lead slip (the
+Overview's "Start here") shows both pages side by side and the whole reason.
 
-```
-+--------------------------------------------------------------+
-| [page crop, quote highlighted]  | RED  Contradiction   p.737 |
-|                                 | Title of the finding         |
-|                                 | "Quote from the report, in   |
-|                                 |  Newsreader italic."         |
-|                                 | One-line reason.             |
-|                                 | Verified by a person, 27 Oct |
-+--------------------------------------------------------------+
-```
-
-- A cropped image of the real report page with the quote highlighted (`results/pages/`,
-  cut by `tigerfish/ui/crops.py`), the page number, the grade, the check name, a one-line
-  reason, and "Verified by a person" only when a person did.
-- Crop and text side by side on desktop, stacked on a phone.
-- Hairline 1px borders in `--tf-rule`. No drop shadows (at most a 2px blur) **(checked)**.
-  Radius 3px, and not on everything (crops and tables are square).
+- Hairline 1px borders. No drop shadows (at most a 2px blur) **(checked)**.
 - No coloured left or top accent bars **(checked)**. A grade is a small stamp, not a stripe.
-
-## Layout
-
-- `layout="wide"`, content max-width 1480px, side padding that shrinks with the screen. No
-  half-empty screens at 1920px **(checked)**; no horizontal scroll at 390px **(checked)**.
-- Library: a plain filter container above two full-width binders, Deep Investigation Audits
-  (saved full audits and the standalone table) and Automated Batch Triage (quick checks).
-  Each binder has a full-width header and a two-column card grid above 1400px.
-- Audit type is one radio choice: All, Full Audits, or Quick Batch Audits. State, Sector
-  and Year remain multiselects; search and the RED/human-verified checkboxes combine with them.
-- Render every matching report in its binder, in stable order, without duplicates. There is
-  no active page-size cap or Show more control. Reset clears all filters and restores All;
-  empty binders explain that no reports match. Batch screening evidence remains separately reachable.
-- Home: left, the tiger fish slip; right, tagline, purpose line, totals as one sentence, a
-  search box into the library and "Upload your EIA". Below, the library. No centered hero,
-  no row of three feature cards.
-- Report: section tabs across the full width; inside a section, findings in the main column
-  and a side panel with that section's filters, counts and what the check does.
+- "Verified by a person" (hand check against the PDF) and "Confirmed by a reviewer" (the
+  review queue) are kept apart and each shown once.
 
 ## Brand lines
 
-- Tagline, Home headline only, Newsreader: **Built for murky water.**
-- Purpose line, Schibsted Grotesk: **A second reader for environmental impact reports, and
-  everyone who questions them.** Under the tagline on Home and, small, beside the logo in the
-  top bar of every page. It wraps under the logo on a phone; it is never truncated.
-- Browser title: "TigerFish: built for murky water". Meta description: the purpose line.
+- Tagline, Newsreader italic, small, above Home's headline: **Built for murky water.**
+- Purpose line, Home's headline: **A second reader for environmental impact reports, and
+  everyone who questions them.** It is also the meta description **(checked)**.
+- Browser title: "TigerFish: built for murky water" **(checked)**.
 
 ## Copy
 
 - No em dashes in UI text **(checked)**. Use a colon, a comma or a new sentence.
-- No emojis as icons or bullets **(checked)**, no sparkles, no "1, 2, 3" step rows, no
-  stat-banner rows, no badge above the H1, no checkmark bullet lists, no fake testimonials,
-  no placeholder names or numbers **(checked)**.
+- No emojis as icons or bullets **(checked)**, no sparkles, no stat-banner rows, no badge above
+  the headline, no fake testimonials, no placeholder names or numbers **(checked)**.
+- Plain headings that say what is there ("Full audits", "Quick checks"), not marketing
+  ("Deep Investigation Audits (4 Benchmark Reports)").
 - Every number is computed from `results/` at render time. If a number has no source, it
   does not ship.
 - A flag is a lead to verify, not a verdict. Say so where flags are counted.
@@ -128,12 +130,12 @@ and in the library's report previews:
 ## States
 
 Every section has an empty state that says why it is empty, loading tied to real work (a
-spinner around the call that is running, never a fake skeleton), and an error state that
-says what happened and what to do next. Every button gives visible feedback. Uploads are
-validated on the server (type, size, page count) with a clear message.
+spinner around the call that is running), and an error state that says what happened and
+what to do next. Every button gives visible feedback, and a disabled button keeps a readable
+label. Uploads are validated on the server (type, size, page count) with a clear message.
 
 ## Nothing gets buried
 
-Every feature is reachable in two clicks from Home and listed in the top menu, a report's
-section tabs or a side panel. `docs/FEATURES.md` is the inventory; `check_design.py` fails if
-a listed feature has no visible entry point.
+Every feature is reachable in at most three clicks from Home: the top menu, a report row, a
+report tab, a section under Findings. `docs/FEATURES.md` is the inventory;
+`check_design.py` fails if a listed feature has no visible entry point **(checked)**.

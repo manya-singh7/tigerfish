@@ -59,13 +59,13 @@ def full_audit_rates():
 
 def levels(n_pages, chosen_usd=None):
     """The three levels as cards."""
-    a, b, c = st.columns(3)
+    a, b, c = st.columns(3, gap="large")
     where = f"all {n_pages:,} pages" if n_pages else "every page"
-    a.markdown(f"**Quick check (free, whole report)**  \nAvailable free checks on the readable text of {where}: number pairs, species and IUCN categories vs GBIF, threatened species "
+    a.markdown(f"#### Quick check\n**Free, whole report.** Available free checks on the readable text of {where}: number pairs, species and IUCN categories vs GBIF, threatened species "
         "near the site that are never mentioned. Page/name limits and missing-input restrictions apply. No key, no model cost.")
     cost = (f"Estimated **\\${chosen_usd:.2f}** for the pages chosen below."
             if chosen_usd is not None else "Cost shown before it runs.")
-    b.markdown(f"**Deep audit (chosen pages, live)**  \nThe model checks (claims, contradictions, "
+    b.markdown(f"#### Deep audit\n**Chosen pages, live.** The model checks (claims, contradictions, "
                f"recycled figures) on up to {page_picks.MAX_PAGES} pages you choose. Needs a key: "
                f"the site's or your own. {cost}")
     rates = full_audit_rates()
@@ -73,9 +73,9 @@ def levels(n_pages, chosen_usd=None):
            f"({n_pages:,} pages at the cost per page of our saved full runs)."
            if rates and n_pages else "")
     price = library.price_line(library.entries(), dollar="\\$")   # from the saved full runs
-    c.markdown("**Full audit (your own key or run locally)**"
-               + (f"  \n{price}." if price else "")
-               + f"  \nScoped report processing; specialized checks need their own scripts and inputs.{est} Run `scripts/audit.py` locally "
+    c.markdown("#### Full audit\n**Your own key, or run locally.**"
+               + (f" {price}." if price else "")
+               + f" Scoped report processing; specialized checks need their own scripts and inputs.{est} Run `scripts/audit.py` locally "
         "with your own keys. The saved full runs took about an hour each.")
 
 
@@ -252,10 +252,11 @@ def read_upload(upload, digest):
 def render():
     s = st.session_state
     is_hosted = hosted.is_hosted()
+    upload = st.file_uploader("EIA PDF", type=["pdf"], label_visibility="collapsed")
     st.caption(NOTE + f" PDF only, up to {MAX_UPLOAD_MB} MB.")
     live.key_field_any()
-    upload = st.file_uploader("EIA PDF", type=["pdf"], label_visibility="collapsed")
     if upload is None:
+        st.markdown('<h2 class="tf-sub-head">What runs</h2>', unsafe_allow_html=True)
         levels(0)
         st.markdown(
             "- **Without a key:** the quick check runs on the whole report.\n"

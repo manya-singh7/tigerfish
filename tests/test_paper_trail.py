@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
-from apptest import open_app
+from apptest import findings_text, open_app
 
 from tigerfish import authority, copycheck, paper_trail as pt, tavily_usage
 from tigerfish.ui import data, efficiency, letter, rti
@@ -265,7 +265,7 @@ def test_public_record_and_efficiency_render_without_keys(monkeypatch):
     monkeypatch.setenv("TAVILY_API_KEY", "")
     at = open_app(timeout=90)                          # the Great Nicobar report
     assert not at.exception
-    md = " ".join(m.value for m in at.markdown)
+    md = " ".join(m.value for m in at.markdown) + findings_text(at)
     assert "Documents found" in md and "Found via Tavily" in md and "Who to write to" in md
     assert "Context efficiency" in md and "Tavily returned" in md
     assert "Granted ToR" in md

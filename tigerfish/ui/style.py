@@ -1,7 +1,8 @@
-"""Look and feel, from docs/DESIGN.md: an auditor's field notebook.
+"""Look and feel, from docs/DESIGN.md: a simplified field notebook.
 
-One background personality (the doodle pattern, assets/bg_pattern.svg, on the page colour)
-and one repeated card (the evidence slip, tigerfish/ui/slip.py) on solid paper surfaces.
+The water (the doodle pattern, assets/bg_pattern.svg) around one paper sheet: content in a
+column of readable width on the sheet, sections separated by space and hairlines instead of
+boxes, and one card (the evidence slip, tigerfish/ui/slip.py).
 Colour is reserved for the grades: RED, ORANGE and GREY (INFO leads). Tokens are CSS
 variables, redefined for the dark theme by theme_css().
 """
@@ -14,16 +15,14 @@ ROOT = Path(__file__).resolve().parents[2]
 PATTERN = ROOT / "assets" / "bg_pattern.svg"
 
 LIGHT = {
-    "page": "#E9E2D2", "paper": "#FAF6EC", "paper-2": "#F2ECDF", "ink": "#17302F",
-    "teal": "#0D4242", "muted": "#59625F", "rule": "#CFC6B3", "on-teal": "#FAF6EC",
-    "red": "#9E2A1F", "orange": "#8F4A06", "grey": "#59625F",
-    "pattern": "#0D4242", "pattern-alpha": "0.10", "mark": "#F3E3A6",
+    "water": "#E9E2D2", "pattern": "#0D4242", "pattern-alpha": "0.10", "page": "#F6F2E9", "paper": "#FFFDF8", "paper-2": "#EFE9DC", "ink": "#17302F",
+    "teal": "#0D4242", "muted": "#59625F", "rule": "#DDD5C4", "on-teal": "#FAF6EC",
+    "red": "#9E2A1F", "orange": "#8F4A06", "grey": "#59625F", "mark": "#F3E3A6",
 }
 DARK = {
-    "page": "#0F1716", "paper": "#16201F", "paper-2": "#1C2827", "ink": "#ECE5D6",
+    "water": "#0B1211", "pattern": "#ECE5D6", "pattern-alpha": "0.07", "page": "#0F1716", "paper": "#16201F", "paper-2": "#1C2827", "ink": "#ECE5D6",
     "teal": "#8CC7BE", "muted": "#A7AFAB", "rule": "#33403E", "on-teal": "#0F1716",
-    "red": "#F08F84", "orange": "#E5A35C", "grey": "#A7AFAB",
-    "pattern": "#ECE5D6", "pattern-alpha": "0.07", "mark": "#5A4E22",
+    "red": "#F08F84", "orange": "#E5A35C", "grey": "#A7AFAB", "mark": "#5A4E22",
 }
 # Kept for modules that colour charts (species map, cost chart): light-theme values.
 ACCENT, TEXT, MUTED, BORDER = LIGHT["teal"], LIGHT["ink"], LIGHT["muted"], LIGHT["rule"]
@@ -51,7 +50,7 @@ def _vars(t):
 CSS_BODY = """
 :root { @@VARS@@ }
 html, body { background: var(--tf-page); }
-.stApp { background-color: var(--tf-page);
+.stApp { background-color: var(--tf-water);
   background-image: url("@@PATTERN@@"); background-size: 520px 520px; background-repeat: repeat; }
 .stApp, .stApp p, .stApp li, .stApp label, .stApp button, .stApp input, .stApp textarea { line-height: 1.5; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.15 !important; letter-spacing: -0.005em; text-transform: none !important; }
@@ -60,38 +59,39 @@ code, kbd, pre, .tf-mono { font-family: "IBM Plex Mono", Consolas, monospace !im
 .tf-mono { font-size: 0.8125rem; }
 a { color: var(--tf-teal); font-family: "Schibsted Grotesk", sans-serif; }
 
-/* ---- the top bar: paper, hairline, logo and the purpose line ---- */
-header[data-testid="stHeader"] { background: var(--tf-paper) !important;
+/* ---- the top bar: the page colour, a hairline, the logo and the menu ---- */
+header[data-testid="stHeader"] { background: var(--tf-page) !important;
   border-bottom: 1px solid var(--tf-rule); }
 header [data-testid="stHeaderLogo"] { height: 2rem; width: auto; max-width: none; }
 header div:has(> img[data-testid="stHeaderLogo"]), header div:has(> [data-testid="stLogoLink"]) { display: flex; align-items: center; }
-header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { content: "@@PURPOSE@@";
-  font-family: "Schibsted Grotesk", sans-serif; font-size: 0.8125rem; line-height: 1.3;
-  color: var(--tf-muted); width: max-content; max-width: 38rem; margin-left: 1.1rem; white-space: nowrap !important;
-  overflow: visible; text-overflow: clip; display: block; }
-header nav { margin-left: auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 0.5rem !important; }
-header [data-testid="stTopNavLink"] { padding: 0.35rem 0.65rem !important; }
+header nav { margin-left: auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 0.25rem !important; }
+header [data-testid="stTopNavLink"] { padding: 0.35rem 0.75rem !important; }
 
-/* ---- page width: 1480px max, padding that scales with the screen ---- */
-.block-container, [data-testid="stMainBlockContainer"] { max-width: 1480px !important;
-  padding: 5.25rem clamp(1rem, 3vw, 2.5rem) 4rem !important; }
+/* ---- one paper sheet on the water, a column of readable width ---- */
+/* The sheet grows with its content (Streamlit's flex column would hold it to the window
+   height) and ends with its own bottom edge, so a short page visibly ends. */
+.block-container, [data-testid="stMainBlockContainer"] { max-width: 1200px !important;
+  padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 3rem !important; margin: 4.5rem auto 3rem auto;
+  background: var(--tf-page); border: 1px solid var(--tf-rule); border-radius: 4px;
+  flex: 0 0 auto !important; height: auto !important; min-height: 0 !important; }
 
-/* ---- surfaces that cover the pattern ---- */
-[data-testid="stVerticalBlockBorderWrapper"]:has(> div > [data-testid="stVerticalBlock"]) { }
+/* ---- sections: space and hairlines, not boxes; the slip is the one card ---- */
 [data-testid="stVerticalBlock"] [data-testid="stVerticalBlockBorderWrapper"][data-test-border="true"],
-div[class*="st-key-tf-panel"], div[class*="st-key-tf-slip"] {
-  background: var(--tf-paper); border: 1px solid var(--tf-rule) !important; border-radius: 3px;
+div[class*="st-key-tf-slip"] {
+  background: var(--tf-paper); border: 1px solid var(--tf-rule) !important; border-radius: 4px;
   box-shadow: none !important; }
-div[class*="st-key-tf-panel"] { padding: 1.25rem 1.5rem; }
-div[class*="st-key-tf-plain"] { background: var(--tf-paper); padding: 1rem 1.25rem;
-  border: 1px solid var(--tf-rule); border-radius: 3px; }
-[data-testid="stExpander"] details { background: var(--tf-paper); border: 1px solid var(--tf-rule);
-  border-radius: 3px; box-shadow: none; }
-[data-testid="stTabs"] [role="tablist"] { background: var(--tf-paper); border: 1px solid var(--tf-rule);
-  border-radius: 3px; padding: 0 0.75rem; gap: 0.9rem; }
-[data-testid="stTabs"] [role="tab"] { padding-left: 0.1rem; padding-right: 0.1rem; }
+div[class*="st-key-tf-panel"] { background: transparent; border: 0; padding: 0; margin: 0 0 1.25rem 0; }
+div[class*="st-key-tf-plain"] { background: transparent; padding: 0; border: 0; }
+[data-testid="stExpander"] details { background: transparent; border: 0; border-top: 1px solid var(--tf-rule);
+  border-radius: 0; box-shadow: none; }
+[data-testid="stExpander"] summary { padding-left: 0; padding-right: 0; }
+[data-testid="stExpander"] summary p { font-size: 1rem; font-weight: 500; color: var(--tf-teal); }
+[data-testid="stExpanderDetails"] { padding-left: 0; padding-right: 0; }
+[data-testid="stTabs"] [role="tablist"] { background: transparent; border: 0;
+  border-bottom: 1px solid var(--tf-rule); padding: 0; gap: 1.5rem; }
+[data-testid="stTabs"] [role="tab"] { padding-left: 0; padding-right: 0; }
 [data-testid="stTabs"] [role="tab"] p { font-size: 1rem; font-weight: 500; }
-[data-testid="stTabs"] [role="tabpanel"] { padding-top: 1rem; }
+[data-testid="stTabs"] [role="tabpanel"] { padding-top: 1.5rem; }
 [data-testid="stAlert"] > div { background: var(--tf-paper) !important; border: 1px solid var(--tf-rule);
   border-radius: 3px; color: var(--tf-ink) !important; }
 [data-testid="stAlert"] [data-testid="stAlertContentInfo"] *,
@@ -119,7 +119,8 @@ hr { border-color: var(--tf-rule) !important; }
 .stElementContainer:has(> iframe[height="0"]), [data-testid="stElementContainer"]:has(iframe[height="0"]) { display: none; }
 
 [data-testid="stElementToolbarButtonContainer"], [data-testid="stElementToolbar"] * { box-shadow: none !important; }
-[data-testid="stTabs"] button:not([role="tab"]) { background-image: none !important; background-color: var(--tf-paper) !important; }
+/* the tab bar's scroll arrows and other plain buttons; a primary button keeps its teal (cream on paper vanished) */
+[data-testid="stTabs"] button:not([role="tab"]):not([kind="primary"]) { background-image: none !important; background-color: var(--tf-page) !important; }
 @media (max-width: 760px) {
   .tf-table { display: block; overflow-x: auto; }
   .tf-table th, .tf-table td { min-width: 7.5rem; }
@@ -132,6 +133,8 @@ hr { border-color: var(--tf-rule) !important; }
   color: var(--tf-teal); margin: 0 0 0.4rem 0; }
 .tf-h3 { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600; line-height: 1.15;
   color: var(--tf-ink); margin: 0 0 0.3rem 0; }
+.tf-sub-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem; font-weight: 600;
+  color: var(--tf-ink); margin: 2rem 0 0.5rem 0; }
 .tf-purpose { font-size: 1.125rem; color: var(--tf-ink); max-width: 36rem; margin: 0 0 1rem 0; }
 .tf-lede { color: var(--tf-muted); font-size: 1rem; max-width: 46rem; margin: 0 0 0.6rem 0; }
 .tf-meta { font-size: 0.8125rem; color: var(--tf-muted); }
@@ -150,7 +153,7 @@ hr { border-color: var(--tf-rule) !important; }
   margin: 0 0.3rem 0 0.1rem; font-variant-numeric: tabular-nums; }
 
 /* ---- the evidence slip ---- */
-.tf-slip { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 1.25rem;
+.tf-slip { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 1.25rem;
   background: var(--tf-paper); border: 1px solid var(--tf-rule); border-radius: 3px; padding: 1rem;
   margin: 0 0 1rem 0; color: var(--tf-ink); }
 .tf-slip.tf-slip-noimg { grid-template-columns: minmax(0, 1fr); }
@@ -158,7 +161,7 @@ hr { border-color: var(--tf-rule) !important; }
 .tf-slip-crops { display: flex; flex-direction: column; gap: 0.6rem; align-self: start; }
 .tf-slip-crop { background: var(--tf-paper-2); border: 1px solid var(--tf-rule); align-self: start;
   margin: 0; }
-.tf-slip-crop img { width: 100%; display: block; max-height: 260px; object-fit: cover; object-position: center; }
+.tf-slip-crop img { width: 100%; display: block; max-height: 340px; object-fit: cover; object-position: center; }
 .tf-slip-crop figcaption, .tf-slip-photo figcaption { font-size: 0.8125rem; color: var(--tf-muted);
   padding: 0.3rem 0.5rem; }
 .tf-slip-photo { margin: 0; align-self: start; }
@@ -181,6 +184,20 @@ hr { border-color: var(--tf-rule) !important; }
 .tf-slip a.tf-open { font-weight: 600; text-decoration: none; }
 mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 .tf-slipbox { container-type: inline-size; }
+/* the letter, read on the page (Take action) */
+.tf-letter { max-height: 32rem; overflow-y: auto; padding: 1rem 1.25rem; background: var(--tf-paper);
+  border: 1px solid var(--tf-rule); }
+.tf-letter p { margin: 0 0 0.6rem 0; }
+.tf-letter .tf-letter-quote { font-family: Newsreader, Georgia, serif; font-style: italic;
+  font-size: 1.125rem; margin: -0.3rem 0 0.6rem 1rem; border-left: 0; padding: 0; color: var(--tf-ink); }
+.tf-letter .tf-letter-ev { font-size: 0.8125rem; color: var(--tf-muted); margin-left: 1rem; }
+/* the Overview's lead: both pages side by side and large, the text below */
+.tf-slip.tf-slip-lead { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; }
+.tf-slip-lead .tf-slip-crops { flex-direction: row; }
+.tf-slip-lead .tf-slip-crop { flex: 1 1 0; min-width: 0; }
+.tf-slip-lead .tf-slip-crop img { max-height: 460px; object-fit: contain; background: var(--tf-paper); }
+.tf-slip-lead .tf-slip-title { font-size: 1.5rem; }
+@container (max-width: 700px) { .tf-slip-lead .tf-slip-crops { flex-direction: column; } }
 @container (max-width: 820px) { .tf-slip { grid-template-columns: minmax(0, 1fr); } .tf-slip-crop img { max-height: 320px; } }
 
 /* ---- report cards in the library (slip previews) ---- */
@@ -341,15 +358,14 @@ div[data-testid="stExpanderDetails"] * {
 .tf-doc { border-bottom: 1px solid var(--tf-rule); padding: 0.55rem 0; font-size: 1rem; }
 .tf-unusable { color: var(--tf-orange); }
 .tf-adb { color: var(--tf-ink); background: var(--tf-paper-2); border: 1px solid var(--tf-rule); padding: 0.5rem 0.7rem; }
-.tf-stat { border: 1px solid var(--tf-rule); border-radius: 3px; padding: 0.7rem 0.9rem; background: var(--tf-paper); height: 100%; }
+.tf-stat { border-top: 1px solid var(--tf-rule); padding: 0.6rem 0 0 0; height: 100%; }
 .tf-stat-label { font-size: 0.8125rem; color: var(--tf-muted); font-weight: 600; }
 .tf-stat-value { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 1.125rem; font-weight: 500;
   color: var(--tf-ink); margin-top: 0.15rem; font-variant-numeric: tabular-nums; }
 .tf-stat-note { font-size: 0.8125rem; color: var(--tf-muted); margin-top: 0.1rem; }
 
 /* ---- the How it works diagram, drawn inline so it takes the page's fonts and theme ---- */
-.tf-diagram { width: 100%; max-width: 720px; height: auto; display: block; background: var(--tf-paper);
-  border: 1px solid var(--tf-rule); }
+.tf-diagram { width: 100%; max-width: 720px; height: auto; display: block; background: transparent; }
 .tf-diagram .d-box { fill: var(--tf-paper); stroke: var(--tf-teal); stroke-width: 1; }
 .tf-diagram .d-key { stroke-width: 2; }
 .tf-diagram .d-dash { fill: none; stroke: var(--tf-muted); stroke-width: 1; stroke-dasharray: 5 5; }
@@ -358,28 +374,22 @@ div[data-testid="stExpanderDetails"] * {
 .tf-diagram .d-body { font-family: "Schibsted Grotesk", sans-serif; font-size: 17px; fill: var(--tf-muted); }
 .tf-diagram .d-model { font-family: "IBM Plex Mono", monospace; font-size: 15px; font-weight: 500; fill: var(--tf-teal); }
 
-/* ---- phone and tablet ---- */
-@media (max-width: 1200px) {
-  header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { max-width: 22rem; }
-}
+/* ---- phone ---- */
 @media (max-width: 760px) {
-  .tf-h1 { font-size: 2.5rem; }
-  .block-container, [data-testid="stMainBlockContainer"] { padding-top: 7rem !important; }
-  header[data-testid="stHeader"] { height: auto !important; min-height: 3.75rem; }
-  header div:has(> img[data-testid="stHeaderLogo"]), header div:has(> [data-testid="stLogoLink"]) { flex-direction: column; align-items: flex-start;
-    padding: 0.4rem 0; }
-  header div:has(> img[data-testid="stHeaderLogo"])::after, header div:has(> [data-testid="stLogoLink"])::after { margin: 0.25rem 0 0 0; width: 14rem; }
+  .tf-h1 { font-size: 2rem; }
+  .block-container, [data-testid="stMainBlockContainer"] { padding-top: 1.5rem !important;
+    margin: 3.75rem 0 1.5rem 0; border-left: 0; border-right: 0; border-radius: 0; }
 }
 """
 
 
 def _css(t):
-    return (CSS_BODY.replace("@@VARS@@", _vars(t)).replace("@@PATTERN@@", _pattern_uri(t))
-            .replace("@@PURPOSE@@", PURPOSE))
+    return CSS_BODY.replace("@@VARS@@", _vars(t)).replace("@@PATTERN@@", _pattern_uri(t))
 
 
 CSS = "<style>" + _css(LIGHT) + "</style>"
-DARK_CSS = "<style>:root { " + _vars(DARK) + " } .stApp { background-image: url(\"" + _pattern_uri(DARK) + "\"); }</style>"
+DARK_CSS = ("<style>:root { " + _vars(DARK) + " } .stApp { background-image: url(\""
+            + _pattern_uri(DARK) + "\"); }</style>")
 
 
 def esc(text):

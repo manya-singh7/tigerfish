@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest  # noqa: F401
-from apptest import open_app
+from apptest import open_app, show_section
 
 from tigerfish import knowable, public_record, species_photos
 from tigerfish.ui import cards, data
@@ -59,10 +59,8 @@ def test_public_record_tab_renders(monkeypatch):
     monkeypatch.setenv("TAVILY_API_KEY", "")
     at = open_app(timeout=60)
     assert not at.exception
-    labels = [t.label.split(" (")[0] for t in at.tabs]       # labels carry counts
-    assert "Public record" in labels
-    tab = at.tabs[labels.index("Public record")]
-    text = " ".join(m.value for m in tab.markdown)
+    show_section(at, "Public record")                         # a section under Findings
+    text = " ".join(m.value for m in at.markdown)
     assert "Timeline (official sources)" in text and "What happened next" in text
     assert "Clearance timeline" not in text                   # one merged timeline, not two
     assert "Local-language coverage" in text

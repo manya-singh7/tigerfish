@@ -180,3 +180,13 @@ def test_review_tab_records_a_decision(tmp_path, monkeypatch):
     assert not at.exception
     rows = review.load_reviews(tmp_path / "reviews.jsonl")
     assert rows[first]["tester"]["decision"] == "real"
+
+
+def test_confirmed_findings_needs_every_reviewer_to_say_real(store):
+    report = {"id": "r", "findings": [{"id": f, "grade": "ORANGE", "title": f} for f in ("a", "b", "c")]}
+    review.record("a", "A", "real", path=store, report_id="r")
+    review.record("b", "A", "real", path=store, report_id="r")
+    review.record("b", "B", "false_alarm", path=store, report_id="r")      # disputed
+    review.record("c", "A", "unsure", path=store, report_id="r")
+    out = review.confirmed_findings(report, review.load_reviews(store, report_id="r"))
+    assert list(out) == ["a"] and out["a"][0]["reviewer"] == "A"
