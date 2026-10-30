@@ -284,10 +284,10 @@ def test_upload_screen_without_a_key(no_keys):
     assert not at.exception
     assert any("up to 30 pages you choose" in c.value for c in at.caption)
     text = "\n".join(m.value for m in at.markdown)
-    for level in ("Quick check (free, whole report)", "Deep audit (chosen pages, live)",
-                  "Full audit (your own key or run locally"):
+    for level in ("#### Quick check\n**Free, whole report.**", "#### Deep audit\n**Chosen pages, live.**",
+                  "#### Full audit\n**Your own key, or run locally.**"):
         assert level in text
     assert any("No key: the free checks run" in c.value for c in at.caption)
     text = "\n".join(m.value for m in at.markdown)
     assert "Without a key" in text and "With a key" in text
-    assert any(b.label == "Back to library" for b in at.button)
+    assert not any(b.label == "Back to library" for b in at.button)    # a top-menu page
