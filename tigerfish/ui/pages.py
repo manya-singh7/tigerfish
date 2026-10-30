@@ -173,7 +173,7 @@ def models_html(c):
                    f'<div class="tf-model-role">{esc(r)}</div><p>{esc(t)}</p></div>'
                    for n, r, t in cols)
     cost = (f" for ${c['usd']:,.2f} in model calls" if c.get("usd") else "")
-    return (f'<div class="tf-models-row">{body}</div><p class="tf-meta">{esc(c["title"])}: '
+    return (f'<div class="tf-models-row">{body}</div><p class="tf-meta" style="margin-top:1rem">{esc(c["title"])}: '
             f'{c["pages"]:,} pages{esc(cost)}, about {c["minutes"]} minutes. Every flag is a lead '
             "for a person to check, not a verdict.</p>")
 
@@ -220,8 +220,10 @@ HOME_CSS = """<style>
   color: var(--tf-teal); margin: 0 0 0.5rem 0; }
 .tf-home-intro .tf-h1 { color: var(--tf-ink); }
 .tf-home-lede { font-size: 1.125rem; color: var(--tf-ink); margin: 0 0 1.25rem 0; }
-.tf-section-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem; font-weight: 600;
-  color: var(--tf-ink); margin: 3rem 0 0.25rem 0; }
+/* Streamlit's own heading padding would win over a plain margin: make the gap stick. */
+.tf-section-head { font-family: Newsreader, Georgia, serif; font-size: 1.5rem !important; font-weight: 600;
+  color: var(--tf-ink); margin: 4rem 0 0.25rem 0 !important; padding: 0 !important; }
+div[class*="st-key-tf-home-link"] { padding-top: 1.25rem; }
 .tf-section-sub { color: var(--tf-muted); margin: 0 0 1rem 0; }
 .tf-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 a.tf-tile { display: flex; flex-direction: column; background: var(--tf-paper); border: 1px solid var(--tf-rule);
@@ -291,15 +293,17 @@ def home():
         st.markdown('<h2 class="tf-section-head">Three Nemotron models, one job each</h2>'
                     f'<p class="tf-section-sub">On the {esc(c["title"])}, from the saved run.</p>'
                     + models_html(c), unsafe_allow_html=True)
-        st.page_link(PAGES["how"], label="How it works", icon=":material/arrow_forward:")
+        with st.container(key="tf-home-link-how"):
+            st.page_link(PAGES["how"], label="How it works", icon=":material/arrow_forward:")
 
     full = [e for e in items if e["audit_type"] != library.QUICK]
     st.markdown('<h2 class="tf-section-head">Reports audited in full</h2>'
                 f'<p class="tf-section-sub">{len(full)} reports read with the model checks. '
                 f"{t['reports'] - len(full)} more had a quick check (free checks only).</p>"
                 + report_rows(full), unsafe_allow_html=True)
-    st.page_link(PAGES["library"], label=f"Browse all {t['reports']} reports",
-                 icon=":material/arrow_forward:")
+    with st.container(key="tf-home-link-library"):
+        st.page_link(PAGES["library"], label=f"Browse all {t['reports']} reports",
+                     icon=":material/arrow_forward:")
     st.markdown(f'<p class="tf-meta" style="margin-top:3rem">{esc(BUILT_WITH)}</p>',
                 unsafe_allow_html=True)
 

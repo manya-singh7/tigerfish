@@ -163,10 +163,26 @@ def binder_library(monkeypatch):
     return items
 
 
-def visible_reports(at):
+def visible_reports(at, every=True):
+    """The reports with an Open report button; every=True first shows every page of quick checks."""
+    while every and any(b.key == "lib::quick-more" for b in at.button):
+        at.button(key="lib::quick-more").click().run()
     return [
         b.key.removeprefix("tf::open::") for b in at.button if b.label == "Open report"
     ]
+
+
+def test_quick_checks_load_five_at_a_time(no_keys, binder_library):
+    at = open_app(report=None, page="library")
+    full, quick = binder_library[:3], binder_library[3:]
+    assert visible_reports(at, every=False) == [e["id"] for e in full + quick[:5]]
+    more = at.button(key="lib::quick-more")
+    assert more.label == f"Show 5 more quick checks ({len(quick) - 5} not shown)"
+    more.click().run()
+    assert visible_reports(at, every=False) == [e["id"] for e in full + quick[:10]]
+    at.multiselect(key="lib::state").select("Goa").run()      # a filter starts again at 5
+    goa = [e["id"] for e in quick if e["state"] == "Goa"]
+    assert [r for r in visible_reports(at, every=False) if r in goa] == goa[:5]
 
 
 def test_library_binders_render_every_match_and_reset_all_filters(
@@ -224,9 +240,9 @@ def test_library_home_shows_totals_filters_and_upload(no_keys):
     assert any("Saved audits are full runs" in c.value for c in at.caption)
     assert {m.label for m in at.multiselect} == {"State", "Sector", "Year"}
     assert any(r.label == "Audit type" for r in at.radio)
-    n = len([b for b in at.button if b.label == "Open report"])
+    n = len(visible_reports(at))
     at.checkbox(key="lib::red").check().run()
-    red = len([b for b in at.button if b.label == "Open report"])
+    red = len(visible_reports(at))
     assert red == sum(e["grades"]["RED"] > 0 for e in library.entries()) and red <= n
     at.text_input(key="lib::q").input("Cuddalore").run()
     assert len([b for b in at.button if b.label == "Open report"]) == 1
@@ -237,7 +253,7 @@ def test_library_filter_has_human_verified_findings(no_keys, binder_library):
     at = open_app(report=None, page="library")
     at.checkbox(key="lib::verified").check().run()
     assert not at.exception
-    shown = len([b for b in at.button if b.label == "Open report"])
+    shown = len(visible_reports(at))
     assert shown == sum(1 for e in binder_library if e["verified"]) >= 1
     assert any(
         "Has human-verified findings" in m.value for m in at.markdown

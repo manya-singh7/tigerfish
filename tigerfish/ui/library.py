@@ -18,6 +18,8 @@ from tigerfish.ui import data, slip
 from tigerfish.ui.style import badge, esc, mono
 
 PAGE_SIZE = 30
+QUICK_PAGE = 5      # quick checks shown at first, and added by each "Show more"
+QUICK_SHOWN = "lib::quick_shown"
 UPLOAD_NOTE = ("Saved audits are full runs. Upload your own EIA to run live checks: the free "
                "checks read the whole report; the model checks run on up to 30 pages you choose "
                "on this site (run locally for full reports).")
@@ -167,6 +169,16 @@ def reset_filters():
     for k in FILTER_KEYS:
         st.session_state.pop(k, None)
     st.session_state["lib::shown"] = PAGE_SIZE
+    reset_quick()
+
+
+def reset_quick():
+    """A filter changed: the quick checks start again from their first page."""
+    st.session_state[QUICK_SHOWN] = QUICK_PAGE
+
+
+def more_quick():
+    st.session_state[QUICK_SHOWN] = st.session_state.get(QUICK_SHOWN, QUICK_PAGE) + QUICK_PAGE
 
 
 def _chips():
@@ -206,15 +218,17 @@ def side_panel(items, shown):
               icon=":material/upload_file:")
     with st.container(key="tf-lib-filters"):
         q, kind = st.columns([3, 4], gap="medium", vertical_alignment="bottom")
-        q.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka")
-        kind.radio("Audit type", audit_options, index=idx, key="lib::type", horizontal=True)
+        q.text_input("Search by project name", key="lib::q", placeholder="e.g. port, Karnataka",
+                     on_change=reset_quick)
+        kind.radio("Audit type", audit_options, index=idx, key="lib::type", horizontal=True,
+                   on_change=reset_quick)
         a, b, c, d = st.columns([2, 2, 1.4, 2], gap="medium", vertical_alignment="bottom")
-        a.multiselect("State", library.options(items, "state"), key="lib::state")
-        b.multiselect("Sector", library.options(items, "sector"), key="lib::sector")
-        c.multiselect("Year", library.options(items, "year"), key="lib::year")
+        a.multiselect("State", library.options(items, "state"), key="lib::state", on_change=reset_quick)
+        b.multiselect("Sector", library.options(items, "sector"), key="lib::sector", on_change=reset_quick)
+        c.multiselect("Year", library.options(items, "year"), key="lib::year", on_change=reset_quick)
         with d:
-            st.checkbox("Has RED flags", key="lib::red")
-            st.checkbox("Has human-verified findings", key="lib::verified")
+            st.checkbox("Has RED flags", key="lib::red", on_change=reset_quick)
+            st.checkbox("Has human-verified findings", key="lib::verified", on_change=reset_quick)
         n, r = st.columns([5, 1], vertical_alignment="center")
         chips = _chips()
         n.markdown(f'<div class="tf-count">Showing {len(shown)} of {len(items)} reports.</div>'
@@ -314,9 +328,14 @@ def render():
             "baseline monitoring period and species against GBIF.</p>",
             unsafe_allow_html=True)
         if quick_shown:
+            n = st.session_state.get(QUICK_SHOWN, QUICK_PAGE)
             with st.container(key="tf-grid-quick"):
-                for e in quick_shown:
+                for e in quick_shown[:n]:
                     row(e)
+            rest = len(quick_shown) - n
+            if rest > 0:
+                st.button(f"Show {min(QUICK_PAGE, rest)} more quick checks ({rest} not shown)",
+                          key="lib::quick-more", on_click=more_quick, icon=":material/expand_more:")
         else:
             st.caption("No reports match these filters in this group.")
 
