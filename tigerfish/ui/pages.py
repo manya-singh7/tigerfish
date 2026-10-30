@@ -176,6 +176,8 @@ HOME_CSS = """<style>
 .tf-hero-photos { display: flex; flex-direction: column; gap: 0.75rem; }
 .tf-hero-photos img { max-height: 200px; }
 .tf-hero-note { font-size: 0.8125rem; color: var(--tf-muted); margin: -0.2rem 0 0.6rem 0; }
+@media (max-width: 700px) { .tf-hero { grid-template-columns: minmax(0, 1fr); }
+  .tf-hero-photos { flex-direction: row; } .tf-hero-photos .tf-slip-photo { flex: 1 1 0; min-width: 0; } }
 .st-key-tf-home-top [data-testid="stHorizontalBlock"] { align-items: stretch; }
 @media (max-width: 1099px) {
   .st-key-tf-home-top [data-testid="stHorizontalBlock"] { flex-direction: column-reverse !important; }
