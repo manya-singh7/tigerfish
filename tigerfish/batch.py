@@ -924,6 +924,267 @@ def analyze_pdf(pdf_path: str | Path, metadata: Mapping[str, Any] | None = None,
 
 
 # ---------------------------------------------------------------------------
+# Deterministic cross-state consultant overlap and credential sharing checks
+# ---------------------------------------------------------------------------
+
+CONSULTANT_PATTERNS = [
+    re.compile(
+        r"(?:EIA\s+Consultant|Prepared\s+by|Environmental\s+Consultant|Name\s+of\s+(?:the\s+)?Consultant|Consultant\s*:|M/s\.?\s+Consultant)\s*[:\-–]?\s*"
+        r"(?:Name\s*[:\-–]?\s*)?"
+        r"([A-Za-z0-9\., &\'\(\)\-]{3,70})",
+        re.I,
+    ),
+    re.compile(r"([A-Za-z0-9\., &\'\-]{3,60})\s*\((?:NABET|QCI)", re.I),
+    re.compile(
+        r"(?:M/s\.?)\s*([A-Za-z0-9\., &\'\-]{3,60}?(?:Enviro|Consultant|Services|Solutions|Tech|Laboratories|Laboratory|Research|Engineers|Private Limited|Pvt\.?\s*Ltd\.?))",
+        re.I,
+    ),
+    re.compile(r"NABET.*?QCI[^\n]*\n\s*([A-Za-z0-9\., &\'\-]{3,60})", re.I),
+]
+
+DISTRICT_RE = re.compile(
+    r"\b(?:District|Dist\.?|Taluka|Tahsil|Tehsil)\s*[:\-–]?\s*([A-Za-z]{3,25})",
+    re.I,
+)
+
+CLEAN_CONSULTANT_STOP = (
+    "environmental", "impact", "assessment", "executive", "summary", "report",
+    "table", "chapter", "draft", "project", "proponent", "mining", "tor", "date"
+)
+
+
+def _clean_consultant(val: str) -> str | None:
+    val = val.strip(" \t\n\r,.:;-")
+    low = val.lower()
+    if len(val) >= 4 and not any(low.startswith(w) for w in CLEAN_CONSULTANT_STOP):
+        val = re.sub(r"\s+(?:dated|valid|certificate|accredited|qci|nabet).*$", "", val, flags=re.I).strip(" ,.:;-")
+        if len(val) >= 4:
+            return val
+    return None
+
+
+def extract_consultant_name(text: str) -> str | None:
+    for pat in CONSULTANT_PATTERNS:
+        for m in pat.finditer(text):
+            cleaned = _clean_consultant(m.group(1))
+            if cleaned:
+                return cleaned
+    return None
+
+
+def _norm_cert(cert: str | None) -> str | None:
+    if not cert:
+        return None
+    c = cert.strip().upper()
+    c = re.sub(r"\s*/\s*", "/", c)
+    c = re.sub(r"\s*-\s*", "-", c)
+    c = re.sub(r"\s+", "", c)
+    return c if len(c) >= 5 else None
+
+
+def _norm_consultant(name: str | None) -> str | None:
+    if not name:
+        return None
+    n = name.strip().upper()
+    n = re.sub(r"^(?:M/S\.?|NAME\s+OF\s+(?:THE\s+)?CONSULTANT\s*:?|PREPARED\s+BY\s*:?|CONSULTANT\s*:?)\s*", "", n)
+    n = re.sub(
+        r"\b(PRIVATE LIMITED|PVT\.?\s*LTD\.?|LIMITED|LTD\.?|INC\.?|LLC|CORP\.?|CO\.?|SERVICES|LABORATORIES|LABORATORY|CONSULTANCY|CONSULTANTS|SOLUTIONS|ENGINEERS|ENVIRO|TECH|PROJECTS)\b",
+        "",
+        n,
+    )
+    n = re.sub(r"\b(BHUBANESWAR|BBSR|MUMBAI|PUNE|DELHI|CHENNAI|KOLKATA|HYDERABAD|NAGPUR|VADODARA|GUJARAT)\b", "", n)
+    n = re.sub(r"[^A-Z0-9]", "", n)
+    return n if len(n) >= 3 else None
+
+
+def _extract_district(text: str) -> str | None:
+    m = DISTRICT_RE.search(text)
+    if m:
+        dist = m.group(1).strip(" ,.:;-")
+        if len(dist) >= 3 and dist.lower() not in ("the", "and", "for", "proposed", "area"):
+            return dist.title()
+    return None
+
+
+def _parse_dates(start_val: Any, end_val: Any) -> tuple[date | None, date | None]:
+    if not start_val or not end_val:
+        return None, None
+    try:
+        if isinstance(start_val, str):
+            d1 = date.fromisoformat(start_val)
+        elif isinstance(start_val, date):
+            d1 = start_val
+        else:
+            return None, None
+        if isinstance(end_val, str):
+            d2 = date.fromisoformat(end_val)
+        elif isinstance(end_val, date):
+            d2 = end_val
+        else:
+            return None, None
+        return min(d1, d2), max(d1, d2)
+    except (ValueError, TypeError):
+        return None, None
+
+
+def check_cross_state_consultant_overlap(batch_reports: list[dict] | Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """Deterministic, zero-token check for cross-state consultant timeline overlaps and credential sharing."""
+    items = []
+    for rep in batch_reports:
+        rep_id = str(rep.get("id") or rep.get("document_id") or "")
+        state = str(rep.get("state") or "").strip()
+        proj = str(rep.get("project_name") or rep.get("project") or rep.get("title") or rep_id).strip()
+        checks = rep.get("batch_checks") or rep.get("checks") or {}
+        acc = checks.get("accreditation") or {}
+        base = checks.get("baseline_season") or {}
+
+        cert = acc.get("certificate")
+        consultant = rep.get("consultant")
+
+        # Collect quotes text for extraction fallback
+        all_quotes = []
+        for c_val in checks.values():
+            if isinstance(c_val, dict):
+                for q in c_val.get("quotes", []):
+                    all_quotes.append(q)
+        quotes_text = " ".join(str(q.get("text") or "") for q in all_quotes)
+
+        if not cert:
+            cm = CERTIFICATE_RE.search(quotes_text)
+            if cm:
+                cert = cm.group(0).strip()
+
+        if not consultant:
+            consultant = extract_consultant_name(quotes_text)
+
+        district = rep.get("district") or (rep.get("site") or {}).get("district")
+        if not district:
+            district = _extract_district(quotes_text + " " + proj)
+
+        s_date, e_date = _parse_dates(base.get("start_date"), base.get("end_date"))
+        if not s_date or not e_date:
+            for q in base.get("quotes", []):
+                tokens = date_tokens(q.get("text", ""), allow_year=False)
+                if len(tokens) >= 2:
+                    d1, d2 = tokens[0]["date"], tokens[1]["date"]
+                    s_date, e_date = min(d1, d2), max(d1, d2)
+                    break
+
+        items.append({
+            "id": rep_id,
+            "state": state,
+            "district": district,
+            "project_name": proj,
+            "cert": cert,
+            "norm_cert": _norm_cert(cert),
+            "consultant": consultant,
+            "norm_consultant": _norm_consultant(consultant),
+            "start_date": s_date,
+            "end_date": e_date,
+            "acc_quotes": acc.get("quotes", []),
+            "base_quotes": base.get("quotes", []),
+        })
+
+    flags = []
+    seen_overlap_pairs = set()
+    seen_sharing_pairs = set()
+
+    for i in range(len(items)):
+        for j in range(i + 1, len(items)):
+            r1 = items[i]
+            r2 = items[j]
+
+            if not r1["id"] or not r2["id"] or r1["id"] == r2["id"]:
+                continue
+
+            pair_key = tuple(sorted([r1["id"], r2["id"]]))
+
+            # 1. ORANGE consultant_overlap:
+            # Different states, same consultant or same cert, overlapping baseline sampling dates
+            if r1["state"] and r2["state"] and r1["state"].lower() != r2["state"].lower():
+                same_entity = False
+                shared_ident = ""
+                if r1["norm_cert"] and r2["norm_cert"] and r1["norm_cert"] == r2["norm_cert"]:
+                    same_entity = True
+                    shared_ident = f"Certificate: {r1['cert']}"
+                elif r1["norm_consultant"] and r2["norm_consultant"] and r1["norm_consultant"] == r2["norm_consultant"]:
+                    same_entity = True
+                    shared_ident = f"Consultant: {r1['consultant']}"
+
+                if same_entity and r1["start_date"] and r1["end_date"] and r2["start_date"] and r2["end_date"]:
+                    if max(r1["start_date"], r2["start_date"]) <= min(r1["end_date"], r2["end_date"]):
+                        if pair_key not in seen_overlap_pairs:
+                            seen_overlap_pairs.add(pair_key)
+                            overlap_start = max(r1["start_date"], r2["start_date"]).isoformat()
+                            overlap_end = min(r1["end_date"], r2["end_date"]).isoformat()
+                            r1_dates = f"{r1['start_date'].isoformat()} to {r1['end_date'].isoformat()}"
+                            r2_dates = f"{r2['start_date'].isoformat()} to {r2['end_date'].isoformat()}"
+
+                            quotes = []
+                            for q in r1["base_quotes"]:
+                                quotes.append({"page": q.get("page"), "text": f"[{r1['project_name']} - {r1['state']}] {q.get('text', '')}"})
+                            for q in r2["base_quotes"]:
+                                quotes.append({"page": q.get("page"), "text": f"[{r2['project_name']} - {r2['state']}] {q.get('text', '')}"})
+
+                            evidence = [
+                                {"label": "Project 1", "value": f"{r1['project_name']} ({r1['state']})" + (f", District: {r1['district']}" if r1['district'] else "")},
+                                {"label": "Project 2", "value": f"{r2['project_name']} ({r2['state']})" + (f", District: {r2['district']}" if r2['district'] else "")},
+                                {"label": "Entity / Credential", "value": shared_ident},
+                                {"label": "Monitoring Window 1", "value": r1_dates},
+                                {"label": "Monitoring Window 2", "value": r2_dates},
+                                {"label": "Overlap Period", "value": f"{overlap_start} to {overlap_end}"},
+                                {"label": "Method", "value": "Deterministic cross-filing timeline and accreditation reconciliation; no model call"},
+                            ]
+
+                            flags.append({
+                                "check": "consultant_overlap",
+                                "grade": "ORANGE",
+                                "message": "Concurrent baseline sampling flagged across states; verify team capacity and physical monitoring deployment.",
+                                "report_id": r1["id"],
+                                "conflicting_report_id": r2["id"],
+                                "project_name": f"{r1['project_name']} / {r2['project_name']}",
+                                "state": f"{r1['state']} / {r2['state']}",
+                                "quotes": quotes,
+                                "evidence": evidence,
+                            })
+
+            # 2. INFO credential_sharing:
+            # Same cert, differing consultant entity names
+            if r1["norm_cert"] and r2["norm_cert"] and r1["norm_cert"] == r2["norm_cert"]:
+                if r1["norm_consultant"] and r2["norm_consultant"]:
+                    c1, c2 = r1["norm_consultant"], r2["norm_consultant"]
+                    if c1 != c2 and c1 not in c2 and c2 not in c1:
+                        if pair_key not in seen_sharing_pairs:
+                            seen_sharing_pairs.add(pair_key)
+                            quotes = []
+                            for q in r1["acc_quotes"]:
+                                quotes.append({"page": q.get("page"), "text": f"[{r1['project_name']}]: {q.get('text', '')}"})
+                            for q in r2["acc_quotes"]:
+                                quotes.append({"page": q.get("page"), "text": f"[{r2['project_name']}]: {q.get('text', '')}"})
+
+                            evidence = [
+                                {"label": "NABET Certificate", "value": r1["cert"]},
+                                {"label": "Entity 1", "value": f"{r1['consultant']} ({r1['project_name']}, {r1['state']})"},
+                                {"label": "Entity 2", "value": f"{r2['consultant']} ({r2['project_name']}, {r2['state']})"},
+                                {"label": "Method", "value": "Deterministic cross-report NABET certificate and consultant entity reconciliation; no model call"},
+                            ]
+
+                            flags.append({
+                                "check": "credential_sharing",
+                                "grade": "INFO",
+                                "message": "Same accreditation credential cited under different consultant names; verify authorization.",
+                                "report_id": r1["id"],
+                                "conflicting_report_id": r2["id"],
+                                "project_name": f"{r1['project_name']} / {r2['project_name']}",
+                                "state": f"{r1['state']} / {r2['state']}" if r1["state"] != r2["state"] else r1["state"],
+                                "quotes": quotes,
+                                "evidence": evidence,
+                            })
+
+    return flags
+
+
+# ---------------------------------------------------------------------------
 # Tavily discovery and polite downloading
 
 
@@ -1485,6 +1746,15 @@ def make_summary(reports: Iterable[Mapping[str, Any]], tavily: Mapping[str, Any]
         for flag in report.get("flags", []):
             flags.append({"report_id": report.get("id"), "state": report.get("state"),
                           "project_name": report.get("project_name"), **dict(flag)})
+
+    # Run deterministic cross-state consultant overlap and credential sharing check
+    cross_flags = check_cross_state_consultant_overlap(reports)
+    for cflag in cross_flags:
+        flags.append(dict(cflag))
+        c_check = str(cflag.get("check") or "consultant_overlap")
+        c_grade = str(cflag.get("grade") or "INFO")
+        check_counts.setdefault(c_check, {})[c_grade] = check_counts.setdefault(c_check, {}).get(c_grade, 0) + 1
+
     return {"version": 1, "status": "complete", "reports_processed": len(reports),
             "reports_requested": DEFAULT_MAX_REPORTS, "per_check_counts": check_counts,
             "per_state_counts": _state_counts(reports), "flag_counts": _flag_counts(flags),
@@ -1620,6 +1890,28 @@ def run_batch(index: Mapping[str, Any] | None = None, max_reports: int = DEFAULT
         report_items.append({"id": report_id, "file": cached.name})
     summary = make_summary(reports, tavily=stats.as_dict())
     summary["reports_requested"] = max_reports
+
+    # Attach cross-filing leads to individual report JSON objects in results/batch/
+    for cflag in summary.get("flags", []):
+        chk = cflag.get("check")
+        if chk in ("consultant_overlap", "credential_sharing"):
+            r1_id = cflag.get("report_id")
+            r2_id = cflag.get("conflicting_report_id")
+            for target_id, other_id in ((r1_id, r2_id), (r2_id, r1_id)):
+                if not target_id:
+                    continue
+                target_file = REPORT_RESULTS / f"{target_id}.json"
+                if target_file.exists():
+                    try:
+                        rep_data = json.loads(target_file.read_text(encoding="utf-8"))
+                        b_flags = rep_data.setdefault("batch_flags", [])
+                        if not any(f.get("check") == chk and f.get("conflicting_report_id") == other_id for f in b_flags):
+                            b_flags.append(dict(cflag))
+                            rep_data["flags"] = list(b_flags)
+                            _json_dump(target_file, rep_data)
+                    except Exception:
+                        pass
+
     _json_dump(SUMMARY_JSON, summary)
     SUMMARY_MD.parent.mkdir(parents=True, exist_ok=True)
     SUMMARY_MD.write_text(summary_markdown(summary), encoding="utf-8")

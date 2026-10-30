@@ -3,9 +3,9 @@
 from datetime import date
 
 from tigerfish.library import validate
-from tigerfish.batch import (accreditation_check, baseline_check, date_tokens, make_summary,
-                             parse_date_token, period_months, public_index, summary_markdown,
-                             _quick_report)
+from tigerfish.batch import (accreditation_check, baseline_check, check_cross_state_consultant_overlap,
+                             date_tokens, make_summary, parse_date_token, period_months, public_index,
+                             summary_markdown, _quick_report)
 
 
 def page(number, text):
@@ -156,3 +156,152 @@ def test_public_record_check_appends_info_on_court_docket():
     assert res["page"] == 1
     assert res["quotes"][0]["page"] == 1
     assert any(e.get("url") == res["court_url"] for e in res["evidence"])
+
+
+def test_check_cross_state_consultant_overlap_flags_orange_on_concurrent_monitoring():
+    rep_a = {
+        "id": "odisha_mine_01",
+        "state": "Odisha",
+        "district": "Sundargarh",
+        "project_name": "Sundargarh Iron Mine",
+        "checks": {
+            "accreditation": {
+                "certificate": "NABET/EIA/2124/RA 0219",
+                "quotes": [{"page": 2, "text": "Consultant: ABC Enviro Tech. NABET/EIA/2124/RA 0219"}],
+            },
+            "baseline_season": {
+                "start_date": "2024-01-01",
+                "end_date": "2024-03-31",
+                "quotes": [{"page": 5, "text": "Baseline monitoring from January 2024 to March 2024."}],
+            },
+        },
+    }
+    rep_b = {
+        "id": "mh_port_02",
+        "state": "Maharashtra",
+        "district": "Raigad",
+        "project_name": "Raigad Terminal",
+        "checks": {
+            "accreditation": {
+                "certificate": "NABET/EIA/2124/RA 0219",
+                "quotes": [{"page": 1, "text": "Consultant: ABC Enviro Tech. NABET/EIA/2124/RA 0219"}],
+            },
+            "baseline_season": {
+                "start_date": "2024-02-01",
+                "end_date": "2024-04-30",
+                "quotes": [{"page": 4, "text": "Baseline sampling conducted February 2024 to April 2024."}],
+            },
+        },
+    }
+
+    flags = check_cross_state_consultant_overlap([rep_a, rep_b])
+    assert len(flags) == 1
+    flag = flags[0]
+    assert flag["check"] == "consultant_overlap"
+    assert flag["grade"] == "ORANGE"
+    assert "Concurrent baseline sampling flagged across states" in flag["message"]
+    assert "Sundargarh Iron Mine" in flag["project_name"]
+    assert "Raigad Terminal" in flag["project_name"]
+    assert "Odisha" in flag["state"]
+    assert "Maharashtra" in flag["state"]
+    labels = {e["label"] for e in flag["evidence"]}
+    assert "Monitoring Window 1" in labels
+    assert "Monitoring Window 2" in labels
+    assert "Overlap Period" in labels
+
+
+def test_check_cross_state_consultant_overlap_no_flags_when_same_state_or_no_overlap():
+    rep_a = {
+        "id": "odisha_mine_01",
+        "state": "Odisha",
+        "project_name": "Sundargarh Iron Mine",
+        "checks": {
+            "accreditation": {"certificate": "NABET/EIA/2124/RA 0219"},
+            "baseline_season": {"start_date": "2024-01-01", "end_date": "2024-03-31"},
+        },
+    }
+    # Same state Odisha with overlapping dates -> should NOT flag cross-state overlap
+    rep_same_state = {
+        "id": "odisha_mine_02",
+        "state": "Odisha",
+        "project_name": "Keonjhar Quarry",
+        "checks": {
+            "accreditation": {"certificate": "NABET/EIA/2124/RA 0219"},
+            "baseline_season": {"start_date": "2024-02-01", "end_date": "2024-04-30"},
+        },
+    }
+    assert check_cross_state_consultant_overlap([rep_a, rep_same_state]) == []
+
+    # Different state but non-overlapping dates -> should NOT flag overlap
+    rep_diff_dates = {
+        "id": "mh_port_03",
+        "state": "Maharashtra",
+        "project_name": "Mumbai Pier",
+        "checks": {
+            "accreditation": {"certificate": "NABET/EIA/2124/RA 0219"},
+            "baseline_season": {"start_date": "2025-01-01", "end_date": "2025-03-31"},
+        },
+    }
+    assert check_cross_state_consultant_overlap([rep_a, rep_diff_dates]) == []
+
+
+def test_check_cross_state_credential_sharing_flags_info():
+    rep_a = {
+        "id": "rep_01",
+        "state": "Odisha",
+        "project_name": "Project Alpha",
+        "consultant": "Apex Environmental Services Pvt Ltd",
+        "checks": {
+            "accreditation": {
+                "certificate": "NABET/EIA/25-28/RA 0474",
+                "quotes": [{"page": 1, "text": "Apex Environmental Services. NABET/EIA/25-28/RA 0474"}],
+            },
+        },
+    }
+    rep_b = {
+        "id": "rep_02",
+        "state": "Maharashtra",
+        "project_name": "Project Beta",
+        "consultant": "Zenith Geospatial Technologies Limited",
+        "checks": {
+            "accreditation": {
+                "certificate": "NABET/EIA/25-28/RA 0474",
+                "quotes": [{"page": 2, "text": "Zenith Geospatial Technologies. NABET/EIA/25-28/RA 0474"}],
+            },
+        },
+    }
+
+    flags = check_cross_state_consultant_overlap([rep_a, rep_b])
+    sharing = [f for f in flags if f["check"] == "credential_sharing"]
+    assert len(sharing) == 1
+    flag = sharing[0]
+    assert flag["grade"] == "INFO"
+    assert "Same accreditation credential cited under different consultant names" in flag["message"]
+    labels = {e["label"] for e in flag["evidence"]}
+    assert "NABET Certificate" in labels
+    assert "Entity 1" in labels
+    assert "Entity 2" in labels
+
+
+def test_check_cross_state_credential_sharing_ignores_same_entity_variants():
+    rep_a = {
+        "id": "rep_01",
+        "state": "Odisha",
+        "project_name": "Project Alpha",
+        "consultant": "Green Circle, Inc.",
+        "checks": {
+            "accreditation": {"certificate": "NABET/EIA/2124/RA 0219"},
+        },
+    }
+    rep_b = {
+        "id": "rep_02",
+        "state": "Odisha",
+        "project_name": "Project Beta",
+        "consultant": "Green Circle Private Limited",
+        "checks": {
+            "accreditation": {"certificate": "NABET/EIA/2124/RA 0219"},
+        },
+    }
+    flags = check_cross_state_consultant_overlap([rep_a, rep_b])
+    sharing = [f for f in flags if f["check"] == "credential_sharing"]
+    assert sharing == []
