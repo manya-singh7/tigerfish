@@ -11,8 +11,8 @@ from pathlib import Path
 
 import streamlit as st
 
-from tigerfish import library, page_picks
-from tigerfish.ui import data, method, report_view, upload
+from tigerfish import library, page_picks, review, species_photos
+from tigerfish.ui import data, method, report_view, slip, upload
 from tigerfish.ui import library as library_ui
 from tigerfish.ui.style import PURPOSE, TAGLINE, badge, esc, mono
 
@@ -26,6 +26,11 @@ SCROLL_URL = ("https://scroll.in/article/1095311/fake-claims-great-nicobar-light
               "study-lists-species-found-in-africa-amazon")
 TIGERFISH_SPECIES = "Hydrocynus vittatus"
 INDIRA_POINT = (6.75, 93.83)
+# The Home slip: these flags of the Indira Point table, once a reviewer confirmed them
+# (review/reviews.jsonl). Common names are fixed; every number comes from the saved findings.
+HERO_REPORT = "indira_point_table_3_16"
+HERO_SPECIES = {"sp-02": "sambar", "sp-05": "barking deer"}
+GBIF_LABEL = "GBIF records of this species"
 
 # Which model does what, and why (tigerfish/llm.py).
 MODELS = [
@@ -96,6 +101,69 @@ def tigerfish_slip():
         f"</div></div></div>")
 
 
+def hero_flags():
+    """[(finding, common name, reviewers' decision rows)] for the Home slip, or [] when the
+    report or a reviewer's confirmation is missing (Home then shows the tigerfish slip)."""
+    try:
+        report = data.load(HERO_REPORT)
+    except (OSError, KeyError, ValueError):
+        return []
+    confirmed = review.confirmed_findings(report)
+    by_id = {f["id"]: f for f in report.get("findings") or []}
+    rows = [(by_id[i], name, confirmed[i]) for i, name in HERO_SPECIES.items()
+            if i in by_id and i in confirmed]
+    return rows if len(rows) == len(HERO_SPECIES) else []
+
+
+def gbif_line(finding):
+    """"0 within 100 km, 0 within 500 km, 67,764 worldwide" from the finding's evidence."""
+    return next((e["value"] for e in finding.get("evidence") or [] if e["label"] == GBIF_LABEL), "")
+
+
+def _none_within_500(finding):
+    return gbif_line(finding).split(", ")[1:2] == ["0 within 500 km"]
+
+
+def _hero_photo(finding, name):
+    p = species_photos.photo_for(HERO_REPORT, finding["id"])
+    if not p:
+        return ""
+    return (f'<figure class="tf-slip-photo"><img src="{esc(p["image_url"])}" alt="{esc(name)}, '
+            f'{esc(p["species"])}" loading="lazy"><figcaption><i>{esc(p["species"])}</i>, the '
+            f'{esc(name)}. Photo: {esc(p["author"])}, {esc(p["licence"])}, via <a href="'
+            f'{esc(p["page"])}" target="_blank" rel="noopener">Wikimedia Commons</a>. Not from the '
+            f'site.</figcaption></figure>')
+
+
+def hero_slip(flags):
+    """The Home slip: species on the Indira Point table that GBIF does not record nearby,
+    confirmed by a reviewer."""
+    names = " and the ".join(name for _, name, _ in flags)
+    story = (f"A species list for Indira Point, at the southern tip of Great Nicobar, names the "
+             f"{names}.")
+    if all(_none_within_500(f) for f, _, _ in flags):
+        story += " GBIF has no record of either within 500 km."
+    photos = "".join(_hero_photo(f, name) for f, name, _ in flags)
+    lines = "".join(
+        f'<div class="tf-slip-reason"><i>{esc(f["quotes"][0]["text"])}</i>, the {esc(name)}. '
+        f'GBIF records: {esc(gbif_line(f))}.</div>'
+        f'<div class="tf-hero-note">Reviewer: “{esc(rows[0].get("note", ""))}”</div>'
+        for f, name, rows in flags)
+    first = flags[0][0]
+    rows = [r for _, _, rs in flags for r in rs]
+    where = first["quotes"][0].get("where", "")
+    visual = f'<div class="tf-hero-photos">{photos}</div>' if photos else ""
+    cls = "tf-slip tf-home-slip" + (" tf-hero" if photos else " tf-slip-noimg")
+    return (f'<div class="{cls}">{visual}'
+        f'<div class="tf-slip-text"><blockquote class="tf-slip-quote tf-story">{esc(story)}</blockquote>'
+        f'<div class="tf-slip-head">{badge(first["grade"])}<span class="tf-check">'
+        f'{esc(first["check_name"])}</span><span class="tf-slip-page">{esc(where)}</span></div>'
+        f'{lines}<div class="tf-slip-foot">{slip.verified_html(first, rows)}'
+        f'<a class="tf-open" href="/library?report={HERO_REPORT}" target="_self">Open the report</a>'
+        f'<a href="{SCROLL_URL}" target="_blank" rel="noopener">Table published by Scroll.in</a>'
+        f"</div></div></div>")
+
+
 def go_search():
     st.session_state["lib::q"] = st.session_state.get("home::q", "")
     st.session_state["lib::shown"] = library_ui.PAGE_SIZE
@@ -104,6 +172,10 @@ def go_search():
 HOME_CSS = """<style>
 .tf-home-slip { margin: 0; height: 100%; }
 .tf-home-slip .tf-story { font-size: 1.5rem; line-height: 1.3; margin-bottom: 1rem; }
+.tf-hero { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+.tf-hero-photos { display: flex; flex-direction: column; gap: 0.75rem; }
+.tf-hero-photos img { max-height: 200px; }
+.tf-hero-note { font-size: 0.8125rem; color: var(--tf-muted); margin: -0.2rem 0 0.6rem 0; }
 .st-key-tf-home-top [data-testid="stHorizontalBlock"] { align-items: stretch; }
 @media (max-width: 1099px) {
   .st-key-tf-home-top [data-testid="stHorizontalBlock"] { flex-direction: column-reverse !important; }
@@ -122,7 +194,8 @@ def home():
     with st.container(key="tf-home-top"):
         left, right = st.columns([6, 5], gap="medium")
         with left:
-            st.markdown(tigerfish_slip(), unsafe_allow_html=True)
+            flags = hero_flags()
+            st.markdown(hero_slip(flags) if flags else tigerfish_slip(), unsafe_allow_html=True)
         with right, st.container(key="tf-panel-home"):
             st.markdown(f'<h1 class="tf-h1 tf-home-tag">{esc(TAGLINE)}</h1>'
                         f'<p class="tf-purpose">{esc(PURPOSE)}</p>'

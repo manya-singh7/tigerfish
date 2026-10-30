@@ -1,6 +1,6 @@
 """Browser check of the app in hosted mode (no keys): the top menu (Home · Library · Upload ·
-How it works · Limitations); Home (tagline, purpose line, live totals sentence, the tiger fish
-slip with its Scroll.in link, search into the library, the library below, built-with line); the brand (logo, favicon, light and dark theme); How it works (diagram,
+How it works · Limitations); Home (tagline, purpose line, live totals sentence, the reviewer-confirmed
+species slip with its Scroll.in link, search into the library, the library below, built-with line); the brand (logo, favicon, light and dark theme); How it works (diagram,
 models, three levels); Limitations; the report library (live totals, filters, search, a quick
 check with only its own sections, back link); the no-key upload (detected facts, free checks,
 which checks need a key, the three levels); then the report opened from the library, in
@@ -128,8 +128,8 @@ with sync_playwright() as p:
        "A second reader for environmental impact reports, and everyone who questions them.")
     totals = page.locator(".tf-home-totals").inner_text()
     ok("home: live totals from results/, one sentence", library.totals_line(t) in totals, totals)
-    ok("home: tiger fish slip", (page.get_by_text("A government report listed an African fish off").count() == 1
-       or page.get_by_text("An African fish at Great Nicobar?").count() == 1)
+    ok("home: the reviewer-confirmed species slip",
+       page.get_by_text("names the sambar and the barking deer", exact=False).count() == 1
        and page.locator('a[href*="scroll.in/article/1095311"]').count() == 1)
     ok("home: no row of feature cards or metric banner", page.locator(".tf-card-head").count() == 0
        and page.locator('[data-testid="stMetricValue"]').count() == 0)

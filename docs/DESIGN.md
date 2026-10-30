@@ -101,7 +101,9 @@ and in the library's report previews:
 - Render every matching report in its binder, in stable order, without duplicates. There is
   no active page-size cap or Show more control. Reset clears all filters and restores All;
   empty binders explain that no reports match. Batch screening evidence remains separately reachable.
-- Home: left, the tiger fish slip; right, tagline, purpose line, totals as one sentence, a
+- Home: left, the hero slip (species flags on the Indira Point table that a reviewer
+  confirmed, with reference photos; the planted tigerfish slip only if those reviews are
+  missing); right, tagline, purpose line, totals as one sentence, a
   search box into the library and "Upload your EIA". Below, the library. No centered hero,
   no row of three feature cards.
 - Report: section tabs across the full width; inside a section, findings in the main column

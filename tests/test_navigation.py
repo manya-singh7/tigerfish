@@ -29,7 +29,8 @@ def test_home_is_the_landing_page(no_keys):
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     assert pages.TAGLINE in text and pages.PURPOSE in text and pages.BUILT_WITH in text
-    assert pages.TIGERFISH_STORY in text and pages.SCROLL_URL in text     # the tiger fish slip
+    assert "names the sambar and the barking deer" in text and pages.SCROLL_URL in text  # the hero
+    assert "Confirmed by a reviewer" in text and pages.TIGERFISH_STORY not in text
     t = library.totals(library.entries())
     assert library.totals_line(t) in text                                 # one live sentence
     assert not at.metric                                                  # no stat banner
