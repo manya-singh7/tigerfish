@@ -418,8 +418,11 @@ def render():
     full_total = [e for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
     quick_total = [e for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
 
-    full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
-    quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+    limit = st.session_state.get("lib::shown", PAGE_SIZE)
+    to_show = shown[:limit]
+
+    full_shown = [e for e in to_show if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+    quick_shown = [e for e in to_show if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
 
     # Section A: Deep Investigation Audits
     if not is_quick_only:
@@ -457,6 +460,7 @@ def render():
             st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                         unsafe_allow_html=True)
 
+<<<<<<< HEAD
     if any(e.get("screening") for e in items):
         from tigerfish.ui import batch as batch_ui
 
@@ -465,6 +469,11 @@ def render():
             st.expander("Batch screening results"),
         ):
             batch_ui.render_summary(items)
+=======
+    if len(shown) > len(to_show):
+        st.button(f"Show more ({len(shown) - len(to_show)} remaining)", key="lib::more",
+                  on_click=show_more)
+>>>>>>> 3cb6ea9 (Synchronize UI pages, review queue, and batch triage ledger)
 
     st.write("")
     from tigerfish.ui import quality
