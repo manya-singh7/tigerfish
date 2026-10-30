@@ -408,13 +408,6 @@ def letter_findings(report):
 
 def take_action(report):
     rid, findings = report["id"], report.get("findings") or []
-    feedback.reviewer_input(rid, findings)
-    mine = cards.reviewed(rid, findings, "Confirm")
-    dismissed = cards.reviewed(rid, findings, "Dismiss")
-    unsure = cards.reviewed(rid, findings, "Unsure")
-    st.markdown(f'<div class="tf-review">Reviewed: {len(mine)} confirmed, '
-                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
-                f'{feedback.where()}.</div>', unsafe_allow_html=True)
     team = team_checked(report)
     if team:
         st.toggle(f"Include the {len(team)} findings checked by the team", value=True,
@@ -422,9 +415,6 @@ def take_action(report):
                   "by a reviewer in the review queue. Switch off to build from your own "
                   "confirmations only.")
     confirmed = letter_findings(report)
-    st.caption("Mark findings Confirm, Dismiss or Unsure on their slips in each section. The "
-               "letter and the pack are built from the findings you confirmed"
-               + (" and, while the switch is on, the ones the team checked." if team else "."))
     lang_options = letter.language_options(report)
     lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
                           help=" and ".join(["Hindi"] + letter.regional_languages(report))
@@ -471,6 +461,15 @@ def take_action(report):
     if confirmed:
         with st.expander(f"Read the letter ({len(confirmed)} points, English)", expanded=True):
             st.markdown(letter.preview_html(report, confirmed, addressee), unsafe_allow_html=True)
+    # The visitor's own reviews: who is reviewing, and what they decided on the slips.
+    st.markdown('<h2 class="tf-sub-head">Your reviews</h2>', unsafe_allow_html=True)
+    feedback.reviewer_input(rid, findings)
+    mine = cards.reviewed(rid, findings, "Confirm")
+    dismissed = cards.reviewed(rid, findings, "Dismiss")
+    unsure = cards.reviewed(rid, findings, "Unsure")
+    st.markdown(f'<div class="tf-review">Reviewed: {len(mine)} confirmed, '
+                f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
+                f'{feedback.where()}.</div>', unsafe_allow_html=True)
 
 
 def QUALITY_FALLBACK(report):
