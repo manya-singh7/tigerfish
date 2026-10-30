@@ -21,13 +21,13 @@ linkUnderline = false
 
 [theme.light]
 primaryColor = "#0D4242"
-backgroundColor = "#E9E2D2"
-secondaryBackgroundColor = "#F2ECDF"
+backgroundColor = "#F6F2E9"
+secondaryBackgroundColor = "#EFE9DC"
 textColor = "#17302F"
 linkColor = "#0D4242"
-borderColor = "#CFC6B3"
-dataframeBorderColor = "#CFC6B3"
-codeBackgroundColor = "#F2ECDF"
+borderColor = "#DDD5C4"
+dataframeBorderColor = "#DDD5C4"
+codeBackgroundColor = "#EFE9DC"
 
 [theme.dark]
 primaryColor = "#8CC7BE"
