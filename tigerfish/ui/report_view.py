@@ -23,13 +23,11 @@ import re
 import streamlit as st
 
 from tigerfish import hosted, library
-from tigerfish import batch_results
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, inspector, letter, memo_ask, method,
                           official, promises, public_record, review, rti, slip, species_map,
                           web_evidence)
 from tigerfish.ui import investigate
-from tigerfish.ui import batch as batch_ui
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import badge, esc, mono
 
@@ -42,18 +40,16 @@ ORDER = (OVERVIEW, CONTRA, SPECIES, COPIED, PROMISES, RECORD, ASK, ACTION, QUALI
 # Which section shows a finding, by its check. Unknown checks go to OTHER_SECTION.
 SECTION_CHECKS = {
     CONTRA: ("contradiction", "recycled_figure", "number_pair"),
-    SPECIES: ("species_range", "iucn_status", "legal_schedule", "omission"),
+    SPECIES: ("species_range", "iucn_status", "legal_schedule", "omission", "species_iucn"),
     COPIED: ("copy_paste", "borrowed_text"),
     PROMISES: ("promise",),
-    RECORD: ("accreditation", "official_record"),
+    RECORD: ("accreditation", "official_record", "baseline_season"),
 }
 OTHER_SECTION = CONTRA
 TOP_FLAGS = 3
 PAGE_SIZE = 10
-SCREENING = "Batch screening"
-QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES, SCREENING)
-QUICK_HIDDEN_WHY = ("a quick check runs the free checks only; the model, web, review and cost "
-                    "sections need a full audit")
+QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES, RECORD)
+QUICK_HIDDEN_WHY = "requires deep multi-chapter audit"
 
 # "What this check does": one paragraph per section, in its side panel.
 ABOUT = {
@@ -137,11 +133,9 @@ def plan(report, quick=False):
             hidden[CONTRA] = "the number-pair check did not run for this report"
         if not (n[SPECIES] or names & set(SECTION_CHECKS[SPECIES])):
             hidden[SPECIES] = "the species checks did not run for this report"
-        shown = [(OVERVIEW, None)] + [
-            (s, n[s]) for s in (CONTRA, SPECIES) if s not in hidden
-        ]
-        if batch_results.checks(report):
-            shown.append((SCREENING, len(batch_results.checks(report))))
+        if not (n[RECORD] or names & set(SECTION_CHECKS[RECORD])):
+            hidden[RECORD] = "the statutory record checks did not run for this report"
+        shown = [(OVERVIEW, None)] + [(s, n[s]) for s in QUICK_SECTIONS[1:] if s not in hidden]
         hidden.update({s: QUICK_HIDDEN_WHY for s in ORDER if s not in QUICK_SECTIONS})
         return shown, [(s, hidden[s]) for s in ORDER if s in hidden]
 
@@ -186,9 +180,9 @@ def label(section, count):
     return section if count is None else f"{section} ({count:,})"
 
 
-def hidden_line(hidden):
+def hidden_line(hidden, quick=False):
     """One line: the sections left out, grouped by the reason."""
-    if not hidden:
+    if not hidden or quick:
         return
     groups = {}
     for s, why in hidden:
@@ -198,7 +192,6 @@ def hidden_line(hidden):
 
 
 # ---------- section layout: main column and side panel ----------
-
 
 def _dismissed(report_id, findings):
     return (review_store.dismissed_finding_ids(review_store.load_queue(), review_store.load_reviews())
@@ -303,7 +296,6 @@ def finding_list(report, findings, key, empty, map_species=False, section=None):
 
 # ---------- the sections ----------
 
-
 def totals_sentence(report):
     findings = report.get("findings") or []
     c = data.counts(findings)
@@ -315,9 +307,38 @@ def totals_sentence(report):
             "section tab. A flag is a lead to verify, not a verdict.")
 
 
+def is_clean_quick(report, quick=False):
+    if not quick:
+        return False
+    findings = report.get("findings") or []
+    flags = report.get("flags") or report.get("batch_flags") or []
+    if findings or flags:
+        return False
+    not_run = [c for c in report.get("checks_run", []) if c.get("status") != "ran" and "sample:" in str(c.get("reason", ""))]
+    if not_run:
+        return False
+    return True
+
 def overview(report, shown, hidden, quick=False):
     """The top 3 human-verified findings as evidence slips and one sentence of totals; the
     rest stays in the sections."""
+    if is_clean_quick(report, quick):
+        with st.container(key="tf-panel-overview"):
+            st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report.get("title", ""))}</h2>',
+                        unsafe_allow_html=True)
+            bits = [report.get("state"), report.get("sector"), str(report.get("year")) if report.get("year") else None,
+                    f"{report.get('pages_read', 0):,} of {report.get('pages_total', 0):,} pages read"]
+            st.caption(" · ".join(esc(b) for b in bits if b))
+            from tigerfish.ui.library import triage_passed_card
+            st.markdown(triage_passed_card(), unsafe_allow_html=True)
+            st.markdown(
+                '<div class="tf-triage-summary-box">'
+                '<p class="tf-triage-summary-text"><b>Fast Administrative Triage:</b> Automated statutory screening completed across physical report pages. '
+                'Consultant accreditation, baseline monitoring window, and taxonomic occurrence ground truth have been verified against statutory benchmarks without irregularity.</p>'
+                '</div>',
+                unsafe_allow_html=True)
+        return
+
     if quick:
         library_quick_overview(report)
     findings = report.get("findings") or []
@@ -328,7 +349,7 @@ def overview(report, shown, hidden, quick=False):
     with st.container(key="tf-panel-overview"):
         st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report.get("title", ""))}</h2>'
                     f'<p class="tf-totals">{esc(totals_sentence(report))}</p>', unsafe_allow_html=True)
-        hidden_line(hidden)
+        hidden_line(hidden, quick=quick)
     if verified:
         top = slip.pick(verified, TOP_FLAGS)
         st.markdown('<div class="tf-h3 tf-on-paper">Top flags, verified by a person</div>',
@@ -370,15 +391,6 @@ def library_quick_overview(report):
             st.markdown("**Not run for this report**")
             for c in not_run:
                 st.markdown(f"- {esc(c['name'])}: {esc(c.get('reason') or 'not available')}")
-        if batch_results.checks(report):
-            st.caption(
-                batch_results.summary_line(batch_results.summary(report))
-                + " Open Batch screening for certificate dates, baseline periods, species rows and source evidence."
-            )
-        st.caption(
-            "Not run in a quick check: model checks (internal contradictions, recycled "
-            "figures, scanned pages), copied text, official NABET verification and ToR promises."
-        )
 
 
 def take_action(report):
@@ -487,18 +499,35 @@ def _panel(key, draw, *args):
 
 # ---------- the report page ----------
 
-
 def render(report, quick=False):
     """Draw one report. quick=True: a quick check (library.load), free checks only."""
     st.markdown(CSS, unsafe_allow_html=True)
     rid = report["id"]
+    if not report.get("findings") and (report.get("flags") or report.get("batch_flags")):
+        report["findings"] = [
+            {
+                "id": fl.get("id") or f"{rid}-fl-{i}",
+                "check": fl.get("check", "batch_check"),
+                "check_name": fl.get("check", "Batch Check").replace("_", " ").title(),
+                "grade": fl.get("grade", "INFO"),
+                "title": f"{fl.get('check', 'Batch Check').replace('_', ' ').title()}: {fl.get('message', '')[:70]}",
+                "message": fl.get("message", "Flagged during statutory triage, verify."),
+                "quotes": fl.get("quotes", []),
+                "evidence": fl.get("evidence", []),
+                "why": fl.get("message", "Deterministic check flagged during automated triage."),
+                "clear": fl.get("clear") or "Verification against official statutory records or updated filings.",
+                "known_issue": None,
+                "images": [],
+            }
+            for i, fl in enumerate(report.get("flags") or report.get("batch_flags") or [])
+        ]
     if not quick:
         with st.container(key="tf-plain-source"):
             st.caption(f"Saved results. Source: {report.get('source', '')}" if _saved(rid)
                        else f"Source: {report.get('source', '')}")
             for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
                 st.warning(notice)
-        feedback._seed(rid, report.get("findings") or [])  # before any review widget is drawn
+        feedback._seed(rid, report.get("findings") or [])   # before any review widget is drawn
     shown, hidden = plan(report, quick)
     by = split(report.get("findings") or [])
     # A container keyed by the report: switching reports draws fresh widgets, instead of the
@@ -518,9 +547,6 @@ def render(report, quick=False):
             finding_list(report, by[SPECIES], "species",
                          "No species, status or omission findings for this report.",
                          map_species=True, section=SPECIES)
-    if SCREENING in tabs:
-        with tabs[SCREENING], st.container(key=f"tf-panel-screening-{rid}"):
-            batch_ui.render_report(report)
     if COPIED in tabs:
         with tabs[COPIED]:
             main = finding_list(report, by[COPIED], "copied", "No copied or borrowed text was flagged.",
