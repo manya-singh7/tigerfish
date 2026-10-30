@@ -1,0 +1,175 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291 valid till 16th October 2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291 valid till 16th October 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "dated 12th October 2024 for EIA study for the proposed Expansion of Existing crushing"
+        }
+      ],
+      "report_date": "2024-10-12",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Form-1, Pre-feasibility report and other documents for obtaining Terms of Reference (TORs) from concerned Regulatory Authority for undertaking detailed EIA study. The proposal was granted Standard ToR vide letter No. IA-J-11011/315/2024-IA-II(IND-I) dated 12th October 2024 for EIA study for the proposed Expansion of Existing crushing and Grinding unit of Manganese Ore with addition of Manufacturing of 24000 TPA of Manganese Oxide by Roasting furnace at Khasra No. 291, 292 Aamdi Faata, Taluka Parseoni, District Nagpur, Maharashtra."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291 valid till 16th October 2025"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291 valid till 16th October 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "dated 12th October 2024 for EIA study for the proposed Expansion of Existing crushing"
+        }
+      ],
+      "report_date": "2024-10-12",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Form-1, Pre-feasibility report and other documents for obtaining Terms of Reference (TORs) from concerned Regulatory Authority for undertaking detailed EIA study. The proposal was granted Standard ToR vide letter No. IA-J-11011/315/2024-IA-II(IND-I) dated 12th October 2024 for EIA study for the proposed Expansion of Existing crushing and Grinding unit of Manganese Ore with addition of Manufacturing of 24000 TPA of Manganese Oxide by Roasting furnace at Khasra No. 291, 292 Aamdi Faata, Taluka Parseoni, District Nagpur, Maharashtra."
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:11:06Z",
+  "id": "fcc99f57db80ec08",
+  "pages_read": 11,
+  "pages_total": 11,
+  "project": "Executive Summary For Expansion of Existing crushing and Grinding unit of Manganese Ore with addition of Manufacturing of 24000 TPA of Manganese Oxide by Roasting furnace At Khasra No",
+  "project_name": "Executive Summary For Expansion of Existing crushing and Grinding unit of Manganese Ore with addition of Manufacturing of 24000 TPA of Manganese Oxide by Roasting furnace At Khasra No",
+  "sector": "Industrial projects",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Evergreen_EXECUTUVE_SUMMARY_11032025.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Evergreen_EXECUTUVE_SUMMARY_11032025.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Evergreen_EXECUTUVE_SUMMARY_11032025.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary For Expansion of Existing crushing and Grinding unit of Manganese Ore with addition of Manufacturing of 24000 TPA of Manganese Oxide by Roasting furnace At Khasra No",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Evergreen_EXECUTUVE_SUMMARY_11032025.pdf",
+  "year": 2024
+}

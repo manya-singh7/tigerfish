@@ -1,0 +1,197 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0423",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid till 12/05/2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006 & amendments thereof"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2028-05-12"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 14.62,
+      "end_date": "2024-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-19"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 14.62 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "There is no National Park/ Wildlife Sanctuary/ Migratory Path within 15 Km radius of the proposed coal mine. 6.0 GRANT OF TOR & BASE LINE DATA MONITORING The Terms of Reference has been granted by SEIAA vide its file no. SIA/MH/CMIN/539793/2025 dated 19/12/2025 with ToR Identification no. TO25B0101MH5149434N. The Base Line Data was collected during October 2024 to December 2024 for a period of 12 weeks. 7.0 MINING METHODOLOGY Considering the favorable geo-mining characteristics of the block like single mineable Coal Horizon of varying thickness, and about 5.16 Km strike length in both the proposed quarries, the overall dip of the coal seams is mostly moderate (maximum 8°-10°) towards South W…"
+        }
+      ],
+      "start_date": "2025-12-19"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0423",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid till 12/05/2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006 & amendments thereof"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2028-05-12"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 14.62,
+      "end_date": "2024-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-19"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 14.62 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "There is no National Park/ Wildlife Sanctuary/ Migratory Path within 15 Km radius of the proposed coal mine. 6.0 GRANT OF TOR & BASE LINE DATA MONITORING The Terms of Reference has been granted by SEIAA vide its file no. SIA/MH/CMIN/539793/2025 dated 19/12/2025 with ToR Identification no. TO25B0101MH5149434N. The Base Line Data was collected during October 2024 to December 2024 for a period of 12 weeks. 7.0 MINING METHODOLOGY Considering the favorable geo-mining characteristics of the block like single mineable Coal Horizon of varying thickness, and about 5.16 Km strike length in both the proposed quarries, the overall dip of the coal seams is mostly moderate (maximum 8°-10°) towards South W…"
+        }
+      ],
+      "start_date": "2025-12-19"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:07:09Z",
+  "id": "17e4e4ffa9ceaf76",
+  "pages_read": 12,
+  "pages_total": 12,
+  "project": "EIA Summary English",
+  "project_name": "EIA Summary English",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/EIA_Summary_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/EIA_Summary_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/EIA_Summary_English.pdf",
+  "state": "Maharashtra",
+  "title": "EIA Summary English",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/EIA_Summary_English.pdf",
+  "year": 2006
+}

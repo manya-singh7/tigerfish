@@ -1,0 +1,257 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0423",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423 Valid till 12/05/2028"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423 Valid till 12/05/2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006 & amendments thereof"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2028-05-12"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.33,
+      "end_date": "2025-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-02-20"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.33 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "to be diverted, out of which Nalla-2 has already been diverted by the prior allottee. 6.0 GRANT OF EC & BASE LINE DATA MONITORING: EC for the present production capacity of 3.50 MTPA within the lease area of 1457.20 ha was granted to M/s KPCL by MoEF&CC vide its letter dated 20.02.2025. The Base Line Data was collected during March 2025 to May 2025 for a period of 13 weeks (Summer Season) for the proposed expansion of existing production capacity. 7.0 MINING METHODOLOGY: The Mine is being worked by Mechanized Opencast Mining Methodology by deploying Surface Miner for extraction of coal and Shovel/Dumper Combination for removal of Overburden along with Drilling & Blasting"
+        }
+      ],
+      "start_date": "2025-02-20"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.33,
+      "end_date": "2025-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-02-20"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.33 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "to be diverted, out of which Nalla-2 has already been diverted by the prior allottee. 6.0 GRANT OF EC & BASE LINE DATA MONITORING: EC for the present production capacity of 3.50 MTPA within the lease area of 1457.20 ha was granted to M/s KPCL by MoEF&CC vide its letter dated 20.02.2025. The Base Line Data was collected during March 2025 to May 2025 for a period of 13 weeks (Summer Season) for the proposed expansion of existing production capacity. 7.0 MINING METHODOLOGY: The Mine is being worked by Mechanized Opencast Mining Methodology by deploying Surface Miner for extraction of coal and Shovel/Dumper Combination for removal of Overburden along with Drilling & Blasting"
+        }
+      ],
+      "start_date": "2025-02-20"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/25-28/RA 0423",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423 Valid till 12/05/2028"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "NABET/EIA/25-28/RA 0423 Valid till 12/05/2028"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006 & amendments thereof"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2028-05-12"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.33,
+      "end_date": "2025-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-02-20"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.33 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "to be diverted, out of which Nalla-2 has already been diverted by the prior allottee. 6.0 GRANT OF EC & BASE LINE DATA MONITORING: EC for the present production capacity of 3.50 MTPA within the lease area of 1457.20 ha was granted to M/s KPCL by MoEF&CC vide its letter dated 20.02.2025. The Base Line Data was collected during March 2025 to May 2025 for a period of 13 weeks (Summer Season) for the proposed expansion of existing production capacity. 7.0 MINING METHODOLOGY: The Mine is being worked by Mechanized Opencast Mining Methodology by deploying Surface Miner for extraction of coal and Shovel/Dumper Combination for removal of Overburden along with Drilling & Blasting"
+        }
+      ],
+      "start_date": "2025-02-20"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.33,
+      "end_date": "2025-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-02-20"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.33 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "to be diverted, out of which Nalla-2 has already been diverted by the prior allottee. 6.0 GRANT OF EC & BASE LINE DATA MONITORING: EC for the present production capacity of 3.50 MTPA within the lease area of 1457.20 ha was granted to M/s KPCL by MoEF&CC vide its letter dated 20.02.2025. The Base Line Data was collected during March 2025 to May 2025 for a period of 13 weeks (Summer Season) for the proposed expansion of existing production capacity. 7.0 MINING METHODOLOGY: The Mine is being worked by Mechanized Opencast Mining Methodology by deploying Surface Miner for extraction of coal and Shovel/Dumper Combination for removal of Overburden along with Drilling & Blasting"
+        }
+      ],
+      "start_date": "2025-02-20"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:47Z",
+  "id": "1559a5e83043bce0",
+  "pages_read": 9,
+  "pages_total": 9,
+  "project": "SUMMARY EIA ENGLISH",
+  "project_name": "SUMMARY EIA ENGLISH",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-12/SUMMARY_EIA_ENGLISH.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-12/SUMMARY_EIA_ENGLISH.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-12/SUMMARY_EIA_ENGLISH.pdf",
+  "state": "Maharashtra",
+  "title": "SUMMARY EIA ENGLISH",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-12/SUMMARY_EIA_ENGLISH.pdf",
+  "year": 2006
+}

@@ -1,0 +1,197 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "1533 (E)” dated 14.09.2006; the sugar"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 & Validity: 28.02.2026)Baseline Monitoring Period: October -November- December 2025 Environmental; Civil & Chemical Engineers, Consultants & Analysts, Kolhapur (MS) QCI-NABET; ISO 9001:2015 Accredited Organization (Accreditation No.: NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027) E-mail: eia@equinoxenvi.com, projects@equinoxenvi.com"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "1533 (E)” dated 14.09.2006; the sugar"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 & Validity: 28.02.2026)Baseline Monitoring Period: October -November- December 2025 Environmental; Civil & Chemical Engineers, Consultants & Analysts, Kolhapur (MS) QCI-NABET; ISO 9001:2015 Accredited Organization (Accreditation No.: NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027) E-mail: eia@equinoxenvi.com, projects@equinoxenvi.com"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:07:41Z",
+  "id": "9fba8f0bee9112b5",
+  "pages_read": 54,
+  "pages_total": 54,
+  "project": "SUMMARY ENVIRONMENTAL IMPACT ASSESSMENT (EIA) REPORT (IN ENGLISH AND MARATHI) Environmental Laboratory, Pune (MS) (MoEFCC Recognized; NABL Accredited: LB/99/7 /2021-INST LAB-HO-CPCB-HO/Pvt",
+  "project_name": "SUMMARY ENVIRONMENTAL IMPACT ASSESSMENT (EIA) REPORT (IN ENGLISH AND MARATHI) Environmental Laboratory, Pune (MS) (MoEFCC Recognized; NABL Accredited: LB/99/7 /2021-INST LAB-HO-CPCB-HO/Pvt",
+  "sector": "Ports and harbours",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_Gangamai_Industries_And_Constructions_Ltd%2005.09.2025.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_Gangamai_Industries_And_Constructions_Ltd%2005.09.2025.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_Gangamai_Industries_And_Constructions_Ltd%2005.09.2025.pdf",
+  "state": "Maharashtra",
+  "title": "SUMMARY ENVIRONMENTAL IMPACT ASSESSMENT (EIA) REPORT (IN ENGLISH AND MARATHI) Environmental Laboratory, Pune (MS) (MoEFCC Recognized; NABL Accredited: LB/99/7 /2021-INST LAB-HO-CPCB-HO/Pvt",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_Gangamai_Industries_And_Constructions_Ltd%2005.09.2025.pdf",
+  "year": 2006
+}

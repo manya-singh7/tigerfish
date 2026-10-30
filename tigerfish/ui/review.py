@@ -79,11 +79,11 @@ def item_card(item, reviews, reviewer):
         # double review: hidden until you decide (a hand verification is shown: it is final)
         if others and (not item["double_review"] or mine or verified):
             st.caption("Other decisions: " + "; ".join(
-                f"{r['reviewer']}: {review.DECISIONS[r['decision']]}" + (f" ({r['note']})" if r["note"] else "")
+                f"{r['reviewer']}: {review.DECISIONS[r['decision']]}" + (f" ({r.get('note')})" if r.get("note") else "")
                 for r in others))
         if mine:
             st.caption(f"Your decision: {review.DECISIONS[mine['decision']]}"
-                       + (f" ({mine['note']})" if mine["note"] else "") + ". You can change it.")
+                       + (f" ({mine.get('note')})" if mine.get("note") else "") + ". You can change it.")
         note = st.text_input("Note (optional)", key=f"review::note::{item['flag_id']}")
         b = st.columns(3)
         for col, (code, label) in zip(b, review.DECISIONS.items()):

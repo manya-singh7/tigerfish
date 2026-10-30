@@ -1,0 +1,165 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2024-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-12-31"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 10,
+          "text": "Standard ToR was issued by the State Level Expert Appraisal Committee(SEAC), MAHARASHTRA on 31.12.2024 vide file no. SIA/MH/IND2/513572/2024 and ToR identification no. TO24B2504MH5403235N. The study period conducted was from October 2024 to December 2024. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station Continuous hourly"
+        }
+      ],
+      "start_date": "2024-12-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [],
+      "report_date": null,
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3.02,
+      "end_date": "2024-10-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-12-31"
+        },
+        {
+          "label": "End",
+          "value": "2024-10-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3.02 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 10,
+          "text": "Standard ToR was issued by the State Level Expert Appraisal Committee(SEAC), MAHARASHTRA on 31.12.2024 vide file no. SIA/MH/IND2/513572/2024 and ToR identification no. TO24B2504MH5403235N. The study period conducted was from October 2024 to December 2024. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station Continuous hourly"
+        }
+      ],
+      "start_date": "2024-12-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:11Z",
+  "id": "5c63939f6afa3b5d",
+  "pages_read": 16,
+  "pages_total": 16,
+  "project": "Executive summary Setting up 70KLPD Malt Distillery and Malt Spirit Maturation plant along with 6MW Cogeneration Power Plant",
+  "project_name": "Executive summary Setting up 70KLPD Malt Distillery and Malt Spirit Maturation plant along with 6MW Cogeneration Power Plant",
+  "sector": "Thermal power",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Ex_Summary_English_Pernod_Nagpur_R1.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Ex_Summary_English_Pernod_Nagpur_R1.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Ex_Summary_English_Pernod_Nagpur_R1.pdf",
+  "state": "Maharashtra",
+  "title": "Executive summary Setting up 70KLPD Malt Distillery and Malt Spirit Maturation plant along with 6MW Cogeneration Power Plant",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Ex_Summary_English_Pernod_Nagpur_R1.pdf",
+  "year": null
+}

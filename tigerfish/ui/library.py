@@ -376,10 +376,11 @@ def render():
                         "upload an EIA to run the free checks now.")
             st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload)
         return
-    shown = _filtered(items)
+    filtered = _filtered(items)
+    shown = filtered[:st.session_state.get("lib::shown", PAGE_SIZE)]
     side_panel(items, shown)
 
-    if not shown:
+    if not filtered:
         with st.container(key="tf-panel-lib-none"):
             st.markdown('<div class="tf-h3">No reports match these filters</div>',
                         unsafe_allow_html=True)
@@ -436,6 +437,9 @@ def render():
         else:
             st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                         unsafe_allow_html=True)
+
+    if len(shown) < len(filtered):
+        st.button("Show more reports", key="lib::more", on_click=show_more, type="secondary")
 
     st.write("")
     from tigerfish.ui import quality

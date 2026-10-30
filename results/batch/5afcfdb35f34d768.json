@@ -1,0 +1,155 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "IA-J-11011/251/2021-IA-II(I)) is obtained on 28.11.2022 and amended in EC on"
+        }
+      ],
+      "report_date": "2022-11-28",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "form different kind of taxes  Surrounding villages and area will get unique identity in the map due to the development of the project. 1.6 Baseline Environment The project is located at Pravaranagar- Loni, Taluka: Rahata, District: Ahmednagar, State: Maharashtra. The project is geographically located at 19°34'25.76\"N and 74°30'8.92\"E and at 557 m above MSL. The study area is considered to be within 10 km radius of the project site for baseline environment monitoring. The studies were conducted during summer season for the period of March to May 2025. 1.6.1 Ambient Air Quality  Particulate Matter (PM 10): The maximum 71.1 µg/m3 concentration of PM10 was"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "IA-J-11011/251/2021-IA-II(I)) is obtained on 28.11.2022 and amended in EC on"
+        }
+      ],
+      "report_date": "2022-11-28",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 7,
+          "text": "form different kind of taxes  Surrounding villages and area will get unique identity in the map due to the development of the project. 1.6 Baseline Environment The project is located at Pravaranagar- Loni, Taluka: Rahata, District: Ahmednagar, State: Maharashtra. The project is geographically located at 19°34'25.76\"N and 74°30'8.92\"E and at 557 m above MSL. The study area is considered to be within 10 km radius of the project site for baseline environment monitoring. The studies were conducted during summer season for the period of March to May 2025. 1.6.1 Ambient Air Quality  Particulate Matter (PM 10): The maximum 71.1 µg/m3 concentration of PM10 was"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:22Z",
+  "id": "5afcfdb35f34d768",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "0 EXECUTIVE SUMMARY DRAFT ENVIRONMENTAL IMPACT ASSESSMENT REPORT OF PROPOSED EXPANSION OF SUGAR PLANT FROM 7200 TCD TO 15000 TCD & COGENERATION POWER PLANT FROM 30MW TO 68MW, AT: PRAVARANAGAR- LONI, TALUKA: RAHATA, DISTRICT: AHMEDNAGAR, STA",
+  "project_name": "0 EXECUTIVE SUMMARY DRAFT ENVIRONMENTAL IMPACT ASSESSMENT REPORT OF PROPOSED EXPANSION OF SUGAR PLANT FROM 7200 TCD TO 15000 TCD & COGENERATION POWER PLANT FROM 30MW TO 68MW, AT: PRAVARANAGAR- LONI, TALUKA: RAHATA, DISTRICT: AHMEDNAGAR, STA",
+  "sector": "Ports and harbours",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-08/Executive_summar_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-08/Executive_summar_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-08/Executive_summar_English.pdf",
+  "state": "Maharashtra",
+  "title": "0 EXECUTIVE SUMMARY DRAFT ENVIRONMENTAL IMPACT ASSESSMENT REPORT OF PROPOSED EXPANSION OF SUGAR PLANT FROM 7200 TCD TO 15000 TCD & COGENERATION POWER PLANT FROM 30MW TO 68MW, AT: PRAVARANAGAR- LONI, TALUKA: RAHATA, DISTRICT: AHMEDNAGAR, STA",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-08/Executive_summar_English.pdf",
+  "year": 2022
+}

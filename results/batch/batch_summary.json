@@ -1,6 +1,6 @@
 {
   "flag_counts": {
-    "INFO": 3,
+    "INFO": 10,
     "ORANGE": 0,
     "RED": 0
   },
@@ -100,37 +100,264 @@
       "report_id": "962f4bfb100a3e52",
       "start_date": "2025-04-28",
       "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "project_name": "After receiving the Terms of Reference (ToR) the Draft Environmental Impact Assessment (EIA) report is being prepared for the purpose of conducting the Public Hearing",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "ToR No.: TO25A2409MH5396053N, Dated: 25/12/2025 Project of Schedule 5(f) Synthetic Organic Chemicals Industry Category A Study Period: October to December 2025 Monitoring Done By KIWIS Eco Laboratories Pvt. Ltd. Accredited by NABL vide Certificate No. TC-15391 Southern Enviro Engineers Pvt. Ltd. (Certificate No.: NABET/EIA/26-29/RA 0483, Validity: 30.03.2029) Consultant"
+        }
+      ],
+      "report_id": "d1779c4515d340f4",
+      "start_date": "2025-12-25",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2025-11-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-11-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "project_name": "EXECUTIVE SUMMARY (English and Marathi) (UID: MISPL/2025-26/EIA/010) Of Expansion Of Distillery From 30 KLPD To 45 KLPD (B & C Heavy Molasses) and Sugar Factory From 2500 TCD To 7000 TCD By SHRI SHANKAR SAHAKARI SAKHAR KARKHANA LIMITED A/p:",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286) Environmental Laboratory: Eurofine Enviro Lab Pvt. Ltd., Ranjangaon Baseline Data: October 2025- November 2025- December 2025 MARCH 2026"
+        }
+      ],
+      "report_id": "99767e38f3848f82",
+      "start_date": "2025-10-01",
+      "state": "Maharashtra"
+    },
+    {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The certificate appears to expire within three months of the report date; verify the applicable accreditation record.",
+      "project_name": "Water Lifting Permission 132 - 133 Executive Summary in English Summary of Draft EIA Report for Expansion of Distillery from 142 KLPD to 300 KLPD using C/ B Heavy Molasses/ Sugarcane Juice/ Syrup, Sugar Factory from 7,500 TCD to 12,000 TCD ",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        }
+      ],
+      "report_date": "2027-10-11",
+      "report_id": "a7cd750d3db25b23",
+      "state": "Maharashtra",
+      "valid_until": "2027-10-11"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 2.83,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-07-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.83 months, shorter than three months; verify.",
+      "project_name": "Executive summary Proposed 105 KLPD Molasses/Sugarcane syrup-based Distillery Village Maulinagar, Belkund, Tal: Ausa, Dist: Latur, Maharashtra PROPOSED BY M/s",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ToR was granted by the Ministry of Environment, Forest & Climate Change (MOEFCC) on 25th July 2025, under No. IA-J-11011/274/2025-IA-II. The study period conducted was from March 2025 to May 2025. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries by IL&FS Ecosmart Ltd., approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station"
+        }
+      ],
+      "report_id": "5c550371da22ab82",
+      "start_date": "2025-07-25",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.33,
+      "end_date": "2025-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-02-20"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.33 months, shorter than three months; verify.",
+      "project_name": "SUMMARY EIA ENGLISH",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 3,
+          "text": "to be diverted, out of which Nalla-2 has already been diverted by the prior allottee. 6.0 GRANT OF EC & BASE LINE DATA MONITORING: EC for the present production capacity of 3.50 MTPA within the lease area of 1457.20 ha was granted to M/s KPCL by MoEF&CC vide its letter dated 20.02.2025. The Base Line Data was collected during March 2025 to May 2025 for a period of 13 weeks (Summer Season) for the proposed expansion of existing production capacity. 7.0 MINING METHODOLOGY: The Mine is being worked by Mechanized Opencast Mining Methodology by deploying Surface Miner for extraction of coal and Shovel/Dumper Combination for removal of Overburden along with Drilling & Blasting"
+        }
+      ],
+      "report_id": "1559a5e83043bce0",
+      "start_date": "2025-02-20",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 0.66,
+      "end_date": "2024-07-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-06-12"
+        },
+        {
+          "label": "End",
+          "value": "2024-07-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.66 months, shorter than three months; verify.",
+      "project_name": "Executive Summary Manmohan",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "2023 along with Form-1, copy of pre-feasibility report and other documents for proposing Terms of Reference (TOR) for undertaking detailed EIA study. The proposal was appraised in the EAC (Industry-1) meeting held virtually during 11-12 June, 2024 and the committee recommended for prescribing TOR for undertaking EIA study for proposed project. Accordingly, the Ministry had prescribed TOR vide IA-J-11011/455/2023-IA-II(IND-I) dated 1st July, 2024 (Annexure-I). In order to assist the M/s. Manmohan Minerals & Chemicals Pvt Ltd. for getting the Environmental Clearance, M/s Pollution and Ecology Control Services (PECS) Nagpur is entrusted the task of undertaking (EIA) study and prepare Environmen…"
+        }
+      ],
+      "report_id": "58bc297474bbe4af",
+      "start_date": "2024-06-12",
+      "state": "Maharashtra"
+    },
+    {
+      "check": "baseline_season",
+      "duration_months": 2.96,
+      "end_date": "2025-03-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.96 months, shorter than three months; verify.",
+      "project_name": "31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | I Executive Summary 1",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "Expansion of Existing Common Bio-Medical Waste Treatment Facility at Plot No. 31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | V The baseline environmental quality of Air, water, soil, noise, socioeconomic status and ecology has been assessed in the period of 1 Jan 2025 to 31 March 2025 in a study area of 10 km radial distance from the project site. The base line data has been collected by M/s Nilawar Laboratories, Nagpur (NABET Accreditation Lab Vide –TC -9782) & Monitoring stations were selected by Laboratory experts in coordinator with EIA Coordinator. The ambient air quality monitoring was carried out at 8 locations to monitor PM10, PM2.5, SO2 and NOx"
+        }
+      ],
+      "report_id": "e7250fae3b7308de",
+      "start_date": "2025-01-01",
+      "state": "Maharashtra"
     }
   ],
-  "generated_at": "2026-10-29T10:59:19Z",
+  "generated_at": "2026-10-30T11:14:07Z",
   "neutral_note": "Flags are leads for verification; they are not conclusions about intent or compliance.",
   "per_check_counts": {
     "accreditation": {
-      "GREY": 17,
-      "OK": 8
+      "GREY": 49,
+      "INFO": 1,
+      "OK": 20
     },
     "baseline_season": {
-      "GREY": 15,
-      "INFO": 3,
-      "OK": 7
+      "GREY": 32,
+      "INFO": 9,
+      "OK": 29
     },
     "species_iucn": {
-      "GREY": 23,
+      "GREY": 68,
       "OK": 2
     }
   },
   "per_state_counts": {
-    "Maharashtra": 25
+    "Maharashtra": 70
   },
-  "reports_processed": 25,
-  "reports_requested": 50,
+  "reports_processed": 70,
+  "reports_requested": 70,
   "status": "complete",
   "tavily": {
     "by_endpoint": {
       "crawl": {
         "cached": 0,
-        "calls": 7,
-        "credits": 21.0
+        "calls": 24,
+        "credits": 194.0
       },
       "extract": {
         "cached": 0,
@@ -139,8 +366,8 @@
       },
       "map": {
         "cached": 0,
-        "calls": 7,
-        "credits": 20.0
+        "calls": 24,
+        "credits": 180.0
       },
       "search": {
         "cached": 0,
@@ -149,18 +376,18 @@
       }
     },
     "cached": 0,
-    "calls": 14,
+    "calls": 48,
     "cap": 400,
     "crawl_cached": 0,
-    "crawl_calls": 7,
-    "crawl_credits": 21.0,
-    "credits": 41.0,
+    "crawl_calls": 24,
+    "crawl_credits": 194.0,
+    "credits": 374.0,
     "extract_cached": 0,
     "extract_calls": 0,
     "extract_credits": 0.0,
     "map_cached": 0,
-    "map_calls": 7,
-    "map_credits": 20.0,
+    "map_calls": 24,
+    "map_credits": 180.0,
     "search_cached": 0,
     "search_calls": 0,
     "search_credits": 0.0

@@ -1,0 +1,177 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Environment Impact Assessment (EIA) Notification dated 14th September 2006, and its"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2023-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2023-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "km radius from the proposed alignment was considered for secondary datacollection. Primary data has been collected within 500 meters on either side of theproposed alignment. Baseline environment monitoring was carried out for the period of October 2023 to December 2023. The land use and land cover of the study area prevailed 4 major land use classes viz. Built-up, Agriculture, Surface water reservoirs, & Forest amongst which Agriculture land was the dominant land use class with 1513.23 km2followed by Forest with 334.16, whereas Surface water reservoirs with 127.98 km2andBuilt-up land were present in 120.98 km2. The prevailing land cover forms in study area were Wastelands lands spanning in 3…"
+        }
+      ],
+      "start_date": "2023-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Environment Impact Assessment (EIA) Notification dated 14th September 2006, and its"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2023-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2023-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2023-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "km radius from the proposed alignment was considered for secondary datacollection. Primary data has been collected within 500 meters on either side of theproposed alignment. Baseline environment monitoring was carried out for the period of October 2023 to December 2023. The land use and land cover of the study area prevailed 4 major land use classes viz. Built-up, Agriculture, Surface water reservoirs, & Forest amongst which Agriculture land was the dominant land use class with 1513.23 km2followed by Forest with 334.16, whereas Surface water reservoirs with 127.98 km2andBuilt-up land were present in 120.98 km2. The prevailing land cover forms in study area were Wastelands lands spanning in 3…"
+        }
+      ],
+      "start_date": "2023-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:11Z",
+  "id": "23849744f52a0c18",
+  "pages_read": 19,
+  "pages_total": 19,
+  "project": "Executive Summary Package II English",
+  "project_name": "Executive Summary Package II English",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-05/Executive_Summary-Package_II-English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-05/Executive_Summary-Package_II-English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-05/Executive_Summary-Package_II-English.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary Package II English",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-05/Executive_Summary-Package_II-English.pdf",
+  "year": 2006
+}

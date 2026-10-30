@@ -1,0 +1,177 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Notification dated 14th September 2006, and its amendments until date, the proposed project"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 170,
+      "end_date": "2024-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2010-02-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 170 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "The manpower envisaged is approximately 1500 for the proposed project. 4.0 Description of the Environment As per the EIA Guidance Manual for Highways (MoEF&CC, February 2010), a study area of 15 km radius from the proposed alignment was considered for secondary data collection. Primary data has been collected within 500 meters on either side of the proposed alignment. Baseline environment monitoring was carried out for the period of March 2024 to May 2024. Topography, Land use& its Classification – The topography around the project site is mostly plain and hilly at some places. The land use and land cover of the study area was analyzed based on multispectral satellite imagery reveals that Ag…"
+        }
+      ],
+      "start_date": "2010-02-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Notification dated 14th September 2006, and its amendments until date, the proposed project"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 170,
+      "end_date": "2024-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2010-02-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 170 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 11,
+          "text": "The manpower envisaged is approximately 1500 for the proposed project. 4.0 Description of the Environment As per the EIA Guidance Manual for Highways (MoEF&CC, February 2010), a study area of 15 km radius from the proposed alignment was considered for secondary data collection. Primary data has been collected within 500 meters on either side of the proposed alignment. Baseline environment monitoring was carried out for the period of March 2024 to May 2024. Topography, Land use& its Classification – The topography around the project site is mostly plain and hilly at some places. The land use and land cover of the study area was analyzed based on multispectral satellite imagery reveals that Ag…"
+        }
+      ],
+      "start_date": "2010-02-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:32Z",
+  "id": "66f808d73a05dbf3",
+  "pages_read": 21,
+  "pages_total": 21,
+  "project": "Executive%20summary Eng PKG%20II",
+  "project_name": "Executive%20summary Eng PKG%20II",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Executive%20summary_Eng_PKG%20II.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Executive%20summary_Eng_PKG%20II.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Executive%20summary_Eng_PKG%20II.pdf",
+  "state": "Maharashtra",
+  "title": "Executive%20summary Eng PKG%20II",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Executive%20summary_Eng_PKG%20II.pdf",
+  "year": 2006
+}

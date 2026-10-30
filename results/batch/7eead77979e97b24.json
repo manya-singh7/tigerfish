@@ -1,0 +1,177 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "0000205854/CE/2407002772 dated 29/07/2024 valid up to 29/07/2029"
+        }
+      ],
+      "report_date": "2024-07-29",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 228.17,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-09-18"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 228.17 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Standard Terms of Reference (ToR Identification No.TO25B2504MH5771058N) for the project on dated 18.09.2025. Based on the Standard ToR, Environmental Impact Assessment study was carried out and draft EIA report has been prepared. As per EIA Notification dated 14th September, 2006 and its subsequent amendment, the project falls under Category “B”, Project or Activity „5(g)‟ (non-molasses based) Distillery. The proposal is to be appraised at State Level (State Expert Appraisal Committee, Maharashtra) under B1 Category for grant of Environmental Clearance. 2.0 PROJECT LOCATION The project is located in S. No. 8/1, Village- Ambivali T. Kotalkhalati,Tal. Karjat, Dist. Raigad, State Maharashtra"
+        }
+      ],
+      "start_date": "2025-09-18"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "0000205854/CE/2407002772 dated 29/07/2024 valid up to 29/07/2029"
+        }
+      ],
+      "report_date": "2024-07-29",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 228.17,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-09-18"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 228.17 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 2,
+          "text": "Standard Terms of Reference (ToR Identification No.TO25B2504MH5771058N) for the project on dated 18.09.2025. Based on the Standard ToR, Environmental Impact Assessment study was carried out and draft EIA report has been prepared. As per EIA Notification dated 14th September, 2006 and its subsequent amendment, the project falls under Category “B”, Project or Activity „5(g)‟ (non-molasses based) Distillery. The proposal is to be appraised at State Level (State Expert Appraisal Committee, Maharashtra) under B1 Category for grant of Environmental Clearance. 2.0 PROJECT LOCATION The project is located in S. No. 8/1, Village- Ambivali T. Kotalkhalati,Tal. Karjat, Dist. Raigad, State Maharashtra"
+        }
+      ],
+      "start_date": "2025-09-18"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:25Z",
+  "id": "7eead77979e97b24",
+  "pages_read": 16,
+  "pages_total": 16,
+  "project": "Executive Summary Mowa %5B1%5D",
+  "project_name": "Executive Summary Mowa %5B1%5D",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/Executive_Summary_Mowa_%5B1%5D.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/Executive_Summary_Mowa_%5B1%5D.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/Executive_Summary_Mowa_%5B1%5D.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary Mowa %5B1%5D",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/Executive_Summary_Mowa_%5B1%5D.pdf",
+  "year": 2024
+}

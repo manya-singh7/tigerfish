@@ -1,0 +1,247 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2326/RA 0286",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Baseline Data: October 2025- November 2025- December 2025"
+        }
+      ],
+      "report_date": "2025-10-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2025-11-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-11-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286) Environmental Laboratory: Eurofine Enviro Lab Pvt. Ltd., Ranjangaon Baseline Data: October 2025- November 2025- December 2025 MARCH 2026"
+        }
+      ],
+      "start_date": "2025-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2025-11-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-11-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286) Environmental Laboratory: Eurofine Enviro Lab Pvt. Ltd., Ranjangaon Baseline Data: October 2025- November 2025- December 2025 MARCH 2026"
+        }
+      ],
+      "start_date": "2025-10-01"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2326/RA 0286",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "Baseline Data: October 2025- November 2025- December 2025"
+        }
+      ],
+      "report_date": "2025-10-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2025-11-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-11-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286) Environmental Laboratory: Eurofine Enviro Lab Pvt. Ltd., Ranjangaon Baseline Data: October 2025- November 2025- December 2025 MARCH 2026"
+        }
+      ],
+      "start_date": "2025-10-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2,
+      "end_date": "2025-11-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-10-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-11-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "(NABET Certificate No: NABET/EIA/2326/RA 0286) Environmental Laboratory: Eurofine Enviro Lab Pvt. Ltd., Ranjangaon Baseline Data: October 2025- November 2025- December 2025 MARCH 2026"
+        }
+      ],
+      "start_date": "2025-10-01"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:07:01Z",
+  "id": "99767e38f3848f82",
+  "pages_read": 73,
+  "pages_total": 73,
+  "project": "EXECUTIVE SUMMARY (English and Marathi) (UID: MISPL/2025-26/EIA/010) Of Expansion Of Distillery From 30 KLPD To 45 KLPD (B & C Heavy Molasses) and Sugar Factory From 2500 TCD To 7000 TCD By SHRI SHANKAR SAHAKARI SAKHAR KARKHANA LIMITED A/p:",
+  "project_name": "EXECUTIVE SUMMARY (English and Marathi) (UID: MISPL/2025-26/EIA/010) Of Expansion Of Distillery From 30 KLPD To 45 KLPD (B & C Heavy Molasses) and Sugar Factory From 2500 TCD To 7000 TCD By SHRI SHANKAR SAHAKARI SAKHAR KARKHANA LIMITED A/p:",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_SSSKL_(Single_pdf)%20(2).pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_SSSKL_(Single_pdf)%20(2).pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_SSSKL_(Single_pdf)%20(2).pdf",
+  "state": "Maharashtra",
+  "title": "EXECUTIVE SUMMARY (English and Marathi) (UID: MISPL/2025-26/EIA/010) Of Expansion Of Distillery From 30 KLPD To 45 KLPD (B & C Heavy Molasses) and Sugar Factory From 2500 TCD To 7000 TCD By SHRI SHANKAR SAHAKARI SAKHAR KARKHANA LIMITED A/p:",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/Executive_Summary_SSSKL_(Single_pdf)%20(2).pdf",
+  "year": 2025
+}

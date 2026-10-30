@@ -1,0 +1,257 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October, 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "As per the Environmental Impact Assessment (EIA) Notification dated 14th September, 2006, Metallurgical Industries (Ferrous & Non-Ferrous) falls under"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.66,
+      "end_date": "2024-07-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-06-12"
+        },
+        {
+          "label": "End",
+          "value": "2024-07-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.66 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "2023 along with Form-1, copy of pre-feasibility report and other documents for proposing Terms of Reference (TOR) for undertaking detailed EIA study. The proposal was appraised in the EAC (Industry-1) meeting held virtually during 11-12 June, 2024 and the committee recommended for prescribing TOR for undertaking EIA study for proposed project. Accordingly, the Ministry had prescribed TOR vide IA-J-11011/455/2023-IA-II(IND-I) dated 1st July, 2024 (Annexure-I). In order to assist the M/s. Manmohan Minerals & Chemicals Pvt Ltd. for getting the Environmental Clearance, M/s Pollution and Ecology Control Services (PECS) Nagpur is entrusted the task of undertaking (EIA) study and prepare Environmen…"
+        }
+      ],
+      "start_date": "2024-06-12"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.66,
+      "end_date": "2024-07-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-06-12"
+        },
+        {
+          "label": "End",
+          "value": "2024-07-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.66 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "2023 along with Form-1, copy of pre-feasibility report and other documents for proposing Terms of Reference (TOR) for undertaking detailed EIA study. The proposal was appraised in the EAC (Industry-1) meeting held virtually during 11-12 June, 2024 and the committee recommended for prescribing TOR for undertaking EIA study for proposed project. Accordingly, the Ministry had prescribed TOR vide IA-J-11011/455/2023-IA-II(IND-I) dated 1st July, 2024 (Annexure-I). In order to assist the M/s. Manmohan Minerals & Chemicals Pvt Ltd. for getting the Environmental Clearance, M/s Pollution and Ecology Control Services (PECS) Nagpur is entrusted the task of undertaking (EIA) study and prepare Environmen…"
+        }
+      ],
+      "start_date": "2024-06-12"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October, 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "As per the Environmental Impact Assessment (EIA) Notification dated 14th September, 2006, Metallurgical Industries (Ferrous & Non-Ferrous) falls under"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.66,
+      "end_date": "2024-07-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-06-12"
+        },
+        {
+          "label": "End",
+          "value": "2024-07-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.66 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "2023 along with Form-1, copy of pre-feasibility report and other documents for proposing Terms of Reference (TOR) for undertaking detailed EIA study. The proposal was appraised in the EAC (Industry-1) meeting held virtually during 11-12 June, 2024 and the committee recommended for prescribing TOR for undertaking EIA study for proposed project. Accordingly, the Ministry had prescribed TOR vide IA-J-11011/455/2023-IA-II(IND-I) dated 1st July, 2024 (Annexure-I). In order to assist the M/s. Manmohan Minerals & Chemicals Pvt Ltd. for getting the Environmental Clearance, M/s Pollution and Ecology Control Services (PECS) Nagpur is entrusted the task of undertaking (EIA) study and prepare Environmen…"
+        }
+      ],
+      "start_date": "2024-06-12"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.66,
+      "end_date": "2024-07-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-06-12"
+        },
+        {
+          "label": "End",
+          "value": "2024-07-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.66 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "2023 along with Form-1, copy of pre-feasibility report and other documents for proposing Terms of Reference (TOR) for undertaking detailed EIA study. The proposal was appraised in the EAC (Industry-1) meeting held virtually during 11-12 June, 2024 and the committee recommended for prescribing TOR for undertaking EIA study for proposed project. Accordingly, the Ministry had prescribed TOR vide IA-J-11011/455/2023-IA-II(IND-I) dated 1st July, 2024 (Annexure-I). In order to assist the M/s. Manmohan Minerals & Chemicals Pvt Ltd. for getting the Environmental Clearance, M/s Pollution and Ecology Control Services (PECS) Nagpur is entrusted the task of undertaking (EIA) study and prepare Environmen…"
+        }
+      ],
+      "start_date": "2024-06-12"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:49Z",
+  "id": "58bc297474bbe4af",
+  "pages_read": 13,
+  "pages_total": 13,
+  "project": "Executive Summary Manmohan",
+  "project_name": "Executive Summary Manmohan",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Manmohan.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Manmohan.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Manmohan.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary Manmohan",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Manmohan.pdf",
+  "year": 2006
+}

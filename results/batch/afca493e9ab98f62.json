@@ -1,0 +1,165 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/21-24/SA 0229",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/21-24/SA 0229"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 4,
+          "text": "Summary of Draft EIA/EMP Ghungur Bauxite Block-I 3 Shree Bhairavnath Earth Movers & Company  Air Environment Air Quality Monitoring was carried out at 12 Stations consisting 1 Sampling Stations within the Core Zone (Project Area) and 11 Sampling Stations in Buffer Zone (10 Kms around Core Zone). Parameters of twelve air pollutants viz. PM10, PM2.5, Sulphur Dioxide (SO2), Oxides of Nitrogen (NOX), Ozone (O3), Carbon Monoxide (CO) and Heavy Metals were monitored. These parameters were included for representing baseline status of ambient air quality within the Study Area. Results & Discussion: On the basis of observations the parameter wise result of monitored"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/21-24/SA 0229",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/21-24/SA 0229"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "1533(E) dated 14th September 2006"
+        }
+      ],
+      "report_date": "2006-09-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 4,
+          "text": "Summary of Draft EIA/EMP Ghungur Bauxite Block-I 3 Shree Bhairavnath Earth Movers & Company  Air Environment Air Quality Monitoring was carried out at 12 Stations consisting 1 Sampling Stations within the Core Zone (Project Area) and 11 Sampling Stations in Buffer Zone (10 Kms around Core Zone). Parameters of twelve air pollutants viz. PM10, PM2.5, Sulphur Dioxide (SO2), Oxides of Nitrogen (NOX), Ozone (O3), Carbon Monoxide (CO) and Heavy Metals were monitored. These parameters were included for representing baseline status of ambient air quality within the Study Area. Results & Discussion: On the basis of observations the parameter wise result of monitored"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:07Z",
+  "id": "afca493e9ab98f62",
+  "pages_read": 10,
+  "pages_total": 10,
+  "project": "NABET/EIA/21-24/SA 0229 JANUARY 2025 Summary of Draft EIA/EMP Ghungur Bauxite Block-I 1 Shree Bhairavnath Earth Movers & Company [",
+  "project_name": "NABET/EIA/21-24/SA 0229 JANUARY 2025 Summary of Draft EIA/EMP Ghungur Bauxite Block-I 1 Shree Bhairavnath Earth Movers & Company [",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-02/Executive%20Summary%20English_Ghungur-I.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-02/Executive%20Summary%20English_Ghungur-I.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-02/Executive%20Summary%20English_Ghungur-I.pdf",
+  "state": "Maharashtra",
+  "title": "NABET/EIA/21-24/SA 0229 JANUARY 2025 Summary of Draft EIA/EMP Ghungur Bauxite Block-I 1 Shree Bhairavnath Earth Movers & Company [",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-02/Executive%20Summary%20English_Ghungur-I.pdf",
+  "year": 2006
+}

@@ -1,0 +1,187 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2326/RA 0298",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/2326/RA 0298"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "DATED 24TH DECEMBER, 2013"
+        }
+      ],
+      "report_date": "2013-12-24",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Located At VILLAGE – MALKHED & UDKHED, TALUKA – CHANDUR RAILWAY & AMRAVATI, DISTRICT- AMRAVATI, MAHARASHTRA- 444701 (Study Period – March 2024 to May 2024) SCHEDULE AS PER EIA NOTIFICATION, 2006 & ITS SUBSEQUENT AMENDMENTS TILL DATE - ACTIVITY 3(b), CATEGORY “B1” - CEMENT PLANTS (STANDALONE GRINDING UNIT) AS PER O.M. DATED 24TH DECEMBER, 2013 ToR Letter No. SIA/MH/IND1/500457/2024 dated 18.10.2024 Issued by State Level Expert Appraisal Committee (SEAC), Maharashtra Project Proponent: M/s. AMBUJA CONCRETE NORTH PRIVATE LIMITED ADANI CORPORATE HOUSE, SHANTIGRAM, KHODIYAR, SG HIGHWAY, AHMEDABAD - 382421 (GUJARAT) Email: Email: bhimsi"
+        }
+      ],
+      "start_date": "2024-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2326/RA 0298",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/2326/RA 0298"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "DATED 24TH DECEMBER, 2013"
+        }
+      ],
+      "report_date": "2013-12-24",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Located At VILLAGE – MALKHED & UDKHED, TALUKA – CHANDUR RAILWAY & AMRAVATI, DISTRICT- AMRAVATI, MAHARASHTRA- 444701 (Study Period – March 2024 to May 2024) SCHEDULE AS PER EIA NOTIFICATION, 2006 & ITS SUBSEQUENT AMENDMENTS TILL DATE - ACTIVITY 3(b), CATEGORY “B1” - CEMENT PLANTS (STANDALONE GRINDING UNIT) AS PER O.M. DATED 24TH DECEMBER, 2013 ToR Letter No. SIA/MH/IND1/500457/2024 dated 18.10.2024 Issued by State Level Expert Appraisal Committee (SEAC), Maharashtra Project Proponent: M/s. AMBUJA CONCRETE NORTH PRIVATE LIMITED ADANI CORPORATE HOUSE, SHANTIGRAM, KHODIYAR, SG HIGHWAY, AHMEDABAD - 382421 (GUJARAT) Email: Email: bhimsi"
+        }
+      ],
+      "start_date": "2024-03-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:56Z",
+  "id": "986cb4e96676f14f",
+  "pages_read": 28,
+  "pages_total": 28,
+  "project": "MS Ambuja Concrete North Pvt Ltd ACNPL English Summary",
+  "project_name": "MS Ambuja Concrete North Pvt Ltd ACNPL English Summary",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/MS_Ambuja_Concrete_North_Pvt_Ltd_ACNPL_English_Summary.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/MS_Ambuja_Concrete_North_Pvt_Ltd_ACNPL_English_Summary.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/MS_Ambuja_Concrete_North_Pvt_Ltd_ACNPL_English_Summary.pdf",
+  "state": "Maharashtra",
+  "title": "MS Ambuja Concrete North Pvt Ltd ACNPL English Summary",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/MS_Ambuja_Concrete_North_Pvt_Ltd_ACNPL_English_Summary.pdf",
+  "year": 2013
+}

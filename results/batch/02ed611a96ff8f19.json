@@ -1,0 +1,177 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "Activity 1(c) Category B1 of EIA Notification 2006 and its subsequent amended dated 14th August 2018 [Major irrigation system (≥10,000 to < 50,000 ha)]"
+        }
+      ],
+      "report_date": "2018-08-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 142.59,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-08-01"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 142.59 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Activity 1(c) Category B1 of EIA Notification 2006 and its subsequent amended dated 14th August 2018 [Major irrigation system (≥10,000 to < 50,000 ha)]. Accordingly, an Environmental Impact Assessment (EIA) Study has been conducted to assess the feasibility of the proposed Lift Irrigation Scheme by assessing the impacts on the surrounding environment in accordance to the procedure stated in the EIA Notification dated 14th September, 2006. Initially, the Mangalwedha Lift irrigation Scheme project was proposed for implementation on an area of 21357 Ha. of CCA with ICA of 11820 Ha. in two (2) phases benefitting 24 villages. The scope of the L.I.S. comprised of feeding from Gunjegaon barrage thr…"
+        }
+      ],
+      "start_date": "2018-08-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 4,
+          "text": "Activity 1(c) Category B1 of EIA Notification 2006 and its subsequent amended dated 14th August 2018 [Major irrigation system (≥10,000 to < 50,000 ha)]"
+        }
+      ],
+      "report_date": "2018-08-14",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 142.59,
+      "end_date": "2006-09-14",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2018-08-01"
+        },
+        {
+          "label": "End",
+          "value": "2006-09-14"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 142.59 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 4,
+          "text": "Activity 1(c) Category B1 of EIA Notification 2006 and its subsequent amended dated 14th August 2018 [Major irrigation system (≥10,000 to < 50,000 ha)]. Accordingly, an Environmental Impact Assessment (EIA) Study has been conducted to assess the feasibility of the proposed Lift Irrigation Scheme by assessing the impacts on the surrounding environment in accordance to the procedure stated in the EIA Notification dated 14th September, 2006. Initially, the Mangalwedha Lift irrigation Scheme project was proposed for implementation on an area of 21357 Ha. of CCA with ICA of 11820 Ha. in two (2) phases benefitting 24 villages. The scope of the L.I.S. comprised of feeding from Gunjegaon barrage thr…"
+        }
+      ],
+      "start_date": "2018-08-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:14Z",
+  "id": "02ed611a96ff8f19",
+  "pages_read": 24,
+  "pages_total": 24,
+  "project": "Executive Summary English for PH",
+  "project_name": "Executive Summary English for PH",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-01/Executive_Summary_English_for_PH.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-01/Executive_Summary_English_for_PH.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-01/Executive_Summary_English_for_PH.pdf",
+  "state": "Maharashtra",
+  "title": "Executive Summary English for PH",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-01/Executive_Summary_English_for_PH.pdf",
+  "year": 2018
+}

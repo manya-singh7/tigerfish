@@ -1,0 +1,261 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The certificate appears to expire within three months of the report date; verify the applicable accreditation record.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        }
+      ],
+      "report_date": "2027-10-11",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized &amp; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 &amp; Validity: 28.02.2026) Baseline Monitoring Period: October -November- December 2023 VILLAGE: SHIVNAGAR, RETHARE BK, TAL.: KARAD, DIST.: SATARA, MAHARASHTRA STATE EXPANSION OF DISTILLERY FROM 142 KLPD TO 300 KLPD USING C/ B HEAVY MOLASSES/SUGARCANE JUICE/SYRUP, SUGAR FACTORY FROM 7,500 TCD TO 12,000 TCD & CO-GENERATION PLANT FROM 16 MW TO 38 MW FOR YASHWANTRAO MOHITE KRISHNA SAHAKARI SAKHAR KARKHANA LTD. BY"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The certificate appears to expire within three months of the report date; verify the applicable accreditation record.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        }
+      ],
+      "report_date": "2027-10-11",
+      "valid_until": "2027-10-11"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The certificate appears to expire within three months of the report date; verify the applicable accreditation record.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        }
+      ],
+      "report_date": "2027-10-11",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized &amp; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 &amp; Validity: 28.02.2026) Baseline Monitoring Period: October -November- December 2023 VILLAGE: SHIVNAGAR, RETHARE BK, TAL.: KARAD, DIST.: SATARA, MAHARASHTRA STATE EXPANSION OF DISTILLERY FROM 142 KLPD TO 300 KLPD USING C/ B HEAVY MOLASSES/SUGARCANE JUICE/SYRUP, SUGAR FACTORY FROM 7,500 TCD TO 12,000 TCD & CO-GENERATION PLANT FROM 16 MW TO 38 MW FOR YASHWANTRAO MOHITE KRISHNA SAHAKARI SAKHAR KARKHANA LTD. BY"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The certificate appears to expire within three months of the report date; verify the applicable accreditation record.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        }
+      ],
+      "report_date": "2027-10-11",
+      "valid_until": "2027-10-11"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:10:57Z",
+  "id": "a7cd750d3db25b23",
+  "pages_read": 139,
+  "pages_total": 139,
+  "project": "Water Lifting Permission 132 - 133 Executive Summary in English Summary of Draft EIA Report for Expansion of Distillery from 142 KLPD to 300 KLPD using C/ B Heavy Molasses/ Sugarcane Juice/ Syrup, Sugar Factory from 7,500 TCD to 12,000 TCD ",
+  "project_name": "Water Lifting Permission 132 - 133 Executive Summary in English Summary of Draft EIA Report for Expansion of Distillery from 142 KLPD to 300 KLPD using C/ B Heavy Molasses/ Sugarcane Juice/ Syrup, Sugar Factory from 7,500 TCD to 12,000 TCD ",
+  "sector": "Ports and harbours",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-04/Executive_Summary_Yashwantrao_Mohite_Krishna_Sahakari_Sakhar_Karakhana_Ltd.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-04/Executive_Summary_Yashwantrao_Mohite_Krishna_Sahakari_Sakhar_Karakhana_Ltd.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-04/Executive_Summary_Yashwantrao_Mohite_Krishna_Sahakari_Sakhar_Karakhana_Ltd.pdf",
+  "state": "Maharashtra",
+  "title": "Water Lifting Permission 132 - 133 Executive Summary in English Summary of Draft EIA Report for Expansion of Distillery from 142 KLPD to 300 KLPD using C/ B Heavy Molasses/ Sugarcane Juice/ Syrup, Sugar Factory from 7,500 TCD to 12,000 TCD ",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-04/Executive_Summary_Yashwantrao_Mohite_Krishna_Sahakari_Sakhar_Karakhana_Ltd.pdf",
+  "year": 2027
+}

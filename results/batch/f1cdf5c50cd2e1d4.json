@@ -1,0 +1,155 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "(Industry-I) on 8th May, 2025 and ToR Letter was issued by MoEF&CC, New Delhi on 31st May, 2025"
+        }
+      ],
+      "report_date": "2025-05-08",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Resource requirements (Land; water; fuel; manpower) 3 2.2 Operational activity 5 2.3 Key pollution concerns 6 3.0 Baseline environmental Studies- Ambient air quality, Ambient Noise Quality, Traffic Study, surface and ground water quality, soil characteristic, flora and fauna, socio economic condition of the nearby population. 7 4.0 Anticipated Impacts of the project on air, Noise, water, land, flora-fauna and nearby population. 10 5.0 Alternate analysis 11 6.0 Environment Monitoring Program 11 7.0 Additional studies: Risk assessment, public consultation and action plan 14 8.0 Project benefits 15 9.0 Environment Management Plan"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "(Industry-I) on 8th May, 2025 and ToR Letter was issued by MoEF&CC, New Delhi on 31st May, 2025"
+        }
+      ],
+      "report_date": "2025-05-08",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "date-range and duration regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "A baseline or monitoring period was mentioned, but its readable dates could not be confirmed; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring context",
+          "page": 2,
+          "text": "Resource requirements (Land; water; fuel; manpower) 3 2.2 Operational activity 5 2.3 Key pollution concerns 6 3.0 Baseline environmental Studies- Ambient air quality, Ambient Noise Quality, Traffic Study, surface and ground water quality, soil characteristic, flora and fauna, socio economic condition of the nearby population. 7 4.0 Anticipated Impacts of the project on air, Noise, water, land, flora-fauna and nearby population. 10 5.0 Alternate analysis 11 6.0 Environment Monitoring Program 11 7.0 Additional studies: Risk assessment, public consultation and action plan 14 8.0 Project benefits 15 9.0 Environment Management Plan"
+        }
+      ]
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:45Z",
+  "id": "f1cdf5c50cd2e1d4",
+  "pages_read": 16,
+  "pages_total": 16,
+  "project": "5 MW; Synthetic Gypsum: 1560 TPD (65 TPH) and DG Sets: 2500 KVA (1 x 2500 KVA or 2 x 1000 KVA & 1 x 500 KVA or 1 x 1000 KVA, 2 x 500 KVA & 2 x 250 KVA) At Villages: Nimsala (Nimsada), Kondhala & Dahegaon, Taluka: Warora, District: Chandrapu",
+  "project_name": "5 MW; Synthetic Gypsum: 1560 TPD (65 TPH) and DG Sets: 2500 KVA (1 x 2500 KVA or 2 x 1000 KVA & 1 x 500 KVA or 1 x 1000 KVA, 2 x 500 KVA & 2 x 250 KVA) At Villages: Nimsala (Nimsada), Kondhala & Dahegaon, Taluka: Warora, District: Chandrapu",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/English_Executive_Summary_Plant.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/English_Executive_Summary_Plant.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/English_Executive_Summary_Plant.pdf",
+  "state": "Maharashtra",
+  "title": "5 MW; Synthetic Gypsum: 1560 TPD (65 TPH) and DG Sets: 2500 KVA (1 x 2500 KVA or 2 x 1000 KVA & 1 x 500 KVA or 1 x 1000 KVA, 2 x 500 KVA & 2 x 250 KVA) At Villages: Nimsala (Nimsada), Kondhala & Dahegaon, Taluka: Warora, District: Chandrapu",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-10/English_Executive_Summary_Plant.pdf",
+  "year": 2025
+}

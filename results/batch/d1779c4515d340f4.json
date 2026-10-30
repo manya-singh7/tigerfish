@@ -1,0 +1,247 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/26-29/RA 0483",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/26-29/RA 0483, Validity: 30"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": TO25A2409MH5396053N, Dated: 25/12/2025"
+        }
+      ],
+      "report_date": "2025-12-25",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "ToR No.: TO25A2409MH5396053N, Dated: 25/12/2025 Project of Schedule 5(f) Synthetic Organic Chemicals Industry Category A Study Period: October to December 2025 Monitoring Done By KIWIS Eco Laboratories Pvt. Ltd. Accredited by NABL vide Certificate No. TC-15391 Southern Enviro Engineers Pvt. Ltd. (Certificate No.: NABET/EIA/26-29/RA 0483, Validity: 30.03.2029) Consultant"
+        }
+      ],
+      "start_date": "2025-12-25"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "ToR No.: TO25A2409MH5396053N, Dated: 25/12/2025 Project of Schedule 5(f) Synthetic Organic Chemicals Industry Category A Study Period: October to December 2025 Monitoring Done By KIWIS Eco Laboratories Pvt. Ltd. Accredited by NABL vide Certificate No. TC-15391 Southern Enviro Engineers Pvt. Ltd. (Certificate No.: NABET/EIA/26-29/RA 0483, Validity: 30.03.2029) Consultant"
+        }
+      ],
+      "start_date": "2025-12-25"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/26-29/RA 0483",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/26-29/RA 0483, Validity: 30"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": TO25A2409MH5396053N, Dated: 25/12/2025"
+        }
+      ],
+      "report_date": "2025-12-25",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "ToR No.: TO25A2409MH5396053N, Dated: 25/12/2025 Project of Schedule 5(f) Synthetic Organic Chemicals Industry Category A Study Period: October to December 2025 Monitoring Done By KIWIS Eco Laboratories Pvt. Ltd. Accredited by NABL vide Certificate No. TC-15391 Southern Enviro Engineers Pvt. Ltd. (Certificate No.: NABET/EIA/26-29/RA 0483, Validity: 30.03.2029) Consultant"
+        }
+      ],
+      "start_date": "2025-12-25"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 0.82,
+      "end_date": "2025-12-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-12-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 0.82 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "ToR No.: TO25A2409MH5396053N, Dated: 25/12/2025 Project of Schedule 5(f) Synthetic Organic Chemicals Industry Category A Study Period: October to December 2025 Monitoring Done By KIWIS Eco Laboratories Pvt. Ltd. Accredited by NABL vide Certificate No. TC-15391 Southern Enviro Engineers Pvt. Ltd. (Certificate No.: NABET/EIA/26-29/RA 0483, Validity: 30.03.2029) Consultant"
+        }
+      ],
+      "start_date": "2025-12-25"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:05:34Z",
+  "id": "d1779c4515d340f4",
+  "pages_read": 35,
+  "pages_total": 35,
+  "project": "After receiving the Terms of Reference (ToR) the Draft Environmental Impact Assessment (EIA) report is being prepared for the purpose of conducting the Public Hearing",
+  "project_name": "After receiving the Terms of Reference (ToR) the Draft Environmental Impact Assessment (EIA) report is being prepared for the purpose of conducting the Public Hearing",
+  "sector": "Ports and harbours",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/2_Exe_Summary_English_MVP_Oils_and_Energies_Pvt_Ltd.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/2_Exe_Summary_English_MVP_Oils_and_Energies_Pvt_Ltd.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/2_Exe_Summary_English_MVP_Oils_and_Energies_Pvt_Ltd.pdf",
+  "state": "Maharashtra",
+  "title": "After receiving the Terms of Reference (ToR) the Draft Environmental Impact Assessment (EIA) report is being prepared for the purpose of conducting the Public Hearing",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-04/2_Exe_Summary_English_MVP_Oils_and_Energies_Pvt_Ltd.pdf",
+  "year": 2025
+}

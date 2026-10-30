@@ -1,0 +1,197 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October, 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "RO-NAGPUR/CONSENT/2122001664 dated 28/12/2021 valid up to"
+        }
+      ],
+      "report_date": "2021-12-28",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 12,
+          "text": "Will be sold to brick manufacturers Firewood Ash 80 Will be sold to brick manufacturers DESCRIPTION OF THE ENVIRONMENT (BASELINE DATA) Air Environment Ambient air quality (AAQ) samples were collected on basis of 24-hour sampling and twice a week at each site. The ambient air quality samples were collected from January 2024 to March 2024 for continuous 13 weeks in an area of 10 km radius"
+        }
+      ],
+      "start_date": "2024-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/2225/RA 0291",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/2225/RA 0291"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": "Valid upto 16th October, 2025"
+        },
+        {
+          "label": "Report date",
+          "page": 2,
+          "text": "RO-NAGPUR/CONSENT/2122001664 dated 28/12/2021 valid up to"
+        }
+      ],
+      "report_date": "2021-12-28",
+      "valid_until": "2025-10-16"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 3,
+      "end_date": "2024-03-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2024-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2024-03-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 3 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 12,
+          "text": "Will be sold to brick manufacturers Firewood Ash 80 Will be sold to brick manufacturers DESCRIPTION OF THE ENVIRONMENT (BASELINE DATA) Air Environment Ambient air quality (AAQ) samples were collected on basis of 24-hour sampling and twice a week at each site. The ambient air quality samples were collected from January 2024 to March 2024 for continuous 13 weeks in an area of 10 km radius"
+        }
+      ],
+      "start_date": "2024-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:06Z",
+  "id": "1daa6906e95f1a80",
+  "pages_read": 17,
+  "pages_total": 17,
+  "project": "Navratna Manganese Products LLP v EXECUTIVE SUMMARY Location Map of the Proposed Project Site Executive Summary for Proposed Expansion of Manufacturing of 1,000 TPM of Manganese Oxide at MIDC Hingna, Tehsil-Hingna, District -Nagpur, Maharas",
+  "project_name": "Navratna Manganese Products LLP v EXECUTIVE SUMMARY Location Map of the Proposed Project Site Executive Summary for Proposed Expansion of Manufacturing of 1,000 TPM of Manganese Oxide at MIDC Hingna, Tehsil-Hingna, District -Nagpur, Maharas",
+  "sector": "Industrial projects",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Navratna.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Navratna.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Navratna.pdf",
+  "state": "Maharashtra",
+  "title": "Navratna Manganese Products LLP v EXECUTIVE SUMMARY Location Map of the Proposed Project Site Executive Summary for Proposed Expansion of Manufacturing of 1,000 TPM of Manganese Oxide at MIDC Hingna, Tehsil-Hingna, District -Nagpur, Maharas",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-03/Executive_Summary_Navratna.pdf",
+  "year": 2021
+}

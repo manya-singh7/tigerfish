@@ -1,0 +1,197 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "JANUARY 2026"
+        }
+      ],
+      "report_date": "2026-01-01",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized &amp; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 &amp; Validity: 28.02.2026) Baseline Monitoring Period: October -November- December 2023"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/24-27/RA 0379",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable certificate validity extends beyond three months after the report date.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11"
+        },
+        {
+          "label": "Validity date",
+          "page": 1,
+          "text": ": NABET/EIA/24-27/RA 0379; Valid up to: 11.10.2027)"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "JANUARY 2026"
+        }
+      ],
+      "report_date": "2026-01-01",
+      "valid_until": "2027-10-11"
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 55.0,
+      "end_date": "2026-02-28",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2021-07-31"
+        },
+        {
+          "label": "End",
+          "value": "2026-02-28"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 55 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "Environmental Laboratory, Pune (MS) (MoEFCC Recognized &amp; NABL Accredited: LB/99/7/2021-INST LAB-HO-CPCB-HO/Pvt./372 &amp; Validity: 28.02.2026) Baseline Monitoring Period: October -November- December 2023"
+        }
+      ],
+      "start_date": "2021-07-31"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:09:24Z",
+  "id": "c5cb2c18610665ed",
+  "pages_read": 67,
+  "pages_total": 67,
+  "project": "ToRs Letter 44 – 61 62 63 64 – 309 Annexures I Plot Layout II Certificate of Incorporation III Leave & License Agreement ENGLISH SUMMARY Summary of Draft EIA Report for Expansion of Sugar Factory from 4,900 TCD to 10,000 TCD, Distillery fro",
+  "project_name": "ToRs Letter 44 – 61 62 63 64 – 309 Annexures I Plot Layout II Certificate of Incorporation III Leave & License Agreement ENGLISH SUMMARY Summary of Draft EIA Report for Expansion of Sugar Factory from 4,900 TCD to 10,000 TCD, Distillery fro",
+  "sector": "Ports and harbours",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-01/Executive_Summary_Atharv_Intertrade_Pvt_Ltd.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-01/Executive_Summary_Atharv_Intertrade_Pvt_Ltd.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-01/Executive_Summary_Atharv_Intertrade_Pvt_Ltd.pdf",
+  "state": "Maharashtra",
+  "title": "ToRs Letter 44 – 61 62 63 64 – 309 Annexures I Plot Layout II Certificate of Incorporation III Leave & License Agreement ENGLISH SUMMARY Summary of Draft EIA Report for Expansion of Sugar Factory from 4,900 TCD to 10,000 TCD, Distillery fro",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-01/Executive_Summary_Atharv_Intertrade_Pvt_Ltd.pdf",
+  "year": 2026
+}

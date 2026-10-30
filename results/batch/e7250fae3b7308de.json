@@ -1,0 +1,237 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": TO24B3301MH5519401N Dated: 1st October 2024"
+        }
+      ],
+      "report_date": "2024-10-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.96,
+      "end_date": "2025-03-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.96 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "Expansion of Existing Common Bio-Medical Waste Treatment Facility at Plot No. 31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | V The baseline environmental quality of Air, water, soil, noise, socioeconomic status and ecology has been assessed in the period of 1 Jan 2025 to 31 March 2025 in a study area of 10 km radial distance from the project site. The base line data has been collected by M/s Nilawar Laboratories, Nagpur (NABET Accreditation Lab Vide –TC -9782) & Monitoring stations were selected by Laboratory experts in coordinator with EIA Coordinator. The ambient air quality monitoring was carried out at 8 locations to monitor PM10, PM2.5, SO2 and NOx"
+        }
+      ],
+      "start_date": "2025-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.96,
+      "end_date": "2025-03-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.96 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "Expansion of Existing Common Bio-Medical Waste Treatment Facility at Plot No. 31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | V The baseline environmental quality of Air, water, soil, noise, socioeconomic status and ecology has been assessed in the period of 1 Jan 2025 to 31 March 2025 in a study area of 10 km radial distance from the project site. The base line data has been collected by M/s Nilawar Laboratories, Nagpur (NABET Accreditation Lab Vide –TC -9782) & Monitoring stations were selected by Laboratory experts in coordinator with EIA Coordinator. The ambient air quality monitoring was carried out at 8 locations to monitor PM10, PM2.5, SO2 and NOx"
+        }
+      ],
+      "start_date": "2025-01-01"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": ": TO24B3301MH5519401N Dated: 1st October 2024"
+        }
+      ],
+      "report_date": "2024-10-01",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.96,
+      "end_date": "2025-03-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.96 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "Expansion of Existing Common Bio-Medical Waste Treatment Facility at Plot No. 31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | V The baseline environmental quality of Air, water, soil, noise, socioeconomic status and ecology has been assessed in the period of 1 Jan 2025 to 31 March 2025 in a study area of 10 km radial distance from the project site. The base line data has been collected by M/s Nilawar Laboratories, Nagpur (NABET Accreditation Lab Vide –TC -9782) & Monitoring stations were selected by Laboratory experts in coordinator with EIA Coordinator. The ambient air quality monitoring was carried out at 8 locations to monitor PM10, PM2.5, SO2 and NOx"
+        }
+      ],
+      "start_date": "2025-01-01"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.96,
+      "end_date": "2025-03-31",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-01-01"
+        },
+        {
+          "label": "End",
+          "value": "2025-03-31"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.96 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 5,
+          "text": "Expansion of Existing Common Bio-Medical Waste Treatment Facility at Plot No. 31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | V The baseline environmental quality of Air, water, soil, noise, socioeconomic status and ecology has been assessed in the period of 1 Jan 2025 to 31 March 2025 in a study area of 10 km radial distance from the project site. The base line data has been collected by M/s Nilawar Laboratories, Nagpur (NABET Accreditation Lab Vide –TC -9782) & Monitoring stations were selected by Laboratory experts in coordinator with EIA Coordinator. The ambient air quality monitoring was carried out at 8 locations to monitor PM10, PM2.5, SO2 and NOx"
+        }
+      ],
+      "start_date": "2025-01-01"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:13:58Z",
+  "id": "e7250fae3b7308de",
+  "pages_read": 8,
+  "pages_total": 8,
+  "project": "31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | I Executive Summary 1",
+  "project_name": "31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | I Executive Summary 1",
+  "sector": "Industrial projects",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-07/ExecutiveSummary-Touch&Glow.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-07/ExecutiveSummary-Touch&Glow.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-07/ExecutiveSummary-Touch&Glow.pdf",
+  "state": "Maharashtra",
+  "title": "31, BIDCO Industrial Estate, Chintupada, Palghar by M/s Touch N Glow Draft EIA Page | I Executive Summary 1",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-07/ExecutiveSummary-Touch&Glow.pdf",
+  "year": 2024
+}

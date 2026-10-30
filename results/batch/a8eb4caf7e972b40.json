@@ -1,0 +1,187 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0240",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0240, Validity: 29"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0240, Validity: 29.03.2026)"
+        }
+      ],
+      "report_date": "2026-03-29",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 7.95,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-28"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 7.95 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "2026) Consultant ToR No.: TO24B0108MH5164931N, Dated: 28/12/2025 Project of Schedule 1 (a), Mining of Minerals, Category B1 Baseline Period: March to May 2025 & December 2025 Monitoring Done By: Kiwis Eco Laboratories Private Limited Accredited by NABL vide Certificate No.: TC-15391"
+        }
+      ],
+      "start_date": "2025-12-28"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [],
+  "checks": {
+    "accreditation": {
+      "certificate": "NABET/EIA/23-26/SA 0240",
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "NABET certificate",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0240, Validity: 29"
+        },
+        {
+          "label": "Report date",
+          "page": 1,
+          "text": "NABET/EIA/23-26/SA 0240, Validity: 29.03.2026)"
+        }
+      ],
+      "report_date": "2026-03-29",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 7.95,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-12-28"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "OK",
+      "message": "The readable baseline/monitoring period is about 7.95 months.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 1,
+          "text": "2026) Consultant ToR No.: TO24B0108MH5164931N, Dated: 28/12/2025 Project of Schedule 1 (a), Mining of Minerals, Category B1 Baseline Period: March to May 2025 & December 2025 Monitoring Done By: Kiwis Eco Laboratories Private Limited Accredited by NABL vide Certificate No.: TC-15391"
+        }
+      ],
+      "start_date": "2025-12-28"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:08:02Z",
+  "id": "a8eb4caf7e972b40",
+  "pages_read": 47,
+  "pages_total": 47,
+  "project": "English Ex Summary Ms SMPL 11.79 Ha ",
+  "project_name": "English Ex Summary Ms SMPL 11.79 Ha ",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-02/English_Ex_Summary_Ms_SMPL_11.79_Ha_.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-02/English_Ex_Summary_Ms_SMPL_11.79_Ha_.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-02/English_Ex_Summary_Ms_SMPL_11.79_Ha_.pdf",
+  "state": "Maharashtra",
+  "title": "English Ex Summary Ms SMPL 11.79 Ha ",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2026-02/English_Ex_Summary_Ms_SMPL_11.79_Ha_.pdf",
+  "year": 2026
+}

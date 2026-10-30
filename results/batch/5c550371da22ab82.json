@@ -1,0 +1,237 @@
+{
+  "audit_type": "quick",
+  "batch_checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "dated 18.07.2000 in the state of Maharashtra"
+        }
+      ],
+      "report_date": "2000-07-18",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.83,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-07-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.83 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ToR was granted by the Ministry of Environment, Forest & Climate Change (MOEFCC) on 25th July 2025, under No. IA-J-11011/274/2025-IA-II. The study period conducted was from March 2025 to May 2025. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries by IL&FS Ecosmart Ltd., approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station"
+        }
+      ],
+      "start_date": "2025-07-25"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "batch_flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.83,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-07-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.83 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ToR was granted by the Ministry of Environment, Forest & Climate Change (MOEFCC) on 25th July 2025, under No. IA-J-11011/274/2025-IA-II. The study period conducted was from March 2025 to May 2025. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries by IL&FS Ecosmart Ltd., approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station"
+        }
+      ],
+      "start_date": "2025-07-25"
+    }
+  ],
+  "checks": {
+    "accreditation": {
+      "certificate": null,
+      "check": "accreditation",
+      "evidence": [
+        {
+          "label": "Method",
+          "value": "NABET certificate, validity date and report date regex; no model call"
+        }
+      ],
+      "grade": "GREY",
+      "message": "Accreditation validity could not be confirmed from readable dates; verify.",
+      "quotes": [
+        {
+          "label": "Report date",
+          "page": 3,
+          "text": "dated 18.07.2000 in the state of Maharashtra"
+        }
+      ],
+      "report_date": "2000-07-18",
+      "valid_until": null
+    },
+    "baseline_season": {
+      "check": "baseline_season",
+      "duration_months": 2.83,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-07-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.83 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ToR was granted by the Ministry of Environment, Forest & Climate Change (MOEFCC) on 25th July 2025, under No. IA-J-11011/274/2025-IA-II. The study period conducted was from March 2025 to May 2025. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries by IL&FS Ecosmart Ltd., approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station"
+        }
+      ],
+      "start_date": "2025-07-25"
+    },
+    "species_iucn": {
+      "check": "species_iucn",
+      "location": null,
+      "message": "Species verification was not automated in this run; human page review is required.",
+      "rows": [],
+      "status": "GREY"
+    }
+  },
+  "checks_run": [
+    {
+      "check": "number_pair",
+      "name": "Number pairs (rule, free)",
+      "reason": "This batch run was scoped to accreditation, baseline and species checks.",
+      "status": "not_available"
+    },
+    {
+      "check": "species_range",
+      "name": "Species in the report's tables vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "iucn_status",
+      "name": "IUCN categories vs GBIF (free)",
+      "reason": "Species verification was not automated in this run; human page review is required.",
+      "status": "not_available"
+    },
+    {
+      "check": "omission",
+      "name": "Threatened species near the site not mentioned (GBIF, free)",
+      "reason": "Omission checks were outside this batch run's scope.",
+      "status": "not_available"
+    }
+  ],
+  "consultant": null,
+  "cost": {
+    "approx_seconds": 0,
+    "gbif_calls": 0,
+    "nebius_usd": 0,
+    "tavily_credits": 0
+  },
+  "findings": [],
+  "flags": [
+    {
+      "check": "baseline_season",
+      "duration_months": 2.83,
+      "end_date": "2025-05-01",
+      "evidence": [
+        {
+          "label": "Start",
+          "value": "2025-07-25"
+        },
+        {
+          "label": "End",
+          "value": "2025-05-01"
+        },
+        {
+          "label": "Method",
+          "value": "date-range regex; no model call"
+        }
+      ],
+      "grade": "INFO",
+      "message": "The readable baseline/monitoring period is about 2.83 months, shorter than three months; verify.",
+      "quotes": [
+        {
+          "label": "Baseline/monitoring period",
+          "page": 6,
+          "text": "ToR was granted by the Ministry of Environment, Forest & Climate Change (MOEFCC) on 25th July 2025, under No. IA-J-11011/274/2025-IA-II. The study period conducted was from March 2025 to May 2025. The guiding factors for the present baseline study are the requirements prescribed by the guidelines given in the EIA Manual of the MoEF&CC and methodologies mentioned in Technical EIA Guidelines Manual for Distilleries by IL&FS Ecosmart Ltd., approved by MoEF&CC. Table 2 Observation of Environmental monitoring Environmental Attributes Frequency of monitoring Parameters Observed Results Meteorology Microprocessor based Weather Monitoring Station"
+        }
+      ],
+      "start_date": "2025-07-25"
+    }
+  ],
+  "format": "tigerfish-report/1",
+  "generated": "2026-10-30T11:12:39Z",
+  "id": "5c550371da22ab82",
+  "pages_read": 14,
+  "pages_total": 14,
+  "project": "Executive summary Proposed 105 KLPD Molasses/Sugarcane syrup-based Distillery Village Maulinagar, Belkund, Tal: Ausa, Dist: Latur, Maharashtra PROPOSED BY M/s",
+  "project_name": "Executive summary Proposed 105 KLPD Molasses/Sugarcane syrup-based Distillery Village Maulinagar, Belkund, Tal: Ausa, Dist: Latur, Maharashtra PROPOSED BY M/s",
+  "sector": "Other",
+  "site": null,
+  "source": {
+    "portal": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Ex_Summary_English.pdf",
+    "proposal_no": null,
+    "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Ex_Summary_English.pdf"
+  },
+  "source_page": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Ex_Summary_English.pdf",
+  "state": "Maharashtra",
+  "title": "Executive summary Proposed 105 KLPD Molasses/Sugarcane syrup-based Distillery Village Maulinagar, Belkund, Tal: Ausa, Dist: Latur, Maharashtra PROPOSED BY M/s",
+  "tool_version": "6b6a903",
+  "url": "https://www.mpcb.gov.in/sites/default/files/public_hearing/exe_summary/2025-11/Ex_Summary_English.pdf",
+  "year": 2000
+}
