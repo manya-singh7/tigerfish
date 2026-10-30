@@ -106,6 +106,9 @@ div[data-baseweb="tooltip"], [role="tooltip"], div[data-testid="stTooltipContent
 [data-testid="stTable"], [data-testid="stDataFrame"] { background: var(--tf-paper); }
 input, textarea, [data-baseweb="select"] > div, [data-baseweb="input"] { background: var(--tf-paper) !important; }
 button[kind="primary"], button[data-testid="stBaseButton-primary"] { color: var(--tf-on-teal) !important; }
+/* a disabled button keeps a readable label (cream on Streamlit's pale disabled fill vanished) */
+.stApp button:disabled { background-color: var(--tf-paper-2) !important; border-color: var(--tf-rule) !important; cursor: not-allowed; }
+.stApp button:disabled, .stApp button:disabled * { color: var(--tf-muted) !important; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--tf-teal) !important; outline-offset: 2px; }
 .stButton button:active, .stDownloadButton button:active { transform: translateY(1px); }
 [data-testid="stMarkdownContainer"] p { font-size: 1rem; }
