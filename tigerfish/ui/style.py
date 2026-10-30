@@ -119,7 +119,8 @@ hr { border-color: var(--tf-rule) !important; }
 .stElementContainer:has(> iframe[height="0"]), [data-testid="stElementContainer"]:has(iframe[height="0"]) { display: none; }
 
 [data-testid="stElementToolbarButtonContainer"], [data-testid="stElementToolbar"] * { box-shadow: none !important; }
-[data-testid="stTabs"] button:not([role="tab"]) { background-image: none !important; background-color: var(--tf-paper) !important; }
+/* the tab bar's scroll arrows and other plain buttons; a primary button keeps its teal (cream on paper vanished) */
+[data-testid="stTabs"] button:not([role="tab"]):not([kind="primary"]) { background-image: none !important; background-color: var(--tf-paper) !important; }
 @media (max-width: 760px) {
   .tf-table { display: block; overflow-x: auto; }
   .tf-table th, .tf-table td { min-width: 7.5rem; }
@@ -181,6 +182,13 @@ hr { border-color: var(--tf-rule) !important; }
 .tf-slip a.tf-open { font-weight: 600; text-decoration: none; }
 mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 .tf-slipbox { container-type: inline-size; }
+/* the letter, read on the page (Take action) */
+.tf-letter { max-height: 32rem; overflow-y: auto; padding: 1rem 1.25rem; background: var(--tf-paper);
+  border: 1px solid var(--tf-rule); }
+.tf-letter p { margin: 0 0 0.6rem 0; }
+.tf-letter .tf-letter-quote { font-family: Newsreader, Georgia, serif; font-style: italic;
+  font-size: 1.125rem; margin: -0.3rem 0 0.6rem 1rem; border-left: 0; padding: 0; color: var(--tf-ink); }
+.tf-letter .tf-letter-ev { font-size: 0.8125rem; color: var(--tf-muted); margin-left: 1rem; }
 /* the Overview's lead: both pages side by side and large, the text below */
 .tf-slip.tf-slip-lead { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; }
 .tf-slip-lead .tf-slip-crops { flex-direction: row; }
