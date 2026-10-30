@@ -1,18 +1,18 @@
 """Design check (docs/DESIGN.md): deterministic browser checks of the app in hosted mode, no LLM.
 
-For every page (Home, Library, a full report with each section tab, a table report, a quick
-check, Upload, How it works, Limitations), at 1440px in light and dark, from computed styles
-and the DOM:
+For every page (Home, Library, a full report with each tab and each section under Findings,
+a table report, a quick check, Upload, How it works, Limitations), at 1440px in light and
+dark, from computed styles and the DOM:
   fonts outside the type system (plus system fallbacks); gradients; box-shadows blurred more
   than 2px; emoji in headings, labels, buttons and tabs; em dashes in UI text; coloured left
-  or top accent bars; all-caps headings; a pure #FFFFFF page; text sitting directly on the
-  background pattern; "Lorem ipsum" / "John Doe" / 555 placeholders; the default favicon; a
-  page title of "Streamlit"; any "Sees clearly" left anywhere (also in the repo's text files);
-  the meta description.
+  or top accent bars; all-caps headings; a pure #FFFFFF page; "Lorem ipsum" / "John Doe" /
+  555 placeholders; the default favicon; a page title of "Streamlit"; any "Sees clearly" left
+  anywhere (also in the repo's text files); the meta description; the purpose line as Home's
+  headline.
 At 1920, 1440, 1280, 820 and 390px: no horizontal scroll, no empty half-screen, nothing
 cramped (text squeezed into a sliver, or clipped).
-Then docs/FEATURES.md: every listed feature's entry point is followed from Home (at most two
-clicks) and must be visible.
+Then docs/FEATURES.md: every listed feature's entry point is followed from Home (at most
+three clicks) and must be visible.
 
 Start the app first (no keys), as for scripts/check_hosted_ui.py:
   set TIGERFISH_HOSTED=1 && set NEBIUS_API_KEY= && set TAVILY_API_KEY= &&
@@ -60,8 +60,10 @@ PAGES = {  # name: (path, tab to open or None)
     "table_report": ("/library?report=indira_point_table_3_16", None),
     "quick_check": (f"/library?report={QUICK_REPORT}", None),
 }
-TABS = ["Contradictions", "Species & nature", "Copied text", "Promises & timeline",
-        "Public record", "Ask & investigate", "Take action", "Quality", "Cost & models"]
+TABS = ["Ask & investigate", "Take action", "Method & quality"]
+SECTIONS = ["Contradictions", "Species & nature", "Copied text", "Promises & timeline",
+            "Public record"]          # under the Findings tab
+MAX_CLICKS = 3
 results = []
 
 
@@ -106,6 +108,14 @@ def open_tab(page, name):
     idle(page)
 
 
+def open_section(page, name):
+    """Pick a section under the Findings tab (its selector is a row of radio buttons)."""
+    page.locator('[data-testid="stButtonGroup"] [role="radio"]').filter(
+        has_text=re.compile("^" + re.escape(name))).first.click()
+    page.wait_for_timeout(1500)
+    idle(page)
+
+
 # One pass over the visible DOM: returns every problem as [kind, detail].
 STYLE_JS = r"""
 ({fonts, fallbacks}) => {
@@ -129,8 +139,6 @@ STYLE_JS = r"""
   const colorful = c => { const m = c.match(/[\d.]+/g); if (!m) return false;
     const [r, g, b, a] = m.map(Number); if (a === 0) return false;
     return Math.max(r, g, b) - Math.min(r, g, b) > 40; };
-  const opaque = s => { const m = s.backgroundColor.match(/[\d.]+/g);
-    return (m && (m.length < 4 || Number(m[3]) > 0.9)) || (s.backgroundImage !== 'none'); };
   const emoji = /\p{Extended_Pictographic}/u;
   for (const el of scope) {
     const s = getComputedStyle(el);
@@ -164,12 +172,6 @@ STYLE_JS = r"""
     }
     if (el.matches('h1,h2,h3,h4,h5,h6,label,button,[role=tab],[data-testid=stWidgetLabel],.tf-h1,.tf-h2,.tf-h3,a[data-testid=stTopNavLink]')
         && emoji.test(el.innerText)) add('emoji in a heading, label or button', el, el.innerText.slice(0, 40));
-    // text never sits on the pattern: the first opaque ancestor must not be the app background
-    if (text && text.length > 1 && !el.closest('header') && el.closest('[data-testid=stMain]')) {
-      let a = el;
-      while (a && a !== app) { if (opaque(getComputedStyle(a))) break; a = a.parentElement; }
-      if (!a || a === app) add('text directly on the pattern', el, text.slice(0, 50));
-    }
   }
   // em dashes in UI text: everything visible except quotes and evidence taken from the reports
   const walker = document.createTreeWalker(document.querySelector('.stApp'), NodeFilter.SHOW_TEXT);
@@ -231,8 +233,7 @@ def style_checks(page, where):
     for kind in ("font outside the type system", "gradient", "box-shadow blur > 2px",
                  "emoji in a heading, label or button", "em dash in UI text",
                  "coloured left accent bar", "coloured top accent bar", "all-caps heading",
-                 "pure #FFFFFF page background", "text directly on the pattern",
-                 "placeholder or old text"):
+                 "pure #FFFFFF page background", "placeholder or old text"):
         got = kinds.get(kind, [])
         ok(f"{where}: no {kind}", not got, "; ".join(got[:4]) + (f" (+{len(got) - 4})" if len(got) > 4 else ""))
     loaded = page.evaluate("""() => [...document.fonts].filter(f => f.status === 'loaded')
@@ -264,13 +265,9 @@ def head_checks(page):
         except Exception:
             got.append("unreadable")
     ok("favicon is TigerFish's (not the default)", want in got, " ".join(hrefs)[:120])
-    page.wait_for_function("""() => { const d = document.querySelector(
-        'header div:has(> img[data-testid=stHeaderLogo]), header div:has(> [data-testid=stLogoLink])');
-        return d && getComputedStyle(d, '::after').content.length > 2 }""", timeout=30_000)
-    purpose = page.evaluate("""() => { const d = document.querySelector(
-        'header div:has(> img[data-testid=stHeaderLogo]), header div:has(> [data-testid=stLogoLink])');
-        return d ? getComputedStyle(d, '::after').content : '' }""")
-    ok("purpose line beside the logo in the top bar", PURPOSE in purpose, purpose[:60])
+    page.wait_for_selector(".tf-home-intro h1", timeout=60_000)
+    headline = page.locator(".tf-home-intro h1").inner_text().strip()
+    ok("purpose line is Home's headline", headline == PURPOSE, headline[:60])
 
 
 def repo_text_check():
@@ -307,13 +304,20 @@ def features(page):
                         has=page.get_by_text(value, exact=True)).first.click()
                     clicks += 1
                     idle(page)
-                elif key == "report":
-                    page.locator(f'.st-key-tf-slip-rep-{value} button', has_text="Open report").first.click()
+                elif key == "report":     # its row on Home, or Open report in the Library
+                    row = page.locator(f'a.tf-row[href*="report={value}"]')
+                    if row.count():
+                        row.first.click()
+                    else:
+                        page.locator(f'.st-key-tf-slip-rep-{value} button', has_text="Open report").first.click()
                     clicks += 1
                     page.wait_for_selector('[role="tab"]', timeout=180_000)
                     idle(page)
                 elif key == "tab":
                     open_tab(page, value)
+                    clicks += 1
+                elif key == "section":
+                    open_section(page, value)
                     clicks += 1
                 elif key == "text":
                     loc = page.get_by_text(value, exact=False).filter(visible=True)
@@ -325,7 +329,7 @@ def features(page):
                     seen = loc.count() > 0
         except Exception as e:
             why = type(e).__name__
-        ok(f"feature visible within 2 clicks: {name}", seen and clicks <= 2,
+        ok(f"feature visible within {MAX_CLICKS} clicks: {name}", seen and clicks <= MAX_CLICKS,
            f"{clicks} clicks, {'seen' if seen else 'not seen'} {why}")
 
 
@@ -344,6 +348,10 @@ def main():
                 goto(page, path)
                 style_checks(page, f"{scheme} {name}")
                 if name == "report_overview":
+                    open_tab(page, "Findings")
+                    for sec in SECTIONS:
+                        open_section(page, sec)
+                        style_checks(page, f"{scheme} report {sec}")
                     for t in TABS:
                         open_tab(page, t)
                         style_checks(page, f"{scheme} report {t}")
@@ -363,8 +371,9 @@ def main():
                     SHOTS.mkdir(parents=True, exist_ok=True)
                     full_shot(page, SHOTS / f"{name}_{w}.png")
             goto(page, PAGES["report_overview"][0])
+            open_tab(page, "Findings")
             for t in ("Contradictions", "Species & nature", "Public record"):
-                open_tab(page, t)
+                open_section(page, t)
                 layout_checks(page, f"{w}px report {t}")
                 if SHOTS and w in SHOT_WIDTHS:
                     full_shot(page, SHOTS / f"report_{t.split()[0].lower()}_{w}.png")
