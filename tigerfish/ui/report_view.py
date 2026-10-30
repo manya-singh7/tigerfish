@@ -79,7 +79,8 @@ ABOUT = {
         "page citations. Investigate, on each flag, sends an agent for more evidence."),
     ACTION: ("Mark flags Confirm, Dismiss or Unsure on their slips. The objection letter (English, "
              "Hindi, and the state's language) and the RTI and public hearing pack are built only "
-             "from the flags you confirmed."),
+             "from confirmed flags: the ones the team checked (unless you switch them off) and the "
+             "ones you confirmed. Read the letter here before downloading it."),
     QUALITY: ("The review queue of every new RED and ORANGE flag, precision from reviewers' "
               "decisions, and the evaluation against known issues and planted tests."),
     COST: ("What this audit cost and how long it took, the cost of a full audit by triage mode, "
@@ -161,7 +162,7 @@ def plan(report, quick=False):
         hidden[ASK] = "no reviewer's memo or recorded questions were saved for this report"
     if not saved:
         hidden[QUALITY] = "review and precision figures exist only for saved audits"
-    confirmed = len(cards.reviewed(rid, report.get("findings") or [], "Confirm"))
+    confirmed = len(letter_findings(report))
     counts = {CONTRA: n[CONTRA], SPECIES: n[SPECIES], COPIED: n[COPIED], PROMISES: n[PROMISES],
               RECORD: n[RECORD] + _record_count(rid), ACTION: confirmed,
               QUALITY: _quality_count(rid)}
@@ -404,17 +405,49 @@ def library_quick_overview(report):
         )
 
 
+def team_key(report_id):
+    return f"action::{report_id}::team"
+
+
+def team_checked(report):
+    """Findings the team checked: verified by a person (known issues) or confirmed by a
+    reviewer (review/reviews.jsonl), less those dismissed."""
+    findings = report.get("findings") or []
+    confirmed = review_store.confirmed_findings(report)
+    dismissed = _dismissed(report["id"], findings)
+    return [f for f in findings if f["id"] not in dismissed and (f["id"] in confirmed or (
+        f.get("verification") and f["verification"].get("outcome") != "explained"))]
+
+
+def letter_findings(report):
+    """What the letter and the pack are built from, in report order: the team's checked
+    findings (unless switched off) and the ones this visitor confirmed."""
+    rid, findings = report["id"], report.get("findings") or []
+    ids = {f["id"] for f in cards.reviewed(rid, findings, "Confirm")}
+    if st.session_state.get(team_key(rid), True):
+        ids |= {f["id"] for f in team_checked(report)}
+    return [f for f in findings if f["id"] in ids]
+
+
 def take_action(report):
     rid, findings = report["id"], report.get("findings") or []
     feedback.reviewer_input(rid, findings)
-    confirmed = cards.reviewed(rid, findings, "Confirm")
+    mine = cards.reviewed(rid, findings, "Confirm")
     dismissed = cards.reviewed(rid, findings, "Dismiss")
     unsure = cards.reviewed(rid, findings, "Unsure")
-    st.markdown(f'<div class="tf-review">Reviewed: {len(confirmed)} confirmed, '
+    st.markdown(f'<div class="tf-review">Reviewed: {len(mine)} confirmed, '
                 f'{len(dismissed)} dismissed, {len(unsure)} unsure. Reviews are kept '
                 f'{feedback.where()}.</div>', unsafe_allow_html=True)
+    team = team_checked(report)
+    if team:
+        st.toggle(f"Include the {len(team)} findings checked by the team", value=True,
+                  key=team_key(rid), help="Verified by a person against the report, or confirmed "
+                  "by a reviewer in the review queue. Switch off to build from your own "
+                  "confirmations only.")
+    confirmed = letter_findings(report)
     st.caption("Mark findings Confirm, Dismiss or Unsure on their slips in each section. The "
-               "letter and the pack are built from the findings you confirmed.")
+               "letter and the pack are built from the findings you confirmed"
+               + (" and, while the switch is on, the ones the team checked." if team else "."))
     lang_options = letter.language_options(report)
     lang_label = st.radio("Letter language", list(lang_options), horizontal=True,
                           help=" and ".join(["Hindi"] + letter.regional_languages(report))
@@ -458,6 +491,9 @@ def take_action(report):
                    "section) to build the letter and the pack.")
     if letter_error:
         st.caption(letter_error)
+    if confirmed:
+        with st.expander(f"Read the letter ({len(confirmed)} points, English)", expanded=True):
+            st.markdown(letter.preview_html(report, confirmed, addressee), unsafe_allow_html=True)
 
 
 def QUALITY_FALLBACK(report):

@@ -293,6 +293,23 @@ def render(doc, blks, tr=None):
             add_run(doc.add_paragraph(), t(b[1]))
 
 
+def preview_html(report, findings, addressee="committee"):
+    """The English letter as HTML, for reading on the page before downloading it."""
+    from tigerfish.ui.style import esc
+    out = []
+    for b in blocks(report, findings, addressee):
+        kind, text = b[0], b[1]
+        if kind == "evidence":
+            out.append(f'<p class="tf-letter-ev">{esc(text)}: {esc(b[2])}</p>')
+        elif kind == "quote":
+            out.append(f'<blockquote class="tf-letter-quote">{esc(text)}</blockquote>')
+        else:
+            tag = {"subject": "b", "heading": "b", "quote_label": "i"}.get(kind)
+            body = esc(text).replace("\n", "<br>")
+            out.append(f"<p><{tag}>{body}</{tag}></p>" if tag else f"<p>{body}</p>")
+    return f'<div class="tf-letter">{"".join(out)}</div>'
+
+
 def build_letter(report, findings, language="en", addressee="committee", draft=False):
     """Return .docx bytes. language: "en", "hi", "both" (en + hi), "ta" or "both_ta" (en + ta),
     "kn" or "both_kn" (en + kn); addressee and draft: see blocks()."""

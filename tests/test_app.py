@@ -26,7 +26,7 @@ def no_keys(monkeypatch):
 def test_app_runs_without_api_keys(no_keys):
     at = open_app(timeout=60)
     assert not at.exception
-    assert not at.toggle                                  # no live mode without a key
+    assert not [t for t in at.toggle if not t.key.startswith("action::")]  # no live mode without a key
     assert any(t.label.startswith("Contradictions (") for t in at.tabs)
     home = open_app(report=None, timeout=60)
     assert not home.exception
@@ -114,3 +114,18 @@ def test_saved_investigations_are_neutral_and_verified():
         for e in memo["evidence"]:
             if e.get("page") and pages:
                 assert claims.quote_on_page(e["quote"], pages[e["page"]]), (p.name, e["quote"][:60])
+
+
+def test_take_action_starts_from_the_findings_the_team_checked(no_keys):
+    from tigerfish.ui import letter, report_view
+    gn = data.load("great_nicobar_2021_draft")
+    team = report_view.team_checked(gn)
+    assert {f["id"] for f in team} == {f["id"] for f in gn["findings"] if f.get("verification")}
+    ip = data.load("indira_point_table_3_16")
+    assert len(report_view.team_checked(ip)) == len(ip["findings"])    # all 7 confirmed by a reviewer
+    html = letter.preview_html(gn, team)
+    assert all(f["title"] in html for f in team) and "Clarification requested" in html
+    at = open_app(timeout=60)
+    assert any(t.label.startswith("Take action (10)") for t in at.tabs)
+    at.toggle(key=report_view.team_key("great_nicobar_2021_draft")).set_value(False).run()
+    assert any(t.label.startswith("Take action (0)") for t in at.tabs)
