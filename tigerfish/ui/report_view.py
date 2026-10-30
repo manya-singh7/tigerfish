@@ -321,9 +321,9 @@ def overview(report, shown, hidden, quick=False):
     lead = next((f for f in live if f["id"] == lead_id), None)
     if lead:
         with st.container(key="tf-panel-lead"):
-            st.markdown('<div class="tf-h3">Start here</div><p>One finding, from the two pages to '
-                        "the person who checked it. Confirm it on its slip in "
-                        f"{esc(section_of(lead))} and it goes into the letter under Take action.</p>",
+            st.markdown('<h2 class="tf-sub-head">Start here</h2><p>One finding, from the evidence '
+                        "to the person who checked it. It is already in the letter under Take "
+                        f"action; its slip is under Findings, in {esc(section_of(lead))}.</p>",
                         unsafe_allow_html=True)
         slip.render(lead, section=section_of(lead), confirmed=confirmed.get(lead["id"]), lead=True)
         verified = [f for f in verified if f is not lead]
@@ -528,12 +528,18 @@ def header(report, quick=False):
     """The report's one header block: title, where it came from, and its flags by grade."""
     c = data.counts(report.get("findings") or [])
     source = report.get("source", "")
-    meta = (("Quick check, free checks only. " if quick else
-             ("Saved results. " if _saved(report["id"]) else "")) + (f"Source: {source}" if source else ""))
+    if isinstance(source, dict):        # a quick check's source: where the PDF was found
+        url = source.get("url") or source.get("portal") or ""
+        host = re.sub(r"^https?://(www\.)?", "", url).split("/")[0]
+        source_html = (f'Source: <a href="{esc(url)}" target="_blank" rel="noopener">the PDF on '
+                       f"{esc(host)}</a>" if url else "")
+    else:
+        source_html = f"Source: {esc(source)}" if source else ""
+    meta = ("" if quick else "Saved results. " if _saved(report["id"]) else "") + source_html
     with st.container(key="tf-plain-source"):
         st.markdown(f'<div class="tf-report-head"><h1 class="tf-h1">'
                     f'{esc(report.get("project") or report.get("title", ""))}</h1>'
-                    f'<div class="tf-meta">{esc(meta)}</div><div class="tf-report-grades">'
+                    f'<div class="tf-meta">{meta}</div><div class="tf-report-grades">'
                     + "".join(f"{badge(g)}{mono(f'{c[g]:,}')}" for g in ("RED", "ORANGE", "INFO"))
                     + "</div></div>", unsafe_allow_html=True)
         for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
