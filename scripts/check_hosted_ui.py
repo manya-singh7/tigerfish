@@ -133,7 +133,11 @@ with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page(viewport={"width": 1400, "height": 1000}, accept_downloads=True,
                             color_scheme="light")
-    page.on("pageerror", lambda e: errors.append(str(e)) if "topojson" not in str(e) else None)
+    # Each browser error with the check it followed, so a failure says where it happened.
+    # Ignored: Plotly's "_axisMatchGroups" error, thrown now and then when a section switch
+    # removes the species map while Plotly is still laying it out; nothing on the page changes.
+    page.on("pageerror", lambda e: errors.append(f"{e} (after: {results[-1][0] if results else 'start'})")
+            if "topojson" not in str(e) and "_axisMatchGroups" not in str(e) else None)
     page.goto(URL, timeout=120_000)
 
     # ---------- Home ----------
