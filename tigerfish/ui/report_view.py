@@ -93,7 +93,7 @@ CSS = """<style>
 div[class*="st-key-tf-slip-f-"] { padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
 div[class*="st-key-tf-slip-f-"] .tf-slip { border: 0; padding: 0; margin: 0 0 0.25rem 0; }
 .tf-h3.tf-on-paper { margin: 1.5rem 0 0.75rem 0; display: block; font-size: 1.5rem; }
-.tf-report-head .tf-h1 { color: var(--tf-ink); margin: 0.25rem 0 0.35rem 0; }
+.tf-report-head .tf-h1 { color: var(--tf-ink); margin: -0.75rem 0 0.35rem 0; }
 .tf-report-head .tf-meta { font-size: 1rem; }
 .tf-report-grades { margin: 0.5rem 0 0 0; }
 .tf-report-grades .tf-mono { font-size: 1rem; margin-right: 1rem; }

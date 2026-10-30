@@ -106,10 +106,12 @@ def summary_strip(report):
                      unsafe_allow_html=True)
     cols[2].markdown(stat("Checks run", str(len(report["checks"])), "see How it works"),
                      unsafe_allow_html=True)
-    cols[3].markdown(stat("Cost", cost_value, cost_note), unsafe_allow_html=True)
+    cols[3].markdown(stat("Cost", cost_value, base), unsafe_allow_html=True)
     cols[4].markdown(stat("Time", fmt_time(cost.get("approx_seconds")),
                           cost.get("time_note", "API time, estimated")),
                      unsafe_allow_html=True)
+    if cost_note != base:        # the details behind the cost, under the row, not in a card
+        st.caption(f"Cost: {cost_note}.".replace("$", "\\$").replace("..", "."))
 
 
 def quote_label(q):
