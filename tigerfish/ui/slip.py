@@ -92,10 +92,13 @@ def _first_sentence(text):
     return out
 
 
-def reason_of(finding):
+def reason_of(finding, full=False):
     """One line: the reviewer's wording when a person verified it, else the first sentence of
-    the message, or of "why" when the message is only the generic "flagged, verify"."""
+    the message, or of "why" when the message is only the generic "flagged, verify".
+    full: the reviewer's or Ultra's whole wording, not its first sentence."""
     v = finding.get("verification") or {}
+    if full:
+        return " ".join(str(v.get("wording") or finding.get("why") or finding.get("message")).split())
     if v.get("wording"):
         return _first_sentence(v["wording"])
     msg = _first_sentence(finding.get("message"))
@@ -118,10 +121,11 @@ def verified_html(finding, confirmed=None):
 
 
 def html(finding, *, crop=True, extra="", section=None, link=None, photo=None, title=None,
-         max_crops=MAX_CROPS, confirmed=None):
+         max_crops=MAX_CROPS, confirmed=None, lead=False):
     """The slip as HTML. extra: HTML added under the reason (badges, notes). link: (href, label)
     for an "open" link. photo: HTML of a species photo used when there is no page crop.
-    confirmed: reviewers' decision rows confirming it (review.confirmed_findings)."""
+    confirmed: reviewers' decision rows confirming it (review.confirmed_findings).
+    lead: the Overview's opening slip: the pages side by side and large, the whole reason."""
     found = crops_for(finding, max_crops) if crop else []
     ref = page_ref(finding) or ", ".join(f"p.{p}" for _, p in found)
     visual = ""
@@ -143,9 +147,9 @@ def html(finding, *, crop=True, extra="", section=None, link=None, photo=None, t
                         if link else "") if x]
     body = (head + f'<div class="tf-slip-title">{esc(title or finding.get("title", ""))}</div>'
             + (f'<blockquote class="tf-slip-quote">{esc(quote)}</blockquote>' if quote else "")
-            + f'<div class="tf-slip-reason">{esc(reason_of(finding))}</div>' + extra
+            + f'<div class="tf-slip-reason">{esc(reason_of(finding, full=lead))}</div>' + extra
             + f'<div class="tf-slip-foot">{"".join(foot)}</div>')
-    cls = "tf-slip" + ("" if visual else " tf-slip-noimg")
+    cls = "tf-slip" + ("" if visual else " tf-slip-noimg") + (" tf-slip-lead" if lead else "")
     return (f'<div class="tf-slipbox"><div class="{cls}">{visual}<div class="tf-slip-text">{body}'
             f'</div></div></div>')
 

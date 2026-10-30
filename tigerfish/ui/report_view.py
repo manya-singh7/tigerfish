@@ -337,10 +337,21 @@ def overview(report, shown, hidden, quick=False):
                     unsafe_allow_html=True)
         hidden_line(hidden)
     by_reviewer = [f for f in live if not f.get("verification") and f["id"] in confirmed]
+    lead_id = None if quick else library.lead_finding(report["id"])
+    lead = next((f for f in live if f["id"] == lead_id), None)
+    if lead:
+        with st.container(key="tf-panel-lead"):
+            st.markdown('<div class="tf-h3">Start here</div><p>One finding, from the two pages to '
+                        "the person who checked it. Confirm it on its slip in "
+                        f"{esc(section_of(lead))} and it goes into the letter under Take action.</p>",
+                        unsafe_allow_html=True)
+        slip.render(lead, section=section_of(lead), confirmed=confirmed.get(lead["id"]), lead=True)
+        verified = [f for f in verified if f is not lead]
+        by_reviewer = [f for f in by_reviewer if f is not lead]
     if verified:
         top = slip.pick(verified, TOP_FLAGS)
-        st.markdown('<div class="tf-h3 tf-on-paper">Top flags, verified by a person</div>',
-                    unsafe_allow_html=True)
+        st.markdown(f'<div class="tf-h3 tf-on-paper">{"More" if lead else "Top"} flags, verified '
+                    'by a person</div>', unsafe_allow_html=True)
     elif by_reviewer:
         top = slip.pick(by_reviewer, TOP_FLAGS)
         st.markdown('<div class="tf-h3 tf-on-paper">Top flags, confirmed by a reviewer</div>',

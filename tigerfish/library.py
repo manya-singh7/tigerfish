@@ -3,7 +3,8 @@
 Three kinds of report:
   Full audit   results/<id>.json, listed in results/index.json (scripts/export_results.py).
                Library details (project, state, sector, year, consultant) come from
-               results/library.json, because the export rewrites index.json.
+               results/library.json, because the export rewrites index.json. A report's
+               optional "lead_finding" there is the finding its Overview opens with.
   Single-table check  the same, for a report of which only one table was available
                ("unit": "table"), e.g. Indira Point's Table 3.16.
   Quick check  results/batch/<id>.json, listed in results/batch/index.json: free checks
@@ -135,6 +136,12 @@ def entries(results=None, queue=None, reviews=None):
         if report and not validate(report):
             out.append(_entry(report, {}, "batch", path))
     return out
+
+
+def lead_finding(report_id, results=None):
+    """The id of the finding a report's Overview opens with (results/library.json), or None."""
+    meta = _read(Path(results or RESULTS) / "library.json") or {}
+    return (meta.get(report_id) or {}).get("lead_finding")
 
 
 def totals(items):

@@ -181,6 +181,13 @@ hr { border-color: var(--tf-rule) !important; }
 .tf-slip a.tf-open { font-weight: 600; text-decoration: none; }
 mark { background: var(--tf-mark); color: inherit; padding: 0 0.1rem; }
 .tf-slipbox { container-type: inline-size; }
+/* the Overview's lead: both pages side by side and large, the text below */
+.tf-slip.tf-slip-lead { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; }
+.tf-slip-lead .tf-slip-crops { flex-direction: row; }
+.tf-slip-lead .tf-slip-crop { flex: 1 1 0; min-width: 0; }
+.tf-slip-lead .tf-slip-crop img { max-height: 460px; object-fit: contain; background: var(--tf-paper); }
+.tf-slip-lead .tf-slip-title { font-size: 1.5rem; }
+@container (max-width: 700px) { .tf-slip-lead .tf-slip-crops { flex-direction: column; } }
 @container (max-width: 820px) { .tf-slip { grid-template-columns: minmax(0, 1fr); } .tf-slip-crop img { max-height: 320px; } }
 
 /* ---- report cards in the library (slip previews) ---- */

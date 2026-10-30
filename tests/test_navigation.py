@@ -45,15 +45,24 @@ def test_home_search_goes_into_the_library(no_keys):
     assert len([b for b in at.button if b.label == "Open report"]) == 1
 
 
-def test_overview_is_top_three_verified_slips_and_one_sentence(no_keys):
+def test_overview_is_the_lead_then_top_three_verified_slips_and_one_sentence(no_keys):
     at = open_app()
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     report = data.load(GN)
     assert report_view.totals_sentence(report) in text
     slips = [m.value for m in at.tabs[0].markdown if 'class="tf-slip' in m.value]
-    assert len(slips) == report_view.TOP_FLAGS
+    assert len(slips) == 1 + report_view.TOP_FLAGS
+    assert "tf-slip-lead" in slips[0] and library.lead_finding(GN) in slips[0]
+    assert all("tf-slip-lead" not in v for v in slips[1:])
     assert all("Verified by a person" in v for v in slips)
+
+
+def test_overview_counts_reviewer_confirmations(no_keys):
+    at = open_app(report="indira_point_table_3_16")
+    assert not at.exception
+    text = "\n".join(m.value for m in at.tabs[0].markdown)
+    assert "confirmed by a reviewer" in text and "Confirmed by a reviewer (" in text
 
 
 def test_old_report_link_opens_the_report(no_keys):
