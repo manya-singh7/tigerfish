@@ -1,20 +1,26 @@
 """Look and feel, from docs/DESIGN.md: a simplified field notebook.
 
-A plain paper page, content in one column of readable width, sections separated by space
-and hairlines instead of boxes, and one card (the evidence slip, tigerfish/ui/slip.py).
+The water (the doodle pattern, assets/bg_pattern.svg) around one paper sheet: content in a
+column of readable width on the sheet, sections separated by space and hairlines instead of
+boxes, and one card (the evidence slip, tigerfish/ui/slip.py).
 Colour is reserved for the grades: RED, ORANGE and GREY (INFO leads). Tokens are CSS
 variables, redefined for the dark theme by theme_css().
 """
 
 import html
+import urllib.parse
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+PATTERN = ROOT / "assets" / "bg_pattern.svg"
 
 LIGHT = {
-    "page": "#F6F2E9", "paper": "#FFFDF8", "paper-2": "#EFE9DC", "ink": "#17302F",
+    "water": "#E9E2D2", "pattern": "#0D4242", "pattern-alpha": "0.10", "page": "#F6F2E9", "paper": "#FFFDF8", "paper-2": "#EFE9DC", "ink": "#17302F",
     "teal": "#0D4242", "muted": "#59625F", "rule": "#DDD5C4", "on-teal": "#FAF6EC",
     "red": "#9E2A1F", "orange": "#8F4A06", "grey": "#59625F", "mark": "#F3E3A6",
 }
 DARK = {
-    "page": "#0F1716", "paper": "#16201F", "paper-2": "#1C2827", "ink": "#ECE5D6",
+    "water": "#0B1211", "pattern": "#ECE5D6", "pattern-alpha": "0.07", "page": "#0F1716", "paper": "#16201F", "paper-2": "#1C2827", "ink": "#ECE5D6",
     "teal": "#8CC7BE", "muted": "#A7AFAB", "rule": "#33403E", "on-teal": "#0F1716",
     "red": "#F08F84", "orange": "#E5A35C", "grey": "#A7AFAB", "mark": "#5A4E22",
 }
@@ -30,15 +36,22 @@ PURPOSE = "A second reader for environmental impact reports, and everyone who qu
 TAGLINE = "Built for murky water."
 
 
+def _pattern_uri(t):
+    svg = PATTERN.read_text(encoding="utf-8")
+    svg = svg.replace('stroke="#0D4242"', f'stroke="{t["pattern"]}" stroke-opacity="{t["pattern-alpha"]}"')
+    return "data:image/svg+xml," + urllib.parse.quote(svg, safe="")
+
+
 def _vars(t):
-    return "".join(f"--tf-{k}:{v};" for k, v in t.items())
+    return "".join(f"--tf-{k}:{v};" for k, v in t.items() if k not in ("pattern", "pattern-alpha"))
 
 
 # Sizes: 2.5rem, 1.5rem, 1.125rem, 1rem, 0.8125rem. Nothing else.
 CSS_BODY = """
 :root { @@VARS@@ }
 html, body { background: var(--tf-page); }
-.stApp { background: var(--tf-page); }
+.stApp { background-color: var(--tf-water);
+  background-image: url("@@PATTERN@@"); background-size: 520px 520px; background-repeat: repeat; }
 .stApp, .stApp p, .stApp li, .stApp label, .stApp button, .stApp input, .stApp textarea { line-height: 1.5; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.15 !important; letter-spacing: -0.005em; text-transform: none !important; }
 code, kbd, pre, .tf-mono { font-family: "IBM Plex Mono", Consolas, monospace !important;
@@ -54,9 +67,11 @@ header div:has(> img[data-testid="stHeaderLogo"]), header div:has(> [data-testid
 header nav { margin-left: auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 0.25rem !important; }
 header [data-testid="stTopNavLink"] { padding: 0.35rem 0.75rem !important; }
 
-/* ---- one column of readable width ---- */
+/* ---- one paper sheet on the water, a column of readable width ---- */
 .block-container, [data-testid="stMainBlockContainer"] { max-width: 1200px !important;
-  padding: 5.5rem clamp(1rem, 3vw, 2rem) 5rem !important; }
+  padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 5rem !important; margin-top: 4.5rem;
+  background: var(--tf-page); border: 1px solid var(--tf-rule); border-bottom: 0;
+  border-radius: 4px 4px 0 0; min-height: calc(100vh - 4.5rem); }
 
 /* ---- sections: space and hairlines, not boxes; the slip is the one card ---- */
 [data-testid="stVerticalBlock"] [data-testid="stVerticalBlockBorderWrapper"][data-test-border="true"],
@@ -360,17 +375,19 @@ div[data-testid="stExpanderDetails"] * {
 /* ---- phone ---- */
 @media (max-width: 760px) {
   .tf-h1 { font-size: 2rem; }
-  .block-container, [data-testid="stMainBlockContainer"] { padding-top: 5rem !important; }
+  .block-container, [data-testid="stMainBlockContainer"] { padding-top: 1.5rem !important;
+    margin-top: 3.75rem; border-left: 0; border-right: 0; border-radius: 0; }
 }
 """
 
 
 def _css(t):
-    return CSS_BODY.replace("@@VARS@@", _vars(t))
+    return CSS_BODY.replace("@@VARS@@", _vars(t)).replace("@@PATTERN@@", _pattern_uri(t))
 
 
 CSS = "<style>" + _css(LIGHT) + "</style>"
-DARK_CSS = "<style>:root { " + _vars(DARK) + " }</style>"
+DARK_CSS = ("<style>:root { " + _vars(DARK) + " } .stApp { background-image: url(\""
+            + _pattern_uri(DARK) + "\"); }</style>")
 
 
 def esc(text):
@@ -405,5 +422,5 @@ def is_dark():
 
 
 def theme_css():
-    """The dark tokens ("" in the light theme)."""
+    """The dark tokens and pattern ("" in the light theme)."""
     return DARK_CSS if is_dark() else ""

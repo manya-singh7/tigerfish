@@ -14,8 +14,9 @@ next.
 
 ## Mood
 
-A simplified field notebook: paper, ink, evidence. A plain paper page, serif headings, one
-accent (teal), and colour only where it means something (the grades). Nothing glows, nothing
+A simplified field notebook: paper, ink, evidence. The water (a hand-drawn doodle pattern,
+`assets/bg_pattern.svg`, at low contrast) around one paper sheet that holds the content;
+serif headings, one accent (teal), and colour only where it means something (the grades). Nothing glows, nothing
 sparkles; every mark on the page is there because someone could check it.
 
 ## Layout
@@ -63,7 +64,8 @@ Sampled from `assets/tigerfish_icon_source.png`: tile teal `#0D4242`, fish cream
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--tf-page` | `#F6F2E9` | `#0F1716` | the page and the top bar |
+| `--tf-water` | `#E9E2D2` | `#0B1211` | around the sheet, under the doodle pattern |
+| `--tf-page` | `#F6F2E9` | `#0F1716` | the sheet and the top bar |
 | `--tf-paper` | `#FFFDF8` | `#16201F` | cards: slips, report rows on hover, inputs |
 | `--tf-paper-2` | `#EFE9DC` | `#1C2827` | quiet fills: page crops' mat, table heads |
 | `--tf-ink` | `#17302F` | `#ECE5D6` | body text, headings |
