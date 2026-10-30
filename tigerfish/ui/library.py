@@ -9,6 +9,8 @@ Navigation lives in the URL:
   ?view=upload      upload a new EIA (app.py sends it on to the Upload page)
 """
 
+from pathlib import Path
+
 import streamlit as st
 
 from tigerfish import library
@@ -225,7 +227,12 @@ def _preview(path, report_id, stamp):
     if report_id in {r["id"] for r in data.reports()}:
         report = data.load(report_id)
     else:
-        report = library.load({"path": path})
+        report = {}
+        if path and Path(path).is_file():
+            try:
+                report = library.load({"path": str(path)})
+            except Exception:
+                report = {}
     raw_findings = list(report.get("findings") or [])
     if not raw_findings and (report.get("flags") or report.get("batch_flags")):
         for i, fl in enumerate(report.get("flags") or report.get("batch_flags") or []):
@@ -324,11 +331,18 @@ def row(e):
         badge_html = '<span class="tf-badge-quick">Quick Audit</span> ' if is_quick else ''
         grades = dict(e["grades"])
         if is_quick and e.get("path"):
-            rep = library.load({"path": e["path"]})
-            fls = rep.get("flags") or rep.get("batch_flags") or []
-            if fls:
-                for g in ("RED", "ORANGE", "INFO"):
-                    grades[g] = sum(1 for x in fls if x.get("grade") == g)
+            rep = None
+            raw_path = e.get("path")
+            if raw_path and Path(raw_path).is_file():
+                try:
+                    rep = library.load({"path": str(raw_path)})
+                except Exception:
+                    rep = None
+            if rep:
+                fls = rep.get("flags") or rep.get("batch_flags") or []
+                if fls:
+                    for g in ("RED", "ORANGE", "INFO"):
+                        grades[g] = sum(1 for x in fls if x.get("grade") == g)
         st.markdown(
             f'<div class="tf-lib-title">{badge_html}{esc(e["project"])}</div>'
             f'<div class="tf-lib-meta"><span class="tf-kind">{esc(e["audit_type"])}</span> · '
@@ -479,11 +493,8 @@ def render():
     full_total = [e for e in items if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
     quick_total = [e for e in items if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
 
-    limit = st.session_state.get("lib::shown", PAGE_SIZE)
-    to_show = shown[:limit]
-
-    full_shown = [e for e in to_show if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
-    quick_shown = [e for e in to_show if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
+    full_shown = [e for e in shown if e.get("kind") == "saved" or e.get("audit_type") in (library.FULL, library.TABLE)]
+    quick_shown = [e for e in shown if e.get("kind") == "batch" or e.get("audit_type") == library.QUICK]
 
     # Section A: Deep Investigation Audits
     if not is_quick_only:
@@ -521,9 +532,7 @@ def render():
             st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                         unsafe_allow_html=True)
 
-    if len(shown) > len(to_show):
-        st.button(f"Show more ({len(shown) - len(to_show)} remaining)", key="lib::more",
-                  on_click=show_more)
+
 
     st.write("")
     from tigerfish.ui import quality
