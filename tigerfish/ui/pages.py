@@ -119,7 +119,6 @@ def home():
     t = library.totals(items)
     n_deep = t.get("full", 0) + t.get("table", 0)
     n_batch = t.get("quick", 0)
-    hero_metric = f"{n_deep} deep audits + {n_batch} automated batch scans ({t['reports']} total, {t['pages']:,} pages read)"
     with st.container(key="tf-home-top"):
         left, right = st.columns([6, 5], gap="medium")
         with left:
@@ -127,8 +126,9 @@ def home():
         with right, st.container(key="tf-panel-home"):
             st.markdown(f'<h1 class="tf-h1 tf-home-tag">{esc(TAGLINE)}</h1>'
                         f'<p class="tf-purpose">{esc(PURPOSE)}</p>'
-                        f'<p class="tf-totals tf-home-totals"><b>{esc(hero_metric)}.</b><br>'
-                        f'{esc(library.totals_line(t))}, computed from the saved results.</p>', unsafe_allow_html=True)
+                        f'<p class="tf-totals tf-home-totals">{esc(library.totals_line(t))}: '
+                        f'{n_deep} deep audits and {n_batch} quick batch scans, computed from the '
+                        f'saved results.</p>', unsafe_allow_html=True)
             st.text_input("Search the library", key="home::q", on_change=go_search,
                           placeholder="Project, state or sector, e.g. port")
             st.page_link(PAGES["upload"], label="Upload your EIA", icon=":material/upload_file:")

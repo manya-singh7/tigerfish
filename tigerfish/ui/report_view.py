@@ -304,14 +304,19 @@ def finding_list(report, findings, key, empty, map_species=False, section=None):
 # ---------- the sections ----------
 
 
-def totals_sentence(report):
+def totals_sentence(report, confirmed=None):
+    """confirmed: {finding id: decision rows} from review.confirmed_findings."""
     findings = report.get("findings") or []
     c = data.counts(findings)
     verified = sum(1 for f in findings if f.get("verification"))
+    by_reviewer = sum(1 for f in findings if not f.get("verification") and f["id"] in (confirmed or {}))
     unit = ("1 published table" if report.get("unit") == "table"
             else f"{report.get('pages_read', 0):,} of {report.get('pages_total', 0):,} pages read")
+    checked = ", ".join(x for x in (
+        f"{verified:,} verified by a person" if verified or not by_reviewer else "",
+        f"{by_reviewer:,} confirmed by a reviewer" if by_reviewer else "") if x)
     return (f"{len(findings):,} findings ({c['RED']:,} RED, {c['ORANGE']:,} ORANGE, {c['INFO']:,} "
-            f"INFO leads) from {unit}; {verified:,} verified by a person. Every finding is in its "
+            f"INFO leads) from {unit}; {checked}. Every finding is in its "
             "section tab. A flag is a lead to verify, not a verdict.")
 
 
@@ -322,16 +327,23 @@ def overview(report, shown, hidden, quick=False):
         library_quick_overview(report)
     findings = report.get("findings") or []
     dismissed = set() if quick else _dismissed(report["id"], findings)
+    confirmed = {} if quick else review_store.confirmed_findings(report)
     live = [f for f in findings if f["id"] not in dismissed]
     verified = [f for f in live if f.get("verification")
                 and f["verification"].get("outcome") != "explained"]
     with st.container(key="tf-panel-overview"):
         st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report.get("title", ""))}</h2>'
-                    f'<p class="tf-totals">{esc(totals_sentence(report))}</p>', unsafe_allow_html=True)
+                    f'<p class="tf-totals">{esc(totals_sentence(report, confirmed))}</p>',
+                    unsafe_allow_html=True)
         hidden_line(hidden)
+    by_reviewer = [f for f in live if not f.get("verification") and f["id"] in confirmed]
     if verified:
         top = slip.pick(verified, TOP_FLAGS)
         st.markdown('<div class="tf-h3 tf-on-paper">Top flags, verified by a person</div>',
+                    unsafe_allow_html=True)
+    elif by_reviewer:
+        top = slip.pick(by_reviewer, TOP_FLAGS)
+        st.markdown('<div class="tf-h3 tf-on-paper">Top flags, confirmed by a reviewer</div>',
                     unsafe_allow_html=True)
     else:
         top = slip.pick([f for f in live if f["grade"] in ("RED", "ORANGE")], TOP_FLAGS)
@@ -347,7 +359,7 @@ def overview(report, shown, hidden, quick=False):
                         "this report raised no RED or ORANGE flags. Its INFO leads, if any, are in "
                         "their sections.</p>", unsafe_allow_html=True)
     for f in top:
-        slip.render(f, section=section_of(f))
+        slip.render(f, section=section_of(f), confirmed=confirmed.get(f["id"]))
 
 
 def library_quick_overview(report):

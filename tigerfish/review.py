@@ -265,6 +265,19 @@ def queue_for(report, base="file"):
     return q
 
 
+def confirmed_findings(report, reviews=None):
+    """{finding id: [decision rows]} of the findings that reviewers in reviews.jsonl confirmed
+    (every reviewer of the flag said "real"). Hand verifications (known issues) are not rows
+    here: they are the finding's own "verification"."""
+    reviews = load_reviews(report_id=report["id"]) if reviews is None else reviews
+    out = {}
+    for it in queue_for(report)["items"]:
+        by = reviews.get(it["flag_id"], {})
+        if it.get("finding_id") and by and all(r["decision"] == "real" for r in by.values()):
+            out.setdefault(it["finding_id"], []).extend(by.values())
+    return out
+
+
 def flag_ids(queue):
     """{name: flag_id}: each item's flag id, plus the app finding id that points to it (when
     only one item has that finding), so either id can name a flag."""

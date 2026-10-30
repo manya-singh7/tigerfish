@@ -104,17 +104,24 @@ def reason_of(finding):
     return msg
 
 
-def verified_html(finding):
+def verified_html(finding, confirmed=None):
+    """"Verified by a person" for a hand check; else, given reviewers' decision rows
+    (confirmed), who confirmed it in the review queue and when."""
     v = finding.get("verification")
-    if not v:
-        return ""
-    return f'<span class="tf-person">Verified by a person, {esc(v.get("on", ""))}</span>'
+    if v:
+        return f'<span class="tf-person">Verified by a person, {esc(v.get("on", ""))}</span>'
+    if confirmed:
+        names = ", ".join(dict.fromkeys(r["reviewer"] for r in confirmed))
+        on = max(str(r.get("time", ""))[:10] for r in confirmed)
+        return f'<span class="tf-person">Confirmed by a reviewer ({esc(names)}), {esc(on)}</span>'
+    return ""
 
 
 def html(finding, *, crop=True, extra="", section=None, link=None, photo=None, title=None,
-         max_crops=MAX_CROPS):
+         max_crops=MAX_CROPS, confirmed=None):
     """The slip as HTML. extra: HTML added under the reason (badges, notes). link: (href, label)
-    for an "open" link. photo: HTML of a species photo used when there is no page crop."""
+    for an "open" link. photo: HTML of a species photo used when there is no page crop.
+    confirmed: reviewers' decision rows confirming it (review.confirmed_findings)."""
     found = crops_for(finding, max_crops) if crop else []
     ref = page_ref(finding) or ", ".join(f"p.{p}" for _, p in found)
     visual = ""
@@ -130,7 +137,7 @@ def html(finding, *, crop=True, extra="", section=None, link=None, photo=None, t
             + (f' in {esc(section)}' if section else "") + "</span>"
             + (f'<span class="tf-slip-page">{esc(ref)}</span>' if ref else "") + "</div>")
     quote = quote_of(finding)
-    foot = [x for x in (verified_html(finding),
+    foot = [x for x in (verified_html(finding, confirmed),
                         f'<span class="tf-mono">{esc(finding.get("id", ""))}</span>',
                         f'<a class="tf-open" href="{esc(link[0])}" target="_self">{esc(link[1])}</a>'
                         if link else "") if x]
