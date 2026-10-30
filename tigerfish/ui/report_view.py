@@ -22,12 +22,13 @@ import re
 
 import streamlit as st
 
-from tigerfish import hosted, library
+from tigerfish import batch_results, hosted, library
 from tigerfish import review as review_store
 from tigerfish.ui import (cards, data, feedback, inspector, letter, memo_ask, method,
                           official, promises, public_record, review, rti, slip, species_map,
                           web_evidence)
 from tigerfish.ui import investigate
+from tigerfish.ui import batch as batch_ui
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import badge, esc, mono
 
@@ -48,7 +49,8 @@ SECTION_CHECKS = {
 OTHER_SECTION = CONTRA
 TOP_FLAGS = 3
 PAGE_SIZE = 10
-QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES, RECORD)
+SCREENING = "Batch screening"
+QUICK_SECTIONS = (OVERVIEW, CONTRA, SPECIES, RECORD, SCREENING)
 QUICK_HIDDEN_WHY = "requires deep multi-chapter audit"
 
 # "What this check does": one paragraph per section, in its side panel.
@@ -135,7 +137,9 @@ def plan(report, quick=False):
             hidden[SPECIES] = "the species checks did not run for this report"
         if not (n[RECORD] or names & set(SECTION_CHECKS[RECORD])):
             hidden[RECORD] = "the statutory record checks did not run for this report"
-        shown = [(OVERVIEW, None)] + [(s, n[s]) for s in QUICK_SECTIONS[1:] if s not in hidden]
+        shown = [(OVERVIEW, None)] + [(s, n[s]) for s in (CONTRA, SPECIES, RECORD) if s not in hidden]
+        if batch_results.checks(report):
+            shown.append((SCREENING, len(batch_results.checks(report))))
         hidden.update({s: QUICK_HIDDEN_WHY for s in ORDER if s not in QUICK_SECTIONS})
         return shown, [(s, hidden[s]) for s in ORDER if s in hidden]
 
@@ -391,6 +395,15 @@ def library_quick_overview(report):
             st.markdown("**Not run for this report**")
             for c in not_run:
                 st.markdown(f"- {esc(c['name'])}: {esc(c.get('reason') or 'not available')}")
+        if batch_results.checks(report):
+            st.caption(
+                batch_results.summary_line(batch_results.summary(report))
+                + " Open Batch screening for certificate dates, baseline periods, species rows and source evidence."
+            )
+        st.caption(
+            "Not run in a quick check: model checks (internal contradictions, recycled "
+            "figures, scanned pages), copied text, official NABET verification and ToR promises."
+        )
 
 
 def take_action(report):
@@ -547,6 +560,9 @@ def render(report, quick=False):
             finding_list(report, by[SPECIES], "species",
                          "No species, status or omission findings for this report.",
                          map_species=True, section=SPECIES)
+    if SCREENING in tabs:
+        with tabs[SCREENING], st.container(key=f"tf-panel-screening-{rid}"):
+            batch_ui.render_report(report)
     if COPIED in tabs:
         with tabs[COPIED]:
             main = finding_list(report, by[COPIED], "copied", "No copied or borrowed text was flagged.",

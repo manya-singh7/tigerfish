@@ -13,7 +13,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from tigerfish import library
+from tigerfish import batch_results, library
 from tigerfish.ui import data, slip
 from tigerfish.ui.style import badge, esc, mono
 
@@ -429,6 +429,12 @@ def side_panel(items, shown):
         st.button("Upload your EIA", key="tf::upload", type="primary", on_click=open_upload,
                   width="stretch")
         st.caption(UPLOAD_NOTE)
+        screening = batch_results.totals(items)
+        if screening["reports"]:
+            st.caption(
+                f"Batch screening: {screening['observations']} additional observations and "
+                f"{screening['undetermined']} undetermined check results, separate from audit findings."
+            )
 
 
 # ---------- the library ----------
@@ -532,7 +538,15 @@ def render():
             st.markdown('<div class="tf-sec-empty-box"><p class="tf-sec-empty">No reports match these filters in this category.</p></div>',
                         unsafe_allow_html=True)
 
+    if any(e.get("screening") for e in items):
+        from tigerfish.ui import batch as batch_ui
 
+        with (
+            st.container(key="tf-panel-batch-summary"),
+            st.expander("Batch screening results"),
+        ):
+            st.markdown("### Batch screening results")
+            batch_ui.render_summary(items)
 
     st.write("")
     from tigerfish.ui import quality
