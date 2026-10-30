@@ -18,8 +18,13 @@ drawn as the Quality section; otherwise the review queue, the precision panel an
 evaluation table are shown (QUALITY_FALLBACK below). Nothing else needs to change.
 """
 
+import hashlib
 import importlib
+import json
+import os
 import re
+from pathlib import Path
+from typing import Any
 
 import streamlit as st
 
@@ -32,6 +37,9 @@ from tigerfish.ui import investigate
 from tigerfish.ui import batch as batch_ui
 from tigerfish.ui.investigate import REPORTS
 from tigerfish.ui.style import badge, esc, mono
+
+ROOT = Path(__file__).resolve().parents[2]
+TAVILY_CACHE = ROOT / "cache" / "tavily"
 
 OVERVIEW, CONTRA, SPECIES, COPIED, PROMISES = ("Overview", "Contradictions", "Species & nature",
                                                "Copied text", "Promises & timeline")
@@ -88,6 +96,90 @@ ABOUT = {
            "context efficiency, and how Super-VL read the scanned pages."),
 }
 CSS = """<style>
+/* ---- Ground Reality Card ---- */
+.tf-ground-reality-card {
+  background: var(--tf-paper-2);
+  border: 1px solid var(--tf-rule);
+  border-left: 3px solid var(--tf-teal);
+  border-radius: 0px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+.tf-ground-stamp {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tf-teal);
+  margin-bottom: 0.25rem;
+}
+.tf-ground-title {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--tf-ink);
+  margin-bottom: 0.25rem;
+}
+.tf-ground-sub {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 0.8125rem;
+  color: var(--tf-muted);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+.tf-ground-item {
+  margin-top: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--tf-rule);
+}
+.tf-ground-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.tf-ground-meta {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--tf-muted);
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+.tf-ground-date {
+  font-weight: 600;
+  color: var(--tf-teal);
+}
+.tf-ground-link {
+  font-family: "Schibsted Grotesk", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--tf-ink) !important;
+  text-decoration: underline;
+}
+.tf-ground-snippet {
+  font-family: Newsreader, Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--tf-ink);
+  padding-left: 0.65rem;
+  border-left: 2px solid var(--tf-rule);
+  margin-top: 0.35rem;
+  background: var(--tf-paper);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.tf-ground-reality-notice {
+  background: var(--tf-paper-2);
+  border: 1px solid var(--tf-rule);
+  border-left: 3px solid var(--tf-muted);
+  border-radius: 0px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.8125rem;
+  color: var(--tf-muted);
+}
 div[class*="st-key-tf-slip-f-"] { padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
 div[class*="st-key-tf-slip-f-"] .tf-slip { border: 0; padding: 0; margin: 0 0 0.25rem 0; }
 .tf-h3.tf-on-paper { margin: 1.5rem 0 0.75rem 0; display: block; font-size: 1.5rem; }
@@ -327,6 +419,7 @@ def overview(report, shown, hidden, quick=False):
                 'Consultant accreditation, baseline monitoring window, and taxonomic occurrence ground truth have been verified against statutory benchmarks without irregularity.</p>'
                 '</div>',
                 unsafe_allow_html=True)
+            ground_reality_card(report)
         return
 
     if quick:
@@ -376,6 +469,7 @@ def overview(report, shown, hidden, quick=False):
                         "their sections.</p>", unsafe_allow_html=True)
     for f in top:
         slip.render(f, section=section_of(f), confirmed=confirmed.get(f["id"]))
+    ground_reality_card(report)
 
 
 def library_quick_overview(report):
@@ -525,6 +619,165 @@ def cost_and_models(report):
     inspector.render(report["id"])
 
 
+def ground_reality_card(report: dict[str, Any]) -> None:
+    """Live/cached Ground Reality Card via Tavily search and local cache."""
+    rid = str(report.get("id") or "")
+    project_name = str(report.get("project") or report.get("project_name") or report.get("title") or "").strip()
+    state = str(report.get("state") or "").strip()
+    district = str(report.get("district") or "").strip()
+
+    if (not state or not project_name) and rid:
+        try:
+            entry = library.find(library.entries(), rid)
+            if entry:
+                project_name = project_name or str(entry.get("project") or entry.get("title") or "").strip()
+                state = state or str(entry.get("state") or "").strip()
+                district = district or str(entry.get("district") or "").strip()
+        except Exception:
+            pass
+
+    clean_proj = re.sub(r"\s*\([^)]*\)", "", project_name).strip() or project_name
+    loc = district or state or ""
+
+    query = (
+        f'"{clean_proj}" "{loc}" site:thehindu.com OR site:timesofindia.indiatimes.com OR site:downtoearth.org.in OR "public hearing" OR "protest"'
+        if loc
+        else f'"{clean_proj}" site:thehindu.com OR site:timesofindia.indiatimes.com OR site:downtoearth.org.in OR "public hearing" OR "protest"'
+    )
+
+    results: list[dict[str, Any]] = []
+
+    # 1. Check local Tavily cache under cache/tavily/
+    tavily_cache = TAVILY_CACHE
+    if tavily_cache.exists():
+        import json, hashlib
+        key_batch = json.dumps({"endpoint": "search", "params": {"query": query, "max_results": 3}}, sort_keys=True, default=str)
+        p_batch = tavily_cache / f"batch-{hashlib.sha256(key_batch.encode()).hexdigest()}.json"
+        key_copy = json.dumps({"endpoint": "search", "params": {"query": query, "max_results": 3}}, sort_keys=True)
+        p_copy = tavily_cache / f"{hashlib.sha256(key_copy.encode()).hexdigest()}.json"
+
+        for p in (p_batch, p_copy):
+            if p.exists():
+                try:
+                    payload = json.loads(p.read_text(encoding="utf-8"))
+                    data_obj = payload.get("data", payload)
+                    raw_res = data_obj.get("results", []) if isinstance(data_obj, dict) else []
+                    for r in raw_res[:3]:
+                        results.append({
+                            "date": r.get("published_date") or r.get("date") or "RECENT",
+                            "title": r.get("title") or "Investigative report",
+                            "url": r.get("url") or "#",
+                            "snippet": r.get("content") or r.get("snippet") or "",
+                        })
+                    if results:
+                        break
+                except Exception:
+                    pass
+
+        if not results:
+            clean_proj_lower = clean_proj.lower()
+            for cp in tavily_cache.glob("*.json"):
+                try:
+                    cdata = json.loads(cp.read_text(encoding="utf-8", errors="ignore"))
+                    if cdata.get("endpoint") == "search":
+                        cq = str(cdata.get("params", {}).get("query", "")).lower()
+                        if clean_proj_lower and clean_proj_lower in cq:
+                            res_list = cdata.get("data", {}).get("results", [])
+                            for r in res_list[:3]:
+                                results.append({
+                                    "date": r.get("published_date") or r.get("date") or "RECENT",
+                                    "title": r.get("title") or "Investigative report",
+                                    "url": r.get("url") or "#",
+                                    "snippet": r.get("content") or r.get("snippet") or "",
+                                })
+                            if results:
+                                break
+                except Exception:
+                    pass
+
+    # 2. Check offline pre-cached public record JSON in results/public_record_{rid}.json
+    if not results and rid:
+        try:
+            from tigerfish import public_record as precord
+            rec = precord.load(rid)
+            if rec and rec.get("next"):
+                for group in rec["next"]:
+                    for it in group.get("items", []):
+                        url = it.get("url", "")
+                        if any(d in url for d in ("thehindu", "timesofindia", "downtoearth", "mongabay", "thewire", "frontline")):
+                            results.append({
+                                "date": str(it.get("date", "RECENT"))[:16].strip(),
+                                "title": it.get("title") or "Investigative report",
+                                "url": url,
+                                "snippet": it.get("snippet") or it.get("title") or "",
+                            })
+                            if len(results) >= 3:
+                                break
+                    if len(results) >= 3:
+                        break
+        except Exception:
+            pass
+
+    # 3. If online and API key available
+    api_key = os.environ.get("TAVILY_API_KEY", "").strip()
+    if not results and api_key:
+        try:
+            from tavily import TavilyClient
+            client = TavilyClient(api_key=api_key)
+            resp = client.search(query=query, max_results=3)
+            tavily_cache.mkdir(parents=True, exist_ok=True)
+            p_batch = tavily_cache / f"batch-{hashlib.sha256(key_batch.encode()).hexdigest()}.json"
+            p_batch.write_text(json.dumps({"endpoint": "search", "params": {"query": query, "max_results": 3}, "data": resp}, indent=2), encoding="utf-8")
+            raw_res = resp.get("results", []) if isinstance(resp, dict) else []
+            for r in raw_res[:3]:
+                results.append({
+                    "date": r.get("published_date") or r.get("date") or "RECENT",
+                    "title": r.get("title") or "Investigative report",
+                    "url": r.get("url") or "#",
+                    "snippet": r.get("content") or r.get("snippet") or "",
+                })
+        except Exception:
+            pass
+
+    # 4. Render card
+    if results:
+        items_html = ""
+        for it in results[:3]:
+            d_val = esc(str(it.get("date") or "RECENT").replace("GMT", "").strip())
+            t_val = esc(str(it.get("title") or "Article"))
+            u_val = esc(str(it.get("url") or "#"))
+            s_val = esc(str(it.get("snippet") or "").strip())
+            if len(s_val) > 280:
+                s_val = s_val[:277] + "..."
+            snippet_block = f'<div class="tf-ground-snippet">"{s_val}"</div>' if s_val else ""
+            items_html += (
+                '<div class="tf-ground-item">'
+                f'<div class="tf-ground-meta">'
+                f'<span class="tf-ground-date">[DATE: {d_val}]</span> · '
+                f'<a href="{u_val}" target="_blank" rel="noopener noreferrer" class="tf-ground-link">{t_val}</a>'
+                '</div>'
+                f'{snippet_block}'
+                '</div>'
+            )
+
+        card_html = (
+            '<div class="tf-ground-reality-card">'
+            '<div class="tf-ground-stamp">[PUBLIC RECORD // GROUND REALITY]</div>'
+            '<div class="tf-ground-title">GROUND REALITY &amp; LOCAL CONTEXT</div>'
+            '<div class="tf-ground-sub">Localized investigative coverage, grassroots public hearing disputes, and regional reporting indexed via public registries.</div>'
+            f'{items_html}'
+            '</div>'
+        )
+        st.markdown(card_html, unsafe_allow_html=True)
+    else:
+        notice_html = (
+            '<div class="tf-ground-reality-notice">'
+            '[REGISTRY NOTICE] No active grassroots disputes or local investigative coverage indexed in public registry.'
+            '</div>'
+        )
+        st.markdown(notice_html, unsafe_allow_html=True)
+
+
 def public_record_section(report, findings):
     rid = report["id"]
     main = finding_list(report, findings, "record",
@@ -535,6 +788,7 @@ def public_record_section(report, findings):
             official.render(rid)
         with st.container(key="tf-panel-public"):
             public_record.render(rid)
+        ground_reality_card(report)
         with st.expander("Evidence from the web (every saved report)"):
             web_evidence.render()
 
