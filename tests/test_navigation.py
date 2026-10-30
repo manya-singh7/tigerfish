@@ -29,20 +29,25 @@ def test_home_is_the_landing_page(no_keys):
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     assert pages.TAGLINE in text and pages.PURPOSE in text and pages.BUILT_WITH in text
-    assert "names the sambar and the barking deer" in text and pages.SCROLL_URL in text  # the hero
-    assert "Confirmed by a reviewer" in text and pages.TIGERFISH_STORY not in text
+    assert "names the sambar and the barking deer" in text                # the species tile
+    assert "Confirmed by a reviewer" in text and "planted" not in text
     t = library.totals(library.entries())
     assert library.totals_line(t) in text                                 # one live sentence
     assert not at.metric                                                  # no stat banner
-    assert any(b.label == "Open report" for b in at.button)               # the library below
+    assert any(b.label == "See the Great Nicobar audit" for b in at.button)
     assert not at.tabs
 
 
-def test_home_search_goes_into_the_library(no_keys):
+def test_home_is_short_and_points_into_the_reports(no_keys):
     at = open_app(report=None)
-    at.text_input(key="home::q").input("Cuddalore").run()
     assert not at.exception
-    assert len([b for b in at.button if b.label == "Open report"]) == 1
+    text = "\n".join(m.value for m in at.markdown)
+    full = [e for e in library.entries() if e["audit_type"] != library.QUICK]
+    assert all(f"/library?report={e['id']}" in text for e in full)   # one row per full audit
+    assert "Open report" not in [b.label for b in at.button]          # not the whole library
+    c = pages.model_counts()
+    assert f"{c['claims']:,} checkable claims" in text and f"{c['verdicts']:,} pairs" in text
+    assert "rf-010" not in text and "Same figure for different places" in text   # a verified tile
 
 
 def test_overview_is_the_lead_then_top_three_verified_slips_and_one_sentence(no_keys):
