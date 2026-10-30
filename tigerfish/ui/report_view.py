@@ -294,8 +294,10 @@ def finding_list(report, findings, key, empty, map_species=False, section=None):
                                              investigate.saved(rid, f.get("investigation_id") or f["id"]) is None))
         more_key = f"sec::{rid}::{key}::shown"
         n = st.session_state.get(more_key, PAGE_SIZE)
-        for f in shown[:n]:
-            cards.finding_card(rid, f, report.get("title", ""))
+        confirmed = review_store.confirmed_findings(report)
+        for i, f in enumerate(shown[:n]):
+            cards.finding_card(rid, f, report.get("title", ""), confirmed=confirmed.get(f["id"]),
+                               open_pages=i == 0)
         if len(shown) > n:
             st.button(f"Show {min(PAGE_SIZE, len(shown) - n)} more ({len(shown) - n} not shown)",
                       key=f"{more_key}::btn", on_click=_more, args=(more_key,))

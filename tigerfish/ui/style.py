@@ -151,7 +151,7 @@ hr { border-color: var(--tf-rule) !important; }
   margin: 0 0.3rem 0 0.1rem; font-variant-numeric: tabular-nums; }
 
 /* ---- the evidence slip ---- */
-.tf-slip { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 1.25rem;
+.tf-slip { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 1.25rem;
   background: var(--tf-paper); border: 1px solid var(--tf-rule); border-radius: 3px; padding: 1rem;
   margin: 0 0 1rem 0; color: var(--tf-ink); }
 .tf-slip.tf-slip-noimg { grid-template-columns: minmax(0, 1fr); }
@@ -159,7 +159,7 @@ hr { border-color: var(--tf-rule) !important; }
 .tf-slip-crops { display: flex; flex-direction: column; gap: 0.6rem; align-self: start; }
 .tf-slip-crop { background: var(--tf-paper-2); border: 1px solid var(--tf-rule); align-self: start;
   margin: 0; }
-.tf-slip-crop img { width: 100%; display: block; max-height: 260px; object-fit: cover; object-position: center; }
+.tf-slip-crop img { width: 100%; display: block; max-height: 340px; object-fit: cover; object-position: center; }
 .tf-slip-crop figcaption, .tf-slip-photo figcaption { font-size: 0.8125rem; color: var(--tf-muted);
   padding: 0.3rem 0.5rem; }
 .tf-slip-photo { margin: 0; align-self: start; }
