@@ -119,3 +119,13 @@ def test_quality_hook_uses_a_quality_module(monkeypatch):
     monkeypatch.setitem(sys.modules, "tigerfish.ui.quality", mod)
     report_view.quality({"id": "x", "findings": []})
     assert seen == ["x"]
+
+
+def test_limitations_page_is_a_plain_list(no_keys):
+    at = open_app(report=None, page="limitations")
+    assert not at.exception
+    text = "\n".join(m.value for m in at.markdown)
+    assert all(title in text for title, _ in pages.LIMITS)
+    assert "docs/LIMITATIONS.md" in text                                  # the link, for developers
+    for internal in ("Failure cases from our own runs", "Thresholds", "BM25", "pr-06", "regex"):
+        assert internal not in text, internal

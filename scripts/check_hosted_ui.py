@@ -179,9 +179,10 @@ with sync_playwright() as p:
     page.screenshot(path=str(OUT / "how_it_works.png"), full_page=True)
     no_exception(page, "how it works")
     nav(page, "Limitations")
-    page.get_by_text("Known limits").first.wait_for(timeout=60_000)
-    ok("limitations: known limits and docs/LIMITATIONS.md",
-       page.get_by_text("Failure cases from our own runs").count() == 1)
+    page.get_by_text("Every flag is a lead, not a verdict.").first.wait_for(timeout=60_000)
+    ok("limitations: the plain list, linking the technical notes",
+       page.get_by_role("link", name="docs/LIMITATIONS.md").count() == 1
+       and page.get_by_text("Failure cases from our own runs").count() == 0)
     page.screenshot(path=str(OUT / "limitations.png"), full_page=True)
     no_exception(page, "limitations")
 

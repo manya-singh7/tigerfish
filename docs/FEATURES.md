@@ -59,4 +59,4 @@ visible. Its steps, separated by ` · `, are followed from Home in order:
 | Upload with three levels | Top menu, Upload | menu=Upload · text=Chosen pages, live. |
 | Page picks for the deep audit | Upload page (after a PDF is read) | menu=Upload · text=pages you choose |
 | How it works (diagram, levels, models) | Top menu, How it works | menu=How it works · text=Three levels |
-| Limitations | Top menu, Limitations | menu=Limitations · text=Failure cases from our own runs |
+| Limitations | Top menu, Limitations | menu=Limitations · text=Every flag is a lead, not a verdict. |

@@ -378,17 +378,34 @@ def how_it_works_page():
                     unsafe_allow_html=True)
 
 
+# The Limitations page: what a reader should know before relying on a flag, in plain words.
+# The technical notes (thresholds, failure cases from our runs) stay in docs/LIMITATIONS.md.
+LIMITS = [
+    ("Every flag is a lead, not a verdict.", "A person has to check it against the report "
+     "before it is used. The grades say how strong the lead is, not that something is wrong."),
+    ("Species records are incomplete.", "GBIF has few records for remote places such as the "
+     "Nicobar Islands. A missing record is a reason to look closer, not proof that a species "
+     "is absent."),
+    ("Models can misread.", "Scanned tables and maps are read from the page image. A reading "
+     "that cannot be matched to the page's text is marked unverified and shown with its image."),
+    ("Not every page is read.", "Pages without a usable text layer (some scans, some Hindi "
+     "pages) can be skipped. Each report says how many of its pages were read."),
+    ("Coverage differs by report.", "Full audits run the model checks; quick checks run only "
+     "the free checks; one report is a single published table. Each report lists what ran."),
+    ("Matching text is not proof of copying.", "Shared sources and standard wording can "
+     "overlap legitimately. A match is a question to ask, not a finding of misconduct."),
+    ("Public lists can be out of date.", "Accreditation, IUCN categories and legal schedules "
+     "come from public sources, which may not reflect their status on the report's date."),
+]
+
+
 def limitations():
-    heading("Limitations", "Every flag is a lead for human review, not a verdict.")
+    heading("Limitations", "What to keep in mind before relying on a flag.")
     with st.container(key="tf-panel-limits"):
-        st.markdown(method.limits_text())
-    text = method.limitations_text()
-    if text:
-        with st.container(key="tf-panel-failures"):
-            st.markdown('<h2 class="tf-section-head">Failure cases from our own runs</h2>'
-                        '<p class="tf-section-sub">From docs/LIMITATIONS.md.</p>',
-                        unsafe_allow_html=True)
-            st.markdown(text.replace("$", "\\$"))      # $ pairs would render as LaTeX
+        st.markdown("\n".join(f"- **{esc(t)}** {esc(d)}" for t, d in LIMITS))
+        st.markdown(f'<p class="tf-meta">Technical notes for developers are in the repository: '
+                    f'<a href="{method.LIMITATIONS_URL}" target="_blank" rel="noopener">'
+                    "docs/LIMITATIONS.md</a>.</p>", unsafe_allow_html=True)
 
 
 # Filled by build(); the keys are used across the app (st.page_link / st.switch_page).

@@ -53,7 +53,9 @@ sparkles; every mark on the page is there because someone could check it.
 - **Upload**: the drop zone first, then the key field, then what runs at each level.
 - **How it works**: the diagram beside the method, what each model did (with counts), the
   models and tools, the three levels.
-- **Limitations**: the known limits, then the failure cases from our own runs.
+- **Limitations**: a short plain-language list of what to keep in mind before relying on a
+  flag, and a link to the technical notes (docs/LIMITATIONS.md) in the repository. No
+  implementation details (thresholds, internal IDs, failure logs) on the page.
 
 ## Palette
 
