@@ -178,8 +178,8 @@ def test_library_binders_render_every_match_and_reset_all_filters(
     assert len(set(visible_reports(at))) == 35
     assert not any(b.key == "lib::more" for b in at.button)
     text = " ".join(m.value for m in at.markdown)
-    assert "Deep Investigation Audits (3 Benchmark Reports)" in text
-    assert "Automated Batch Triage (32 State Pollution Board Filings)" in text
+    assert "Full audits (3)" in text
+    assert "Quick checks (32)" in text
 
     full_option = next(
         o for o in at.radio(key="lib::type").options if o.startswith("Full")
@@ -188,13 +188,13 @@ def test_library_binders_render_every_match_and_reset_all_filters(
     assert (
         visible_reports(at) == expected[:3]
     )  # full binder includes the standalone table
-    assert "Automated Batch Triage" not in " ".join(m.value for m in at.markdown)
+    assert "Quick checks (" not in " ".join(m.value for m in at.markdown)
     quick_option = next(
         o for o in at.radio(key="lib::type").options if o.startswith("Quick")
     )
     at.radio(key="lib::type").set_value(quick_option).run()
     assert visible_reports(at) == expected[3:]  # 32 matches, not a hidden PAGE_SIZE cap
-    assert "Deep Investigation Audits" not in " ".join(m.value for m in at.markdown)
+    assert "Full audits (" not in " ".join(m.value for m in at.markdown)
     at.multiselect(key="lib::state").select("Goa").run()
     assert visible_reports(at) == [
         e["id"] for e in binder_library[3:] if e["state"] == "Goa"
