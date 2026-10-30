@@ -180,8 +180,8 @@ with sync_playwright() as p:
     no_exception(page, "how it works")
     nav(page, "Limitations")
     page.get_by_text("Every flag is a lead, not a verdict.").first.wait_for(timeout=60_000)
-    ok("limitations: the plain list, linking the technical notes",
-       page.get_by_role("link", name="docs/LIMITATIONS.md").count() == 1
+    ok("limitations: the plain list, without the internal notes",
+       page.get_by_text("docs/LIMITATIONS.md").count() == 0
        and page.get_by_text("Failure cases from our own runs").count() == 0)
     page.screenshot(path=str(OUT / "limitations.png"), full_page=True)
     no_exception(page, "limitations")

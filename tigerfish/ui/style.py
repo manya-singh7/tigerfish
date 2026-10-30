@@ -68,10 +68,12 @@ header nav { margin-left: auto !important; display: flex !important; justify-con
 header [data-testid="stTopNavLink"] { padding: 0.35rem 0.75rem !important; }
 
 /* ---- one paper sheet on the water, a column of readable width ---- */
+/* The sheet grows with its content (Streamlit's flex column would hold it to the window
+   height) and ends with its own bottom edge, so a short page visibly ends. */
 .block-container, [data-testid="stMainBlockContainer"] { max-width: 1200px !important;
-  padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 5rem !important; margin-top: 4.5rem;
-  background: var(--tf-page); border: 1px solid var(--tf-rule); border-bottom: 0;
-  border-radius: 4px 4px 0 0; min-height: calc(100vh - 4.5rem); }
+  padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 3rem !important; margin: 4.5rem auto 3rem auto;
+  background: var(--tf-page); border: 1px solid var(--tf-rule); border-radius: 4px;
+  flex: 0 0 auto !important; height: auto !important; min-height: 0 !important; }
 
 /* ---- sections: space and hairlines, not boxes; the slip is the one card ---- */
 [data-testid="stVerticalBlock"] [data-testid="stVerticalBlockBorderWrapper"][data-test-border="true"],
@@ -376,7 +378,7 @@ div[data-testid="stExpanderDetails"] * {
 @media (max-width: 760px) {
   .tf-h1 { font-size: 2rem; }
   .block-container, [data-testid="stMainBlockContainer"] { padding-top: 1.5rem !important;
-    margin-top: 3.75rem; border-left: 0; border-right: 0; border-radius: 0; }
+    margin: 3.75rem 0 1.5rem 0; border-left: 0; border-right: 0; border-radius: 0; }
 }
 """
 

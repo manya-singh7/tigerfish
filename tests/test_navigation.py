@@ -126,6 +126,6 @@ def test_limitations_page_is_a_plain_list(no_keys):
     assert not at.exception
     text = "\n".join(m.value for m in at.markdown)
     assert all(title in text for title, _ in pages.LIMITS)
-    assert "docs/LIMITATIONS.md" in text                                  # the link, for developers
+    assert "docs/LIMITATIONS.md" not in text and "repository" not in text
     for internal in ("Failure cases from our own runs", "Thresholds", "BM25", "pr-06", "regex"):
         assert internal not in text, internal

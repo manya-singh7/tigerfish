@@ -55,8 +55,8 @@ sparkles; every mark on the page is there because someone could check it.
 - **How it works**: the diagram beside the method, what each model did (with counts), the
   models and tools, the three levels.
 - **Limitations**: a short plain-language list of what to keep in mind before relying on a
-  flag, and a link to the technical notes (docs/LIMITATIONS.md) in the repository. No
-  implementation details (thresholds, internal IDs, failure logs) on the page.
+  flag. No implementation details (thresholds, internal IDs, failure logs) and no pointer to
+  the technical notes (docs/LIMITATIONS.md stays in the repository for developers).
 
 ## Palette
 

@@ -379,7 +379,8 @@ def how_it_works_page():
 
 
 # The Limitations page: what a reader should know before relying on a flag, in plain words.
-# The technical notes (thresholds, failure cases from our runs) stay in docs/LIMITATIONS.md.
+# The technical notes (thresholds, failure cases from our runs) stay in docs/LIMITATIONS.md,
+# for developers; the page does not point to them.
 LIMITS = [
     ("Every flag is a lead, not a verdict.", "A person has to check it against the report "
      "before it is used. The grades say how strong the lead is, not that something is wrong."),
@@ -403,9 +404,6 @@ def limitations():
     heading("Limitations", "What to keep in mind before relying on a flag.")
     with st.container(key="tf-panel-limits"):
         st.markdown("\n".join(f"- **{esc(t)}** {esc(d)}" for t, d in LIMITS))
-        st.markdown(f'<p class="tf-meta">Technical notes for developers are in the repository: '
-                    f'<a href="{method.LIMITATIONS_URL}" target="_blank" rel="noopener">'
-                    "docs/LIMITATIONS.md</a>.</p>", unsafe_allow_html=True)
 
 
 # Filled by build(); the keys are used across the app (st.page_link / st.switch_page).
