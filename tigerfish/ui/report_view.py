@@ -281,13 +281,8 @@ def finding_list(report, findings, key, empty, map_species=False, section=None):
 
 # ---------- the sections ----------
 
-<<<<<<< HEAD
-def totals_sentence(report):
-=======
-
 def totals_sentence(report, confirmed=None):
     """confirmed: {finding id: decision rows} from review.confirmed_findings."""
->>>>>>> design/notebook-v2
     findings = report.get("findings") or []
     c = data.counts(findings)
     verified = sum(1 for f in findings if f.get("verification"))
@@ -343,14 +338,9 @@ def overview(report, shown, hidden, quick=False):
     verified = [f for f in live if f.get("verification")
                 and f["verification"].get("outcome") != "explained"]
     with st.container(key="tf-panel-overview"):
-<<<<<<< HEAD
-        st.markdown(f'<h2 class="tf-h2">{esc(report.get("project") or report.get("title", ""))}</h2>'
-                    f'<p class="tf-totals">{esc(totals_sentence(report))}</p>', unsafe_allow_html=True)
-        hidden_line(hidden, quick=quick)
-=======
         st.markdown(f'<p class="tf-totals">{esc(totals_sentence(report, confirmed))}</p>',
                     unsafe_allow_html=True)
-        hidden_line(hidden)
+        hidden_line(hidden, quick=quick)
     by_reviewer = [f for f in live if not f.get("verification") and f["id"] in confirmed]
     lead_id = None if quick else library.lead_finding(report["id"])
     lead = next((f for f in live if f["id"] == lead_id), None)
@@ -363,7 +353,6 @@ def overview(report, shown, hidden, quick=False):
         slip.render(lead, section=section_of(lead), confirmed=confirmed.get(lead["id"]), lead=True)
         verified = [f for f in verified if f is not lead]
         by_reviewer = [f for f in by_reviewer if f is not lead]
->>>>>>> design/notebook-v2
     if verified:
         top = slip.pick(verified, TOP_FLAGS)
         st.markdown(f'<div class="tf-h3 tf-on-paper">{"More" if lead else "Top"} flags, verified '
@@ -558,9 +547,6 @@ def _panel(key, draw, *args):
 
 # ---------- the report page ----------
 
-<<<<<<< HEAD
-=======
-
 def header(report, quick=False):
     """The report's one header block: title, where it came from, and its flags by grade."""
     c = data.counts(report.get("findings") or [])
@@ -624,12 +610,10 @@ def method_tab(report, sections):
                           lambda r, d=draw: _panel(section.split()[0].lower(), d, report), report["id"])
 
 
->>>>>>> design/notebook-v2
 def render(report, quick=False):
     """Draw one report. quick=True: a quick check (library.load), free checks only."""
     st.markdown(CSS, unsafe_allow_html=True)
     rid = report["id"]
-<<<<<<< HEAD
     if not report.get("findings") and (report.get("flags") or report.get("batch_flags")):
         report["findings"] = [
             {
@@ -648,18 +632,9 @@ def render(report, quick=False):
             }
             for i, fl in enumerate(report.get("flags") or report.get("batch_flags") or [])
         ]
-    if not quick:
-        with st.container(key="tf-plain-source"):
-            st.caption(f"Saved results. Source: {report.get('source', '')}" if _saved(rid)
-                       else f"Source: {report.get('source', '')}")
-            for notice in report.get("notices", []):     # e.g. a partial audit, flags not yet reviewed
-                st.warning(notice)
-        feedback._seed(rid, report.get("findings") or [])   # before any review widget is drawn
-=======
     header(report, quick)
     if not quick:
         feedback._seed(rid, report.get("findings") or [])  # before any review widget is drawn
->>>>>>> design/notebook-v2
     shown, hidden = plan(report, quick)
     by = split(report.get("findings") or [])
     names = [s for s, _ in shown]

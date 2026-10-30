@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-"""The report library: every report under results/, as evidence-slip previews in the main
-column, with search, filters, live totals and "Upload your EIA" in a sticky side panel
-(docs/DESIGN.md). On tablets and phones the panel moves above the list, in an expander.
-=======
 """The report library: every matching report as a row, in two groups: Full audits (saved
 audits and the single-table check) and Quick checks. Search, the Audit type choice and the
 other filters sit in two rows above them. There is no page-size cap (docs/DESIGN.md).
->>>>>>> design/notebook-v2
 
 Navigation lives in the URL:
   (none)            the library
@@ -15,11 +9,8 @@ Navigation lives in the URL:
   ?view=upload      upload a new EIA (app.py sends it on to the Upload page)
 """
 
-<<<<<<< HEAD
 from pathlib import Path
-=======
 import re
->>>>>>> design/notebook-v2
 
 import streamlit as st
 
@@ -45,14 +36,12 @@ CSS = """<style>
 div[class*="st-key-tf-slip-rep"] { background: transparent !important; border: 0 !important;
   border-bottom: 1px solid var(--tf-rule) !important; border-radius: 0 !important; padding: 0.6rem 0.25rem; }
 .tf-lib-title { font-family: Newsreader, Georgia, serif; font-size: 1.125rem; font-weight: 600;
-<<<<<<< HEAD
-  line-height: 1.15; color: var(--tf-ink); }
-.tf-lib-meta { font-size: 0.8125rem; color: var(--tf-muted); margin-top: 0.2rem; }
-.tf-lib-grades { margin: 0.4rem 0 0.6rem 0; font-size: 0.8125rem; color: var(--tf-ink); }
-div[class*="st-key-tf-slip-rep"] { padding: 1rem; }
-div[class*="st-key-tf-slip-rep"] .tf-slip { border: 0; padding: 0; margin: 0.4rem 0 0.2rem 0;
-  grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
-div[class*="st-key-tf-slip-rep"] .tf-slip-title { font-size: 1rem; }
+  line-height: 1.2; color: var(--tf-ink); display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden; }
+.tf-lib-meta { font-size: 0.8125rem; color: var(--tf-muted); margin-top: 0.15rem; }
+.tf-lib-grades { font-size: 0.8125rem; color: var(--tf-ink); }
+.tf-lib-grades .tf-badge { margin-right: 0.25rem; }
+.tf-lib-grades .tf-mono { margin-right: 0.75rem; }
 .tf-triage-card {
   background: var(--tf-paper-2) !important;
   border: 1px solid var(--tf-rule) !important;
@@ -91,14 +80,6 @@ div[class*="st-key-tf-slip-rep"] .tf-slip-title { font-size: 1rem; }
   color: var(--tf-ink) !important;
   font-weight: 600 !important;
 }
-=======
-  line-height: 1.2; color: var(--tf-ink); display: -webkit-box; -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; overflow: hidden; }
-.tf-lib-meta { font-size: 0.8125rem; color: var(--tf-muted); margin-top: 0.15rem; }
-.tf-lib-grades { font-size: 0.8125rem; color: var(--tf-ink); }
-.tf-lib-grades .tf-badge { margin-right: 0.25rem; }
-.tf-lib-grades .tf-mono { margin-right: 0.75rem; }
->>>>>>> design/notebook-v2
 </style>"""
 
 
@@ -241,51 +222,29 @@ def row(e):
                      if e.get("screening") else "")
         table_note = (f'<div class="tf-lib-meta">{esc(library.TABLE_NOTE)}</div>'
                       if e.get("audit_type") == library.TABLE else "")
-<<<<<<< HEAD
+        grades_dict = dict(e["grades"])
         is_quick = (e.get("kind") == "batch" or e.get("audit_type") == library.QUICK)
-        badge_html = '<span class="tf-badge-quick">Quick Audit</span> ' if is_quick else ''
-        grades = dict(e["grades"])
         if is_quick and e.get("path"):
-            rep = None
             raw_path = e.get("path")
             if raw_path and Path(raw_path).is_file():
                 try:
                     rep = library.load({"path": str(raw_path)})
+                    fls = rep.get("flags") or rep.get("batch_flags") or []
+                    if fls:
+                        for g in ("RED", "ORANGE", "INFO"):
+                            grades_dict[g] = sum(1 for x in fls if x.get("grade") == g)
                 except Exception:
-                    rep = None
-            if rep:
-                fls = rep.get("flags") or rep.get("batch_flags") or []
-                if fls:
-                    for g in ("RED", "ORANGE", "INFO"):
-                        grades[g] = sum(1 for x in fls if x.get("grade") == g)
-        st.markdown(
-            f'<div class="tf-lib-title">{badge_html}{esc(e["project"])}</div>'
-            f'<div class="tf-lib-meta"><span class="tf-kind">{esc(e["audit_type"])}</span> · '
-            f'{meta_line(e)}{esc(reviewed)}</div>'
-            f'<div class="tf-lib-grades">{grade_line(grades)}</div>'
-            f'{table_note}',
-            unsafe_allow_html=True)
-        top = _preview(e["path"], e["id"], _stamp())
-        if top:
-            slip.render(top, max_crops=1)
-        elif is_quick:
-            st.markdown(triage_passed_card(), unsafe_allow_html=True)
-        else:
-            st.caption("No RED or ORANGE flags in this report: its INFO leads are inside.")
-        st.button("Open report", key=f"tf::open::{e['id']}", on_click=open_report, args=(e["id"],),
-                  type="secondary", help=f"Open {e['title']}")
-=======
+                    pass
         # Batch titles come from the PDF's first lines: drop private-use glyphs (bullets from
         # Word symbol fonts) and keep two lines at most (CSS).
         title = re.sub(r"[\ue000-\uf8ff]", "", str(e["project"])).strip()
         main.markdown(f'<div class="tf-lib-title" title="{esc(title)}">{esc(title)}</div>'
                       f'<div class="tf-lib-meta">{meta_line(e)}{esc(reviewed)}</div>'
                       f"{table_note}{screening}", unsafe_allow_html=True)
-        grades.markdown(f'<div class="tf-lib-grades">{grade_line(e["grades"])}</div>',
+        grades.markdown(f'<div class="tf-lib-grades">{grade_line(grades_dict)}</div>',
                         unsafe_allow_html=True)
         act.button("Open report", key=f"tf::open::{e['id']}", on_click=open_report, args=(e["id"],),
                    type="secondary", help=f"Open {e['title']}")
->>>>>>> design/notebook-v2
 
 
 # ---------- the filters ----------
